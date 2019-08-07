@@ -50,6 +50,18 @@ baseurl: "/PLFA-zh"
 url: "https://agda-zh.github.io"
 markdown: kramdown
 theme: minima
+
+plugins:
+  - jekyll-furigana
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "page"
+    values:
+      furigana: true
+
 exclude:
   - "hs/"
   - "extra/"

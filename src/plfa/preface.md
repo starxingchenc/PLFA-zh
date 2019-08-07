@@ -18,10 +18,10 @@ corresponding type.  Further still, simplification of proofs
 corresponds to evaluation of programs.
 {:/}
 
-逻辑与计算之间最深刻的联系是一种双关。「命题即类型」的学说断言，
-形式化的结构可以按两种方式看待：可以看做逻辑中的命题，也可以看做计算中的类型。
-此外，相关的结构可以看做命题的证明或者其相应类型的程序。更进一步来说，
-证明的化简与程序的求值对应。
+逻辑与计算之间最深刻的联系是一种双关。**{「命题即类型」:Propositions as Types}**
+的学说断言，形式化的结构可以按两种方式看待：可以看做逻辑中的命题，
+也可以看做计算中的类型。此外，相关的结构可以看做命题的证明或者其相应类型的程序。
+更进一步来说，证明的化简与程序的求值对应。
 
 {::comment}
 Accordingly, the title of this book also has two readings.  It may be
@@ -31,9 +31,10 @@ the proof assistant Agda both describe programming languages and are
 themselves programmes.
 {:/}
 
-与此相应，本书的名字也有两种含义。它可以看做「编程语言的基础」，也可以看做
-「编程的语言基础」。我们用 Agda 证明助理编写的规范（Specification）
-同时描述了编程语言以及该语言编写的程序自身。
+与此相应，本书的名字也有两种含义。它可以看做
+{「**编程语言**的基础」:**Programming Language** Foundations}，也可以看做
+{「编程的**语言基础**」:Programming **Language Foundations**}。我们在 Agda
+证明助理中编写的**{规范:Specification}**同时描述了编程语言以及该语言编写的程序自身。
 
 {::comment}
 The book is aimed at students in the last year of an undergraduate
@@ -46,9 +47,9 @@ development more concrete and accessible to students, and give them
 rapid feedback to find and correct misapprehensions.
 {:/}
 
-本书面向本科最后一年的学生、一年级的研究生或博士生。
-本书以简单类型 λ-演算（Simply-Typed Lambda Calculus，简称 STLC）作为核心示例，
-旨在教授编程语言的操作语义基础。全书以 Agda 文学脚本（Literal Script）的形式写成。
+本书面向本科最后一年学有余力的学生，或者一年级的研究生或博士生。
+本书以{简单类型 λ-演算:Simply-Typed Lambda Calculus, STLC}作为核心示例，
+旨在教授编程语言的操作语义基础。全书以 Agda 文学脚本的形式写成。
 使用证明助理可以让开发过程变得更加具体而清晰易懂，还可以给予学生即时反馈，
 帮助学生发现理解有误的地方并及时纠正。
 
@@ -85,7 +86,7 @@ proof assistant aids learning, as summarised in his ICFP Keynote,
 
 从 2013 年开始，我在爱丁堡大学为四年制本科生和研究生教授编程语言的类型和语义的课程。
 该课程的早期版本基于 Benjamin Pierce 的著作 [TAPL][tapl]。我的版本则基于
-Pierce 的后续教材 [Software Foundations][sf]（中文版[《软件基础》][sf-zh]），此书为
+Pierce 的后续教材**{[《软件基础》][sf-zh]:[Software Foundations][sf]}**，此书为
 Pierce 与他人合著，基于 Coq 编写。正如 Pierce 在 ICFP 的主题演讲
 [Lambda, The Ultimate TA][ta] 中所言，我也相信基于证明助理的课程会对学习有所帮助。
 
@@ -107,13 +108,14 @@ hidden.
 {:/}
 
 然而有了五年的教学经验后，我得出了 Coq 并不是最好的授课载体的结论。
-对于学习编程语言理论的基础而言，我们花费了太多课程去专门学习证明推导的策略（Tactic）。
-每个概念都需要学习两遍：例如，在学过一遍积数据类型（Product Data Type）之后，
-我们还要再学一遍与之对应的合取（Conjunction）的引入（Introduction）和消除（Elimination）策略。
-Coq 用来生成归纳假设（Induction Hypothesis）的规则有时看起来很玄学。而 `notation`
-构造则允许直观但灵活多变的语法，同一个概念总是有两个名字有时会令人迷惑，
+对于学习编程语言理论的基础而言，我们花费了太多课程去专门学习证明推导的
+{策略:Tactic}。每个概念都需要学习两遍：例如，在学过一遍
+{积数据类型:Product Data Type}之后，我们还要再学一遍与之对应的
+{合取:Conjunction}的{引入:Introduction}和{消除:Elimination}
+策略。Coq 用来生成{归纳假设:Induction Hypothesis}的规则有时看起来很玄学。
+而 `notation` 构造则允许直观但灵活多变的语法，同一个概念总是有两个名字有时会令人迷惑，
 例如，`subst N x M` 和 `N [x := M]`。策略的名字时短时长；标准库中的命名约定则非常不一致。
-**命题即类型**作为证明的基础虽然存在，但却被雪藏了。
+{命题即类型:Propositions as Types}作为证明的基础虽然存在，但却被雪藏了。
 
 {::comment}
 I found myself keen to recast the course in Agda.  In Agda, there is
@@ -198,14 +200,14 @@ Exercises labelled "(recommended)" are the ones students are
 required to do in the class taught at Edinburgh from this textbook.
 {:/}
 
-标有「（推荐）」的习题是爱丁堡大学使用本教材的课程中学生需要做的。
+标有**推荐**的习题是爱丁堡大学使用本教材的课程中学生需要做的。
 
 {::comment}
 Exercises labelled "(stretch)" are there to provide an extra challenge.
 Few students do all of these, but most attempt at least a few.
 {:/}
 
-标有「（延伸）」的习题提供了额外的挑战。很少有学生全部做完，但大部分学生至少尝试了一些。
+标有**延伸**的习题提供了额外的挑战。很少有学生全部做完，但大部分练习至少应该尝试一下。
 
 {::comment}
 Exercises without a label are included for those who want extra practice.

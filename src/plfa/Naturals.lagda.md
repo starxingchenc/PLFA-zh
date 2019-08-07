@@ -4,7 +4,7 @@ layout    : page
 prev      : /Preface/
 permalink : /Naturals/
 next      : /Induction/
-translators : ["Rongxiao Fu"]
+translators : ["Rongxiao Fu", "Oling Cat"]
 progress  : 100
 ---
 
@@ -34,7 +34,7 @@ left over as you started with.
 The naturals are an inductive datatype
 {:/}
 
-## 自然数是一种归纳数据类型（Inductive Datatype）
+## 自然数是一种{归纳数据类型:Inductive Datatype}
 
 {::comment}
 Everyone is familiar with the natural numbers
@@ -54,8 +54,8 @@ and so on. We write `ℕ` for the *type* of natural numbers, and say that
 writing `0 : ℕ`, `1 : ℕ`, `2 : ℕ`, `3 : ℕ`, and so on.
 {:/}
 
-等等。我们将自然数的**类型（Type）**记为 `ℕ` ，并称 `0`，`1`，`2`，`3` 等数字
-是类型 `ℕ` 的**值（Value）**，表示为 `0 : ℕ`，`1 : ℕ`，`2 : ℕ`，`3 : ℕ` 等等。
+等等。我们将自然数的**{类型:Type}**记为 `ℕ` ，并称 `0`，`1`，`2`，`3` 等数字
+是类型 `ℕ` 的**{值:Value}**，表示为 `0 : ℕ`，`1 : ℕ`，`2 : ℕ`，`3 : ℕ` 等等。
 
 {::comment}
 The set of natural numbers is infinite, yet we can write down
@@ -64,7 +64,7 @@ as a pair of inference rules:
 {:/}
 
 自然数集是无限的，然而其定义只需寥寥几行即可写出。下面是用一对
-推导规则（Inference Rules）表示的自然数定义。
+{推导规则:Inference Rules}表示的自然数定义。
 
     --------
     zero : ℕ
@@ -91,8 +91,8 @@ and `zero` and `suc` (short for *successor*) are the
 *constructors* of the datatype.
 {:/}
 
-这里 `ℕ` 是我们所定义的**数据类型（Datatype）**的名字，而 `zero`（零）和 `suc`
-（**后继**，即**Successor**的简写）是该数据类型的**构造器（Constructor）**。
+这里 `ℕ` 是我们所定义的**{数据类型:Datatype}**的名字，而 `zero`（零）和 `suc`
+（即**{后继数:Successor}**的简写）是该数据类型的**{构造器:Constructor}**。
 
 {::comment}
 Both definitions above tell us the same two things:
@@ -106,8 +106,8 @@ _Inductive case_: if `m` is a natural number, then `suc m` is also a
   natural number.
 {:/}
 
-* **起始步骤（Base Case）**：`zero` 是一个自然数。
-* **归纳步骤（Inductive Case）**：如果 `m` 是一个自然数，那么 `suc m` 也是。
+* **{起始步骤:Base Case}**：`zero` 是一个自然数。
+* **{归纳步骤:Inductive Case}**：如果 `m` 是一个自然数，那么 `suc m` 也是。
 
 {::comment}
 Further, these two rules give the *only* ways of creating natural numbers.
@@ -174,8 +174,8 @@ is a also a natural.
 {:/}
 
 让我们来分析一下刚才的两条推导规则。每条推导规则包含写在一条水平直线上的
-零条或多条**判断（Judgment）**，称之为**假设（Hypothesis）**；以及写在直
-线下的一条判断，称之为**结论（Conclusion）**。第一条规则是起始步骤：它没
+零条或多条**{判断:Judgment}**，称之为**{假设:Hypothesis}**；以及写在直
+线下的一条判断，称之为**{结论:Conclusion}**。第一条规则是起始步骤：它没
 有任何假设，而结论断言 `zero` 是一个自然数。第二条规则是归纳步骤：它有
 一条假设，即 `m` 是自然数，而结论断言 `suc m` 也是一个自然数。
 
@@ -218,8 +218,8 @@ They tell us that `zero` is a natural number and that `suc` takes a natural
 number as argument and returns a natural number.
 {:/}
 
-这两行给出了构造器 `zero` 和 `suc` 的类型**签名（Signature）**。
-它们告诉我们 `zero` 是一个自然数，`suc` 则取一个自然数作为参数并返回另一个自然数。
+这两行给出的是指定了构造器 `zero` 和 `suc` 的类型的**{签名:Signature}**，
+告诉我们 `zero` 是一个自然数，`suc` 则取一个自然数作为参数并返回另一个自然数。
 
 {::comment}
 You may have noticed that `ℕ` and `→` don't appear on your keyboard.
@@ -230,8 +230,8 @@ _type_ refers to typing with fingers as opposed to data types!
 {:/}
 
 读者可能已经注意到了 `ℕ` 和 `→` 在键盘上没有对应的按键。它们是
-**Unicode（统一码）**中的符号。在每一章的结尾都会有本章节引入的 Unicode
-符号的列表， 以及在 Emacs 编辑器中输入它们的方法。
+**{统一码:Unicode}**中的符号。在每一章的结尾都会有本章节引入的{统一码:Unicode}
+符号的列表，以及在 Emacs 编辑器中输入它们的方法。
 
 {::comment}
 The story of creation
@@ -251,8 +251,8 @@ _Inductive case_: if `m` is a natural number, then `suc m` is also a
   natural number.
 {:/}
 
-* **起始步骤（Base Case）**：`zero` 是一个自然数。
-* **归纳步骤（Inductive Case）**：如果 `m` 是一个自然数，那么 `suc m` 也是。
+* **{起始步骤:Base Case}**：`zero` 是一个自然数。
+* **{归纳步骤:Inductive Case}**：如果 `m` 是一个自然数，那么 `suc m` 也是。
 
 {::comment}
 Hold on! The second line defines natural numbers in terms of natural
@@ -395,7 +395,7 @@ build up a potentially infinite set by applying rules that convert one
 finite set into another finite set.
 {:/}
 
-像这样的过程被称作是**归纳的（Inductive）**。我们从一无所有开始，通过应用将一个有限
+像这样的过程被称作是**{归纳的:Inductive}**。我们从一无所有开始，通过应用将一个有限
 集合转换到另一个有限集合的规则，逐步生成潜在无限的集合。
 
 {::comment}
@@ -464,8 +464,8 @@ _pragma_, which is enclosed between `{-#` and `#-}`.
 {:/}
 
 在 Agda 中，任何跟在 `--` 之后或者被 `{-` 和 `-}` 包裹的文字都被视作一
-条**注释（Comment）**。一般的注释对代码没有任何作用，但有一种特殊的注释却是例外。
-这种注释被称作**编译指令（Pragma）**，被 `{-#` 和 `#-}` 包裹。
+条**{注释:Comment}**。一般的注释对代码没有任何作用，但有一种特殊的注释却是例外。
+这种注释被称作**{编译指令:Pragma}**，被 `{-#` 和 `#-}` 包裹。
 
 {::comment}
 Including the line
@@ -594,7 +594,7 @@ just a couple of lines.
 {:/}
 
 我儿时曾花费了大量的时间来记忆加法和乘法表。最开始，运算规则看起来很
-复杂，我也经常犯错。在发现**递归（Recursion）**时，我如同醍醐灌顶。
+复杂，我也经常犯错。在发现**{递归:Recursion}**时，我如同醍醐灌顶。
 通过这个简单的技巧，有无数种可能的加法和乘法运算，只用几行即可概括。
 
 {::comment}
@@ -636,7 +636,7 @@ left-hand side of an equation.
 这个定义包含一个起始步骤和一个归纳步骤，与自然数的定义相对应。起始步骤说明了
 用零加一个数返回那个数，即 `zero + n` 得 `n`。归纳步骤说明了用一个数的后继数
 加上另一个数返回两数之和的后继数，即 `(suc m) + n` 得 `suc (m + n)`。在加法
-定义中，构造器出现在了等式左手侧，我们将这称为**模式匹配（Pattern Matching）**。
+定义中，构造器出现在了等式左手侧，我们将这称为**{模式匹配:Pattern Matching}**。
 
 {::comment}
 If we write `zero` as `0` and `suc m` as `1 + m`, the definition turns
@@ -679,9 +679,9 @@ addition of larger numbers is defined in terms of addition of smaller
 numbers.  Such a definition is called _well founded_.
 {:/}
 
-加法的定义是**递归（Recursive）**的，因为在最后一行我们用加法定义了加法。
+加法的定义是**{递归:Recursive}**的，因为在最后一行我们用加法定义了加法。
 类似于自然数的归纳定义的情况，这个表面上的循环性并不会造成问题，因为较大
-的数相加是用较小的数相加定义的。这样的定义被称作是**良基的（Well founded）**。
+的数相加是用较小的数相加定义的。这样的定义被称作是**{良基的:Well founded}**。
 
 {::comment}
 For example, let's add two and three:
@@ -761,9 +761,9 @@ equations.  The chain starts with `begin` and finishes with `∎`
 consists of a series of terms separated by `≡⟨⟩`.
 {:/}
 
-这里的类型是 `2 + 3 ≡ 5`，而这里写成表格形式的等式链的项，提供了类型中表示
-的等式成立的**证据（Evidence）**。这个等式链由 `begin` 开始，以 `∎` 结束（`∎` 可
-读作 「qed」/「证毕」 或 「tombstone」/「墓碑符号」，后者来自于其外观），并由一系列由 `≡⟨⟩` 分隔的项组成。
+这里的类型是 `2 + 3 ≡ 5`，而项，也就是这里写成表格形式的等式链，提供了作为类型
+的等式成立的**{证据:Evidence}**。这个等式链由 `begin` 开始，以 `∎` 结束（`∎` 可
+读作{证毕:QED}或{墓碑符号:Tombstone}，后者来自于其外观），并由一系列被 `≡⟨⟩` 分隔的项组成。
 
 {::comment}
 In fact, both proofs are longer than need be, and Agda is satisfied
@@ -785,7 +785,7 @@ itself is written `refl`.
 {:/}
 
 Agda 知道如何计算 `2 + 3` 的值，也可以立刻确定这个值和 `5` 是一样的。如果一个
-二元关系（Binary Relation）中每个值都和自己相关，我们称这个二元关系是**自反的（Reflexive）**。
+二元关系（Binary Relation）中每个值都和自己相关，我们称这个二元关系是**{自反的:Reflexive}**。
 在 Agda 中，一个值等于其自身的证据写作 `refl`。
 
 {::comment}
@@ -1009,7 +1009,7 @@ subtraction to naturals is called _monus_ (a twist on _minus_).
 {:/}
 
 我们也可以定义减法。由于没有负的自然数，如果被减数比减数小，
-我们就将结果取零。这种针对自然数的减法变种称作**饱和减法（Monus，由 minus 修改而来）**。
+我们就将结果取零。这种针对自然数的减法变种称作**{饱和减法:Monus}**（由 minus 修改而来）。
 
 {::comment}
 Monus is our first use of a definition that uses pattern
@@ -1096,7 +1096,7 @@ _ =
 Exercise `∸-examples` (recommended)
 {:/}
 
-练习 `∸-examples`（推荐） {#monus-examples}
+练习 `∸-examples`（推荐）
 
 {::comment}
 Compute `5 ∸ 3` and `3 ∸ 5`, writing out your reasoning as a chain of equations.
@@ -1130,7 +1130,7 @@ We also sometimes say that addition _associates to the left_, and
 so write `m + n + p` to mean `(m + n) + p`.
 {:/}
 
-我们经常使用**优先级（Precedence）**来避免书写大量的括号。
+我们经常使用**{优先级:Precedence}**来避免书写大量的括号。
 函数应用比其它任何运算符都**绑定得更紧密**（或**有更高的优先级**），所以我们
 可以写 `suc m + n` 来表示 `(suc m) + n`。另一个例子是，我们说乘法比
 加法绑定得更紧密，所以可以写 `n + m * n` 来表示 `n + (m * n)`。我们有
@@ -1177,7 +1177,7 @@ second argument.  This trick goes by the name _currying_.
 {:/}
 
 我们在之前曾将取两个参数的函数表示成取第一个参数并返回取第二个
-参数的函数的函数。这种技巧被称作**柯里化（Currying）**。
+参数的函数的函数。这种技巧被称作**{柯里化:Currying}**。
 
 {::comment}
 Agda, like other functional languages such as Haskell and ML,
@@ -1228,7 +1228,7 @@ appears in the _Begriffschrift_ of Gottlob Frege, published in 1879.
 我也听说过这样一个笑话：「（柯里化）本来该命名成 Schönfinkel 化的，但是咖喱
 更好吃。」直到之后我才了解到，这个对于归因错误的解释
 本身也是个归因错误。柯里化的概念早在戈特洛布·弗雷格（Gottlob Frege）所著的
-发表于 1879 年的 **"Begriffsschrift"（《概念文字》）**中就出现了。
+发表于 1879 年的 **{《概念文字》:"Begriffsschrift"}**中就出现了。
 
 【译注：curry 也可指调味料咖喱。】
 
@@ -1547,7 +1547,7 @@ referring to the hole.  The hole will display highlighted in green.
 Emacs will also create a window displaying the text
 {:/}
 
-这对花括号被称作一个**洞（Hole）**，0 是这个洞的编号。洞将会被高亮显示为
+这对花括号被称作一个**{洞:Hole}**，0 是这个洞的编号。洞将会被高亮显示为
 绿色（或蓝色）。Emacs 会同时创建一个窗口显示如下文字：
 
     ?0 : ℕ

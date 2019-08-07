@@ -58,7 +58,7 @@ $(foreach agda,$(AGDA),$(eval $(call AGDA_template,$(agda))))
 
 # Start server
 serve:
-	ruby -S bundle exec jekyll serve --incremental
+	ruby -S bundle exec jekyll serve --host=0.0.0.0 --incremental
 
 
 # Start background server

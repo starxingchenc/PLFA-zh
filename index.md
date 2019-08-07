@@ -1,7 +1,8 @@
 ---
-title          : 目录
-layout         : page
-translators    : ["Rongxiao Fu"]
+title       : 目录
+layout      : page
+furigana    : true
+translators : ["Rongxiao Fu", "Oling Cat"]
 ---
 
 [本书][PLFA-zh]是 Philip Wadler 和 Wen Kokke 所著的《Programming Language Foundations in Agda》的中文翻译。英文原书请见 [PLFA]。
@@ -33,8 +34,8 @@ Pull requests are encouraged.
 --->
 
 欢迎对本书各方面的评论和建议（章节组织，可以添加/移除的材料，解释不够清楚的部分，
-有价值的习题，内容或拼写错误等）。
-本书的源码托管在 [GitHub]。欢迎拉取请求。
+有价值的习题，内容或笔误等）。
+本书的源码托管在 [GitHub]。欢迎[拉取请求:Pull Request]。
 
 <!---
 ## Front matter
@@ -48,8 +49,8 @@ Pull requests are encouraged.
 
 ## 前言
 
-  - [题献]({{ site.baseurl }}/Dedication/) <span class = "progress" >{{ Dedication.progress | ceil }}</span>
-  - [前言]({{ site.baseurl }}/Preface/) <span class = "progress" >{{ Preface.progress | ceil }}</span>
+  - [题献]({{ site.baseurl }}/Dedication/) <span class="progress">{{ Dedication.progress | ceil }}</span>
+  - [前言]({{ site.baseurl }}/Preface/) <span class="progress">{{ Preface.progress | ceil }}</span>
 
 <!---
 ## Part 1: Logical Foundations
@@ -79,16 +80,16 @@ Pull requests are encouraged.
 
 ## 第一分册：逻辑基础
 
-  - [Naturals]({{ site.baseurl }}/Naturals/): 自然数 <span class = "progress" >{{ Naturals.progress | ceil }}</span>
-  - [Induction]({{ site.baseurl }}/Induction/): 归纳证明 <span class = "progress" >{{ Induction.progress | ceil }}</span>
-  - [Relations]({{ site.baseurl }}/Relations/): 关系的归纳定义 <span class = "progress" >{{ Relations.progress | ceil }}</span>
-  - [Equality]({{ site.baseurl }}/Equality/): 相等性与等式推理 <span class = "progress" >{{ Equality.progress | ceil }}</span>
-  - [Isomorphism]({{ site.baseurl }}/Isomorphism/): 同构与嵌入 <span class = "progress" >{{ Isomorphism.progress | ceil }}</span>
-  - [Connectives]({{ site.baseurl }}/Connectives/): 合取、析取与蕴涵 <span class = "progress" >{{ Connectives.progress | ceil }}</span>
-  - [Negation]({{ site.baseurl }}/Negation/): 直觉逻辑与命题逻辑中的否定 <span class = "progress" >{{ Negation.progress | ceil }}</span>
-  - [Quantifiers]({{ site.baseurl }}/Quantifiers/): 全称量词与存在量词 <span class = "progress" >{{ Quantifiers.progress | ceil }}</span>
-  - [Decidable]({{ site.baseurl }}/Decidable/): 布尔值与判定过程 <span class = "progress" >{{ Decidable.progress | ceil }}</span>
-  - [Lists]({{ site.baseurl }}/Lists/): 列表与高阶函数 <span class = "progress" >{{ Lists.progress | ceil }}</span>
+  - [Naturals]({{ site.baseurl }}/Naturals/): 自然数 <span class="progress">{{ Naturals.progress | ceil }}</span>
+  - [Induction]({{ site.baseurl }}/Induction/): 归纳证明 <span class="progress">{{ Induction.progress | ceil }}</span>
+  - [Relations]({{ site.baseurl }}/Relations/): 关系的归纳定义 <span class="progress">{{ Relations.progress | ceil }}</span>
+  - [Equality]({{ site.baseurl }}/Equality/): 相等性与等式推理 <span class="progress">{{ Equality.progress | ceil }}</span>
+  - [Isomorphism]({{ site.baseurl }}/Isomorphism/): 同构与嵌入 <span class="progress">{{ Isomorphism.progress | ceil }}</span>
+  - [Connectives]({{ site.baseurl }}/Connectives/): 合取、析取与蕴涵 <span class="progress">{{ Connectives.progress | ceil }}</span>
+  - [Negation]({{ site.baseurl }}/Negation/): 直觉逻辑与命题逻辑中的否定 <span class="progress">{{ Negation.progress | ceil }}</span>
+  - [Quantifiers]({{ site.baseurl }}/Quantifiers/): 全称量词与存在量词 <span class="progress">{{ Quantifiers.progress | ceil }}</span>
+  - [Decidable]({{ site.baseurl }}/Decidable/): 布尔值与判定过程 <span class="progress">{{ Decidable.progress | ceil }}</span>
+  - [Lists]({{ site.baseurl }}/Lists/): 列表与高阶函数 <span class="progress">{{ Lists.progress | ceil }}</span>
 
 <!---
 ## Part 2: Programming Language Foundations
@@ -112,13 +113,13 @@ Pull requests are encouraged.
 
 ## 第二分册：编程语言基础
 
-  - [Lambda]({{ site.baseurl }}/Lambda/): λ-演算简介 <span class = "progress" >{{ Lambda.progress | ceil }}</span>
-  - [Properties]({{ site.baseurl }}/Properties/): 可进性与保型性 <span class = "progress" >{{ Properties.progress | ceil }}</span>
-  - [DeBruijn]({{ site.baseurl }}/DeBruijn/): 固有类型的 de Bruijn 表示 <span class = "progress" >{{ DeBruijn.progress | ceil }}</span>
-  - [More]({{ site.baseurl }}/More/): 简单类型 λ-演算的附加构造 <span class = "progress" >{{ More.progress | ceil }}</span>
-  - [Bisimulation]({{ site.baseurl }}/Bisimulation/) : 关系归约系统 <span class = "progress" >{{ Bisimulation.progress | ceil }}</span>
-  - [Inference]({{ site.baseurl }}/Inference/): 双向类型推断 <span class = "progress" >{{ Inference.progress | ceil }}</span>
-  - [Untyped]({{ site.baseurl }}/Untyped/): 无类型 λ-演算及其完整范式 <span class = "progress" >{{ Untyped.progress | ceil }}</span>
+  - [Lambda]({{ site.baseurl }}/Lambda/): λ-演算简介 <span class="progress">{{ Lambda.progress | ceil }}</span>
+  - [Properties]({{ site.baseurl }}/Properties/): 可进性与保型性 <span class="progress">{{ Properties.progress | ceil }}</span>
+  - [DeBruijn]({{ site.baseurl }}/DeBruijn/): 固有类型的 de Bruijn 表示 <span class="progress">{{ DeBruijn.progress | ceil }}</span>
+  - [More]({{ site.baseurl }}/More/): 简单类型 λ-演算的附加构造 <span class="progress">{{ More.progress | ceil }}</span>
+  - [Bisimulation]({{ site.baseurl }}/Bisimulation/) : 关系归约系统 <span class="progress">{{ Bisimulation.progress | ceil }}</span>
+  - [Inference]({{ site.baseurl }}/Inference/): 双向类型推断 <span class="progress">{{ Inference.progress | ceil }}</span>
+  - [Untyped]({{ site.baseurl }}/Untyped/): 无类型 λ-演算及其完整范式 <span class="progress">{{ Untyped.progress | ceil }}</span>
 
 <!---
 ## Backmatter
@@ -134,9 +135,9 @@ Pull requests are encouraged.
 
 ## 后记
 
-  - [Acknowledgements]({{ site.baseurl }}/Acknowledgements/): 鸣谢 <span class = "progress" >{{ Acknowledgements.progress | ceil }}</span>
-  - [Fonts]({{ site.baseurl }}/Fonts/): 字体测试页 <span class = "progress" >{{ Fonts.progress | ceil }}</span>
-  - [Statistics]({{ site.baseurl }}/Statistics/): 每章行数统计 <span class = "progress" >{{ Statistics.progress | ceil }}</span>
+  - [Acknowledgements]({{ site.baseurl }}/Acknowledgements/): 鸣谢 <span class="progress">{{ Acknowledgements.progress | ceil }}</span>
+  - [Fonts]({{ site.baseurl }}/Fonts/): 字体测试页 <span class="progress">{{ Fonts.progress | ceil }}</span>
+  - [Statistics]({{ site.baseurl }}/Statistics/): 每章行数统计 <span class="progress">{{ Statistics.progress | ceil }}</span>
 
 <!---
 ## Related

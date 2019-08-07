@@ -100,3 +100,20 @@ pre.Spec {
 /* Standard attributes. */
 .Agda a { text-decoration: none }
 .Agda a[href]:hover { background-color: #B4EEB4 }
+
+/* Ruby tags. */
+ruby {
+    ruby-align: center;
+}
+ruby > rt {
+    font-size: 66%;
+    font-weight: 550;
+}
+
+article {
+    line-height: 2em;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight {
+    margin-bottom: 20px;
+}

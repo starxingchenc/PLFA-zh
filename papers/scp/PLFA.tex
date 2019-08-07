@@ -64,7 +64,7 @@
 \end{abstract}
 
 \begin{keyword}
-  Agda \sep Coq \sep lambda calculus \sep dependent types.  
+  Agda \sep Coq \sep lambda calculus \sep dependent types.
 \end{keyword}
 
 \maketitle
@@ -159,7 +159,7 @@ community, but which deserves to be better known.  The paper is
 organised as follows.
 
 Section~2 outlines the
-topics covered in PLFA, and notes what is omitted.  
+topics covered in PLFA, and notes what is omitted.
 
 Section~3 compares Agda and Coq as vehicles for pedagogy.  Before
 writing the book, it was not obvious that it was even possible;
@@ -445,26 +445,26 @@ challenging, to say the least.
   \includegraphics[width=\textwidth]{figures/plfa-progress-1.png}
   \caption{PLFA, Progress (1/2)}
   \label{fig:plfa-progress-1}
-\end{figure}  
+\end{figure}
 
 \begin{figure}[p]
   \includegraphics[width=\textwidth]{figures/plfa-progress-2.png}
   \includegraphics[width=\textwidth]{figures/plfa-progress-3a.png}
   \caption{PLFA, Progress (2/2)}
   \label{fig:plfa-progress-2}
-\end{figure}  
+\end{figure}
 
 \begin{figure}[t]
   \includegraphics[width=\textwidth]{figures/sf-progress-1.png}
   \caption{SF, Progress (1/2)}
   \label{fig:sf-progress-1}
-\end{figure}  
+\end{figure}
 
 \begin{figure}[t]
   \includegraphics[width=\textwidth]{figures/sf-progress-2.png}
   \caption{SF, Progress (2/2)}
   \label{fig:sf-progress-2}
-\end{figure}  
+\end{figure}
 
 The introduction listed several reasons for preferring Agda over Coq.
 But Coq tactics enable more compact proofs. Would it be possible for
@@ -508,7 +508,7 @@ postconditions and generates the necessary verification conditions. The
 conditions are then verified by a custom tactic, where any questions of
 arithmetic are resolved by the ``omega'' tactic invoking a decision procedure.
 The entire exercise would be easy to repeat in Agda, save for the last step, as
-Agda does not offer support for proof automation out of the box. It is 
+Agda does not offer support for proof automation out of the box. It is
 certainly possible to implement proof automation in Agda---see, e.g., the auto
 tactic by \citet{Kokke-2015}, and the collection of tactics in Ulf Norell's
 \texttt{agda-prelude}\footnote{\url{https://github.com/UlfNorell/agda-prelude}}.
@@ -549,7 +549,7 @@ to the informal explanation that follows.
 SF puts the informal explanation first, followed by the formal proof. The text
 hides the formal proof script under an icon; the figure shows what appears when
 the icon is expanded. As teachers, we were aware that students might skip the
-formal proof on a first reading, and we have to hope the students 
+formal proof on a first reading, and we have to hope the students
 return to it and step through it with an interactive tool in order to make it
 intelligible.  We expect the students skipped over many such proofs.  This
 particular proof forms the basis for a question of the mock exam and the past
@@ -612,10 +612,9 @@ to typecheck the code; to do a case analysis on a given variable; or to
 search for a way to fill in the hole with constructors or variables in scope.
 An Agda proof consists of typed code.  The interaction is \emph{not}
 recorded.  Students may recreate it by commenting out bits of code and
-introducing a hole in their place.   PLFA contains some prose descriptions
-of interactively building code, but mainly contains code that students
-can read.  They may introduce holes to interact with the code, but
-we expect that will be rare.
+introducing a hole in their place, but we expect this will be rarer
+than with SF.  PLFA contains some prose descriptions of interactively
+building code, but mainly contains code that students can read.
 
 SF encourages students to interact with all the scripts in the text.
 Trying to understand a Coq proof script without running it
@@ -649,7 +648,7 @@ Similarly for reflexive and transitive closure —↠.
   \includegraphics[width=\textwidth]{figures/plfa-eval.png}
   \caption{PLFA, Evaluation}
   \label{fig:plfa-eval}
-\end{figure}  
+\end{figure}
 
 A standard approach to type soundness used by many texts,
 including SF and PLFA, is to prove progress and preservation,
@@ -757,13 +756,13 @@ connection becomes more widely known.
   \includegraphics[width=\textwidth]{figures/raw.png}
   \caption{Extrinsic approach in PLFA}
   \label{fig:extrinsic}
-\end{figure}  
+\end{figure}
 
 \begin{figure}[t]
   \includegraphics[width=\textwidth]{figures/inherent.png}
   \caption{Intrinsic approach in PLFA}
   \label{fig:intrinsic}
-\end{figure}  
+\end{figure}
 
 % TODO: consider rewriting this?
 The second part of PLFA first discusses two different approaches to
@@ -841,7 +840,7 @@ error-prone without intrinsic types to give assurance of correctness.
 For instrinsic typing with named variables, simultaneous substitution by
 open terms remains difficult.
 
-The benefits of the intrinsic approach 
+The benefits of the intrinsic approach
 are well known to some. The technique was introduced by
 \citet{Altenkirch-and-Reus-1999}, and widely used elsewhere,
 notably by \citet{Chapman-2009} and \citet{Allais-et-al-2017}.
@@ -863,7 +862,7 @@ teaching from PLFA.  To date, he has taught three courses from PLFA.
 
 \item
   Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio),
-  March--July 2019, hosted by Roberto Ieuramalischy; ten 3-hour
+  March--July 2019, hosted by Roberto Ierusalimschy; ten three-hour
   slots, comprising two hours of lecture followed by one hour of lab.
   Ten students completed the course, mostly doctoral students.  The
   course covered Parts~I and~II of PLFA, up through chapter Untyped,
@@ -875,7 +874,7 @@ teaching from PLFA.  To date, he has taught three courses from PLFA.
   3-hour slots, comprising two hours of lecture followed by one
   hour of lab.  Thirty undergraduate students sat the course, which
   covered chapters Naturals, Induction, and Relations.
-    
+
 \end{itemize}
 In addition, David Darais at University of Vermont and John Leo at
 Google Seattle have taught from PLFA.
@@ -889,9 +888,9 @@ Exercises in PLFA are classified in three ways.
 \item
   Exercises labelled “(stretch)” are there to provide an extra
   challenge. Few students do all of these, but most attempt at least a
-  few. 
+  few.
 
-\item   
+\item
   Exercises without a label are included for those who want extra
   practice.  To Philip's surprise, students at PUC-Rio completed
   quite a few of these.
@@ -931,9 +930,9 @@ the exam, and that they will have to study hard to achieve it.
 Given that the goal of formal methods is to avoid error, we believe a
 pedagogical purpose is served by telling the students that they are
 expected to achieve perfection and making it possible for them to do
-so.  Students are given two opportunities to practice in the run up to
-the exam, a ``mock'' exam given in class under exam conditions (two
-hours online), and before that a ``mock mock'' exam as coursework (in
+so.  Students are given two opportunities to practice before
+the exam, a `mock' exam given in class under exam conditions (two
+hours online), and before that a `mock mock' exam as coursework (in
 their own time, encouraged to ask questions, tasked to do all three
 questions rather than two of three).
 

@@ -12,6 +12,12 @@ module plfa.Adequacy where
 
 ## Introduction
 
+{::comment}
+Having proved a preservation property in the last chapter, a natural
+next step would be to prove progress. That is, to prove a property
+of the form
+{:/}
+
 Having proved a preservation property in the last chapter, a natural
 next step would be to prove progress. That is, to prove a property
 of the form

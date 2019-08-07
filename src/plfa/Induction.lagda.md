@@ -30,7 +30,7 @@ _induction_.
 {:/}
 
 现在我们定义了自然数及其运算，下一步是学习如何证明它们满足的性质。
-顾名思义，**归纳数据类型（Inductive Datatype）**是通过**归纳（Induction）**
+如其名称所示，**{归纳数据类型:inductive datatype}**是通过**{归纳:induction}**
 来证明的。
 
 {::comment}
@@ -88,19 +88,19 @@ on names for some of the most common properties.
   `p`, and `q`.
 {:/}
 
-* **幺元（Identity）**。对于所有的 `n`，若 `0 + n ≡ n`，则 `+` 有左幺元 `0`；
+* **{幺元:Identity}**。对于所有的 `n`，若 `0 + n ≡ n`，则 `+` 有左幺元 `0`；
   若 `n + 0 ≡ n`，则 `+` 有右幺元 `0`。同时为左幺元和右幺元的值称简称幺元。
-  幺元有时也称作**单位元（Unit）**。
+  幺元有时也称作**{单位元:Unit}**。
 
-* **结合律（Associativity）**。若括号的位置无关紧要，则称运算符 `+` 满足结合律，
+* **{结合律:Associativity}**。若括号的位置无关紧要，则称运算符 `+` 满足结合律，
   即对于所有的 `m`、`n` 和 `p`，有 `(m + n) + p ≡ m + (n + p)`。
 
-* **交换律（Commutativity）**。若参数的顺序无关紧要，则称运算符 `+` 满足交换律，
+* **{交换律:Commutativity}**。若参数的位置无关紧要，则称运算符 `+` 满足交换律，
   即对于所有的 `m` 和 `n`，有 `m + n ≡ n + m`。
 
-* **分配律（Distributivity）**。对于所有的 `m`、`n` 和 `p`，若
-  `(m + n) * p ≡ (m * p) + (n * p)`，则运算符 `*` 对运算符 `+` 满足左分配律；
-  对于所有的 `m`、`n` 和 `p`，若 `m * (p + q) ≡ (m * p) + (m * q)`，则满足右分配律。
+* **{分配率:Distributivity}**。对于所有的 `m`、`n` 和 `p`，若
+  `(m + n) * p ≡ (m * p) + (n * p)`，则运算符 `*` 对运算符 `+` 满足左分配率；
+  对于所有的 `m`、`n` 和 `p`，若 `m * (p + q) ≡ (m * p) + (m * q)`，则满足右分配率。
 
 {::comment}
 Addition has identity `0` and multiplication has identity `1`;
@@ -242,7 +242,7 @@ The answer is yes! We can prove a property holds for all naturals using
 _proof by induction_.
 {:/}
 
-答案是肯定的！我们可以用**归纳证明（Proof by Induction）**
+答案是肯定的！我们可以用**{归纳证明:Proof by Induction}**
 来确保某个性质对于所有的自然数都成立。
 
 
@@ -598,7 +598,7 @@ preserved by applying that function.  If `e` is evidence that `x ≡ y`,
 then `cong f e` is evidence that `f x ≡ f y`, for any function `f`.
 {:/}
 
-若某个关系在应用给定函数后仍然保持不变，则称该关系满足**合同性（Congruence）**。
+若某个关系在应用给定函数后仍然保持不变，则称该关系满足**{合同性:Congruence}**。
 若 `e` 是 `x ≡ y` 的证据，那么对于任意函数 `f`，`cong f e` 是 `f x ≡ f y` 的证据。
 
 {::comment}
@@ -721,7 +721,7 @@ Another important property of addition is that it is _commutative_, that is,
 that the order of the operands does not matter:
 {:/}
 
-加法的另一个重要性质是满足**交换律（Commutativity）**，即运算数的顺序无关紧要：
+加法的另一个重要性质是**{交换律:Commutativity}**，即运算数的顺序无关紧要：
 
     m + n ≡ n + m
 
@@ -1188,7 +1188,7 @@ returns `x + y`.  Thus, applying the congruence `cong (m +_)` takes
 the above equation into:
 {:/}
 
-第三，Agda 支持 Richard Bird 引入的**片段（Section）**记法。我们将应用到
+第三，Agda 支持 Richard Bird 引入的**{片段:Section}**记法。我们将应用到
 `y` 并返回 `x + y` 的函数写作 `(x +_)`。因此，应用合同性 `cong (m +_)`
 会将上面的等式转换成：
 
@@ -1493,7 +1493,7 @@ Emacs will also create a new window at the bottom of the screen
 displaying the text:
 {:/}
 
-空的大括号叫做**洞（Hole）**，0 是用来指代此洞的编号。洞可能会以绿色高亮显示。
+空的大括号叫做**{洞:Hole}**，0 是用来指代此洞的编号。洞可能会以绿色高亮显示。
 Emacs 还会在屏幕下方创建一个新的窗口并显示文本：
 
     ?0 : ((m + n) + p) ≡ (m + (n + p))

@@ -1,7 +1,8 @@
 ---
-layout: page
-title: 使用说明
-permalink: /GettingStarted/
+layout      : page
+furigana    : true
+title       : 使用说明
+permalink   : /GettingStarted/
 translators : ["Rongxiao Fu"]
 ---
 
