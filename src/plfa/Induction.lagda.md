@@ -20,7 +20,7 @@ module plfa.Induction where
 
 > 归纳会让你对无中生有感到内疚
 > ... 但它却是文明中最伟大的思想之一。
-> ———— Herbert Wilf
+> —— Herbert Wilf
 
 {::comment}
 Now that we've defined the naturals and operations upon them, our next
@@ -119,7 +119,7 @@ might ask them if one distributes over the other.
 如果你在一个舞会上碰见了一位操作员，那么你可以跟他闲聊，问问他是否有单位元，
 能不能结合或者交换。如果你碰见了两位操作员，那么可以问他们某一位是否在另一位上面分布。
 
-【译注：作者的双关冷笑话，运算符（Operator）也有操作员的意思。】
+> 译注：作者的双关冷笑话，{运算符:Operator}也有操作员的意思。
 
 {::comment}
 Less frivolously, if you ever bump into an operator while reading a
@@ -272,15 +272,15 @@ then show that the property must also hold for `suc m`.
 
 归纳证明遵循此定义的结构。要通过归纳证明自然数的某个性质，我们需要两个步骤。
 其一是**起始步骤**，我们需要证明此性质对 `zero` 成立。其二是**归纳步骤**，
-我们假设此性质对一个任意自然数 `m` 成立（我们称之为**归纳假设（Induction
-Hypothesis）**），然后证明该性质对 `suc m` 必定成立。
+我们假设此性质对一个任意自然数 `m` 成立（我们称之为**{归纳假设:Induction
+Hypothesis}**），然后证明该性质对 `suc m` 必定成立。
 
 {::comment}
 If we write `P m` for a property of `m`, then what we need to
 demonstrate are the following two inference rules:
 {:/}
 
-若我们将 `m` 的某种性质（Property）写作 `P m`，那么我们需要证明的就是以下两个推导规则：
+若我们将 `m` 的某种**{性质:Property}**写作 `P m`，那么我们需要证明的就是以下两个推导规则：
 
     ------
     P zero
@@ -496,8 +496,8 @@ defining the identifier `+-assoc` which provides evidence for the
 proposition:
 {:/}
 
-我们来分析一下这段代码。其签名（Signature）描述了我们定义的标识符 `+-assoc`
-为以下命题提供了证据（Evidence）：
+我们来分析一下这段代码。其**{签名:Signature}**描述了我们定义的标识符 `+-assoc`
+为以下命题提供了**{证据:Evidence}**：
 
     ∀ (m n p : ℕ) → (m + n) + p ≡ m + (n + p)
 
@@ -509,7 +509,7 @@ is a function that accepts three natural numbers, binds them to `m`, `n`, and `p
 and returns evidence for the corresponding instance of the equation.
 {:/}
 
-倒 A 符号读作「对于所有（for all）」，而该命题断言对于所有的自然数 `m`、`n`
+倒 A 符号读作「**{对于所有:for all}**」，而该命题断言对于所有的自然数 `m`、`n`
 和 `p`，等式 `(m + n) + p ≡ m + (n + p)` 成立。该命题的证据是一个接受三个自然数的函数，
 将它们绑定到 `m`、`n` 和 `p`，并返回该等式对应实例的证据。
 
@@ -612,7 +612,7 @@ recursion is one of the most appealing aspects of Agda.
 {:/}
 
 在这里并未假定归纳假设，而是通过递归调用我们定义的函数 `+-assoc m n p` 来证明。
-对于加法，这是良基的（well-founded），因为更大数值的结合律可基于更小数值的结合律
+对于加法，这是**{良基的:Well-founded}**，因为更大数值的结合律可基于更小数值的结合律
 来证明。在此步骤中，`assoc (suc m) n p` 是用 `assoc m n p` 证明的。
 归纳证明和递归定义之间的这种对应是 Agda 中最吸引人的方面之一。
 
@@ -679,7 +679,7 @@ quantifier_, and it is discussed further in Chapter [Quantifiers]({{ site.baseur
 {:/}
 
 在结合律的陈述中出现的符号 `∀` 表示它对于所有的 `m`、`n` 和 `p` 都成立。
-我们将 `∀` 称为**全称量词**（Universal Quantifier），我们会在
+我们将 `∀` 称为**{全称量词:Universal Quantifier}**，我们会在
 [Quantifiers]({{ site.baseurl }}/Quantifiers/) 章节中进一步讨论。
 
 {::comment}
@@ -707,7 +707,7 @@ are called _dependent functions_.
 
 是等价的。它们不同于像 `ℕ → ℕ → ℕ` 这样的函数类型，其中的变量
 与每一个实参类型相关联，其结果类型可能会涉及（或依赖于）这些变量，
-因此它们叫做**依赖函数**（Dependent Function）。
+因此它们叫做**{依赖函数:Dependent Function}**。
 
 
 {::comment}
@@ -729,7 +729,7 @@ that the order of the operands does not matter:
 The proof requires that we first demonstrate two lemmas.
 {:/}
 
-要证明它，我们需要先证明两条引理（Lemma）。
+要证明它，我们需要先证明两条**{引理:Lemma}**。
 
 {::comment}
 ### The first lemma
@@ -1820,7 +1820,7 @@ for all `m`, `n`, and `p`.
 
 对于所有 `m`、`n` 和 `p` 成立。
 
-
+{::comment}
 #### Exercise `Bin-laws` (stretch) {#Bin-laws}
 {:/}
 

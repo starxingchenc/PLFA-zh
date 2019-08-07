@@ -58,7 +58,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "page"
+      type: "pages"
     values:
       furigana: true
 
