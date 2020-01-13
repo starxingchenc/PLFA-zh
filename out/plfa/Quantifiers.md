@@ -43,8 +43,7 @@ We formalise universal quantification using the
 dependent function type, which has appeared throughout this book.
 {:/}
 
-我们用依赖函数类型（Dependent Function Type）来形式化全称量化。
-这样的形式贯穿全书地出现。
+我们用依赖函数类型（Dependent Function Type）来形式化全称量化。这样的形式贯穿全书地出现。
 
 
 {::comment}
@@ -57,10 +56,7 @@ the proposition `B x` with each free occurrence of `x` replaced by
 `∀ (x : A) → B x`.
 {:/}
 
-给定一个 `A` 类型的变量 `x` 和一个带有 `x` 自由变量的命题 `B x`，全称量化
-的命题 `∀ (x : A) → B x` 当对于所有类型为 `A` 的项 `M`，命题 `B M` 成立时成立。
-在这里，`B M` 代表了将 `B x` 中自由出现的变量 `x` 替换成 `M` 以后的命题。
-变量 `x` 在 `B x` 中以自由变量形式出现，但是在 `∀ (x : A) → B x` 中是约束的。
+给定一个 `A` 类型的变量 `x` 和一个带有 `x` 自由变量的命题 `B x`，全称量化的命题 `∀ (x : A) → B x` 当对于所有类型为 `A` 的项 `M`，命题 `B M` 成立时成立。在这里，`B M` 代表了将 `B x` 中自由出现的变量 `x` 替换成 `M` 以后的命题。变量 `x` 在 `B x` 中以自由变量形式出现，但是在 `∀ (x : A) → B x` 中是约束的。
 
 {::comment}
 Evidence that `∀ (x : A) → B x` holds is of the form
@@ -79,18 +75,15 @@ M` provides evidence that `B M` holds.  In other words, evidence that
 `A` into evidence that `B M` holds.
 {:/}
 
-其中 `N x` 是一个 `B x` 类型的项，`N x` 和 `B x` 都包含了一个 `A` 类型的自由变量 `x`。
-给定一个项 `L`， 其提供 `∀ (x : A) → B x` 成立的证明，和一个类型为 `A` 的项 `M`，
-`L M` 这一项则是 `B M` 成立的证明。换句话说，`∀ (x : A) → B x` 成立的证明是一个函数，
-将类型为 `A` 的项 `M` 转换成 `B M` 成立的证明。
+其中 `N x` 是一个 `B x` 类型的项，`N x` 和 `B x` 都包含了一个 `A` 类型的自由变量 `x`。给定一个项 `L`， 其提供 `∀ (x : A) → B x` 成立的证明，和一个类型为 `A` 的项 `M`，
+`L M` 这一项则是 `B M` 成立的证明。换句话说，`∀ (x : A) → B x` 成立的证明是一个函数，将类型为 `A` 的项 `M` 转换成 `B M` 成立的证明。
 
 {::comment}
 Put another way, if we know that `∀ (x : A) → B x` holds and that `M`
 is a term of type `A` then we may conclude that `B M` holds:
 {:/}
 
-再换句话说，如果我们知道 `∀ (x : A) → B x` 成立，又知道 `M` 是一个类型为 `A` 的项，
-那么我们可以推导出 `B M` 成立：
+再换句话说，如果我们知道 `∀ (x : A) → B x` 成立，又知道 `M` 是一个类型为 `A` 的项，那么我们可以推导出 `B M` 成立：
 {% raw %}<pre class="Agda"><a id="∀-elim"></a><a id="2569" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#2569" class="Function">∀-elim</a> <a id="2576" class="Symbol">:</a> <a id="2578" class="Symbol">∀</a> <a id="2580" class="Symbol">{</a><a id="2581" href="plfa.Quantifiers.html#2581" class="Bound">A</a> <a id="2583" class="Symbol">:</a> <a id="2585" class="PrimitiveType">Set</a><a id="2588" class="Symbol">}</a> <a id="2590" class="Symbol">{</a><a id="2591" href="plfa.Quantifiers.html#2591" class="Bound">B</a> <a id="2593" class="Symbol">:</a> <a id="2595" href="plfa.Quantifiers.html#2581" class="Bound">A</a> <a id="2597" class="Symbol">→</a> <a id="2599" class="PrimitiveType">Set</a><a id="2602" class="Symbol">}</a>
   <a id="2606" class="Symbol">→</a> <a id="2608" class="Symbol">(</a><a id="2609" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#2609" class="Bound">L</a> <a id="2611" class="Symbol">:</a> <a id="2613" class="Symbol">∀</a> <a id="2615" class="Symbol">(</a><a id="2616" href="plfa.Quantifiers.html#2616" class="Bound">x</a> <a id="2618" class="Symbol">:</a> <a id="2620" href="plfa.Quantifiers.html#2581" class="Bound">A</a><a id="2621" class="Symbol">)</a> <a id="2623" class="Symbol">→</a> <a id="2625" href="plfa.Quantifiers.html#2591" class="Bound">B</a> <a id="2627" href="plfa.Quantifiers.html#2616" class="Bound">x</a><a id="2628" class="Symbol">)</a>
   <a id="2632" class="Symbol">→</a> <a id="2634" class="Symbol">(</a><a id="2635" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#2635" class="Bound">M</a> <a id="2637" class="Symbol">:</a> <a id="2639" href="plfa.Quantifiers.html#2581" class="Bound">A</a><a id="2640" class="Symbol">)</a>
@@ -116,11 +109,8 @@ a matter of interpretation, since in Agda a value of a type and
 evidence of a proposition are indistinguishable.
 {:/}
 
-函数是依赖函数的一种特殊形式，其值域不取决于定义域中的变量。当一个函数被视为
-蕴涵的证明时，它的参数和结果都是证明，而当一个依赖函数被视为全称量词的证明时，
-它的参数被视为数据类型中的一个元素，而结果是一个依赖于参数的命题的证明。因为在
-Agda 中，一个数据类型中的一个值和一个命题的证明是无法区别的，这样的区别很大程度上
-取决于如何来诠释。
+函数是依赖函数的一种特殊形式，其值域不取决于定义域中的变量。当一个函数被视为蕴涵的证明时，它的参数和结果都是证明，而当一个依赖函数被视为全称量词的证明时，它的参数被视为数据类型中的一个元素，而结果是一个依赖于参数的命题的证明。因为在
+Agda 中，一个数据类型中的一个值和一个命题的证明是无法区别的，这样的区别很大程度上取决于如何来诠释。
 
 {::comment}
 Dependent function types are sometimes referred to as dependent
@@ -133,11 +123,7 @@ will stick with the name dependent function, because (as we will see)
 dependent product is ambiguous.
 {:/}
 
-依赖函数类型也被叫做依赖积（Dependent Product），因为如果 `A` 是一个有限的数据类型，
-有值 `x₁ , ⋯ , xₙ`，如果每个类型 `B x₁ , ⋯ , B xₙ` 有 `m₁ , ⋯ , mₙ` 个不同的成员，
-那么 `∀ (x : A) → B x` 有 `m₁ * ⋯ * mₙ` 个成员。的确，`∀ (x : A) → B x` 的记法有时
-也被 `Π[ x ∈ A ] (B x)` 取代，其中 `Π` 代表积。然而，我们还是使用依赖函数这个名称，
-因为依赖积这个名称是有歧义的，我们后续会体会到歧义所在。
+依赖函数类型也被叫做依赖积（Dependent Product），因为如果 `A` 是一个有限的数据类型，有值 `x₁ , ⋯ , xₙ`，如果每个类型 `B x₁ , ⋯ , B xₙ` 有 `m₁ , ⋯ , mₙ` 个不同的成员，那么 `∀ (x : A) → B x` 有 `m₁ * ⋯ * mₙ` 个成员。的确，`∀ (x : A) → B x` 的记法有时也被 `Π[ x ∈ A ] (B x)` 取代，其中 `Π` 代表积。然而，我们还是使用依赖函数这个名称，因为依赖积这个名称是有歧义的，我们后续会体会到歧义所在。
 
 {::comment}
 #### Exercise `∀-distrib-×` (recommended)
@@ -208,8 +194,7 @@ Let `B` be a type indexed by `Tri`, that is `B : Tri → Set`.
 Show that `∀ (x : Tri) → B x` is isomorphic to `B aa × B bb × B cc`.
 {:/}
 
-令 `B` 作为由 `Tri` 索引的一个类型，也就是说 `B : Tri → Set`。
-证明 `∀ (x : Tri) → B x` 和 `B aa × B bb × B cc` 是同构的。
+令 `B` 作为由 `Tri` 索引的一个类型，也就是说 `B : Tri → Set`。证明 `∀ (x : Tri) → B x` 和 `B aa × B bb × B cc` 是同构的。
 
 
 {::comment}
@@ -228,10 +213,7 @@ the proposition `B x` with each free occurrence of `x` replaced by
 `Σ[ x ∈ A ] B x`.
 {:/}
 
-给定一个 `A` 类型的变量 `x` 和一个带有 `x` 自由变量的命题 `B x`，存在量化
-的命题 `Σ[ x ∈ A ] B x` 当对于一些类型为 `A` 的项 `M`，命题 `B M` 成立时成立。
-在这里，`B M` 代表了将 `B x` 中自由出现的变量 `x` 替换成 `M` 以后的命题。
-变量 `x` 在 `B x` 中以自由变量形式出现，但是在 `Σ[ x ∈ A ] B x` 中是约束的。
+给定一个 `A` 类型的变量 `x` 和一个带有 `x` 自由变量的命题 `B x`，存在量化的命题 `Σ[ x ∈ A ] B x` 当对于一些类型为 `A` 的项 `M`，命题 `B M` 成立时成立。在这里，`B M` 代表了将 `B x` 中自由出现的变量 `x` 替换成 `M` 以后的命题。变量 `x` 在 `B x` 中以自由变量形式出现，但是在 `Σ[ x ∈ A ] B x` 中是约束的。
 
 {::comment}
 We formalise existential quantification by declaring a suitable
@@ -260,8 +242,7 @@ The special syntax is available only when the identifier
 `Σ-syntax` is imported.
 {:/}
 
-这是我们第一次使用语法声明，其表示左手边的项可以以右手边的语法来书写。
-这种特殊语法只有在标识符 `Σ-syntax` 被导入时可用。
+这是我们第一次使用语法声明，其表示左手边的项可以以右手边的语法来书写。这种特殊语法只有在标识符 `Σ-syntax` 被导入时可用。
 
 {::comment}
 Evidence that `Σ[ x ∈ A ] B x` holds is of the form
@@ -321,11 +302,8 @@ difference is largely a matter of interpretation, since in Agda a value
 of a type and evidence of a proposition are indistinguishable.
 {:/}
 
-积是依赖积的一种特殊形式，其第二分量不取决于第一分量中的变量。当一个积被视为
-合取的证明时，它的两个分量都是证明，而当一个依赖积被视为存在量词的证明时，
-它的第一分量被视为数据类型中的一个元素，而第二分量是一个依赖于第一分量的命题的证明。因为在
-Agda 中，一个数据类型中的一个值一个命题的证明是无法区别的，这样的区别很大程度上
-取决于如何来诠释。
+积是依赖积的一种特殊形式，其第二分量不取决于第一分量中的变量。当一个积被视为合取的证明时，它的两个分量都是证明，而当一个依赖积被视为存在量词的证明时，它的第一分量被视为数据类型中的一个元素，而第二分量是一个依赖于第一分量的命题的证明。因为在
+Agda 中，一个数据类型中的一个值一个命题的证明是无法区别的，这样的区别很大程度上取决于如何来诠释。
 
 {::comment}
 Existentials are sometimes referred to as dependent sums,
@@ -335,9 +313,7 @@ then `Σ[ x ∈ A ] B x` has `m₁ + ⋯ + mₙ` members, which explains the
 choice of notation for existentials, since `Σ` stands for sum.
 {:/}
 
-存在量化也被叫做依赖和（Dependent Sum），因为如果 `A` 是一个有限的数据类型，
-有值 `x₁ , ⋯ , xₙ`，如果每个类型 `B x₁ , ⋯ , B xₙ` 有 `m₁ , ⋯ , mₙ` 个不同的成员，
-那么 `Σ[ x ∈ A ] B x` 有 `m₁ + ⋯ + mₙ` 个成员，这也解释了选择使用这个记法的原因——
+存在量化也被叫做依赖和（Dependent Sum），因为如果 `A` 是一个有限的数据类型，有值 `x₁ , ⋯ , xₙ`，如果每个类型 `B x₁ , ⋯ , B xₙ` 有 `m₁ , ⋯ , mₙ` 个不同的成员，那么 `Σ[ x ∈ A ] B x` 有 `m₁ + ⋯ + mₙ` 个成员，这也解释了选择使用这个记法的原因——
 `Σ` 代表和。
 
 {::comment}
@@ -347,8 +323,7 @@ doubly confusing, since universals also have a claim to the name dependent
 product and since existentials also have a claim to the name dependent sum.
 {:/}
 
-存在量化有时也被叫做依赖积（Dependent Product），因为积是其中的一种特殊形式。但是，
-这样的叫法非常让人困扰，因为全程量化也被叫做依赖积，而存在量化已经有依赖和的叫法。
+存在量化有时也被叫做依赖积（Dependent Product），因为积是其中的一种特殊形式。但是，这样的叫法非常让人困扰，因为全程量化也被叫做依赖积，而存在量化已经有依赖和的叫法。
 
 {::comment}
 A common notation for existentials is `∃` (analogous to `∀` for universals).
@@ -356,8 +331,7 @@ We follow the convention of the Agda standard library, and reserve this
 notation for the case where the domain of the bound variable is left implicit:
 {:/}
 
-存在量词的普通记法是 `∃` （与全程量词的 `∀` 记法相类似）。我们使用 Agda 标准库中的惯例，
-使用一种隐式申明约束变量定义域的记法。
+存在量词的普通记法是 `∃` （与全程量词的 `∀` 记法相类似）。我们使用 Agda 标准库中的惯例，使用一种隐式申明约束变量定义域的记法。
 
 {% raw %}<pre class="Agda"><a id="∃"></a><a id="9864" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#9864" class="Function">∃</a> <a id="9866" class="Symbol">:</a> <a id="9868" class="Symbol">∀</a> <a id="9870" class="Symbol">{</a><a id="9871" href="plfa.Quantifiers.html#9871" class="Bound">A</a> <a id="9873" class="Symbol">:</a> <a id="9875" class="PrimitiveType">Set</a><a id="9878" class="Symbol">}</a> <a id="9880" class="Symbol">(</a><a id="9881" href="plfa.Quantifiers.html#9881" class="Bound">B</a> <a id="9883" class="Symbol">:</a> <a id="9885" href="plfa.Quantifiers.html#9871" class="Bound">A</a> <a id="9887" class="Symbol">→</a> <a id="9889" class="PrimitiveType">Set</a><a id="9892" class="Symbol">)</a> <a id="9894" class="Symbol">→</a> <a id="9896" class="PrimitiveType">Set</a>
 <a id="9900" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#9864" class="Function">∃</a> <a id="9902" class="Symbol">{</a><a id="9903" href="plfa.Quantifiers.html#9903" class="Bound">A</a><a id="9904" class="Symbol">}</a> <a id="9906" href="plfa.Quantifiers.html#9906" class="Bound">B</a> <a id="9908" class="Symbol">=</a> <a id="9910" href="plfa.Quantifiers.html#6530" class="Datatype">Σ</a> <a id="9912" href="plfa.Quantifiers.html#9903" class="Bound">A</a> <a id="9914" href="plfa.Quantifiers.html#9906" class="Bound">B</a>
@@ -370,8 +344,7 @@ The special syntax is available only when the identifier `∃-syntax` is importe
 We will tend to use this syntax, since it is shorter and more familiar.
 {:/}
 
-这种特殊的语法只有在 `∃-syntax` 标识符被导入时可用。我们将倾向于使用这种语法，因为它更短，
-而且看上去更熟悉。
+这种特殊的语法只有在 `∃-syntax` 标识符被导入时可用。我们将倾向于使用这种语法，因为它更短，而且看上去更熟悉。
 
 {::comment}
 Given evidence that `∀ x → B x → C` holds, where `C` does not contain
@@ -379,8 +352,7 @@ Given evidence that `∀ x → B x → C` holds, where `C` does not contain
 may conclude that `C` holds:
 {:/}
 
-给定 `∀ x → B x → C` 成立的证明，其中 `C` 不包括自由变量 `x`，给定 `∃[ x ] B x` 成立的
-证明，我们可以推导出 `C` 成立。
+给定 `∀ x → B x → C` 成立的证明，其中 `C` 不包括自由变量 `x`，给定 `∃[ x ] B x` 成立的证明，我们可以推导出 `C` 成立。
 
 {% raw %}<pre class="Agda"><a id="∃-elim"></a><a id="10482" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#10482" class="Function">∃-elim</a> <a id="10489" class="Symbol">:</a> <a id="10491" class="Symbol">∀</a> <a id="10493" class="Symbol">{</a><a id="10494" href="plfa.Quantifiers.html#10494" class="Bound">A</a> <a id="10496" class="Symbol">:</a> <a id="10498" class="PrimitiveType">Set</a><a id="10501" class="Symbol">}</a> <a id="10503" class="Symbol">{</a><a id="10504" href="plfa.Quantifiers.html#10504" class="Bound">B</a> <a id="10506" class="Symbol">:</a> <a id="10508" href="plfa.Quantifiers.html#10494" class="Bound">A</a> <a id="10510" class="Symbol">→</a> <a id="10512" class="PrimitiveType">Set</a><a id="10515" class="Symbol">}</a> <a id="10517" class="Symbol">{</a><a id="10518" href="plfa.Quantifiers.html#10518" class="Bound">C</a> <a id="10520" class="Symbol">:</a> <a id="10522" class="PrimitiveType">Set</a><a id="10525" class="Symbol">}</a>
   <a id="10529" class="Symbol">→</a> <a id="10531" class="Symbol">(∀</a> <a id="10534" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#10534" class="Bound">x</a> <a id="10536" class="Symbol">→</a> <a id="10538" href="plfa.Quantifiers.html#10504" class="Bound">B</a> <a id="10540" href="plfa.Quantifiers.html#10534" class="Bound">x</a> <a id="10542" class="Symbol">→</a> <a id="10544" href="plfa.Quantifiers.html#10518" class="Bound">C</a><a id="10545" class="Symbol">)</a>
@@ -477,8 +449,7 @@ Let `Tri` and `B` be as in Exercise `∀-×`.
 Show that `∃[ x ] B x` is isomorphic to `B aa ⊎ B bb ⊎ B cc`.
 {:/}
 
-沿用练习 `∀-×` 中的 `Tri` 和 `B` 。
-证明 `∃[ x ] B x` 与 `B aa ⊎ B bb ⊎ B cc` 是同构的。
+沿用练习 `∀-×` 中的 `Tri` 和 `B` 。证明 `∃[ x ] B x` 与 `B aa ⊎ B bb ⊎ B cc` 是同构的。
 
 {::comment}
 ## An existential example
@@ -525,8 +496,7 @@ other number, and odd if and only if it is one more than twice
 some other number.  In other words, we will show:
 {:/}
 
-我们接下来要证明，一个数是偶数当且仅当这个数是一个数的两倍，一个数是奇数当且仅当这个数
-是一个数的两倍多一。换句话说，我们要证明的是：
+我们接下来要证明，一个数是偶数当且仅当这个数是一个数的两倍，一个数是奇数当且仅当这个数是一个数的两倍多一。换句话说，我们要证明的是：
 
 {::comment}
 `even n`   iff   `∃[ m ] (    m * 2 ≡ n)`
@@ -544,8 +514,7 @@ the constant term in a sum last. Here we've reversed each of those
 conventions, because doing so eases the proof.
 {:/}
 
-惯例来说，我们往往将常数因子写在前面、将和里的常数项写在后面。但是这里我们没有按照惯例，
-而是反了过来，因为这样可以让证明更简单：
+惯例来说，我们往往将常数因子写在前面、将和里的常数项写在后面。但是这里我们没有按照惯例，而是反了过来，因为这样可以让证明更简单：
 
 {::comment}
 Here is the proof in the forward direction:
@@ -571,8 +540,7 @@ We induct over the evidence that `n` is even or odd:
 {:/}
 
 我们定义两个相互递归的函数。给定 `n` 是奇数或者是偶数的证明，我们返回一个数
-`m`，以及 `m * 2 ≡ n` 或者 `1 + m * 2 ≡ n` 的证明。我们根据 `n` 是奇数
-或者是偶数的证明进行归纳：
+`m`，以及 `m * 2 ≡ n` 或者 `1 + m * 2 ≡ n` 的证明。我们根据 `n` 是奇数或者是偶数的证明进行归纳：
 
 {::comment}
 * If the number is even because it is zero, then we return a pair
@@ -629,9 +597,7 @@ and in the even case consider the two possibilities for the number
 that is doubled:
 {:/}
 
-给定一个是另一个数两倍的数，我们需要证明这个数是偶数。给定一个是另一个数两倍多一的数，
-我们需要证明这个数是奇数。我们对于存在量化的证明进行归纳。在偶数的情况，我们也需要考虑两种
-一个数是另一个数两倍的情况。
+给定一个是另一个数两倍的数，我们需要证明这个数是偶数。给定一个是另一个数两倍多一的数，我们需要证明这个数是奇数。我们对于存在量化的证明进行归纳。在偶数的情况，我们也需要考虑两种一个数是另一个数两倍的情况。
 
 {::comment}
 - In the even case for `zero`, we must show `zero * 2` is even, which
@@ -651,8 +617,7 @@ follows by `odd-suc`.
 - 在偶数是 `suc n` 的情况中，我们需要证明 `suc m * 2` 是偶数。归纳假设告诉我们，
 `1 + m * 2` 是奇数，那么所求证的结果由 `even-suc` 可得。
 
-- 在偶数的情况中，我们需要证明 `1 + m * 2` 是奇数。归纳假设告诉我们，`m * 2` 是偶数，
-那么所求证的结果由 `odd-suc` 可得。
+- 在偶数的情况中，我们需要证明 `1 + m * 2` 是奇数。归纳假设告诉我们，`m * 2` 是偶数，那么所求证的结果由 `odd-suc` 可得。
 
 {::comment}
 This completes the proof in the backward direction.
@@ -672,8 +637,7 @@ by `2 * m` and `2 * m + 1`?  Rewrite the proofs of `∃-even` and `∃-odd` when
 restated in this way.
 {:/}
 
-如果我们用 `2 * m` 代替 `m * 2`，`2 * m + 1` 代替 `1 + m * 2`，上述证明会变得复杂多少呢？
-用这种方法来重写 `∃-even` 和 `∃-odd`。
+如果我们用 `2 * m` 代替 `m * 2`，`2 * m + 1` 代替 `1 + m * 2`，上述证明会变得复杂多少呢？用这种方法来重写 `∃-even` 和 `∃-odd`。
 
 {::comment}
 {% raw %}<pre class="Agda"><a id="18137" class="Comment">-- Your code goes here</a>
@@ -714,8 +678,7 @@ result is analogous to the one which tells us that negation
 of a disjunction is isomorphic to a conjunction of negations:
 {:/}
 
-存在量化的否定与否定的全称量化是同构的。考虑到存在量化是析构的推广，全称量化是合构的推广，
-这样的结果与析构的否定与否定的合构是同构的结果相似。
+存在量化的否定与否定的全称量化是同构的。考虑到存在量化是析构的推广，全称量化是合构的推广，这样的结果与析构的否定与否定的合构是同构的结果相似。
 
 {% raw %}<pre class="Agda"><a id="¬∃≃∀¬"></a><a id="18942" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#18942" class="Function">¬∃≃∀¬</a> <a id="18948" class="Symbol">:</a> <a id="18950" class="Symbol">∀</a> <a id="18952" class="Symbol">{</a><a id="18953" href="plfa.Quantifiers.html#18953" class="Bound">A</a> <a id="18955" class="Symbol">:</a> <a id="18957" class="PrimitiveType">Set</a><a id="18960" class="Symbol">}</a> <a id="18962" class="Symbol">{</a><a id="18963" href="plfa.Quantifiers.html#18963" class="Bound">B</a> <a id="18965" class="Symbol">:</a> <a id="18967" href="plfa.Quantifiers.html#18953" class="Bound">A</a> <a id="18969" class="Symbol">→</a> <a id="18971" class="PrimitiveType">Set</a><a id="18974" class="Symbol">}</a>
   <a id="18978" class="Symbol">→</a> <a id="18980" class="Symbol">(</a><a id="18981" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬</a> <a id="18983" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#9917" class="Function">∃[</a> <a id="18986" href="plfa.Quantifiers.html#18986" class="Bound">x</a> <a id="18988" href="plfa.Quantifiers.html#9917" class="Function">]</a> <a id="18990" href="plfa.Quantifiers.html#18963" class="Bound">B</a> <a id="18992" href="plfa.Quantifiers.html#18986" class="Bound">x</a><a id="18993" class="Symbol">)</a> <a id="18995" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">≃</a> <a id="18997" class="Symbol">∀</a> <a id="18999" href="plfa.Quantifiers.html#18999" class="Bound">x</a> <a id="19001" class="Symbol">→</a> <a id="19003" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬</a> <a id="19005" href="plfa.Quantifiers.html#18963" class="Bound">B</a> <a id="19007" href="plfa.Quantifiers.html#18999" class="Bound">x</a>
@@ -736,8 +699,7 @@ a value `y` of type `B x` we can derive false.  Combining
 and applying `¬∃xy` to that yields a contradiction.
 {:/}
 
-在 `to` 的方向，给定了一个 `¬ ∃[ x ] B x` 类型的值 `¬∃xy`，需要证明给定一个 `x` 的值，
-可以推导出 `¬ B x`。换句话说，给定一个 `B x` 类型的值 `y`，我们可以推导出假。将 `x` 和 `y`
+在 `to` 的方向，给定了一个 `¬ ∃[ x ] B x` 类型的值 `¬∃xy`，需要证明给定一个 `x` 的值，可以推导出 `¬ B x`。换句话说，给定一个 `B x` 类型的值 `y`，我们可以推导出假。将 `x` 和 `y`
 合并起来我们就得到了 `∃[ x ] B x` 类型的值 `⟨ x , y ⟩`，对其使用 `¬∃xy` 即可获得矛盾。
 
 {::comment}
@@ -749,8 +711,7 @@ a contradiction.
 {:/}
 
 在 `from` 的方向，给定了一个 `∀ x → ¬ B x` 类型的值 `∀¬xy`，需要证明从一个类型为
-`∃[ x ] B x` 类型的值 `⟨ x , y ⟩` ，我们可以推导出假。将 `∀¬xy` 使用于 `x` 之上，
-可以得到类型为 `¬ B x` 的值，对其使用 `y` 即可获得矛盾。
+`∃[ x ] B x` 类型的值 `⟨ x , y ⟩` ，我们可以推导出假。将 `∀¬xy` 使用于 `x` 之上，可以得到类型为 `¬ B x` 的值，对其使用 `y` 即可获得矛盾。
 
 {::comment}
 The two inverse proofs are straightforward, where one direction
@@ -799,8 +760,7 @@ define a datatype of bitstrings representing natural numbers:
 
 回忆在练习 [Bin][plfa.Naturals#Bin]、
 [Bin-laws][plfa.Induction#Bin-laws] 和
-[Bin-predicates][plfa.Relations#Bin-predicates] 中，
-我们定义了比特串的数据类型来表示自然数：
+[Bin-predicates][plfa.Relations#Bin-predicates] 中，我们定义了比特串的数据类型来表示自然数：
 
 {% raw %}<pre class="Agda"><a id="21311" class="Keyword">data</a> <a id="Bin"></a><a id="21316" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#21316" class="Datatype">Bin</a> <a id="21320" class="Symbol">:</a> <a id="21322" class="PrimitiveType">Set</a> <a id="21326" class="Keyword">where</a>
   <a id="Bin.nil"></a><a id="21334" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Quantifiers.md %}{% raw %}#21334" class="InductiveConstructor">nil</a> <a id="21338" class="Symbol">:</a> <a id="21340" href="plfa.Quantifiers.html#21316" class="Datatype">Bin</a>

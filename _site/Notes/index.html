@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notes | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Notes" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Notes/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Notes/","headline":"Notes","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Notes","url":"https://agda-zh.github.io/PLFA-zh/Notes/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -63,7 +63,22 @@
 
 
   <div class="post-content">
-    <h2 id="google-analytics">Google Analytics</h2>
+    <h2 id="to-do">To Do</h2>
+
+<p>Changes I would like to make to the book:</p>
+<ul>
+  <li>Relations, exercise <code class="language-plaintext highlighter-rouge">o+o≡e</code> –&gt; (recommended)</li>
+  <li>Relations, exercise <code class="language-plaintext highlighter-rouge">≤-iff-&lt;</code> –&gt; <code class="language-plaintext highlighter-rouge">≤→&lt;</code>, <code class="language-plaintext highlighter-rouge">&lt;→≤</code></li>
+  <li>Relations, exercise <code class="language-plaintext highlighter-rouge">Bin-predicates</code> –&gt; <code class="language-plaintext highlighter-rouge">Bin-predicate</code>
+change canonical form of zero to be empty string, <code class="language-plaintext highlighter-rouge">&lt;&gt;</code>.
+Similar change to subsequent exercise.</li>
+</ul>
+
+<h2 id="downloading-older-versions">Downloading older versions</h2>
+
+<p><a href="https://github.com/plfa/plfa.github.io/releases">https://github.com/plfa/plfa.github.io/releases</a></p>
+
+<h2 id="google-analytics">Google Analytics</h2>
 
 <p><a href="https://analytics.google.com/analytics/web/">https://analytics.google.com/analytics/web/</a></p>
 
@@ -71,13 +86,12 @@
 
 <p>Git commands to create a branch and pull request</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git help &lt;command&gt;          -- get help on &lt;command&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git help &lt;command&gt;          -- get help on &lt;command&gt;
 git branch                  -- list all branches
 git branch &lt;name&gt;           -- create new local branch &lt;name&gt;
 git checkout &lt;name&gt;         -- make &lt;name&gt; the current branch
 git merge &lt;name&gt;            -- merge branch &lt;name&gt; into current branch 
 git push origin &lt;name&gt;      -- make local branch &lt;name&gt; into remote
-git rebase &lt;base&gt;           -- merge branch &lt;base&gt; into current branch
 </code></pre></div></div>
 
 <p>On website, use pulldown menu to swith branch and then
@@ -93,7 +107,7 @@ click “new pull request” button.</p>
 
 <p>In a rush, but…</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data Tag : Set where
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data Tag : Set where
   tag-ℕ : Tag
   tag-⇒ : Tag
 </code></pre></div></div>
@@ -102,7 +116,7 @@ click “new pull request” button.</p>
 
 <p>Get evidence!</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- yer types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- yer types
 data Type : Set where
   nat : Type
   _=&gt;_ : Type -&gt; Type -&gt; Type
@@ -147,7 +161,7 @@ dom T | not=&gt; () | q =&gt; q₁
 <blockquote>
   <p>We want to alert you that you’ve been granted the following access:
      Manage Users and Edit
-to the Google Analytics account <code class="highlighter-rouge">plfa (UA-125055580)</code> by <code class="highlighter-rouge">wen.kokke@gmail.com</code>.</p>
+to the Google Analytics account <code class="language-plaintext highlighter-rouge">plfa (UA-125055580)</code> by <code class="language-plaintext highlighter-rouge">wen.kokke@gmail.com</code>.</p>
 </blockquote>
 
 <blockquote>
@@ -487,6 +501,18 @@ Calculus Using PHOAS, APLAS 2018
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

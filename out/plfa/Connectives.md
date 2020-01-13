@@ -23,8 +23,7 @@ correspondence between connectives of logic and data types, a
 principle known as _Propositions as Types_:
 {:/}
 
-本章节介绍基础的逻辑运算符。我们使用逻辑运算符与数据类型之间的对应关系，
-即*命题即类型*原理（Propositions as Types）。
+本章节介绍基础的逻辑运算符。我们使用逻辑运算符与数据类型之间的对应关系，即*命题即类型*原理（Propositions as Types）。
 
 {::comment}
   * _conjunction_ is _product_,
@@ -67,8 +66,7 @@ if both `A` holds and `B` holds.  We formalise this idea by
 declaring a suitable inductive type:
 {:/}
 
-给定两个命题 `A` 和 `B`，其合取 `A × B` 成立当 `A` 成立和 `B` 成立。
-我们将这样的概念形式化，使用如下的归纳类型：
+给定两个命题 `A` 和 `B`，其合取 `A × B` 成立当 `A` 成立和 `B` 成立。我们将这样的概念形式化，使用如下的归纳类型：
 
 {% raw %}<pre class="Agda"><a id="1715" class="Keyword">data</a> <a id="_×_"></a><a id="1720" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#1720" class="Datatype Operator">_×_</a> <a id="1724" class="Symbol">(</a><a id="1725" href="plfa.Connectives.html#1725" class="Bound">A</a> <a id="1727" href="plfa.Connectives.html#1727" class="Bound">B</a> <a id="1729" class="Symbol">:</a> <a id="1731" class="PrimitiveType">Set</a><a id="1734" class="Symbol">)</a> <a id="1736" class="Symbol">:</a> <a id="1738" class="PrimitiveType">Set</a> <a id="1742" class="Keyword">where</a>
 
@@ -159,8 +157,7 @@ We may also refer to `proj₁` and `proj₂` as destructors, since they
 play a similar role.
 {:/}
 
-当 `⟨_,_⟩` 在等式右手边的项中出现的时候，我们将其称作*构造子*（Constructor），
-当它出现在等式左边时，我们将其称作*析构器*（Destructor）。我们亦可将 `proj₁` 和 `proj₂`
+当 `⟨_,_⟩` 在等式右手边的项中出现的时候，我们将其称作*构造子*（Constructor），当它出现在等式左边时，我们将其称作*析构器*（Destructor）。我们亦可将 `proj₁` 和 `proj₂`
 称作析构器，因为它们起到相似的效果。
 
 {::comment}
@@ -178,20 +175,14 @@ elimination rule describes what we may conclude when the connective
 holds---how to _use_ the connective.
 {:/}
 
-其他的术语将 `⟨_,_⟩` 称作*引入*（Introduce）合取，将 `proj₁` 和 `proj₂` 称作*消去*（Eliminate）合取。
-前者亦记作 `×-I`，后者 `×-E₁` 和 `×-E₂`。如果我们从上到下来阅读这些规则，引入和消去
-正如其名字所说的那样：第一条*引入*一个运算符，所以运算符出现在结论中，而不是假设中；
-第二条*消去*一个带有运算符的式子，而运算符出现在假设中，而不是结论中。引入规则描述了
-运算符在什么情况下成立——即怎么样*定义*一个运算符。消去规则描述了运算符成立时，可以得出
-什么样的结论——即怎么样*使用*一个运算符。
+其他的术语将 `⟨_,_⟩` 称作*引入*（Introduce）合取，将 `proj₁` 和 `proj₂` 称作*消去*（Eliminate）合取。前者亦记作 `×-I`，后者 `×-E₁` 和 `×-E₂`。如果我们从上到下来阅读这些规则，引入和消去正如其名字所说的那样：第一条*引入*一个运算符，所以运算符出现在结论中，而不是假设中；第二条*消去*一个带有运算符的式子，而运算符出现在假设中，而不是结论中。引入规则描述了运算符在什么情况下成立——即怎么样*定义*一个运算符。消去规则描述了运算符成立时，可以得出什么样的结论——即怎么样*使用*一个运算符。
 
 {::comment}
 (The paragraph above was adopted from "Propositions as Types", Philip Wadler,
 _Communications of the ACM_, December 2015.)
 {:/}
 
-（上面一段内容由此处改编得来：*Propositions as Types*，作者：Philip Wadler，
-发表于 《ACM 通讯》，2015 年 9 月）
+（上面一段内容由此处改编得来：*Propositions as Types*，作者：Philip Wadler，发表于 《ACM 通讯》，2015 年 9 月）
 
 {::comment}
 In this case, applying each destructor and reassembling the results with the
@@ -238,11 +229,7 @@ For instance, consider a type `Bool` with two members, and
 a type `Tri` with three members:
 {:/}
 
-给定两个类型 `A` 和 `B`，我们将 `A × B` 称为 `A` 与 `B` 的*积*。
-在集合论中它也被称作*笛卡尔积*（Cartesian Product），在计算机科学中它对应*记录*类型。
-如果类型 `A` 有 `m` 个不同的成员，类型 `B` 有 `n` 个不同的成员，
-那么类型 `A × B` 有 `m * n` 个不同的成员。这也是它被称为积的原因之一。
-例如，考虑有两个成员的 `Bool` 类型，和有三个成员的 `Tri` 类型：
+给定两个类型 `A` 和 `B`，我们将 `A × B` 称为 `A` 与 `B` 的*积*。在集合论中它也被称作*笛卡尔积*（Cartesian Product），在计算机科学中它对应*记录*类型。如果类型 `A` 有 `m` 个不同的成员，类型 `B` 有 `n` 个不同的成员，那么类型 `A × B` 有 `m * n` 个不同的成员。这也是它被称为积的原因之一。例如，考虑有两个成员的 `Bool` 类型，和有三个成员的 `Tri` 类型：
 
 {% raw %}<pre class="Agda"><a id="6326" class="Keyword">data</a> <a id="Bool"></a><a id="6331" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#6331" class="Datatype">Bool</a> <a id="6336" class="Symbol">:</a> <a id="6338" class="PrimitiveType">Set</a> <a id="6342" class="Keyword">where</a>
   <a id="Bool.true"></a><a id="6350" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#6350" class="InductiveConstructor">true</a>  <a id="6356" class="Symbol">:</a> <a id="6358" href="plfa.Connectives.html#6331" class="Datatype">Bool</a>
@@ -284,8 +271,7 @@ particular, product is commutative and associative _up to
 isomorphism_.
 {:/}
 
-类型上的积与数的积有相似的性质——它们满足交换律和结合律。
-更确切地说，积在*在同构意义下*满足交换律和结合率。
+类型上的积与数的积有相似的性质——它们满足交换律和结合律。更确切地说，积在*在同构意义下*满足交换律和结合率。
 
 {::comment}
 For commutativity, the `to` function swaps a pair, taking `⟨ x , y ⟩` to
@@ -296,9 +282,7 @@ and similarly for `to∘from`:
 {:/}
 
 对于交换律，`to` 函数将有序对交换，将 `⟨ x , y ⟩` 变为 `⟨ y , x ⟩`，`from`
-函数亦是如此（忽略命名）。
-在 `from∘to` 和 `to∘from` 中正确地实例化要匹配的模式是很重要的。
-使用 `λ w → refl` 作为 `from∘to` 的定义是不可行的，`to∘from` 同理。
+函数亦是如此（忽略命名）。在 `from∘to` 和 `to∘from` 中正确地实例化要匹配的模式是很重要的。使用 `λ w → refl` 作为 `from∘to` 的定义是不可行的，`to∘from` 同理。
 
 {% raw %}<pre class="Agda"><a id="×-comm"></a><a id="7783" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#7783" class="Function">×-comm</a> <a id="7790" class="Symbol">:</a> <a id="7792" class="Symbol">∀</a> <a id="7794" class="Symbol">{</a><a id="7795" href="plfa.Connectives.html#7795" class="Bound">A</a> <a id="7797" href="plfa.Connectives.html#7797" class="Bound">B</a> <a id="7799" class="Symbol">:</a> <a id="7801" class="PrimitiveType">Set</a><a id="7804" class="Symbol">}</a> <a id="7806" class="Symbol">→</a> <a id="7808" href="plfa.Connectives.html#7795" class="Bound">A</a> <a id="7810" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="7812" href="plfa.Connectives.html#7797" class="Bound">B</a> <a id="7814" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">≃</a> <a id="7816" href="plfa.Connectives.html#7797" class="Bound">B</a> <a id="7818" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="7820" href="plfa.Connectives.html#7795" class="Bound">A</a>
 <a id="7822" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#7783" class="Function">×-comm</a> <a id="7829" class="Symbol">=</a>
@@ -328,10 +312,8 @@ the two types.  For instance, `⟨ true , aa ⟩`, which is a member of the
 former, corresponds to `⟨ aa , true ⟩`, which is a member of the latter.
 {:/}
 
-在第一个情况下，我们可能有 `m` 是 `2`、`n` 是 `3`，那么 `m * n` 和 `n * m` 都是 `6`。
-在第二个情况下，我们可能有 `A` 是 `Bool` 和 `B` 是 `Tri`，但是 `Bool × Tri` 和
-`Tri × Bool` *不是*一样的。但是存在一个两者之间的同构。例如：`⟨ true , aa ⟩` 是前者的成员，
-其对应后者的成员 `⟨ aa , true ⟩`。
+在第一个情况下，我们可能有 `m` 是 `2`、`n` 是 `3`，那么 `m * n` 和 `n * m` 都是 `6`。在第二个情况下，我们可能有 `A` 是 `Bool` 和 `B` 是 `Tri`，但是 `Bool × Tri` 和
+`Tri × Bool` *不是*一样的。但是存在一个两者之间的同构。例如：`⟨ true , aa ⟩` 是前者的成员，其对应后者的成员 `⟨ aa , true ⟩`。
 
 {::comment}
 For associativity, the `to` function reassociates two uses of pairing,
@@ -369,9 +351,7 @@ instance `⟨ ⟨ 1 , true ⟩ , aa ⟩`, which is a member of the former,
 corresponds to `⟨ 1 , ⟨ true , aa ⟩ ⟩`, which is a member of the latter.
 {:/}
 
-举个例子，`(ℕ × Bool) × Tri` 与 `ℕ × (Bool × Tri)` *不同*，但是两个类型之间
-存在同构。例如 `⟨ ⟨ 1 , true ⟩ , aa ⟩`，一个前者的成员，与 `⟨ 1 , ⟨ true , aa ⟩ ⟩`，
-一个后者的成员，相对应。
+举个例子，`(ℕ × Bool) × Tri` 与 `ℕ × (Bool × Tri)` *不同*，但是两个类型之间存在同构。例如 `⟨ ⟨ 1 , true ⟩ , aa ⟩`，一个前者的成员，与 `⟨ 1 , ⟨ true , aa ⟩ ⟩`，一个后者的成员，相对应。
 
 {::comment}
 #### Exercise `⇔≃×` (recommended)
@@ -424,8 +404,7 @@ can conclude.  Since truth always holds, knowing that it holds tells
 us nothing new.
 {:/}
 
-恒真有引入规则，但没有消去规则。给定一个 `⊤` 成立的证明，我们不能得出任何有趣的结论。
-因为恒真恒成立，知道恒真成立不会给我们带来新的知识。
+恒真有引入规则，但没有消去规则。给定一个 `⊤` 成立的证明，我们不能得出任何有趣的结论。因为恒真恒成立，知道恒真成立不会给我们带来新的知识。
 
 {::comment}
 The nullary case of `η-×` is `η-⊤`, which asserts that any
@@ -450,8 +429,7 @@ We refer to `⊤` as the _unit_ type. And, indeed,
 type `⊤` has exactly one member, `tt`.  For example, the following
 function enumerates all possible arguments of type `⊤`:
 
-我们将 `⊤` 称为*单元*类型（Unit Type）。实际上，`⊤` 类型只有一个成员 `tt`。
-例如，下面的函数枚举了所有 `⊤` 类型的参数：
+我们将 `⊤` 称为*单元*类型（Unit Type）。实际上，`⊤` 类型只有一个成员 `tt`。例如，下面的函数枚举了所有 `⊤` 类型的参数：
 
 {:/}
 {% raw %}<pre class="Agda"><a id="⊤-count"></a><a id="11931" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#11931" class="Function">⊤-count</a> <a id="11939" class="Symbol">:</a> <a id="11941" href="plfa.Connectives.html#10798" class="Datatype">⊤</a> <a id="11943" class="Symbol">→</a> <a id="11945" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
@@ -466,8 +444,7 @@ matching against a suitable pattern to enable simplification:
 {:/}
 
 对于数来说，1 是乘法的幺元。对应地，单元是积的幺元（*在同构意义下*）。对于左幺元来说，
-`to` 函数将 `⟨ tt , x ⟩` 转换成 `x`， `from` 函数则是其反函数。左逆的证明需要
-匹配一个合适的模式来化简：
+`to` 函数将 `⟨ tt , x ⟩` 转换成 `x`， `from` 函数则是其反函数。左逆的证明需要匹配一个合适的模式来化简：
 
 {% raw %}<pre class="Agda"><a id="⊤-identityˡ"></a><a id="12435" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#12435" class="Function">⊤-identityˡ</a> <a id="12447" class="Symbol">:</a> <a id="12449" class="Symbol">∀</a> <a id="12451" class="Symbol">{</a><a id="12452" href="plfa.Connectives.html#12452" class="Bound">A</a> <a id="12454" class="Symbol">:</a> <a id="12456" class="PrimitiveType">Set</a><a id="12459" class="Symbol">}</a> <a id="12461" class="Symbol">→</a> <a id="12463" href="plfa.Connectives.html#10798" class="Datatype">⊤</a> <a id="12465" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="12467" href="plfa.Connectives.html#12452" class="Bound">A</a> <a id="12469" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">≃</a> <a id="12471" href="plfa.Connectives.html#12452" class="Bound">A</a>
 <a id="12473" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#12435" class="Function">⊤-identityˡ</a> <a id="12485" class="Symbol">=</a>
@@ -497,9 +474,7 @@ For instance, `⟨ tt , true ⟩`, which is a member of the former,
 corresponds to `true`, which is a member of the latter.
 {:/}
 
-在第一种情况下，我们可能有 `m` 是 `2`，那么 `1 * m` 和 `m` 都为 `2`。
-在第二种情况下，我们可能有 `A` 是 `Bool`，但是 `⊤ × Bool` 和 `Bool` 是不同的。
-例如：`⟨ tt , true ⟩` 是前者的成员，其对应后者的成员 `true`。
+在第一种情况下，我们可能有 `m` 是 `2`，那么 `1 * m` 和 `m` 都为 `2`。在第二种情况下，我们可能有 `A` 是 `Bool`，但是 `⊤ × Bool` 和 `Bool` 是不同的。例如：`⟨ tt , true ⟩` 是前者的成员，其对应后者的成员 `true`。
 
 {::comment}
 Right identity follows from commutativity of product and left identity:
@@ -536,8 +511,7 @@ if either `A` holds or `B` holds.  We formalise this idea by
 declaring a suitable inductive type:
 {:/}
 
-给定两个命题 `A` 和 `B`，析取 `A ⊎ B` 在 `A` 成立或者 `B` 成立时成立。
-我们将这个概念用合适的归纳类型来形式化：
+给定两个命题 `A` 和 `B`，析取 `A ⊎ B` 在 `A` 成立或者 `B` 成立时成立。我们将这个概念用合适的归纳类型来形式化：
 
 {% raw %}<pre class="Agda"><a id="14045" class="Keyword">data</a> <a id="_⊎_"></a><a id="14050" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#14050" class="Datatype Operator">_⊎_</a> <a id="14054" class="Symbol">(</a><a id="14055" href="plfa.Connectives.html#14055" class="Bound">A</a> <a id="14057" href="plfa.Connectives.html#14057" class="Bound">B</a> <a id="14059" class="Symbol">:</a> <a id="14061" class="PrimitiveType">Set</a><a id="14064" class="Symbol">)</a> <a id="14066" class="Symbol">:</a> <a id="14068" class="PrimitiveType">Set</a> <a id="14072" class="Keyword">where</a>
 
@@ -594,10 +568,8 @@ the former are sometimes given the names `⊎-I₁` and `⊎-I₂` and the
 latter the name `⊎-E`.
 {:/}
 
-当 `inj₁` 和 `inj₂` 在等式右手边出现的时候，我们将其称作*构造子*，
-当它出现在等式左边时，我们将其称作*析构器*。我们亦可将 `case-⊎`
-称作析构器，因为它们起到相似的效果。其他术语将 `inj₁` 和 `inj₂` 称为*引入*析取，
-将 `case-⊎` 称为*消去*析取。前者亦被称为 `⊎-I₁` 和 `⊎-I₂`，后者 `⊎-E`。
+当 `inj₁` 和 `inj₂` 在等式右手边出现的时候，我们将其称作*构造子*，当它出现在等式左边时，我们将其称作*析构器*。我们亦可将 `case-⊎`
+称作析构器，因为它们起到相似的效果。其他术语将 `inj₁` 和 `inj₂` 称为*引入*析取，将 `case-⊎` 称为*消去*析取。前者亦被称为 `⊎-I₁` 和 `⊎-I₂`，后者 `⊎-E`。
 
 {::comment}
 Applying the destructor to each of the constructors is the identity:
@@ -658,12 +630,7 @@ Then the type `Bool ⊎ Tri` has five
 members:
 {:/}
 
-给定两个类型 `A` 和 `B`，我们将 `A ⊎ B` 称为 `A` 与 `B` 的*和*。
-在集合论中它也被称作*不交并*（Disjoint Union），在计算机科学中它对应*变体记录*类型。
-如果类型 `A` 有 `m` 个不同的成员，类型 `B` 有 `n` 个不同的成员，
-那么类型 `A ⊎ B` 有 `m + n` 个不同的成员。这也是它被称为和的原因之一。
-例如，考虑有两个成员的 `Bool` 类型，和有三个成员的 `Tri` 类型，如之前的定义。
-那么，`Bool ⊎ Tri` 类型有如下的五个成员：
+给定两个类型 `A` 和 `B`，我们将 `A ⊎ B` 称为 `A` 与 `B` 的*和*。在集合论中它也被称作*不交并*（Disjoint Union），在计算机科学中它对应*变体记录*类型。如果类型 `A` 有 `m` 个不同的成员，类型 `B` 有 `n` 个不同的成员，那么类型 `A ⊎ B` 有 `m + n` 个不同的成员。这也是它被称为和的原因之一。例如，考虑有两个成员的 `Bool` 类型，和有三个成员的 `Tri` 类型，如之前的定义。那么，`Bool ⊎ Tri` 类型有如下的五个成员：
 
     inj₁ true     inj₂ aa
     inj₁ false    inj₂ bb
@@ -688,8 +655,7 @@ Sum on types also shares a property with sum on numbers in that it is
 commutative and associative _up to isomorphism_.
 {:/}
 
-类型上的和与数的和有相似的性质——它们满足交换律和结合律。
-更确切地说，和在*在同构意义下*是交换和结合的。
+类型上的和与数的和有相似的性质——它们满足交换律和结合律。更确切地说，和在*在同构意义下*是交换和结合的。
 
 {::comment}
 #### Exercise `⊎-comm` (recommended)
@@ -765,9 +731,7 @@ through phrases such as "if pigs had wings, then I'd be the Queen of
 Sheba".  We formalise it as follows:
 {:/}
 
-与 `⊤` 相对偶，`⊥` 没有引入规则，但是有消去规则。因为恒假从不成立，
-如果它一旦成立，我们就进入了矛盾之中。给定 `⊥` 成立的证明，我们可以得出任何结论！
-这是逻辑学的基本原理，又由中世纪的拉丁文词组 _ex falso_ 为名。小孩子也由诸如
+与 `⊤` 相对偶，`⊥` 没有引入规则，但是有消去规则。因为恒假从不成立，如果它一旦成立，我们就进入了矛盾之中。给定 `⊥` 成立的证明，我们可以得出任何结论！这是逻辑学的基本原理，又由中世纪的拉丁文词组 _ex falso_ 为名。小孩子也由诸如
 “如果猪有翅膀，那我就是示巴女王”的词组中知晓。我们如下将它形式化：
 
 {% raw %}<pre class="Agda"><a id="⊥-elim"></a><a id="19595" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#19595" class="Function">⊥-elim</a> <a id="19602" class="Symbol">:</a> <a id="19604" class="Symbol">∀</a> <a id="19606" class="Symbol">{</a><a id="19607" href="plfa.Connectives.html#19607" class="Bound">A</a> <a id="19609" class="Symbol">:</a> <a id="19611" class="PrimitiveType">Set</a><a id="19614" class="Symbol">}</a>
@@ -792,8 +756,7 @@ we might have called it `case-⊥`, but chose to stick with the name
 in the standard library.
 {:/}
 
-`case-⊎` 的零元形式是 `⊥-elim`。类比的来说，它应该叫做 `case-⊥`，
-但是我们在此使用标准库中使用的名字。
+`case-⊎` 的零元形式是 `⊥-elim`。类比的来说，它应该叫做 `case-⊥`，但是我们在此使用标准库中使用的名字。
 
 {::comment}
 The nullary case of `uniq-⊎` is `uniq-⊥`, which asserts that `⊥-elim`
@@ -817,8 +780,7 @@ We refer to `⊥` as the _empty_ type. And, indeed,
 type `⊥` has no members. For example, the following function
 enumerates all possible arguments of type `⊥`:
 
-我们将 `⊥` 成为*空*类型（Empty Type）。实际上，`⊥` 类型没有成员。
-例如，下面的函数枚举了所有 `⊥` 类型的参数：
+我们将 `⊥` 成为*空*类型（Empty Type）。实际上，`⊥` 类型没有成员。例如，下面的函数枚举了所有 `⊥` 类型的参数：
 
 {:/}
 {% raw %}<pre class="Agda"><a id="⊥-count"></a><a id="20866" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#20866" class="Function">⊥-count</a> <a id="20874" class="Symbol">:</a> <a id="20876" href="plfa.Connectives.html#18852" class="Datatype">⊥</a> <a id="20878" class="Symbol">→</a> <a id="20880" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
@@ -886,8 +848,7 @@ whenever `A` holds then `B` must also hold.  We formalise implication using
 the function type, which has appeared throughout this book.
 {:/}
 
-给定两个命题 `A` 和 `B`，其蕴涵 `A → B` 在任何 `A` 成立的时候，`B` 也成立时成立。
-我们用函数类型来形式化蕴涵，如本书中通篇出现的那样。
+给定两个命题 `A` 和 `B`，其蕴涵 `A → B` 在任何 `A` 成立的时候，`B` 也成立时成立。我们用函数类型来形式化蕴涵，如本书中通篇出现的那样。
 
 
 {::comment}
@@ -906,9 +867,7 @@ providing evidence that `A` holds, the term `L M` provides evidence that
 converts evidence that `A` holds into evidence that `B` holds.
 {:/}
 
-其中 `N` 是一个类型为 `B` 的项，其包括了一个类型为 `A` 的自由变量 `x`。
-给定一个 `A → B` 成立的证明 `L`，和一个 `A` 成立的证明 `M`，那么 `L M` 是 `B` 成立的证明。
-也就是说，`A → B` 成立的证明是一个函数，将 `A` 成立的证明转换成 `B` 成立的证明。
+其中 `N` 是一个类型为 `B` 的项，其包括了一个类型为 `A` 的自由变量 `x`。给定一个 `A → B` 成立的证明 `L`，和一个 `A` 成立的证明 `M`，那么 `L M` 是 `B` 成立的证明。也就是说，`A → B` 成立的证明是一个函数，将 `A` 成立的证明转换成 `B` 成立的证明。
 
 {::comment}
 Put another way, if we know that `A → B` and `A` both hold,
@@ -937,8 +896,7 @@ is referred to as _introducing_ a function,
 while applying a function is referred to as _eliminating_ the function.
 {:/}
 
-定义一个函数，不管是带名字的定义或是使用 Lambda 抽象，被称为*引入*一个函数，
-使用一个函数被称为*消去*一个函数。
+定义一个函数，不管是带名字的定义或是使用 Lambda 抽象，被称为*引入*一个函数，使用一个函数被称为*消去*一个函数。
 
 {::comment}
 Elimination followed by introduction is the identity:
@@ -968,11 +926,7 @@ as defined earlier. Then the type `Bool → Tri` has nine (that is,
 three squared) members:
 {:/}
 
-给定两个类型 `A` 和 `B`，我们将 `A → B` 称为从 `A` 到 `B` 的*函数*空间。
-它有时也被称作以 `B` 为底，`A` 为次数的*幂*。如果类型 `A` 有 `m` 个不同的成员，
-类型 `B` 有 `n` 个不同的成员，那么类型 `A → B` 有 `nᵐ` 个不同的成员。
-这也是它被称为幂的原因之一。例如，考虑有两个成员的 `Bool` 类型，和有三个成员的 `Tri` 类型，
-如之前的定义。那么，`Bool → Tri` 类型有如下的九个成员（三的平方）：
+给定两个类型 `A` 和 `B`，我们将 `A → B` 称为从 `A` 到 `B` 的*函数*空间。它有时也被称作以 `B` 为底，`A` 为次数的*幂*。如果类型 `A` 有 `m` 个不同的成员，类型 `B` 有 `n` 个不同的成员，那么类型 `A → B` 有 `nᵐ` 个不同的成员。这也是它被称为幂的原因之一。例如，考虑有两个成员的 `Bool` 类型，和有三个成员的 `Tri` 类型，如之前的定义。那么，`Bool → Tri` 类型有如下的九个成员（三的平方）：
 
     λ{true → aa; false → aa}  λ{true → aa; false → bb}  λ{true → aa; false → cc}
     λ{true → bb; false → aa}  λ{true → bb; false → bb}  λ{true → bb; false → cc}
@@ -1028,8 +982,7 @@ This isomorphism sometimes goes by the name *currying*.
 The proof of the right inverse requires extensionality:
 {:/}
 
-两个类型可以被看作给定 `A` 成立的证据和 `B` 成立的证据，返回 `C` 成立的证据。
-这个同构有时也被称作*柯里化*（Currying）。右逆的证明需要外延性：
+两个类型可以被看作给定 `A` 成立的证据和 `B` 成立的证据，返回 `C` 成立的证据。这个同构有时也被称作*柯里化*（Currying）。右逆的证明需要外延性：
 
 {% raw %}<pre class="Agda"><a id="currying"></a><a id="26102" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#26102" class="Function">currying</a> <a id="26111" class="Symbol">:</a> <a id="26113" class="Symbol">∀</a> <a id="26115" class="Symbol">{</a><a id="26116" href="plfa.Connectives.html#26116" class="Bound">A</a> <a id="26118" href="plfa.Connectives.html#26118" class="Bound">B</a> <a id="26120" href="plfa.Connectives.html#26120" class="Bound">C</a> <a id="26122" class="Symbol">:</a> <a id="26124" class="PrimitiveType">Set</a><a id="26127" class="Symbol">}</a> <a id="26129" class="Symbol">→</a> <a id="26131" class="Symbol">(</a><a id="26132" href="plfa.Connectives.html#26116" class="Bound">A</a> <a id="26134" class="Symbol">→</a> <a id="26136" href="plfa.Connectives.html#26118" class="Bound">B</a> <a id="26138" class="Symbol">→</a> <a id="26140" href="plfa.Connectives.html#26120" class="Bound">C</a><a id="26141" class="Symbol">)</a> <a id="26143" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">≃</a> <a id="26145" class="Symbol">(</a><a id="26146" href="plfa.Connectives.html#26116" class="Bound">A</a> <a id="26148" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="26150" href="plfa.Connectives.html#26118" class="Bound">B</a> <a id="26152" class="Symbol">→</a> <a id="26154" href="plfa.Connectives.html#26120" class="Bound">C</a><a id="26155" class="Symbol">)</a>
 <a id="26157" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#26102" class="Function">currying</a> <a id="26166" class="Symbol">=</a>
@@ -1046,9 +999,7 @@ we can have a function that takes the first argument and returns a function that
 expects the second argument.  Thus, for instance, our way of writing addition
 {:/}
 
-柯里化告诉我们，如果一个函数有取一个数据对作为参数，
-那么我们可以构造一个函数，取第一个参数，返回一个取第二个参数，返回最终结果的函数。
-因此，举例来说，下面表示加法的形式：
+柯里化告诉我们，如果一个函数有取一个数据对作为参数，那么我们可以构造一个函数，取第一个参数，返回一个取第二个参数，返回最终结果的函数。因此，举例来说，下面表示加法的形式：
 
     _+_ : ℕ → ℕ → ℕ
 
@@ -1091,8 +1042,7 @@ is the same as the assertion that if `A` holds then `C` holds and if
 `B` holds then `C` holds.  The proof of the left inverse requires extensionality:
 {:/}
 
-命题如果 `A` 成立或者 `B` 成立，那么 `C` 成立，和命题如果 `A` 成立，那么 `C` 成立以及
-如果 `B` 成立，那么 `C` 成立，是一样的。左逆的证明需要外延性：
+命题如果 `A` 成立或者 `B` 成立，那么 `C` 成立，和命题如果 `A` 成立，那么 `C` 成立以及如果 `B` 成立，那么 `C` 成立，是一样的。左逆的证明需要外延性：
 
 {% raw %}<pre class="Agda"><a id="→-distrib-⊎"></a><a id="27692" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#27692" class="Function">→-distrib-⊎</a> <a id="27704" class="Symbol">:</a> <a id="27706" class="Symbol">∀</a> <a id="27708" class="Symbol">{</a><a id="27709" href="plfa.Connectives.html#27709" class="Bound">A</a> <a id="27711" href="plfa.Connectives.html#27711" class="Bound">B</a> <a id="27713" href="plfa.Connectives.html#27713" class="Bound">C</a> <a id="27715" class="Symbol">:</a> <a id="27717" class="PrimitiveType">Set</a><a id="27720" class="Symbol">}</a> <a id="27722" class="Symbol">→</a> <a id="27724" class="Symbol">(</a><a id="27725" href="plfa.Connectives.html#27709" class="Bound">A</a> <a id="27727" href="plfa.Connectives.html#14050" class="Datatype Operator">⊎</a> <a id="27729" href="plfa.Connectives.html#27711" class="Bound">B</a> <a id="27731" class="Symbol">→</a> <a id="27733" href="plfa.Connectives.html#27713" class="Bound">C</a><a id="27734" class="Symbol">)</a> <a id="27736" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">≃</a> <a id="27738" class="Symbol">((</a><a id="27740" href="plfa.Connectives.html#27709" class="Bound">A</a> <a id="27742" class="Symbol">→</a> <a id="27744" href="plfa.Connectives.html#27713" class="Bound">C</a><a id="27745" class="Symbol">)</a> <a id="27747" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="27749" class="Symbol">(</a><a id="27750" href="plfa.Connectives.html#27711" class="Bound">B</a> <a id="27752" class="Symbol">→</a> <a id="27754" href="plfa.Connectives.html#27713" class="Bound">C</a><a id="27755" class="Symbol">))</a>
 <a id="27758" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#27692" class="Function">→-distrib-⊎</a> <a id="27770" class="Symbol">=</a>
@@ -1126,8 +1076,7 @@ is the same as the assertion that if `A` holds then `B` holds and if
 and the rule `η-×` for products:
 {:/}
 
-命题如果 `A` 成立，那么 `B` 成立和 `C` 成立，和命题如果 `A` 成立，那么 `B` 成立以及
-如果 `A` 成立，那么 `C` 成立，是一样的。左逆的证明需要外延性和积的 `η-×` 规则：
+命题如果 `A` 成立，那么 `B` 成立和 `C` 成立，和命题如果 `A` 成立，那么 `B` 成立以及如果 `A` 成立，那么 `C` 成立，是一样的。左逆的证明需要外延性和积的 `η-×` 规则：
 
 {% raw %}<pre class="Agda"><a id="→-distrib-×"></a><a id="28590" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#28590" class="Function">→-distrib-×</a> <a id="28602" class="Symbol">:</a> <a id="28604" class="Symbol">∀</a> <a id="28606" class="Symbol">{</a><a id="28607" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28609" href="plfa.Connectives.html#28609" class="Bound">B</a> <a id="28611" href="plfa.Connectives.html#28611" class="Bound">C</a> <a id="28613" class="Symbol">:</a> <a id="28615" class="PrimitiveType">Set</a><a id="28618" class="Symbol">}</a> <a id="28620" class="Symbol">→</a> <a id="28622" class="Symbol">(</a><a id="28623" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28625" class="Symbol">→</a> <a id="28627" href="plfa.Connectives.html#28609" class="Bound">B</a> <a id="28629" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="28631" href="plfa.Connectives.html#28611" class="Bound">C</a><a id="28632" class="Symbol">)</a> <a id="28634" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">≃</a> <a id="28636" class="Symbol">(</a><a id="28637" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28639" class="Symbol">→</a> <a id="28641" href="plfa.Connectives.html#28609" class="Bound">B</a><a id="28642" class="Symbol">)</a> <a id="28644" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="28646" class="Symbol">(</a><a id="28647" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28649" class="Symbol">→</a> <a id="28651" href="plfa.Connectives.html#28611" class="Bound">C</a><a id="28652" class="Symbol">)</a>
 <a id="28654" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Connectives.md %}{% raw %}#28590" class="Function">→-distrib-×</a> <a id="28666" class="Symbol">=</a>
@@ -1199,8 +1148,7 @@ an embedding rather than an isomorphism because the
 {:/}
 
 我们在定义 `from` 函数的时候可以有选择。给定的定义中，它将 `⟨ inj₂ z , inj₂ z′ ⟩`
-转换为 `inj₂ z`，但我们也可以返回 `inj₂ z′` 作为嵌入证明的变种。我们在这里只能证明嵌入，
-而不能证明同构，因为 `from` 函数必须丢弃 `z` 或者 `z′` 其中的一个。
+转换为 `inj₂ z`，但我们也可以返回 `inj₂ z′` 作为嵌入证明的变种。我们在这里只能证明嵌入，而不能证明同构，因为 `from` 函数必须丢弃 `z` 或者 `z′` 其中的一个。
 
 {::comment}
 In the usual approach to logic, both of the distribution laws
@@ -1219,8 +1167,7 @@ second only corresponds to an embedding, revealing a sense in which
 one of these laws is "more true" than the other.
 {:/}
 
-但当我们考虑提供上述蕴涵证明的函数时，第一条对应同构而第二条只能对应嵌入，
-揭示了有些定理比另一个更加的”正确“。
+但当我们考虑提供上述蕴涵证明的函数时，第一条对应同构而第二条只能对应嵌入，揭示了有些定理比另一个更加的”正确“。
 
 
 {::comment}
@@ -1311,12 +1258,7 @@ standard library is less convenient, since it is parameterised with
 respect to an arbitrary notion of equivalence.
 {:/}
 
-标准库中使用 `_,_` 构造数据对，而我们使用 `⟨_,_⟩`。前者在从数据对构造三元对或者更大的
-元组时更加的方便，允许 `a , b , c` 作为 `(a, (b , c))` 的记法。但它与其他有用的记法相冲突，
-比如说 [Lists][plfa.Lists] 中的 `[_,_]` 记法表示两个元素的列表，
-或者 [DeBruijn][plfa.DeBruijn] 章节中的 `Γ , A` 来表示环境的扩展。
-标准库中的 `_⇔_` 和我们的相似，但使用起来比较不便，
-因为它可以根据任意的相等性定义进行参数化。
+标准库中使用 `_,_` 构造数据对，而我们使用 `⟨_,_⟩`。前者在从数据对构造三元对或者更大的元组时更加的方便，允许 `a , b , c` 作为 `(a, (b , c))` 的记法。但它与其他有用的记法相冲突，比如说 [Lists][plfa.Lists] 中的 `[_,_]` 记法表示两个元素的列表，或者 [DeBruijn][plfa.DeBruijn] 章节中的 `Γ , A` 来表示环境的扩展。标准库中的 `_⇔_` 和我们的相似，但使用起来比较不便，因为它可以根据任意的相等性定义进行参数化。
 
 ## Unicode
 

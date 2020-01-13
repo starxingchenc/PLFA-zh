@@ -24,7 +24,7 @@ calculus, at which point the proof is an easy corollary of properties
 of the denotational semantics.
 
 We present the call-by-name strategy as a relation between an an input
-term and an output value. Such a relation is often called a _big-step
+term and an <a id="992" class="Bound">o</a>utpu<a id="997" class="Bound">t</a> va<a id="1001" class="Bound">l</a>ue. <a id="1006" class="Function">Su</a>c<a id="1009" class="Bound">h</a> <a id="1011" class="Function">a</a> <a id="1013" class="Bound">r</a>e<a id="1015" class="Function">l</a>a<a id="1017" class="Bound">t</a>ion is often called a _big-step
 semantics_, written `M ⇓ V`, as it relates the input term `M` directly
 to the final result `V`, in contrast to the small-step reduction
 relation, `M —→ M′`, that maps `M` to another term `M′` in which a
@@ -46,8 +46,8 @@ single sub-computation has been completed.
 </pre>{% endraw %}
 ## Environments
 
-To handle variables and function application, there is the choice
-between using substitution, as in `—→`, or to use an _environment_.
+To handle variables and function application, ther<a id="1869" class="Bound">e</a> is<a id="1873" class="Bound"> </a>the <a id="1878" class="Function">ch</a>o<a id="1881" class="Bound">i</a>c<a id="1883" class="Function">e</a>
+<a id="1885" class="Bound">b</a>etween using substitution, as in `—→`, or to use an _environment_.
 An environment in call-by-name is a map from variables to closures,
 that is, to terms paired with their environments. We choose to use
 environments instead of substitution because the point of the

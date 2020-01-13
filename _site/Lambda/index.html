@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lambda: Introduction to Lambda Calculus | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Lambda: Introduction to Lambda Calculus" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Lambda/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Lambda/","headline":"Lambda: Introduction to Lambda Calculus","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Lambda: Introduction to Lambda Calculus","url":"https://agda-zh.github.io/PLFA-zh/Lambda/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -128,23 +128,23 @@ four.</p>
 <p>Terms have seven constructs. Three are for the core lambda calculus:</p>
 
 <ul>
-  <li>Variables <code class="highlighter-rouge">` x</code></li>
-  <li>Abstractions <code class="highlighter-rouge">ƛ x ⇒ N</code></li>
-  <li>Applications <code class="highlighter-rouge">L · M</code></li>
+  <li>Variables <code class="language-plaintext highlighter-rouge">` x</code></li>
+  <li>Abstractions <code class="language-plaintext highlighter-rouge">ƛ x ⇒ N</code></li>
+  <li>Applications <code class="language-plaintext highlighter-rouge">L · M</code></li>
 </ul>
 
 <p>Three are for the naturals:</p>
 
 <ul>
-  <li>Zero <code class="highlighter-rouge">`zero</code></li>
-  <li>Successor <code class="highlighter-rouge">`suc</code></li>
-  <li>Case <code class="highlighter-rouge">case L [zero⇒ M |suc x ⇒ N ]</code></li>
+  <li>Zero <code class="language-plaintext highlighter-rouge">`zero</code></li>
+  <li>Successor <code class="language-plaintext highlighter-rouge">`suc</code></li>
+  <li>Case <code class="language-plaintext highlighter-rouge">case L [zero⇒ M |suc x ⇒ N ]</code></li>
 </ul>
 
 <p>And one is for recursion:</p>
 
 <ul>
-  <li>Fixpoint <code class="highlighter-rouge">μ x ⇒ M</code></li>
+  <li>Fixpoint <code class="language-plaintext highlighter-rouge">μ x ⇒ M</code></li>
 </ul>
 
 <p>Abstraction is also called <em>lambda abstraction</em>, and is the construct
@@ -159,7 +159,7 @@ correspond to introduction rules and deconstructors to eliminators.</p>
 
 <p>Here is the syntax of terms in Backus-Naur Form (BNF):</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L, M, N  ::=
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L, M, N  ::=
   ` x  |  ƛ x ⇒ N  |  L · M  |
   `zero  |  `suc M  |  case L [zero⇒ M |suc x ⇒ N ]  |
   μ x ⇒ M
@@ -204,7 +204,7 @@ and a term that computes two plus two:</p>
            <a id="4608" href="/PLFA-zh/Lambda/#3975" class="InductiveConstructor Operator">|suc</a> <a id="4613" class="String">&quot;m&quot;</a> <a id="4617" href="plfa.Lambda.html#3975" class="InductiveConstructor Operator">⇒</a> <a id="4619" href="plfa.Lambda.html#3934" class="InductiveConstructor Operator">`suc</a> <a id="4624" class="Symbol">(</a><a id="4625" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="4627" class="String">&quot;+&quot;</a> <a id="4631" href="plfa.Lambda.html#3852" class="InductiveConstructor Operator">·</a> <a id="4633" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="4635" class="String">&quot;m&quot;</a> <a id="4639" href="plfa.Lambda.html#3852" class="InductiveConstructor Operator">·</a> <a id="4641" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="4643" class="String">&quot;n&quot;</a><a id="4646" class="Symbol">)</a> <a id="4648" href="plfa.Lambda.html#3975" class="InductiveConstructor Operator">]</a>
 </pre>
 <p>The recursive definition of addition is similar to our original
-definition of <code class="highlighter-rouge">_+_</code> for naturals, as given in
+definition of <code class="language-plaintext highlighter-rouge">_+_</code> for naturals, as given in
 Chapter <a href="/PLFA-zh/Naturals/#plus">Naturals</a>.
 Here variable “m” is bound twice, once in a lambda abstraction and once in
 the successor branch of the case; the first use of “m” refers to
@@ -213,10 +213,10 @@ must refer to the latter binding, and so we say that the latter binding <em>shad
 the former.  Later we will confirm that two plus two is four, in other words that
 the term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus · two · two
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus · two · two
 </code></pre></div></div>
 
-<p>reduces to <code class="highlighter-rouge">`suc `suc `suc `suc `zero</code>.</p>
+<p>reduces to <code class="language-plaintext highlighter-rouge">`suc `suc `suc `suc `zero</code>.</p>
 
 <p>As a second example, we use higher-order functions to represent
 natural numbers.  In particular, the number <em>n</em> is represented by a
@@ -235,45 +235,45 @@ and a term that computes two plus two:</p>
 <a id="sucᶜ"></a><a id="5890" href="/PLFA-zh/Lambda/#5890" class="Function">sucᶜ</a> <a id="5895" class="Symbol">:</a> <a id="5897" href="plfa.Lambda.html#3748" class="Datatype">Term</a>
 <a id="5902" href="/PLFA-zh/Lambda/#5890" class="Function">sucᶜ</a> <a id="5907" class="Symbol">=</a> <a id="5909" href="plfa.Lambda.html#3806" class="InductiveConstructor Operator">ƛ</a> <a id="5911" class="String">&quot;n&quot;</a> <a id="5915" href="plfa.Lambda.html#3806" class="InductiveConstructor Operator">⇒</a> <a id="5917" href="plfa.Lambda.html#3934" class="InductiveConstructor Operator">`suc</a> <a id="5922" class="Symbol">(</a><a id="5923" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="5925" class="String">&quot;n&quot;</a><a id="5928" class="Symbol">)</a>
 </pre>
-<p>The Church numeral for two takes two arguments <code class="highlighter-rouge">s</code> and <code class="highlighter-rouge">z</code>
-and applies <code class="highlighter-rouge">s</code> twice to <code class="highlighter-rouge">z</code>.
-Addition takes two numerals <code class="highlighter-rouge">m</code> and <code class="highlighter-rouge">n</code>, a
-function <code class="highlighter-rouge">s</code> and an argument <code class="highlighter-rouge">z</code>, and it uses <code class="highlighter-rouge">m</code> to apply <code class="highlighter-rouge">s</code> to the
-result of using <code class="highlighter-rouge">n</code> to apply <code class="highlighter-rouge">s</code> to <code class="highlighter-rouge">z</code>; hence <code class="highlighter-rouge">s</code> is applied <code class="highlighter-rouge">m</code> plus
-<code class="highlighter-rouge">n</code> times to <code class="highlighter-rouge">z</code>, yielding the Church numeral for the sum of <code class="highlighter-rouge">m</code> and
-<code class="highlighter-rouge">n</code>.  For convenience, we define a function that computes successor.
+<p>The Church numeral for two takes two arguments <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">z</code>
+and applies <code class="language-plaintext highlighter-rouge">s</code> twice to <code class="language-plaintext highlighter-rouge">z</code>.
+Addition takes two numerals <code class="language-plaintext highlighter-rouge">m</code> and <code class="language-plaintext highlighter-rouge">n</code>, a
+function <code class="language-plaintext highlighter-rouge">s</code> and an argument <code class="language-plaintext highlighter-rouge">z</code>, and it uses <code class="language-plaintext highlighter-rouge">m</code> to apply <code class="language-plaintext highlighter-rouge">s</code> to the
+result of using <code class="language-plaintext highlighter-rouge">n</code> to apply <code class="language-plaintext highlighter-rouge">s</code> to <code class="language-plaintext highlighter-rouge">z</code>; hence <code class="language-plaintext highlighter-rouge">s</code> is applied <code class="language-plaintext highlighter-rouge">m</code> plus
+<code class="language-plaintext highlighter-rouge">n</code> times to <code class="language-plaintext highlighter-rouge">z</code>, yielding the Church numeral for the sum of <code class="language-plaintext highlighter-rouge">m</code> and
+<code class="language-plaintext highlighter-rouge">n</code>.  For convenience, we define a function that computes successor.
 To convert a Church numeral to the corresponding natural, we apply
-it to the <code class="highlighter-rouge">sucᶜ</code> function and the natural number zero.
+it to the <code class="language-plaintext highlighter-rouge">sucᶜ</code> function and the natural number zero.
 Again, later we will confirm that two plus two is four,
 in other words that the term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plusᶜ · twoᶜ · twoᶜ · sucᶜ · `zero
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plusᶜ · twoᶜ · twoᶜ · sucᶜ · `zero
 </code></pre></div></div>
 
-<p>reduces to <code class="highlighter-rouge">`suc `suc `suc `suc `zero</code>.</p>
+<p>reduces to <code class="language-plaintext highlighter-rouge">`suc `suc `suc `suc `zero</code>.</p>
 
-<h4 id="exercise-mul-recommended">Exercise <code class="highlighter-rouge">mul</code> (recommended)</h4>
+<h4 id="exercise-mul-recommended">Exercise <code class="language-plaintext highlighter-rouge">mul</code> (recommended)</h4>
 
 <p>Write out the definition of a lambda term that multiplies
-two natural numbers.  Your definition may use <code class="highlighter-rouge">plus</code> as
+two natural numbers.  Your definition may use <code class="language-plaintext highlighter-rouge">plus</code> as
 defined earlier.</p>
 
 <pre class="Agda"><a id="6810" class="Comment">-- Your code goes here</a>
 </pre>
 
-<h4 id="exercise-mulᶜ">Exercise <code class="highlighter-rouge">mulᶜ</code></h4>
+<h4 id="exercise-mulᶜ">Exercise <code class="language-plaintext highlighter-rouge">mulᶜ</code></h4>
 
 <p>Write out the definition of a lambda term that multiplies
 two natural numbers represented as Church numerals. Your
-definition may use <code class="highlighter-rouge">plusᶜ</code> as defined earlier (or may not
+definition may use <code class="language-plaintext highlighter-rouge">plusᶜ</code> as defined earlier (or may not
 — there are nice definitions both ways).</p>
 
 <pre class="Agda"><a id="7080" class="Comment">-- Your code goes here</a>
 </pre>
 
-<h4 id="exercise-primed-stretch">Exercise <code class="highlighter-rouge">primed</code> (stretch)</h4>
+<h4 id="exercise-primed-stretch">Exercise <code class="language-plaintext highlighter-rouge">primed</code> (stretch)</h4>
 
-<p>Some people find it annoying to write <code class="highlighter-rouge">` "x"</code> instead of <code class="highlighter-rouge">x</code>.
+<p>Some people find it annoying to write <code class="language-plaintext highlighter-rouge">` "x"</code> instead of <code class="language-plaintext highlighter-rouge">x</code>.
 We can make examples with lambda terms slightly easier to write
 by adding the following definitions:</p>
 <pre class="Agda"><a id="ƛ′_⇒_"></a><a id="7314" href="/PLFA-zh/Lambda/#7314" class="Function Operator">ƛ′_⇒_</a> <a id="7320" class="Symbol">:</a> <a id="7322" href="plfa.Lambda.html#3748" class="Datatype">Term</a> <a id="7327" class="Symbol">→</a> <a id="7329" href="plfa.Lambda.html#3748" class="Datatype">Term</a> <a id="7334" class="Symbol">→</a> <a id="7336" href="plfa.Lambda.html#3748" class="Datatype">Term</a>
@@ -291,7 +291,7 @@ by adding the following definitions:</p>
 <a id="7701" href="/PLFA-zh/Lambda/#7649" class="CatchallClause Function Operator">μ′</a><a id="7703" class="CatchallClause"> </a><a id="7704" class="CatchallClause Symbol">_</a><a id="7705" class="CatchallClause"> </a><a id="7706" href="plfa.Lambda.html#7649" class="CatchallClause Function Operator">⇒</a><a id="7707" class="CatchallClause"> </a><a id="7708" class="CatchallClause Symbol">_</a>      <a id="7715" class="Symbol">=</a>  <a id="7718" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="7725" href="plfa.Lambda.html#7754" class="Postulate">impossible</a>
   <a id="7738" class="Keyword">where</a> <a id="7744" class="Keyword">postulate</a> <a id="7754" href="/PLFA-zh/Lambda/#7754" class="Postulate">impossible</a> <a id="7765" class="Symbol">:</a> <a id="7767" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
 </pre>
-<p>The definition of <code class="highlighter-rouge">plus</code> can now be written as follows:</p>
+<p>The definition of <code class="language-plaintext highlighter-rouge">plus</code> can now be written as follows:</p>
 <pre class="Agda"><a id="plus′"></a><a id="7833" href="/PLFA-zh/Lambda/#7833" class="Function">plus′</a> <a id="7839" class="Symbol">:</a> <a id="7841" href="plfa.Lambda.html#3748" class="Datatype">Term</a>
 <a id="7846" href="/PLFA-zh/Lambda/#7833" class="Function">plus′</a> <a id="7852" class="Symbol">=</a> <a id="7854" href="plfa.Lambda.html#7649" class="Function Operator">μ′</a> <a id="7857" href="plfa.Lambda.html#7964" class="Function">+</a> <a id="7859" href="plfa.Lambda.html#7649" class="Function Operator">⇒</a> <a id="7861" href="plfa.Lambda.html#7314" class="Function Operator">ƛ′</a> <a id="7864" href="plfa.Lambda.html#7978" class="Function">m</a> <a id="7866" href="plfa.Lambda.html#7314" class="Function Operator">⇒</a> <a id="7868" href="plfa.Lambda.html#7314" class="Function Operator">ƛ′</a> <a id="7871" href="plfa.Lambda.html#7992" class="Function">n</a> <a id="7873" href="plfa.Lambda.html#7314" class="Function Operator">⇒</a>
           <a id="7885" href="/PLFA-zh/Lambda/#7435" class="Function Operator">case′</a> <a id="7891" href="plfa.Lambda.html#7978" class="Function">m</a>
@@ -307,7 +307,7 @@ by adding the following definitions:</p>
 <h3 id="formal-vs-informal">Formal vs informal</h3>
 
 <p>In informal presentation of formal semantics, one uses choice of
-variable name to disambiguate and writes <code class="highlighter-rouge">x</code> rather than <code class="highlighter-rouge">` x</code>
+variable name to disambiguate and writes <code class="language-plaintext highlighter-rouge">x</code> rather than <code class="language-plaintext highlighter-rouge">` x</code>
 for a term that is a variable. Agda requires we distinguish.</p>
 
 <p>Similarly, informal presentation often use the same notation for
@@ -315,27 +315,27 @@ function types, lambda abstraction, and function application in both
 the <em>object language</em> (the language one is describing) and the
 <em>meta-language</em> (the language in which the description is written),
 trusting readers can use context to distinguish the two.  Agda is
-not quite so forgiving, so here we use <code class="highlighter-rouge">ƛ x ⇒ N</code> and <code class="highlighter-rouge">L · M</code> for the
-object language, as compared to <code class="highlighter-rouge">λ x → N</code> and <code class="highlighter-rouge">L M</code> in our
+not quite so forgiving, so here we use <code class="language-plaintext highlighter-rouge">ƛ x ⇒ N</code> and <code class="language-plaintext highlighter-rouge">L · M</code> for the
+object language, as compared to <code class="language-plaintext highlighter-rouge">λ x → N</code> and <code class="language-plaintext highlighter-rouge">L M</code> in our
 meta-language, Agda.</p>
 
 <h3 id="bound-and-free-variables">Bound and free variables</h3>
 
-<p>In an abstraction <code class="highlighter-rouge">ƛ x ⇒ N</code> we call <code class="highlighter-rouge">x</code> the <em>bound</em> variable
-and <code class="highlighter-rouge">N</code> the <em>body</em> of the abstraction.  A central feature
+<p>In an abstraction <code class="language-plaintext highlighter-rouge">ƛ x ⇒ N</code> we call <code class="language-plaintext highlighter-rouge">x</code> the <em>bound</em> variable
+and <code class="language-plaintext highlighter-rouge">N</code> the <em>body</em> of the abstraction.  A central feature
 of lambda calculus is that consistent renaming of bound variables
 leaves the meaning of a term unchanged.  Thus the five terms</p>
 
 <ul>
-  <li><code class="highlighter-rouge">ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")</code></li>
-  <li><code class="highlighter-rouge">ƛ "f" ⇒ ƛ "x" ⇒ ` "f" · (` "f" · ` "x")</code></li>
-  <li><code class="highlighter-rouge">ƛ "sam" ⇒ ƛ "zelda" ⇒ ` "sam" · (` "sam" · ` "zelda")</code></li>
-  <li><code class="highlighter-rouge">ƛ "z" ⇒ ƛ "s" ⇒ ` "z" · (` "z" · ` "s")</code></li>
-  <li><code class="highlighter-rouge">ƛ "😇" ⇒ ƛ "😈" ⇒ ` "😇" · (` "😇" · ` "😈" )</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ƛ "f" ⇒ ƛ "x" ⇒ ` "f" · (` "f" · ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ƛ "sam" ⇒ ƛ "zelda" ⇒ ` "sam" · (` "sam" · ` "zelda")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ƛ "z" ⇒ ƛ "s" ⇒ ` "z" · (` "z" · ` "s")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ƛ "😇" ⇒ ƛ "😈" ⇒ ` "😇" · (` "😇" · ` "😈" )</code></li>
 </ul>
 
 <p>are all considered equivalent.  Following the convention introduced
-by Haskell Curry, who used the Greek letter <code class="highlighter-rouge">α</code> (<em>alpha</em>) to label such rules,
+by Haskell Curry, who used the Greek letter <code class="language-plaintext highlighter-rouge">α</code> (<em>alpha</em>) to label such rules,
 this equivalence relation is called <em>alpha renaming</em>.</p>
 
 <p>As we descend from a term into its subterms, variables
@@ -343,16 +343,16 @@ that are bound may become free.  Consider the following terms:</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")</code>
-has both <code class="highlighter-rouge">s</code> and <code class="highlighter-rouge">z</code> as bound variables.</p>
+    <p><code class="language-plaintext highlighter-rouge">ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")</code>
+has both <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">z</code> as bound variables.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">ƛ "z" ⇒ ` "s" · (` "s" · ` "z")</code>
-has <code class="highlighter-rouge">z</code> bound and <code class="highlighter-rouge">s</code> free.</p>
+    <p><code class="language-plaintext highlighter-rouge">ƛ "z" ⇒ ` "s" · (` "s" · ` "z")</code>
+has <code class="language-plaintext highlighter-rouge">z</code> bound and <code class="language-plaintext highlighter-rouge">s</code> free.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">` "s" · (` "s" · ` "z")</code>
-has both <code class="highlighter-rouge">s</code> and <code class="highlighter-rouge">z</code> as free variables.</p>
+    <p><code class="language-plaintext highlighter-rouge">` "s" · (` "s" · ` "z")</code>
+has both <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">z</code> as free variables.</p>
   </li>
 </ul>
 
@@ -363,16 +363,16 @@ two are open.  We will focus on reduction of closed terms.</p>
 <p>Different occurrences of a variable may be bound and free.
 In the term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "x" ⇒ ` "x") · ` "x"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "x" ⇒ ` "x") · ` "x"
 </code></pre></div></div>
 
-<p>the inner occurrence of <code class="highlighter-rouge">x</code> is bound while the outer occurrence is free.
+<p>the inner occurrence of <code class="language-plaintext highlighter-rouge">x</code> is bound while the outer occurrence is free.
 By alpha renaming, the term above is equivalent to</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "y" ⇒ ` "y") · ` "x"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "y" ⇒ ` "y") · ` "x"
 </code></pre></div></div>
 
-<p>in which <code class="highlighter-rouge">y</code> is bound and <code class="highlighter-rouge">x</code> is free.  A common convention, called the
+<p>in which <code class="language-plaintext highlighter-rouge">y</code> is bound and <code class="language-plaintext highlighter-rouge">x</code> is free.  A common convention, called the
 <em>Barendregt convention</em>, is to use alpha renaming to ensure that the bound
 variables in a term are distinct from the free variables, which can
 avoid confusions that may arise if bound and free variables have the
@@ -381,33 +381,33 @@ same names.</p>
 <p>Case and recursion also introduce bound variables, which are also subject
 to alpha renaming. In the term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>μ "+" ⇒ ƛ "m" ⇒ ƛ "n" ⇒
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>μ "+" ⇒ ƛ "m" ⇒ ƛ "n" ⇒
   case ` "m"
     [zero⇒ ` "n"
     |suc "m" ⇒ `suc (` "+" · ` "m" · ` "n") ]
 </code></pre></div></div>
 
-<p>notice that there are two binding occurrences of <code class="highlighter-rouge">m</code>, one in the first
+<p>notice that there are two binding occurrences of <code class="language-plaintext highlighter-rouge">m</code>, one in the first
 line and one in the last line.  It is equivalent to the following term,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>μ "plus" ⇒ ƛ "x" ⇒ ƛ "y" ⇒
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>μ "plus" ⇒ ƛ "x" ⇒ ƛ "y" ⇒
   case ` "x"
     [zero⇒ ` "y"
     |suc "x′" ⇒ `suc (` "plus" · ` "x′" · ` "y") ]
 </code></pre></div></div>
 
-<p>where the two binding occurrences corresponding to <code class="highlighter-rouge">m</code> now have distinct
-names, <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">x′</code>.</p>
+<p>where the two binding occurrences corresponding to <code class="language-plaintext highlighter-rouge">m</code> now have distinct
+names, <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">x′</code>.</p>
 
 <h2 id="values">Values</h2>
 
 <p>A <em>value</em> is a term that corresponds to an answer.
-Thus, <code class="highlighter-rouge">`suc `suc `suc `suc `zero</code> is a value,
-while <code class="highlighter-rouge">plus · two · two</code> is not.
+Thus, <code class="language-plaintext highlighter-rouge">`suc `suc `suc `suc `zero</code> is a value,
+while <code class="language-plaintext highlighter-rouge">plus · two · two</code> is not.
 Following convention, we treat all function abstractions
-as values; thus, <code class="highlighter-rouge">plus</code> by itself is considered a value.</p>
+as values; thus, <code class="language-plaintext highlighter-rouge">plus</code> by itself is considered a value.</p>
 
-<p>The predicate <code class="highlighter-rouge">Value M</code> holds if term <code class="highlighter-rouge">M</code> is a value:</p>
+<p>The predicate <code class="language-plaintext highlighter-rouge">Value M</code> holds if term <code class="language-plaintext highlighter-rouge">M</code> is a value:</p>
 
 <pre class="Agda"><a id="11531" class="Keyword">data</a> <a id="Value"></a><a id="11536" href="/PLFA-zh/Lambda/#11536" class="Datatype">Value</a> <a id="11542" class="Symbol">:</a> <a id="11544" href="plfa.Lambda.html#3748" class="Datatype">Term</a> <a id="11549" class="Symbol">→</a> <a id="11551" class="PrimitiveType">Set</a> <a id="11555" class="Keyword">where</a>
 
@@ -424,20 +424,20 @@ as values; thus, <code class="highlighter-rouge">plus</code> by itself is consid
       <a id="11707" class="Comment">--------------</a>
     <a id="11726" class="Symbol">→</a> <a id="11728" href="/PLFA-zh/Lambda/#11536" class="Datatype">Value</a> <a id="11734" class="Symbol">(</a><a id="11735" href="plfa.Lambda.html#3934" class="InductiveConstructor Operator">`suc</a> <a id="11740" href="plfa.Lambda.html#11684" class="Bound">V</a><a id="11741" class="Symbol">)</a>
 </pre>
-<p>In what follows, we let <code class="highlighter-rouge">V</code> and <code class="highlighter-rouge">W</code> range over values.</p>
+<p>In what follows, we let <code class="language-plaintext highlighter-rouge">V</code> and <code class="language-plaintext highlighter-rouge">W</code> range over values.</p>
 
 <h3 id="formal-vs-informal-1">Formal vs informal</h3>
 
 <p>In informal presentations of formal semantics, using
-<code class="highlighter-rouge">V</code> as the name of a metavariable is sufficient to
+<code class="language-plaintext highlighter-rouge">V</code> as the name of a metavariable is sufficient to
 indicate that it is a value. In Agda, we must explicitly
-invoke the <code class="highlighter-rouge">Value</code> predicate.</p>
+invoke the <code class="language-plaintext highlighter-rouge">Value</code> predicate.</p>
 
 <h3 id="other-approaches">Other approaches</h3>
 
 <p>An alternative is not to focus on closed terms,
 to treat variables as values, and to treat
-<code class="highlighter-rouge">ƛ x ⇒ N</code> as a value only if <code class="highlighter-rouge">N</code> is a value.
+<code class="language-plaintext highlighter-rouge">ƛ x ⇒ N</code> as a value only if <code class="language-plaintext highlighter-rouge">N</code> is a value.
 Indeed, this is how Agda normalises terms.
 We consider this approach in
 Chapter <a href="/PLFA-zh/Untyped/">Untyped</a>.</p>
@@ -450,44 +450,44 @@ Substitution plays a key role in defining the
 operational semantics of function application.
 For instance, we have</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) · sucᶜ · `zero
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) · sucᶜ · `zero
 —→
   (ƛ "z" ⇒ sucᶜ · (sucᶜ · "z")) · `zero
 —→
   sucᶜ · (sucᶜ · `zero)
 </code></pre></div></div>
 
-<p>where we substitute <code class="highlighter-rouge">sucᶜ</code> for <code class="highlighter-rouge">` "s"</code> and <code class="highlighter-rouge">`zero</code> for <code class="highlighter-rouge">` "z"</code>
+<p>where we substitute <code class="language-plaintext highlighter-rouge">sucᶜ</code> for <code class="language-plaintext highlighter-rouge">` "s"</code> and <code class="language-plaintext highlighter-rouge">`zero</code> for <code class="language-plaintext highlighter-rouge">` "z"</code>
 in the body of the function abstraction.</p>
 
-<p>We write substitution as <code class="highlighter-rouge">N [ x := V ]</code>, meaning
-“substitute term <code class="highlighter-rouge">V</code> for free occurrences of variable <code class="highlighter-rouge">x</code> in term <code class="highlighter-rouge">N</code>”,
-or, more compactly, “substitute <code class="highlighter-rouge">V</code> for <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">N</code>”,
-or equivalently, “in <code class="highlighter-rouge">N</code> replace <code class="highlighter-rouge">x</code> by <code class="highlighter-rouge">V</code>”.
-Substitution works if <code class="highlighter-rouge">V</code> is any closed term;
-it need not be a value, but we use <code class="highlighter-rouge">V</code> since in fact we
+<p>We write substitution as <code class="language-plaintext highlighter-rouge">N [ x := V ]</code>, meaning
+“substitute term <code class="language-plaintext highlighter-rouge">V</code> for free occurrences of variable <code class="language-plaintext highlighter-rouge">x</code> in term <code class="language-plaintext highlighter-rouge">N</code>”,
+or, more compactly, “substitute <code class="language-plaintext highlighter-rouge">V</code> for <code class="language-plaintext highlighter-rouge">x</code> in <code class="language-plaintext highlighter-rouge">N</code>”,
+or equivalently, “in <code class="language-plaintext highlighter-rouge">N</code> replace <code class="language-plaintext highlighter-rouge">x</code> by <code class="language-plaintext highlighter-rouge">V</code>”.
+Substitution works if <code class="language-plaintext highlighter-rouge">V</code> is any closed term;
+it need not be a value, but we use <code class="language-plaintext highlighter-rouge">V</code> since in fact we
 usually substitute values.</p>
 
 <p>Here are some examples:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) [ "s" := sucᶜ ]</code> yields
-<code class="highlighter-rouge">ƛ "z" ⇒ sucᶜ · (sucᶜ · ` "z")</code>.</li>
-  <li><code class="highlighter-rouge">(sucᶜ · (sucᶜ · ` "z")) [ "z" := `zero ]</code> yields
-<code class="highlighter-rouge">sucᶜ · (sucᶜ · `zero)</code>.</li>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "y") [ "y" := `zero ]</code> yields <code class="highlighter-rouge">ƛ "x" ⇒ `zero</code>.</li>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x") [ "x" := `zero ]</code> yields <code class="highlighter-rouge">ƛ "x" ⇒ ` "x"</code>.</li>
-  <li><code class="highlighter-rouge">(ƛ "y" ⇒ ` "y") [ "x" := `zero ]</code> yields <code class="highlighter-rouge">ƛ "y" ⇒ ` "y"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) [ "s" := sucᶜ ]</code> yields
+<code class="language-plaintext highlighter-rouge">ƛ "z" ⇒ sucᶜ · (sucᶜ · ` "z")</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(sucᶜ · (sucᶜ · ` "z")) [ "z" := `zero ]</code> yields
+<code class="language-plaintext highlighter-rouge">sucᶜ · (sucᶜ · `zero)</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "y") [ "y" := `zero ]</code> yields <code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ `zero</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x") [ "x" := `zero ]</code> yields <code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ ` "x"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "y" ⇒ ` "y") [ "x" := `zero ]</code> yields <code class="language-plaintext highlighter-rouge">ƛ "y" ⇒ ` "y"</code>.</li>
 </ul>
 
-<p>In the last but one example, substituting <code class="highlighter-rouge">`zero</code> for <code class="highlighter-rouge">x</code> in
-<code class="highlighter-rouge">ƛ "x" ⇒ ` "x"</code> does <em>not</em> yield <code class="highlighter-rouge">ƛ "x" ⇒ `zero</code>,
-since <code class="highlighter-rouge">x</code> is bound in the lambda abstraction.
+<p>In the last but one example, substituting <code class="language-plaintext highlighter-rouge">`zero</code> for <code class="language-plaintext highlighter-rouge">x</code> in
+<code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ ` "x"</code> does <em>not</em> yield <code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ `zero</code>,
+since <code class="language-plaintext highlighter-rouge">x</code> is bound in the lambda abstraction.
 The choice of bound names is irrelevant: both
-<code class="highlighter-rouge">ƛ "x" ⇒ ` "x"</code> and <code class="highlighter-rouge">ƛ "y" ⇒ ` "y"</code> stand for the
-identity function.  One way to think of this is that <code class="highlighter-rouge">x</code> within
+<code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ ` "x"</code> and <code class="language-plaintext highlighter-rouge">ƛ "y" ⇒ ` "y"</code> stand for the
+identity function.  One way to think of this is that <code class="language-plaintext highlighter-rouge">x</code> within
 the body of the abstraction stands for a <em>different</em> variable than
-<code class="highlighter-rouge">x</code> outside the abstraction, they just happen to have the same name.</p>
+<code class="language-plaintext highlighter-rouge">x</code> outside the abstraction, they just happen to have the same name.</p>
 
 <p>We will give a definition of substitution that is only valid
 when term substituted for the variable is closed. This is because
@@ -495,18 +495,18 @@ substitution by terms that are <em>not</em> closed may require renaming
 of bound variables. For example:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero]</code> should not yield <br />
-<code class="highlighter-rouge">(ƛ "x" ⇒ ` "x" · (` "x" · `zero))</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero]</code> should not yield <br />
+<code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x" · (` "x" · `zero))</code>.</li>
 </ul>
 
 <p>Instead, we should rename the bound variable to avoid capture:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero ]</code> should yield <br />
-<code class="highlighter-rouge">ƛ "x′" ⇒ ` "x′" · (` "x" · `zero)</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero ]</code> should yield <br />
+<code class="language-plaintext highlighter-rouge">ƛ "x′" ⇒ ` "x′" · (` "x" · `zero)</code>.</li>
 </ul>
 
-<p>Here <code class="highlighter-rouge">x′</code> is a fresh variable distinct from <code class="highlighter-rouge">x</code>.
+<p>Here <code class="language-plaintext highlighter-rouge">x′</code> is a fresh variable distinct from <code class="language-plaintext highlighter-rouge">x</code>.
 Formal definition of substitution with suitable renaming is considerably
 more complex, so we avoid it by restricting to substitution by closed terms,
 which will be adequate for our purposes.</p>
@@ -536,13 +536,13 @@ which will be adequate for our purposes.</p>
 
 <ul>
   <li>
-    <p>For variables, we compare <code class="highlighter-rouge">y</code>, the substituted variable,
-with <code class="highlighter-rouge">x</code>, the variable in the term. If they are the same,
-we yield <code class="highlighter-rouge">V</code>, otherwise we yield <code class="highlighter-rouge">x</code> unchanged.</p>
+    <p>For variables, we compare <code class="language-plaintext highlighter-rouge">y</code>, the substituted variable,
+with <code class="language-plaintext highlighter-rouge">x</code>, the variable in the term. If they are the same,
+we yield <code class="language-plaintext highlighter-rouge">V</code>, otherwise we yield <code class="language-plaintext highlighter-rouge">x</code> unchanged.</p>
   </li>
   <li>
-    <p>For abstractions, we compare <code class="highlighter-rouge">y</code>, the substituted variable,
-with <code class="highlighter-rouge">x</code>, the variable bound in the abstraction. If they are the same,
+    <p>For abstractions, we compare <code class="language-plaintext highlighter-rouge">y</code>, the substituted variable,
+with <code class="language-plaintext highlighter-rouge">x</code>, the variable bound in the abstraction. If they are the same,
 we yield the abstraction unchanged, otherwise we substitute inside the body.</p>
   </li>
   <li>
@@ -579,20 +579,20 @@ simply push substitution recursively into the subterms.</p>
 
 <p>What is the result of the following substitution?</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "y" ⇒ ` "x" · (ƛ "x" ⇒ ` "x")) [ "x" := `zero ]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "y" ⇒ ` "x" · (ƛ "x" ⇒ ` "x")) [ "x" := `zero ]
 </code></pre></div></div>
 
 <ol>
-  <li><code class="highlighter-rouge">(ƛ "y" ⇒ ` "x" · (ƛ "x" ⇒ ` "x"))</code></li>
-  <li><code class="highlighter-rouge">(ƛ "y" ⇒ ` "x" · (ƛ "x" ⇒ `zero))</code></li>
-  <li><code class="highlighter-rouge">(ƛ "y" ⇒ `zero · (ƛ "x" ⇒ ` "x"))</code></li>
-  <li><code class="highlighter-rouge">(ƛ "y" ⇒ `zero · (ƛ "x" ⇒ `zero))</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "y" ⇒ ` "x" · (ƛ "x" ⇒ ` "x"))</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "y" ⇒ ` "x" · (ƛ "x" ⇒ `zero))</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "y" ⇒ `zero · (ƛ "x" ⇒ ` "x"))</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "y" ⇒ `zero · (ƛ "x" ⇒ `zero))</code></li>
 </ol>
 
-<h4 id="exercise-___-stretch">Exercise <code class="highlighter-rouge">_[_:=_]′</code> (stretch)</h4>
+<h4 id="exercise-___-stretch">Exercise <code class="language-plaintext highlighter-rouge">_[_:=_]′</code> (stretch)</h4>
 
-<p>The definition of substitution above has three clauses (<code class="highlighter-rouge">ƛ</code>, <code class="highlighter-rouge">case</code>,
-and <code class="highlighter-rouge">μ</code>) that invoke a <code class="highlighter-rouge">with</code> clause to deal with bound variables.
+<p>The definition of substitution above has three clauses (<code class="language-plaintext highlighter-rouge">ƛ</code>, <code class="language-plaintext highlighter-rouge">case</code>,
+and <code class="language-plaintext highlighter-rouge">μ</code>) that invoke a <code class="language-plaintext highlighter-rouge">with</code> clause to deal with bound variables.
 Rewrite the definition to factor the common part of these three
 clauses into a single function, defined by mutual recursion with
 substitution.</p>
@@ -611,7 +611,7 @@ the argument for the variable in the abstraction.</p>
 <p>In an informal presentation of the operational semantics,
 the rules for reduction of applications are written as follows:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
 --------------- ξ-·₁
 L · M —→ L′ · M
 
@@ -629,14 +629,14 @@ which terms are values.</p>
 
 <p>The rules break into two sorts. Compatibility rules direct us to
 reduce some part of a term.  We give them names starting with the
-Greek letter <code class="highlighter-rouge">ξ</code> (<em>xi</em>).  Once a term is sufficiently reduced, it will
-consist of a constructor and a deconstructor, in our case <code class="highlighter-rouge">ƛ</code> and <code class="highlighter-rouge">·</code>,
+Greek letter <code class="language-plaintext highlighter-rouge">ξ</code> (<em>xi</em>).  Once a term is sufficiently reduced, it will
+consist of a constructor and a deconstructor, in our case <code class="language-plaintext highlighter-rouge">ƛ</code> and <code class="language-plaintext highlighter-rouge">·</code>,
 which reduces directly.  We give them names starting with the Greek
-letter <code class="highlighter-rouge">β</code> (<em>beta</em>) and such rules are traditionally called <em>beta rules</em>.</p>
+letter <code class="language-plaintext highlighter-rouge">β</code> (<em>beta</em>) and such rules are traditionally called <em>beta rules</em>.</p>
 
 <p>A bit of terminology: A term that matches the left-hand side of a
-reduction rule is called a <em>redex</em>. In the redex <code class="highlighter-rouge">(ƛ x ⇒ N) · V</code>, we
-may refer to <code class="highlighter-rouge">x</code> as the <em>formal parameter</em> of the function, and <code class="highlighter-rouge">V</code>
+reduction rule is called a <em>redex</em>. In the redex <code class="language-plaintext highlighter-rouge">(ƛ x ⇒ N) · V</code>, we
+may refer to <code class="language-plaintext highlighter-rouge">x</code> as the <em>formal parameter</em> of the function, and <code class="language-plaintext highlighter-rouge">V</code>
 as the <em>actual parameter</em> of the function application.  Beta reduction
 replaces the formal parameter by the actual parameter.</p>
 
@@ -704,12 +704,12 @@ This is referred to as <em>call-by-value</em> reduction.</p>
 <p>Further, we have arranged that subterms are reduced in a
 left-to-right order.  This means that reduction is <em>deterministic</em>:
 for any term, there is at most one other term to which it reduces.
-Put another way, our reduction relation <code class="highlighter-rouge">—→</code> is in fact a function.</p>
+Put another way, our reduction relation <code class="language-plaintext highlighter-rouge">—→</code> is in fact a function.</p>
 
 <p>This style of explaining the meaning of terms is called
-a <em>small-step operational semantics</em>.  If <code class="highlighter-rouge">M —→ N</code>, we say that
-term <code class="highlighter-rouge">M</code> <em>reduces</em> to term <code class="highlighter-rouge">N</code>, or equivalently,
-term <code class="highlighter-rouge">M</code> <em>steps</em> to term <code class="highlighter-rouge">N</code>.  Each compatibility rule has
+a <em>small-step operational semantics</em>.  If <code class="language-plaintext highlighter-rouge">M —→ N</code>, we say that
+term <code class="language-plaintext highlighter-rouge">M</code> <em>reduces</em> to term <code class="language-plaintext highlighter-rouge">N</code>, or equivalently,
+term <code class="language-plaintext highlighter-rouge">M</code> <em>steps</em> to term <code class="language-plaintext highlighter-rouge">N</code>.  Each compatibility rule has
 another reduction rule in its premise; so a step always consists
 of a beta rule, possibly adjusted by zero or more compatibility rules.</p>
 
@@ -717,43 +717,43 @@ of a beta rule, possibly adjusted by zero or more compatibility rules.</p>
 
 <p>What does the following term step to?</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")  —→  ???
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")  —→  ???
 </code></pre></div></div>
 
 <ol>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x")</code></li>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
 </ol>
 
 <p>What does the following term step to?</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")  —→  ???
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")  —→  ???
 </code></pre></div></div>
 
 <ol>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x")</code></li>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x") · (ƛ "x" ⇒ ` "x")</code></li>
 </ol>
 
-<p>What does the following term step to?  (Where <code class="highlighter-rouge">twoᶜ</code> and <code class="highlighter-rouge">sucᶜ</code> are as
+<p>What does the following term step to?  (Where <code class="language-plaintext highlighter-rouge">twoᶜ</code> and <code class="language-plaintext highlighter-rouge">sucᶜ</code> are as
 defined above.)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoᶜ · sucᶜ · `zero  —→  ???
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoᶜ · sucᶜ · `zero  —→  ???
 </code></pre></div></div>
 
 <ol>
-  <li><code class="highlighter-rouge">sucᶜ · (sucᶜ · `zero)</code></li>
-  <li><code class="highlighter-rouge">(ƛ "z" ⇒ sucᶜ · (sucᶜ · ` "z")) · `zero</code></li>
-  <li><code class="highlighter-rouge">`zero</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sucᶜ · (sucᶜ · `zero)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "z" ⇒ sucᶜ · (sucᶜ · ` "z")) · `zero</code></li>
+  <li><code class="language-plaintext highlighter-rouge">`zero</code></li>
 </ol>
 
 <h2 id="reflexive-and-transitive-closure">Reflexive and transitive closure</h2>
 
 <p>A single step is only part of the story. In general, we wish to repeatedly
 step a closed term until it reduces to a value.  We do this by defining
-the reflexive and transitive closure <code class="highlighter-rouge">—↠</code> of the step relation <code class="highlighter-rouge">—→</code>.</p>
+the reflexive and transitive closure <code class="language-plaintext highlighter-rouge">—↠</code> of the step relation <code class="language-plaintext highlighter-rouge">—→</code>.</p>
 
 <p>We define reflexive and transitive closure as a sequence of zero or
 more steps of the underlying relation, along lines similar to that for
@@ -785,13 +785,13 @@ Chapter <a href="/PLFA-zh/Equality/">Equality</a>:</p>
 
 <ul>
   <li>
-    <p>From term <code class="highlighter-rouge">M</code>, we can take no steps, giving a step of type <code class="highlighter-rouge">M —↠ M</code>.
-It is written <code class="highlighter-rouge">M ∎</code>.</p>
+    <p>From term <code class="language-plaintext highlighter-rouge">M</code>, we can take no steps, giving a step of type <code class="language-plaintext highlighter-rouge">M —↠ M</code>.
+It is written <code class="language-plaintext highlighter-rouge">M ∎</code>.</p>
   </li>
   <li>
-    <p>From term <code class="highlighter-rouge">L</code> we can take a single step of type <code class="highlighter-rouge">L —→ M</code> followed by zero
-or more steps of type <code class="highlighter-rouge">M —↠ N</code>, giving a step of type <code class="highlighter-rouge">L —↠ N</code>. It is
-written <code class="highlighter-rouge">L —→⟨ L—→M ⟩ M—↠N</code>, where <code class="highlighter-rouge">L—→M</code> and <code class="highlighter-rouge">M—↠N</code> are steps of the
+    <p>From term <code class="language-plaintext highlighter-rouge">L</code> we can take a single step of type <code class="language-plaintext highlighter-rouge">L —→ M</code> followed by zero
+or more steps of type <code class="language-plaintext highlighter-rouge">M —↠ N</code>, giving a step of type <code class="language-plaintext highlighter-rouge">L —↠ N</code>. It is
+written <code class="language-plaintext highlighter-rouge">L —→⟨ L—→M ⟩ M—↠N</code>, where <code class="language-plaintext highlighter-rouge">L—→M</code> and <code class="language-plaintext highlighter-rouge">M—↠N</code> are steps of the
 appropriate type.</p>
   </li>
 </ul>
@@ -800,7 +800,7 @@ appropriate type.</p>
 appealing way, as we will see in the next section.</p>
 
 <p>An alternative is to define reflexive and transitive closure directly,
-as the smallest relation that includes <code class="highlighter-rouge">—→</code> and is also reflexive
+as the smallest relation that includes <code class="language-plaintext highlighter-rouge">—→</code> and is also reflexive
 and transitive.  We could do so as follows:</p>
 <pre class="Agda"><a id="23446" class="Keyword">data</a> <a id="_—↠′_"></a><a id="23451" href="/PLFA-zh/Lambda/#23451" class="Datatype Operator">_—↠′_</a> <a id="23457" class="Symbol">:</a> <a id="23459" href="plfa.Lambda.html#3748" class="Datatype">Term</a> <a id="23464" class="Symbol">→</a> <a id="23466" href="plfa.Lambda.html#3748" class="Datatype">Term</a> <a id="23471" class="Symbol">→</a> <a id="23473" class="PrimitiveType">Set</a> <a id="23477" class="Keyword">where</a>
 
@@ -819,11 +819,11 @@ and transitive.  We could do so as follows:</p>
       <a id="23644" class="Comment">-------</a>
     <a id="23656" class="Symbol">→</a> <a id="23658" href="/PLFA-zh/Lambda/#23603" class="Bound">L</a> <a id="23660" href="plfa.Lambda.html#23451" class="Datatype Operator">—↠′</a> <a id="23664" href="plfa.Lambda.html#23607" class="Bound">N</a>
 </pre>
-<p>The three constructors specify, respectively, that <code class="highlighter-rouge">—↠′</code> includes <code class="highlighter-rouge">—→</code>
+<p>The three constructors specify, respectively, that <code class="language-plaintext highlighter-rouge">—↠′</code> includes <code class="language-plaintext highlighter-rouge">—→</code>
 and is reflexive and transitive.  A good exercise is to show that
 the two definitions are equivalent (indeed, one embeds in the other).</p>
 
-<h4 id="exercise-">Exercise <code class="highlighter-rouge">—↠≲—↠′</code></h4>
+<h4 id="exercise-">Exercise <code class="language-plaintext highlighter-rouge">—↠≲—↠′</code></h4>
 
 <p>Show that the first notion of reflexive and transitive closure
 above embeds into the second. Why are they not isomorphic?</p>
@@ -833,11 +833,11 @@ above embeds into the second. Why are they not isomorphic?</p>
 <h2 id="confluence">Confluence</h2>
 
 <p>One important property a reduction relation might satisfy is
-to be <em>confluent</em>.  If term <code class="highlighter-rouge">L</code> reduces to two other terms,
-<code class="highlighter-rouge">M</code> and <code class="highlighter-rouge">N</code>, then both of these reduce to a common term <code class="highlighter-rouge">P</code>.
+to be <em>confluent</em>.  If term <code class="language-plaintext highlighter-rouge">L</code> reduces to two other terms,
+<code class="language-plaintext highlighter-rouge">M</code> and <code class="language-plaintext highlighter-rouge">N</code>, then both of these reduce to a common term <code class="language-plaintext highlighter-rouge">P</code>.
 It can be illustrated as follows:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>           L
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>           L
           / \
          /   \
         /     \
@@ -848,14 +848,14 @@ It can be illustrated as follows:</p>
            P
 </code></pre></div></div>
 
-<p>Here <code class="highlighter-rouge">L</code>, <code class="highlighter-rouge">M</code>, <code class="highlighter-rouge">N</code> are universally quantified while <code class="highlighter-rouge">P</code>
+<p>Here <code class="language-plaintext highlighter-rouge">L</code>, <code class="language-plaintext highlighter-rouge">M</code>, <code class="language-plaintext highlighter-rouge">N</code> are universally quantified while <code class="language-plaintext highlighter-rouge">P</code>
 is existentially quantified.  If each line stands for zero
 or more reduction steps, this is called confluence,
 while if the top two lines stand for a single reduction
 step and the bottom two stand for zero or more reduction
 steps it is called the diamond property. In symbols:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>confluence : ∀ {L M N} → ∃[ P ]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>confluence : ∀ {L M N} → ∃[ P ]
   ( ((L —↠ M) × (L —↠ N))
     --------------------
   → ((M —↠ P) × (N —↠ P)) )
@@ -869,7 +869,7 @@ diamond : ∀ {L M N} → ∃[ P ]
 <p>The reduction system studied in this chapter is deterministic.
 In symbols:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deterministic : ∀ {L M N}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deterministic : ∀ {L M N}
   → L —→ M
   → L —→ N
     ------
@@ -977,7 +977,7 @@ successor function and zero yields the natural number two:</p>
 </pre>
 <p>In the next chapter, we will see how to compute such reduction sequences.</p>
 
-<h4 id="exercise-plus-example">Exercise <code class="highlighter-rouge">plus-example</code></h4>
+<h4 id="exercise-plus-example">Exercise <code class="language-plaintext highlighter-rouge">plus-example</code></h4>
 
 <p>Write out the reduction sequence demonstrating that one plus one is two.</p>
 
@@ -989,15 +989,15 @@ successor function and zero yields the natural number two:</p>
 <p>We have just two types:</p>
 
 <ul>
-  <li>Functions, <code class="highlighter-rouge">A ⇒ B</code></li>
-  <li>Naturals, <code class="highlighter-rouge">`ℕ</code></li>
+  <li>Functions, <code class="language-plaintext highlighter-rouge">A ⇒ B</code></li>
+  <li>Naturals, <code class="language-plaintext highlighter-rouge">`ℕ</code></li>
 </ul>
 
 <p>As before, to avoid overlap we use variants of the names used by Agda.</p>
 
 <p>Here is the syntax of types in BNF:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C  ::=  A ⇒ B | `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C  ::=  A ⇒ B | `ℕ
 </code></pre></div></div>
 
 <p>And here it is formalised in Agda:</p>
@@ -1011,13 +1011,13 @@ successor function and zero yields the natural number two:</p>
 <h3 id="precedence">Precedence</h3>
 
 <p>As in Agda, functions of two or more arguments are represented via
-currying. This is made more convenient by declaring <code class="highlighter-rouge">_⇒_</code> to
-associate to the right and <code class="highlighter-rouge">_·_</code> to associate to the left.
+currying. This is made more convenient by declaring <code class="language-plaintext highlighter-rouge">_⇒_</code> to
+associate to the right and <code class="language-plaintext highlighter-rouge">_·_</code> to associate to the left.
 Thus:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ `ℕ ⇒ `ℕ</code> stands for <code class="highlighter-rouge">((`ℕ ⇒ `ℕ) ⇒ (`ℕ ⇒ `ℕ))</code>.</li>
-  <li><code class="highlighter-rouge">plus · two · two</code> stands for <code class="highlighter-rouge">(plus · two) · two</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ `ℕ ⇒ `ℕ</code> stands for <code class="language-plaintext highlighter-rouge">((`ℕ ⇒ `ℕ) ⇒ (`ℕ ⇒ `ℕ))</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">plus · two · two</code> stands for <code class="language-plaintext highlighter-rouge">(plus · two) · two</code>.</li>
 </ul>
 
 <h3 id="quiz-2">Quiz</h3>
@@ -1026,15 +1026,15 @@ Thus:</p>
   <li>
     <p>What is the type of the following term?</p>
 
-    <p><code class="highlighter-rouge">ƛ "s" ⇒ ` "s" · (` "s"  · `zero)</code></p>
+    <p><code class="language-plaintext highlighter-rouge">ƛ "s" ⇒ ` "s" · (` "s"  · `zero)</code></p>
 
     <ol>
-      <li><code class="highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ (`ℕ ⇒ `ℕ)</code></li>
-      <li><code class="highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ `ℕ</code></li>
-      <li><code class="highlighter-rouge">`ℕ ⇒ (`ℕ ⇒ `ℕ)</code></li>
-      <li><code class="highlighter-rouge">`ℕ ⇒ `ℕ ⇒ `ℕ</code></li>
-      <li><code class="highlighter-rouge">`ℕ ⇒ `ℕ</code></li>
-      <li><code class="highlighter-rouge">`ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ (`ℕ ⇒ `ℕ)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ `ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ ⇒ (`ℕ ⇒ `ℕ)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ ⇒ `ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ</code></li>
     </ol>
 
     <p>Give more than one answer if appropriate.</p>
@@ -1042,15 +1042,15 @@ Thus:</p>
   <li>
     <p>What is the type of the following term?</p>
 
-    <p><code class="highlighter-rouge">(ƛ "s" ⇒ ` "s" · (` "s"  · `zero)) · sucᶜ</code></p>
+    <p><code class="language-plaintext highlighter-rouge">(ƛ "s" ⇒ ` "s" · (` "s"  · `zero)) · sucᶜ</code></p>
 
     <ol>
-      <li><code class="highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ (`ℕ ⇒ `ℕ)</code></li>
-      <li><code class="highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ `ℕ</code></li>
-      <li><code class="highlighter-rouge">`ℕ ⇒ (`ℕ ⇒ `ℕ)</code></li>
-      <li><code class="highlighter-rouge">`ℕ ⇒ `ℕ ⇒ `ℕ</code></li>
-      <li><code class="highlighter-rouge">`ℕ ⇒ `ℕ</code></li>
-      <li><code class="highlighter-rouge">`ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ (`ℕ ⇒ `ℕ)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">(`ℕ ⇒ `ℕ) ⇒ `ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ ⇒ (`ℕ ⇒ `ℕ)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ ⇒ `ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ</code></li>
+      <li><code class="language-plaintext highlighter-rouge">`ℕ</code></li>
     </ol>
 
     <p>Give more than one answer if appropriate.</p>
@@ -1066,17 +1066,17 @@ consider terms with free variables.  To type a term,
 we must first type its subterms, and in particular in the
 body of an abstraction its bound variable may appear free.</p>
 
-<p>A <em>context</em> associates variables with types.  We let <code class="highlighter-rouge">Γ</code> and <code class="highlighter-rouge">Δ</code> range
-over contexts.  We write <code class="highlighter-rouge">∅</code> for the empty context, and <code class="highlighter-rouge">Γ , x ⦂ A</code>
-for the context that extends <code class="highlighter-rouge">Γ</code> by mapping variable <code class="highlighter-rouge">x</code> to type <code class="highlighter-rouge">A</code>.
+<p>A <em>context</em> associates variables with types.  We let <code class="language-plaintext highlighter-rouge">Γ</code> and <code class="language-plaintext highlighter-rouge">Δ</code> range
+over contexts.  We write <code class="language-plaintext highlighter-rouge">∅</code> for the empty context, and <code class="language-plaintext highlighter-rouge">Γ , x ⦂ A</code>
+for the context that extends <code class="language-plaintext highlighter-rouge">Γ</code> by mapping variable <code class="language-plaintext highlighter-rouge">x</code> to type <code class="language-plaintext highlighter-rouge">A</code>.
 For example,</p>
 
 <ul>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ</code></li>
 </ul>
 
-<p>is the context that associates variable <code class="highlighter-rouge">"s"</code> with type <code class="highlighter-rouge">`ℕ ⇒ `ℕ</code>,
-and variable <code class="highlighter-rouge">"z"</code> with type <code class="highlighter-rouge">`ℕ</code>.</p>
+<p>is the context that associates variable <code class="language-plaintext highlighter-rouge">"s"</code> with type <code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ</code>,
+and variable <code class="language-plaintext highlighter-rouge">"z"</code> with type <code class="language-plaintext highlighter-rouge">`ℕ</code>.</p>
 
 <p>Contexts are formalised as follows:</p>
 
@@ -1087,17 +1087,17 @@ and variable <code class="highlighter-rouge">"z"</code> with type <code class="h
   <a id="Context._,_⦂_"></a><a id="31071" href="/PLFA-zh/Lambda/#31071" class="InductiveConstructor Operator">_,_⦂_</a> <a id="31077" class="Symbol">:</a> <a id="31079" href="plfa.Lambda.html#31031" class="Datatype">Context</a> <a id="31087" class="Symbol">→</a> <a id="31089" href="plfa.Lambda.html#3647" class="Function">Id</a> <a id="31092" class="Symbol">→</a> <a id="31094" href="plfa.Lambda.html#29373" class="Datatype">Type</a> <a id="31099" class="Symbol">→</a> <a id="31101" href="plfa.Lambda.html#31031" class="Datatype">Context</a>
 </pre>
 
-<h4 id="exercise-context-">Exercise <code class="highlighter-rouge">Context-≃</code></h4>
+<h4 id="exercise-context-">Exercise <code class="language-plaintext highlighter-rouge">Context-≃</code></h4>
 
-<p>Show that <code class="highlighter-rouge">Context</code> is isomorphic to <code class="highlighter-rouge">List (Id × Type)</code>.
+<p>Show that <code class="language-plaintext highlighter-rouge">Context</code> is isomorphic to <code class="language-plaintext highlighter-rouge">List (Id × Type)</code>.
 For instance, the isomorphism relates the context</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ
 </code></pre></div></div>
 
 <p>to the list</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ ⟨ "z" , `ℕ ⟩ , ⟨ "s" , `ℕ ⇒ `ℕ ⟩ ]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ ⟨ "z" , `ℕ ⟩ , ⟨ "s" , `ℕ ⇒ `ℕ ⟩ ]
 </code></pre></div></div>
 
 <pre class="Agda"><a id="31343" class="Comment">-- Your code goes here</a>
@@ -1106,32 +1106,32 @@ For instance, the isomorphism relates the context</p>
 
 <p>We have two forms of <em>judgment</em>.  The first is written</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ∋ x ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ∋ x ⦂ A
 </code></pre></div></div>
 
-<p>and indicates in context <code class="highlighter-rouge">Γ</code> that variable <code class="highlighter-rouge">x</code> has type <code class="highlighter-rouge">A</code>.
+<p>and indicates in context <code class="language-plaintext highlighter-rouge">Γ</code> that variable <code class="language-plaintext highlighter-rouge">x</code> has type <code class="language-plaintext highlighter-rouge">A</code>.
 It is called <em>lookup</em>.
 For example,</p>
 
 <ul>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "z" ⦂ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "s" ⦂ `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "z" ⦂ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "s" ⦂ `ℕ ⇒ `ℕ</code></li>
 </ul>
 
-<p>give us the types associated with variables <code class="highlighter-rouge">"z"</code> and <code class="highlighter-rouge">"s"</code>,
-respectively.  The symbol <code class="highlighter-rouge">∋</code> (pronounced “ni”, for “in”
-backwards) is chosen because checking that <code class="highlighter-rouge">Γ ∋ x ⦂ A</code> is analogous to
-checking whether <code class="highlighter-rouge">x ⦂ A</code> appears in a list corresponding to <code class="highlighter-rouge">Γ</code>.</p>
+<p>give us the types associated with variables <code class="language-plaintext highlighter-rouge">"z"</code> and <code class="language-plaintext highlighter-rouge">"s"</code>,
+respectively.  The symbol <code class="language-plaintext highlighter-rouge">∋</code> (pronounced “ni”, for “in”
+backwards) is chosen because checking that <code class="language-plaintext highlighter-rouge">Γ ∋ x ⦂ A</code> is analogous to
+checking whether <code class="language-plaintext highlighter-rouge">x ⦂ A</code> appears in a list corresponding to <code class="language-plaintext highlighter-rouge">Γ</code>.</p>
 
 <p>If two variables in a context have the same name, then lookup
 should return the most recently bound variable, which <em>shadows</em>
 the other variables.  For example,</p>
 
 <ul>
-  <li><code class="highlighter-rouge">∅ , "x" ⦂ `ℕ ⇒ `ℕ , "x" ⦂ `ℕ ∋ "x" ⦂ `ℕ</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "x" ⦂ `ℕ ⇒ `ℕ , "x" ⦂ `ℕ ∋ "x" ⦂ `ℕ</code>.</li>
 </ul>
 
-<p>Here <code class="highlighter-rouge">"x" ⦂ `ℕ ⇒ `ℕ</code> is shadowed by <code class="highlighter-rouge">"x" ⦂ `ℕ</code>.</p>
+<p>Here <code class="language-plaintext highlighter-rouge">"x" ⦂ `ℕ ⇒ `ℕ</code> is shadowed by <code class="language-plaintext highlighter-rouge">"x" ⦂ `ℕ</code>.</p>
 
 <p>Lookup is formalised as follows:</p>
 <pre class="Agda"><a id="32232" class="Keyword">infix</a>  <a id="32239" class="Number">4</a>  <a id="32242" href="/PLFA-zh/Lambda/#32254" class="Datatype Operator">_∋_⦂_</a>
@@ -1148,9 +1148,9 @@ the other variables.  For example,</p>
       <a id="32415" class="Comment">------------------</a>
     <a id="32438" class="Symbol">→</a> <a id="32440" href="/PLFA-zh/Lambda/#32370" class="Bound">Γ</a> <a id="32442" href="plfa.Lambda.html#31071" class="InductiveConstructor Operator">,</a> <a id="32444" href="plfa.Lambda.html#32374" class="Bound">y</a> <a id="32446" href="plfa.Lambda.html#31071" class="InductiveConstructor Operator">⦂</a> <a id="32448" href="plfa.Lambda.html#32378" class="Bound">B</a> <a id="32450" href="plfa.Lambda.html#32254" class="Datatype Operator">∋</a> <a id="32452" href="plfa.Lambda.html#32372" class="Bound">x</a> <a id="32454" href="plfa.Lambda.html#32254" class="Datatype Operator">⦂</a> <a id="32456" href="plfa.Lambda.html#32376" class="Bound">A</a>
 </pre>
-<p>The constructors <code class="highlighter-rouge">Z</code> and <code class="highlighter-rouge">S</code> correspond roughly to the constructors
-<code class="highlighter-rouge">here</code> and <code class="highlighter-rouge">there</code> for the element-of relation <code class="highlighter-rouge">_∈_</code> on lists.
-Constructor <code class="highlighter-rouge">S</code> takes an additional parameter, which ensures that
+<p>The constructors <code class="language-plaintext highlighter-rouge">Z</code> and <code class="language-plaintext highlighter-rouge">S</code> correspond roughly to the constructors
+<code class="language-plaintext highlighter-rouge">here</code> and <code class="language-plaintext highlighter-rouge">there</code> for the element-of relation <code class="language-plaintext highlighter-rouge">_∈_</code> on lists.
+Constructor <code class="language-plaintext highlighter-rouge">S</code> takes an additional parameter, which ensures that
 when we look up a variable that it is not <em>shadowed</em> by another
 variable with the same name to its left in the list.</p>
 
@@ -1158,20 +1158,20 @@ variable with the same name to its left in the list.</p>
 
 <p>The second judgment is written</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
 </code></pre></div></div>
 
-<p>and indicates in context <code class="highlighter-rouge">Γ</code> that term <code class="highlighter-rouge">M</code> has type <code class="highlighter-rouge">A</code>.
-Context <code class="highlighter-rouge">Γ</code> provides types for all the free variables in <code class="highlighter-rouge">M</code>.
+<p>and indicates in context <code class="language-plaintext highlighter-rouge">Γ</code> that term <code class="language-plaintext highlighter-rouge">M</code> has type <code class="language-plaintext highlighter-rouge">A</code>.
+Context <code class="language-plaintext highlighter-rouge">Γ</code> provides types for all the free variables in <code class="language-plaintext highlighter-rouge">M</code>.
 For example:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "z" ⦂ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" ⦂ `ℕ ⇒ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · ` "z" ⦂  `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · (` "s" · ` "z") ⦂  `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ ⊢ ƛ "z" ⇒ ` "s" · (` "s" · ` "z") ⦂  `ℕ ⇒ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ ⊢ ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z") ⦂  (`ℕ ⇒ `ℕ) ⇒ `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "z" ⦂ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" ⦂ `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · ` "z" ⦂  `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · (` "s" · ` "z") ⦂  `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ ⊢ ƛ "z" ⇒ ` "s" · (` "s" · ` "z") ⦂  `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ ⊢ ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z") ⦂  (`ℕ ⇒ `ℕ) ⇒ `ℕ ⇒ `ℕ</code></li>
 </ul>
 
 <p>Typing is formalised as follows:</p>
@@ -1228,7 +1228,7 @@ corresponding term.</p>
 <p>Most of the rules have a second name, derived from a convention in
 logic, whereby the rule is named after the type connective that it
 concerns; rules to introduce and to eliminate each connective are
-labeled <code class="highlighter-rouge">-I</code> and <code class="highlighter-rouge">-E</code>, respectively. As we read the rules from top to
+labeled <code class="language-plaintext highlighter-rouge">-I</code> and <code class="language-plaintext highlighter-rouge">-E</code>, respectively. As we read the rules from top to
 bottom, introduction and elimination rules do what they say on the
 tin: the first <em>introduces</em> a formula for the connective, which
 appears in the conclusion but not in the premises; while the second
@@ -1239,8 +1239,8 @@ and zero yield naturals), while an elimination rule describes how to
 deconstruct a value of the given type (applications use functions,
 case expressions use naturals).</p>
 
-<p>Note also the three places (in <code class="highlighter-rouge">⊢ƛ</code>, <code class="highlighter-rouge">⊢case</code>, and <code class="highlighter-rouge">⊢μ</code>) where the
-context is extended with <code class="highlighter-rouge">x</code> and an appropriate type, corresponding to
+<p>Note also the three places (in <code class="language-plaintext highlighter-rouge">⊢ƛ</code>, <code class="language-plaintext highlighter-rouge">⊢case</code>, and <code class="language-plaintext highlighter-rouge">⊢μ</code>) where the
+context is extended with <code class="language-plaintext highlighter-rouge">x</code> and an appropriate type, corresponding to
 the three places where a bound variable is introduced.</p>
 
 <p>The rules are deterministic, in that at most one rule applies to every term.</p>
@@ -1254,18 +1254,18 @@ the three places where a bound variable is introduced.</p>
 <a id="35596" class="Symbol">...</a>       <a id="35606" class="Symbol">|</a> <a id="35608" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#641" class="InductiveConstructor">yes</a> <a id="35612" class="Symbol">_</a>    <a id="35617" class="Symbol">=</a>  <a id="35620" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="35627" href="/PLFA-zh/Lambda/#35656" class="Postulate">impossible</a>
   <a id="35640" class="Keyword">where</a> <a id="35646" class="Keyword">postulate</a> <a id="35656" href="/PLFA-zh/Lambda/#35656" class="Postulate">impossible</a> <a id="35667" class="Symbol">:</a> <a id="35669" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
 </pre>
-<p>Here <code class="highlighter-rouge">_≟_</code> is the function that tests two identifiers for equality.
+<p>Here <code class="language-plaintext highlighter-rouge">_≟_</code> is the function that tests two identifiers for equality.
 We intend to apply the function only when the
 two arguments are indeed unequal, and indicate that the second
-case should never arise by postulating a term <code class="highlighter-rouge">impossible</code> of
-the empty type <code class="highlighter-rouge">⊥</code>.  If we use C-c C-n to normalise the term</p>
+case should never arise by postulating a term <code class="language-plaintext highlighter-rouge">impossible</code> of
+the empty type <code class="language-plaintext highlighter-rouge">⊥</code>.  If we use C-c C-n to normalise the term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"a" ≠ "a"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"a" ≠ "a"
 </code></pre></div></div>
 
 <p>Agda will return an answer warning us that the impossible has occurred:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊥-elim (.plfa.Lambda.impossible "a" "a" refl)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊥-elim (.plfa.Lambda.impossible "a" "a" refl)
 </code></pre></div></div>
 
 <p>While postulating the impossible is a useful technique, it must be
@@ -1277,7 +1277,7 @@ evidence of <em>any</em> proposition whatsoever, regardless of its truth.</p>
 <p>Type derivations correspond to trees. In informal notation, here
 is a type derivation for the Church numeral two,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                        ∋s                     ∋z
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                        ∋s                     ∋z
                         ------------------ ⊢`  -------------- ⊢`
 ∋s                      Γ₂ ⊢ ` "s" ⦂ A ⇒ A     Γ₂ ⊢ ` "z" ⦂ A
 ------------------ ⊢`   ------------------------------------- _·_
@@ -1290,17 +1290,17 @@ is a type derivation for the Church numeral two,</p>
 Γ ⊢ ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z") ⦂ (A ⇒ A) ⇒ A ⇒ A
 </code></pre></div></div>
 
-<p>where <code class="highlighter-rouge">∋s</code> and <code class="highlighter-rouge">∋z</code> abbreviate the two derivations,</p>
+<p>where <code class="language-plaintext highlighter-rouge">∋s</code> and <code class="language-plaintext highlighter-rouge">∋z</code> abbreviate the two derivations,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             ---------------- Z
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             ---------------- Z
 "s" ≢ "z"    Γ₁ ∋ "s" ⦂ A ⇒ A
 ----------------------------- S       ------------- Z
 Γ₂ ∋ "s" ⦂ A ⇒ A                       Γ₂ ∋ "z" ⦂ A
 </code></pre></div></div>
 
-<p>and where <code class="highlighter-rouge">Γ₁ = Γ , "s" ⦂ A ⇒ A</code> and <code class="highlighter-rouge">Γ₂ = Γ , "s" ⦂ A ⇒ A , "z" ⦂ A</code>.
-The typing derivation is valid for any <code class="highlighter-rouge">Γ</code> and <code class="highlighter-rouge">A</code>, for instance,
-we might take <code class="highlighter-rouge">Γ</code> to be <code class="highlighter-rouge">∅</code> and <code class="highlighter-rouge">A</code> to be <code class="highlighter-rouge">`ℕ</code>.</p>
+<p>and where <code class="language-plaintext highlighter-rouge">Γ₁ = Γ , "s" ⦂ A ⇒ A</code> and <code class="language-plaintext highlighter-rouge">Γ₂ = Γ , "s" ⦂ A ⇒ A , "z" ⦂ A</code>.
+The typing derivation is valid for any <code class="language-plaintext highlighter-rouge">Γ</code> and <code class="language-plaintext highlighter-rouge">A</code>, for instance,
+we might take <code class="language-plaintext highlighter-rouge">Γ</code> to be <code class="language-plaintext highlighter-rouge">∅</code> and <code class="language-plaintext highlighter-rouge">A</code> to be <code class="language-plaintext highlighter-rouge">`ℕ</code>.</p>
 
 <p>Here is the above typing derivation formalised in Agda:</p>
 <pre class="Agda"><a id="Ch"></a><a id="37602" href="/PLFA-zh/Lambda/#37602" class="Function">Ch</a> <a id="37605" class="Symbol">:</a> <a id="37607" href="plfa.Lambda.html#29373" class="Datatype">Type</a> <a id="37612" class="Symbol">→</a> <a id="37614" href="plfa.Lambda.html#29373" class="Datatype">Type</a>
@@ -1329,12 +1329,12 @@ we might take <code class="highlighter-rouge">Γ</code> to be <code class="highl
 <a id="⊢2+2"></a><a id="38150" href="/PLFA-zh/Lambda/#38150" class="Function">⊢2+2</a> <a id="38155" class="Symbol">:</a> <a id="38157" href="plfa.Lambda.html#31053" class="InductiveConstructor">∅</a> <a id="38159" href="plfa.Lambda.html#33418" class="Datatype Operator">⊢</a> <a id="38161" href="plfa.Lambda.html#4510" class="Function">plus</a> <a id="38166" href="plfa.Lambda.html#3852" class="InductiveConstructor Operator">·</a> <a id="38168" href="plfa.Lambda.html#4476" class="Function">two</a> <a id="38172" href="plfa.Lambda.html#3852" class="InductiveConstructor Operator">·</a> <a id="38174" href="plfa.Lambda.html#4476" class="Function">two</a> <a id="38178" href="plfa.Lambda.html#33418" class="Datatype Operator">⦂</a> <a id="38180" href="plfa.Lambda.html#29419" class="InductiveConstructor">`ℕ</a>
 <a id="38183" href="/PLFA-zh/Lambda/#38150" class="Function">⊢2+2</a> <a id="38188" class="Symbol">=</a> <a id="38190" href="plfa.Lambda.html#37884" class="Function">⊢plus</a> <a id="38196" href="plfa.Lambda.html#33660" class="InductiveConstructor Operator">·</a> <a id="38198" href="plfa.Lambda.html#37830" class="Function">⊢two</a> <a id="38203" href="plfa.Lambda.html#33660" class="InductiveConstructor Operator">·</a> <a id="38205" href="plfa.Lambda.html#37830" class="Function">⊢two</a>
 </pre>
-<p>In contrast to our earlier examples, here we have typed <code class="highlighter-rouge">two</code> and <code class="highlighter-rouge">plus</code>
+<p>In contrast to our earlier examples, here we have typed <code class="language-plaintext highlighter-rouge">two</code> and <code class="language-plaintext highlighter-rouge">plus</code>
 in an arbitrary context rather than the empty context; this makes it easy
 to use them inside other binding contexts as well as at the top level.
-Here the two lookup judgments <code class="highlighter-rouge">∋m</code> and <code class="highlighter-rouge">∋m′</code> refer to two different
-bindings of variables named <code class="highlighter-rouge">"m"</code>.  In contrast, the two judgments <code class="highlighter-rouge">∋n</code> and
-<code class="highlighter-rouge">∋n′</code> both refer to the same binding of <code class="highlighter-rouge">"n"</code> but accessed in different
+Here the two lookup judgments <code class="language-plaintext highlighter-rouge">∋m</code> and <code class="language-plaintext highlighter-rouge">∋m′</code> refer to two different
+bindings of variables named <code class="language-plaintext highlighter-rouge">"m"</code>.  In contrast, the two judgments <code class="language-plaintext highlighter-rouge">∋n</code> and
+<code class="language-plaintext highlighter-rouge">∋n′</code> both refer to the same binding of <code class="language-plaintext highlighter-rouge">"n"</code> but accessed in different
 contexts, the first where “n” is the last binding in the context, and
 the second after “m” is bound in the successor branch of the case.</p>
 
@@ -1360,44 +1360,44 @@ the second after “m” is bound in the successor branch of the case.</p>
 <p>Construction of a type derivation may be done interactively.
 Start with the declaration:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ : ∅ ⊢ sucᶜ ⦂ `ℕ ⇒ `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ : ∅ ⊢ sucᶜ ⦂ `ℕ ⇒ `ℕ
 ⊢sucᶜ = ?
 </code></pre></div></div>
 
 <p>Typing C-c C-l causes Agda to create a hole and tell us its expected type:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ = { }0
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ = { }0
 ?0 : ∅ ⊢ sucᶜ ⦂ `ℕ ⇒ `ℕ
 </code></pre></div></div>
 
 <p>Now we fill in the hole by typing C-c C-r. Agda observes that
-the outermost term in <code class="highlighter-rouge">sucᶜ</code> is <code class="highlighter-rouge">ƛ</code>, which is typed using <code class="highlighter-rouge">⊢ƛ</code>. The
-<code class="highlighter-rouge">⊢ƛ</code> rule in turn takes one argument, which Agda leaves as a hole:</p>
+the outermost term in <code class="language-plaintext highlighter-rouge">sucᶜ</code> is <code class="language-plaintext highlighter-rouge">ƛ</code>, which is typed using <code class="language-plaintext highlighter-rouge">⊢ƛ</code>. The
+<code class="language-plaintext highlighter-rouge">⊢ƛ</code> rule in turn takes one argument, which Agda leaves as a hole:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ = ⊢ƛ { }1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ = ⊢ƛ { }1
 ?1 : ∅ , "n" ⦂ `ℕ ⊢ `suc ` "n" ⦂ `ℕ
 </code></pre></div></div>
 
 <p>We can fill in the hole by typing C-c C-r again:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ = ⊢ƛ (⊢suc { }2)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢sucᶜ = ⊢ƛ (⊢suc { }2)
 ?2 : ∅ , "n" ⦂ `ℕ ⊢ ` "n" ⦂ `ℕ
 </code></pre></div></div>
 
 <p>And again:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢suc′ = ⊢ƛ (⊢suc (⊢` { }3))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢suc′ = ⊢ƛ (⊢suc (⊢` { }3))
 ?3 : ∅ , "n" ⦂ `ℕ ∋ "n" ⦂ `ℕ
 </code></pre></div></div>
 
 <p>A further attempt with C-c C-r yields the message:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Don't know which constructor to introduce of Z or S
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Don't know which constructor to introduce of Z or S
 </code></pre></div></div>
 
-<p>We can fill in <code class="highlighter-rouge">Z</code> by hand. If we type C-c C-space, Agda will confirm we are done:</p>
+<p>We can fill in <code class="language-plaintext highlighter-rouge">Z</code> by hand. If we type C-c C-space, Agda will confirm we are done:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢suc′ = ⊢ƛ (⊢suc (⊢` Z))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢suc′ = ⊢ƛ (⊢suc (⊢` Z))
 </code></pre></div></div>
 
 <p>The entire process can be automated using Agsy, invoked with C-c C-a.</p>
@@ -1407,22 +1407,22 @@ will show how to use Agda to compute type derivations directly.</p>
 
 <h3 id="lookup-is-injective">Lookup is injective</h3>
 
-<p>The lookup relation <code class="highlighter-rouge">Γ ∋ x ⦂ A</code> is injective, in that for each <code class="highlighter-rouge">Γ</code> and <code class="highlighter-rouge">x</code>
-there is at most one <code class="highlighter-rouge">A</code> such that the judgment holds:</p>
+<p>The lookup relation <code class="language-plaintext highlighter-rouge">Γ ∋ x ⦂ A</code> is injective, in that for each <code class="language-plaintext highlighter-rouge">Γ</code> and <code class="language-plaintext highlighter-rouge">x</code>
+there is at most one <code class="language-plaintext highlighter-rouge">A</code> such that the judgment holds:</p>
 <pre class="Agda"><a id="∋-injective"></a><a id="40595" href="/PLFA-zh/Lambda/#40595" class="Function">∋-injective</a> <a id="40607" class="Symbol">:</a> <a id="40609" class="Symbol">∀</a> <a id="40611" class="Symbol">{</a><a id="40612" href="plfa.Lambda.html#40612" class="Bound">Γ</a> <a id="40614" href="plfa.Lambda.html#40614" class="Bound">x</a> <a id="40616" href="plfa.Lambda.html#40616" class="Bound">A</a> <a id="40618" href="plfa.Lambda.html#40618" class="Bound">B</a><a id="40619" class="Symbol">}</a> <a id="40621" class="Symbol">→</a> <a id="40623" href="plfa.Lambda.html#40612" class="Bound">Γ</a> <a id="40625" href="plfa.Lambda.html#32254" class="Datatype Operator">∋</a> <a id="40627" href="plfa.Lambda.html#40614" class="Bound">x</a> <a id="40629" href="plfa.Lambda.html#32254" class="Datatype Operator">⦂</a> <a id="40631" href="plfa.Lambda.html#40616" class="Bound">A</a> <a id="40633" class="Symbol">→</a> <a id="40635" href="plfa.Lambda.html#40612" class="Bound">Γ</a> <a id="40637" href="plfa.Lambda.html#32254" class="Datatype Operator">∋</a> <a id="40639" href="plfa.Lambda.html#40614" class="Bound">x</a> <a id="40641" href="plfa.Lambda.html#32254" class="Datatype Operator">⦂</a> <a id="40643" href="plfa.Lambda.html#40618" class="Bound">B</a> <a id="40645" class="Symbol">→</a> <a id="40647" href="plfa.Lambda.html#40616" class="Bound">A</a> <a id="40649" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="40651" href="plfa.Lambda.html#40618" class="Bound">B</a>
 <a id="40653" href="/PLFA-zh/Lambda/#40595" class="Function">∋-injective</a> <a id="40665" href="plfa.Lambda.html#32297" class="InductiveConstructor">Z</a>        <a id="40674" href="plfa.Lambda.html#32297" class="InductiveConstructor">Z</a>          <a id="40685" class="Symbol">=</a>  <a id="40688" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
 <a id="40693" href="/PLFA-zh/Lambda/#40595" class="Function">∋-injective</a> <a id="40705" href="plfa.Lambda.html#32297" class="InductiveConstructor">Z</a>        <a id="40714" class="Symbol">(</a><a id="40715" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="40717" href="plfa.Lambda.html#40717" class="Bound">x≢</a> <a id="40720" class="Symbol">_)</a>   <a id="40725" class="Symbol">=</a>  <a id="40728" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="40735" class="Symbol">(</a><a id="40736" href="plfa.Lambda.html#40717" class="Bound">x≢</a> <a id="40739" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="40743" class="Symbol">)</a>
 <a id="40745" href="/PLFA-zh/Lambda/#40595" class="Function">∋-injective</a> <a id="40757" class="Symbol">(</a><a id="40758" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="40760" href="plfa.Lambda.html#40760" class="Bound">x≢</a> <a id="40763" class="Symbol">_)</a> <a id="40766" href="plfa.Lambda.html#32297" class="InductiveConstructor">Z</a>          <a id="40777" class="Symbol">=</a>  <a id="40780" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="40787" class="Symbol">(</a><a id="40788" href="plfa.Lambda.html#40760" class="Bound">x≢</a> <a id="40791" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="40795" class="Symbol">)</a>
 <a id="40797" href="/PLFA-zh/Lambda/#40595" class="Function">∋-injective</a> <a id="40809" class="Symbol">(</a><a id="40810" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="40812" class="Symbol">_</a> <a id="40814" href="plfa.Lambda.html#40814" class="Bound">∋x</a><a id="40816" class="Symbol">)</a> <a id="40818" class="Symbol">(</a><a id="40819" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="40821" class="Symbol">_</a> <a id="40823" href="plfa.Lambda.html#40823" class="Bound">∋x′</a><a id="40826" class="Symbol">)</a>  <a id="40829" class="Symbol">=</a>  <a id="40832" href="plfa.Lambda.html#40595" class="Function">∋-injective</a> <a id="40844" href="plfa.Lambda.html#40814" class="Bound">∋x</a> <a id="40847" href="plfa.Lambda.html#40823" class="Bound">∋x′</a>
 </pre>
-<p>The typing relation <code class="highlighter-rouge">Γ ⊢ M ⦂ A</code> is not injective. For example, in any <code class="highlighter-rouge">Γ</code>
-the term <code class="highlighter-rouge">ƛ "x" ⇒ "x"</code> has type <code class="highlighter-rouge">A ⇒ A</code> for any type <code class="highlighter-rouge">A</code>.</p>
+<p>The typing relation <code class="language-plaintext highlighter-rouge">Γ ⊢ M ⦂ A</code> is not injective. For example, in any <code class="language-plaintext highlighter-rouge">Γ</code>
+the term <code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ "x"</code> has type <code class="language-plaintext highlighter-rouge">A ⇒ A</code> for any type <code class="language-plaintext highlighter-rouge">A</code>.</p>
 
 <h3 id="non-examples">Non-examples</h3>
 
 <p>We can also show that terms are <em>not</em> typeable.  For example, here is
 a formal proof that it is not possible to type the term
-<code class="highlighter-rouge">`zero · `suc `zero</code>.  It cannot be typed, because doing so
+<code class="language-plaintext highlighter-rouge">`zero · `suc `zero</code>.  It cannot be typed, because doing so
 requires that the first term in the application is both a natural and
 a function:</p>
 
@@ -1430,8 +1430,8 @@ a function:</p>
 <a id="41331" href="/PLFA-zh/Lambda/#41284" class="Function">nope₁</a> <a id="41337" class="Symbol">(()</a> <a id="41341" href="plfa.Lambda.html#33660" class="InductiveConstructor Operator">·</a> <a id="41343" class="Symbol">_)</a>
 </pre>
 <p>As a second example, here is a formal proof that it is not possible to
-type <code class="highlighter-rouge">ƛ "x" ⇒ ` "x" · ` "x"</code>. It cannot be typed, because
-doing so requires types <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code> such that <code class="highlighter-rouge">A ⇒ B ≡ A</code>:</p>
+type <code class="language-plaintext highlighter-rouge">ƛ "x" ⇒ ` "x" · ` "x"</code>. It cannot be typed, because
+doing so requires types <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">B</code> such that <code class="language-plaintext highlighter-rouge">A ⇒ B ≡ A</code>:</p>
 
 <pre class="Agda"><a id="nope₂"></a><a id="41548" href="/PLFA-zh/Lambda/#41548" class="Function">nope₂</a> <a id="41554" class="Symbol">:</a> <a id="41556" class="Symbol">∀</a> <a id="41558" class="Symbol">{</a><a id="41559" href="plfa.Lambda.html#41559" class="Bound">A</a><a id="41560" class="Symbol">}</a> <a id="41562" class="Symbol">→</a> <a id="41564" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬</a> <a id="41566" class="Symbol">(</a><a id="41567" href="plfa.Lambda.html#31053" class="InductiveConstructor">∅</a> <a id="41569" href="plfa.Lambda.html#33418" class="Datatype Operator">⊢</a> <a id="41571" href="plfa.Lambda.html#3806" class="InductiveConstructor Operator">ƛ</a> <a id="41573" class="String">&quot;x&quot;</a> <a id="41577" href="plfa.Lambda.html#3806" class="InductiveConstructor Operator">⇒</a> <a id="41579" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="41581" class="String">&quot;x&quot;</a> <a id="41585" href="plfa.Lambda.html#3852" class="InductiveConstructor Operator">·</a> <a id="41587" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="41589" class="String">&quot;x&quot;</a> <a id="41593" href="plfa.Lambda.html#33418" class="Datatype Operator">⦂</a> <a id="41595" href="plfa.Lambda.html#41559" class="Bound">A</a><a id="41596" class="Symbol">)</a>
 <a id="41598" href="/PLFA-zh/Lambda/#41548" class="Function">nope₂</a> <a id="41604" class="Symbol">(</a><a id="41605" href="plfa.Lambda.html#33553" class="InductiveConstructor">⊢ƛ</a> <a id="41608" class="Symbol">(</a><a id="41609" href="plfa.Lambda.html#33474" class="InductiveConstructor">⊢`</a> <a id="41612" href="plfa.Lambda.html#41612" class="Bound">∋x</a> <a id="41615" href="plfa.Lambda.html#33660" class="InductiveConstructor Operator">·</a> <a id="41617" href="plfa.Lambda.html#33474" class="InductiveConstructor">⊢`</a> <a id="41620" href="plfa.Lambda.html#41620" class="Bound">∋x′</a><a id="41623" class="Symbol">))</a>  <a id="41627" class="Symbol">=</a>  <a id="41630" href="plfa.Lambda.html#41675" class="Function">contradiction</a> <a id="41644" class="Symbol">(</a><a id="41645" href="plfa.Lambda.html#40595" class="Function">∋-injective</a> <a id="41657" href="plfa.Lambda.html#41612" class="Bound">∋x</a> <a id="41660" href="plfa.Lambda.html#41620" class="Bound">∋x′</a><a id="41663" class="Symbol">)</a>
@@ -1442,34 +1442,34 @@ doing so requires types <code class="highlighter-rouge">A</code> and <code class
 
 <h4 id="quiz-3">Quiz</h4>
 
-<p>For each of the following, give a type <code class="highlighter-rouge">A</code> for which it is derivable,
-or explain why there is no such <code class="highlighter-rouge">A</code>.</p>
+<p>For each of the following, give a type <code class="language-plaintext highlighter-rouge">A</code> for which it is derivable,
+or explain why there is no such <code class="language-plaintext highlighter-rouge">A</code>.</p>
 
 <ol>
-  <li><code class="highlighter-rouge">∅ , "y" ⦂ `ℕ ⇒ `ℕ , "x" ⦂ `ℕ ⊢ ` "y" · ` "x" ⦂ A</code></li>
-  <li><code class="highlighter-rouge">∅ , "y" ⦂ `ℕ ⇒ `ℕ , "x" ⦂ `ℕ ⊢ ` "x" · ` "y" ⦂ A</code></li>
-  <li><code class="highlighter-rouge">∅ , "y" ⦂ `ℕ ⇒ `ℕ ⊢ ƛ "x" ⇒ ` "y" · ` "x" ⦂ A</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "y" ⦂ `ℕ ⇒ `ℕ , "x" ⦂ `ℕ ⊢ ` "y" · ` "x" ⦂ A</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "y" ⦂ `ℕ ⇒ `ℕ , "x" ⦂ `ℕ ⊢ ` "x" · ` "y" ⦂ A</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "y" ⦂ `ℕ ⇒ `ℕ ⊢ ƛ "x" ⇒ ` "y" · ` "x" ⦂ A</code></li>
 </ol>
 
-<p>For each of the following, give types <code class="highlighter-rouge">A</code>, <code class="highlighter-rouge">B</code>, and <code class="highlighter-rouge">C</code> for which it is derivable,
+<p>For each of the following, give types <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>, and <code class="language-plaintext highlighter-rouge">C</code> for which it is derivable,
 or explain why there are no such types.</p>
 
 <ol>
-  <li><code class="highlighter-rouge">∅ , "x" ⦂ A ⊢ ` "x" · ` "x" ⦂ B</code></li>
-  <li><code class="highlighter-rouge">∅ , "x" ⦂ A , "y" ⦂ B ⊢ ƛ "z" ⇒ ` "x" · (` "y" · ` "z") ⦂ C</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "x" ⦂ A ⊢ ` "x" · ` "x" ⦂ B</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "x" ⦂ A , "y" ⦂ B ⊢ ƛ "z" ⇒ ` "x" · (` "y" · ` "z") ⦂ C</code></li>
 </ol>
 
-<h4 id="exercise-mul-type-recommended">Exercise <code class="highlighter-rouge">mul-type</code> (recommended)</h4>
+<h4 id="exercise-mul-type-recommended">Exercise <code class="language-plaintext highlighter-rouge">mul-type</code> (recommended)</h4>
 
-<p>Using the term <code class="highlighter-rouge">mul</code> you defined earlier, write out the derivation
+<p>Using the term <code class="language-plaintext highlighter-rouge">mul</code> you defined earlier, write out the derivation
 showing that it is well typed.</p>
 
 <pre class="Agda"><a id="42410" class="Comment">-- Your code goes here</a>
 </pre>
 
-<h4 id="exercise-mulᶜ-type">Exercise <code class="highlighter-rouge">mulᶜ-type</code></h4>
+<h4 id="exercise-mulᶜ-type">Exercise <code class="language-plaintext highlighter-rouge">mulᶜ-type</code></h4>
 
-<p>Using the term <code class="highlighter-rouge">mulᶜ</code> you defined earlier, write out the derivation
+<p>Using the term <code class="language-plaintext highlighter-rouge">mulᶜ</code> you defined earlier, write out the derivation
 showing that it is well typed.</p>
 
 <pre class="Agda"><a id="42570" class="Comment">-- Your code goes here</a>
@@ -1479,7 +1479,7 @@ showing that it is well typed.</p>
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⇒  U+21D2  RIGHTWARDS DOUBLE ARROW (\=&gt;)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⇒  U+21D2  RIGHTWARDS DOUBLE ARROW (\=&gt;)
 ƛ  U+019B  LATIN SMALL LETTER LAMBDA WITH STROKE (\Gl-)
 ·  U+00B7  MIDDLE DOT (\cdot)
 —  U+2014  EM DASH (\em)
@@ -1496,8 +1496,8 @@ showing that it is well typed.</p>
 😈  U+1F608  SMILING FACE WITH HORNS
 </code></pre></div></div>
 
-<p>We compose reduction <code class="highlighter-rouge">—→</code> from an em dash <code class="highlighter-rouge">—</code> and an arrow <code class="highlighter-rouge">→</code>.
-Similarly for reflexive and transitive closure <code class="highlighter-rouge">—↠</code>.</p>
+<p>We compose reduction <code class="language-plaintext highlighter-rouge">—→</code> from an em dash <code class="language-plaintext highlighter-rouge">—</code> and an arrow <code class="language-plaintext highlighter-rouge">→</code>.
+Similarly for reflexive and transitive closure <code class="language-plaintext highlighter-rouge">—↠</code>.</p>
 
   </div>
 
@@ -1552,6 +1552,18 @@ Similarly for reflexive and transitive closure <code class="highlighter-rouge">�
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

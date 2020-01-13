@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Call-by-name big-step evaluation | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Call-by-name big-step evaluation" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/CallByName/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/CallByName/","headline":"Call-by-name big-step evaluation","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Call-by-name big-step evaluation","url":"https://agda-zh.github.io/PLFA-zh/CallByName/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -90,10 +90,10 @@ calculus, at which point the proof is an easy corollary of properties
 of the denotational semantics.</p>
 
 <p>We present the call-by-name strategy as a relation between an an input
-term and an output value. Such a relation is often called a <em>big-step
-semantics</em>, written <code class="highlighter-rouge">M ⇓ V</code>, as it relates the input term <code class="highlighter-rouge">M</code> directly
-to the final result <code class="highlighter-rouge">V</code>, in contrast to the small-step reduction
-relation, <code class="highlighter-rouge">M —→ M′</code>, that maps <code class="highlighter-rouge">M</code> to another term <code class="highlighter-rouge">M′</code> in which a
+term and an <a id="992" class="Bound">o</a>utpu<a id="997" class="Bound">t</a> va<a id="1001" class="Bound">l</a>ue. <a id="1006" class="Function">Su</a>c<a id="1009" class="Bound">h</a> <a id="1011" class="Function">a</a> <a id="1013" class="Bound">r</a>e<a id="1015" class="Function">l</a>a<a id="1017" class="Bound">t</a>ion is often called a <em>big-step
+semantics</em>, written <code class="language-plaintext highlighter-rouge">M ⇓ V</code>, as it relates the input term <code class="language-plaintext highlighter-rouge">M</code> directly
+to the final result <code class="language-plaintext highlighter-rouge">V</code>, in contrast to the small-step reduction
+relation, <code class="language-plaintext highlighter-rouge">M —→ M′</code>, that maps <code class="language-plaintext highlighter-rouge">M</code> to another term <code class="language-plaintext highlighter-rouge">M′</code> in which a
 single sub-computation has been completed.</p>
 
 <h2 id="imports">Imports</h2>
@@ -112,8 +112,8 @@ single sub-computation has been completed.</p>
 </pre>
 <h2 id="environments">Environments</h2>
 
-<p>To handle variables and function application, there is the choice
-between using substitution, as in <code class="highlighter-rouge">—→</code>, or to use an <em>environment</em>.
+<p>To handle variables and function application, ther<a id="1869" class="Bound">e</a> is<a id="1873" class="Bound"> </a>the <a id="1878" class="Function">ch</a>o<a id="1881" class="Bound">i</a>c<a id="1883" class="Function">e</a>
+<a id="1885" class="Bound">b</a>etween using substitution, as in <code class="language-plaintext highlighter-rouge">—→</code>, or to use an <em>environment</em>.
 An environment in call-by-name is a map from variables to closures,
 that is, to terms paired with their environments. We choose to use
 environments instead of substitution because the point of the
@@ -144,8 +144,8 @@ environment.</p>
 <h2 id="big-step-evaluation">Big-step evaluation</h2>
 
 <p>The big-step semantics is represented as a ternary relation,
-written <code class="highlighter-rouge">γ ⊢ M ⇓ V</code>, where <code class="highlighter-rouge">γ</code> is the environment, <code class="highlighter-rouge">M</code> is the input
-term, and <code class="highlighter-rouge">V</code> is the result value.  A <em>value</em> is a closure whose term
+written <code class="language-plaintext highlighter-rouge">γ ⊢ M ⇓ V</code>, where <code class="language-plaintext highlighter-rouge">γ</code> is the environment, <code class="language-plaintext highlighter-rouge">M</code> is the input
+term, and <code class="language-plaintext highlighter-rouge">V</code> is the result value.  A <em>value</em> is a closure whose term
 is a lambda abstraction.</p>
 
 <pre class="Agda"><a id="3007" class="Keyword">data</a> <a id="_⊢_⇓_"></a><a id="3012" href="/PLFA-zh/CallByName/#3012" class="Datatype Operator">_⊢_⇓_</a> <a id="3018" class="Symbol">:</a> <a id="3020" class="Symbol">∀{</a><a id="3022" href="plfa.CallByName.html#3022" class="Bound">Γ</a><a id="3023" class="Symbol">}</a> <a id="3025" class="Symbol">→</a> <a id="3027" href="plfa.CallByName.html#2428" class="Function">ClosEnv</a> <a id="3035" href="plfa.CallByName.html#3022" class="Bound">Γ</a> <a id="3037" class="Symbol">→</a> <a id="3039" class="Symbol">(</a><a id="3040" href="plfa.CallByName.html#3022" class="Bound">Γ</a> <a id="3042" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="3044" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="3045" class="Symbol">)</a> <a id="3047" class="Symbol">→</a> <a id="3049" href="plfa.CallByName.html#2458" class="Datatype">Clos</a> <a id="3054" class="Symbol">→</a> <a id="3056" class="PrimitiveType">Set</a> <a id="3060" class="Keyword">where</a>
@@ -166,26 +166,26 @@ is a lambda abstraction.</p>
 </pre>
 <ul>
   <li>
-    <p>The <code class="highlighter-rouge">⇓-var</code> rule evaluates a variable by finding the associated
+    <p>The <code class="language-plaintext highlighter-rouge">⇓-var</code> rule evaluates a variable by finding the associated
 closure in the environment and then evaluating the closure.</p>
   </li>
   <li>
-    <p>The <code class="highlighter-rouge">⇓-lam</code> rule turns a lambda abstraction into a closure
+    <p>The <code class="language-plaintext highlighter-rouge">⇓-lam</code> rule turns a lambda abstraction into a closure
 by packaging it up with its environment.</p>
   </li>
   <li>
-    <p>The <code class="highlighter-rouge">⇓-app</code> rule performs function application by first evaluating
-the term <code class="highlighter-rouge">L</code> in operator position. If that produces a closure containing
-a lambda abstraction <code class="highlighter-rouge">ƛ N</code>, then we evaluate the body <code class="highlighter-rouge">N</code> in an
-environment extended with the argument <code class="highlighter-rouge">M</code>. Note that <code class="highlighter-rouge">M</code> is not
-evaluated in rule <code class="highlighter-rouge">⇓-app</code> because this is call-by-name and not
+    <p>The <code class="language-plaintext highlighter-rouge">⇓-app</code> rule performs function application by first evaluating
+the term <code class="language-plaintext highlighter-rouge">L</code> in operator position. If that produces a closure containing
+a lambda abstraction <code class="language-plaintext highlighter-rouge">ƛ N</code>, then we evaluate the body <code class="language-plaintext highlighter-rouge">N</code> in an
+environment extended with the argument <code class="language-plaintext highlighter-rouge">M</code>. Note that <code class="language-plaintext highlighter-rouge">M</code> is not
+evaluated in rule <code class="language-plaintext highlighter-rouge">⇓-app</code> because this is call-by-name and not
 call-by-value.</p>
   </li>
 </ul>
 
-<h4 id="exercise-big-step-eg">Exercise <code class="highlighter-rouge">big-step-eg</code></h4>
+<h4 id="exercise-big-step-eg">Exercise <code class="language-plaintext highlighter-rouge">big-step-eg</code></h4>
 
-<p>Show that <code class="highlighter-rouge">(ƛ ƛ # 1) · ((ƛ # 0 · # 0) · (ƛ # 0 · # 0))</code>
+<p>Show that <code class="language-plaintext highlighter-rouge">(ƛ ƛ # 1) · ((ƛ # 0 · # 0) · (ƛ # 0 · # 0))</code>
 terminates under big-step call-by-name evaluation.</p>
 
 <pre class="Agda"><a id="4273" class="Comment">-- Your code goes here</a>
@@ -193,8 +193,8 @@ terminates under big-step call-by-name evaluation.</p>
 
 <h2 id="the-big-step-semantics-is-deterministic">The big-step semantics is deterministic</h2>
 
-<p>If the big-step relation evaluates a term <code class="highlighter-rouge">M</code> to both <code class="highlighter-rouge">V</code> and
-<code class="highlighter-rouge">V′</code>, then <code class="highlighter-rouge">V</code> and <code class="highlighter-rouge">V′</code> must be identical. In other words, the
+<p>If the big-step relation evaluates a term <code class="language-plaintext highlighter-rouge">M</code> to both <code class="language-plaintext highlighter-rouge">V</code> and
+<code class="language-plaintext highlighter-rouge">V′</code>, then <code class="language-plaintext highlighter-rouge">V</code> and <code class="language-plaintext highlighter-rouge">V′</code> must be identical. In other words, the
 call-by-name relation is a partial function. The proof is a
 straightforward induction on the two big-step derivations.</p>
 
@@ -215,30 +215,30 @@ straightforward induction on the two big-step derivations.</p>
 <p>If big-step evaluation produces a value, then the input term can
 reduce to a lambda abstraction by beta reduction:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ∅' ⊢ M ⇓ clos (ƛ N′) δ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ∅' ⊢ M ⇓ clos (ƛ N′) δ
   -----------------------------
 → Σ[ N ∈ ∅ , ★ ⊢ ★ ] (M —↠ ƛ N)
 </code></pre></div></div>
 
 <p>The proof is by induction on the big-step derivation. As is often
 necessary, one must generalize the statement to get the induction to
-go through. In the case for <code class="highlighter-rouge">⇓-app</code> (function application), the
+go through. In the case for <code class="language-plaintext highlighter-rouge">⇓-app</code> (function application), the
 argument is added to the environment, so the environment becomes
 non-empty. The corresponding β reduction substitutes the argument into
 the body of the lambda abstraction.  So we generalize the lemma to
-allow an arbitrary environment <code class="highlighter-rouge">γ</code> and we add a premise that relates
-the environment <code class="highlighter-rouge">γ</code> to an equivalent substitution <code class="highlighter-rouge">σ</code>.</p>
+allow an arbitrary environment <code class="language-plaintext highlighter-rouge">γ</code> and we add a premise that relates
+the environment <code class="language-plaintext highlighter-rouge">γ</code> to an equivalent substitution <code class="language-plaintext highlighter-rouge">σ</code>.</p>
 
-<p>The case for <code class="highlighter-rouge">⇓-app</code> also requires that we strengthen the
-conclusion. In the case for <code class="highlighter-rouge">⇓-app</code> we have <code class="highlighter-rouge">γ ⊢ L ⇓ clos (λ N) δ</code> and
-the induction hypothesis gives us <code class="highlighter-rouge">L —↠ ƛ N′</code>, but we need to know
-that <code class="highlighter-rouge">N</code> and <code class="highlighter-rouge">N′</code> are equivalent. In particular, that <code class="highlighter-rouge">N ≡ subst τ N′</code>
-where <code class="highlighter-rouge">τ</code> is the substitution that is equivalent to <code class="highlighter-rouge">δ</code>. Therefore we
+<p>The case for <code class="language-plaintext highlighter-rouge">⇓-app</code> also requires that we strengthen the
+conclusion. In the case for <code class="language-plaintext highlighter-rouge">⇓-app</code> we have <code class="language-plaintext highlighter-rouge">γ ⊢ L ⇓ clos (λ N) δ</code> and
+the induction hypothesis gives us <code class="language-plaintext highlighter-rouge">L —↠ ƛ N′</code>, but we need to know
+that <code class="language-plaintext highlighter-rouge">N</code> and <code class="language-plaintext highlighter-rouge">N′</code> are equivalent. In particular, that <code class="language-plaintext highlighter-rouge">N ≡ subst τ N′</code>
+where <code class="language-plaintext highlighter-rouge">τ</code> is the substitution that is equivalent to <code class="language-plaintext highlighter-rouge">δ</code>. Therefore we
 expand the conclusion of the statement, stating that the results are
 equivalent.</p>
 
 <p>We make the two notions of equivalence precise by defining the
-following two mutually-recursive predicates <code class="highlighter-rouge">V ≈ M</code> and <code class="highlighter-rouge">γ ≈ₑ σ</code>.</p>
+following two mutually-recursive predicates <code class="language-plaintext highlighter-rouge">V ≈ M</code> and <code class="language-plaintext highlighter-rouge">γ ≈ₑ σ</code>.</p>
 
 <pre class="Agda"><a id="_≈_"></a><a id="6290" href="/PLFA-zh/CallByName/#6290" class="Function Operator">_≈_</a> <a id="6294" class="Symbol">:</a> <a id="6296" href="plfa.CallByName.html#2458" class="Datatype">Clos</a> <a id="6301" class="Symbol">→</a> <a id="6303" class="Symbol">(</a><a id="6304" href="/PLFA-zh/Untyped/#3152" class="InductiveConstructor">∅</a> <a id="6306" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="6308" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="6309" class="Symbol">)</a> <a id="6311" class="Symbol">→</a> <a id="6313" class="PrimitiveType">Set</a>
 <a id="_≈ₑ_"></a><a id="6317" href="/PLFA-zh/CallByName/#6317" class="Function Operator">_≈ₑ_</a> <a id="6322" class="Symbol">:</a> <a id="6324" class="Symbol">∀{</a><a id="6326" href="plfa.CallByName.html#6326" class="Bound">Γ</a><a id="6327" class="Symbol">}</a> <a id="6329" class="Symbol">→</a> <a id="6331" href="plfa.CallByName.html#2428" class="Function">ClosEnv</a> <a id="6339" href="plfa.CallByName.html#6326" class="Bound">Γ</a> <a id="6341" class="Symbol">→</a> <a id="6343" href="/PLFA-zh/Substitution/#2446" class="Function">Subst</a> <a id="6349" href="plfa.CallByName.html#6326" class="Bound">Γ</a> <a id="6351" href="/PLFA-zh/Untyped/#3152" class="InductiveConstructor">∅</a> <a id="6353" class="Symbol">→</a> <a id="6355" class="PrimitiveType">Set</a>
@@ -249,7 +249,7 @@ following two mutually-recursive predicates <code class="highlighter-rouge">V �
 </pre>
 <p>We can now state the main lemma:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If γ ⊢ M ⇓ V  and  γ ≈ₑ σ,
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If γ ⊢ M ⇓ V  and  γ ≈ₑ σ,
 then  subst σ M —↠ N  and  V ≈ N  for some N.
 </code></pre></div></div>
 
@@ -257,7 +257,7 @@ then  subst σ M —↠ N  and  V ≈ N  for some N.
 about equivalent environments and substitutions.</p>
 
 <p>The empty environment is equivalent to the identity substitution
-<code class="highlighter-rouge">ids</code>, which we import from Chapter <a href="/PLFA-zh/Substitution/">Substitution</a>.</p>
+<code class="language-plaintext highlighter-rouge">ids</code>, which we import from Chapter <a href="/PLFA-zh/Substitution/">Substitution</a>.</p>
 
 <pre class="Agda"><a id="≈ₑ-id"></a><a id="6839" href="/PLFA-zh/CallByName/#6839" class="Function">≈ₑ-id</a> <a id="6845" class="Symbol">:</a> <a id="6847" href="plfa.CallByName.html#2641" class="Function">∅&#39;</a> <a id="6850" href="plfa.CallByName.html#6317" class="Function Operator">≈ₑ</a> <a id="6853" href="/PLFA-zh/Substitution/#3087" class="Function">ids</a>
 <a id="6857" href="/PLFA-zh/CallByName/#6839" class="Function">≈ₑ-id</a> <a id="6863" class="Symbol">{()}</a>
@@ -276,14 +276,14 @@ the same term.</p>
 <a id="7179" href="/PLFA-zh/CallByName/#7122" class="Function">ext-subst</a><a id="7188" class="Symbol">{</a><a id="7189" href="plfa.CallByName.html#7189" class="Bound">Γ</a><a id="7190" class="Symbol">}{</a><a id="7192" href="plfa.CallByName.html#7192" class="Bound">Δ</a><a id="7193" class="Symbol">}</a> <a id="7195" href="plfa.CallByName.html#7195" class="Bound">σ</a> <a id="7197" href="plfa.CallByName.html#7197" class="Bound">N</a> <a id="7199" class="Symbol">{</a><a id="7200" href="plfa.CallByName.html#7200" class="Bound">A</a><a id="7201" class="Symbol">}</a> <a id="7203" class="Symbol">=</a> <a id="7205" href="/PLFA-zh/Untyped/#6921" class="Function">subst</a> <a id="7211" class="Symbol">(</a><a id="7212" href="plfa.Untyped.html#7333" class="Function">subst-zero</a> <a id="7223" href="plfa.CallByName.html#7197" class="Bound">N</a><a id="7224" class="Symbol">)</a> <a id="7226" href="https://agda.github.io/agda-stdlib/v1.1/Function.html#1099" class="Function Operator">∘</a> <a id="7228" href="plfa.Untyped.html#6629" class="Function">exts</a> <a id="7233" href="plfa.CallByName.html#7195" class="Bound">σ</a>
 </pre>
 <p>The next lemma we need to prove states that if you start with an
-equivalent environment and substitution <code class="highlighter-rouge">γ ≈ₑ σ</code>, extending them with
-an equivalent closure and term <code class="highlighter-rouge">c ≈ N</code> produces an equivalent
-environment and substitution: <code class="highlighter-rouge">(γ ,' V) ≈ₑ (ext-subst σ N)</code>,
-or equivalently, <code class="highlighter-rouge">(γ ,' V) x ≈ₑ (ext-subst σ N) x</code> for any
-variable <code class="highlighter-rouge">x</code>. The proof will be by induction on <code class="highlighter-rouge">x</code> and
+equivalent environment and substitution <code class="language-plaintext highlighter-rouge">γ ≈ₑ σ</code>, extending them with
+an equivalent closure and term <code class="language-plaintext highlighter-rouge">c ≈ N</code> produces an equivalent
+environment and substitution: <code class="language-plaintext highlighter-rouge">(γ ,' V) ≈ₑ (ext-subst σ N)</code>,
+or equivalently, <code class="language-plaintext highlighter-rouge">(γ ,' V) x ≈ₑ (ext-subst σ N) x</code> for any
+variable <code class="language-plaintext highlighter-rouge">x</code>. The proof will be by induction on <code class="language-plaintext highlighter-rouge">x</code> and
 for the induction step we need the following lemma,
-which states that applying the composition of <code class="highlighter-rouge">exts σ</code>
-and <code class="highlighter-rouge">subst-zero</code> to <code class="highlighter-rouge">S x</code> is the same as just <code class="highlighter-rouge">σ x</code>,
+which states that applying the composition of <code class="language-plaintext highlighter-rouge">exts σ</code>
+and <code class="language-plaintext highlighter-rouge">subst-zero</code> to <code class="language-plaintext highlighter-rouge">S x</code> is the same as just <code class="language-plaintext highlighter-rouge">σ x</code>,
 which is a corollary of a theorem in
 Chapter <a href="/PLFA-zh/Substitution/">Substitution</a>.</p>
 
@@ -292,7 +292,7 @@ Chapter <a href="/PLFA-zh/Substitution/">Substitution</a>.</p>
 <a id="8000" href="/PLFA-zh/CallByName/#7873" class="Function">subst-zero-exts</a> <a id="8016" class="Symbol">{</a><a id="8017" href="plfa.CallByName.html#8017" class="Bound">Γ</a><a id="8018" class="Symbol">}{</a><a id="8020" href="plfa.CallByName.html#8020" class="Bound">Δ</a><a id="8021" class="Symbol">}{</a><a id="8023" href="plfa.CallByName.html#8023" class="Bound">σ</a><a id="8024" class="Symbol">}{</a><a id="8026" href="plfa.CallByName.html#8026" class="Bound">B</a><a id="8027" class="Symbol">}{</a><a id="8029" href="plfa.CallByName.html#8029" class="Bound">M</a><a id="8030" class="Symbol">}{</a><a id="8032" href="plfa.CallByName.html#8032" class="Bound">x</a><a id="8033" class="Symbol">}</a> <a id="8035" class="Symbol">=</a>
    <a id="8040" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html#1308" class="Function">cong-app</a> <a id="8049" class="Symbol">(</a><a id="8050" href="/PLFA-zh/Substitution/#25239" class="Function">plfa.Substitution.subst-zero-exts-cons</a><a id="8088" class="Symbol">{</a><a id="8089" class="Argument">σ</a> <a id="8091" class="Symbol">=</a> <a id="8093" href="/PLFA-zh/CallByName/#8023" class="Bound">σ</a><a id="8094" class="Symbol">})</a> <a id="8097" class="Symbol">(</a><a id="8098" href="/PLFA-zh/Untyped/#3564" class="InductiveConstructor Operator">S</a> <a id="8100" href="plfa.CallByName.html#8032" class="Bound">x</a><a id="8101" class="Symbol">)</a>
 </pre>
-<p>So the proof of <code class="highlighter-rouge">≈ₑ-ext</code> is as follows.</p>
+<p>So the proof of <code class="language-plaintext highlighter-rouge">≈ₑ-ext</code> is as follows.</p>
 
 <pre class="Agda"><a id="≈ₑ-ext"></a><a id="8153" href="/PLFA-zh/CallByName/#8153" class="Function">≈ₑ-ext</a> <a id="8160" class="Symbol">:</a> <a id="8162" class="Symbol">∀</a> <a id="8164" class="Symbol">{</a><a id="8165" href="plfa.CallByName.html#8165" class="Bound">Γ</a><a id="8166" class="Symbol">}</a> <a id="8168" class="Symbol">{</a><a id="8169" href="plfa.CallByName.html#8169" class="Bound">γ</a> <a id="8171" class="Symbol">:</a> <a id="8173" href="plfa.CallByName.html#2428" class="Function">ClosEnv</a> <a id="8181" href="plfa.CallByName.html#8165" class="Bound">Γ</a><a id="8182" class="Symbol">}</a> <a id="8184" class="Symbol">{</a><a id="8185" href="plfa.CallByName.html#8185" class="Bound">σ</a> <a id="8187" class="Symbol">:</a> <a id="8189" href="/PLFA-zh/Substitution/#2446" class="Function">Subst</a> <a id="8195" href="plfa.CallByName.html#8165" class="Bound">Γ</a> <a id="8197" href="/PLFA-zh/Untyped/#3152" class="InductiveConstructor">∅</a><a id="8198" class="Symbol">}</a> <a id="8200" class="Symbol">{</a><a id="8201" href="plfa.CallByName.html#8201" class="Bound">V</a><a id="8202" class="Symbol">}</a> <a id="8204" class="Symbol">{</a><a id="8205" href="plfa.CallByName.html#8205" class="Bound">N</a> <a id="8207" class="Symbol">:</a> <a id="8209" href="plfa.Untyped.html#3152" class="InductiveConstructor">∅</a> <a id="8211" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="8213" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="8214" class="Symbol">}</a>
       <a id="8222" class="Symbol">→</a> <a id="8224" href="/PLFA-zh/CallByName/#8169" class="Bound">γ</a> <a id="8226" href="plfa.CallByName.html#6317" class="Function Operator">≈ₑ</a> <a id="8229" href="plfa.CallByName.html#8185" class="Bound">σ</a>  <a id="8232" class="Symbol">→</a>  <a id="8235" href="plfa.CallByName.html#8201" class="Bound">V</a> <a id="8237" href="plfa.CallByName.html#6290" class="Function Operator">≈</a> <a id="8239" href="plfa.CallByName.html#8205" class="Bound">N</a>
@@ -306,12 +306,12 @@ Chapter <a href="/PLFA-zh/Substitution/">Substitution</a>.</p>
 
 <ul>
   <li>
-    <p>If it is <code class="highlighter-rouge">Z</code>, then we immediately conclude using the
-premise <code class="highlighter-rouge">V ≈ N</code>.</p>
+    <p>If it is <code class="language-plaintext highlighter-rouge">Z</code>, then we immediately conclude using the
+premise <code class="language-plaintext highlighter-rouge">V ≈ N</code>.</p>
   </li>
   <li>
-    <p>If it is <code class="highlighter-rouge">S x</code>, then we rewrite using the
-<code class="highlighter-rouge">subst-zero-exts</code> lemma and use the premise <code class="highlighter-rouge">γ ≈ₑ σ</code>
+    <p>If it is <code class="language-plaintext highlighter-rouge">S x</code>, then we rewrite using the
+<code class="language-plaintext highlighter-rouge">subst-zero-exts</code> lemma and use the premise <code class="language-plaintext highlighter-rouge">γ ≈ₑ σ</code>
 to conclude.</p>
   </li>
 </ul>
@@ -324,9 +324,9 @@ composing the two substitutions and then applying them.</p>
             <a id="8966" class="Symbol">→</a> <a id="8968" href="/PLFA-zh/Untyped/#6921" class="Function">subst</a> <a id="8974" href="/PLFA-zh/CallByName/#8938" class="Bound">σ₂</a> <a id="8977" class="Symbol">(</a><a id="8978" href="plfa.Untyped.html#6921" class="Function">subst</a> <a id="8984" href="plfa.CallByName.html#8922" class="Bound">σ₁</a> <a id="8987" href="plfa.CallByName.html#8910" class="Bound">M</a><a id="8988" class="Symbol">)</a> <a id="8990" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="8992" href="plfa.Untyped.html#6921" class="Function">subst</a> <a id="8998" class="Symbol">(</a><a id="8999" href="plfa.Untyped.html#6921" class="Function">subst</a> <a id="9005" href="plfa.CallByName.html#8938" class="Bound">σ₂</a> <a id="9008" href="https://agda.github.io/agda-stdlib/v1.1/Function.html#1099" class="Function Operator">∘</a> <a id="9010" href="plfa.CallByName.html#8922" class="Bound">σ₁</a><a id="9012" class="Symbol">)</a> <a id="9014" href="plfa.CallByName.html#8910" class="Bound">M</a>
 <a id="9016" href="/PLFA-zh/CallByName/#8888" class="Function">sub-sub</a> <a id="9024" class="Symbol">{</a><a id="9025" class="Argument">M</a> <a id="9027" class="Symbol">=</a> <a id="9029" href="plfa.CallByName.html#9029" class="Bound">M</a><a id="9030" class="Symbol">}</a> <a id="9032" class="Symbol">=</a> <a id="9034" href="/PLFA-zh/Substitution/#23016" class="Function">plfa.Substitution.sub-sub</a> <a id="9060" class="Symbol">{</a><a id="9061" class="Argument">M</a> <a id="9063" class="Symbol">=</a> <a id="9065" href="plfa.CallByName.html#9029" class="Bound">M</a><a id="9066" class="Symbol">}</a>
 </pre>
-<p>We arive at the main lemma: if <code class="highlighter-rouge">M</code> big steps to a
-closure <code class="highlighter-rouge">V</code> in environment <code class="highlighter-rouge">γ</code>, and if <code class="highlighter-rouge">γ ≈ₑ σ</code>, then <code class="highlighter-rouge">subst σ M</code> reduces
-to some term <code class="highlighter-rouge">N</code> that is equivalent to <code class="highlighter-rouge">V</code>. We describe the proof
+<p>We arive at the main lemma: if <code class="language-plaintext highlighter-rouge">M</code> big steps to a
+closure <code class="language-plaintext highlighter-rouge">V</code> in environment <code class="language-plaintext highlighter-rouge">γ</code>, and if <code class="language-plaintext highlighter-rouge">γ ≈ₑ σ</code>, then <code class="language-plaintext highlighter-rouge">subst σ M</code> reduces
+to some term <code class="language-plaintext highlighter-rouge">N</code> that is equivalent to <code class="language-plaintext highlighter-rouge">V</code>. We describe the proof
 below.</p>
 
 <pre class="Agda"><a id="⇓→—↠×𝔹"></a><a id="9275" href="/PLFA-zh/CallByName/#9275" class="Function">⇓→—↠×𝔹</a> <a id="9282" class="Symbol">:</a> <a id="9284" class="Symbol">∀{</a><a id="9286" href="plfa.CallByName.html#9286" class="Bound">Γ</a><a id="9287" class="Symbol">}{</a><a id="9289" href="plfa.CallByName.html#9289" class="Bound">γ</a> <a id="9291" class="Symbol">:</a> <a id="9293" href="plfa.CallByName.html#2428" class="Function">ClosEnv</a> <a id="9301" href="plfa.CallByName.html#9286" class="Bound">Γ</a><a id="9302" class="Symbol">}{</a><a id="9304" href="plfa.CallByName.html#9304" class="Bound">σ</a> <a id="9306" class="Symbol">:</a> <a id="9308" href="/PLFA-zh/Substitution/#2446" class="Function">Subst</a> <a id="9314" href="plfa.CallByName.html#9286" class="Bound">Γ</a> <a id="9316" href="/PLFA-zh/Untyped/#3152" class="InductiveConstructor">∅</a><a id="9317" class="Symbol">}{</a><a id="9319" href="plfa.CallByName.html#9319" class="Bound">M</a> <a id="9321" class="Symbol">:</a> <a id="9323" href="plfa.CallByName.html#9286" class="Bound">Γ</a> <a id="9325" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="9327" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="9328" class="Symbol">}{</a><a id="9330" href="plfa.CallByName.html#9330" class="Bound">V</a> <a id="9332" class="Symbol">:</a> <a id="9334" href="plfa.CallByName.html#2458" class="Datatype">Clos</a><a id="9338" class="Symbol">}</a>
@@ -353,68 +353,68 @@ below.</p>
     <a id="10333" class="Keyword">let</a> <a id="10337" href="/PLFA-zh/CallByName/#10337" class="Bound">g</a> <a id="10339" class="Symbol">=</a> <a id="10341" href="/PLFA-zh/Untyped/#21544" class="Function">—↠-trans</a> <a id="10350" class="Symbol">(</a><a id="10351" href="plfa.Untyped.html#22728" class="Function">appL-cong</a> <a id="10361" class="Bound">σL—↠ƛτN</a><a id="10368" class="Symbol">)</a> <a id="10370" href="plfa.CallByName.html#10268" class="Bound">rs</a> <a id="10373" class="Keyword">in</a>
     <a id="10380" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="10382" href="/PLFA-zh/CallByName/#10155" class="Bound">N&#39;</a> <a id="10385" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="10387" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="10389" href="plfa.CallByName.html#10337" class="Bound">g</a> <a id="10391" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="10393" href="plfa.CallByName.html#10169" class="Bound">V≈N&#39;</a> <a id="10398" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="10400" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<p>The proof is by induction on <code class="highlighter-rouge">γ ⊢ M ⇓ V</code>. We have three cases
+<p>The proof is by induction on <code class="language-plaintext highlighter-rouge">γ ⊢ M ⇓ V</code>. We have three cases
 to consider.</p>
 
 <ul>
   <li>
-    <p>Case <code class="highlighter-rouge">⇓-var</code>.
-So we have <code class="highlighter-rouge">γ x ≡ clos L δ</code> and <code class="highlighter-rouge">δ ⊢ L ⇓ V</code>.
-We need to show that <code class="highlighter-rouge">subst σ x —↠ N</code> and <code class="highlighter-rouge">V ≈ N</code> for some <code class="highlighter-rouge">N</code>.
-The premise <code class="highlighter-rouge">γ ≈ₑ σ</code> tells us that <code class="highlighter-rouge">γ x ≈ σ x</code>, so <code class="highlighter-rouge">clos L δ ≈ σ x</code>.
-By the definition of <code class="highlighter-rouge">≈</code>, there exists a <code class="highlighter-rouge">τ</code> such that
-<code class="highlighter-rouge">δ ≈ₑ τ</code> and <code class="highlighter-rouge">σ x ≡ subst τ L </code>.
-Using <code class="highlighter-rouge">δ ⊢ L ⇓ V</code> and <code class="highlighter-rouge">δ ≈ₑ τ</code>,
+    <p>Case <code class="language-plaintext highlighter-rouge">⇓-var</code>.
+So we have <code class="language-plaintext highlighter-rouge">γ x ≡ clos L δ</code> and <code class="language-plaintext highlighter-rouge">δ ⊢ L ⇓ V</code>.
+We need to show that <code class="language-plaintext highlighter-rouge">subst σ x —↠ N</code> and <code class="language-plaintext highlighter-rouge">V ≈ N</code> for some <code class="language-plaintext highlighter-rouge">N</code>.
+The premise <code class="language-plaintext highlighter-rouge">γ ≈ₑ σ</code> tells us that <code class="language-plaintext highlighter-rouge">γ x ≈ σ x</code>, so <code class="language-plaintext highlighter-rouge">clos L δ ≈ σ x</code>.
+By the definition of <code class="language-plaintext highlighter-rouge">≈</code>, there exists a <code class="language-plaintext highlighter-rouge">τ</code> such that
+<code class="language-plaintext highlighter-rouge">δ ≈ₑ τ</code> and <code class="language-plaintext highlighter-rouge">σ x ≡ subst τ L </code>.
+Using <code class="language-plaintext highlighter-rouge">δ ⊢ L ⇓ V</code> and <code class="language-plaintext highlighter-rouge">δ ≈ₑ τ</code>,
 the induction hypothesis gives us
-<code class="highlighter-rouge">subst τ L —↠ N</code> and <code class="highlighter-rouge">V ≈ N</code> for some <code class="highlighter-rouge">N</code>.
-So we have shown that <code class="highlighter-rouge">subst σ x —↠ N</code> and <code class="highlighter-rouge">V ≈ N</code> for some <code class="highlighter-rouge">N</code>.</p>
+<code class="language-plaintext highlighter-rouge">subst τ L —↠ N</code> and <code class="language-plaintext highlighter-rouge">V ≈ N</code> for some <code class="language-plaintext highlighter-rouge">N</code>.
+So we have shown that <code class="language-plaintext highlighter-rouge">subst σ x —↠ N</code> and <code class="language-plaintext highlighter-rouge">V ≈ N</code> for some <code class="language-plaintext highlighter-rouge">N</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">⇓-lam</code>.
-We immediately have <code class="highlighter-rouge">subst σ (ƛ N) —↠ subst σ (ƛ N)</code>
-and <code class="highlighter-rouge">clos (subst σ (ƛ N)) γ ≈ subst σ (ƛ N)</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">⇓-lam</code>.
+We immediately have <code class="language-plaintext highlighter-rouge">subst σ (ƛ N) —↠ subst σ (ƛ N)</code>
+and <code class="language-plaintext highlighter-rouge">clos (subst σ (ƛ N)) γ ≈ subst σ (ƛ N)</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">⇓-app</code>.
-Using <code class="highlighter-rouge">γ ⊢ L ⇓ clos N δ</code> and <code class="highlighter-rouge">γ ≈ₑ σ</code>,
+    <p>Case <code class="language-plaintext highlighter-rouge">⇓-app</code>.
+Using <code class="language-plaintext highlighter-rouge">γ ⊢ L ⇓ clos N δ</code> and <code class="language-plaintext highlighter-rouge">γ ≈ₑ σ</code>,
 the induction hypothesis gives us</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst σ L —↠ ƛ subst (exts τ) N                                     (1)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst σ L —↠ ƛ subst (exts τ) N                                     (1)
 </code></pre></div>    </div>
 
-    <p>and <code class="highlighter-rouge">δ ≈ₑ τ</code> for some <code class="highlighter-rouge">τ</code>.
-From <code class="highlighter-rouge">γ≈ₑσ</code> we have <code class="highlighter-rouge">clos M γ ≈ subst σ M</code>.
-Then with <code class="highlighter-rouge">(δ ,' clos M γ) ⊢ N ⇓ V</code>,
-the induction hypothesis gives us <code class="highlighter-rouge">V ≈ N'</code> and</p>
+    <p>and <code class="language-plaintext highlighter-rouge">δ ≈ₑ τ</code> for some <code class="language-plaintext highlighter-rouge">τ</code>.
+From <code class="language-plaintext highlighter-rouge">γ≈ₑσ</code> we have <code class="language-plaintext highlighter-rouge">clos M γ ≈ subst σ M</code>.
+Then with <code class="language-plaintext highlighter-rouge">(δ ,' clos M γ) ⊢ N ⇓ V</code>,
+the induction hypothesis gives us <code class="language-plaintext highlighter-rouge">V ≈ N'</code> and</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst (subst (subst-zero (subst σ M)) ∘ (exts τ)) N —↠ N'         (2)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst (subst (subst-zero (subst σ M)) ∘ (exts τ)) N —↠ N'         (2)
 </code></pre></div>    </div>
 
-    <p>Meanwhile, by <code class="highlighter-rouge">β</code>, we have</p>
+    <p>Meanwhile, by <code class="language-plaintext highlighter-rouge">β</code>, we have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ subst (exts τ) N) · subst σ M
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ subst (exts τ) N) · subst σ M
   —→ subst (subst-zero (subst σ M)) (subst (exts τ) N)
 </code></pre></div>    </div>
 
-    <p>which is the same as the following, by <code class="highlighter-rouge">sub-sub</code>.</p>
+    <p>which is the same as the following, by <code class="language-plaintext highlighter-rouge">sub-sub</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ subst (exts τ) N) · subst σ M
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ subst (exts τ) N) · subst σ M
   —→ subst (subst (subst-zero (subst σ M)) ∘ exts τ) N              (3)
 </code></pre></div>    </div>
 
     <p>Using (3) and (2) we have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ subst (exts τ) N) · subst σ M —↠ N'                             (4)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (ƛ subst (exts τ) N) · subst σ M —↠ N'                             (4)
 </code></pre></div>    </div>
 
     <p>From (1) we have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst σ L · subst σ M —↠ (ƛ subst (exts τ) N) · subst σ M
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst σ L · subst σ M —↠ (ƛ subst (exts τ) N) · subst σ M
 </code></pre></div>    </div>
 
     <p>which we combine with (4) to conclude that</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst σ L · subst σ M —↠ N'
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  subst σ L · subst σ M —↠ N'
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -432,11 +432,11 @@ of the equivalence between the big-step semantics and beta reduction.</p>
     <a id="12498" class="Keyword">rewrite</a> <a id="12506" href="/PLFA-zh/CallByName/#6957" class="Function">sub-id</a><a id="12512" class="Symbol">{</a><a id="12513" class="Argument">M</a> <a id="12515" class="Symbol">=</a> <a id="12517" class="Bound">M</a><a id="12518" class="Symbol">}</a> <a id="12520" class="Symbol">|</a> <a id="12522" href="plfa.CallByName.html#12482" class="Bound">eq2</a> <a id="12526" class="Symbol">=</a>
     <a id="12532" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="12534" href="/PLFA-zh/Untyped/#6921" class="Function">subst</a> <a id="12540" class="Symbol">(</a><a id="12541" href="plfa.Untyped.html#6629" class="Function">exts</a> <a id="12546" href="/PLFA-zh/CallByName/#12472" class="Bound">σ</a><a id="12547" class="Symbol">)</a> <a id="12549" class="Bound">N′</a> <a id="12552" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="12554" href="plfa.CallByName.html#12465" class="Bound">rs</a> <a id="12557" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<h4 id="exercise-big-alt-implies-multi">Exercise <code class="highlighter-rouge">big-alt-implies-multi</code></h4>
+<h4 id="exercise-big-alt-implies-multi">Exercise <code class="language-plaintext highlighter-rouge">big-alt-implies-multi</code></h4>
 
-<p>Formulate an alternative big-step semantics, of the form <code class="highlighter-rouge">M ↓ N</code>,
+<p>Formulate an alternative big-step semantics, of the form <code class="language-plaintext highlighter-rouge">M ↓ N</code>,
 for call-by-name that uses substitution instead of environments.
-Prove that <code class="highlighter-rouge">M ↓ N</code> implies <code class="highlighter-rouge">M —↠ N</code>.</p>
+Prove that <code class="language-plaintext highlighter-rouge">M ↓ N</code> implies <code class="language-plaintext highlighter-rouge">M —↠ N</code>.</p>
 
 <pre class="Agda"><a id="12776" class="Comment">-- Your code goes here</a>
 </pre>
@@ -445,7 +445,7 @@ Prove that <code class="highlighter-rouge">M ↓ N</code> implies <code class="h
 <p>The proof of the backward direction, that beta reduction to a lambda
 implies that the call-by-name semantics produces a result, is more
 difficult to prove. The difficulty stems from reduction proceeding
-underneath lambda abstractions via the <code class="highlighter-rouge">ζ</code> rule. The call-by-name
+underneath lambda abstractions via the <code class="language-plaintext highlighter-rouge">ζ</code> rule. The call-by-name
 semantics does not reduce under lambda, so a straightforward proof by
 induction on the reduction sequence is impossible.  In the article
 <em>Call-by-name, call-by-value, and the λ-calculus</em>, Plotkin proves the
@@ -454,10 +454,10 @@ first step uses a classic technique called Curry-Feys standardisation.
 It relies on the notion of <em>standard reduction sequence</em>, which acts
 as a half-way point between full beta reduction and call-by-name by
 expanding call-by-name to also include reduction underneath
-lambda. Plotkin proves that <code class="highlighter-rouge">M</code> reduces to <code class="highlighter-rouge">L</code> if and only if <code class="highlighter-rouge">M</code> is
-related to <code class="highlighter-rouge">L</code> by a standard reduction sequence.</p>
+lambda. Plotkin proves that <code class="language-plaintext highlighter-rouge">M</code> reduces to <code class="language-plaintext highlighter-rouge">L</code> if and only if <code class="language-plaintext highlighter-rouge">M</code> is
+related to <code class="language-plaintext highlighter-rouge">L</code> by a standard reduction sequence.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Theorem 1 (Standardisation)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Theorem 1 (Standardisation)
 `M —↠ L` if and only if `M` goes to `L` via a standard reduction sequence.
 </code></pre></div></div>
 
@@ -465,25 +465,25 @@ related to <code class="highlighter-rouge">L</code> by a standard reduction sequ
 call-by-name and uses the above theorem to prove that beta reduction
 and left reduction are equivalent in the following sense.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Corollary 1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Corollary 1
 `M —↠ ƛ N` if and only if `M` goes to `ƛ N′`, for some `N′`, by left reduction.
 </code></pre></div></div>
 
 <p>The second step of the proof connects left reduction to call-by-name
 evaluation.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Theorem 2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Theorem 2
 `M` left reduces to `ƛ N` if and only if `⊢ M ⇓ ƛ N`.
 </code></pre></div></div>
 
 <p>(Plotkin’s call-by-name evaluator uses substitution instead of
-environments, which explains why the environment is omitted in <code class="highlighter-rouge">⊢ M ⇓
+environments, which explains why the environment is omitted in <code class="language-plaintext highlighter-rouge">⊢ M ⇓
 ƛ N</code> in the above theorem statement.)</p>
 
 <p>Putting Corollary 1 and Theorem 2 together, Plotkin proves that
 call-by-name evaluation is equivalent to beta reduction.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Corollary 2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Corollary 2
 `M —↠ ƛ N` if and only if `⊢ M ⇓ ƛ N′` for some `N′`.
 </code></pre></div></div>
 
@@ -502,7 +502,7 @@ soundness and adequacy of the denotational semantics.</p>
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>≈  U+2248  ALMOST EQUAL TO (\~~ or \approx)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>≈  U+2248  ALMOST EQUAL TO (\~~ or \approx)
 ₑ  U+2091  LATIN SUBSCRIPT SMALL LETTER E (\_e)
 ⊢  U+22A2  RIGHT TACK (\|- or \vdash)
 ⇓  U+21DB  DOWNWARDS DOUBLE ARROW (\d= or \Downarrow)
@@ -561,6 +561,18 @@ soundness and adequacy of the denotational semantics.</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

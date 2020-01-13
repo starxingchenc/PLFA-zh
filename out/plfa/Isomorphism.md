@@ -20,9 +20,7 @@ satisfy properties akin to associativity, commutativity, and
 distributivity.
 {:/}
 
-本部分介绍同构（Isomorphism）与嵌入（Embedding）。
-同构可以断言两个类型是相等的，嵌入可以断言一个类型比另一个类型小。
-我们会在下一章中使用同构来展示类型上的运算，例如积或者和，满足类似于交换律、结合律和分配律的性质。
+本部分介绍同构（Isomorphism）与嵌入（Embedding）。同构可以断言两个类型是相等的，嵌入可以断言一个类型比另一个类型小。我们会在下一章中使用同构来展示类型上的运算，例如积或者和，满足类似于交换律、结合律和分配律的性质。
 
 
 {::comment}
@@ -110,8 +108,7 @@ need for the writer to remember to declare it in advance, or for the
 reader to search for the definition in the code.
 {:/}
 
-往往使用匿名的 lambda 表达式比使用带名字的函数要方便：它避免了冗长的类型声明；
-其定义出现在其使用的地方，所以在书写时不需要记得提前声明，在阅读时不需要上下搜索函数定义。
+往往使用匿名的 lambda 表达式比使用带名字的函数要方便：它避免了冗长的类型声明；其定义出现在其使用的地方，所以在书写时不需要记得提前声明，在阅读时不需要上下搜索函数定义。
 
 
 {::comment}
@@ -135,8 +132,7 @@ then applies `g`.  An equivalent definition, exploiting lambda
 expressions, is as follows:
 {:/}
 
-`g ∘ f` 是一个函数，先使用函数 `f`，再使用函数 `g`。
-一个等价的定义，使用 lambda 表达式，如下：
+`g ∘ f` 是一个函数，先使用函数 `f`，再使用函数 `g`。一个等价的定义，使用 lambda 表达式，如下：
 
 {% raw %}<pre class="Agda"><a id="_∘′_"></a><a id="3013" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#3013" class="Function Operator">_∘′_</a> <a id="3018" class="Symbol">:</a> <a id="3020" class="Symbol">∀</a> <a id="3022" class="Symbol">{</a><a id="3023" href="plfa.Isomorphism.html#3023" class="Bound">A</a> <a id="3025" href="plfa.Isomorphism.html#3025" class="Bound">B</a> <a id="3027" href="plfa.Isomorphism.html#3027" class="Bound">C</a> <a id="3029" class="Symbol">:</a> <a id="3031" class="PrimitiveType">Set</a><a id="3034" class="Symbol">}</a> <a id="3036" class="Symbol">→</a> <a id="3038" class="Symbol">(</a><a id="3039" href="plfa.Isomorphism.html#3025" class="Bound">B</a> <a id="3041" class="Symbol">→</a> <a id="3043" href="plfa.Isomorphism.html#3027" class="Bound">C</a><a id="3044" class="Symbol">)</a> <a id="3046" class="Symbol">→</a> <a id="3048" class="Symbol">(</a><a id="3049" href="plfa.Isomorphism.html#3023" class="Bound">A</a> <a id="3051" class="Symbol">→</a> <a id="3053" href="plfa.Isomorphism.html#3025" class="Bound">B</a><a id="3054" class="Symbol">)</a> <a id="3056" class="Symbol">→</a> <a id="3058" class="Symbol">(</a><a id="3059" href="plfa.Isomorphism.html#3023" class="Bound">A</a> <a id="3061" class="Symbol">→</a> <a id="3063" href="plfa.Isomorphism.html#3027" class="Bound">C</a><a id="3064" class="Symbol">)</a>
 <a id="3066" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#3066" class="Bound">g</a> <a id="3068" href="plfa.Isomorphism.html#3013" class="Function Operator">∘′</a> <a id="3071" href="plfa.Isomorphism.html#3071" class="Bound">f</a>  <a id="3074" class="Symbol">=</a>  <a id="3077" class="Symbol">λ</a> <a id="3079" href="plfa.Isomorphism.html#3079" class="Bound">x</a> <a id="3081" class="Symbol">→</a> <a id="3083" href="plfa.Isomorphism.html#3066" class="Bound">g</a> <a id="3085" class="Symbol">(</a><a id="3086" href="plfa.Isomorphism.html#3071" class="Bound">f</a> <a id="3088" href="plfa.Isomorphism.html#3079" class="Bound">x</a><a id="3089" class="Symbol">)</a>
@@ -156,8 +152,7 @@ converse of `cong-app`, as introduced
 [earlier]({{ site.baseurl }}/Equality/#cong).
 {:/}
 
-外延性断言了区分函数的唯一方法是应用它们。如果两个函数作用在相同的参数上永远返回相同的结果，
-那么两个函数相同。这是 `cong-app` 的逆命题，在[之前]({{ site.baseurl }}/Equality/#cong)有所介绍。
+外延性断言了区分函数的唯一方法是应用它们。如果两个函数作用在相同的参数上永远返回相同的结果，那么两个函数相同。这是 `cong-app` 的逆命题，在[之前]({{ site.baseurl }}/Equality/#cong)有所介绍。
 
 {::comment}
 Agda does not presume extensionality, but we can postulate that it holds:
@@ -197,8 +192,7 @@ Applying commutativity, it is easy to show that both operators always
 return the same result given the same arguments:
 {:/}
 
-通过使用交换律，我们可以简单地证明两个运算符在给定相同参数的情况下，
-会返回相同的值：
+通过使用交换律，我们可以简单地证明两个运算符在给定相同参数的情况下，会返回相同的值：
 
 {% raw %}<pre class="Agda"><a id="same-app"></a><a id="4613" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#4613" class="Function">same-app</a> <a id="4622" class="Symbol">:</a> <a id="4624" class="Symbol">∀</a> <a id="4626" class="Symbol">(</a><a id="4627" href="plfa.Isomorphism.html#4627" class="Bound">m</a> <a id="4629" href="plfa.Isomorphism.html#4629" class="Bound">n</a> <a id="4631" class="Symbol">:</a> <a id="4633" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="4634" class="Symbol">)</a> <a id="4636" class="Symbol">→</a> <a id="4638" href="plfa.Isomorphism.html#4627" class="Bound">m</a> <a id="4640" href="plfa.Isomorphism.html#4364" class="Function Operator">+′</a> <a id="4643" href="plfa.Isomorphism.html#4629" class="Bound">n</a> <a id="4645" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="4647" href="plfa.Isomorphism.html#4627" class="Bound">m</a> <a id="4649" href="Agda.Builtin.Nat.html#298" class="Primitive Operator">+</a> <a id="4651" href="plfa.Isomorphism.html#4629" class="Bound">n</a>
 <a id="4653" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#4613" class="Function">same-app</a> <a id="4662" href="plfa.Isomorphism.html#4662" class="Bound">m</a> <a id="4664" href="plfa.Isomorphism.html#4664" class="Bound">n</a> <a id="4666" class="Keyword">rewrite</a> <a id="4674" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#11911" class="Function">+-comm</a> <a id="4681" href="plfa.Isomorphism.html#4662" class="Bound">m</a> <a id="4683" href="plfa.Isomorphism.html#4664" class="Bound">n</a> <a id="4685" class="Symbol">=</a> <a id="4687" href="plfa.Isomorphism.html#4708" class="Function">helper</a> <a id="4694" href="plfa.Isomorphism.html#4662" class="Bound">m</a> <a id="4696" href="plfa.Isomorphism.html#4664" class="Bound">n</a>
@@ -247,8 +241,7 @@ Two sets are isomorphic if they are in one-to-one correspondence.
 Here is a formal definition of isomorphism:
 {:/}
 
-如果两个集合有一一对应的关系，那么它们是同构的。
-下面是同构的正式定义：
+如果两个集合有一一对应的关系，那么它们是同构的。下面是同构的正式定义：
 
 {% raw %}<pre class="Agda"><a id="5824" class="Keyword">infix</a> <a id="5830" class="Number">0</a> <a id="5832" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">_≃_</a>
 <a id="5836" class="Keyword">record</a> <a id="_≃_"></a><a id="5843" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#5843" class="Record Operator">_≃_</a> <a id="5847" class="Symbol">(</a><a id="5848" href="plfa.Isomorphism.html#5848" class="Bound">A</a> <a id="5850" href="plfa.Isomorphism.html#5850" class="Bound">B</a> <a id="5852" class="Symbol">:</a> <a id="5854" class="PrimitiveType">Set</a><a id="5857" class="Symbol">)</a> <a id="5859" class="Symbol">:</a> <a id="5861" class="PrimitiveType">Set</a> <a id="5865" class="Keyword">where</a>
@@ -281,8 +274,7 @@ The declaration `open _≃_` makes available the names `to`, `from`,
 `from∘to`, and `to∘from`, otherwise we would need to write `_≃_.to` and so on.
 {:/}
 
-具体来说，第三条断言了 `from ∘ to` 是恒等函数，第四条断言了 `to ∘ from` 是恒等函数，
-它们的名称由此得来。声明 `open _≃_` 使得 `to`、`from`、`from∘to` 和 `to∘from`
+具体来说，第三条断言了 `from ∘ to` 是恒等函数，第四条断言了 `to ∘ from` 是恒等函数，它们的名称由此得来。声明 `open _≃_` 使得 `to`、`from`、`from∘to` 和 `to∘from`
 在当前作用域内可用，否则我们需要使用类似 `_≃_.to` 的写法。
 
 {::comment}
@@ -352,8 +344,7 @@ and transitive.  To show isomorphism is reflexive, we take both `to`
 and `from` to be the identity function:
 {:/}
 
-同构是一个等价关系。这意味着它自反、对称、传递。要证明同构是自反的，我们用恒等函数
-作为 `to` 和 `from`：
+同构是一个等价关系。这意味着它自反、对称、传递。要证明同构是自反的，我们用恒等函数作为 `to` 和 `from`：
 
 {% raw %}<pre class="Agda"><a id="≃-refl"></a><a id="8555" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#8555" class="Function">≃-refl</a> <a id="8562" class="Symbol">:</a> <a id="8564" class="Symbol">∀</a> <a id="8566" class="Symbol">{</a><a id="8567" href="plfa.Isomorphism.html#8567" class="Bound">A</a> <a id="8569" class="Symbol">:</a> <a id="8571" class="PrimitiveType">Set</a><a id="8574" class="Symbol">}</a>
     <a id="8580" class="Comment">-----</a>
@@ -449,8 +440,7 @@ of equality for isomorphism.  We omit the form that corresponds to `_≡⟨⟩_`
 trivial isomorphisms arise far less often than trivial equalities:
 {:/}
 
-我们可以直接的构造一种同构的相等性论证方法。我们对之前的相等性论证定义进行修改。
-我们省略 `_≡⟨⟩_` 的定义，因为简单的同构比简单的相等性出现的少很多：
+我们可以直接的构造一种同构的相等性论证方法。我们对之前的相等性论证定义进行修改。我们省略 `_≡⟨⟩_` 的定义，因为简单的同构比简单的相等性出现的少很多：
 
 {% raw %}<pre class="Agda"><a id="10980" class="Keyword">module</a> <a id="≃-Reasoning"></a><a id="10987" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#10987" class="Module">≃-Reasoning</a> <a id="10999" class="Keyword">where</a>
 
@@ -493,8 +483,7 @@ included in the second; or, equivalently, that there is a many-to-one
 correspondence between the second type and the first.
 {:/}
 
-我们同时也需要*嵌入*的概念，它是同构的弱化概念。同构要求证明两个类型之间的一一对应，
-而嵌入只需要第一种类型涵盖在第二种类型内，所以两个类型之间有一对多的对应关系。
+我们同时也需要*嵌入*的概念，它是同构的弱化概念。同构要求证明两个类型之间的一一对应，而嵌入只需要第一种类型涵盖在第二种类型内，所以两个类型之间有一对多的对应关系。
 
 {::comment}
 Here is the formal definition of embedding:
@@ -555,8 +544,7 @@ embedding functions correspond, then they are isomorphic.  This is a
 weak form of anti-symmetry:
 {:/}
 
-显而易见的是，如果两个类型相互嵌入，且其嵌入函数相互对应，那么它们是同构的。
-这个一种反对称性的弱化形式：
+显而易见的是，如果两个类型相互嵌入，且其嵌入函数相互对应，那么它们是同构的。这个一种反对称性的弱化形式：
 
 {% raw %}<pre class="Agda"><a id="≲-antisym"></a><a id="13295" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#13295" class="Function">≲-antisym</a> <a id="13305" class="Symbol">:</a> <a id="13307" class="Symbol">∀</a> <a id="13309" class="Symbol">{</a><a id="13310" href="plfa.Isomorphism.html#13310" class="Bound">A</a> <a id="13312" href="plfa.Isomorphism.html#13312" class="Bound">B</a> <a id="13314" class="Symbol">:</a> <a id="13316" class="PrimitiveType">Set</a><a id="13319" class="Symbol">}</a>
   <a id="13323" class="Symbol">→</a> <a id="13325" class="Symbol">(</a><a id="13326" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#13326" class="Bound">A≲B</a> <a id="13330" class="Symbol">:</a> <a id="13332" href="plfa.Isomorphism.html#13310" class="Bound">A</a> <a id="13334" href="plfa.Isomorphism.html#11919" class="Record Operator">≲</a> <a id="13336" href="plfa.Isomorphism.html#13312" class="Bound">B</a><a id="13337" class="Symbol">)</a>
@@ -589,8 +577,7 @@ the `to` and `from` components from the two embeddings to obtain
 the right inverse of the isomorphism.
 {:/}
 
-前三部分可以直接从嵌入中得来，最后一部分我们可以把 `B ≲ A` 中的左逆和
-两个嵌入中的 `to` 与 `from` 部分的相等性来获得同构中的右逆。
+前三部分可以直接从嵌入中得来，最后一部分我们可以把 `B ≲ A` 中的左逆和两个嵌入中的 `to` 与 `from` 部分的相等性来获得同构中的右逆。
 
 
 {::comment}
@@ -699,8 +686,7 @@ define a datatype of bitstrings representing natural numbers:
 {:/}
 
 回忆练习 [Bin][plfa.Naturals#Bin] 和
-[Bin-laws][plfa.Induction#Bin-laws] 中，
-我们定义了一个数据类型来表示二进制比特串来表示自然数：
+[Bin-laws][plfa.Induction#Bin-laws] 中，我们定义了一个数据类型来表示二进制比特串来表示自然数：
 
 {% raw %}<pre class="Agda"><a id="15924" class="Keyword">data</a> <a id="Bin"></a><a id="15929" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#15929" class="Datatype">Bin</a> <a id="15933" class="Symbol">:</a> <a id="15935" class="PrimitiveType">Set</a> <a id="15939" class="Keyword">where</a>
   <a id="Bin.nil"></a><a id="15947" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Isomorphism.md %}{% raw %}#15947" class="InductiveConstructor">nil</a> <a id="15951" class="Symbol">:</a> <a id="15953" href="plfa.Isomorphism.html#15929" class="Datatype">Bin</a>
@@ -766,9 +752,7 @@ convenient, since they depend on a nested record structure and are
 parameterised with regard to an arbitrary notion of equivalence.
 {:/}
 
-标准库中的 `_↔_` 和 `_↞_` 分别对应了我们定义的 `_≃_` 和 `_≲_`，
-但是标准库中的定义使用起来不如我们的定义方便，因为标准库中的定义依赖于一个嵌套的记录结构，
-并可以由任何相等性的记法来参数化。
+标准库中的 `_↔_` 和 `_↞_` 分别对应了我们定义的 `_≃_` 和 `_≲_`，但是标准库中的定义使用起来不如我们的定义方便，因为标准库中的定义依赖于一个嵌套的记录结构，并可以由任何相等性的记法来参数化。
 
 
 ## Unicode

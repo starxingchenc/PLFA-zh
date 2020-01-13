@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lists: 列表与高阶函数 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Lists: 列表与高阶函数" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Lists/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Lists/","headline":"Lists: 列表与高阶函数","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Lists: 列表与高阶函数","url":"https://agda-zh.github.io/PLFA-zh/Lists/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -79,8 +79,7 @@
 of many of the techniques we have developed so far, and provides
 examples of polymorphic types and higher-order functions. -->
 
-<p>本章节讨论列表（List）数据类型。我们用列表作为例子，来使用我们之前学习的技巧。同时，
-列表也给我们带来多态类型（Polymorphic Types）和高阶函数（Higher-order Functions）的例子。</p>
+<p>本章节讨论列表（List）数据类型。我们用列表作为例子，来使用我们之前学习的技巧。同时，列表也给我们带来多态类型（Polymorphic Types）和高阶函数（Higher-order Functions）的例子。</p>
 
 <!-- ## Imports -->
 
@@ -120,10 +119,10 @@ _cons_, short for _constructor_) takes a value of type `A` and a value
 of type `List A` and returns a value of type `List A`.  Operator `_∷_`
 has precedence level 5 and associates to the right. -->
 
-<p>我们来仔细研究这个定义。如果 <code class="highlighter-rouge">A</code> 是个集合，那么 <code class="highlighter-rouge">List A</code> 也是一个集合。接下来的两行告诉我们
-<code class="highlighter-rouge">[]</code> （读作 <em>nil</em>）是一个类型为 <code class="highlighter-rouge">A</code> 的列表（通常被叫做<em>空</em>列表），<code class="highlighter-rouge">_∷_</code>（读作 <em>cons</em>，是
-<em>constructor</em> 的简写）取一个类型为 <code class="highlighter-rouge">A</code> 的值，和一个类型为 <code class="highlighter-rouge">List A</code> 的值，返回一个类型为
-<code class="highlighter-rouge">List A</code> 的值。<code class="highlighter-rouge">_∷_</code> 运算符的优先级是 5，向右结合。</p>
+<p>我们来仔细研究这个定义。如果 <code class="language-plaintext highlighter-rouge">A</code> 是个集合，那么 <code class="language-plaintext highlighter-rouge">List A</code> 也是一个集合。接下来的两行告诉我们
+<code class="language-plaintext highlighter-rouge">[]</code> （读作 <em>nil</em>）是一个类型为 <code class="language-plaintext highlighter-rouge">A</code> 的列表（通常被叫做<em>空</em>列表），<code class="language-plaintext highlighter-rouge">_∷_</code>（读作 <em>cons</em>，是
+<em>constructor</em> 的简写）取一个类型为 <code class="language-plaintext highlighter-rouge">A</code> 的值，和一个类型为 <code class="language-plaintext highlighter-rouge">List A</code> 的值，返回一个类型为
+<code class="language-plaintext highlighter-rouge">List A</code> 的值。<code class="language-plaintext highlighter-rouge">_∷_</code> 运算符的优先级是 5，向右结合。</p>
 
 <!-- For example, -->
 
@@ -139,9 +138,7 @@ and `1 ∷ (2 ∷ [])` is a list of the remaining elements, called the
 _tail_. A list is a strange beast: it has a head and a tail,
 nothing in between, and the tail is itself another list! -->
 
-<p>表示了一个三个自然数的列表。因为 <code class="highlighter-rouge">_∷_</code> 向右结合，这一项被解析成 <code class="highlighter-rouge">0 ∷ (1 ∷ (2 ∷ []))</code>。
-在这里，<code class="highlighter-rouge">0</code> 是列表的第一个元素，称之为<em>头</em>（Head），<code class="highlighter-rouge">1 ∷ (2 ∷ [])</code> 是剩下元素的列表，
-称之为<em>尾</em>（Tail）。列表是一个奇怪的怪兽：它有一头一尾，中间没有东西，然而它的尾巴又是一个列表！</p>
+<p>表示了一个三个自然数的列表。因为 <code class="language-plaintext highlighter-rouge">_∷_</code> 向右结合，这一项被解析成 <code class="language-plaintext highlighter-rouge">0 ∷ (1 ∷ (2 ∷ []))</code>。在这里，<code class="language-plaintext highlighter-rouge">0</code> 是列表的第一个元素，称之为<em>头</em>（Head），<code class="language-plaintext highlighter-rouge">1 ∷ (2 ∷ [])</code> 是剩下元素的列表，称之为<em>尾</em>（Tail）。列表是一个奇怪的怪兽：它有一头一尾，中间没有东西，然而它的尾巴又是一个列表！</p>
 
 <!-- As we've seen, parameterised types can be translated to
 indexed types. The definition above is equivalent to the following: -->
@@ -168,14 +165,14 @@ Thus, our example list could also be written: -->
 
 <p>包含下面的编译器指令</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{-# BUILTIN LIST List #-}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{-# BUILTIN LIST List #-}
 </code></pre></div></div>
 
 <!-- tells Agda that the type `List` corresponds to the Haskell type
 list, and the constructors `[]` and `_∷_` correspond to nil and
 cons respectively, allowing a more efficient representation of lists. -->
 
-<p>告诉 Agda，<code class="highlighter-rouge">List</code> 类型对应了 Haskell 的列表类型，构造子 <code class="highlighter-rouge">[]</code> 和 <code class="highlighter-rouge">_∷_</code>
+<p>告诉 Agda，<code class="language-plaintext highlighter-rouge">List</code> 类型对应了 Haskell 的列表类型，构造子 <code class="language-plaintext highlighter-rouge">[]</code> 和 <code class="language-plaintext highlighter-rouge">_∷_</code>
 分别代表了 nil 和 cons，这可以让列表的表示更加的有效率。</p>
 
 <!-- ## List syntax -->
@@ -199,8 +196,8 @@ the third line tells us that `[ x , y , z ]` is equivalent to
 a pattern on the left-hand side of an equation, or a term
 on the right-hand side of an equation. -->
 
-<p>这是我们第一次使用模式声明。举例来说，第三行告诉我们 <code class="highlighter-rouge">[ x , y , z ]</code> 等价于
-<code class="highlighter-rouge">x ∷ y ∷ z ∷ []</code>。前者可以在模式或者等式的左手边，或者是等式右手边的项中出现。</p>
+<p>这是我们第一次使用模式声明。举例来说，第三行告诉我们 <code class="language-plaintext highlighter-rouge">[ x , y , z ]</code> 等价于
+<code class="language-plaintext highlighter-rouge">x ∷ y ∷ z ∷ []</code>。前者可以在模式或者等式的左手边，或者是等式右手边的项中出现。</p>
 
 <!-- ## Append -->
 
@@ -209,7 +206,7 @@ on the right-hand side of an equation. -->
 <!-- Our first function on lists is written `_++_` and pronounced
 _append_: -->
 
-<p>我们对于列表的第一个函数写作 <code class="highlighter-rouge">_++_</code>，读作<em>附加</em>（Append）：</p>
+<p>我们对于列表的第一个函数写作 <code class="language-plaintext highlighter-rouge">_++_</code>，读作<em>附加</em>（Append）：</p>
 
 <pre class="Agda"><a id="4636" class="Keyword">infixr</a> <a id="4643" class="Number">5</a> <a id="4645" href="/PLFA-zh/Lists/#4651" class="Function Operator">_++_</a>
 
@@ -224,9 +221,8 @@ non-empty list appended to another list yields a list with head the
 same as the head of the first list and tail the same as the tail of
 the first list appended to the second list. -->
 
-<p><code class="highlighter-rouge">A</code> 类型是附加的隐式参数，这让这个函数变为一个<em>多态</em>（Polymorphic）函数
-（即可以用作多种类型）。空列表附加到另一个列表得到是第二个列表。非空列表附加到
-另一个列表，得到的列表的头是第一个列表的头，尾是第一个列表的尾附加至第二个列表的结果。</p>
+<p><code class="language-plaintext highlighter-rouge">A</code> 类型是附加的隐式参数，这让这个函数变为一个<em>多态</em>（Polymorphic）函数
+（即可以用作多种类型）。空列表附加到另一个列表得到是第二个列表。非空列表附加到另一个列表，得到的列表的头是第一个列表的头，尾是第一个列表的尾附加至第二个列表的结果。</p>
 
 <!-- Here is an example, showing how to compute the result
 of appending two lists: -->
@@ -290,24 +286,22 @@ and follows by straightforward computation combined with the
 inductive hypothesis.  As usual, the inductive hypothesis is indicated by a recursive
 invocation of the proof, in this case `++-assoc xs ys zs`. -->
 
-<p>证明对于第一个参数进行归纳。起始步骤将列表实例化为 <code class="highlighter-rouge">[]</code>，由直接的运算可证。
-归纳步骤将列表实例化为 <code class="highlighter-rouge">x ∷ xs</code>，由直接的运算配合归纳假设可证。
-与往常一样，归纳假设由递归使用证明函数来表明，此处为 <code class="highlighter-rouge">++-assoc xs ys zs</code>。</p>
+<p>证明对于第一个参数进行归纳。起始步骤将列表实例化为 <code class="language-plaintext highlighter-rouge">[]</code>，由直接的运算可证。归纳步骤将列表实例化为 <code class="language-plaintext highlighter-rouge">x ∷ xs</code>，由直接的运算配合归纳假设可证。与往常一样，归纳假设由递归使用证明函数来表明，此处为 <code class="language-plaintext highlighter-rouge">++-assoc xs ys zs</code>。</p>
 
 <!-- Recall that Agda supports [sections](/PLFA-zh/Induction/#sections).
 Applying `cong (x ∷_)` promotes the inductive hypothesis: -->
 
-<p>回忆到 Agda 支持<a href="/PLFA-zh/Induction/#sections">片段</a>。使用 <code class="highlighter-rouge">cong (x ∷_)</code>
+<p>回忆到 Agda 支持<a href="/PLFA-zh/Induction/#sections">片段</a>。使用 <code class="language-plaintext highlighter-rouge">cong (x ∷_)</code>
 可以将归纳假设：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(xs ++ ys) ++ zs ≡ xs ++ (ys ++ zs)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(xs ++ ys) ++ zs ≡ xs ++ (ys ++ zs)
 </code></pre></div></div>
 
 <!-- to the equality: -->
 
 <p>提升至等式：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x ∷ ((xs ++ ys) ++ zs) ≡ x ∷ (xs ++ (ys ++ zs))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x ∷ ((xs ++ ys) ++ zs) ≡ x ∷ (xs ++ (ys ++ zs))
 </code></pre></div></div>
 
 <!-- which is needed in the proof. -->
@@ -317,8 +311,7 @@ Applying `cong (x ∷_)` promotes the inductive hypothesis: -->
 <!-- It is also easy to show that `[]` is a left and right identity for `_++_`.
 That it is a left identity is immediate from the definition: -->
 
-<p>我们也可以简单地证明 <code class="highlighter-rouge">[]</code> 是 <code class="highlighter-rouge">_++_</code> 的左幺元和右幺元。
-左幺元的证明从定义中即可得：</p>
+<p>我们也可以简单地证明 <code class="language-plaintext highlighter-rouge">[]</code> 是 <code class="language-plaintext highlighter-rouge">_++_</code> 的左幺元和右幺元。左幺元的证明从定义中即可得：</p>
 
 <pre class="Agda"><a id="++-identityˡ"></a><a id="7608" href="/PLFA-zh/Lists/#7608" class="Function">++-identityˡ</a> <a id="7621" class="Symbol">:</a> <a id="7623" class="Symbol">∀</a> <a id="7625" class="Symbol">{</a><a id="7626" href="plfa.Lists.html#7626" class="Bound">A</a> <a id="7628" class="Symbol">:</a> <a id="7630" class="PrimitiveType">Set</a><a id="7633" class="Symbol">}</a> <a id="7635" class="Symbol">(</a><a id="7636" href="plfa.Lists.html#7636" class="Bound">xs</a> <a id="7639" class="Symbol">:</a> <a id="7641" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="7646" href="plfa.Lists.html#7626" class="Bound">A</a><a id="7647" class="Symbol">)</a> <a id="7649" class="Symbol">→</a> <a id="7651" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a> <a id="7654" href="plfa.Lists.html#4651" class="Function Operator">++</a> <a id="7657" href="plfa.Lists.html#7636" class="Bound">xs</a> <a id="7660" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7662" href="plfa.Lists.html#7636" class="Bound">xs</a>
 <a id="7665" href="/PLFA-zh/Lists/#7608" class="Function">++-identityˡ</a> <a id="7678" href="plfa.Lists.html#7678" class="Bound">xs</a> <a id="7681" class="Symbol">=</a>
@@ -351,7 +344,7 @@ That it is a left identity is immediate from the definition: -->
 these three properties establish that `_++_` and `[]` form
 a _monoid_ over lists. -->
 
-<p>我们之后会了解到，这三条性质表明了 <code class="highlighter-rouge">_++_</code> 和 <code class="highlighter-rouge">[]</code> 在列表上构成了一个<em>幺半群</em>（Monoid）。</p>
+<p>我们之后会了解到，这三条性质表明了 <code class="language-plaintext highlighter-rouge">_++_</code> 和 <code class="language-plaintext highlighter-rouge">[]</code> 在列表上构成了一个<em>幺半群</em>（Monoid）。</p>
 
 <!-- ## Length -->
 
@@ -370,8 +363,7 @@ The length of the empty list is zero.
 The length of a non-empty list
 is one greater than the length of the tail of the list. -->
 
-<p>同样，它取一个隐式参数 <code class="highlighter-rouge">A</code>。
-空列表的长度为零。非空列表的长度比其尾列表长度多一。</p>
+<p>同样，它取一个隐式参数 <code class="language-plaintext highlighter-rouge">A</code>。空列表的长度为零。非空列表的长度比其尾列表长度多一。</p>
 
 <!-- Here is an example showing how to compute the length of a list: -->
 
@@ -399,8 +391,7 @@ linear in the number of elements in the list. -->
 must instead write `length {ℕ} []`.  Since `[]` has no elements, Agda
 has insufficient information to infer the implicit parameter. -->
 
-<p>在倒数第二行中，我们不可以直接写 <code class="highlighter-rouge">length []</code>，而需要写 <code class="highlighter-rouge">length {ℕ} []</code>。
-因为 <code class="highlighter-rouge">[]</code> 没有元素，Agda 没有足够的信息来推导其隐式参数。</p>
+<p>在倒数第二行中，我们不可以直接写 <code class="language-plaintext highlighter-rouge">length []</code>，而需要写 <code class="language-plaintext highlighter-rouge">length {ℕ} []</code>。因为 <code class="language-plaintext highlighter-rouge">[]</code> 没有元素，Agda 没有足够的信息来推导其隐式参数。</p>
 
 <!-- ## Reasoning about length -->
 
@@ -441,11 +432,7 @@ inductive hypothesis.  As usual, the inductive hypothesis is indicated
 by a recursive invocation of the proof, in this case `length-++ xs ys`,
 and it is promoted by the congruence `cong suc`. -->
 
-<p>证明对于第一个参数进行归纳。起始步骤将列表实例化为 <code class="highlighter-rouge">[]</code>，由直接的运算可证。
-如同之前一样，Agda 无法推导 <code class="highlighter-rouge">length</code> 的隐式参数，所以我们必须显式地给出这个参数。
-归纳步骤将列表实例化为 <code class="highlighter-rouge">x ∷ xs</code>，由直接的运算配合归纳假设可证。
-与往常一样，归纳假设由递归使用证明函数来表明，此处为 <code class="highlighter-rouge">length-++ xs ys</code>，
-由 <code class="highlighter-rouge">cong suc</code> 来提升。</p>
+<p>证明对于第一个参数进行归纳。起始步骤将列表实例化为 <code class="language-plaintext highlighter-rouge">[]</code>，由直接的运算可证。如同之前一样，Agda 无法推导 <code class="language-plaintext highlighter-rouge">length</code> 的隐式参数，所以我们必须显式地给出这个参数。归纳步骤将列表实例化为 <code class="language-plaintext highlighter-rouge">x ∷ xs</code>，由直接的运算配合归纳假设可证。与往常一样，归纳假设由递归使用证明函数来表明，此处为 <code class="language-plaintext highlighter-rouge">length-++ xs ys</code>，由 <code class="language-plaintext highlighter-rouge">cong suc</code> 来提升。</p>
 
 <!-- ## Reverse -->
 
@@ -463,8 +450,7 @@ The reverse of a non-empty list
 is the reverse of its tail appended to a unit list
 containing its head. -->
 
-<p>空列表的反转是空列表。
-非空列表的反转是其头元素构成的单元列表附加至其尾列表反转之后的结果。</p>
+<p>空列表的反转是空列表。非空列表的反转是其头元素构成的单元列表附加至其尾列表反转之后的结果。</p>
 
 <!-- Here is an example showing how to reverse a list: -->
 
@@ -506,13 +492,11 @@ reversed, append takes time linear in the length of the first
 list, and the sum of the numbers up to `n - 1` is `n * (n - 1) / 2`.
 (We will validate that last fact in an exercise later in this chapter.) -->
 
-<p>这样子反转一个列表需要列表长度<strong>二次</strong>的时间。这是因为反转一个长度为 <code class="highlighter-rouge">n</code> 的列表需要
-将长度为 <code class="highlighter-rouge">1</code>、<code class="highlighter-rouge">2</code> 直到 <code class="highlighter-rouge">n - 1</code> 的列表附加起来，而附加两个列表需要第一个列表长度线性的时间，
-因此加起来就需要 <code class="highlighter-rouge">n * (n - 1) / 2</code> 的时间。（我们将在本章节后部分验证这一结果）</p>
+<p>这样子反转一个列表需要列表长度<strong>二次</strong>的时间。这是因为反转一个长度为 <code class="language-plaintext highlighter-rouge">n</code> 的列表需要将长度为 <code class="language-plaintext highlighter-rouge">1</code>、<code class="language-plaintext highlighter-rouge">2</code> 直到 <code class="language-plaintext highlighter-rouge">n - 1</code> 的列表附加起来，而附加两个列表需要第一个列表长度线性的时间，因此加起来就需要 <code class="language-plaintext highlighter-rouge">n * (n - 1) / 2</code> 的时间。（我们将在本章节后部分验证这一结果）</p>
 
 <!-- #### Exercise `reverse-++-commute` (recommended) -->
 
-<h4 id="练习-reverse--commute-推荐">练习 <code class="highlighter-rouge">reverse-++-commute</code> （推荐）</h4>
+<h4 id="练习-reverse--commute-推荐">练习 <code class="language-plaintext highlighter-rouge">reverse-++-commute</code> （推荐）</h4>
 
 <!-- Show that the reverse of one list appended to another is the
 reverse of the second appended to the reverse of the first: -->
@@ -524,13 +508,12 @@ reverse of the second appended to the reverse of the first: -->
 </pre>
 <!-- #### Exercise `reverse-involutive` (recommended) -->
 
-<h4 id="练习-reverse-involutive-推荐">练习 <code class="highlighter-rouge">reverse-involutive</code> （推荐）</h4>
+<h4 id="练习-reverse-involutive-推荐">练习 <code class="language-plaintext highlighter-rouge">reverse-involutive</code> （推荐）</h4>
 
 <!-- A function is an _involution_ if when applied twice it acts
 as the identity function.  Show that reverse is an involution: -->
 
-<p>当一个函数应用两次后与恒等函数作用相同，那么这个函数是一个<strong>对合</strong>（Involution）。
-证明反转是一个对合：</p>
+<p>当一个函数应用两次后与恒等函数作用相同，那么这个函数是一个<strong>对合</strong>（Involution）。证明反转是一个对合：</p>
 
 <pre class="Agda"><a id="13218" class="Keyword">postulate</a>
   <a id="reverse-involutive"></a><a id="13230" href="/PLFA-zh/Lists/#13230" class="Postulate">reverse-involutive</a> <a id="13249" class="Symbol">:</a> <a id="13251" class="Symbol">∀</a> <a id="13253" class="Symbol">{</a><a id="13254" href="plfa.Lists.html#13254" class="Bound">A</a> <a id="13256" class="Symbol">:</a> <a id="13258" class="PrimitiveType">Set</a><a id="13261" class="Symbol">}</a> <a id="13263" class="Symbol">{</a><a id="13264" href="plfa.Lists.html#13264" class="Bound">xs</a> <a id="13267" class="Symbol">:</a> <a id="13269" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="13274" href="plfa.Lists.html#13254" class="Bound">A</a><a id="13275" class="Symbol">}</a>
@@ -545,8 +528,7 @@ as the identity function.  Show that reverse is an involution: -->
 one might expect since it takes time quadratic in the length of the list.
 The idea is that we generalise reverse to take an additional argument: -->
 
-<p>上面的定义虽然论证起来方便，但是它比期望中的实现更低效，因为它的运行时间是关于列表长度的二次函数。
-我们可以将反转进行推广，使用一个额外的参数：</p>
+<p>上面的定义虽然论证起来方便，但是它比期望中的实现更低效，因为它的运行时间是关于列表长度的二次函数。我们可以将反转进行推广，使用一个额外的参数：</p>
 
 <pre class="Agda"><a id="shunt"></a><a id="13675" href="/PLFA-zh/Lists/#13675" class="Function">shunt</a> <a id="13681" class="Symbol">:</a> <a id="13683" class="Symbol">∀</a> <a id="13685" class="Symbol">{</a><a id="13686" href="plfa.Lists.html#13686" class="Bound">A</a> <a id="13688" class="Symbol">:</a> <a id="13690" class="PrimitiveType">Set</a><a id="13693" class="Symbol">}</a> <a id="13695" class="Symbol">→</a> <a id="13697" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="13702" href="plfa.Lists.html#13686" class="Bound">A</a> <a id="13704" class="Symbol">→</a> <a id="13706" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="13711" href="plfa.Lists.html#13686" class="Bound">A</a> <a id="13713" class="Symbol">→</a> <a id="13715" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="13720" href="plfa.Lists.html#13686" class="Bound">A</a>
 <a id="13722" href="/PLFA-zh/Lists/#13675" class="Function">shunt</a> <a id="13728" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a>       <a id="13737" href="plfa.Lists.html#13737" class="Bound">ys</a>  <a id="13741" class="Symbol">=</a>  <a id="13744" href="plfa.Lists.html#13737" class="Bound">ys</a>
@@ -556,8 +538,7 @@ The idea is that we generalise reverse to take an additional argument: -->
 actually becomes _larger_, but this is not a problem because the argument
 on which we recurse becomes _smaller_. -->
 
-<p>这个定义对于第一个参数进行递归。第二个参数会变_大_，但这样做没有问题，因为我们递归的参数
-在变_小_。</p>
+<p>这个定义对于第一个参数进行递归。第二个参数会变_大_，但这样做没有问题，因为我们递归的参数在变_小_。</p>
 
 <!-- Shunt is related to reverse as follows: -->
 
@@ -594,16 +575,13 @@ hypothesis and associativity of append.  When we invoke the inductive hypothesis
 the second argument actually becomes *larger*, but this is not a problem because
 the argument on which we induct becomes *smaller*. -->
 
-<p>证明对于第一个参数进行归纳。起始步骤将列表实例化为 <code class="highlighter-rouge">[]</code>，由直接的运算可证。
-归纳步骤将列表实例化为 <code class="highlighter-rouge">x ∷ xs</code>，由归纳假设和附加的结合律可证。
-当我们使用归纳假设时，第二个参数实际上变<strong>大</strong>了，但是这样做没有问题，因为我们归纳的参数变<strong>小</strong>了。</p>
+<p>证明对于第一个参数进行归纳。起始步骤将列表实例化为 <code class="language-plaintext highlighter-rouge">[]</code>，由直接的运算可证。归纳步骤将列表实例化为 <code class="language-plaintext highlighter-rouge">x ∷ xs</code>，由归纳假设和附加的结合律可证。当我们使用归纳假设时，第二个参数实际上变<strong>大</strong>了，但是这样做没有问题，因为我们归纳的参数变<strong>小</strong>了。</p>
 
 <!-- Generalising on an auxiliary argument, which becomes larger as the argument on
 which we recurse or induct becomes smaller, is a common trick. It belongs in
 your quiver of arrows, ready to slay the right problem. -->
 
-<p>使用一个会在归纳或递归的参数变小时，变大的辅助参数来进行推广，是一个常用的技巧。
-这个技巧在以后的证明中很有用。</p>
+<p>使用一个会在归纳或递归的参数变小时，变大的辅助参数来进行推广，是一个常用的技巧。这个技巧在以后的证明中很有用。</p>
 
 <!-- Having defined shunt be generalisation, it is now easy to respecialise to
 give a more efficient definition of reverse: -->
@@ -633,7 +611,7 @@ the two definitions equivalent: -->
 </pre>
 <!-- Here is an example showing fast reverse of the list `[ 0 , 1 , 2 ]`: -->
 
-<p>下面的例子展示了如何快速反转列表 <code class="highlighter-rouge">[ 0 , 1 , 2 ]</code>：</p>
+<p>下面的例子展示了如何快速反转列表 <code class="language-plaintext highlighter-rouge">[ 0 , 1 , 2 ]</code>：</p>
 
 <pre class="Agda"><a id="16209" href="/PLFA-zh/Lists/#16209" class="Function">_</a> <a id="16211" class="Symbol">:</a> <a id="16213" href="plfa.Lists.html#15638" class="Function">reverse′</a> <a id="16222" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">[</a> <a id="16224" class="Number">0</a> <a id="16226" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">,</a> <a id="16228" class="Number">1</a> <a id="16230" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">,</a> <a id="16232" class="Number">2</a> <a id="16234" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">]</a> <a id="16236" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="16238" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">[</a> <a id="16240" class="Number">2</a> <a id="16242" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">,</a> <a id="16244" class="Number">1</a> <a id="16246" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">,</a> <a id="16248" class="Number">0</a> <a id="16250" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">]</a>
 <a id="16252" class="Symbol">_</a> <a id="16254" class="Symbol">=</a>
@@ -663,8 +641,7 @@ the two definitions equivalent: -->
 Map is an example of a _higher-order function_, one which takes a function as an
 argument or returns a function as a result: -->
 
-<p>映射将一个函数应用于列表中的所有元素，生成一个对应的列表。
-映射是一个<strong>高阶函数</strong>（Higher-Order Function）的例子，它取一个函数作为参数，返回一个函数作为结果：</p>
+<p>映射将一个函数应用于列表中的所有元素，生成一个对应的列表。映射是一个<strong>高阶函数</strong>（Higher-Order Function）的例子，它取一个函数作为参数，返回一个函数作为结果：</p>
 
 <pre class="Agda"><a id="map"></a><a id="16959" href="/PLFA-zh/Lists/#16959" class="Function">map</a> <a id="16963" class="Symbol">:</a> <a id="16965" class="Symbol">∀</a> <a id="16967" class="Symbol">{</a><a id="16968" href="plfa.Lists.html#16968" class="Bound">A</a> <a id="16970" href="plfa.Lists.html#16970" class="Bound">B</a> <a id="16972" class="Symbol">:</a> <a id="16974" class="PrimitiveType">Set</a><a id="16977" class="Symbol">}</a> <a id="16979" class="Symbol">→</a> <a id="16981" class="Symbol">(</a><a id="16982" href="plfa.Lists.html#16968" class="Bound">A</a> <a id="16984" class="Symbol">→</a> <a id="16986" href="plfa.Lists.html#16970" class="Bound">B</a><a id="16987" class="Symbol">)</a> <a id="16989" class="Symbol">→</a> <a id="16991" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="16996" href="plfa.Lists.html#16968" class="Bound">A</a> <a id="16998" class="Symbol">→</a> <a id="17000" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="17005" href="plfa.Lists.html#16970" class="Bound">B</a>
 <a id="17007" href="/PLFA-zh/Lists/#16959" class="Function">map</a> <a id="17011" href="plfa.Lists.html#17011" class="Bound">f</a> <a id="17013" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a>        <a id="17023" class="Symbol">=</a>  <a id="17026" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a>
@@ -675,9 +652,7 @@ Map of a non-empty list yields a list
 with head the same as the function applied to the head of the given list,
 and tail the same as map of the function applied to the tail of the given list. -->
 
-<p>空列表的映射是空列表。
-非空列表的映射生成一个列表，其头元素是原列表的头元素在应用函数之后的结果，
-其尾列表是原列表的尾列表映射后的结果。</p>
+<p>空列表的映射是空列表。非空列表的映射生成一个列表，其头元素是原列表的头元素在应用函数之后的结果，其尾列表是原列表的尾列表映射后的结果。</p>
 
 <!-- Here is an example showing how to use map to increment every element of a list: -->
 
@@ -729,13 +704,11 @@ parameterised on the range of the function. Further, a type that is
 parameterised on _n_ types will have a map that is parameterised on
 _n_ functions. -->
 
-<p>任何对于另外一个类型参数化的类型，例如列表，都有对应的映射，其接受一个函数，并返回另一个
-从由给定函数定义域参数化的类型，到由给定函数值域参数化的函数。除此之外，一个对于 <em>n</em> 个类型
-参数化的类型会有一个对于 <em>n</em> 个函数参数化的映射。</p>
+<p>任何对于另外一个类型参数化的类型，例如列表，都有对应的映射，其接受一个函数，并返回另一个从由给定函数定义域参数化的类型，到由给定函数值域参数化的函数。除此之外，一个对于 <em>n</em> 个类型参数化的类型会有一个对于 <em>n</em> 个函数参数化的映射。</p>
 
 <!-- #### Exercise `map-compose` -->
 
-<h4 id="练习-map-compose">练习 <code class="highlighter-rouge">map-compose</code></h4>
+<h4 id="练习-map-compose">练习 <code class="language-plaintext highlighter-rouge">map-compose</code></h4>
 
 <!-- Prove that the map of a composition is equal to the composition of two maps: -->
 
@@ -751,7 +724,7 @@ _n_ functions. -->
 
 <!-- #### Exercise `map-++-commute` -->
 
-<h4 id="练习-map--commute">练习 <code class="highlighter-rouge">map-++-commute</code></h4>
+<h4 id="练习-map--commute">练习 <code class="language-plaintext highlighter-rouge">map-++-commute</code></h4>
 
 <!-- Prove the following relationship between map and append: -->
 
@@ -763,12 +736,12 @@ _n_ functions. -->
 </pre>
 <!-- #### Exercise `map-Tree` -->
 
-<h4 id="练习-map-tree">练习 <code class="highlighter-rouge">map-Tree</code></h4>
+<h4 id="练习-map-tree">练习 <code class="language-plaintext highlighter-rouge">map-Tree</code></h4>
 
 <!-- Define a type of trees with leaves of type `A` and internal
 nodes of type `B`: -->
 
-<p>定义一个树数据类型，其叶节点类型为 <code class="highlighter-rouge">A</code>，内部节点类型为 <code class="highlighter-rouge">B</code>：</p>
+<p>定义一个树数据类型，其叶节点类型为 <code class="language-plaintext highlighter-rouge">A</code>，内部节点类型为 <code class="language-plaintext highlighter-rouge">B</code>：</p>
 
 <pre class="Agda"><a id="19661" class="Keyword">data</a> <a id="Tree"></a><a id="19666" href="/PLFA-zh/Lists/#19666" class="Datatype">Tree</a> <a id="19671" class="Symbol">(</a><a id="19672" href="plfa.Lists.html#19672" class="Bound">A</a> <a id="19674" href="plfa.Lists.html#19674" class="Bound">B</a> <a id="19676" class="Symbol">:</a> <a id="19678" class="PrimitiveType">Set</a><a id="19681" class="Symbol">)</a> <a id="19683" class="Symbol">:</a> <a id="19685" class="PrimitiveType">Set</a> <a id="19689" class="Keyword">where</a>
   <a id="Tree.leaf"></a><a id="19697" href="/PLFA-zh/Lists/#19697" class="InductiveConstructor">leaf</a> <a id="19702" class="Symbol">:</a> <a id="19704" href="plfa.Lists.html#19672" class="Bound">A</a> <a id="19706" class="Symbol">→</a> <a id="19708" href="plfa.Lists.html#19666" class="Datatype">Tree</a> <a id="19713" href="plfa.Lists.html#19672" class="Bound">A</a> <a id="19715" href="plfa.Lists.html#19674" class="Bound">B</a>
@@ -791,8 +764,7 @@ nodes of type `B`: -->
 each of the elements of the list, taking the given value as the result
 for the empty list: -->
 
-<p>折叠取一个运算符和一个值，并使用运算符将列表中的元素合并至一个值，如果给定的列表为空，
-则使用给定的值：</p>
+<p>折叠取一个运算符和一个值，并使用运算符将列表中的元素合并至一个值，如果给定的列表为空，则使用给定的值：</p>
 
 <pre class="Agda"><a id="foldr"></a><a id="20225" href="/PLFA-zh/Lists/#20225" class="Function">foldr</a> <a id="20231" class="Symbol">:</a> <a id="20233" class="Symbol">∀</a> <a id="20235" class="Symbol">{</a><a id="20236" href="plfa.Lists.html#20236" class="Bound">A</a> <a id="20238" href="plfa.Lists.html#20238" class="Bound">B</a> <a id="20240" class="Symbol">:</a> <a id="20242" class="PrimitiveType">Set</a><a id="20245" class="Symbol">}</a> <a id="20247" class="Symbol">→</a> <a id="20249" class="Symbol">(</a><a id="20250" href="plfa.Lists.html#20236" class="Bound">A</a> <a id="20252" class="Symbol">→</a> <a id="20254" href="plfa.Lists.html#20238" class="Bound">B</a> <a id="20256" class="Symbol">→</a> <a id="20258" href="plfa.Lists.html#20238" class="Bound">B</a><a id="20259" class="Symbol">)</a> <a id="20261" class="Symbol">→</a> <a id="20263" href="plfa.Lists.html#20238" class="Bound">B</a> <a id="20265" class="Symbol">→</a> <a id="20267" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="20272" href="plfa.Lists.html#20236" class="Bound">A</a> <a id="20274" class="Symbol">→</a> <a id="20276" href="plfa.Lists.html#20238" class="Bound">B</a>
 <a id="20278" href="/PLFA-zh/Lists/#20225" class="Function">foldr</a> <a id="20284" href="plfa.Lists.html#20284" class="Bound Operator">_⊗_</a> <a id="20288" href="plfa.Lists.html#20288" class="Bound">e</a> <a id="20290" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a>        <a id="20300" class="Symbol">=</a>  <a id="20303" href="plfa.Lists.html#20288" class="Bound">e</a>
@@ -802,8 +774,7 @@ for the empty list: -->
 Fold of a non-empty list uses the operator to combine
 the head of the list and the fold of the tail of the list. -->
 
-<p>空列表的折叠是给定的值。
-非空列表的折叠使用给定的运算符，将头元素和尾列表的折叠合并起来。</p>
+<p>空列表的折叠是给定的值。非空列表的折叠使用给定的运算符，将头元素和尾列表的折叠合并起来。</p>
 
 <!-- Here is an example showing how to use fold to find the sum of a list: -->
 
@@ -833,8 +804,7 @@ the head of the list and the fold of the tail of the list. -->
 fold to an operator and a value to yield a new function,
 and at a later point applying the resulting function: -->
 
-<p>我们常常可以利用柯里化，将折叠作用于一个运算符和一个值，获得另一个函数，
-然后在之后的时候应用获得的函数：</p>
+<p>我们常常可以利用柯里化，将折叠作用于一个运算符和一个值，获得另一个函数，然后在之后的时候应用获得的函数：</p>
 
 <pre class="Agda"><a id="sum"></a><a id="21337" href="/PLFA-zh/Lists/#21337" class="Function">sum</a> <a id="21341" class="Symbol">:</a> <a id="21343" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="21348" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="21350" class="Symbol">→</a> <a id="21352" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
 <a id="21354" href="/PLFA-zh/Lists/#21337" class="Function">sum</a> <a id="21358" class="Symbol">=</a> <a id="21360" href="plfa.Lists.html#20225" class="Function">foldr</a> <a id="21366" href="Agda.Builtin.Nat.html#298" class="Primitive Operator">_+_</a> <a id="21370" class="Number">0</a>
@@ -855,20 +825,19 @@ so the fold function takes two arguments, `e` and `_⊗_`
 In general, a data type with _n_ constructors will have
 a corresponding fold function that takes _n_ arguments. -->
 
-<p>正如列表由两个构造子 <code class="highlighter-rouge">[]</code> 和 <code class="highlighter-rouge">_∷_</code>，折叠函数取两个参数 <code class="highlighter-rouge">e</code> 和 <code class="highlighter-rouge">_⊗_</code>
-（除去列表参数）。推广来说，一个有 <em>n</em> 个构造子的数据类型，会有对应的
-取 <em>n</em> 个参数的折叠函数。</p>
+<p>正如列表由两个构造子 <code class="language-plaintext highlighter-rouge">[]</code> 和 <code class="language-plaintext highlighter-rouge">_∷_</code>，折叠函数取两个参数 <code class="language-plaintext highlighter-rouge">e</code> 和 <code class="language-plaintext highlighter-rouge">_⊗_</code>
+（除去列表参数）。推广来说，一个有 <em>n</em> 个构造子的数据类型，会有对应的取 <em>n</em> 个参数的折叠函数。</p>
 
 <!-- #### Exercise `product` (recommended) -->
 
-<h4 id="练习-product-推荐">练习 <code class="highlighter-rouge">product</code> （推荐）</h4>
+<h4 id="练习-product-推荐">练习 <code class="language-plaintext highlighter-rouge">product</code> （推荐）</h4>
 
 <!-- Use fold to define a function to find the product of a list of numbers.
 For example: -->
 
 <p>使用折叠来定义一个计算列表数字之积的函数。例如：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>product [ 1 , 2 , 3 , 4 ] ≡ 24
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>product [ 1 , 2 , 3 , 4 ] ≡ 24
 </code></pre></div></div>
 
 <!-- <pre class="Agda"><a id="22148" class="Comment">-- Your code goes here</a>
@@ -879,7 +848,7 @@ For example: -->
 {::comment}
 #### Exercise `foldr-++` (recommended) -->
 
-<h4 id="练习-foldr--推荐">练习 <code class="highlighter-rouge">foldr-++</code> （推荐）</h4>
+<h4 id="练习-foldr--推荐">练习 <code class="language-plaintext highlighter-rouge">foldr-++</code> （推荐）</h4>
 
 <!-- Show that fold and append are related as follows: -->
 
@@ -892,7 +861,7 @@ For example: -->
 
 <!-- #### Exercise `map-is-foldr` -->
 
-<h4 id="练习-map-is-foldr">练习 <code class="highlighter-rouge">map-is-foldr</code></h4>
+<h4 id="练习-map-is-foldr">练习 <code class="language-plaintext highlighter-rouge">map-is-foldr</code></h4>
 
 <!-- Show that map can be defined using fold: -->
 
@@ -908,7 +877,7 @@ For example: -->
 
 <!-- #### Exercise `fold-Tree` -->
 
-<h4 id="练习-fold-tree">练习 <code class="highlighter-rouge">fold-Tree</code></h4>
+<h4 id="练习-fold-tree">练习 <code class="language-plaintext highlighter-rouge">fold-Tree</code></h4>
 
 <!-- Define a suitable fold function for the type of trees given earlier: -->
 
@@ -926,11 +895,11 @@ For example: -->
 {::comment}
 #### Exercise `map-is-fold-Tree` -->
 
-<h4 id="练习-map-is-fold-tree">练习 <code class="highlighter-rouge">map-is-fold-Tree</code></h4>
+<h4 id="练习-map-is-fold-tree">练习 <code class="language-plaintext highlighter-rouge">map-is-fold-Tree</code></h4>
 
 <!-- Demonstrate an analogue of `map-is-foldr` for the type of trees. -->
 
-<p>对于树数据类型，证明与 <code class="highlighter-rouge">map-is-foldr</code> 相似的性质。</p>
+<p>对于树数据类型，证明与 <code class="language-plaintext highlighter-rouge">map-is-foldr</code> 相似的性质。</p>
 
 <!-- <pre class="Agda"><a id="23382" class="Comment">-- Your code goes here</a>
 </pre>{:/}
@@ -940,7 +909,7 @@ For example: -->
 {::comment}
 #### Exercise `sum-downFrom` (stretch) -->
 
-<h4 id="证明-sum-downfrom-延伸">证明 <code class="highlighter-rouge">sum-downFrom</code> （延伸）</h4>
+<h4 id="证明-sum-downfrom-延伸">证明 <code class="language-plaintext highlighter-rouge">sum-downFrom</code> （延伸）</h4>
 
 <!-- Define a function that counts down as follows: -->
 
@@ -960,7 +929,7 @@ For example: -->
 <!-- Prove that the sum of the numbers `(n - 1) + ⋯ + 0` is
 equal to `n * (n ∸ 1) / 2`: -->
 
-<p>证明数列之和 <code class="highlighter-rouge">(n - 1) + ⋯ + 0</code> 等于 <code class="highlighter-rouge">n * (n ∸ 1) / 2</code>：</p>
+<p>证明数列之和 <code class="language-plaintext highlighter-rouge">(n - 1) + ⋯ + 0</code> 等于 <code class="language-plaintext highlighter-rouge">n * (n ∸ 1) / 2</code>：</p>
 
 <pre class="Agda"><a id="23931" class="Keyword">postulate</a>
   <a id="sum-downFrom"></a><a id="23943" href="/PLFA-zh/Lists/#23943" class="Postulate">sum-downFrom</a> <a id="23956" class="Symbol">:</a> <a id="23958" class="Symbol">∀</a> <a id="23960" class="Symbol">(</a><a id="23961" href="plfa.Lists.html#23961" class="Bound">n</a> <a id="23963" class="Symbol">:</a> <a id="23965" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="23966" class="Symbol">)</a>
@@ -975,8 +944,7 @@ equal to `n * (n ∸ 1) / 2`: -->
 value is a left and right identity for the operator, meaning that the
 operator and the value form a _monoid_. -->
 
-<p>一般来说，我们会对于折叠函数使用一个满足结合律的运算符，和这个运算符的左右幺元。
-这意味着这个运算符和这个值形成了一个<strong>幺半群</strong>（Monoid）。</p>
+<p>一般来说，我们会对于折叠函数使用一个满足结合律的运算符，和这个运算符的左右幺元。这意味着这个运算符和这个值形成了一个<strong>幺半群</strong>（Monoid）。</p>
 
 <!-- We can define a monoid as a suitable record type: -->
 
@@ -1022,7 +990,7 @@ list, are all examples of monoids: -->
 <!-- If `_⊗_` and `e` form a monoid, then we can re-express fold on the
 same operator and an arbitrary value: -->
 
-<p>如果 <code class="highlighter-rouge">_⊗_</code> 和 <code class="highlighter-rouge">e</code> 构成一个幺半群，那么我们可以用相同的运算符和一个任意的值来表示折叠：</p>
+<p>如果 <code class="language-plaintext highlighter-rouge">_⊗_</code> 和 <code class="language-plaintext highlighter-rouge">e</code> 构成一个幺半群，那么我们可以用相同的运算符和一个任意的值来表示折叠：</p>
 
 <pre class="Agda"><a id="foldr-monoid"></a><a id="25419" href="/PLFA-zh/Lists/#25419" class="Function">foldr-monoid</a> <a id="25432" class="Symbol">:</a> <a id="25434" class="Symbol">∀</a> <a id="25436" class="Symbol">{</a><a id="25437" href="plfa.Lists.html#25437" class="Bound">A</a> <a id="25439" class="Symbol">:</a> <a id="25441" class="PrimitiveType">Set</a><a id="25444" class="Symbol">}</a> <a id="25446" class="Symbol">(</a><a id="25447" href="plfa.Lists.html#25447" class="Bound Operator">_⊗_</a> <a id="25451" class="Symbol">:</a> <a id="25453" href="plfa.Lists.html#25437" class="Bound">A</a> <a id="25455" class="Symbol">→</a> <a id="25457" href="plfa.Lists.html#25437" class="Bound">A</a> <a id="25459" class="Symbol">→</a> <a id="25461" href="plfa.Lists.html#25437" class="Bound">A</a><a id="25462" class="Symbol">)</a> <a id="25464" class="Symbol">(</a><a id="25465" href="plfa.Lists.html#25465" class="Bound">e</a> <a id="25467" class="Symbol">:</a> <a id="25469" href="plfa.Lists.html#25437" class="Bound">A</a><a id="25470" class="Symbol">)</a> <a id="25472" class="Symbol">→</a> <a id="25474" href="plfa.Lists.html#24424" class="Record">IsMonoid</a> <a id="25483" href="plfa.Lists.html#25447" class="Bound Operator">_⊗_</a> <a id="25487" href="plfa.Lists.html#25465" class="Bound">e</a> <a id="25489" class="Symbol">→</a>
   <a id="25493" class="Symbol">∀</a> <a id="25495" class="Symbol">(</a><a id="25496" href="/PLFA-zh/Lists/#25496" class="Bound">xs</a> <a id="25499" class="Symbol">:</a> <a id="25501" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="25506" href="plfa.Lists.html#25437" class="Bound">A</a><a id="25507" class="Symbol">)</a> <a id="25509" class="Symbol">(</a><a id="25510" href="plfa.Lists.html#25510" class="Bound">y</a> <a id="25512" class="Symbol">:</a> <a id="25514" href="plfa.Lists.html#25437" class="Bound">A</a><a id="25515" class="Symbol">)</a> <a id="25517" class="Symbol">→</a> <a id="25519" href="plfa.Lists.html#20225" class="Function">foldr</a> <a id="25525" href="plfa.Lists.html#25447" class="Bound Operator">_⊗_</a> <a id="25529" href="plfa.Lists.html#25510" class="Bound">y</a> <a id="25531" href="plfa.Lists.html#25496" class="Bound">xs</a> <a id="25534" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="25536" href="plfa.Lists.html#20225" class="Function">foldr</a> <a id="25542" href="plfa.Lists.html#25447" class="Bound Operator">_⊗_</a> <a id="25546" href="plfa.Lists.html#25465" class="Bound">e</a> <a id="25548" href="plfa.Lists.html#25496" class="Bound">xs</a> <a id="25551" href="plfa.Lists.html#25447" class="Bound Operator">⊗</a> <a id="25553" href="plfa.Lists.html#25510" class="Bound">y</a>
@@ -1066,14 +1034,14 @@ same operator and an arbitrary value: -->
 </pre>
 <!-- #### Exercise `foldl` -->
 
-<h4 id="练习-foldl">练习 <code class="highlighter-rouge">foldl</code></h4>
+<h4 id="练习-foldl">练习 <code class="language-plaintext highlighter-rouge">foldl</code></h4>
 
 <!-- Define a function `foldl` which is analogous to `foldr`, but where
 operations associate to the left rather than the right.  For example: -->
 
-<p>定义一个函数 <code class="highlighter-rouge">foldl</code>，与 <code class="highlighter-rouge">foldr</code> 相似，但是运算符向左结合，而不是向右。例如：</p>
+<p>定义一个函数 <code class="language-plaintext highlighter-rouge">foldl</code>，与 <code class="language-plaintext highlighter-rouge">foldr</code> 相似，但是运算符向左结合，而不是向右。例如：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>foldr _⊗_ e [ x , y , z ]  =  x ⊗ (y ⊗ (z ⊗ e))
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>foldr _⊗_ e [ x , y , z ]  =  x ⊗ (y ⊗ (z ⊗ e))
 foldl _⊗_ e [ x , y , z ]  =  ((e ⊗ x) ⊗ y) ⊗ z
 </code></pre></div></div>
 
@@ -1086,13 +1054,12 @@ foldl _⊗_ e [ x , y , z ]  =  ((e ⊗ x) ⊗ y) ⊗ z
 {::comment}
 #### Exercise `foldr-monoid-foldl` -->
 
-<h4 id="练习-foldr-monoid-foldl">练习 <code class="highlighter-rouge">foldr-monoid-foldl</code></h4>
+<h4 id="练习-foldr-monoid-foldl">练习 <code class="language-plaintext highlighter-rouge">foldr-monoid-foldl</code></h4>
 
 <!-- Show that if `_⊗_` and `e` form a monoid, then `foldr _⊗_ e` and
 `foldl _⊗_ e` always compute the same result. -->
 
-<p>证明如果 <code class="highlighter-rouge">_⊗_</code> 和 <code class="highlighter-rouge">e</code> 构成幺半群，那么 <code class="highlighter-rouge">foldr _⊗_ e</code> 和 <code class="highlighter-rouge">foldl _⊗_ e</code> 的结果
-永远是相同的。</p>
+<p>证明如果 <code class="language-plaintext highlighter-rouge">_⊗_</code> 和 <code class="language-plaintext highlighter-rouge">e</code> 构成幺半群，那么 <code class="language-plaintext highlighter-rouge">foldr _⊗_ e</code> 和 <code class="language-plaintext highlighter-rouge">foldl _⊗_ e</code> 的结果永远是相同的。</p>
 
 <!-- <pre class="Agda"><a id="27258" class="Comment">-- Your code goes here</a>
 </pre>{:/}
@@ -1108,11 +1075,11 @@ foldl _⊗_ e [ x , y , z ]  =  ((e ⊗ x) ⊗ y) ⊗ z
 <!-- We can also define predicates over lists. Two of the most important
 are `All` and `Any`. -->
 
-<p>我们也可以定义关于列表的谓词。最重要的两个谓词是 <code class="highlighter-rouge">All</code> 和 <code class="highlighter-rouge">Any</code>。</p>
+<p>我们也可以定义关于列表的谓词。最重要的两个谓词是 <code class="language-plaintext highlighter-rouge">All</code> 和 <code class="language-plaintext highlighter-rouge">Any</code>。</p>
 
 <!-- Predicate `All P` holds if predicate `P` is satisfied by every element of a list: -->
 
-<p>谓词 <code class="highlighter-rouge">All P</code> 当列表里的所有元素满足 <code class="highlighter-rouge">P</code> 时成立：</p>
+<p>谓词 <code class="language-plaintext highlighter-rouge">All P</code> 当列表里的所有元素满足 <code class="language-plaintext highlighter-rouge">P</code> 时成立：</p>
 
 <pre class="Agda"><a id="27645" class="Keyword">data</a> <a id="All"></a><a id="27650" href="/PLFA-zh/Lists/#27650" class="Datatype">All</a> <a id="27654" class="Symbol">{</a><a id="27655" href="plfa.Lists.html#27655" class="Bound">A</a> <a id="27657" class="Symbol">:</a> <a id="27659" class="PrimitiveType">Set</a><a id="27662" class="Symbol">}</a> <a id="27664" class="Symbol">(</a><a id="27665" href="plfa.Lists.html#27665" class="Bound">P</a> <a id="27667" class="Symbol">:</a> <a id="27669" href="plfa.Lists.html#27655" class="Bound">A</a> <a id="27671" class="Symbol">→</a> <a id="27673" class="PrimitiveType">Set</a><a id="27676" class="Symbol">)</a> <a id="27678" class="Symbol">:</a> <a id="27680" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="27685" href="plfa.Lists.html#27655" class="Bound">A</a> <a id="27687" class="Symbol">→</a> <a id="27689" class="PrimitiveType">Set</a> <a id="27693" class="Keyword">where</a>
   <a id="All.[]"></a><a id="27701" href="/PLFA-zh/Lists/#27701" class="InductiveConstructor">[]</a>  <a id="27705" class="Symbol">:</a> <a id="27707" href="plfa.Lists.html#27650" class="Datatype">All</a> <a id="27711" href="plfa.Lists.html#27665" class="Bound">P</a> <a id="27713" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a>
@@ -1125,18 +1092,15 @@ element of the tail of a list, then `P` holds for every element of the list.
 Agda uses types to disambiguate whether the constructor is building
 a list or evidence that `All P` holds. -->
 
-<p>这个类型有两个构造子，使用了与列表构造子相同的名称。第一个断言了 <code class="highlighter-rouge">P</code> 对于空列表的任何元素成立。
-第二个断言了如果 <code class="highlighter-rouge">P</code> 对于列表的头元素和尾列表的所有元素成立，那么 <code class="highlighter-rouge">P</code> 对于这个列表的任何元素成立。
-Agda 使用类型来区分构造子是用于构造一个列表，还是构造 <code class="highlighter-rouge">All P</code> 成立的证明。</p>
+<p>这个类型有两个构造子，使用了与列表构造子相同的名称。第一个断言了 <code class="language-plaintext highlighter-rouge">P</code> 对于空列表的任何元素成立。第二个断言了如果 <code class="language-plaintext highlighter-rouge">P</code> 对于列表的头元素和尾列表的所有元素成立，那么 <code class="language-plaintext highlighter-rouge">P</code> 对于这个列表的任何元素成立。
+Agda 使用类型来区分构造子是用于构造一个列表，还是构造 <code class="language-plaintext highlighter-rouge">All P</code> 成立的证明。</p>
 
 <!-- For example, `All (_≤ 2)` holds of a list where every element is less
 than or equal to two.  Recall that `z≤n` proves `zero ≤ n` for any
 `n`, and that if `m≤n` proves `m ≤ n` then `s≤s m≤n` proves `suc m ≤
 suc n`, for any `m` and `n`: -->
 
-<p>比如说，<code class="highlighter-rouge">All (_≤ 2)</code> 对于一个每一个元素都小于等于二的列表成立。
-回忆 <code class="highlighter-rouge">z≤n</code> 证明了对于任意 <code class="highlighter-rouge">n</code>， <code class="highlighter-rouge">zero ≤ n</code> 成立；
-对于任意 <code class="highlighter-rouge">m</code> 和 <code class="highlighter-rouge">n</code>，如果 <code class="highlighter-rouge">m≤n</code> 证明了 <code class="highlighter-rouge">m ≤ n</code>，那么 <code class="highlighter-rouge">s≤s m≤n</code> 证明了 <code class="highlighter-rouge">suc m ≤
+<p>比如说，<code class="language-plaintext highlighter-rouge">All (_≤ 2)</code> 对于一个每一个元素都小于等于二的列表成立。回忆 <code class="language-plaintext highlighter-rouge">z≤n</code> 证明了对于任意 <code class="language-plaintext highlighter-rouge">n</code>， <code class="language-plaintext highlighter-rouge">zero ≤ n</code> 成立；对于任意 <code class="language-plaintext highlighter-rouge">m</code> 和 <code class="language-plaintext highlighter-rouge">n</code>，如果 <code class="language-plaintext highlighter-rouge">m≤n</code> 证明了 <code class="language-plaintext highlighter-rouge">m ≤ n</code>，那么 <code class="language-plaintext highlighter-rouge">s≤s m≤n</code> 证明了 <code class="language-plaintext highlighter-rouge">suc m ≤
 suc n</code>:</p>
 
 <pre class="Agda"><a id="28773" href="/PLFA-zh/Lists/#28773" class="Function">_</a> <a id="28775" class="Symbol">:</a> <a id="28777" href="plfa.Lists.html#27650" class="Datatype">All</a> <a id="28781" class="Symbol">(</a><a id="28782" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#895" class="Datatype Operator">_≤</a> <a id="28785" class="Number">2</a><a id="28786" class="Symbol">)</a> <a id="28788" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">[</a> <a id="28790" class="Number">0</a> <a id="28792" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">,</a> <a id="28794" class="Number">1</a> <a id="28796" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">,</a> <a id="28798" class="Number">2</a> <a id="28800" href="plfa.Lists.html#3872" class="InductiveConstructor Operator">]</a>
@@ -1145,8 +1109,7 @@ suc n</code>:</p>
 <!-- Here `_∷_` and `[]` are the constructors of `All P` rather than of `List A`.
 The three items are proofs of `0 ≤ 2`, `1 ≤ 2`, and `2 ≤ 2`, respectively. -->
 
-<p>这里 <code class="highlighter-rouge">_∷_</code> 和 <code class="highlighter-rouge">[]</code> 是 <code class="highlighter-rouge">All P</code> 的构造子，而不是 <code class="highlighter-rouge">List A</code> 的。
-这三项分别是 <code class="highlighter-rouge">0 ≤ 2</code>、 <code class="highlighter-rouge">1 ≤ 2</code> 和 <code class="highlighter-rouge">2 ≤ 2</code> 的证明。</p>
+<p>这里 <code class="language-plaintext highlighter-rouge">_∷_</code> 和 <code class="language-plaintext highlighter-rouge">[]</code> 是 <code class="language-plaintext highlighter-rouge">All P</code> 的构造子，而不是 <code class="language-plaintext highlighter-rouge">List A</code> 的。这三项分别是 <code class="language-plaintext highlighter-rouge">0 ≤ 2</code>、 <code class="language-plaintext highlighter-rouge">1 ≤ 2</code> 和 <code class="language-plaintext highlighter-rouge">2 ≤ 2</code> 的证明。</p>
 
 <!-- (One might wonder whether a pattern such as `[_,_,_]` can be used to
 construct values of type `All` as well as type `List`, since both use
@@ -1154,10 +1117,7 @@ the same constructors. Indeed it can, so long as both types are in
 scope when the pattern is declared.  That's not the case here, since
 `List` is defined before `[_,_,_]`, but `All` is defined later.) -->
 
-<p>（读者可能会思考诸如 <code class="highlighter-rouge">[_,_,_]</code> 的模式是否可以用于构造 <code class="highlighter-rouge">All</code> 类型的值，
-像构造 <code class="highlighter-rouge">List</code> 类型的一样，因为两者使用了相同的构造子。事实上这样做是可以的，只要两个类型
-在模式声明时在作用域内。然而现在不是这样的情况，因为 <code class="highlighter-rouge">List</code> 先于 <code class="highlighter-rouge">[_,_,_]</code> 定义，而 <code class="highlighter-rouge">All</code> 在
-之后定义。）</p>
+<p>（读者可能会思考诸如 <code class="language-plaintext highlighter-rouge">[_,_,_]</code> 的模式是否可以用于构造 <code class="language-plaintext highlighter-rouge">All</code> 类型的值，像构造 <code class="language-plaintext highlighter-rouge">List</code> 类型的一样，因为两者使用了相同的构造子。事实上这样做是可以的，只要两个类型在模式声明时在作用域内。然而现在不是这样的情况，因为 <code class="language-plaintext highlighter-rouge">List</code> 先于 <code class="language-plaintext highlighter-rouge">[_,_,_]</code> 定义，而 <code class="language-plaintext highlighter-rouge">All</code> 在之后定义。）</p>
 
 <!-- ## Any -->
 
@@ -1165,7 +1125,7 @@ scope when the pattern is declared.  That's not the case here, since
 
 <!-- Predicate `Any P` holds if predicate `P` is satisfied by some element of a list: -->
 
-<p>谓词 <code class="highlighter-rouge">Any P</code> 当列表里的一些元素满足 <code class="highlighter-rouge">P</code> 时成立：</p>
+<p>谓词 <code class="language-plaintext highlighter-rouge">Any P</code> 当列表里的一些元素满足 <code class="language-plaintext highlighter-rouge">P</code> 时成立：</p>
 
 <pre class="Agda"><a id="29791" class="Keyword">data</a> <a id="Any"></a><a id="29796" href="/PLFA-zh/Lists/#29796" class="Datatype">Any</a> <a id="29800" class="Symbol">{</a><a id="29801" href="plfa.Lists.html#29801" class="Bound">A</a> <a id="29803" class="Symbol">:</a> <a id="29805" class="PrimitiveType">Set</a><a id="29808" class="Symbol">}</a> <a id="29810" class="Symbol">(</a><a id="29811" href="plfa.Lists.html#29811" class="Bound">P</a> <a id="29813" class="Symbol">:</a> <a id="29815" href="plfa.Lists.html#29801" class="Bound">A</a> <a id="29817" class="Symbol">→</a> <a id="29819" class="PrimitiveType">Set</a><a id="29822" class="Symbol">)</a> <a id="29824" class="Symbol">:</a> <a id="29826" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="29831" href="plfa.Lists.html#29801" class="Bound">A</a> <a id="29833" class="Symbol">→</a> <a id="29835" class="PrimitiveType">Set</a> <a id="29839" class="Keyword">where</a>
   <a id="Any.here"></a><a id="29847" href="/PLFA-zh/Lists/#29847" class="InductiveConstructor">here</a>  <a id="29853" class="Symbol">:</a> <a id="29855" class="Symbol">∀</a> <a id="29857" class="Symbol">{</a><a id="29858" href="plfa.Lists.html#29858" class="Bound">x</a> <a id="29860" class="Symbol">:</a> <a id="29862" href="plfa.Lists.html#29801" class="Bound">A</a><a id="29863" class="Symbol">}</a> <a id="29865" class="Symbol">{</a><a id="29866" href="plfa.Lists.html#29866" class="Bound">xs</a> <a id="29869" class="Symbol">:</a> <a id="29871" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="29876" href="plfa.Lists.html#29801" class="Bound">A</a><a id="29877" class="Symbol">}</a> <a id="29879" class="Symbol">→</a> <a id="29881" href="plfa.Lists.html#29811" class="Bound">P</a> <a id="29883" href="plfa.Lists.html#29858" class="Bound">x</a> <a id="29885" class="Symbol">→</a> <a id="29887" href="plfa.Lists.html#29796" class="Datatype">Any</a> <a id="29891" href="plfa.Lists.html#29811" class="Bound">P</a> <a id="29893" class="Symbol">(</a><a id="29894" href="plfa.Lists.html#29858" class="Bound">x</a> <a id="29896" href="plfa.Lists.html#1328" class="InductiveConstructor Operator">∷</a> <a id="29898" href="plfa.Lists.html#29866" class="Bound">xs</a><a id="29900" class="Symbol">)</a>
@@ -1176,8 +1136,7 @@ satisfies `P`, while the second provides evidence that some element of
 the tail of the list satisfies `P`.  For example, we can define list
 membership as follows: -->
 
-<p>第一个构造子证明了列表的头元素满足 <code class="highlighter-rouge">P</code>，第二个构造子证明的列表的尾列表中的一些元素满足 <code class="highlighter-rouge">P</code>。
-举例来说，我们可以如下定义列表的成员关系：</p>
+<p>第一个构造子证明了列表的头元素满足 <code class="language-plaintext highlighter-rouge">P</code>，第二个构造子证明的列表的尾列表中的一些元素满足 <code class="language-plaintext highlighter-rouge">P</code>。举例来说，我们可以如下定义列表的成员关系：</p>
 
 <pre class="Agda"><a id="30294" class="Keyword">infix</a> <a id="30300" class="Number">4</a> <a id="30302" href="/PLFA-zh/Lists/#30311" class="Function Operator">_∈_</a> <a id="30306" href="plfa.Lists.html#30381" class="Function Operator">_∉_</a>
 
@@ -1191,8 +1150,7 @@ membership as follows: -->
 this fact in two different ways, corresponding to the two different
 occurrences of zero in the list, as the first element and as the third element: -->
 
-<p>比如说，零是列表 <code class="highlighter-rouge">[ 0 , 1 , 0 , 2 ]</code> 中的一个元素。
-我们可以用两种方法来展示这个事实，对应零在列表中出现了两次：第一个元素和第三个元素：</p>
+<p>比如说，零是列表 <code class="language-plaintext highlighter-rouge">[ 0 , 1 , 0 , 2 ]</code> 中的一个元素。我们可以用两种方法来展示这个事实，对应零在列表中出现了两次：第一个元素和第三个元素：</p>
 
 <pre class="Agda"><a id="30796" href="/PLFA-zh/Lists/#30796" class="Function">_</a> <a id="30798" class="Symbol">:</a> <a id="30800" class="Number">0</a> <a id="30802" href="plfa.Lists.html#30311" class="Function Operator">∈</a> <a id="30804" href="plfa.Lists.html#3911" class="InductiveConstructor Operator">[</a> <a id="30806" class="Number">0</a> <a id="30808" href="plfa.Lists.html#3911" class="InductiveConstructor Operator">,</a> <a id="30810" class="Number">1</a> <a id="30812" href="plfa.Lists.html#3911" class="InductiveConstructor Operator">,</a> <a id="30814" class="Number">0</a> <a id="30816" href="plfa.Lists.html#3911" class="InductiveConstructor Operator">,</a> <a id="30818" class="Number">2</a> <a id="30820" href="plfa.Lists.html#3911" class="InductiveConstructor Operator">]</a>
 <a id="30822" class="Symbol">_</a> <a id="30824" class="Symbol">=</a> <a id="30826" href="/PLFA-zh/Lists/#29847" class="InductiveConstructor">here</a> <a id="30831" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
@@ -1216,8 +1174,8 @@ any possible proof that it is in the list leads to contradiction: -->
 possible evidence for `3 ≡ 0`, `3 ≡ 1`, `3 ≡ 0`, `3 ≡ 2`, and
 `3 ∈ []`, respectively. -->
 
-<p><code class="highlighter-rouge">()</code> 出现了五次，分别表示没有 <code class="highlighter-rouge">3 ≡ 0</code>、 <code class="highlighter-rouge">3 ≡ 1</code>、 <code class="highlighter-rouge">3 ≡ 0</code>、 <code class="highlighter-rouge">3 ≡ 2</code> 和
-<code class="highlighter-rouge">3 ∈ []</code> 的证明。</p>
+<p><code class="language-plaintext highlighter-rouge">()</code> 出现了五次，分别表示没有 <code class="language-plaintext highlighter-rouge">3 ≡ 0</code>、 <code class="language-plaintext highlighter-rouge">3 ≡ 1</code>、 <code class="language-plaintext highlighter-rouge">3 ≡ 0</code>、 <code class="language-plaintext highlighter-rouge">3 ≡ 2</code> 和
+<code class="language-plaintext highlighter-rouge">3 ∈ []</code> 的证明。</p>
 
 <!-- ## All and append -->
 
@@ -1250,13 +1208,12 @@ only if it holds for every element of both lists: -->
 </pre>
 <!-- #### Exercise `Any-++-⇔` (recommended) -->
 
-<h4 id="练习-any---推荐">练习 <code class="highlighter-rouge">Any-++-⇔</code> （推荐）</h4>
+<h4 id="练习-any---推荐">练习 <code class="language-plaintext highlighter-rouge">Any-++-⇔</code> （推荐）</h4>
 
 <!-- Prove a result similar to `All-++-⇔`, but with `Any` in place of `All`, and a suitable
 replacement for `_×_`.  As a consequence, demonstrate an equivalence relating
 `_∈_` and `_++_`. -->
-<p>使用 <code class="highlighter-rouge">Any</code> 代替 <code class="highlighter-rouge">All</code> 与一个合适的 <code class="highlighter-rouge">_×_</code> 的替代，证明一个类似于 <code class="highlighter-rouge">All-++-⇔</code> 的结果。
-作为结论，展示关联 <code class="highlighter-rouge">_∈_</code> 和 <code class="highlighter-rouge">_++_</code> 的一个等价关系。</p>
+<p>使用 <code class="language-plaintext highlighter-rouge">Any</code> 代替 <code class="language-plaintext highlighter-rouge">All</code> 与一个合适的 <code class="language-plaintext highlighter-rouge">_×_</code> 的替代，证明一个类似于 <code class="language-plaintext highlighter-rouge">All-++-⇔</code> 的结果。作为结论，展示关联 <code class="language-plaintext highlighter-rouge">_∈_</code> 和 <code class="language-plaintext highlighter-rouge">_++_</code> 的一个等价关系。</p>
 
 <!-- <pre class="Agda"><a id="32786" class="Comment">-- Your code goes here</a>
 </pre>{:/}
@@ -1266,11 +1223,11 @@ replacement for `_×_`.  As a consequence, demonstrate an equivalence relating
 {::comment}
 #### Exercise `All-++-≃` (stretch) -->
 
-<h4 id="练习-all---延伸">练习 <code class="highlighter-rouge">All-++-≃</code> （延伸）</h4>
+<h4 id="练习-all---延伸">练习 <code class="language-plaintext highlighter-rouge">All-++-≃</code> （延伸）</h4>
 
 <!-- Show that the equivalence `All-++-⇔` can be extended to an isomorphism. -->
 
-<p>证明 <code class="highlighter-rouge">All-++-⇔</code> 的等价关系可以被扩展至一个同构关系。</p>
+<p>证明 <code class="language-plaintext highlighter-rouge">All-++-⇔</code> 的等价关系可以被扩展至一个同构关系。</p>
 
 <!-- <pre class="Agda"><a id="33059" class="Comment">-- Your code goes here</a>
 </pre>{:/}
@@ -1280,7 +1237,7 @@ replacement for `_×_`.  As a consequence, demonstrate an equivalence relating
 {::comment}
 #### Exercise `¬Any≃All¬` (stretch) -->
 
-<h4 id="练习-anyall-拓展">练习 <code class="highlighter-rouge">¬Any≃All¬</code> （拓展）</h4>
+<h4 id="练习-anyall-拓展">练习 <code class="language-plaintext highlighter-rouge">¬Any≃All¬</code> （拓展）</h4>
 
 <!-- First generalise composition to arbitrary levels, using
 [universe polymorphism](/PLFA-zh/Equality/#unipoly): -->
@@ -1292,7 +1249,7 @@ replacement for `_×_`.  As a consequence, demonstrate an equivalence relating
 </pre>
 <!-- Show that `Any` and `All` satisfy a version of De Morgan's Law: -->
 
-<p>证明 <code class="highlighter-rouge">Any</code> 和 <code class="highlighter-rouge">All</code> 满足某个形式的德摩根定律：</p>
+<p>证明 <code class="language-plaintext highlighter-rouge">Any</code> 和 <code class="language-plaintext highlighter-rouge">All</code> 满足某个形式的德摩根定律：</p>
 
 <pre class="Agda"><a id="33642" class="Keyword">postulate</a>
   <a id="¬Any≃All¬"></a><a id="33654" href="/PLFA-zh/Lists/#33654" class="Postulate">¬Any≃All¬</a> <a id="33664" class="Symbol">:</a> <a id="33666" class="Symbol">∀</a> <a id="33668" class="Symbol">{</a><a id="33669" href="plfa.Lists.html#33669" class="Bound">A</a> <a id="33671" class="Symbol">:</a> <a id="33673" class="PrimitiveType">Set</a><a id="33676" class="Symbol">}</a> <a id="33678" class="Symbol">(</a><a id="33679" href="plfa.Lists.html#33679" class="Bound">P</a> <a id="33681" class="Symbol">:</a> <a id="33683" href="plfa.Lists.html#33669" class="Bound">A</a> <a id="33685" class="Symbol">→</a> <a id="33687" class="PrimitiveType">Set</a><a id="33690" class="Symbol">)</a> <a id="33692" class="Symbol">(</a><a id="33693" href="plfa.Lists.html#33693" class="Bound">xs</a> <a id="33696" class="Symbol">:</a> <a id="33698" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="33703" href="plfa.Lists.html#33669" class="Bound">A</a><a id="33704" class="Symbol">)</a>
@@ -1318,7 +1275,7 @@ replacement for `_×_`.  As a consequence, demonstrate an equivalence relating
 it is easy to define an analogue of `All`, which returns true if
 a given predicate returns true for every element of a list: -->
 
-<p>如果我们将一个谓词看作一个返回布尔值的函数，那么我们可以简单的定义一个类似于 <code class="highlighter-rouge">All</code>
+<p>如果我们将一个谓词看作一个返回布尔值的函数，那么我们可以简单的定义一个类似于 <code class="language-plaintext highlighter-rouge">All</code>
 的函数，其当给定谓词对于列表每个元素返回真时返回真：</p>
 
 <pre class="Agda"><a id="all"></a><a id="34342" href="/PLFA-zh/Lists/#34342" class="Function">all</a> <a id="34346" class="Symbol">:</a> <a id="34348" class="Symbol">∀</a> <a id="34350" class="Symbol">{</a><a id="34351" href="plfa.Lists.html#34351" class="Bound">A</a> <a id="34353" class="Symbol">:</a> <a id="34355" class="PrimitiveType">Set</a><a id="34358" class="Symbol">}</a> <a id="34360" class="Symbol">→</a> <a id="34362" class="Symbol">(</a><a id="34363" href="plfa.Lists.html#34351" class="Bound">A</a> <a id="34365" class="Symbol">→</a> <a id="34367" href="Agda.Builtin.Bool.html#135" class="Datatype">Bool</a><a id="34371" class="Symbol">)</a> <a id="34373" class="Symbol">→</a> <a id="34375" href="plfa.Lists.html#1284" class="Datatype">List</a> <a id="34380" href="plfa.Lists.html#34351" class="Bound">A</a> <a id="34382" class="Symbol">→</a> <a id="34384" href="Agda.Builtin.Bool.html#135" class="Datatype">Bool</a>
@@ -1327,7 +1284,7 @@ a given predicate returns true for every element of a list: -->
 <!-- The function can be written in a particularly compact style by
 using the higher-order functions `map` and `foldr`. -->
 
-<p>我们可以使用高阶函数 <code class="highlighter-rouge">map</code> 和 <code class="highlighter-rouge">foldr</code> 来简洁地写出这个函数。</p>
+<p>我们可以使用高阶函数 <code class="language-plaintext highlighter-rouge">map</code> 和 <code class="language-plaintext highlighter-rouge">foldr</code> 来简洁地写出这个函数。</p>
 
 <!-- As one would hope, if we replace booleans by decidables there is again
 an analogue of `All`.  First, return to the notion of a predicate `P` as
@@ -1335,9 +1292,8 @@ a function of type `A → Set`, taking a value `x` of type `A` into evidence
 `P x` that a property holds for `x`.  Say that a predicate `P` is _decidable_
 if we have a function that for a given `x` can decide `P x`: -->
 
-<p>正如所希望的那样，如果我们将布尔值替换成可判定值，这与 <code class="highlighter-rouge">All</code> 是相似的。首先，回到将 <code class="highlighter-rouge">P</code>
-当作一个类型为 <code class="highlighter-rouge">A → Set</code> 的函数的概念，将一个类型为 <code class="highlighter-rouge">A</code> 的值 <code class="highlighter-rouge">x</code> 转换成 <code class="highlighter-rouge">P x</code> 对 <code class="highlighter-rouge">x</code> 成立
-的证明。我们成 <code class="highlighter-rouge">P</code> 为<strong>可判定的</strong>（Decidable），如果我们有一个函数，其在给定 <code class="highlighter-rouge">x</code> 时能够判定 <code class="highlighter-rouge">P x</code>：</p>
+<p>正如所希望的那样，如果我们将布尔值替换成可判定值，这与 <code class="language-plaintext highlighter-rouge">All</code> 是相似的。首先，回到将 <code class="language-plaintext highlighter-rouge">P</code>
+当作一个类型为 <code class="language-plaintext highlighter-rouge">A → Set</code> 的函数的概念，将一个类型为 <code class="language-plaintext highlighter-rouge">A</code> 的值 <code class="language-plaintext highlighter-rouge">x</code> 转换成 <code class="language-plaintext highlighter-rouge">P x</code> 对 <code class="language-plaintext highlighter-rouge">x</code> 成立的证明。我们成 <code class="language-plaintext highlighter-rouge">P</code> 为<strong>可判定的</strong>（Decidable），如果我们有一个函数，其在给定 <code class="language-plaintext highlighter-rouge">x</code> 时能够判定 <code class="language-plaintext highlighter-rouge">P x</code>：</p>
 
 <pre class="Agda"><a id="Decidable"></a><a id="35159" href="/PLFA-zh/Lists/#35159" class="Function">Decidable</a> <a id="35169" class="Symbol">:</a> <a id="35171" class="Symbol">∀</a> <a id="35173" class="Symbol">{</a><a id="35174" href="plfa.Lists.html#35174" class="Bound">A</a> <a id="35176" class="Symbol">:</a> <a id="35178" class="PrimitiveType">Set</a><a id="35181" class="Symbol">}</a> <a id="35183" class="Symbol">→</a> <a id="35185" class="Symbol">(</a><a id="35186" href="plfa.Lists.html#35174" class="Bound">A</a> <a id="35188" class="Symbol">→</a> <a id="35190" class="PrimitiveType">Set</a><a id="35193" class="Symbol">)</a> <a id="35195" class="Symbol">→</a> <a id="35197" class="PrimitiveType">Set</a>
 <a id="35201" href="/PLFA-zh/Lists/#35159" class="Function">Decidable</a> <a id="35211" class="Symbol">{</a><a id="35212" href="plfa.Lists.html#35212" class="Bound">A</a><a id="35213" class="Symbol">}</a> <a id="35215" href="plfa.Lists.html#35215" class="Bound">P</a>  <a id="35218" class="Symbol">=</a>  <a id="35221" class="Symbol">∀</a> <a id="35223" class="Symbol">(</a><a id="35224" href="plfa.Lists.html#35224" class="Bound">x</a> <a id="35226" class="Symbol">:</a> <a id="35228" href="plfa.Lists.html#35212" class="Bound">A</a><a id="35229" class="Symbol">)</a> <a id="35231" class="Symbol">→</a> <a id="35233" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#605" class="Datatype">Dec</a> <a id="35237" class="Symbol">(</a><a id="35238" href="plfa.Lists.html#35215" class="Bound">P</a> <a id="35240" href="plfa.Lists.html#35224" class="Bound">x</a><a id="35241" class="Symbol">)</a>
@@ -1345,7 +1301,7 @@ if we have a function that for a given `x` can decide `P x`: -->
 <!-- Then if predicate `P` is decidable, it is also decidable whether every
 element of a list satisfies the predicate: -->
 
-<p>那么当谓词 <code class="highlighter-rouge">P</code> 可判定时，我们亦可判定列表中的每一个元素是否满足这个谓词：</p>
+<p>那么当谓词 <code class="language-plaintext highlighter-rouge">P</code> 可判定时，我们亦可判定列表中的每一个元素是否满足这个谓词：</p>
 <pre class="Agda"><a id="All?"></a><a id="35424" href="/PLFA-zh/Lists/#35424" class="Function">All?</a> <a id="35429" class="Symbol">:</a> <a id="35431" class="Symbol">∀</a> <a id="35433" class="Symbol">{</a><a id="35434" href="plfa.Lists.html#35434" class="Bound">A</a> <a id="35436" class="Symbol">:</a> <a id="35438" class="PrimitiveType">Set</a><a id="35441" class="Symbol">}</a> <a id="35443" class="Symbol">{</a><a id="35444" href="plfa.Lists.html#35444" class="Bound">P</a> <a id="35446" class="Symbol">:</a> <a id="35448" href="plfa.Lists.html#35434" class="Bound">A</a> <a id="35450" class="Symbol">→</a> <a id="35452" class="PrimitiveType">Set</a><a id="35455" class="Symbol">}</a> <a id="35457" class="Symbol">→</a> <a id="35459" href="plfa.Lists.html#35159" class="Function">Decidable</a> <a id="35469" href="plfa.Lists.html#35444" class="Bound">P</a> <a id="35471" class="Symbol">→</a> <a id="35473" href="plfa.Lists.html#35159" class="Function">Decidable</a> <a id="35483" class="Symbol">(</a><a id="35484" href="plfa.Lists.html#27650" class="Datatype">All</a> <a id="35488" href="plfa.Lists.html#35444" class="Bound">P</a><a id="35489" class="Symbol">)</a>
 <a id="35491" href="/PLFA-zh/Lists/#35424" class="Function">All?</a> <a id="35496" href="plfa.Lists.html#35496" class="Bound">P?</a> <a id="35499" href="plfa.Lists.html#1313" class="InductiveConstructor">[]</a>                                 <a id="35534" class="Symbol">=</a>  <a id="35537" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#641" class="InductiveConstructor">yes</a> <a id="35541" href="plfa.Lists.html#27701" class="InductiveConstructor">[]</a>
 <a id="35544" href="/PLFA-zh/Lists/#35424" class="Function">All?</a> <a id="35549" href="plfa.Lists.html#35549" class="Bound">P?</a> <a id="35552" class="Symbol">(</a><a id="35553" href="plfa.Lists.html#35553" class="Bound">x</a> <a id="35555" href="plfa.Lists.html#1328" class="InductiveConstructor Operator">∷</a> <a id="35557" href="plfa.Lists.html#35557" class="Bound">xs</a><a id="35559" class="Symbol">)</a> <a id="35561" class="Keyword">with</a> <a id="35566" href="plfa.Lists.html#35549" class="Bound">P?</a> <a id="35569" href="plfa.Lists.html#35553" class="Bound">x</a>   <a id="35573" class="Symbol">|</a> <a id="35575" href="plfa.Lists.html#35424" class="Function">All?</a> <a id="35580" href="plfa.Lists.html#35549" class="Bound">P?</a> <a id="35583" href="plfa.Lists.html#35557" class="Bound">xs</a>
@@ -1359,22 +1315,19 @@ showing that the conjunction of two decidable propositions is itself
 decidable, using `_∷_` rather than `⟨_,_⟩` to combine the evidence for
 the head and tail of the list. -->
 
-<p>如果列表为空，那么 <code class="highlighter-rouge">P</code> 显然对列表的每个元素成立。
-否则，证明的结构与两个可判定的命题是可判定的证明相似，不过我们使用 <code class="highlighter-rouge">_∷_</code> 而不是 <code class="highlighter-rouge">⟨_,_⟩</code>
+<p>如果列表为空，那么 <code class="language-plaintext highlighter-rouge">P</code> 显然对列表的每个元素成立。否则，证明的结构与两个可判定的命题是可判定的证明相似，不过我们使用 <code class="language-plaintext highlighter-rouge">_∷_</code> 而不是 <code class="language-plaintext highlighter-rouge">⟨_,_⟩</code>
 来整合头元素和尾列表的证明。</p>
 
 <!-- #### Exercise `any?` (stretch) -->
 
-<h4 id="练习-any-延伸">练习 <code class="highlighter-rouge">any?</code> （延伸）</h4>
+<h4 id="练习-any-延伸">练习 <code class="language-plaintext highlighter-rouge">any?</code> （延伸）</h4>
 
 <!-- Just as `All` has analogues `all` and `All?` which determine whether a
 predicate holds for every element of a list, so does `Any` have
 analogues `any` and `Any?` which determine whether a predicate holds
 for some element of a list.  Give their definitions. -->
 
-<p>正如 <code class="highlighter-rouge">All</code> 有类似的 <code class="highlighter-rouge">all</code> 和 <code class="highlighter-rouge">All?</code> 形式，来判断列表的每个元素是否满足给定的谓词，
-那么 <code class="highlighter-rouge">Any</code> 也有类似的 <code class="highlighter-rouge">any</code> 和 <code class="highlighter-rouge">Any?</code> 形式，来判断列表的一些元素是否满足给定的谓词。
-给出它们的定义。</p>
+<p>正如 <code class="language-plaintext highlighter-rouge">All</code> 有类似的 <code class="language-plaintext highlighter-rouge">all</code> 和 <code class="language-plaintext highlighter-rouge">All?</code> 形式，来判断列表的每个元素是否满足给定的谓词，那么 <code class="language-plaintext highlighter-rouge">Any</code> 也有类似的 <code class="language-plaintext highlighter-rouge">any</code> 和 <code class="language-plaintext highlighter-rouge">Any?</code> 形式，来判断列表的一些元素是否满足给定的谓词。给出它们的定义。</p>
 
 <!-- <pre class="Agda"><a id="36704" class="Comment">-- Your code goes here</a>
 </pre>{:/}
@@ -1385,11 +1338,11 @@ for some element of a list.  Give their definitions. -->
 {::comment}
 #### Exercise `All-∀` -->
 
-<h4 id="练习-all-">练习 <code class="highlighter-rouge">All-∀</code></h4>
+<h4 id="练习-all-">练习 <code class="language-plaintext highlighter-rouge">All-∀</code></h4>
 
 <!-- Show that `All P xs` is isomorphic to `∀ {x} → x ∈ xs → P x`. -->
 
-<p>证明 <code class="highlighter-rouge">All P xs</code> 与 <code class="highlighter-rouge">∀ {x} → x ∈ xs → P x</code> 同构。</p>
+<p>证明 <code class="language-plaintext highlighter-rouge">All P xs</code> 与 <code class="language-plaintext highlighter-rouge">∀ {x} → x ∈ xs → P x</code> 同构。</p>
 
 <!-- <pre class="Agda"><a id="36957" class="Comment">-- You code goes here</a>
 </pre>{:/}
@@ -1400,11 +1353,11 @@ for some element of a list.  Give their definitions. -->
 {::comment}
 #### Exercise `Any-∃` -->
 
-<h4 id="练习-any-">练习 <code class="highlighter-rouge">Any-∃</code></h4>
+<h4 id="练习-any-">练习 <code class="language-plaintext highlighter-rouge">Any-∃</code></h4>
 
 <!-- Show that `Any P xs` is isomorphic to `∃[ x ∈ xs ] P x`. -->
 
-<p>证明 <code class="highlighter-rouge">Any P xs</code> 与 <code class="highlighter-rouge">∃[ x ∈ xs ] P x</code> 同构。</p>
+<p>证明 <code class="language-plaintext highlighter-rouge">Any P xs</code> 与 <code class="language-plaintext highlighter-rouge">∃[ x ∈ xs ] P x</code> 同构。</p>
 
 <!-- <pre class="Agda"><a id="37199" class="Comment">-- You code goes here</a>
 </pre>{:/}
@@ -1415,14 +1368,13 @@ for some element of a list.  Give their definitions. -->
 {::comment}
 #### Exercise `filter?` (stretch) -->
 
-<h4 id="练习-filter-延伸">练习 <code class="highlighter-rouge">filter?</code> （延伸）</h4>
+<h4 id="练习-filter-延伸">练习 <code class="language-plaintext highlighter-rouge">filter?</code> （延伸）</h4>
 
 <!-- Define the following variant of the traditional `filter` function on lists,
 which given a decidable predicate and a list returns all elements of the
 list satisfying the predicate: -->
 
-<p>定义下面给出的列表 <code class="highlighter-rouge">filter</code> 函数的变种，给定一个可判定的谓词和一个列表，返回列表中所有满足
-谓词的元素：</p>
+<p>定义下面给出的列表 <code class="language-plaintext highlighter-rouge">filter</code> 函数的变种，给定一个可判定的谓词和一个列表，返回列表中所有满足谓词的元素：</p>
 
 <pre class="Agda"><a id="37592" class="Keyword">postulate</a>
   <a id="filter?"></a><a id="37604" href="/PLFA-zh/Lists/#37604" class="Postulate">filter?</a> <a id="37612" class="Symbol">:</a> <a id="37614" class="Symbol">∀</a> <a id="37616" class="Symbol">{</a><a id="37617" href="plfa.Lists.html#37617" class="Bound">A</a> <a id="37619" class="Symbol">:</a> <a id="37621" class="PrimitiveType">Set</a><a id="37624" class="Symbol">}</a> <a id="37626" class="Symbol">{</a><a id="37627" href="plfa.Lists.html#37627" class="Bound">P</a> <a id="37629" class="Symbol">:</a> <a id="37631" href="plfa.Lists.html#37617" class="Bound">A</a> <a id="37633" class="Symbol">→</a> <a id="37635" class="PrimitiveType">Set</a><a id="37638" class="Symbol">}</a>
@@ -1451,15 +1403,14 @@ list satisfying the predicate: -->
 <!-- The standard library version of `IsMonoid` differs from the
 one given here, in that it is also parameterised on an equivalence relation. -->
 
-<p>标准库中的 <code class="highlighter-rouge">IsMonoid</code> 与给出的定义不同，因为它可以针对特定的等价关系参数化。</p>
+<p>标准库中的 <code class="language-plaintext highlighter-rouge">IsMonoid</code> 与给出的定义不同，因为它可以针对特定的等价关系参数化。</p>
 
 <!-- Both `Relation.Unary` and `Relation.Binary` define a version of `Decidable`,
 one for unary relations (as used in this chapter where `P` ranges over
 unary predicates) and one for binary relations (as used earlier, where `_≤_`
 ranges over a binary relation). -->
 
-<p><code class="highlighter-rouge">Relation.Unary</code> 和 <code class="highlighter-rouge">Relation.Binary</code> 都定义了 <code class="highlighter-rouge">Decidable</code> 的某个版本，一个
-用于单元关系（正如本章中的单元谓词 <code class="highlighter-rouge">P</code>），一个用于二元关系（正如之前使用的 <code class="highlighter-rouge">_≤_</code>）。</p>
+<p><code class="language-plaintext highlighter-rouge">Relation.Unary</code> 和 <code class="language-plaintext highlighter-rouge">Relation.Binary</code> 都定义了 <code class="language-plaintext highlighter-rouge">Decidable</code> 的某个版本，一个用于单元关系（正如本章中的单元谓词 <code class="language-plaintext highlighter-rouge">P</code>），一个用于二元关系（正如之前使用的 <code class="language-plaintext highlighter-rouge">_≤_</code>）。</p>
 
 <h2 id="unicode">Unicode</h2>
 
@@ -1473,7 +1424,7 @@ ranges over a binary relation). -->
     ∉  U+2209  NOT AN ELEMENT OF  (\inn, \notin)
  -->
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∷  U+2237  比例  (\::)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∷  U+2237  比例  (\::)
 ⊗  U+2297  带圈的乘号  (\otimes, \ox)
 ∈  U+2208  是……的元素  (\in)
 ∉  U+2209  不是……的元素  (\inn, \notin)
@@ -1532,6 +1483,18 @@ ranges over a binary relation). -->
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

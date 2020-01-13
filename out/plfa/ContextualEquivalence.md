@@ -27,7 +27,7 @@ The notion of _contextual equivalence_ is an important one for
 programming languages because it is the sufficient condition for
 changing a subterm of a program while maintaining the program's
 overall behavior. Two terms `M` and `N` are contextually equivalent
-if they can plugged into any context `C` and produce equivalent
+if they can plug<a id="992" class="Bound">g</a>ed i<a id="997" class="Bound">n</a>to <a id="1001" class="Bound">a</a>ny c<a id="1006" class="Function">on</a>t<a id="1009" class="Bound">e</a>x<a id="1011" class="Function">t</a> <a id="1013" class="Bound">`</a>C<a id="1015" class="Function">`</a> <a id="1017" class="Bound">a</a>nd produce equivalent
 results. As discuss in the Denotational chapter, the result of
 a program in the lambda calculus is to terminate or not.
 We characterize termination with the reduction semantics as follows.
@@ -46,8 +46,8 @@ together.
 The contextual equivalence of two terms is difficult to prove directly
 based on the above definition because of the universal quantification
 of the context `C`. One of the main motivations for developing
-denotational semantics is to have an alternative way to prove
-contextual equivalence that instead only requires reasoning about the
+denotational semantics is to have an alternativ<a id="1869" class="Bound">e</a> wa<a id="1873" class="Bound">y</a> to <a id="1878" class="Function">pr</a>o<a id="1881" class="Bound">v</a>e<a id="1883" class="Function">
+</a>c<a id="1885" class="Bound">o</a>ntextual equivalence that instead only requires reasoning about the
 two terms.
 
 

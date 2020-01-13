@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Adequacy: of denotational semantics with respect to operational semantics | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Adequacy: of denotational semantics with respect to operational semantics" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Adequacy/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Adequacy/","headline":"Adequacy: of denotational semantics with respect to operational semantics","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Adequacy: of denotational semantics with respect to operational semantics","url":"https://agda-zh.github.io/PLFA-zh/Adequacy/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -81,46 +81,42 @@
 next step would be to prove progress. That is, to prove a property
 of the form</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If γ ⊢ M ↓ v, then either M is a lambda abstraction or M —→ N for some N.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If γ ⊢ M ↓ v, then either M is a lambda abstraction or M —→ N for some N.
 </code></pre></div></div>
 
 <p>Such a property would tell us that having a denotation implies either
 reduction to normal form or divergence. This is indeed true, but we
 can prove a much stronger property! In fact, having a denotation that
-is a function value (not <code class="highlighter-rouge">⊥</code>) implies reduction to a lambda
+is a function value (not <code class="language-plaintext highlighter-rouge">⊥</code>) implies reduction to a lambda
 abstraction (no divergence).</p>
 
 <p>This stronger property, reformulated a bit, is known as <em>adequacy</em>.
-That is, if a term <code class="highlighter-rouge">M</code> is denotationally equal to a lambda abstraction,
-then <code class="highlighter-rouge">M</code> reduces to a lambda abstraction.</p>
+That is, if a term <code class="language-plaintext highlighter-rouge">M</code> is denotationally equal to a lambda abstraction,
+then <code class="language-plaintext highlighter-rouge">M</code> reduces to a lambda abstraction.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ M ≃ ℰ (ƛ N)  implies M —↠ ƛ N' for some N'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ M ≃ ℰ (ƛ N)  implies M —↠ &lt;a id="992" class="Bound"&gt;ƛ&lt;/a&gt; N' &lt;a id="997" class="Bound"&gt;f&lt;/a&gt;or &lt;a id="1001" class="Bound"&gt;s&lt;/a&gt;ome &lt;a id="1006" class="Function"&gt;N&amp;#39;&lt;/a&gt; &lt;a id="1009" class="Bound"&gt; &lt;/a&gt;R&lt;a id="1011" class="Function"&gt;e&lt;/a&gt;c&lt;a id="1013" class="Bound"&gt;a&lt;/a&gt;l&lt;a id="1015" class="Function"&gt;l&lt;/a&gt; &lt;a id="1017" class="Bound"&gt;t&lt;/a&gt;hat `ℰ M ≃ ℰ (ƛ N)` is equivalent to saying that `γ ⊢ M ↓ (v ↦ w)` for some `v` and `w`. We will show that `γ ⊢ M ↓ (v ↦ w)` implies reduction a lambda abstraction.
 </code></pre></div></div>
-
-<p>Recall that <code class="highlighter-rouge">ℰ M ≃ ℰ (ƛ N)</code> is equivalent to saying that
-<code class="highlighter-rouge">γ ⊢ M ↓ (v ↦ w)</code> for some <code class="highlighter-rouge">v</code> and <code class="highlighter-rouge">w</code>. We will show that
-<code class="highlighter-rouge">γ ⊢ M ↓ (v ↦ w)</code> implies reduction a lambda abstraction.</p>
 
 <p>It is well known that a term can reduce to a lambda abstraction using
 full β reduction if and only if it can reduce to a lambda abstraction
 using the call-by-name reduction strategy. So we shall prove that
-<code class="highlighter-rouge">γ ⊢ M ↓ (v ↦ w)</code> implies that <code class="highlighter-rouge">M</code> halts under call-by-name evaluation,
-which we define with a big-step semantics written <code class="highlighter-rouge">γ' ⊢ M ⇓ c</code>, where
-<code class="highlighter-rouge">c</code> is a closure (a term paired with an environment) and <code class="highlighter-rouge">γ'</code> is an
+<code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ (v ↦ w)</code> implies that <code class="language-plaintext highlighter-rouge">M</code> halts under call-by-name evaluation,
+which we define with a big-step semantics written <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ c</code>, where
+<code class="language-plaintext highlighter-rouge">c</code> is a closure (a term paired with an environment) and <code class="language-plaintext highlighter-rouge">γ'</code> is an
 environment that maps variables to closures</p>
 
-<p>So we will show that <code class="highlighter-rouge">γ ⊢ M ↓ (v ↦ w)</code> implies <code class="highlighter-rouge">γ' ⊢ M ⇓ c</code>,
-provided <code class="highlighter-rouge">γ</code> and <code class="highlighter-rouge">γ'</code> are appropriate related.  The proof will
-be an induction on the derivation of <code class="highlighter-rouge">γ ⊢ M ↓ v</code>, and to
-strengthen the induction hypothesis, we will relate semantic values to
-closures using a <em>logical relation</em> <code class="highlighter-rouge">𝕍</code>.</p>
+<p>So we will show that <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ (v ↦ w)</code> implies <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ c</code>,
+provided <code class="language-plaintext highlighter-rouge">γ</code> and <code class="language-plaintext highlighter-rouge">γ'</code> are appropriate related.  The proof will
+be an induction on the derivation of <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code>, and to
+strengthen the induction hypothesis, we wil<a id="1869" class="Bound">l</a> re<a id="1873" class="Bound">l</a>ate <a id="1878" class="Function">se</a>m<a id="1881" class="Bound">a</a>n<a id="1883" class="Function">t</a>i<a id="1885" class="Bound">c</a> values to
+closures using a <em>logical relation</em> <code class="language-plaintext highlighter-rouge">𝕍</code>.</p>
 
 <p>The rest of this chapter is organized as follows.</p>
 
 <ul>
   <li>
-    <p>We loosen the requirement that <code class="highlighter-rouge">M</code> result in a function value and
-instead require that <code class="highlighter-rouge">M</code> result in a value that is greater than or
+    <p>We loosen the requirement that <code class="language-plaintext highlighter-rouge">M</code> result in a function value and
+instead require that <code class="language-plaintext highlighter-rouge">M</code> result in a value that is greater than or
 equal to a function value. We establish several properties about
 being ``greater than a function’’.</p>
   </li>
@@ -129,12 +125,12 @@ being ``greater than a function’’.</p>
 and prove that it is deterministic.</p>
   </li>
   <li>
-    <p>We define the logical relation <code class="highlighter-rouge">𝕍</code> that relates values and closures,
-and extend it to a relation on terms <code class="highlighter-rouge">𝔼</code> and environments <code class="highlighter-rouge">𝔾</code>.</p>
+    <p>We define the logical relation <code class="language-plaintext highlighter-rouge">𝕍</code> that relates values and closures,
+and extend it to a relation on terms <code class="language-plaintext highlighter-rouge">𝔼</code> and environments <code class="language-plaintext highlighter-rouge">𝔾</code>.</p>
   </li>
   <li>
     <p>We prove the main lemma,
-that if <code class="highlighter-rouge">𝔾 γ γ'</code> and <code class="highlighter-rouge">γ ⊢ M ↓ v</code>, then <code class="highlighter-rouge">𝔼 v (clos M γ')</code>.</p>
+that if <code class="language-plaintext highlighter-rouge">𝔾 γ γ'</code> and <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code>, then <code class="language-plaintext highlighter-rouge">𝔼 v (clos M γ')</code>.</p>
   </li>
   <li>
     <p>We prove adequacy as a corollary to the main lemma.</p>
@@ -179,7 +175,7 @@ greather-than or equal to a function value.</p>
 <pre class="Agda"><a id="AboveFun"></a><a id="3983" href="/PLFA-zh/Adequacy/#3983" class="Function">AboveFun</a> <a id="3992" class="Symbol">:</a> <a id="3994" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a> <a id="4000" class="Symbol">→</a> <a id="4002" class="PrimitiveType">Set</a>
 <a id="4006" href="/PLFA-zh/Adequacy/#3983" class="Function">AboveFun</a> <a id="4015" href="plfa.Adequacy.html#4015" class="Bound">u</a> <a id="4017" class="Symbol">=</a> <a id="4019" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="4022" href="plfa.Adequacy.html#4022" class="Bound">v</a> <a id="4024" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="4026" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a> <a id="4032" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="4034" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="4037" href="plfa.Adequacy.html#4037" class="Bound">w</a> <a id="4039" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="4041" href="plfa.Denotational.html#3962" class="Datatype">Value</a> <a id="4047" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="4049" href="plfa.Adequacy.html#4022" class="Bound">v</a> <a id="4051" href="plfa.Denotational.html#3994" class="InductiveConstructor Operator">↦</a> <a id="4053" href="plfa.Adequacy.html#4037" class="Bound">w</a> <a id="4055" href="plfa.Denotational.html#4317" class="Datatype Operator">⊑</a> <a id="4057" href="plfa.Adequacy.html#4015" class="Bound">u</a>
 </pre>
-<p>If a value <code class="highlighter-rouge">u</code> is greater than a function, then an even greater value <code class="highlighter-rouge">u'</code>
+<p>If a value <code class="language-plaintext highlighter-rouge">u</code> is greater than a function, then an even greater value <code class="language-plaintext highlighter-rouge">u'</code>
 is too.</p>
 
 <pre class="Agda"><a id="AboveFun-⊑"></a><a id="4152" href="/PLFA-zh/Adequacy/#4152" class="Function">AboveFun-⊑</a> <a id="4163" class="Symbol">:</a> <a id="4165" class="Symbol">∀{</a><a id="4167" href="plfa.Adequacy.html#4167" class="Bound">u</a> <a id="4169" href="plfa.Adequacy.html#4169" class="Bound">u&#39;</a> <a id="4172" class="Symbol">:</a> <a id="4174" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a><a id="4179" class="Symbol">}</a>
@@ -188,7 +184,7 @@ is too.</p>
       <a id="4243" class="Symbol">→</a> <a id="4245" href="/PLFA-zh/Adequacy/#3983" class="Function">AboveFun</a> <a id="4254" href="plfa.Adequacy.html#4169" class="Bound">u&#39;</a>
 <a id="4257" href="/PLFA-zh/Adequacy/#4152" class="Function">AboveFun-⊑</a> <a id="4268" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4270" href="plfa.Adequacy.html#4270" class="Bound">v</a> <a id="4272" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4274" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4276" href="plfa.Adequacy.html#4276" class="Bound">w</a> <a id="4278" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4280" href="plfa.Adequacy.html#4280" class="Bound">lt&#39;</a> <a id="4284" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="4286" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="4288" href="plfa.Adequacy.html#4288" class="Bound">lt</a> <a id="4291" class="Symbol">=</a> <a id="4293" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4295" href="plfa.Adequacy.html#4270" class="Bound">v</a> <a id="4297" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4299" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4301" href="plfa.Adequacy.html#4276" class="Bound">w</a> <a id="4303" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4305" href="/PLFA-zh/Denotational/#4614" class="InductiveConstructor">Trans⊑</a> <a id="4312" href="plfa.Adequacy.html#4280" class="Bound">lt&#39;</a> <a id="4316" href="plfa.Adequacy.html#4288" class="Bound">lt</a> <a id="4319" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="4321" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<p>The bottom value <code class="highlighter-rouge">⊥</code> is not greater than a function.</p>
+<p>The bottom value <code class="language-plaintext highlighter-rouge">⊥</code> is not greater than a function.</p>
 
 <pre class="Agda"><a id="AboveFun⊥"></a><a id="4386" href="/PLFA-zh/Adequacy/#4386" class="Function">AboveFun⊥</a> <a id="4396" class="Symbol">:</a> <a id="4398" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬</a> <a id="4400" href="plfa.Adequacy.html#3983" class="Function">AboveFun</a> <a id="4409" href="/PLFA-zh/Denotational/#3982" class="InductiveConstructor">⊥</a>
 <a id="4411" href="/PLFA-zh/Adequacy/#4386" class="Function">AboveFun⊥</a> <a id="4421" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4423" href="plfa.Adequacy.html#4423" class="Bound">v</a> <a id="4425" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4427" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4429" href="plfa.Adequacy.html#4429" class="Bound">w</a> <a id="4431" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4433" href="plfa.Adequacy.html#4433" class="Bound">lt</a> <a id="4436" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="4438" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
@@ -199,7 +195,7 @@ is too.</p>
     <a id="4555" class="Keyword">with</a> <a id="4560" class="Bound">Γ⊆⊥</a> <a id="4564" href="/PLFA-zh/Adequacy/#4545" class="Bound">m</a>
 <a id="4566" class="Symbol">...</a> <a id="4570" class="Symbol">|</a> <a id="4572" class="Symbol">()</a>
 </pre>
-<p>If the join of two values <code class="highlighter-rouge">u</code> and <code class="highlighter-rouge">u'</code> is greater than a function, then
+<p>If the join of two values <code class="language-plaintext highlighter-rouge">u</code> and <code class="language-plaintext highlighter-rouge">u'</code> is greater than a function, then
 at least one of them is too.</p>
 
 <pre class="Agda"><a id="AboveFun-⊔"></a><a id="4686" href="/PLFA-zh/Adequacy/#4686" class="Function">AboveFun-⊔</a> <a id="4697" class="Symbol">:</a> <a id="4699" class="Symbol">∀{</a><a id="4701" href="plfa.Adequacy.html#4701" class="Bound">u</a> <a id="4703" href="plfa.Adequacy.html#4703" class="Bound">u&#39;</a><a id="4705" class="Symbol">}</a>
@@ -214,7 +210,7 @@ at least one of them is too.</p>
 <a id="4957" class="Symbol">...</a> <a id="4961" class="Symbol">|</a> <a id="4963" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a> <a id="4968" href="/PLFA-zh/Adequacy/#4968" class="Bound">x</a> <a id="4970" class="Symbol">=</a> <a id="4972" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a> <a id="4977" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4979" class="Bound">A</a> <a id="4981" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4983" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4985" class="Bound">B</a> <a id="4987" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4989" class="Symbol">(</a><a id="4990" href="/PLFA-zh/Denotational/#27880" class="Function">∈→⊑</a> <a id="4994" href="plfa.Adequacy.html#4968" class="Bound">x</a><a id="4995" class="Symbol">)</a> <a id="4997" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="4999" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 <a id="5001" class="Symbol">...</a> <a id="5005" class="Symbol">|</a> <a id="5007" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="5012" href="/PLFA-zh/Adequacy/#5012" class="Bound">x</a> <a id="5014" class="Symbol">=</a> <a id="5016" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="5021" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="5023" class="Bound">A</a> <a id="5025" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="5027" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="5029" class="Bound">B</a> <a id="5031" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="5033" class="Symbol">(</a><a id="5034" href="/PLFA-zh/Denotational/#27880" class="Function">∈→⊑</a> <a id="5038" href="plfa.Adequacy.html#5012" class="Bound">x</a><a id="5039" class="Symbol">)</a> <a id="5041" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="5043" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<p>On the other hand, if neither of <code class="highlighter-rouge">u</code> and <code class="highlighter-rouge">u'</code> is greater than a function,
+<p>On the other hand, if neither of <code class="language-plaintext highlighter-rouge">u</code> and <code class="language-plaintext highlighter-rouge">u'</code> is greater than a function,
 then their join is also not greater than a function.</p>
 
 <pre class="Agda"><a id="not-AboveFun-⊔"></a><a id="5182" href="/PLFA-zh/Adequacy/#5182" class="Function">not-AboveFun-⊔</a> <a id="5197" class="Symbol">:</a> <a id="5199" class="Symbol">∀{</a><a id="5201" href="plfa.Adequacy.html#5201" class="Bound">u</a> <a id="5203" href="plfa.Adequacy.html#5203" class="Bound">u&#39;</a> <a id="5206" class="Symbol">:</a> <a id="5208" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a><a id="5213" class="Symbol">}</a>
@@ -254,23 +250,23 @@ exhibited by the following function.</p>
 
 <h2 id="relating-values-to-closures">Relating values to closures</h2>
 
-<p>Next we relate semantic values to closures.  The relation <code class="highlighter-rouge">𝕍</code> is for
+<p>Next we relate semantic values to closures.  The relation <code class="language-plaintext highlighter-rouge">𝕍</code> is for
 closures whose term is a lambda abstraction, i.e., in weak-head normal
 form (WHNF). The relation 𝔼 is for any closure. Roughly speaking,
-<code class="highlighter-rouge">𝔼 v c</code> will hold if, when <code class="highlighter-rouge">v</code> is greater than a function value, <code class="highlighter-rouge">c</code> evaluates
-to a closure <code class="highlighter-rouge">c'</code> in WHNF and <code class="highlighter-rouge">𝕍 v c'</code>. Regarding <code class="highlighter-rouge">𝕍 v c</code>, it will hold when
-<code class="highlighter-rouge">c</code> is in WHNF, and if <code class="highlighter-rouge">v</code> is a function, the body of <code class="highlighter-rouge">c</code> evaluates
-according to <code class="highlighter-rouge">v</code>.</p>
+<code class="language-plaintext highlighter-rouge">𝔼 v c</code> will hold if, when <code class="language-plaintext highlighter-rouge">v</code> is greater than a function value, <code class="language-plaintext highlighter-rouge">c</code> evaluates
+to a closure <code class="language-plaintext highlighter-rouge">c'</code> in WHNF and <code class="language-plaintext highlighter-rouge">𝕍 v c'</code>. Regarding <code class="language-plaintext highlighter-rouge">𝕍 v c</code>, it will hold when
+<code class="language-plaintext highlighter-rouge">c</code> is in WHNF, and if <code class="language-plaintext highlighter-rouge">v</code> is a function, the body of <code class="language-plaintext highlighter-rouge">c</code> evaluates
+according to <code class="language-plaintext highlighter-rouge">v</code>.</p>
 
 <pre class="Agda"><a id="𝕍"></a><a id="6981" href="/PLFA-zh/Adequacy/#6981" class="Function">𝕍</a> <a id="6983" class="Symbol">:</a> <a id="6985" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a> <a id="6991" class="Symbol">→</a> <a id="6993" href="/PLFA-zh/CallByName/#2458" class="Datatype">Clos</a> <a id="6998" class="Symbol">→</a> <a id="7000" class="PrimitiveType">Set</a>
 <a id="𝔼"></a><a id="7004" href="/PLFA-zh/Adequacy/#7004" class="Function">𝔼</a> <a id="7006" class="Symbol">:</a> <a id="7008" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a> <a id="7014" class="Symbol">→</a> <a id="7016" href="/PLFA-zh/CallByName/#2458" class="Datatype">Clos</a> <a id="7021" class="Symbol">→</a> <a id="7023" class="PrimitiveType">Set</a>
 </pre>
-<p>We define <code class="highlighter-rouge">𝕍</code> as a function from values and closures to <code class="highlighter-rouge">Set</code> and not as a
-data type because it is mutually recursive with <code class="highlighter-rouge">𝔼</code> in a negative
+<p>We define <code class="language-plaintext highlighter-rouge">𝕍</code> as a function from values and closures to <code class="language-plaintext highlighter-rouge">Set</code> and not as a
+data type because it is mutually recursive with <code class="language-plaintext highlighter-rouge">𝔼</code> in a negative
 position (to the left of an implication).  We first perform case
 analysis on the term in the closure. If the term is a variable or
-application, then <code class="highlighter-rouge">𝕍</code> is false (<code class="highlighter-rouge">Bot</code>). If the term is a lambda
-abstraction, we define <code class="highlighter-rouge">𝕍</code> by recursion on the value, which we
+application, then <code class="language-plaintext highlighter-rouge">𝕍</code> is false (<code class="language-plaintext highlighter-rouge">Bot</code>). If the term is a lambda
+abstraction, we define <code class="language-plaintext highlighter-rouge">𝕍</code> by recursion on the value, which we
 describe below.</p>
 
 <pre class="Agda"><a id="7452" href="/PLFA-zh/Adequacy/#6981" class="Function">𝕍</a> <a id="7454" href="plfa.Adequacy.html#7454" class="Bound">v</a> <a id="7456" class="Symbol">(</a><a id="7457" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="7462" class="Symbol">(</a><a id="7463" href="/PLFA-zh/Untyped/#4288" class="InductiveConstructor Operator">`</a> <a id="7465" href="plfa.Adequacy.html#7465" class="Bound">x₁</a><a id="7467" class="Symbol">)</a> <a id="7469" href="plfa.Adequacy.html#7469" class="Bound">γ</a><a id="7470" class="Symbol">)</a> <a id="7472" class="Symbol">=</a> <a id="7474" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">Bot</a>
@@ -283,31 +279,31 @@ describe below.</p>
 </pre>
 <ul>
   <li>
-    <p>If the value is <code class="highlighter-rouge">⊥</code>, then the result is true (<code class="highlighter-rouge">⊤</code>).</p>
+    <p>If the value is <code class="language-plaintext highlighter-rouge">⊥</code>, then the result is true (<code class="language-plaintext highlighter-rouge">⊤</code>).</p>
   </li>
   <li>
     <p>If the value is a join (u ⊔ v), then the result is the pair
 (conjunction) of 𝕍 is true for both u and v.</p>
   </li>
   <li>
-    <p>The important case is for a function value <code class="highlighter-rouge">v ↦ w</code> and closure
-<code class="highlighter-rouge">clos (ƛ N) γ</code>. Given any closure <code class="highlighter-rouge">c</code> such that <code class="highlighter-rouge">𝔼 v c</code>, if <code class="highlighter-rouge">w</code> is
-greater than a function, then <code class="highlighter-rouge">N</code> evaluates (with <code class="highlighter-rouge">γ</code> extended with <code class="highlighter-rouge">c</code>)
-to some closure <code class="highlighter-rouge">c'</code> and we have <code class="highlighter-rouge">𝕍 w c'</code>.</p>
+    <p>The important case is for a function value <code class="language-plaintext highlighter-rouge">v ↦ w</code> and closure
+<code class="language-plaintext highlighter-rouge">clos (ƛ N) γ</code>. Given any closure <code class="language-plaintext highlighter-rouge">c</code> such that <code class="language-plaintext highlighter-rouge">𝔼 v c</code>, if <code class="language-plaintext highlighter-rouge">w</code> is
+greater than a function, then <code class="language-plaintext highlighter-rouge">N</code> evaluates (with <code class="language-plaintext highlighter-rouge">γ</code> extended with <code class="language-plaintext highlighter-rouge">c</code>)
+to some closure <code class="language-plaintext highlighter-rouge">c'</code> and we have <code class="language-plaintext highlighter-rouge">𝕍 w c'</code>.</p>
   </li>
 </ul>
 
-<p>The definition of <code class="highlighter-rouge">𝔼</code> is straightforward. If <code class="highlighter-rouge">v</code> is a greater than a
-function, then <code class="highlighter-rouge">M</code> evaluates to a closure related to <code class="highlighter-rouge">v</code>.</p>
+<p>The definition of <code class="language-plaintext highlighter-rouge">𝔼</code> is straightforward. If <code class="language-plaintext highlighter-rouge">v</code> is a greater than a
+function, then <code class="language-plaintext highlighter-rouge">M</code> evaluates to a closure related to <code class="language-plaintext highlighter-rouge">v</code>.</p>
 
 <pre class="Agda"><a id="8274" href="/PLFA-zh/Adequacy/#7004" class="Function">𝔼</a> <a id="8276" href="plfa.Adequacy.html#8276" class="Bound">v</a> <a id="8278" class="Symbol">(</a><a id="8279" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="8284" href="plfa.Adequacy.html#8284" class="Bound">M</a> <a id="8286" href="plfa.Adequacy.html#8286" class="Bound">γ&#39;</a><a id="8288" class="Symbol">)</a> <a id="8290" class="Symbol">=</a> <a id="8292" href="plfa.Adequacy.html#3983" class="Function">AboveFun</a> <a id="8301" href="plfa.Adequacy.html#8276" class="Bound">v</a> <a id="8303" class="Symbol">→</a> <a id="8305" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="8308" href="plfa.Adequacy.html#8308" class="Bound">c</a> <a id="8310" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="8312" href="plfa.CallByName.html#2458" class="Datatype">Clos</a> <a id="8317" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="8319" href="plfa.Adequacy.html#8286" class="Bound">γ&#39;</a> <a id="8322" href="plfa.CallByName.html#3012" class="Datatype Operator">⊢</a> <a id="8324" href="plfa.Adequacy.html#8284" class="Bound">M</a> <a id="8326" href="plfa.CallByName.html#3012" class="Datatype Operator">⇓</a> <a id="8328" href="plfa.Adequacy.html#8308" class="Bound">c</a> <a id="8330" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1162" class="Function Operator">×</a> <a id="8332" href="plfa.Adequacy.html#6981" class="Function">𝕍</a> <a id="8334" href="plfa.Adequacy.html#8276" class="Bound">v</a> <a id="8336" href="plfa.Adequacy.html#8308" class="Bound">c</a>
 </pre>
-<p>The proof of the main lemma is by induction on <code class="highlighter-rouge">γ ⊢ M ↓ v</code>, so it goes
+<p>The proof of the main lemma is by induction on <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code>, so it goes
 underneath lambda abstractions and must therefore reason about open
 terms (terms with variables). So we must relate environments of
-semantic values to environments of closures.  In the following, <code class="highlighter-rouge">𝔾</code>
-relates <code class="highlighter-rouge">γ</code> to <code class="highlighter-rouge">γ'</code> if the corresponding values and closures are related
-by <code class="highlighter-rouge">𝔼</code>.</p>
+semantic values to environments of closures.  In the following, <code class="language-plaintext highlighter-rouge">𝔾</code>
+relates <code class="language-plaintext highlighter-rouge">γ</code> to <code class="language-plaintext highlighter-rouge">γ'</code> if the corresponding values and closures are related
+by <code class="language-plaintext highlighter-rouge">𝔼</code>.</p>
 
 <pre class="Agda"><a id="𝔾"></a><a id="8700" href="/PLFA-zh/Adequacy/#8700" class="Function">𝔾</a> <a id="8702" class="Symbol">:</a> <a id="8704" class="Symbol">∀{</a><a id="8706" href="plfa.Adequacy.html#8706" class="Bound">Γ</a><a id="8707" class="Symbol">}</a> <a id="8709" class="Symbol">→</a> <a id="8711" href="/PLFA-zh/Denotational/#7100" class="Function">Env</a> <a id="8715" href="plfa.Adequacy.html#8706" class="Bound">Γ</a> <a id="8717" class="Symbol">→</a> <a id="8719" href="/PLFA-zh/CallByName/#2428" class="Function">ClosEnv</a> <a id="8727" href="plfa.Adequacy.html#8706" class="Bound">Γ</a> <a id="8729" class="Symbol">→</a> <a id="8731" class="PrimitiveType">Set</a>
 <a id="8735" href="/PLFA-zh/Adequacy/#8700" class="Function">𝔾</a> <a id="8737" class="Symbol">{</a><a id="8738" href="plfa.Adequacy.html#8738" class="Bound">Γ</a><a id="8739" class="Symbol">}</a> <a id="8741" href="plfa.Adequacy.html#8741" class="Bound">γ</a> <a id="8743" href="plfa.Adequacy.html#8743" class="Bound">γ&#39;</a> <a id="8746" class="Symbol">=</a> <a id="8748" class="Symbol">∀{</a><a id="8750" href="plfa.Adequacy.html#8750" class="Bound">x</a> <a id="8752" class="Symbol">:</a> <a id="8754" href="plfa.Adequacy.html#8738" class="Bound">Γ</a> <a id="8756" href="/PLFA-zh/Untyped/#3483" class="Datatype Operator">∋</a> <a id="8758" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="8759" class="Symbol">}</a> <a id="8761" class="Symbol">→</a> <a id="8763" href="plfa.Adequacy.html#7004" class="Function">𝔼</a> <a id="8765" class="Symbol">(</a><a id="8766" href="plfa.Adequacy.html#8741" class="Bound">γ</a> <a id="8768" href="plfa.Adequacy.html#8750" class="Bound">x</a><a id="8769" class="Symbol">)</a> <a id="8771" class="Symbol">(</a><a id="8772" href="plfa.Adequacy.html#8743" class="Bound">γ&#39;</a> <a id="8775" href="plfa.Adequacy.html#8750" class="Bound">x</a><a id="8776" class="Symbol">)</a>
@@ -321,8 +317,8 @@ by <code class="highlighter-rouge">𝔼</code>.</p>
 <a id="8925" href="/PLFA-zh/Adequacy/#8803" class="Function">𝔾-ext</a> <a id="8931" class="Symbol">{</a><a id="8932" href="plfa.Adequacy.html#8932" class="Bound">Γ</a><a id="8933" class="Symbol">}</a> <a id="8935" class="Symbol">{</a><a id="8936" href="plfa.Adequacy.html#8936" class="Bound">γ</a><a id="8937" class="Symbol">}</a> <a id="8939" class="Symbol">{</a><a id="8940" href="plfa.Adequacy.html#8940" class="Bound">γ&#39;</a><a id="8942" class="Symbol">}</a> <a id="8944" href="plfa.Adequacy.html#8944" class="Bound">g</a> <a id="8946" href="plfa.Adequacy.html#8946" class="Bound">e</a> <a id="8948" class="Symbol">{</a><a id="8949" href="/PLFA-zh/Untyped/#3564" class="InductiveConstructor Operator">S</a> <a id="8951" href="plfa.Adequacy.html#8951" class="Bound">x</a><a id="8952" class="Symbol">}</a> <a id="8954" class="Symbol">=</a> <a id="8956" href="plfa.Adequacy.html#8944" class="Bound">g</a>
 </pre>
 
-<p>We need a few properties of the <code class="highlighter-rouge">𝕍</code> and <code class="highlighter-rouge">𝔼</code> relations.  The first is that
-a closure in the <code class="highlighter-rouge">𝕍</code> relation must be in weak-head normal form.  We
+<p>We need a few properties of the <code class="language-plaintext highlighter-rouge">𝕍</code> and <code class="language-plaintext highlighter-rouge">𝔼</code> relations.  The first is that
+a closure in the <code class="language-plaintext highlighter-rouge">𝕍</code> relation must be in weak-head normal form.  We
 define WHNF has follows.</p>
 
 <pre class="Agda"><a id="9136" class="Keyword">data</a> <a id="WHNF"></a><a id="9141" href="/PLFA-zh/Adequacy/#9141" class="Datatype">WHNF</a> <a id="9146" class="Symbol">:</a> <a id="9148" class="Symbol">∀</a> <a id="9150" class="Symbol">{</a><a id="9151" href="plfa.Adequacy.html#9151" class="Bound">Γ</a> <a id="9153" href="plfa.Adequacy.html#9153" class="Bound">A</a><a id="9154" class="Symbol">}</a> <a id="9156" class="Symbol">→</a> <a id="9158" href="plfa.Adequacy.html#9151" class="Bound">Γ</a> <a id="9160" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="9162" href="plfa.Adequacy.html#9153" class="Bound">A</a> <a id="9164" class="Symbol">→</a> <a id="9166" class="PrimitiveType">Set</a> <a id="9170" class="Keyword">where</a>
@@ -337,8 +333,8 @@ define WHNF has follows.</p>
 <a id="9385" href="/PLFA-zh/Adequacy/#9285" class="Function">𝕍→WHNF</a> <a id="9392" class="Symbol">{</a><a id="9393" class="Argument">M</a> <a id="9395" class="Symbol">=</a> <a id="9397" href="/PLFA-zh/Untyped/#4340" class="InductiveConstructor Operator">ƛ</a> <a id="9399" href="plfa.Adequacy.html#9399" class="Bound">N</a><a id="9400" class="Symbol">}</a> <a id="9402" class="Symbol">{</a><a id="9403" href="plfa.Adequacy.html#9403" class="Bound">v</a><a id="9404" class="Symbol">}</a> <a id="9406" href="plfa.Adequacy.html#9406" class="Bound">vc</a> <a id="9409" class="Symbol">=</a> <a id="9411" href="plfa.Adequacy.html#9178" class="InductiveConstructor Operator">ƛ_</a>
 <a id="9414" href="/PLFA-zh/Adequacy/#9285" class="Function">𝕍→WHNF</a> <a id="9421" class="Symbol">{</a><a id="9422" class="Argument">M</a> <a id="9424" class="Symbol">=</a> <a id="9426" href="plfa.Adequacy.html#9426" class="Bound">L</a> <a id="9428" href="/PLFA-zh/Untyped/#4400" class="InductiveConstructor Operator">·</a> <a id="9430" href="plfa.Adequacy.html#9430" class="Bound">M</a><a id="9431" class="Symbol">}</a> <a id="9433" class="Symbol">{</a><a id="9434" href="plfa.Adequacy.html#9434" class="Bound">v</a><a id="9435" class="Symbol">}</a> <a id="9437" class="Symbol">()</a>
 </pre>
-<p>Next we have an introduction rule for <code class="highlighter-rouge">𝕍</code> that mimics the <code class="highlighter-rouge">⊔-intro</code>
-rule. If both <code class="highlighter-rouge">u</code> and <code class="highlighter-rouge">v</code> are related to a closure <code class="highlighter-rouge">c</code>, then their join is
+<p>Next we have an introduction rule for <code class="language-plaintext highlighter-rouge">𝕍</code> that mimics the <code class="language-plaintext highlighter-rouge">⊔-intro</code>
+rule. If both <code class="language-plaintext highlighter-rouge">u</code> and <code class="language-plaintext highlighter-rouge">v</code> are related to a closure <code class="language-plaintext highlighter-rouge">c</code>, then their join is
 too.</p>
 
 <pre class="Agda"><a id="𝕍⊔-intro"></a><a id="9598" href="/PLFA-zh/Adequacy/#9598" class="Function">𝕍⊔-intro</a> <a id="9607" class="Symbol">:</a> <a id="9609" class="Symbol">∀{</a><a id="9611" href="plfa.Adequacy.html#9611" class="Bound">c</a> <a id="9613" href="plfa.Adequacy.html#9613" class="Bound">u</a> <a id="9615" href="plfa.Adequacy.html#9615" class="Bound">v</a><a id="9616" class="Symbol">}</a>
@@ -349,14 +345,14 @@ too.</p>
 <a id="9723" href="/PLFA-zh/Adequacy/#9598" class="Function">𝕍⊔-intro</a> <a id="9732" class="Symbol">{</a><a id="9733" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="9738" class="Symbol">(</a><a id="9739" href="/PLFA-zh/Untyped/#4340" class="InductiveConstructor Operator">ƛ</a> <a id="9741" href="plfa.Adequacy.html#9741" class="Bound">N</a><a id="9742" class="Symbol">)</a> <a id="9744" href="plfa.Adequacy.html#9744" class="Bound">γ</a><a id="9745" class="Symbol">}</a> <a id="9747" href="plfa.Adequacy.html#9747" class="Bound">uc</a> <a id="9750" href="plfa.Adequacy.html#9750" class="Bound">vc</a> <a id="9753" class="Symbol">=</a> <a id="9755" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="9757" href="plfa.Adequacy.html#9747" class="Bound">uc</a> <a id="9760" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="9762" href="plfa.Adequacy.html#9750" class="Bound">vc</a> <a id="9765" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 <a id="9767" href="/PLFA-zh/Adequacy/#9598" class="Function">𝕍⊔-intro</a> <a id="9776" class="Symbol">{</a><a id="9777" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="9782" class="Symbol">(</a><a id="9783" href="plfa.Adequacy.html#9783" class="Bound">L</a> <a id="9785" href="/PLFA-zh/Untyped/#4400" class="InductiveConstructor Operator">·</a> <a id="9787" href="plfa.Adequacy.html#9787" class="Bound">M</a><a id="9788" class="Symbol">)</a> <a id="9790" href="plfa.Adequacy.html#9790" class="Bound">γ</a><a id="9791" class="Symbol">}</a> <a id="9793" class="Symbol">()</a> <a id="9796" href="plfa.Adequacy.html#9796" class="Bound">vc</a>
 </pre>
-<p>In a moment we prove that <code class="highlighter-rouge">𝕍</code> is preserved when going from a greater
-value to a lesser value: if <code class="highlighter-rouge">𝕍 v c</code> and <code class="highlighter-rouge">v' ⊑ v</code>, then <code class="highlighter-rouge">𝕍 v' c</code>.
-This property, named <code class="highlighter-rouge">𝕍-sub</code>, is needed by the main lemma in
-the case for the <code class="highlighter-rouge">sub</code> rule.</p>
+<p>In a moment we prove that <code class="language-plaintext highlighter-rouge">𝕍</code> is preserved when going from a greater
+value to a lesser value: if <code class="language-plaintext highlighter-rouge">𝕍 v c</code> and <code class="language-plaintext highlighter-rouge">v' ⊑ v</code>, then <code class="language-plaintext highlighter-rouge">𝕍 v' c</code>.
+This property, named <code class="language-plaintext highlighter-rouge">𝕍-sub</code>, is needed by the main lemma in
+the case for the <code class="language-plaintext highlighter-rouge">sub</code> rule.</p>
 
-<p>To prove <code class="highlighter-rouge">𝕍-sub</code>, we in turn need the following property concerning
+<p>To prove <code class="language-plaintext highlighter-rouge">𝕍-sub</code>, we in turn need the following property concerning
 values that are not greater than a function, that is, values that are
-equivalent to <code class="highlighter-rouge">⊥</code>. In such cases, <code class="highlighter-rouge">𝕍 v (clos (ƛ N) γ')</code> is trivially true.</p>
+equivalent to <code class="language-plaintext highlighter-rouge">⊥</code>. In such cases, <code class="language-plaintext highlighter-rouge">𝕍 v (clos (ƛ N) γ')</code> is trivially true.</p>
 
 <pre class="Agda"><a id="not-AboveFun-𝕍"></a><a id="10247" href="/PLFA-zh/Adequacy/#10247" class="Function">not-AboveFun-𝕍</a> <a id="10262" class="Symbol">:</a> <a id="10264" class="Symbol">∀{</a><a id="10266" href="plfa.Adequacy.html#10266" class="Bound">v</a> <a id="10268" class="Symbol">:</a> <a id="10270" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a><a id="10275" class="Symbol">}{</a><a id="10277" href="plfa.Adequacy.html#10277" class="Bound">Γ</a><a id="10278" class="Symbol">}{</a><a id="10280" href="plfa.Adequacy.html#10280" class="Bound">γ&#39;</a> <a id="10283" class="Symbol">:</a> <a id="10285" href="/PLFA-zh/CallByName/#2428" class="Function">ClosEnv</a> <a id="10293" href="plfa.Adequacy.html#10277" class="Bound">Γ</a><a id="10294" class="Symbol">}{</a><a id="10296" href="plfa.Adequacy.html#10296" class="Bound">N</a> <a id="10298" class="Symbol">:</a> <a id="10300" href="plfa.Adequacy.html#10277" class="Bound">Γ</a> <a id="10302" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a> <a id="10304" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="10306" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="10308" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="10310" class="Symbol">}</a>
     <a id="10316" class="Symbol">→</a> <a id="10318" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬</a> <a id="10320" href="/PLFA-zh/Adequacy/#3983" class="Function">AboveFun</a> <a id="10329" href="plfa.Adequacy.html#10266" class="Bound">v</a>
@@ -368,14 +364,14 @@ equivalent to <code class="highlighter-rouge">⊥</code>. In such cases, <code c
     <a id="10520" class="Keyword">with</a> <a id="10525" href="/PLFA-zh/Adequacy/#5559" class="Function">not-AboveFun-⊔-inv</a> <a id="10544" href="plfa.Adequacy.html#10513" class="Bound">af</a>
 <a id="10547" class="Symbol">...</a> <a id="10551" class="Symbol">|</a> <a id="10553" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="10555" href="/PLFA-zh/Adequacy/#10555" class="Bound">af1</a> <a id="10559" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="10561" href="plfa.Adequacy.html#10561" class="Bound">af2</a> <a id="10565" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="10567" class="Symbol">=</a> <a id="10569" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="10571" href="plfa.Adequacy.html#10247" class="Function">not-AboveFun-𝕍</a> <a id="10586" href="plfa.Adequacy.html#10555" class="Bound">af1</a> <a id="10590" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="10592" href="plfa.Adequacy.html#10247" class="Function">not-AboveFun-𝕍</a> <a id="10607" href="plfa.Adequacy.html#10561" class="Bound">af2</a> <a id="10611" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<p>The proofs of <code class="highlighter-rouge">𝕍-sub</code> and <code class="highlighter-rouge">𝔼-sub</code> are intertwined.</p>
+<p>The proofs of <code class="language-plaintext highlighter-rouge">𝕍-sub</code> and <code class="language-plaintext highlighter-rouge">𝔼-sub</code> are intertwined.</p>
 
 <pre class="Agda"><a id="sub-𝕍"></a><a id="10674" href="/PLFA-zh/Adequacy/#10674" class="Function">sub-𝕍</a> <a id="10680" class="Symbol">:</a> <a id="10682" class="Symbol">∀{</a><a id="10684" href="plfa.Adequacy.html#10684" class="Bound">c</a> <a id="10686" class="Symbol">:</a> <a id="10688" href="/PLFA-zh/CallByName/#2458" class="Datatype">Clos</a><a id="10692" class="Symbol">}{</a><a id="10694" href="plfa.Adequacy.html#10694" class="Bound">v</a> <a id="10696" href="plfa.Adequacy.html#10696" class="Bound">v&#39;</a><a id="10698" class="Symbol">}</a> <a id="10700" class="Symbol">→</a> <a id="10702" href="plfa.Adequacy.html#6981" class="Function">𝕍</a> <a id="10704" href="plfa.Adequacy.html#10694" class="Bound">v</a> <a id="10706" href="plfa.Adequacy.html#10684" class="Bound">c</a> <a id="10708" class="Symbol">→</a> <a id="10710" href="plfa.Adequacy.html#10696" class="Bound">v&#39;</a> <a id="10713" href="/PLFA-zh/Denotational/#4317" class="Datatype Operator">⊑</a> <a id="10715" href="plfa.Adequacy.html#10694" class="Bound">v</a> <a id="10717" class="Symbol">→</a> <a id="10719" href="plfa.Adequacy.html#6981" class="Function">𝕍</a> <a id="10721" href="plfa.Adequacy.html#10696" class="Bound">v&#39;</a> <a id="10724" href="plfa.Adequacy.html#10684" class="Bound">c</a>
 <a id="sub-𝔼"></a><a id="10726" href="/PLFA-zh/Adequacy/#10726" class="Function">sub-𝔼</a> <a id="10732" class="Symbol">:</a> <a id="10734" class="Symbol">∀{</a><a id="10736" href="plfa.Adequacy.html#10736" class="Bound">c</a> <a id="10738" class="Symbol">:</a> <a id="10740" href="/PLFA-zh/CallByName/#2458" class="Datatype">Clos</a><a id="10744" class="Symbol">}{</a><a id="10746" href="plfa.Adequacy.html#10746" class="Bound">v</a> <a id="10748" href="plfa.Adequacy.html#10748" class="Bound">v&#39;</a><a id="10750" class="Symbol">}</a> <a id="10752" class="Symbol">→</a> <a id="10754" href="plfa.Adequacy.html#7004" class="Function">𝔼</a> <a id="10756" href="plfa.Adequacy.html#10746" class="Bound">v</a> <a id="10758" href="plfa.Adequacy.html#10736" class="Bound">c</a> <a id="10760" class="Symbol">→</a> <a id="10762" href="plfa.Adequacy.html#10748" class="Bound">v&#39;</a> <a id="10765" href="/PLFA-zh/Denotational/#4317" class="Datatype Operator">⊑</a> <a id="10767" href="plfa.Adequacy.html#10746" class="Bound">v</a> <a id="10769" class="Symbol">→</a> <a id="10771" href="plfa.Adequacy.html#7004" class="Function">𝔼</a> <a id="10773" href="plfa.Adequacy.html#10748" class="Bound">v&#39;</a> <a id="10776" href="plfa.Adequacy.html#10736" class="Bound">c</a>
 </pre>
-<p>We prove <code class="highlighter-rouge">𝕍-sub</code> by case analysis on the closure’s term, to dispatch the
+<p>We prove <code class="language-plaintext highlighter-rouge">𝕍-sub</code> by case analysis on the closure’s term, to dispatch the
 cases for variables and application. We then proceed by induction on
-<code class="highlighter-rouge">v' ⊑ v</code>. We describe each case below.</p>
+<code class="language-plaintext highlighter-rouge">v' ⊑ v</code>. We describe each case below.</p>
 
 <pre class="Agda"><a id="10969" href="/PLFA-zh/Adequacy/#10674" class="Function">sub-𝕍</a> <a id="10975" class="Symbol">{</a><a id="10976" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="10981" class="Symbol">(</a><a id="10982" href="/PLFA-zh/Untyped/#4288" class="InductiveConstructor Operator">`</a> <a id="10984" href="plfa.Adequacy.html#10984" class="Bound">x</a><a id="10985" class="Symbol">)</a> <a id="10987" href="plfa.Adequacy.html#10987" class="Bound">γ</a><a id="10988" class="Symbol">}</a> <a id="10990" class="Symbol">{</a><a id="10991" href="plfa.Adequacy.html#10991" class="Bound">v</a><a id="10992" class="Symbol">}</a> <a id="10994" class="Symbol">()</a> <a id="10997" href="plfa.Adequacy.html#10997" class="Bound">lt</a>
 <a id="11000" href="/PLFA-zh/Adequacy/#10674" class="Function">sub-𝕍</a> <a id="11006" class="Symbol">{</a><a id="11007" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="11012" class="Symbol">(</a><a id="11013" href="plfa.Adequacy.html#11013" class="Bound">L</a> <a id="11015" href="/PLFA-zh/Untyped/#4400" class="InductiveConstructor Operator">·</a> <a id="11017" href="plfa.Adequacy.html#11017" class="Bound">M</a><a id="11018" class="Symbol">)</a> <a id="11020" href="plfa.Adequacy.html#11020" class="Bound">γ</a><a id="11021" class="Symbol">}</a> <a id="11023" class="Symbol">()</a> <a id="11026" href="plfa.Adequacy.html#11026" class="Bound">lt</a>
@@ -419,109 +415,109 @@ cases for variables and application. We then proceed by induction on
 </pre>
 <ul>
   <li>
-    <p>Case <code class="highlighter-rouge">Bot⊑</code>. We immediately have <code class="highlighter-rouge">𝕍 ⊥ (clos (ƛ N) γ)</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">Bot⊑</code>. We immediately have <code class="language-plaintext highlighter-rouge">𝕍 ⊥ (clos (ƛ N) γ)</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">ConjL⊑</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">ConjL⊑</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v₁' ⊑ v     v₂' ⊑ v
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v₁' ⊑ v     v₂' ⊑ v
   -------------------
   (v₁' ⊔ v₂') ⊑ v
 </code></pre></div>    </div>
 
-    <p>The induction hypotheses gives us <code class="highlighter-rouge">𝕍 v₁' (clos (ƛ N) γ)</code>
-and <code class="highlighter-rouge">𝕍 v₂' (clos (ƛ N) γ)</code>, which is all we need for this case.</p>
+    <p>The induction hypotheses gives us <code class="language-plaintext highlighter-rouge">𝕍 v₁' (clos (ƛ N) γ)</code>
+and <code class="language-plaintext highlighter-rouge">𝕍 v₂' (clos (ƛ N) γ)</code>, which is all we need for this case.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">ConjR1⊑</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">ConjR1⊑</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v' ⊑ v₁
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v' ⊑ v₁
   -------------
   v' ⊑ (v₁ ⊔ v₂)
 </code></pre></div>    </div>
 
-    <p>The induction hypothesis gives us <code class="highlighter-rouge">𝕍 v' (clos (ƛ N) γ)</code>.</p>
+    <p>The induction hypothesis gives us <code class="language-plaintext highlighter-rouge">𝕍 v' (clos (ƛ N) γ)</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">ConjR2⊑</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">ConjR2⊑</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v' ⊑ v₂
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v' ⊑ v₂
   -------------
   v' ⊑ (v₁ ⊔ v₂)
 </code></pre></div>    </div>
 
-    <p>Again, the induction hypothesis gives us <code class="highlighter-rouge">𝕍 v' (clos (ƛ N) γ)</code>.</p>
+    <p>Again, the induction hypothesis gives us <code class="language-plaintext highlighter-rouge">𝕍 v' (clos (ƛ N) γ)</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">Trans⊑</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">Trans⊑</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v' ⊑ v₂   v₂ ⊑ v
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  v' ⊑ v₂   v₂ ⊑ v
   -----------------
        v' ⊑ v
 </code></pre></div>    </div>
 
-    <p>The induction hypothesis for <code class="highlighter-rouge">v₂ ⊑ v</code> gives us
-<code class="highlighter-rouge">𝕍 v₂ (clos (ƛ N) γ)</code>. We apply the induction hypothesis
-for <code class="highlighter-rouge">v' ⊑ v₂</code> to conclude that <code class="highlighter-rouge">𝕍 v' (clos (ƛ N) γ)</code>.</p>
+    <p>The induction hypothesis for <code class="language-plaintext highlighter-rouge">v₂ ⊑ v</code> gives us
+<code class="language-plaintext highlighter-rouge">𝕍 v₂ (clos (ƛ N) γ)</code>. We apply the induction hypothesis
+for <code class="language-plaintext highlighter-rouge">v' ⊑ v₂</code> to conclude that <code class="language-plaintext highlighter-rouge">𝕍 v' (clos (ƛ N) γ)</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">Dist⊑</code>. This case  is the most difficult. We have</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">Dist⊑</code>. This case  is the most difficult. We have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  𝕍 (v ↦ w) (clos (ƛ N) γ)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  𝕍 (v ↦ w) (clos (ƛ N) γ)
   𝕍 (v ↦ w') (clos (ƛ N) γ)
 </code></pre></div>    </div>
 
     <p>and need to show that</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  𝕍 (v ↦ (w ⊔ w')) (clos (ƛ N) γ)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  𝕍 (v ↦ (w ⊔ w')) (clos (ƛ N) γ)
 </code></pre></div>    </div>
 
-    <p>Let <code class="highlighter-rouge">c</code> be an arbtrary closure such that <code class="highlighter-rouge">𝔼 v c</code>.
-Assume <code class="highlighter-rouge">w ⊔ w'</code> is greater than a function.
-Unfortunately, this does not mean that both <code class="highlighter-rouge">w</code> and <code class="highlighter-rouge">w'</code>
-are above functions. But thanks to the lemma <code class="highlighter-rouge">AboveFun-⊔</code>,
+    <p>Let <code class="language-plaintext highlighter-rouge">c</code> be an arbtrary closure such that <code class="language-plaintext highlighter-rouge">𝔼 v c</code>.
+Assume <code class="language-plaintext highlighter-rouge">w ⊔ w'</code> is greater than a function.
+Unfortunately, this does not mean that both <code class="language-plaintext highlighter-rouge">w</code> and <code class="language-plaintext highlighter-rouge">w'</code>
+are above functions. But thanks to the lemma <code class="language-plaintext highlighter-rouge">AboveFun-⊔</code>,
 we know that at least one of them is greater than a function.</p>
 
     <ul>
       <li>
         <p>Suppose both of them are greater than a function.  Then we have
-<code class="highlighter-rouge">γ ⊢ N ⇓ clos L δ</code> and <code class="highlighter-rouge">𝕍 w (clos L δ)</code>.  We also have <code class="highlighter-rouge">γ ⊢ N ⇓ c₃</code> and
-<code class="highlighter-rouge">𝕍 w' c₃</code>.  Because the big-step semantics is deterministic, we have
-<code class="highlighter-rouge">c₃ ≡ clos L δ</code>. Also, from <code class="highlighter-rouge">𝕍 w (clos L δ)</code> we know that <code class="highlighter-rouge">L ≡ ƛ N'</code>
-for some <code class="highlighter-rouge">N'</code>. We conclude that <code class="highlighter-rouge">𝕍 (w ⊔ w') (clos (ƛ N') δ)</code>.</p>
+<code class="language-plaintext highlighter-rouge">γ ⊢ N ⇓ clos L δ</code> and <code class="language-plaintext highlighter-rouge">𝕍 w (clos L δ)</code>.  We also have <code class="language-plaintext highlighter-rouge">γ ⊢ N ⇓ c₃</code> and
+<code class="language-plaintext highlighter-rouge">𝕍 w' c₃</code>.  Because the big-step semantics is deterministic, we have
+<code class="language-plaintext highlighter-rouge">c₃ ≡ clos L δ</code>. Also, from <code class="language-plaintext highlighter-rouge">𝕍 w (clos L δ)</code> we know that <code class="language-plaintext highlighter-rouge">L ≡ ƛ N'</code>
+for some <code class="language-plaintext highlighter-rouge">N'</code>. We conclude that <code class="language-plaintext highlighter-rouge">𝕍 (w ⊔ w') (clos (ƛ N') δ)</code>.</p>
       </li>
       <li>
         <p>Suppose one of them is greater than a function and the other is
-not: say <code class="highlighter-rouge">AboveFun w</code> and <code class="highlighter-rouge">¬ AboveFun w'</code>. Then from
-<code class="highlighter-rouge">𝕍 (v ↦ w) (clos (ƛ N) γ)</code>
-we have <code class="highlighter-rouge">γ ⊢ N ⇓ clos L γ₁</code> and <code class="highlighter-rouge">𝕍 w (clos L γ₁)</code>. From this we have
-<code class="highlighter-rouge">L ≡ ƛ N'</code> for some <code class="highlighter-rouge">N'</code>. Meanwhile, from <code class="highlighter-rouge">¬ AboveFun w'</code> we have
-<code class="highlighter-rouge">𝕍 w' (clos L γ₁)</code>. We conclude that
-<code class="highlighter-rouge">𝕍 (w ⊔ w') (clos (ƛ N') γ₁)</code>.</p>
+not: say <code class="language-plaintext highlighter-rouge">AboveFun w</code> and <code class="language-plaintext highlighter-rouge">¬ AboveFun w'</code>. Then from
+<code class="language-plaintext highlighter-rouge">𝕍 (v ↦ w) (clos (ƛ N) γ)</code>
+we have <code class="language-plaintext highlighter-rouge">γ ⊢ N ⇓ clos L γ₁</code> and <code class="language-plaintext highlighter-rouge">𝕍 w (clos L γ₁)</code>. From this we have
+<code class="language-plaintext highlighter-rouge">L ≡ ƛ N'</code> for some <code class="language-plaintext highlighter-rouge">N'</code>. Meanwhile, from <code class="language-plaintext highlighter-rouge">¬ AboveFun w'</code> we have
+<code class="language-plaintext highlighter-rouge">𝕍 w' (clos L γ₁)</code>. We conclude that
+<code class="language-plaintext highlighter-rouge">𝕍 (w ⊔ w') (clos (ƛ N') γ₁)</code>.</p>
       </li>
     </ul>
   </li>
 </ul>
 
-<p>The proof of <code class="highlighter-rouge">sub-𝔼</code> is direct and explained below.</p>
+<p>The proof of <code class="language-plaintext highlighter-rouge">sub-𝔼</code> is direct and explained below.</p>
 
 <pre class="Agda"><a id="14749" href="/PLFA-zh/Adequacy/#10726" class="Function">sub-𝔼</a> <a id="14755" class="Symbol">{</a><a id="14756" href="/PLFA-zh/CallByName/#2477" class="InductiveConstructor">clos</a> <a id="14761" href="plfa.Adequacy.html#14761" class="Bound">M</a> <a id="14763" href="plfa.Adequacy.html#14763" class="Bound">γ</a><a id="14764" class="Symbol">}</a> <a id="14766" class="Symbol">{</a><a id="14767" href="plfa.Adequacy.html#14767" class="Bound">v</a><a id="14768" class="Symbol">}</a> <a id="14770" class="Symbol">{</a><a id="14771" href="plfa.Adequacy.html#14771" class="Bound">v&#39;</a><a id="14773" class="Symbol">}</a> <a id="14775" href="plfa.Adequacy.html#14775" class="Bound">𝔼v</a> <a id="14778" href="plfa.Adequacy.html#14778" class="Bound">v&#39;⊑v</a> <a id="14783" href="plfa.Adequacy.html#14783" class="Bound">fv&#39;</a>
     <a id="14791" class="Keyword">with</a> <a id="14796" href="/PLFA-zh/Adequacy/#14775" class="Bound">𝔼v</a> <a id="14799" class="Symbol">(</a><a id="14800" href="plfa.Adequacy.html#4152" class="Function">AboveFun-⊑</a> <a id="14811" href="plfa.Adequacy.html#14783" class="Bound">fv&#39;</a> <a id="14815" href="plfa.Adequacy.html#14778" class="Bound">v&#39;⊑v</a><a id="14819" class="Symbol">)</a>
 <a id="14821" class="Symbol">...</a> <a id="14825" class="Symbol">|</a> <a id="14827" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="14829" href="/PLFA-zh/Adequacy/#14829" class="Bound">c</a> <a id="14831" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="14833" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="14835" href="plfa.Adequacy.html#14835" class="Bound">M⇓c</a> <a id="14839" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="14841" href="plfa.Adequacy.html#14841" class="Bound">𝕍v</a> <a id="14844" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="14846" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="14848" class="Symbol">=</a>
       <a id="14856" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="14858" href="/PLFA-zh/Adequacy/#14829" class="Bound">c</a> <a id="14860" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="14862" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="14864" href="plfa.Adequacy.html#14835" class="Bound">M⇓c</a> <a id="14868" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="14870" href="plfa.Adequacy.html#10674" class="Function">sub-𝕍</a> <a id="14876" href="plfa.Adequacy.html#14841" class="Bound">𝕍v</a> <a id="14879" class="Bound">v&#39;⊑v</a> <a id="14884" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="14886" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<p>From <code class="highlighter-rouge">AboveFun v'</code> and <code class="highlighter-rouge">v' ⊑ v</code> we have <code class="highlighter-rouge">AboveFun v</code>.  Then with <code class="highlighter-rouge">𝔼 v c</code> we
-obtain a closure <code class="highlighter-rouge">c</code> such that <code class="highlighter-rouge">γ ⊢ M ⇓ c</code> and <code class="highlighter-rouge">𝕍 v c</code>. We conclude with an
-application of <code class="highlighter-rouge">sub-𝕍</code> with <code class="highlighter-rouge">v' ⊑ v</code> to show <code class="highlighter-rouge">𝕍 v' c</code>.</p>
+<p>From <code class="language-plaintext highlighter-rouge">AboveFun v'</code> and <code class="language-plaintext highlighter-rouge">v' ⊑ v</code> we have <code class="language-plaintext highlighter-rouge">AboveFun v</code>.  Then with <code class="language-plaintext highlighter-rouge">𝔼 v c</code> we
+obtain a closure <code class="language-plaintext highlighter-rouge">c</code> such that <code class="language-plaintext highlighter-rouge">γ ⊢ M ⇓ c</code> and <code class="language-plaintext highlighter-rouge">𝕍 v c</code>. We conclude with an
+application of <code class="language-plaintext highlighter-rouge">sub-𝕍</code> with <code class="language-plaintext highlighter-rouge">v' ⊑ v</code> to show <code class="language-plaintext highlighter-rouge">𝕍 v' c</code>.</p>
 
 <h2 id="programs-with-function-denotation-terminate-via-call-by-name">Programs with function denotation terminate via call-by-name</h2>
 
 <p>The main lemma proves that if a term has a denotation that is above a
 function, then it terminates via call-by-name. More formally, if
-<code class="highlighter-rouge">γ ⊢ M ↓ v</code> and <code class="highlighter-rouge">𝔾 γ γ'</code>, then <code class="highlighter-rouge">𝔼 v (clos M γ')</code>. The proof is by
-induction on the derivation of <code class="highlighter-rouge">γ ⊢ M ↓ v</code> we discuss each case below.</p>
+<code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code> and <code class="language-plaintext highlighter-rouge">𝔾 γ γ'</code>, then <code class="language-plaintext highlighter-rouge">𝔼 v (clos M γ')</code>. The proof is by
+induction on the derivation of <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code> we discuss each case below.</p>
 
-<p>The following lemma, kth-x, is used in the case for the <code class="highlighter-rouge">var</code> rule.</p>
+<p>The following lemma, kth-x, is used in the case for the <code class="language-plaintext highlighter-rouge">var</code> rule.</p>
 
 <pre class="Agda"><a id="kth-x"></a><a id="15513" href="/PLFA-zh/Adequacy/#15513" class="Function">kth-x</a> <a id="15519" class="Symbol">:</a> <a id="15521" class="Symbol">∀{</a><a id="15523" href="plfa.Adequacy.html#15523" class="Bound">Γ</a><a id="15524" class="Symbol">}{</a><a id="15526" href="plfa.Adequacy.html#15526" class="Bound">γ&#39;</a> <a id="15529" class="Symbol">:</a> <a id="15531" href="/PLFA-zh/CallByName/#2428" class="Function">ClosEnv</a> <a id="15539" href="plfa.Adequacy.html#15523" class="Bound">Γ</a><a id="15540" class="Symbol">}{</a><a id="15542" href="plfa.Adequacy.html#15542" class="Bound">x</a> <a id="15544" class="Symbol">:</a> <a id="15546" href="plfa.Adequacy.html#15523" class="Bound">Γ</a> <a id="15548" href="/PLFA-zh/Untyped/#3483" class="Datatype Operator">∋</a> <a id="15550" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="15551" class="Symbol">}</a>
      <a id="15558" class="Symbol">→</a> <a id="15560" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="15563" href="/PLFA-zh/Adequacy/#15563" class="Bound">Δ</a> <a id="15565" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="15567" href="/PLFA-zh/Untyped/#3130" class="Datatype">Context</a> <a id="15575" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="15577" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="15580" href="plfa.Adequacy.html#15580" class="Bound">δ</a> <a id="15582" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="15584" href="/PLFA-zh/CallByName/#2428" class="Function">ClosEnv</a> <a id="15592" href="plfa.Adequacy.html#15563" class="Bound">Δ</a> <a id="15594" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="15596" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="15599" href="plfa.Adequacy.html#15599" class="Bound">M</a> <a id="15601" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="15603" href="plfa.Adequacy.html#15563" class="Bound">Δ</a> <a id="15605" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="15607" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="15609" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a>
@@ -583,77 +579,77 @@ induction on the derivation of <code class="highlighter-rouge">γ ⊢ M ↓ v</c
 </pre>
 <ul>
   <li>
-    <p>Case <code class="highlighter-rouge">var</code>. Looking up <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">γ'</code> yields some closure, <code class="highlighter-rouge">clos M' δ</code>,
-and from <code class="highlighter-rouge">𝔾 γ γ'</code> we have <code class="highlighter-rouge">𝔼 (γ x) (clos M' δ)</code>. With the premise
-<code class="highlighter-rouge">AboveFun (γ x)</code>, we obtain a closure <code class="highlighter-rouge">c</code> such that <code class="highlighter-rouge">δ ⊢ M' ⇓ c</code>
-and <code class="highlighter-rouge">𝕍 (γ x) c</code>. To conclude <code class="highlighter-rouge">γ' ⊢ x ⇓ c</code> via <code class="highlighter-rouge">⇓-var</code>, we
-need <code class="highlighter-rouge">γ' x ≡ clos M' δ</code>, which is obvious, but it requires some
-Agda shananigans via the <code class="highlighter-rouge">kth-x</code> lemma to get our hands on it.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">var</code>. Looking up <code class="language-plaintext highlighter-rouge">x</code> in <code class="language-plaintext highlighter-rouge">γ'</code> yields some closure, <code class="language-plaintext highlighter-rouge">clos M' δ</code>,
+and from <code class="language-plaintext highlighter-rouge">𝔾 γ γ'</code> we have <code class="language-plaintext highlighter-rouge">𝔼 (γ x) (clos M' δ)</code>. With the premise
+<code class="language-plaintext highlighter-rouge">AboveFun (γ x)</code>, we obtain a closure <code class="language-plaintext highlighter-rouge">c</code> such that <code class="language-plaintext highlighter-rouge">δ ⊢ M' ⇓ c</code>
+and <code class="language-plaintext highlighter-rouge">𝕍 (γ x) c</code>. To conclude <code class="language-plaintext highlighter-rouge">γ' ⊢ x ⇓ c</code> via <code class="language-plaintext highlighter-rouge">⇓-var</code>, we
+need <code class="language-plaintext highlighter-rouge">γ' x ≡ clos M' δ</code>, which is obvious, but it requires some
+Agda shananigans via the <code class="language-plaintext highlighter-rouge">kth-x</code> lemma to get our hands on it.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">↦-elim</code>. We have <code class="highlighter-rouge">γ ⊢ L · M ↓ v</code>.
-The induction hypothesis for <code class="highlighter-rouge">γ ⊢ L ↓ v₁ ↦ v</code>
-gives us <code class="highlighter-rouge">γ' ⊢ L ⇓ clos L' δ</code> and <code class="highlighter-rouge">𝕍 v (clos L' δ)</code>.
-Of course, <code class="highlighter-rouge">L' ≡ ƛ N</code> for some <code class="highlighter-rouge">N</code>.
-By the induction hypothesis for <code class="highlighter-rouge">γ ⊢ M ↓ v₁</code>,
-we have <code class="highlighter-rouge">𝔼 v₁ (clos M γ')</code>.
-Together with the premise <code class="highlighter-rouge">AboveFun v</code> and <code class="highlighter-rouge">𝕍 v (clos L' δ)</code>,
-we obtain a closure <code class="highlighter-rouge">c'</code> such that <code class="highlighter-rouge">δ ⊢ N ⇓ c'</code> and <code class="highlighter-rouge">𝕍 v c'</code>.
-We conclude that <code class="highlighter-rouge">γ' ⊢ L · M ⇓ c'</code> by rule <code class="highlighter-rouge">⇓-app</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">↦-elim</code>. We have <code class="language-plaintext highlighter-rouge">γ ⊢ L · M ↓ v</code>.
+The induction hypothesis for <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁ ↦ v</code>
+gives us <code class="language-plaintext highlighter-rouge">γ' ⊢ L ⇓ clos L' δ</code> and <code class="language-plaintext highlighter-rouge">𝕍 v (clos L' δ)</code>.
+Of course, <code class="language-plaintext highlighter-rouge">L' ≡ ƛ N</code> for some <code class="language-plaintext highlighter-rouge">N</code>.
+By the induction hypothesis for <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₁</code>,
+we have <code class="language-plaintext highlighter-rouge">𝔼 v₁ (clos M γ')</code>.
+Together with the premise <code class="language-plaintext highlighter-rouge">AboveFun v</code> and <code class="language-plaintext highlighter-rouge">𝕍 v (clos L' δ)</code>,
+we obtain a closure <code class="language-plaintext highlighter-rouge">c'</code> such that <code class="language-plaintext highlighter-rouge">δ ⊢ N ⇓ c'</code> and <code class="language-plaintext highlighter-rouge">𝕍 v c'</code>.
+We conclude that <code class="language-plaintext highlighter-rouge">γ' ⊢ L · M ⇓ c'</code> by rule <code class="language-plaintext highlighter-rouge">⇓-app</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">↦-intro</code>. We have <code class="highlighter-rouge">γ ⊢ ƛ N ↓ v ↦ w</code>.
-We immediately have <code class="highlighter-rouge">γ' ⊢ ƛ M ⇓ clos (ƛ M) γ'</code> by rule <code class="highlighter-rouge">⇓-lam</code>.
-But we also need to prove <code class="highlighter-rouge">𝕍 (v ↦ w) (clos (ƛ N) γ')</code>.
-Let <code class="highlighter-rouge">c</code> by an arbitrary closure such that <code class="highlighter-rouge">𝔼 v c</code>.
-Suppose <code class="highlighter-rouge">v'</code> is greater than a function value.
-We need to show that <code class="highlighter-rouge">γ' , c ⊢ N ⇓ c'</code> and <code class="highlighter-rouge">𝕍 v' c'</code> for some <code class="highlighter-rouge">c'</code>.
-We prove this by the induction hypothesis for <code class="highlighter-rouge">γ , v ⊢ N ↓ v'</code>
-but we must first show that <code class="highlighter-rouge">𝔾 (γ , v) (γ' , c)</code>. We prove
-that by the lemma <code class="highlighter-rouge">𝔾-ext</code>, using facts <code class="highlighter-rouge">𝔾 γ γ'</code> and <code class="highlighter-rouge">𝔼 v c</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">↦-intro</code>. We have <code class="language-plaintext highlighter-rouge">γ ⊢ ƛ N ↓ v ↦ w</code>.
+We immediately have <code class="language-plaintext highlighter-rouge">γ' ⊢ ƛ M ⇓ clos (ƛ M) γ'</code> by rule <code class="language-plaintext highlighter-rouge">⇓-lam</code>.
+But we also need to prove <code class="language-plaintext highlighter-rouge">𝕍 (v ↦ w) (clos (ƛ N) γ')</code>.
+Let <code class="language-plaintext highlighter-rouge">c</code> by an arbitrary closure such that <code class="language-plaintext highlighter-rouge">𝔼 v c</code>.
+Suppose <code class="language-plaintext highlighter-rouge">v'</code> is greater than a function value.
+We need to show that <code class="language-plaintext highlighter-rouge">γ' , c ⊢ N ⇓ c'</code> and <code class="language-plaintext highlighter-rouge">𝕍 v' c'</code> for some <code class="language-plaintext highlighter-rouge">c'</code>.
+We prove this by the induction hypothesis for <code class="language-plaintext highlighter-rouge">γ , v ⊢ N ↓ v'</code>
+but we must first show that <code class="language-plaintext highlighter-rouge">𝔾 (γ , v) (γ' , c)</code>. We prove
+that by the lemma <code class="language-plaintext highlighter-rouge">𝔾-ext</code>, using facts <code class="language-plaintext highlighter-rouge">𝔾 γ γ'</code> and <code class="language-plaintext highlighter-rouge">𝔼 v c</code>.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">⊥-intro</code>. We have the premise <code class="highlighter-rouge">AboveFun ⊥</code>, but that’s impossible.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">⊥-intro</code>. We have the premise <code class="language-plaintext highlighter-rouge">AboveFun ⊥</code>, but that’s impossible.</p>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">⊔-intro</code>. We have <code class="highlighter-rouge">γ ⊢ M ↓ (v₁ ⊔ v₂)</code> and <code class="highlighter-rouge">AboveFun (v₁ ⊔ v₂)</code>
-and need to show <code class="highlighter-rouge">γ' ⊢ M ↓ c</code> and <code class="highlighter-rouge">𝕍 (v₁ ⊔ v₂) c</code> for some <code class="highlighter-rouge">c</code>.
-Again, by <code class="highlighter-rouge">AboveFun-⊔</code>, at least one of <code class="highlighter-rouge">v₁</code> or <code class="highlighter-rouge">v₂</code> is greater than
+    <p>Case <code class="language-plaintext highlighter-rouge">⊔-intro</code>. We have <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ (v₁ ⊔ v₂)</code> and <code class="language-plaintext highlighter-rouge">AboveFun (v₁ ⊔ v₂)</code>
+and need to show <code class="language-plaintext highlighter-rouge">γ' ⊢ M ↓ c</code> and <code class="language-plaintext highlighter-rouge">𝕍 (v₁ ⊔ v₂) c</code> for some <code class="language-plaintext highlighter-rouge">c</code>.
+Again, by <code class="language-plaintext highlighter-rouge">AboveFun-⊔</code>, at least one of <code class="language-plaintext highlighter-rouge">v₁</code> or <code class="language-plaintext highlighter-rouge">v₂</code> is greater than
 a function.</p>
 
     <ul>
       <li>
-        <p>Suppose both <code class="highlighter-rouge">v₁</code> and <code class="highlighter-rouge">v₂</code> are greater than a function value.
-By the induction hypotheses for <code class="highlighter-rouge">γ ⊢ M ↓ v₁</code> and <code class="highlighter-rouge">γ ⊢ M ↓ v₂</code>
-we have <code class="highlighter-rouge">γ' ⊢ M ⇓ c₁</code>, <code class="highlighter-rouge">𝕍 v₁ c₁</code>, <code class="highlighter-rouge">γ' ⊢ M ⇓ c₂</code>, and <code class="highlighter-rouge">𝕍 v₂ c₂</code>
-for some <code class="highlighter-rouge">c₁</code> and <code class="highlighter-rouge">c₂</code>. Because <code class="highlighter-rouge">⇓</code> is deterministic, we have <code class="highlighter-rouge">c₂ ≡ c₁</code>.
-Then by <code class="highlighter-rouge">𝕍⊔-intro</code> we conclude that <code class="highlighter-rouge">𝕍 (v₁ ⊔ v₂) c₁</code>.</p>
+        <p>Suppose both <code class="language-plaintext highlighter-rouge">v₁</code> and <code class="language-plaintext highlighter-rouge">v₂</code> are greater than a function value.
+By the induction hypotheses for <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₁</code> and <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₂</code>
+we have <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ c₁</code>, <code class="language-plaintext highlighter-rouge">𝕍 v₁ c₁</code>, <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ c₂</code>, and <code class="language-plaintext highlighter-rouge">𝕍 v₂ c₂</code>
+for some <code class="language-plaintext highlighter-rouge">c₁</code> and <code class="language-plaintext highlighter-rouge">c₂</code>. Because <code class="language-plaintext highlighter-rouge">⇓</code> is deterministic, we have <code class="language-plaintext highlighter-rouge">c₂ ≡ c₁</code>.
+Then by <code class="language-plaintext highlighter-rouge">𝕍⊔-intro</code> we conclude that <code class="language-plaintext highlighter-rouge">𝕍 (v₁ ⊔ v₂) c₁</code>.</p>
       </li>
       <li>
-        <p>Without loss of generality, suppose <code class="highlighter-rouge">v₁</code> is greater than a function
-value but <code class="highlighter-rouge">v₂</code> is not.  By the induction hypotheses for <code class="highlighter-rouge">γ ⊢ M ↓ v₁</code>,
-and using <code class="highlighter-rouge">𝕍→WHNF</code>, we have <code class="highlighter-rouge">γ' ⊢ M ⇓ clos (ƛ N) γ₁</code>
-and <code class="highlighter-rouge">𝕍 v₁ (clos (ƛ N) γ₁)</code>.
-Then because <code class="highlighter-rouge">v₂</code> is not greater than a function, we also have
-<code class="highlighter-rouge">𝕍 v₂ (clos (ƛ N) γ₁)</code>. We conclude that <code class="highlighter-rouge">𝕍 (v₁ ⊔ v₂) (clos (ƛ N) γ₁)</code>.</p>
+        <p>Without loss of generality, suppose <code class="language-plaintext highlighter-rouge">v₁</code> is greater than a function
+value but <code class="language-plaintext highlighter-rouge">v₂</code> is not.  By the induction hypotheses for <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₁</code>,
+and using <code class="language-plaintext highlighter-rouge">𝕍→WHNF</code>, we have <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ clos (ƛ N) γ₁</code>
+and <code class="language-plaintext highlighter-rouge">𝕍 v₁ (clos (ƛ N) γ₁)</code>.
+Then because <code class="language-plaintext highlighter-rouge">v₂</code> is not greater than a function, we also have
+<code class="language-plaintext highlighter-rouge">𝕍 v₂ (clos (ƛ N) γ₁)</code>. We conclude that <code class="language-plaintext highlighter-rouge">𝕍 (v₁ ⊔ v₂) (clos (ƛ N) γ₁)</code>.</p>
       </li>
     </ul>
   </li>
   <li>
-    <p>Case <code class="highlighter-rouge">sub</code>. We have <code class="highlighter-rouge">γ ⊢ M ↓ v</code>, <code class="highlighter-rouge">v' ⊑ v</code>, and <code class="highlighter-rouge">AboveFun v'</code>.
-We need to show that <code class="highlighter-rouge">γ' ⊢ M ⇓ c</code> and <code class="highlighter-rouge">𝕍 v' c</code> for some <code class="highlighter-rouge">c</code>.
-We have <code class="highlighter-rouge">AboveFun v</code> by <code class="highlighter-rouge">AboveFun-⊑</code>,
-so the induction hypothesis for <code class="highlighter-rouge">γ ⊢ M ↓ v</code> gives us a closure <code class="highlighter-rouge">c</code>
-such that <code class="highlighter-rouge">γ' ⊢ M ⇓ c</code> and <code class="highlighter-rouge">𝕍 v c</code>. We conclude that <code class="highlighter-rouge">𝕍 v' c</code> by <code class="highlighter-rouge">sub-𝕍</code>.</p>
+    <p>Case <code class="language-plaintext highlighter-rouge">sub</code>. We have <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code>, <code class="language-plaintext highlighter-rouge">v' ⊑ v</code>, and <code class="language-plaintext highlighter-rouge">AboveFun v'</code>.
+We need to show that <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ c</code> and <code class="language-plaintext highlighter-rouge">𝕍 v' c</code> for some <code class="language-plaintext highlighter-rouge">c</code>.
+We have <code class="language-plaintext highlighter-rouge">AboveFun v</code> by <code class="language-plaintext highlighter-rouge">AboveFun-⊑</code>,
+so the induction hypothesis for <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v</code> gives us a closure <code class="language-plaintext highlighter-rouge">c</code>
+such that <code class="language-plaintext highlighter-rouge">γ' ⊢ M ⇓ c</code> and <code class="language-plaintext highlighter-rouge">𝕍 v c</code>. We conclude that <code class="language-plaintext highlighter-rouge">𝕍 v' c</code> by <code class="language-plaintext highlighter-rouge">sub-𝕍</code>.</p>
   </li>
 </ul>
 
 <h2 id="proof-of-denotational-adequacy">Proof of denotational adequacy</h2>
 
 <p>The adequacy property is a corollary of the main lemma.
-We have <code class="highlighter-rouge">∅ ⊢ ƛ N ↓ ⊥ ↦ ⊥</code>, so <code class="highlighter-rouge">ℰ M ≃ ℰ (ƛ N)</code>
-gives us <code class="highlighter-rouge">∅ ⊢ M ↓ ⊥ ↦ ⊥</code>. Then the main lemma gives us
-<code class="highlighter-rouge">∅ ⊢ M ⇓ clos (ƛ N′) γ</code> for some <code class="highlighter-rouge">N′</code> and <code class="highlighter-rouge">γ</code>.</p>
+We have <code class="language-plaintext highlighter-rouge">∅ ⊢ ƛ N ↓ ⊥ ↦ ⊥</code>, so <code class="language-plaintext highlighter-rouge">ℰ M ≃ ℰ (ƛ N)</code>
+gives us <code class="language-plaintext highlighter-rouge">∅ ⊢ M ↓ ⊥ ↦ ⊥</code>. Then the main lemma gives us
+<code class="language-plaintext highlighter-rouge">∅ ⊢ M ⇓ clos (ƛ N′) γ</code> for some <code class="language-plaintext highlighter-rouge">N′</code> and <code class="language-plaintext highlighter-rouge">γ</code>.</p>
 
 <pre class="Agda"><a id="adequacy"></a><a id="20829" href="/PLFA-zh/Adequacy/#20829" class="Function">adequacy</a> <a id="20838" class="Symbol">:</a> <a id="20840" class="Symbol">∀{</a><a id="20842" href="plfa.Adequacy.html#20842" class="Bound">M</a> <a id="20844" class="Symbol">:</a> <a id="20846" href="/PLFA-zh/Untyped/#3152" class="InductiveConstructor">∅</a> <a id="20848" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="20850" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="20851" class="Symbol">}{</a><a id="20853" href="plfa.Adequacy.html#20853" class="Bound">N</a> <a id="20855" class="Symbol">:</a> <a id="20857" href="plfa.Untyped.html#3152" class="InductiveConstructor">∅</a> <a id="20859" href="plfa.Untyped.html#3168" class="InductiveConstructor Operator">,</a> <a id="20861" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="20863" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="20865" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="20866" class="Symbol">}</a>  <a id="20869" class="Symbol">→</a>  <a id="20872" href="/PLFA-zh/Denotational/#17427" class="Function">ℰ</a> <a id="20874" href="plfa.Adequacy.html#20842" class="Bound">M</a> <a id="20876" href="plfa.Denotational.html#17609" class="Function Operator">≃</a> <a id="20878" href="plfa.Denotational.html#17427" class="Function">ℰ</a> <a id="20880" class="Symbol">(</a><a id="20881" href="plfa.Untyped.html#4340" class="InductiveConstructor Operator">ƛ</a> <a id="20883" href="plfa.Adequacy.html#20853" class="Bound">N</a><a id="20884" class="Symbol">)</a>
          <a id="20895" class="Symbol">→</a>  <a id="20898" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="20901" href="/PLFA-zh/Adequacy/#20901" class="Bound">Γ</a> <a id="20903" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="20905" href="/PLFA-zh/Untyped/#3130" class="Datatype">Context</a> <a id="20913" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="20915" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="20918" href="plfa.Adequacy.html#20918" class="Bound">N′</a> <a id="20921" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="20923" class="Symbol">(</a><a id="20924" href="plfa.Adequacy.html#20901" class="Bound">Γ</a> <a id="20926" href="plfa.Untyped.html#3168" class="InductiveConstructor Operator">,</a> <a id="20928" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="20930" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="20932" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="20933" class="Symbol">)</a> <a id="20935" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a> <a id="20937" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ[</a> <a id="20940" href="plfa.Adequacy.html#20940" class="Bound">γ</a> <a id="20942" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">∈</a> <a id="20944" href="/PLFA-zh/CallByName/#2428" class="Function">ClosEnv</a> <a id="20952" href="plfa.Adequacy.html#20901" class="Bound">Γ</a> <a id="20954" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">]</a>
@@ -682,9 +678,9 @@ results about the denotational semantics.</p>
              <a id="21811" href="/PLFA-zh/CallByName/#2641" class="Function">∅&#39;</a> <a id="21814" href="plfa.CallByName.html#3012" class="Datatype Operator">⊢</a> <a id="21816" href="/PLFA-zh/Adequacy/#21680" class="Bound">M</a> <a id="21818" href="plfa.CallByName.html#3012" class="Datatype Operator">⇓</a> <a id="21820" href="plfa.CallByName.html#2477" class="InductiveConstructor">clos</a> <a id="21825" class="Symbol">(</a><a id="21826" href="/PLFA-zh/Untyped/#4340" class="InductiveConstructor Operator">ƛ</a> <a id="21828" href="plfa.Adequacy.html#21762" class="Bound">N′</a><a id="21830" class="Symbol">)</a> <a id="21832" href="plfa.Adequacy.html#21782" class="Bound">δ</a>
 <a id="21834" href="/PLFA-zh/Adequacy/#21664" class="Function">reduce→cbn</a> <a id="21845" href="plfa.Adequacy.html#21845" class="Bound">M—↠ƛN</a> <a id="21851" class="Symbol">=</a> <a id="21853" href="plfa.Adequacy.html#20829" class="Function">adequacy</a> <a id="21862" class="Symbol">(</a><a id="21863" href="/PLFA-zh/Soundness/#23387" class="Function">soundness</a> <a id="21873" href="plfa.Adequacy.html#21845" class="Bound">M—↠ƛN</a><a id="21878" class="Symbol">)</a>
 </pre>
-<p>Suppose <code class="highlighter-rouge">M —↠ ƛ N</code>. Soundness of the denotational semantics gives us
-<code class="highlighter-rouge">ℰ M ≃ ℰ (ƛ N)</code>. Then by adequacy we conclude that
-<code class="highlighter-rouge">∅' ⊢ M ⇓ clos (ƛ N′) δ</code> for some <code class="highlighter-rouge">N′</code> and <code class="highlighter-rouge">δ</code>.</p>
+<p>Suppose <code class="language-plaintext highlighter-rouge">M —↠ ƛ N</code>. Soundness of the denotational semantics gives us
+<code class="language-plaintext highlighter-rouge">ℰ M ≃ ℰ (ƛ N)</code>. Then by adequacy we conclude that
+<code class="language-plaintext highlighter-rouge">∅' ⊢ M ⇓ clos (ƛ N′) δ</code> for some <code class="language-plaintext highlighter-rouge">N′</code> and <code class="language-plaintext highlighter-rouge">δ</code>.</p>
 
 <p>Putting the two directions of the if-and-only-if together, we
 establish that call-by-name evaluation is equivalent to beta reduction
@@ -703,7 +699,7 @@ in the following sense.</p>
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>𝔼  U+1D53C  MATHEMATICAL DOUBLE-STRUCK CAPITAL E (\bE)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>𝔼  U+1D53C  MATHEMATICAL DOUBLE-STRUCK CAPITAL E (\bE)
 𝔾  U+1D53E  MATHEMATICAL DOUBLE-STRUCK CAPITAL G (\bG)
 𝕍  U+1D53E  MATHEMATICAL DOUBLE-STRUCK CAPITAL V (\bV)
 </code></pre></div></div>
@@ -761,6 +757,18 @@ in the following sense.</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

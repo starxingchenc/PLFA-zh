@@ -20,6 +20,11 @@ authors:
     corresponding: true
     github_username: wenkokke
     twitter_username: wenkokke
+  - name: Jeremy Siek
+    email: jsiek@indiana.edu
+    corresponding: true
+    github_username: jsiek
+    twitter_username: jeremysiek
 
 extra_contributors:
   - github_username: cyberglot
@@ -72,40 +77,46 @@ contributors:
   name: Fangyi Zhou
 - github_username: Kwezan
   name: Zbigniew Stanasiuk
-- github_username: roger-uw
-  name: roger-uw
 - github_username: OlingCat
   name: Oling Cat
-- github_username: jsiek
-  name: Jeremy G. Siek
-- github_username: ywata
-  name: Yasu Watanabe
+- github_username: roger-uw
+  name: Rongxiao Fu
 - github_username: h4iku
   name: Reza Gharibi
+- github_username: ywata
+  name: Yasu Watanabe
 - github_username: Cubesoup
   name: Chad Nester
 - github_username: chirsz-ever
   name: chirsz
 - github_username: Fingerzam
   name: Juhana Laurinharju
+- github_username: momirza
+  name: Mo Mirza
+- github_username: kenichi-asai
+  name: Kenichi Asai
+- github_username: omelkonian
+  name: Orestis Melkonian
 - github_username: phi16
   name: phi16
 - github_username: jonaprieto
   name: Jonathan Prieto
 - github_username: livecodealex
   name: Alexandru Brisan
+- github_username: pedrominicz
+  name: Pedro Minicz
+- github_username: qaisjp
+  name: Qais Patankar
 - github_username: michel-steuwer
   name: Michel Steuwer
 - github_username: caryoscelus
   name: caryoscelus
 - github_username: lzmartinico
   name: Lorenzo Martinico
-- github_username: kenichi-asai
-  name: Kenichi Asai
 - github_username: whxvd
   name: Sebastian Miele
 - github_username: odanoburu
-  name: bruno cuconato
+  name: bc²
 - github_username: murilogiacometti
   name: Murilo Giacometti Rocha
 - github_username: gallais
@@ -116,12 +127,18 @@ contributors:
   name: Isaac Elliott
 - github_username: iblech
   name: Ingo Blechschmidt
+- github_username: AD1024
+  name: Mike He
 - github_username: kaaass
   name: KAAAsS
+- github_username: trajafri
+  name: Syed Turab Ali Jafri
 - github_username: Teggy
   name: Torsten Grust
 - github_username: zenzike
   name: Nicolas Wu
+- github_username: vipo
+  name: Slava
 - github_username: k4rtik
   name: Kartik Singhal
 - github_username: philderbeast
@@ -140,14 +157,18 @@ contributors:
   name: Chike Abuah
 - github_username: moleike
   name: Alexandre Moreno
+- github_username: mgttlinger
+  name: Merlin Göttlinger
 - github_username: laMudri
   name: James Wood
+- github_username: citrusmunch
+  name: citrusmunch
 - github_username: kranich
   name: Stefan Kranich
 - github_username: rodamber
   name: Rodrigo Bernardo
-- github_username: omelkonian
-  name: Orestis Melkonian
+- github_username: googleson78
+  name: Georgi Lyubenov
 - github_username: dalpd
   name: Deniz Alp
 - github_username: potato4444

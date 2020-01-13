@@ -40,8 +40,7 @@ We formalise this idea by declaring negation to be the same
 as implication of false:
 {:/}
 
-给定命题 `A`，当 `A` 不成立时，它的否定形式 `¬ A` 成立。
-我们将否定阐述为「蕴涵假」来形式化此概念。
+给定命题 `A`，当 `A` 不成立时，它的否定形式 `¬ A` 成立。我们将否定阐述为「蕴涵假」来形式化此概念。
 
 {% raw %}<pre class="Agda"><a id="¬_"></a><a id="934" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#934" class="Function Operator">¬_</a> <a id="937" class="Symbol">:</a> <a id="939" class="PrimitiveType">Set</a> <a id="943" class="Symbol">→</a> <a id="945" class="PrimitiveType">Set</a>
 <a id="949" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#934" class="Function Operator">¬</a> <a id="951" href="plfa.Negation.html#951" class="Bound">A</a> <a id="953" class="Symbol">=</a> <a id="955" href="plfa.Negation.html#951" class="Bound">A</a> <a id="957" class="Symbol">→</a> <a id="959" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
@@ -51,8 +50,7 @@ This is a form of _proof by contradiction_: if assuming `A` leads
 to the conclusion `⊥` (a contradiction), then we must have `¬ A`.
 {:/}
 
-这是一种**反证法（Proof by Contradiction）**的形式：若从 `A` 可得出结论 `⊥`（即矛盾），
-则 `¬ A` 必定成立。
+这是一种**反证法（Proof by Contradiction）**的形式：若从 `A` 可得出结论 `⊥`（即矛盾），则 `¬ A` 必定成立。
 
 {::comment}
 Evidence that `¬ A` holds is of the form
@@ -68,16 +66,14 @@ In other words, evidence that `¬ A` holds is a function that converts evidence
 that `A` holds into evidence that `⊥` holds.
 {:/}
 
-其中 `N` 是类型为 `⊥` 的项，它包含类型为 `A` 的自由变量 `x`。换言之，`¬ A` 成立
-的证据是一个函数，该函数将 `A` 成立的证据转换为 `⊥` 成立的证据。
+其中 `N` 是类型为 `⊥` 的项，它包含类型为 `A` 的自由变量 `x`。换言之，`¬ A` 成立的证据是一个函数，该函数将 `A` 成立的证据转换为 `⊥` 成立的证据。
 
 {::comment}
 Given evidence that both `¬ A` and `A` hold, we can conclude that `⊥` holds.
 In other words, if both `¬ A` and `A` hold, then we have a contradiction:
 {:/}
 
-给定 `¬ A` 和 `A` 均成立的证据，我们可以得出 `⊥` 成立。换言之，若 `¬ A` 和 `A` 均成立，
-那么我们就得到了矛盾：
+给定 `¬ A` 和 `A` 均成立的证据，我们可以得出 `⊥` 成立。换言之，若 `¬ A` 和 `A` 均成立，那么我们就得到了矛盾：
 
 {% raw %}<pre class="Agda"><a id="¬-elim"></a><a id="1844" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#1844" class="Function">¬-elim</a> <a id="1851" class="Symbol">:</a> <a id="1853" class="Symbol">∀</a> <a id="1855" class="Symbol">{</a><a id="1856" href="plfa.Negation.html#1856" class="Bound">A</a> <a id="1858" class="Symbol">:</a> <a id="1860" class="PrimitiveType">Set</a><a id="1863" class="Symbol">}</a>
   <a id="1867" class="Symbol">→</a> <a id="1869" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#934" class="Function Operator">¬</a> <a id="1871" href="plfa.Negation.html#1856" class="Bound">A</a>
@@ -116,8 +112,7 @@ As we discuss below, in Agda we use _intuitionistic_ logic, where
 we have only half of this equivalence, namely that `A` implies `¬ ¬ A`:
 {:/}
 
-在**经典逻辑**中，`A` 等价于 `¬ ¬ A`。而如前文所述，Agda 中使用了**直觉逻辑**，
-因此我们只有该等价关系的一半，即 `A` 蕴涵 `¬ ¬ A`：
+在**经典逻辑**中，`A` 等价于 `¬ ¬ A`。而如前文所述，Agda 中使用了**直觉逻辑**，因此我们只有该等价关系的一半，即 `A` 蕴涵 `¬ ¬ A`：
 
 {% raw %}<pre class="Agda"><a id="¬¬-intro"></a><a id="2966" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#2966" class="Function">¬¬-intro</a> <a id="2975" class="Symbol">:</a> <a id="2977" class="Symbol">∀</a> <a id="2979" class="Symbol">{</a><a id="2980" href="plfa.Negation.html#2980" class="Bound">A</a> <a id="2982" class="Symbol">:</a> <a id="2984" class="PrimitiveType">Set</a><a id="2987" class="Symbol">}</a>
   <a id="2991" class="Symbol">→</a> <a id="2993" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#2980" class="Bound">A</a>
@@ -134,8 +129,7 @@ shown `¬ ¬ A`.
 {:/}
 
 令 `x` 为 `A` 的证据。我们要证明若假定 `¬ A` 成立，则会导出矛盾，因此 `¬ ¬ A`
-必定成立。令 `¬x` 为 `¬ A` 的证据。那么以 `¬x x` 为证据，从 `A` 和 `¬ A` 可以导出矛盾。
-这样我们就证明了 `¬ ¬ A`。
+必定成立。令 `¬x` 为 `¬ A` 的证据。那么以 `¬x x` 为证据，从 `A` 和 `¬ A` 可以导出矛盾。这样我们就证明了 `¬ ¬ A`。
 
 {::comment}
 An equivalent way to write the above is as follows:
@@ -155,8 +149,7 @@ to an additional argument of the function.  We will usually
 use this latter style, as it is more compact.
 {:/}
 
-在这里我们简单地将 λ-项的参数转换成了该函数的额外参数。
-我们通常会使用后面这种形式，因为它更加紧凑。
+在这里我们简单地将 λ-项的参数转换成了该函数的额外参数。我们通常会使用后面这种形式，因为它更加紧凑。
 
 {::comment}
 We cannot show that `¬ ¬ A` implies `A`, but we can show that
@@ -180,8 +173,7 @@ can conclude `¬ ¬ A`, evidenced by `¬¬-intro x`.  Then from
 `¬¬¬x (¬¬-intro x)`.  Hence we have shown `¬ A`.
 {:/}
 
-令 `¬¬¬x` 为 `¬ ¬ ¬ A` 的证据。我们要证明若假定 `A` 成立就会导出矛盾，
-因此 `¬ A` 必定成立。令 `x` 为 `A` 的证据。根据前面的结果，以 `¬¬-intro x`
+令 `¬¬¬x` 为 `¬ ¬ ¬ A` 的证据。我们要证明若假定 `A` 成立就会导出矛盾，因此 `¬ A` 必定成立。令 `x` 为 `A` 的证据。根据前面的结果，以 `¬¬-intro x`
 为证据可得出结论 `¬ ¬ A`。根据 `¬¬¬x (¬¬-intro x)`，我们可从
 `¬ ¬ ¬ A` 和 `¬ ¬ A` 导出矛盾。这样我们就证明了 `¬ A`。
 
@@ -190,8 +182,7 @@ Another law of logic is _contraposition_,
 stating that if `A` implies `B`, then `¬ B` implies `¬ A`:
 {:/}
 
-另一个逻辑规则是**换质换位律（contraposition）**，它陈述了若 `A` 蕴涵 `B`，
-则 `¬ B` 蕴涵 `¬ A`：
+另一个逻辑规则是**换质换位律（contraposition）**，它陈述了若 `A` 蕴涵 `B`，则 `¬ B` 蕴涵 `¬ A`：
 
 {% raw %}<pre class="Agda"><a id="contraposition"></a><a id="4857" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#4857" class="Function">contraposition</a> <a id="4872" class="Symbol">:</a> <a id="4874" class="Symbol">∀</a> <a id="4876" class="Symbol">{</a><a id="4877" href="plfa.Negation.html#4877" class="Bound">A</a> <a id="4879" href="plfa.Negation.html#4879" class="Bound">B</a> <a id="4881" class="Symbol">:</a> <a id="4883" class="PrimitiveType">Set</a><a id="4886" class="Symbol">}</a>
   <a id="4890" class="Symbol">→</a> <a id="4892" class="Symbol">(</a><a id="4893" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#4877" class="Bound">A</a> <a id="4895" class="Symbol">→</a> <a id="4897" href="plfa.Negation.html#4879" class="Bound">B</a><a id="4898" class="Symbol">)</a>
@@ -208,8 +199,7 @@ conclude `⊥`, evidenced by `¬y (f x)`.  Hence, we have shown `¬ A`.
 {:/}
 
 令 `f` 为 `A → B` 的证据，`¬y` 为 `¬ B` 的证据。我们要证明，若假定 `A`
-成立就会导出矛盾，因此 `¬ A` 必定成立。令 `x` 为 `A` 的证据。根据 `f x`，
-我们可从 `A → B` 和 `A` 我们可得出结论 `B`。而根据 `¬y (f x)`，可从
+成立就会导出矛盾，因此 `¬ A` 必定成立。令 `x` 为 `A` 的证据。根据 `f x`，我们可从 `A → B` 和 `A` 我们可得出结论 `B`。而根据 `¬y (f x)`，可从
 `B` 和 `¬ B` 得出结论 `⊥`。这样，我们就证明了 `¬ A`。
 
 {::comment}
@@ -242,8 +232,7 @@ Peano's postulate that zero is not the successor of any number:
 
 这是我们第一次在 λ-表达式中使用谬模式（Absurd Pattern）。类型 `M ≡ N`
 只有在 `M` 和 `N` 可被化简为相同的项时才能居留。由于 `1` 和 `2`
-会化简为不同的正规形式，因此 Agda 判定没有证据可证明 `1 ≡ 2`。
-第二个例子是，很容易验证皮亚诺公理中「零不是任何数的后继数」的假设：
+会化简为不同的正规形式，因此 Agda 判定没有证据可证明 `1 ≡ 2`。第二个例子是，很容易验证皮亚诺公理中「零不是任何数的后继数」的假设：
 
 {% raw %}<pre class="Agda"><a id="peano"></a><a id="6359" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#6359" class="Function">peano</a> <a id="6365" class="Symbol">:</a> <a id="6367" class="Symbol">∀</a> <a id="6369" class="Symbol">{</a><a id="6370" href="plfa.Negation.html#6370" class="Bound">m</a> <a id="6372" class="Symbol">:</a> <a id="6374" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="6375" class="Symbol">}</a> <a id="6377" class="Symbol">→</a> <a id="6379" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a> <a id="6384" href="plfa.Negation.html#5619" class="Function Operator">≢</a> <a id="6386" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a> <a id="6390" href="plfa.Negation.html#6370" class="Bound">m</a>
 <a id="6392" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Negation.md %}{% raw %}#6359" class="Function">peano</a> <a id="6398" class="Symbol">=</a> <a id="6400" class="Symbol">λ()</a>
@@ -262,8 +251,7 @@ raising to the zero power.  This indeed corresponds to what
 we know for arithmetic, where
 {:/}
 
-鉴于蕴涵和幂运算之间的对应关系，以及没有成员的类型为假，
-我们可以将否定看作零的幂。它确实对应于我们所知的算术运算，即
+鉴于蕴涵和幂运算之间的对应关系，以及没有成员的类型为假，我们可以将否定看作零的幂。它确实对应于我们所知的算术运算，即
 
     0 ^ n  ≡  1,  if n ≡ 0
            ≡  0,  if n ≢ 0
@@ -296,8 +284,7 @@ By extensionality, `id ≡ id′` holds if for every
 is no `x` in their domain, so the equality holds trivially.
 {:/}
 
-根据外延性，对于任何在二者定义域中的 `x`，都有 `id x ≡ id′ x`，
-则 `id ≡ id′` 成立。不过没有 `x` 在它们的定义域中，因此其相等性平凡成立。
+根据外延性，对于任何在二者定义域中的 `x`，都有 `id x ≡ id′ x`，则 `id ≡ id′` 成立。不过没有 `x` 在它们的定义域中，因此其相等性平凡成立。
 
 {::comment}
 Indeed, we can show any two proofs of a negation are equal:
@@ -332,8 +319,7 @@ Using negation, show that
 is irreflexive, that is, `n < n` holds for no `n`.
 {:/}
 
-利用否定证明[严格不等性]({{ site.baseurl }}/Relations/#strict-inequality)满足非自反性，
-即 `n < n` 对于任何 `n` 都不成立。
+利用否定证明[严格不等性]({{ site.baseurl }}/Relations/#strict-inequality)满足非自反性，即 `n < n` 对于任何 `n` 都不成立。
 
 {::comment}
 {% raw %}<pre class="Agda"><a id="8509" class="Comment">-- Your code goes here</a>
@@ -353,8 +339,7 @@ Show that strict inequality satisfies
 that is, for any naturals `m` and `n` exactly one of the following holds:
 {:/}
 
-请证明严格不等性满足[三分律]({{ site.baseurl }}/Relations/#trichotomy)，
-即对于任何自然数 `m` 和 `n`，以下三条刚好只有一条成立：
+请证明严格不等性满足[三分律]({{ site.baseurl }}/Relations/#trichotomy)，即对于任何自然数 `m` 和 `n`，以下三条刚好只有一条成立：
 
 * `m < n`
 * `m ≡ n`
@@ -365,8 +350,7 @@ Here "exactly one" means that not only one of the three must hold,
 but that when one holds the negation of the other two must also hold.
 {:/}
 
-「刚好只有一条」的意思是，三者中不仅有一条成立，而且当其中一条成立时，
-其它二者的否定也必定成立。
+「刚好只有一条」的意思是，三者中不仅有一条成立，而且当其中一条成立时，其它二者的否定也必定成立。
 
 {::comment}
 {% raw %}<pre class="Agda"><a id="9162" class="Comment">-- Your code goes here</a>
@@ -434,10 +418,8 @@ whatever."
 {:/}
 
 在 Gilbert 和 Sullivan 的电影《船夫》（_The Gondoliers_）中，
-Casilda 被告知她还是个婴儿时，就被许配给了巴塔维亚国王的继承人。
-但由于一场动乱，没人知道她被许配给了两位继承人 Marco 和 Giuseppe
-中的哪一位。她惊慌地哀嚎道：「那么你的意思是说我嫁给了两位船夫中的一位，
-但却无法确定是谁？」对此的回答是：「虽然不知道是谁，但这件事却是毫无疑问的。」
+Casilda 被告知她还是个婴儿时，就被许配给了巴塔维亚国王的继承人。但由于一场动乱，没人知道她被许配给了两位继承人 Marco 和 Giuseppe
+中的哪一位。她惊慌地哀嚎道：「那么你的意思是说我嫁给了两位船夫中的一位，但却无法确定是谁？」对此的回答是：「虽然不知道是谁，但这件事却是毫无疑问的。」
 
 {::comment}
 Logic comes in many varieties, and one distinction is between
@@ -453,12 +435,7 @@ turns out to be a third individual, Luiz, with whom Casilda is,
 conveniently, already in love.
 {:/}
 
-逻辑学有很多变种，而**经典逻辑**和**直觉逻辑**之间有一个区别。
-直觉主义者关注于某些逻辑学家对无限性本质的假设，坚持真理的构造主义的概念。
-具体来说，它们坚持认为 `A ⊎ B` 的证明必须确定 `A` 或 `B` 中的**哪一个**成立，
-因此它们会解决宣称 Casilda 嫁给了 Marco 或者 Giuseppe，直到其中一个被确定为
-她的丈夫为止。或许 Gilbert 和 Sullivan 期待直觉主义，因为在故事的结局中，
-继承人是第三个人 Luiz，他和 Casilda 已经顺利地相爱了。
+逻辑学有很多变种，而**经典逻辑**和**直觉逻辑**之间有一个区别。直觉主义者关注于某些逻辑学家对无限性本质的假设，坚持真理的构造主义的概念。具体来说，它们坚持认为 `A ⊎ B` 的证明必须确定 `A` 或 `B` 中的**哪一个**成立，因此它们会解决宣称 Casilda 嫁给了 Marco 或者 Giuseppe，直到其中一个被确定为她的丈夫为止。或许 Gilbert 和 Sullivan 期待直觉主义，因为在故事的结局中，继承人是第三个人 Luiz，他和 Casilda 已经顺利地相爱了。
 
 {::comment}
 Intuitionists also reject the law of the excluded middle, which
@@ -475,12 +452,7 @@ translation is provable in intuitionistic logic.
 {:/}
 
 直觉主义者也拒绝排中律（Law of the Excluded Middle）————该定律断言，对于所有的
-`A`，`A ⊎ ¬ A` 必定成立————因为该定律没有给出 `A` 和 `¬ A` 中的哪一个成立。
-海廷（Heyting）形式化了希尔伯特（Hilbert）经典逻辑的一个变种，抓住了直觉主义中可证明性的概念。
-具体来说，排中律在希尔伯特逻辑中是可证明的，但在海廷逻辑中却不可证明。
-进一步来说，如果排中律作为一条公理添加到海廷逻辑中，那么它会等价于希尔伯特逻辑。
-柯尔莫哥洛夫（Kolmogorov）证明了两种逻辑紧密相关：他给出了双重否定翻译，即一个式子在经典逻辑中
-可证，当且仅当它的双重否定式在直觉逻辑中可证。
+`A`，`A ⊎ ¬ A` 必定成立————因为该定律没有给出 `A` 和 `¬ A` 中的哪一个成立。海廷（Heyting）形式化了希尔伯特（Hilbert）经典逻辑的一个变种，抓住了直觉主义中可证明性的概念。具体来说，排中律在希尔伯特逻辑中是可证明的，但在海廷逻辑中却不可证明。进一步来说，如果排中律作为一条公理添加到海廷逻辑中，那么它会等价于希尔伯特逻辑。柯尔莫哥洛夫（Kolmogorov）证明了两种逻辑紧密相关：他给出了双重否定翻译，即一个式子在经典逻辑中可证，当且仅当它的双重否定式在直觉逻辑中可证。
 
 {::comment}
 Propositions as Types was first formulated for intuitionistic logic.
@@ -490,9 +462,7 @@ of `A` or a proof of `B`, so the type corresponding to disjunction is
 a disjoint sum.
 {:/}
 
-「命题即类型」最初是为直觉逻辑而制定的。这是一种完美的契合，因为在直觉主义的
-解释中，式子 `A ⊎ B` 刚好可以在给出 `A` 或 `B` 之一的证明时得证，因此对应于析取
-的类型是一个不交和（Disjoint Sum）。
+「命题即类型」最初是为直觉逻辑而制定的。这是一种完美的契合，因为在直觉主义的解释中，式子 `A ⊎ B` 刚好可以在给出 `A` 或 `B` 之一的证明时得证，因此对应于析取的类型是一个不交和（Disjoint Sum）。
 
 {::comment}
 (Parts of the above are adopted from "Propositions as Types", Philip Wadler,
@@ -546,9 +516,7 @@ we can get a value of the empty type is by applying `k` itself, so let's
 expand the hole accordingly:
 {:/}
 
-给定 `¬ (A ⊎ ¬ A)` 的证据 `k`，即一个函数，它接受一个类型为 `A ⊎ ¬ A` 的值，
-返回一个空类型的值，我们必须在 `?` 处填上一个返回空类型的项。得到空类型值
-的唯一方式就是应用 `k` 本身，于是我们据此展开此洞：
+给定 `¬ (A ⊎ ¬ A)` 的证据 `k`，即一个函数，它接受一个类型为 `A ⊎ ¬ A` 的值，返回一个空类型的值，我们必须在 `?` 处填上一个返回空类型的项。得到空类型值的唯一方式就是应用 `k` 本身，于是我们据此展开此洞：
 
     em-irrefutable k = k ?
 
@@ -557,8 +525,7 @@ We need to fill the new hole with a value of type `A ⊎ ¬ A`. We don't have
 a value of type `A` to hand, so let's pick the second disjunct:
 {:/}
 
-我们需要用类型为 `A ⊎ ¬ A` 的值填上这个新的洞。由于目前我们并没有类型为 `A` 的值，
-因此先处理第二个析取：
+我们需要用类型为 `A ⊎ ¬ A` 的值填上这个新的洞。由于目前我们并没有类型为 `A` 的值，因此先处理第二个析取：
 
     em-irrefutable k = k (inj₂ λ{ x → ? })
 
@@ -571,9 +538,7 @@ value of the empty type is by applying `k` itself, so let's expand the
 hole accordingly:
 {:/}
 
-第二个析取接受 `¬ A` 的证据，即一个函数，它接受类型为 `A` 的值，返回空类型的值。
-我们将 `x` 绑定到类型为 `A` 的值，现在我们需要在洞中填入空类型的值。同样，
-得到空类型的值的唯一方法就是将 `k` 应用到其自身，于是我们展开此洞：
+第二个析取接受 `¬ A` 的证据，即一个函数，它接受类型为 `A` 的值，返回空类型的值。我们将 `x` 绑定到类型为 `A` 的值，现在我们需要在洞中填入空类型的值。同样，得到空类型的值的唯一方法就是将 `k` 应用到其自身，于是我们展开此洞：
 
     em-irrefutable k = k (inj₂ λ{ x → k ? })
 
@@ -616,8 +581,7 @@ The man was wary.  Did he need to sign over his soul?
 No, said the devil, all the man need do is accept the offer.
 {:/}
 
-男人很谨慎。他需要付出他的灵魂吗？
-恶魔说不用，他只要接受这个提议就行。
+男人很谨慎。他需要付出他的灵魂吗？恶魔说不用，他只要接受这个提议就行。
 
 {::comment}
 The man pondered.  If he was offered (b) it was unlikely that he would
@@ -625,8 +589,7 @@ ever be able to buy the wish, but what was the harm in having the
 opportunity available?
 {:/}
 
-于是男人思索着，如果恶魔向他提供 (b)，那么他不太可能付得起这个愿望。
-不过倘若真是如此的话，能有什么坏处吗？
+于是男人思索着，如果恶魔向他提供 (b)，那么他不太可能付得起这个愿望。不过倘若真是如此的话，能有什么坏处吗？
 
 {::comment}
 "I accept," said the man at last.  "Do I get (a) or (b)?"
@@ -647,10 +610,7 @@ this must be what the devil had in mind.
 Eventually he had his billion dollars, and the devil appeared again.
 {:/}
 
-男人很失望，但并不惊讶。「果然是这样」，他想。
-但是这个提议折磨着他。想想他都能用这个愿望做些什么！
-多年以后，男人开始积累钱财。为了得到这笔钱，他有时会做坏事，
-而且他隐约意识到这一定是魔鬼所想到的。最后他攒够了 10 亿美元，恶魔再次出现了。
+男人很失望，但并不惊讶。「果然是这样」，他想。但是这个提议折磨着他。想想他都能用这个愿望做些什么！多年以后，男人开始积累钱财。为了得到这笔钱，他有时会做坏事，而且他隐约意识到这一定是魔鬼所想到的。最后他攒够了 10 亿美元，恶魔再次出现了。
 
 {::comment}
 "Here is a billion dollars," said the man, handing over a valise
@@ -665,8 +625,7 @@ The devil took possession of the valise.  Then he said, "Oh, did I say
 give you one billion dollars."
 {:/}
 
-恶魔接过了手提箱。然后他说道，「哦？我之前说的是 (b) 吗？抱歉，我说的是 (a)。
-很高兴能给你 10 亿美元。」
+恶魔接过了手提箱。然后他说道，「哦？我之前说的是 (b) 吗？抱歉，我说的是 (a)。很高兴能给你 10 亿美元。」
 
 {::comment}
 And the devil handed back to the man the same valise that the man had

@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Compositional: The denotational semantics is compositional | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Compositional: The denotational semantics is compositional" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Compositional/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Compositional/","headline":"Compositional: The denotational semantics is compositional","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Compositional: The denotational semantics is compositional","url":"https://agda-zh.github.io/PLFA-zh/Compositional/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -80,7 +80,7 @@
 <p>In this chapter we prove that the denotational semantics is compositional,
 which means we fill in the ellipses in the following equations.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (` x) ≃ ...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (` x) ≃ ...
 ℰ (ƛ M) ≃ ... ℰ M ...
 ℰ (M · N) ≃ ... ℰ M ... ℰ N ...
 </code></pre></div></div>
@@ -97,8 +97,8 @@ with such a definition and prove that it is equivalent to ℰ.</p>
   <a id="780" class="Keyword">using</a> <a id="786" class="Symbol">(</a><a id="787" href="/PLFA-zh/Denotational/#3962" class="Datatype">Value</a><a id="792" class="Symbol">;</a> <a id="794" href="plfa.Denotational.html#3994" class="InductiveConstructor Operator">_↦_</a><a id="797" class="Symbol">;</a> <a id="799" href="plfa.Denotational.html#7257" class="Function Operator">_`,_</a><a id="803" class="Symbol">;</a> <a id="805" href="plfa.Denotational.html#4024" class="InductiveConstructor Operator">_⊔_</a><a id="808" class="Symbol">;</a> <a id="810" href="plfa.Denotational.html#3982" class="InductiveConstructor">⊥</a><a id="811" class="Symbol">;</a> <a id="813" href="plfa.Denotational.html#4317" class="Datatype Operator">_⊑_</a><a id="816" class="Symbol">;</a> <a id="818" href="plfa.Denotational.html#9274" class="Datatype Operator">_⊢_↓_</a><a id="823" class="Symbol">;</a>
          <a id="834" href="/PLFA-zh/Denotational/#4352" class="InductiveConstructor">Bot⊑</a><a id="838" class="Symbol">;</a> <a id="840" href="plfa.Denotational.html#4688" class="InductiveConstructor">Fun⊑</a><a id="844" class="Symbol">;</a> <a id="846" href="plfa.Denotational.html#4376" class="InductiveConstructor">ConjL⊑</a><a id="852" class="Symbol">;</a> <a id="854" href="plfa.Denotational.html#4466" class="InductiveConstructor">ConjR1⊑</a><a id="861" class="Symbol">;</a> <a id="863" href="plfa.Denotational.html#4540" class="InductiveConstructor">ConjR2⊑</a><a id="870" class="Symbol">;</a> <a id="872" href="plfa.Denotational.html#4802" class="InductiveConstructor">Dist⊑</a><a id="877" class="Symbol">;</a> <a id="879" href="plfa.Denotational.html#5471" class="Function">Refl⊑</a><a id="884" class="Symbol">;</a> <a id="886" href="plfa.Denotational.html#4614" class="InductiveConstructor">Trans⊑</a><a id="892" class="Symbol">;</a> <a id="894" href="plfa.Denotational.html#6094" class="Function">Dist⊔↦⊔</a><a id="901" class="Symbol">;</a>
          <a id="912" href="/PLFA-zh/Denotational/#9328" class="InductiveConstructor">var</a><a id="915" class="Symbol">;</a> <a id="917" href="plfa.Denotational.html#9545" class="InductiveConstructor">↦-intro</a><a id="924" class="Symbol">;</a> <a id="926" href="plfa.Denotational.html#9407" class="InductiveConstructor">↦-elim</a><a id="932" class="Symbol">;</a> <a id="934" href="plfa.Denotational.html#9744" class="InductiveConstructor">⊔-intro</a><a id="941" class="Symbol">;</a> <a id="943" href="plfa.Denotational.html#9669" class="InductiveConstructor">⊥-intro</a><a id="950" class="Symbol">;</a> <a id="952" href="plfa.Denotational.html#9875" class="InductiveConstructor">sub</a><a id="955" class="Symbol">;</a>
-         <a id="966" href="/PLFA-zh/Denotational/#25648" class="Function">up-env</a><a id="972" class="Symbol">;</a> <a id="974" href="plfa.Denotational.html#17427" class="Function">ℰ</a><a id="975" class="Symbol">;</a> <a id="977" href="plfa.Denotational.html#17609" class="Function Operator">_≃_</a><a id="980" class="Symbol">;</a> <a id="982" href="plfa.Denotational.html#17881" class="Function">≃-sym</a><a id="987" class="Symbol">;</a> <a id="989" href="plfa.Denotational.html#17214" class="Function">Denotation</a><a id="999" class="Symbol">;</a> <a id="1001" href="plfa.Denotational.html#7100" class="Function">Env</a><a id="1004" class="Symbol">)</a>
-<a id="1006" class="Keyword">open</a> <a id="1011" href="/PLFA-zh/Denotational/#18453" class="Module">plfa.Denotational.≃-Reasoning</a>
+         <a id="966" href="/PLFA-zh/Denotational/#25648" class="Function">up-env</a><a id="972" class="Symbol">;</a> <a id="974" href="plfa.Denotational.html#17427" class="Function">ℰ</a><a id="975" class="Symbol">;</a> <a id="977" href="plfa.Denotational.html#17609" class="Function Operator">_≃_</a><a id="980" class="Symbol">;</a> <a id="982" href="plfa.Denotational.html#17881" class="Function">≃-sym</a><a id="987" class="Symbol">;</a> <a id="989" href="plfa.Denotational.html#17214" class="Function">Den</a><a id="992" href="plfa.Denotational.html#17214" class="Bound">o</a><a id="993" href="plfa.Denotational.html#17214" class="Function">tati</a><a id="997" href="plfa.Denotational.html#17214" class="Bound">o</a><a id="998" href="plfa.Denotational.html#17214" class="Function">n</a><a id="999" class="Symbol">;</a> <a id="1001" href="plfa.Denotational.html#7100" class="Bound">E</a><a id="1002" href="plfa.Denotational.html#7100" class="Function">nv</a><a id="1004" class="Symbol">)</a>
+<a id="1006" class="Function">op</a><a id="1008" class="Keyword">e</a><a id="1009" class="Bound">n</a> <a id="1011" href="/PLFA-zh/Denotational/#18453" class="Function">p</a><a id="1012" href="plfa.Denotational.html#18453" class="Module">l</a><a id="1013" href="plfa.Denotational.html#18453" class="Bound">f</a><a id="1014" href="plfa.Denotational.html#18453" class="Module">a</a><a id="1015" href="plfa.Denotational.html#18453" class="Function">.</a><a id="1016" href="plfa.Denotational.html#18453" class="Module">D</a><a id="1017" href="plfa.Denotational.html#18453" class="Bound">e</a><a id="1018" href="plfa.Denotational.html#18453" class="Module">notational.≃-Reasoning</a>
 
 <a id="1042" class="Keyword">open</a> <a id="1047" class="Keyword">import</a> <a id="1054" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html" class="Module">Data.Product</a> <a id="1067" class="Keyword">using</a> <a id="1073" class="Symbol">(</a><a id="1074" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1162" class="Function Operator">_×_</a><a id="1077" class="Symbol">;</a> <a id="1079" href="Agda.Builtin.Sigma.html#139" class="Record">Σ</a><a id="1080" class="Symbol">;</a> <a id="1082" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#911" class="Function">Σ-syntax</a><a id="1090" class="Symbol">;</a> <a id="1092" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1364" class="Function">∃</a><a id="1093" class="Symbol">;</a> <a id="1095" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1783" class="Function">∃-syntax</a><a id="1103" class="Symbol">;</a> <a id="1105" href="Agda.Builtin.Sigma.html#225" class="Field">proj₁</a><a id="1110" class="Symbol">;</a> <a id="1112" href="Agda.Builtin.Sigma.html#237" class="Field">proj₂</a><a id="1117" class="Symbol">)</a>
   <a id="1121" class="Keyword">renaming</a> <a id="1130" class="Symbol">(</a><a id="1131" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">_,_</a> <a id="1135" class="Symbol">to</a> <a id="1138" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨_,_⟩</a><a id="1143" class="Symbol">)</a>
@@ -109,34 +109,34 @@ with such a definition and prove that it is equivalent to ℰ.</p>
 
 <p>Regarding the first equation</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (ƛ M) ≃ ... ℰ M ...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (ƛ M) ≃ ... ℰ M ...
 </code></pre></div></div>
 
-<p>we need to define a function that maps a <code class="highlighter-rouge">Denotation (Γ , ★)</code> to a
-<code class="highlighter-rouge">Denotation Γ</code>. This function, let us name it <code class="highlighter-rouge">ℱ</code>, should mimic the
+<p>we need to define a function that maps a <code class="language-plaintext highlighter-rouge">Denotation (Γ , ★)</code> to a
+<code class="language-plaintext highlighter-rouge">Denotation Γ</code>. This function, let us name it <code class="language-plaintext highlighter-rouge">ℱ</code>, should mimic the
 non-recursive part of the semantics when applied to a lambda term.  In
-particular, we need to consider the rules <code class="highlighter-rouge">↦-intro</code>, <code class="highlighter-rouge">⊥-intro</code>, and
-<code class="highlighter-rouge">⊔-intro</code>. So <code class="highlighter-rouge">ℱ</code> has three parameters, the denotation <code class="highlighter-rouge">D</code> of the
-subterm <code class="highlighter-rouge">M</code>, an environment <code class="highlighter-rouge">γ</code>, and a value <code class="highlighter-rouge">v</code>.  If we define <code class="highlighter-rouge">ℱ</code> by
-recursion on the value <code class="highlighter-rouge">v</code>, then it matches up nicely with the three
-rules <code class="highlighter-rouge">↦-intro</code>, <code class="highlighter-rouge">⊥-intro</code>, and <code class="highlighter-rouge">⊔-intro</code>.</p>
+particular, we need to consider the rules <code class="language-plaintext highlighter-rouge">↦-intro</code>, <code class="language-plaintext highlighter-rouge">⊥-intro</code>, and
+<code class="language-plaintext highlighter-rouge">⊔-intro</code>. So <code class="language-plaintext highlighter-rouge">ℱ</code> has three parameters, the denotation <code class="language-plaintext highlighter-rouge">D</code> of the
+subterm <code class="language-plaintext highlighter-rouge">M</code>, an environment <code class="language-plaintext highlighter-rouge">γ</code>, and a value <code class="language-plaintext highlighter-rouge">v</code>.  If we define <code class="language-plaintext highlighter-rouge">ℱ</code> by
+recursion on the value <code class="language-plaintext highlighter-rouge">v</code>, then it matches up nicely with the three
+rules <code class="language-plaintext highlighter-rouge">↦-intro</code>, <code class="language-plaintext highlighter-rouge">⊥-intro</code>, and <code class="language-plaintext highlighter-rouge">⊔-intro</code>.</p>
 
-<pre class="Agda"><a id="ℱ"></a><a id="1852" href="/PLFA-zh/Compositional/#1852" class="Function">ℱ</a> <a id="1854" class="Symbol">:</a> <a id="1856" class="Symbol">∀{</a><a id="1858" href="plfa.Compositional.html#1858" class="Bound">Γ</a><a id="1859" class="Symbol">}</a> <a id="1861" class="Symbol">→</a> <a id="1863" href="/PLFA-zh/Denotational/#17214" class="Function">Denotation</a> <a id="1874" class="Symbol">(</a><a id="1875" href="plfa.Compositional.html#1858" class="Bound">Γ</a> <a id="1877" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a> <a id="1879" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="1880" class="Symbol">)</a> <a id="1882" class="Symbol">→</a> <a id="1884" href="plfa.Denotational.html#17214" class="Function">Denotation</a> <a id="1895" href="plfa.Compositional.html#1858" class="Bound">Γ</a>
+<pre class="Agda"><a id="ℱ"></a><a id="1852" href="/PLFA-zh/Compositional/#1852" class="Function">ℱ</a> <a id="1854" class="Symbol">:</a> <a id="1856" class="Symbol">∀{</a><a id="1858" href="plfa.Compositional.html#1858" class="Bound">Γ</a><a id="1859" class="Symbol">}</a> <a id="1861" class="Symbol">→</a> <a id="1863" href="/PLFA-zh/Denotational/#17214" class="Function">Denotation</a><a id="1873" class="Bound"> </a><a id="1874" class="Symbol">(</a><a id="1875" href="plfa.Compositional.html#1858" class="Bound">Γ</a> <a id="1877" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a><a id="1878" class="Function"> </a><a id="1879" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="1880" class="Symbol">)</a><a id="1881" class="Bound"> </a><a id="1882" class="Symbol">→</a><a id="1883" class="Function"> </a><a id="1884" href="plfa.Denotational.html#17214" class="Function">Denotation</a> <a id="1895" href="plfa.Compositional.html#1858" class="Bound">Γ</a>
 <a id="1897" href="/PLFA-zh/Compositional/#1852" class="Function">ℱ</a> <a id="1899" href="plfa.Compositional.html#1899" class="Bound">D</a> <a id="1901" href="plfa.Compositional.html#1901" class="Bound">γ</a> <a id="1903" class="Symbol">(</a><a id="1904" href="plfa.Compositional.html#1904" class="Bound">v</a> <a id="1906" href="/PLFA-zh/Denotational/#3994" class="InductiveConstructor Operator">↦</a> <a id="1908" href="plfa.Compositional.html#1908" class="Bound">w</a><a id="1909" class="Symbol">)</a> <a id="1911" class="Symbol">=</a> <a id="1913" href="plfa.Compositional.html#1899" class="Bound">D</a> <a id="1915" class="Symbol">(</a><a id="1916" href="plfa.Compositional.html#1901" class="Bound">γ</a> <a id="1918" href="plfa.Denotational.html#7257" class="Function Operator">`,</a> <a id="1921" href="plfa.Compositional.html#1904" class="Bound">v</a><a id="1922" class="Symbol">)</a> <a id="1924" href="plfa.Compositional.html#1908" class="Bound">w</a>
 <a id="1926" href="/PLFA-zh/Compositional/#1852" class="Function">ℱ</a> <a id="1928" href="plfa.Compositional.html#1928" class="Bound">D</a> <a id="1930" href="plfa.Compositional.html#1930" class="Bound">γ</a> <a id="1932" href="/PLFA-zh/Denotational/#3982" class="InductiveConstructor">⊥</a> <a id="1934" class="Symbol">=</a> <a id="1936" href="Agda.Builtin.Unit.html#137" class="Record">⊤</a>
 <a id="1938" href="/PLFA-zh/Compositional/#1852" class="Function">ℱ</a> <a id="1940" href="plfa.Compositional.html#1940" class="Bound">D</a> <a id="1942" href="plfa.Compositional.html#1942" class="Bound">γ</a> <a id="1944" class="Symbol">(</a><a id="1945" href="plfa.Compositional.html#1945" class="Bound">u</a> <a id="1947" href="/PLFA-zh/Denotational/#4024" class="InductiveConstructor Operator">⊔</a> <a id="1949" href="plfa.Compositional.html#1949" class="Bound">v</a><a id="1950" class="Symbol">)</a> <a id="1952" class="Symbol">=</a> <a id="1954" class="Symbol">(</a><a id="1955" href="plfa.Compositional.html#1852" class="Function">ℱ</a> <a id="1957" href="plfa.Compositional.html#1940" class="Bound">D</a> <a id="1959" href="plfa.Compositional.html#1942" class="Bound">γ</a> <a id="1961" href="plfa.Compositional.html#1945" class="Bound">u</a><a id="1962" class="Symbol">)</a> <a id="1964" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1162" class="Function Operator">×</a> <a id="1966" class="Symbol">(</a><a id="1967" href="plfa.Compositional.html#1852" class="Function">ℱ</a> <a id="1969" href="plfa.Compositional.html#1940" class="Bound">D</a> <a id="1971" href="plfa.Compositional.html#1942" class="Bound">γ</a> <a id="1973" href="plfa.Compositional.html#1949" class="Bound">v</a><a id="1974" class="Symbol">)</a>
 </pre>
 <p>[JGS: add comment about how ℱ can be viewed as curry.]</p>
 
-<p>Using this <code class="highlighter-rouge">ℱ</code>, we hope to prove that</p>
+<p>Using this <code class="language-plaintext highlighter-rouge">ℱ</code>, we hope to prove that</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (ƛ N) ≃ ℱ (ℰ N)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (ƛ N) ≃ ℱ (ℰ N)
 </code></pre></div></div>
 
-<p>The function <code class="highlighter-rouge">ℱ</code> is preserved when going from a larger value <code class="highlighter-rouge">v</code> to a
-smaller value <code class="highlighter-rouge">u</code>. The proof is a straightforward induction on the
-derivation of <code class="highlighter-rouge">u ⊑ v</code>, using the <code class="highlighter-rouge">up-env</code> lemma in the case for the
-<code class="highlighter-rouge">Fun⊑</code> rule.</p>
+<p>The function <code class="language-plaintext highlighter-rouge">ℱ</code> is preserved when going from a larger value <code class="language-plaintext highlighter-rouge">v</code> to a
+smaller value <code class="language-plaintext highlighter-rouge">u</code>. The proof is a straightforward induction on the
+derivation of <code class="language-plaintext highlighter-rouge">u ⊑ v</code>, using the <code class="language-plaintext highlighter-rouge">up-env</code> lemma in the case for the
+<code class="language-plaintext highlighter-rouge">Fun⊑</code> rule.</p>
 
 <pre class="Agda"><a id="sub-ℱ"></a><a id="2323" href="/PLFA-zh/Compositional/#2323" class="Function">sub-ℱ</a> <a id="2329" class="Symbol">:</a> <a id="2331" class="Symbol">∀{</a><a id="2333" href="plfa.Compositional.html#2333" class="Bound">Γ</a><a id="2334" class="Symbol">}{</a><a id="2336" href="plfa.Compositional.html#2336" class="Bound">N</a> <a id="2338" class="Symbol">:</a> <a id="2340" href="plfa.Compositional.html#2333" class="Bound">Γ</a> <a id="2342" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a> <a id="2344" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="2346" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="2348" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="2349" class="Symbol">}{</a><a id="2351" href="plfa.Compositional.html#2351" class="Bound">γ</a> <a id="2353" href="plfa.Compositional.html#2353" class="Bound">v</a> <a id="2355" href="plfa.Compositional.html#2355" class="Bound">u</a><a id="2356" class="Symbol">}</a>
       <a id="2364" class="Symbol">→</a> <a id="2366" href="/PLFA-zh/Compositional/#1852" class="Function">ℱ</a> <a id="2368" class="Symbol">(</a><a id="2369" href="/PLFA-zh/Denotational/#17427" class="Function">ℰ</a> <a id="2371" href="plfa.Compositional.html#2336" class="Bound">N</a><a id="2372" class="Symbol">)</a> <a id="2374" href="plfa.Compositional.html#2351" class="Bound">γ</a> <a id="2376" href="plfa.Compositional.html#2353" class="Bound">v</a>
@@ -159,7 +159,7 @@ derivation of <code class="highlighter-rouge">u ⊑ v</code>, using the <code cl
 
 <p>With this subsumption property in hand, we can prove the forward
 direction of the semantic equation for lambda.  The proof is by
-induction on the semantics, using <code class="highlighter-rouge">sub-ℱ</code> in the case for the <code class="highlighter-rouge">sub</code>
+induction on the semantics, using <code class="language-plaintext highlighter-rouge">sub-ℱ</code> in the case for the <code class="language-plaintext highlighter-rouge">sub</code>
 rule.</p>
 
 <pre class="Agda"><a id="ℰƛ→ℱℰ"></a><a id="3149" href="/PLFA-zh/Compositional/#3149" class="Function">ℰƛ→ℱℰ</a> <a id="3155" class="Symbol">:</a> <a id="3157" class="Symbol">∀{</a><a id="3159" href="plfa.Compositional.html#3159" class="Bound">Γ</a><a id="3160" class="Symbol">}{</a><a id="3162" href="plfa.Compositional.html#3162" class="Bound">γ</a> <a id="3164" class="Symbol">:</a> <a id="3166" href="/PLFA-zh/Denotational/#7100" class="Function">Env</a> <a id="3170" href="plfa.Compositional.html#3159" class="Bound">Γ</a><a id="3171" class="Symbol">}{</a><a id="3173" href="plfa.Compositional.html#3173" class="Bound">N</a> <a id="3175" class="Symbol">:</a> <a id="3177" href="plfa.Compositional.html#3159" class="Bound">Γ</a> <a id="3179" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a> <a id="3181" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="3183" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="3185" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="3186" class="Symbol">}{</a><a id="3188" href="plfa.Compositional.html#3188" class="Bound">v</a> <a id="3190" class="Symbol">:</a> <a id="3192" href="plfa.Denotational.html#3962" class="Datatype">Value</a><a id="3197" class="Symbol">}</a>
@@ -194,7 +194,7 @@ the value v.</p>
 <a id="4096" href="/PLFA-zh/Compositional/#3919" class="Function">ℱℰ→ℰƛ</a> <a id="4102" class="Symbol">{</a><a id="4103" class="Argument">v</a> <a id="4105" class="Symbol">=</a> <a id="4107" href="plfa.Compositional.html#4107" class="Bound">v₁</a> <a id="4110" href="/PLFA-zh/Denotational/#4024" class="InductiveConstructor Operator">⊔</a> <a id="4112" href="plfa.Compositional.html#4112" class="Bound">v₂</a><a id="4114" class="Symbol">}</a> <a id="4116" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="4118" href="plfa.Compositional.html#4118" class="Bound">d1</a> <a id="4121" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="4123" href="plfa.Compositional.html#4123" class="Bound">d2</a> <a id="4126" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="4128" class="Symbol">=</a> <a id="4130" href="plfa.Denotational.html#9744" class="InductiveConstructor">⊔-intro</a> <a id="4138" class="Symbol">(</a><a id="4139" href="plfa.Compositional.html#3919" class="Function">ℱℰ→ℰƛ</a> <a id="4145" href="plfa.Compositional.html#4118" class="Bound">d1</a><a id="4147" class="Symbol">)</a> <a id="4149" class="Symbol">(</a><a id="4150" href="plfa.Compositional.html#3919" class="Function">ℱℰ→ℰƛ</a> <a id="4156" href="plfa.Compositional.html#4123" class="Bound">d2</a><a id="4158" class="Symbol">)</a>
 </pre>
 <p>So indeed, the denotational semantics is compositional with respect
-to lambda abstraction, as witnessed by the function <code class="highlighter-rouge">ℱ</code>.</p>
+to lambda abstraction, as witnessed by the function <code class="language-plaintext highlighter-rouge">ℱ</code>.</p>
 
 <pre class="Agda"><a id="lam-equiv"></a><a id="4295" href="/PLFA-zh/Compositional/#4295" class="Function">lam-equiv</a> <a id="4305" class="Symbol">:</a> <a id="4307" class="Symbol">∀{</a><a id="4309" href="plfa.Compositional.html#4309" class="Bound">Γ</a><a id="4310" class="Symbol">}{</a><a id="4312" href="plfa.Compositional.html#4312" class="Bound">N</a> <a id="4314" class="Symbol">:</a> <a id="4316" href="plfa.Compositional.html#4309" class="Bound">Γ</a> <a id="4318" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a> <a id="4320" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="4322" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="4324" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="4325" class="Symbol">}</a>
           <a id="4337" class="Symbol">→</a> <a id="4339" href="/PLFA-zh/Denotational/#17427" class="Function">ℰ</a> <a id="4341" class="Symbol">(</a><a id="4342" href="/PLFA-zh/Untyped/#4340" class="InductiveConstructor Operator">ƛ</a> <a id="4344" href="/PLFA-zh/Compositional/#4312" class="Bound">N</a><a id="4345" class="Symbol">)</a> <a id="4347" href="plfa.Denotational.html#17609" class="Function Operator">≃</a> <a id="4349" href="plfa.Compositional.html#1852" class="Function">ℱ</a> <a id="4351" class="Symbol">(</a><a id="4352" href="plfa.Denotational.html#17427" class="Function">ℰ</a> <a id="4354" href="plfa.Compositional.html#4312" class="Bound">N</a><a id="4355" class="Symbol">)</a>
@@ -206,24 +206,24 @@ to lambda abstraction, as witnessed by the function <code class="highlighter-rou
 <p>Next we fill in the ellipses for the equation concerning function
 application.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (M · N) ≃ ... ℰ M ... ℰ N ...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℰ (M · N) ≃ ... ℰ M ... ℰ N ...
 </code></pre></div></div>
 
 <p>For this we need to define a function that takes two denotations, both
-in context <code class="highlighter-rouge">Γ</code>, and produces another one in context <code class="highlighter-rouge">Γ</code>. This
-function, let us name it <code class="highlighter-rouge">●</code>, needs to mimic the non-recursive aspects
-of the semantics of an application <code class="highlighter-rouge">L · M</code>.  We cannot proceed as
-easily as for <code class="highlighter-rouge">ℱ</code> and define the function by recursion on value <code class="highlighter-rouge">v</code>
-because, for example, the rule <code class="highlighter-rouge">↦-elim</code> applies to any value. Instead
-we shall define <code class="highlighter-rouge">●</code> in a way that directly deals with the <code class="highlighter-rouge">↦-elim</code> and
-<code class="highlighter-rouge">⊥-intro</code> rules but ignores <code class="highlighter-rouge">⊔-intro</code>. This makes the forward
-direction of the proof more difficult, and the case for <code class="highlighter-rouge">⊔-intro</code>
-demonstrates why the <code class="highlighter-rouge">Dist⊑</code> rule is important.</p>
+in context <code class="language-plaintext highlighter-rouge">Γ</code>, and produces another one in context <code class="language-plaintext highlighter-rouge">Γ</code>. This
+function, let us name it <code class="language-plaintext highlighter-rouge">●</code>, needs to mimic the non-recursive aspects
+of the semantics of an application <code class="language-plaintext highlighter-rouge">L · M</code>.  We cannot proceed as
+easily as for <code class="language-plaintext highlighter-rouge">ℱ</code> and define the function by recursion on value <code class="language-plaintext highlighter-rouge">v</code>
+because, for example, the rule <code class="language-plaintext highlighter-rouge">↦-elim</code> applies to any value. Instead
+we shall define <code class="language-plaintext highlighter-rouge">●</code> in a way that directly deals with the <code class="language-plaintext highlighter-rouge">↦-elim</code> and
+<code class="language-plaintext highlighter-rouge">⊥-intro</code> rules but ignores <code class="language-plaintext highlighter-rouge">⊔-intro</code>. This makes the forward
+direction of the proof more difficult, and the case for <code class="language-plaintext highlighter-rouge">⊔-intro</code>
+demonstrates why the <code class="language-plaintext highlighter-rouge">Dist⊑</code> rule is important.</p>
 
-<p>So we define the application of <code class="highlighter-rouge">D₁</code> to <code class="highlighter-rouge">D₂</code>, written <code class="highlighter-rouge">D₁ ● D₂</code>, to include
-any value <code class="highlighter-rouge">w</code> equivalent to <code class="highlighter-rouge">⊥</code>, for the <code class="highlighter-rouge">⊥-intro</code> rule, and to include any
-value <code class="highlighter-rouge">w</code> that is the output of an entry <code class="highlighter-rouge">v ↦ w</code> in <code class="highlighter-rouge">D₁</code>, provided the
-input <code class="highlighter-rouge">v</code> is in <code class="highlighter-rouge">D₂</code>, for the <code class="highlighter-rouge">↦-elim</code> rule.</p>
+<p>So we define the application of <code class="language-plaintext highlighter-rouge">D₁</code> to <code class="language-plaintext highlighter-rouge">D₂</code>, written <code class="language-plaintext highlighter-rouge">D₁ ● D₂</code>, to include
+any value <code class="language-plaintext highlighter-rouge">w</code> equivalent to <code class="language-plaintext highlighter-rouge">⊥</code>, for the <code class="language-plaintext highlighter-rouge">⊥-intro</code> rule, and to include any
+value <code class="language-plaintext highlighter-rouge">w</code> that is the output of an entry <code class="language-plaintext highlighter-rouge">v ↦ w</code> in <code class="language-plaintext highlighter-rouge">D₁</code>, provided the
+input <code class="language-plaintext highlighter-rouge">v</code> is in <code class="language-plaintext highlighter-rouge">D₂</code>, for the <code class="language-plaintext highlighter-rouge">↦-elim</code> rule.</p>
 
 <pre class="Agda"><a id="5481" class="Keyword">infixl</a> <a id="5488" class="Number">7</a> <a id="5490" href="/PLFA-zh/Compositional/#5495" class="Function Operator">_●_</a>
 
@@ -268,41 +268,41 @@ describe the proof below.</p>
 
 <ul>
   <li>
-    <p>In case <code class="highlighter-rouge">↦-elim</code> we have <code class="highlighter-rouge">γ ⊢ L ↓ (v′ ↦ v)</code> and <code class="highlighter-rouge">γ ⊢ M ↓ v′</code>,
-which is all we need to show <code class="highlighter-rouge">(ℰ L ● ℰ M) γ v</code>.</p>
+    <p>In case <code class="language-plaintext highlighter-rouge">↦-elim</code> we have <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ (v′ ↦ v)</code> and <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v′</code>,
+which is all we need to show <code class="language-plaintext highlighter-rouge">(ℰ L ● ℰ M) γ v</code>.</p>
   </li>
   <li>
-    <p>In case <code class="highlighter-rouge">⊥-intro</code> we have <code class="highlighter-rouge">v = ⊥</code>. We conclude that <code class="highlighter-rouge">v ⊑ ⊥</code>.</p>
+    <p>In case <code class="language-plaintext highlighter-rouge">⊥-intro</code> we have <code class="language-plaintext highlighter-rouge">v = ⊥</code>. We conclude that <code class="language-plaintext highlighter-rouge">v ⊑ ⊥</code>.</p>
   </li>
   <li>
-    <p>In case <code class="highlighter-rouge">⊔-intro</code> we have <code class="highlighter-rouge">ℰ (L · M) γ v₁</code> and <code class="highlighter-rouge">ℰ (L · M) γ v₂</code>
-and need to show <code class="highlighter-rouge">(ℰ L ● ℰ M) γ (v₁ ⊔ v₂)</code>. By the induction
-hypothesis, we have <code class="highlighter-rouge">(ℰ L ● ℰ M) γ v₁</code> and <code class="highlighter-rouge">(ℰ L ● ℰ M) γ v₂</code>.
+    <p>In case <code class="language-plaintext highlighter-rouge">⊔-intro</code> we have <code class="language-plaintext highlighter-rouge">ℰ (L · M) γ v₁</code> and <code class="language-plaintext highlighter-rouge">ℰ (L · M) γ v₂</code>
+and need to show <code class="language-plaintext highlighter-rouge">(ℰ L ● ℰ M) γ (v₁ ⊔ v₂)</code>. By the induction
+hypothesis, we have <code class="language-plaintext highlighter-rouge">(ℰ L ● ℰ M) γ v₁</code> and <code class="language-plaintext highlighter-rouge">(ℰ L ● ℰ M) γ v₂</code>.
 We have four subcases to consider.</p>
 
     <ul>
-      <li>Suppose <code class="highlighter-rouge">v₁ ⊑ ⊥</code> and <code class="highlighter-rouge">v₂ ⊑ ⊥</code>. Then <code class="highlighter-rouge">v₁ ⊔ v₂ ⊑ ⊥</code>.</li>
-      <li>Suppose <code class="highlighter-rouge">v₁ ⊑ ⊥</code>, <code class="highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ v₂</code>, and <code class="highlighter-rouge">γ ⊢ M ↓ v₁′</code>.
-We have <code class="highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ (v₁ ⊔ v₂)</code> by rule <code class="highlighter-rouge">sub</code>
-because <code class="highlighter-rouge">v₁′ ↦ (v₁ ⊔ v₂) ⊑ v₁′ ↦ v₂</code>.</li>
-      <li>Suppose <code class="highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ v₁</code>, <code class="highlighter-rouge">γ ⊢ M ↓ v₁′</code>, and <code class="highlighter-rouge">v₂ ⊑ ⊥</code>.
-We have <code class="highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ (v₁ ⊔ v₂)</code> by rule <code class="highlighter-rouge">sub</code>
-because <code class="highlighter-rouge">v₁′ ↦ (v₁ ⊔ v₂) ⊑ v₁′ ↦ v₁</code>.</li>
+      <li>Suppose <code class="language-plaintext highlighter-rouge">v₁ ⊑ ⊥</code> and <code class="language-plaintext highlighter-rouge">v₂ ⊑ ⊥</code>. Then <code class="language-plaintext highlighter-rouge">v₁ ⊔ v₂ ⊑ ⊥</code>.</li>
+      <li>Suppose <code class="language-plaintext highlighter-rouge">v₁ ⊑ ⊥</code>, <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ v₂</code>, and <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₁′</code>.
+We have <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ (v₁ ⊔ v₂)</code> by rule <code class="language-plaintext highlighter-rouge">sub</code>
+because <code class="language-plaintext highlighter-rouge">v₁′ ↦ (v₁ ⊔ v₂) ⊑ v₁′ ↦ v₂</code>.</li>
+      <li>Suppose <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ v₁</code>, <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₁′</code>, and <code class="language-plaintext highlighter-rouge">v₂ ⊑ ⊥</code>.
+We have <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ (v₁ ⊔ v₂)</code> by rule <code class="language-plaintext highlighter-rouge">sub</code>
+because <code class="language-plaintext highlighter-rouge">v₁′ ↦ (v₁ ⊔ v₂) ⊑ v₁′ ↦ v₁</code>.</li>
       <li>
-        <p>Suppose <code class="highlighter-rouge">γ ⊢ L ↓ v₁′′ ↦ v₁, γ ⊢ M ↓ v₁′′</code>,
-<code class="highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ v₂</code>, and <code class="highlighter-rouge">γ ⊢ M ↓ v₁′</code>.
+        <p>Suppose <code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁′′ ↦ v₁, γ ⊢ M ↓ v₁′′</code>,
+<code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ v₁′ ↦ v₂</code>, and <code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ v₁′</code>.
 This case is the most interesting.
-By two uses of the rule <code class="highlighter-rouge">⊔-intro</code> we have
-<code class="highlighter-rouge">γ ⊢ L ↓ (v₁′ ↦ v₂) ⊔ (v₁′′ ↦ v₁)</code> and
-<code class="highlighter-rouge">γ ⊢ M ↓ (v₁′ ⊔ v₁′′)</code>. But this does not yet match
-what we need for <code class="highlighter-rouge">ℰ L ● ℰ M</code> because the result of
-<code class="highlighter-rouge">L</code> must be an <code class="highlighter-rouge">↦</code> whose input entry is <code class="highlighter-rouge">v₁′ ⊔ v₁′′</code>.
-So we use the <code class="highlighter-rouge">sub</code> rule to obtain
-<code class="highlighter-rouge">γ ⊢ L ↓ (v₁′ ⊔ v₁′′) ↦ (v₁ ⊔ v₂)</code>,
-using the <code class="highlighter-rouge">Dist⊔→⊔</code> lemma (thanks to the <code class="highlighter-rouge">Dist⊑</code> rule) to
+By two uses of the rule <code class="language-plaintext highlighter-rouge">⊔-intro</code> we have
+<code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ (v₁′ ↦ v₂) ⊔ (v₁′′ ↦ v₁)</code> and
+<code class="language-plaintext highlighter-rouge">γ ⊢ M ↓ (v₁′ ⊔ v₁′′)</code>. But this does not yet match
+what we need for <code class="language-plaintext highlighter-rouge">ℰ L ● ℰ M</code> because the result of
+<code class="language-plaintext highlighter-rouge">L</code> must be an <code class="language-plaintext highlighter-rouge">↦</code> whose input entry is <code class="language-plaintext highlighter-rouge">v₁′ ⊔ v₁′′</code>.
+So we use the <code class="language-plaintext highlighter-rouge">sub</code> rule to obtain
+<code class="language-plaintext highlighter-rouge">γ ⊢ L ↓ (v₁′ ⊔ v₁′′) ↦ (v₁ ⊔ v₂)</code>,
+using the <code class="language-plaintext highlighter-rouge">Dist⊔→⊔</code> lemma (thanks to the <code class="language-plaintext highlighter-rouge">Dist⊑</code> rule) to
 show that</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (v₁′ ⊔ v₁′′) ↦ (v₁ ⊔ v₂) ⊑ (v₁′ ↦ v₂) ⊔ (v₁′′ ↦ v₁)
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (v₁′ ⊔ v₁′′) ↦ (v₁ ⊔ v₂) ⊑ (v₁′ ↦ v₂) ⊔ (v₁′′ ↦ v₁)
 </code></pre></div>        </div>
 
         <p>So we have proved what is needed for this case.</p>
@@ -310,22 +310,22 @@ show that</p>
     </ul>
   </li>
   <li>
-    <p>In case <code class="highlighter-rouge">sub</code> we have <code class="highlighter-rouge">Γ ⊢ L · M ↓ v₁</code> and <code class="highlighter-rouge">v ⊑ v₁</code>.
-By the induction hypothesis, we have <code class="highlighter-rouge">(ℰ L ● ℰ M) γ v₁</code>.
+    <p>In case <code class="language-plaintext highlighter-rouge">sub</code> we have <code class="language-plaintext highlighter-rouge">Γ ⊢ L · M ↓ v₁</code> and <code class="language-plaintext highlighter-rouge">v ⊑ v₁</code>.
+By the induction hypothesis, we have <code class="language-plaintext highlighter-rouge">(ℰ L ● ℰ M) γ v₁</code>.
 We have two subcases to consider.</p>
 
     <ul>
-      <li>Suppose <code class="highlighter-rouge">v₁ ⊑ ⊥</code>. We conclude that <code class="highlighter-rouge">v ⊑ ⊥</code>.</li>
-      <li>Suppose <code class="highlighter-rouge">Γ ⊢ L ↓ v′ → v₁</code> and <code class="highlighter-rouge">Γ ⊢ M ↓ v′</code>.
-We conclude with <code class="highlighter-rouge">Γ ⊢ L ↓ v′ → v</code> by rule <code class="highlighter-rouge">sub</code>, because
-<code class="highlighter-rouge">v′ → v ⊑ v′ → v₁</code>.</li>
+      <li>Suppose <code class="language-plaintext highlighter-rouge">v₁ ⊑ ⊥</code>. We conclude that <code class="language-plaintext highlighter-rouge">v ⊑ ⊥</code>.</li>
+      <li>Suppose <code class="language-plaintext highlighter-rouge">Γ ⊢ L ↓ v′ → v₁</code> and <code class="language-plaintext highlighter-rouge">Γ ⊢ M ↓ v′</code>.
+We conclude with <code class="language-plaintext highlighter-rouge">Γ ⊢ L ↓ v′ → v</code> by rule <code class="language-plaintext highlighter-rouge">sub</code>, because
+<code class="language-plaintext highlighter-rouge">v′ → v ⊑ v′ → v₁</code>.</li>
     </ul>
   </li>
 </ul>
 
-<p>The forward direction is proved by cases on the premise <code class="highlighter-rouge">(ℰ L ● ℰ M) γ v</code>.
-In case <code class="highlighter-rouge">v ⊑ ⊥</code>, we obtain <code class="highlighter-rouge">Γ ⊢ L · M ↓ ⊥</code> by rule <code class="highlighter-rouge">⊥-intro</code>.
-Otherwise, we conclude immediately by rule <code class="highlighter-rouge">↦-elim</code>.</p>
+<p>The forward direction is proved by cases on the premise <code class="language-plaintext highlighter-rouge">(ℰ L ● ℰ M) γ v</code>.
+In case <code class="language-plaintext highlighter-rouge">v ⊑ ⊥</code>, we obtain <code class="language-plaintext highlighter-rouge">Γ ⊢ L · M ↓ ⊥</code> by rule <code class="language-plaintext highlighter-rouge">⊥-intro</code>.
+Otherwise, we conclude immediately by rule <code class="language-plaintext highlighter-rouge">↦-elim</code>.</p>
 
 <pre class="Agda"><a id="●ℰ→ℰ·"></a><a id="9072" href="/PLFA-zh/Compositional/#9072" class="Function">●ℰ→ℰ·</a> <a id="9078" class="Symbol">:</a> <a id="9080" class="Symbol">∀{</a><a id="9082" href="plfa.Compositional.html#9082" class="Bound">Γ</a><a id="9083" class="Symbol">}{</a><a id="9085" href="plfa.Compositional.html#9085" class="Bound">γ</a> <a id="9087" class="Symbol">:</a> <a id="9089" href="/PLFA-zh/Denotational/#7100" class="Function">Env</a> <a id="9093" href="plfa.Compositional.html#9082" class="Bound">Γ</a><a id="9094" class="Symbol">}{</a><a id="9096" href="plfa.Compositional.html#9096" class="Bound">L</a> <a id="9098" href="plfa.Compositional.html#9098" class="Bound">M</a> <a id="9100" class="Symbol">:</a> <a id="9102" href="plfa.Compositional.html#9082" class="Bound">Γ</a> <a id="9104" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="9106" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="9107" class="Symbol">}{</a><a id="9109" href="plfa.Compositional.html#9109" class="Bound">v</a><a id="9110" class="Symbol">}</a>
       <a id="9118" class="Symbol">→</a> <a id="9120" class="Symbol">(</a><a id="9121" href="/PLFA-zh/Denotational/#17427" class="Function">ℰ</a> <a id="9123" href="/PLFA-zh/Compositional/#9096" class="Bound">L</a> <a id="9125" href="plfa.Compositional.html#5495" class="Function Operator">●</a> <a id="9127" href="plfa.Denotational.html#17427" class="Function">ℰ</a> <a id="9129" href="plfa.Compositional.html#9098" class="Bound">M</a><a id="9130" class="Symbol">)</a> <a id="9132" href="plfa.Compositional.html#9085" class="Bound">γ</a> <a id="9134" href="plfa.Compositional.html#9109" class="Bound">v</a>
@@ -335,14 +335,14 @@ Otherwise, we conclude immediately by rule <code class="highlighter-rouge">↦-e
 <a id="9223" href="/PLFA-zh/Compositional/#9072" class="Function">●ℰ→ℰ·</a> <a id="9229" class="Symbol">{</a><a id="9230" href="plfa.Compositional.html#9230" class="Bound">γ</a><a id="9231" class="Symbol">}{</a><a id="9233" href="plfa.Compositional.html#9233" class="Bound">v</a><a id="9234" class="Symbol">}</a> <a id="9236" class="Symbol">(</a><a id="9237" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="9242" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="9244" href="plfa.Compositional.html#9244" class="Bound">v₁</a> <a id="9247" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="9249" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="9251" href="plfa.Compositional.html#9251" class="Bound">d1</a> <a id="9254" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="9256" href="plfa.Compositional.html#9256" class="Bound">d2</a> <a id="9259" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="9261" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a><a id="9262" class="Symbol">)</a> <a id="9264" class="Symbol">=</a> <a id="9266" href="/PLFA-zh/Denotational/#9407" class="InductiveConstructor">↦-elim</a> <a id="9273" href="plfa.Compositional.html#9251" class="Bound">d1</a> <a id="9276" href="plfa.Compositional.html#9256" class="Bound">d2</a>
 </pre>
 <p>So we have proved that the semantics is compositional with respect to
-function application, as witnessed by the <code class="highlighter-rouge">●</code> function.</p>
+function application, as witnessed by the <code class="language-plaintext highlighter-rouge">●</code> function.</p>
 
 <pre class="Agda"><a id="app-equiv"></a><a id="9415" href="/PLFA-zh/Compositional/#9415" class="Function">app-equiv</a> <a id="9425" class="Symbol">:</a> <a id="9427" class="Symbol">∀{</a><a id="9429" href="plfa.Compositional.html#9429" class="Bound">Γ</a><a id="9430" class="Symbol">}{</a><a id="9432" href="plfa.Compositional.html#9432" class="Bound">L</a> <a id="9434" href="plfa.Compositional.html#9434" class="Bound">M</a> <a id="9436" class="Symbol">:</a> <a id="9438" href="plfa.Compositional.html#9429" class="Bound">Γ</a> <a id="9440" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="9442" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="9443" class="Symbol">}</a>
           <a id="9455" class="Symbol">→</a> <a id="9457" href="/PLFA-zh/Denotational/#17427" class="Function">ℰ</a> <a id="9459" class="Symbol">(</a><a id="9460" href="/PLFA-zh/Compositional/#9432" class="Bound">L</a> <a id="9462" href="/PLFA-zh/Untyped/#4400" class="InductiveConstructor Operator">·</a> <a id="9464" href="plfa.Compositional.html#9434" class="Bound">M</a><a id="9465" class="Symbol">)</a> <a id="9467" href="plfa.Denotational.html#17609" class="Function Operator">≃</a> <a id="9469" class="Symbol">(</a><a id="9470" href="plfa.Denotational.html#17427" class="Function">ℰ</a> <a id="9472" href="plfa.Compositional.html#9432" class="Bound">L</a><a id="9473" class="Symbol">)</a> <a id="9475" href="plfa.Compositional.html#5495" class="Function Operator">●</a> <a id="9477" class="Symbol">(</a><a id="9478" href="plfa.Denotational.html#17427" class="Function">ℰ</a> <a id="9480" href="plfa.Compositional.html#9434" class="Bound">M</a><a id="9481" class="Symbol">)</a>
 <a id="9483" href="/PLFA-zh/Compositional/#9415" class="Function">app-equiv</a> <a id="9493" href="plfa.Compositional.html#9493" class="Bound">γ</a> <a id="9495" href="plfa.Compositional.html#9495" class="Bound">v</a> <a id="9497" class="Symbol">=</a> <a id="9499" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="9501" href="plfa.Compositional.html#5843" class="Function">ℰ·→●ℰ</a> <a id="9507" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="9509" href="plfa.Compositional.html#9072" class="Function">●ℰ→ℰ·</a> <a id="9515" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
 <p>We also need an inversion lemma for variables.
-If <code class="highlighter-rouge">Γ ⊢ x ↓ v</code>, then <code class="highlighter-rouge">v ⊑ γ x</code>. The proof is a straightforward
+If <code class="language-plaintext highlighter-rouge">Γ ⊢ x ↓ v</code>, then <code class="language-plaintext highlighter-rouge">v ⊑ γ x</code>. The proof is a straightforward
 induction on the semantics.</p>
 
 <pre class="Agda"><a id="var-inv"></a><a id="9665" href="/PLFA-zh/Compositional/#9665" class="Function">var-inv</a> <a id="9673" class="Symbol">:</a> <a id="9675" class="Symbol">∀</a> <a id="9677" class="Symbol">{</a><a id="9678" href="plfa.Compositional.html#9678" class="Bound">Γ</a> <a id="9680" href="plfa.Compositional.html#9680" class="Bound">v</a> <a id="9682" href="plfa.Compositional.html#9682" class="Bound">x</a><a id="9683" class="Symbol">}</a> <a id="9685" class="Symbol">{</a><a id="9686" href="plfa.Compositional.html#9686" class="Bound">γ</a> <a id="9688" class="Symbol">:</a> <a id="9690" href="/PLFA-zh/Denotational/#7100" class="Function">Env</a> <a id="9694" href="plfa.Compositional.html#9678" class="Bound">Γ</a><a id="9695" class="Symbol">}</a>
@@ -373,9 +373,9 @@ that surrounding two denotationally-equal terms in the same context
 produces two programs that are denotationally equal.</p>
 
 <p>We begin by showing that denotational equality is a congruence with
-respect to lambda abstraction: that <code class="highlighter-rouge">ℰ N ≃ ℰ N′</code> implies <code class="highlighter-rouge">ℰ (ƛ N) ≃ ℰ
-(ƛ N′)</code>. We shall use the <code class="highlighter-rouge">lam-equiv</code> equation to reduce this question to
-whether <code class="highlighter-rouge">ℱ</code> is a congruence.</p>
+respect to lambda abstraction: that <code class="language-plaintext highlighter-rouge">ℰ N ≃ ℰ N′</code> implies <code class="language-plaintext highlighter-rouge">ℰ (ƛ N) ≃ ℰ
+(ƛ N′)</code>. We shall use the <code class="language-plaintext highlighter-rouge">lam-equiv</code> equation to reduce this question to
+whether <code class="language-plaintext highlighter-rouge">ℱ</code> is a congruence.</p>
 
 <pre class="Agda"><a id="ℱ-cong"></a><a id="10829" href="/PLFA-zh/Compositional/#10829" class="Function">ℱ-cong</a> <a id="10836" class="Symbol">:</a> <a id="10838" class="Symbol">∀{</a><a id="10840" href="plfa.Compositional.html#10840" class="Bound">Γ</a><a id="10841" class="Symbol">}{</a><a id="10843" href="plfa.Compositional.html#10843" class="Bound">D</a> <a id="10845" href="plfa.Compositional.html#10845" class="Bound">D′</a> <a id="10848" class="Symbol">:</a> <a id="10850" href="/PLFA-zh/Denotational/#17214" class="Function">Denotation</a> <a id="10861" class="Symbol">(</a><a id="10862" href="plfa.Compositional.html#10840" class="Bound">Γ</a> <a id="10864" href="/PLFA-zh/Untyped/#3168" class="InductiveConstructor Operator">,</a> <a id="10866" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="10867" class="Symbol">)}</a>
        <a id="10877" class="Symbol">→</a> <a id="10879" href="/PLFA-zh/Compositional/#10843" class="Bound">D</a> <a id="10881" href="/PLFA-zh/Denotational/#17609" class="Function Operator">≃</a> <a id="10883" href="plfa.Compositional.html#10845" class="Bound">D′</a>
@@ -390,9 +390,9 @@ whether <code class="highlighter-rouge">ℱ</code> is a congruence.</p>
    <a id="11140" href="/PLFA-zh/Compositional/#11025" class="Function">ℱ≃</a> <a id="11143" class="Symbol">{</a><a id="11144" href="plfa.Compositional.html#11144" class="Bound">γ</a><a id="11145" class="Symbol">}{</a><a id="11147" href="plfa.Compositional.html#11147" class="Bound">v</a> <a id="11149" href="/PLFA-zh/Denotational/#3994" class="InductiveConstructor Operator">↦</a> <a id="11151" href="plfa.Compositional.html#11151" class="Bound">w</a><a id="11152" class="Symbol">}</a> <a id="11154" href="plfa.Compositional.html#11154" class="Bound">fd</a> <a id="11157" href="plfa.Compositional.html#11157" class="Bound">dd′</a> <a id="11161" class="Symbol">=</a> <a id="11163" href="Agda.Builtin.Sigma.html#225" class="Field">proj₁</a> <a id="11169" class="Symbol">(</a><a id="11170" href="plfa.Compositional.html#11157" class="Bound">dd′</a> <a id="11174" class="Symbol">(</a><a id="11175" href="plfa.Compositional.html#11144" class="Bound">γ</a> <a id="11177" href="plfa.Denotational.html#7257" class="Function Operator">`,</a> <a id="11180" href="plfa.Compositional.html#11147" class="Bound">v</a><a id="11181" class="Symbol">)</a> <a id="11183" href="plfa.Compositional.html#11151" class="Bound">w</a><a id="11184" class="Symbol">)</a> <a id="11186" href="plfa.Compositional.html#11154" class="Bound">fd</a>
    <a id="11192" href="/PLFA-zh/Compositional/#11025" class="Function">ℱ≃</a> <a id="11195" class="Symbol">{</a><a id="11196" href="plfa.Compositional.html#11196" class="Bound">γ</a><a id="11197" class="Symbol">}{</a><a id="11199" href="plfa.Compositional.html#11199" class="Bound">u</a> <a id="11201" href="/PLFA-zh/Denotational/#4024" class="InductiveConstructor Operator">⊔</a> <a id="11203" href="plfa.Compositional.html#11203" class="Bound">w</a><a id="11204" class="Symbol">}</a> <a id="11206" href="plfa.Compositional.html#11206" class="Bound">fd</a> <a id="11209" href="plfa.Compositional.html#11209" class="Bound">dd′</a> <a id="11213" class="Symbol">=</a> <a id="11215" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="11217" href="plfa.Compositional.html#11025" class="Function">ℱ≃</a><a id="11219" class="Symbol">{</a><a id="11220" href="plfa.Compositional.html#11196" class="Bound">γ</a><a id="11221" class="Symbol">}{</a><a id="11223" href="plfa.Compositional.html#11199" class="Bound">u</a><a id="11224" class="Symbol">}</a> <a id="11226" class="Symbol">(</a><a id="11227" href="Agda.Builtin.Sigma.html#225" class="Field">proj₁</a> <a id="11233" href="plfa.Compositional.html#11206" class="Bound">fd</a><a id="11235" class="Symbol">)</a> <a id="11237" href="plfa.Compositional.html#11209" class="Bound">dd′</a> <a id="11241" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="11243" href="plfa.Compositional.html#11025" class="Function">ℱ≃</a><a id="11245" class="Symbol">{</a><a id="11246" href="plfa.Compositional.html#11196" class="Bound">γ</a><a id="11247" class="Symbol">}{</a><a id="11249" href="plfa.Compositional.html#11203" class="Bound">w</a><a id="11250" class="Symbol">}</a> <a id="11252" class="Symbol">(</a><a id="11253" href="Agda.Builtin.Sigma.html#237" class="Field">proj₂</a> <a id="11259" href="plfa.Compositional.html#11206" class="Bound">fd</a><a id="11261" class="Symbol">)</a> <a id="11263" href="plfa.Compositional.html#11209" class="Bound">dd′</a> <a id="11267" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
-<p>The proof of <code class="highlighter-rouge">ℱ-cong</code> uses the lemma <code class="highlighter-rouge">ℱ≃</code> to handle both directions of
+<p>The proof of <code class="language-plaintext highlighter-rouge">ℱ-cong</code> uses the lemma <code class="language-plaintext highlighter-rouge">ℱ≃</code> to handle both directions of
 the if-and-only-if. That lemma is proved by a straightforward
-induction on the value <code class="highlighter-rouge">v</code>.</p>
+induction on the value <code class="language-plaintext highlighter-rouge">v</code>.</p>
 
 <p>We now prove that lambda abstraction is a congruence by direct
 equational reasoning.</p>
@@ -413,9 +413,9 @@ equational reasoning.</p>
   <a id="11779" href="/PLFA-zh/Denotational/#18883" class="Function Operator">☐</a>
 </pre>
 <p>Next we prove that denotational equality is a congruence for
-application: that <code class="highlighter-rouge">ℰ L ≃ ℰ L′</code> and <code class="highlighter-rouge">ℰ M ≃ ℰ M′</code> imply
-<code class="highlighter-rouge">ℰ (L · M) ≃ ℰ (L′ · M′)</code>. The <code class="highlighter-rouge">app-equiv</code> equation
-reduces this to the question of whether the <code class="highlighter-rouge">●</code> operator
+application: that <code class="language-plaintext highlighter-rouge">ℰ L ≃ ℰ L′</code> and <code class="language-plaintext highlighter-rouge">ℰ M ≃ ℰ M′</code> imply
+<code class="language-plaintext highlighter-rouge">ℰ (L · M) ≃ ℰ (L′ · M′)</code>. The <code class="language-plaintext highlighter-rouge">app-equiv</code> equation
+reduces this to the question of whether the <code class="language-plaintext highlighter-rouge">●</code> operator
 is a congruence.</p>
 
 <pre class="Agda"><a id="●-cong"></a><a id="12032" href="/PLFA-zh/Compositional/#12032" class="Function">●-cong</a> <a id="12039" class="Symbol">:</a> <a id="12041" class="Symbol">∀{</a><a id="12043" href="plfa.Compositional.html#12043" class="Bound">Γ</a><a id="12044" class="Symbol">}{</a><a id="12046" href="plfa.Compositional.html#12046" class="Bound">D₁</a> <a id="12049" href="plfa.Compositional.html#12049" class="Bound">D₁′</a> <a id="12053" href="plfa.Compositional.html#12053" class="Bound">D₂</a> <a id="12056" href="plfa.Compositional.html#12056" class="Bound">D₂′</a> <a id="12060" class="Symbol">:</a> <a id="12062" href="/PLFA-zh/Denotational/#17214" class="Function">Denotation</a> <a id="12073" href="plfa.Compositional.html#12043" class="Bound">Γ</a><a id="12074" class="Symbol">}</a>
@@ -432,9 +432,9 @@ is a congruence.</p>
       <a id="12468" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="12473" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="12475" href="/PLFA-zh/Compositional/#12431" class="Bound">v</a> <a id="12477" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="12479" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="12481" href="Agda.Builtin.Sigma.html#225" class="Field">proj₁</a> <a id="12487" class="Symbol">(</a><a id="12488" href="plfa.Compositional.html#12452" class="Bound">eq₁</a> <a id="12492" href="plfa.Compositional.html#12416" class="Bound">γ</a> <a id="12494" class="Symbol">(</a><a id="12495" href="plfa.Compositional.html#12431" class="Bound">v</a> <a id="12497" href="/PLFA-zh/Denotational/#3994" class="InductiveConstructor Operator">↦</a> <a id="12499" href="plfa.Compositional.html#12420" class="Bound">w</a><a id="12500" class="Symbol">))</a> <a id="12503" href="plfa.Compositional.html#12437" class="Bound">Dv↦w</a> <a id="12508" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="12510" href="Agda.Builtin.Sigma.html#225" class="Field">proj₁</a> <a id="12516" class="Symbol">(</a><a id="12517" href="plfa.Compositional.html#12456" class="Bound">eq₂</a> <a id="12521" href="plfa.Compositional.html#12416" class="Bound">γ</a> <a id="12523" href="plfa.Compositional.html#12431" class="Bound">v</a><a id="12524" class="Symbol">)</a> <a id="12526" href="plfa.Compositional.html#12444" class="Bound">Dv</a> <a id="12529" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a> <a id="12531" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a>
 </pre>
 <p>Again, both directions of the if-and-only-if are proved via a lemma.
-This time the lemma is proved by cases on <code class="highlighter-rouge">(D₁ ● D₂) γ v</code>.</p>
+This time the lemma is proved by cases on <code class="language-plaintext highlighter-rouge">(D₁ ● D₂) γ v</code>.</p>
 
-<p>With the congruence of <code class="highlighter-rouge">●</code>, we can prove that application is a
+<p>With the congruence of <code class="language-plaintext highlighter-rouge">●</code>, we can prove that application is a
 congruence by direct equational reasoning.</p>
 
 <pre class="Agda"><a id="app-cong"></a><a id="12778" href="/PLFA-zh/Compositional/#12778" class="Function">app-cong</a> <a id="12787" class="Symbol">:</a> <a id="12789" class="Symbol">∀{</a><a id="12791" href="plfa.Compositional.html#12791" class="Bound">Γ</a><a id="12792" class="Symbol">}{</a><a id="12794" href="plfa.Compositional.html#12794" class="Bound">L</a> <a id="12796" href="plfa.Compositional.html#12796" class="Bound">L′</a> <a id="12799" href="plfa.Compositional.html#12799" class="Bound">M</a> <a id="12801" href="plfa.Compositional.html#12801" class="Bound">M′</a> <a id="12804" class="Symbol">:</a> <a id="12806" href="plfa.Compositional.html#12791" class="Bound">Γ</a> <a id="12808" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="12810" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="12811" class="Symbol">}</a>
@@ -462,7 +462,7 @@ that are denotationally equal. To make this precise, we define what we
 mean by “context” and “surround”.</p>
 
 <p>A <em>context</em> is a program with one hole in it. The following data
-definition <code class="highlighter-rouge">Ctx</code> makes this idea explicit. We index the <code class="highlighter-rouge">Ctx</code> data
+definition <code class="language-plaintext highlighter-rouge">Ctx</code> makes this idea explicit. We index the <code class="language-plaintext highlighter-rouge">Ctx</code> data
 type with two contexts for variables: one for the the hole and one for
 terms that result from filling the hole.</p>
 
@@ -474,27 +474,27 @@ terms that result from filling the hole.</p>
 </pre>
 <ul>
   <li>
-    <p>The constructor <code class="highlighter-rouge">CHole</code> represents the hole, and in this case the
+    <p>The constructor <code class="language-plaintext highlighter-rouge">CHole</code> represents the hole, and in this case the
 variable context for the hole is the same as the variable context
 for the term that results from filling the hole.</p>
   </li>
   <li>
-    <p>The constructor <code class="highlighter-rouge">CLam</code> takes a <code class="highlighter-rouge">Ctx</code> and produces a larger one that
+    <p>The constructor <code class="language-plaintext highlighter-rouge">CLam</code> takes a <code class="language-plaintext highlighter-rouge">Ctx</code> and produces a larger one that
 adds a lambda abstraction at the top. The variable context of the
 hole stays the same, whereas we remove one variable from the context
 of the resulting term because it is bound by this lambda
 abstraction.</p>
   </li>
   <li>
-    <p>There are two constructions for application, <code class="highlighter-rouge">CAppL</code> and
-<code class="highlighter-rouge">CAppR</code>. The <code class="highlighter-rouge">CAppL</code> is for when the hole is inside the left-hand
+    <p>There are two constructions for application, <code class="language-plaintext highlighter-rouge">CAppL</code> and
+<code class="language-plaintext highlighter-rouge">CAppR</code>. The <code class="language-plaintext highlighter-rouge">CAppL</code> is for when the hole is inside the left-hand
 term (the operator) and the later is when the hole is inside the
 right-hand term (the operand).</p>
   </li>
 </ul>
 
 <p>The action of surrounding a term with a context is defined by the
-following <code class="highlighter-rouge">plug</code> function. It is defined by recursion on the context.</p>
+following <code class="language-plaintext highlighter-rouge">plug</code> function. It is defined by recursion on the context.</p>
 
 <pre class="Agda"><a id="plug"></a><a id="14673" href="/PLFA-zh/Compositional/#14673" class="Function">plug</a> <a id="14678" class="Symbol">:</a> <a id="14680" class="Symbol">∀{</a><a id="14682" href="plfa.Compositional.html#14682" class="Bound">Γ</a><a id="14683" class="Symbol">}{</a><a id="14685" href="plfa.Compositional.html#14685" class="Bound">Δ</a><a id="14686" class="Symbol">}</a> <a id="14688" class="Symbol">→</a> <a id="14690" href="plfa.Compositional.html#13621" class="Datatype">Ctx</a> <a id="14694" href="plfa.Compositional.html#14682" class="Bound">Γ</a> <a id="14696" href="plfa.Compositional.html#14685" class="Bound">Δ</a> <a id="14698" class="Symbol">→</a> <a id="14700" href="plfa.Compositional.html#14682" class="Bound">Γ</a> <a id="14702" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="14704" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a> <a id="14706" class="Symbol">→</a> <a id="14708" href="plfa.Compositional.html#14685" class="Bound">Δ</a> <a id="14710" href="plfa.Untyped.html#4252" class="Datatype Operator">⊢</a> <a id="14712" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a>
 <a id="14714" href="/PLFA-zh/Compositional/#14673" class="Function">plug</a> <a id="14719" href="plfa.Compositional.html#13659" class="InductiveConstructor">CHole</a> <a id="14725" href="plfa.Compositional.html#14725" class="Bound">M</a> <a id="14727" class="Symbol">=</a> <a id="14729" href="plfa.Compositional.html#14725" class="Bound">M</a>
@@ -503,8 +503,8 @@ following <code class="highlighter-rouge">plug</code> function. It is defined by
 <a id="14796" href="/PLFA-zh/Compositional/#14673" class="Function">plug</a> <a id="14801" class="Symbol">(</a><a id="14802" href="plfa.Compositional.html#13784" class="InductiveConstructor">CAppR</a> <a id="14808" href="plfa.Compositional.html#14808" class="Bound">L</a> <a id="14810" href="plfa.Compositional.html#14810" class="Bound">C</a><a id="14811" class="Symbol">)</a> <a id="14813" href="plfa.Compositional.html#14813" class="Bound">M</a> <a id="14815" class="Symbol">=</a> <a id="14817" href="plfa.Compositional.html#14808" class="Bound">L</a> <a id="14819" href="/PLFA-zh/Untyped/#4400" class="InductiveConstructor Operator">·</a> <a id="14821" class="Symbol">(</a><a id="14822" href="plfa.Compositional.html#14673" class="Function">plug</a> <a id="14827" href="plfa.Compositional.html#14810" class="Bound">C</a> <a id="14829" href="plfa.Compositional.html#14813" class="Bound">M</a><a id="14830" class="Symbol">)</a>
 </pre>
 <p>We are ready to state and prove the compositionality principle.  Given
-two terms <code class="highlighter-rouge">M</code> and <code class="highlighter-rouge">N</code> that are denotationally equal, plugging them both
-into an arbitrary context <code class="highlighter-rouge">C</code> produces two programs that are
+two terms <code class="language-plaintext highlighter-rouge">M</code> and <code class="language-plaintext highlighter-rouge">N</code> that are denotationally equal, plugging them both
+into an arbitrary context <code class="language-plaintext highlighter-rouge">C</code> produces two programs that are
 denotationally equal.</p>
 
 <pre class="Agda"><a id="compositionality"></a><a id="15068" href="/PLFA-zh/Compositional/#15068" class="Function">compositionality</a> <a id="15085" class="Symbol">:</a> <a id="15087" class="Symbol">∀{</a><a id="15089" href="plfa.Compositional.html#15089" class="Bound">Γ</a> <a id="15091" href="plfa.Compositional.html#15091" class="Bound">Δ</a><a id="15092" class="Symbol">}{</a><a id="15094" href="plfa.Compositional.html#15094" class="Bound">C</a> <a id="15096" class="Symbol">:</a> <a id="15098" href="plfa.Compositional.html#13621" class="Datatype">Ctx</a> <a id="15102" href="plfa.Compositional.html#15089" class="Bound">Γ</a> <a id="15104" href="plfa.Compositional.html#15091" class="Bound">Δ</a><a id="15105" class="Symbol">}</a> <a id="15107" class="Symbol">{</a><a id="15108" href="plfa.Compositional.html#15108" class="Bound">M</a> <a id="15110" href="plfa.Compositional.html#15110" class="Bound">N</a> <a id="15112" class="Symbol">:</a> <a id="15114" href="plfa.Compositional.html#15089" class="Bound">Γ</a> <a id="15116" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="15118" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="15119" class="Symbol">}</a>
@@ -520,17 +520,17 @@ denotationally equal.</p>
 <a id="15473" href="/PLFA-zh/Compositional/#15068" class="Function">compositionality</a> <a id="15490" class="Symbol">{</a><a id="15491" class="Argument">C</a> <a id="15493" class="Symbol">=</a> <a id="15495" href="plfa.Compositional.html#13784" class="InductiveConstructor">CAppR</a> <a id="15501" href="plfa.Compositional.html#15501" class="Bound">L</a> <a id="15503" href="plfa.Compositional.html#15503" class="Bound">C′</a><a id="15505" class="Symbol">}</a> <a id="15507" href="plfa.Compositional.html#15507" class="Bound">M≃N</a> <a id="15511" class="Symbol">=</a>
   <a id="15515" href="/PLFA-zh/Compositional/#12778" class="Function">app-cong</a> <a id="15524" class="Symbol">(λ</a> <a id="15527" href="plfa.Compositional.html#15527" class="Bound">γ</a> <a id="15529" href="plfa.Compositional.html#15529" class="Bound">v</a> <a id="15531" class="Symbol">→</a> <a id="15533" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟨</a> <a id="15535" class="Symbol">(λ</a> <a id="15538" href="plfa.Compositional.html#15538" class="Bound">x</a> <a id="15540" class="Symbol">→</a> <a id="15542" href="plfa.Compositional.html#15538" class="Bound">x</a><a id="15543" class="Symbol">)</a> <a id="15545" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">,</a> <a id="15547" class="Symbol">(λ</a> <a id="15550" href="plfa.Compositional.html#15550" class="Bound">x</a> <a id="15552" class="Symbol">→</a> <a id="15554" href="plfa.Compositional.html#15550" class="Bound">x</a><a id="15555" class="Symbol">)</a> <a id="15557" href="Agda.Builtin.Sigma.html#209" class="InductiveConstructor Operator">⟩</a><a id="15558" class="Symbol">)</a> <a id="15560" class="Symbol">(</a><a id="15561" href="plfa.Compositional.html#15068" class="Function">compositionality</a> <a id="15578" class="Symbol">{</a><a id="15579" class="Argument">C</a> <a id="15581" class="Symbol">=</a> <a id="15583" href="plfa.Compositional.html#15503" class="Bound">C′</a><a id="15585" class="Symbol">}</a> <a id="15587" href="plfa.Compositional.html#15507" class="Bound">M≃N</a><a id="15590" class="Symbol">)</a>
 </pre>
-<p>The proof is a straightforward induction on the context <code class="highlighter-rouge">C</code>, using the
-congruence properties <code class="highlighter-rouge">lam-cong</code> and <code class="highlighter-rouge">app-cong</code> that we established
+<p>The proof is a straightforward induction on the context <code class="language-plaintext highlighter-rouge">C</code>, using the
+congruence properties <code class="language-plaintext highlighter-rouge">lam-cong</code> and <code class="language-plaintext highlighter-rouge">app-cong</code> that we established
 above.</p>
 
 <h2 id="the-denotational-semantics-defined-as-a-function">The denotational semantics defined as a function</h2>
 
-<p>Having established the three equations <code class="highlighter-rouge">var-equiv</code>, <code class="highlighter-rouge">lam-equiv</code>, and
-<code class="highlighter-rouge">app-equiv</code>, one should be able to define the denotational semantics
-as a recursive function over the input term <code class="highlighter-rouge">M</code>. Indeed, we define the
-following function <code class="highlighter-rouge">⟦ M ⟧</code> that maps terms to denotations, using the
-auxiliary curry <code class="highlighter-rouge">ℱ</code> and apply <code class="highlighter-rouge">●</code> functions in the cases for lambda
+<p>Having established the three equations <code class="language-plaintext highlighter-rouge">var-equiv</code>, <code class="language-plaintext highlighter-rouge">lam-equiv</code>, and
+<code class="language-plaintext highlighter-rouge">app-equiv</code>, one should be able to define the denotational semantics
+as a recursive function over the input term <code class="language-plaintext highlighter-rouge">M</code>. Indeed, we define the
+following function <code class="language-plaintext highlighter-rouge">⟦ M ⟧</code> that maps terms to denotations, using the
+auxiliary curry <code class="language-plaintext highlighter-rouge">ℱ</code> and apply <code class="language-plaintext highlighter-rouge">●</code> functions in the cases for lambda
 and application, respectively.</p>
 
 <pre class="Agda"><a id="⟦_⟧"></a><a id="16179" href="/PLFA-zh/Compositional/#16179" class="Function Operator">⟦_⟧</a> <a id="16183" class="Symbol">:</a> <a id="16185" class="Symbol">∀{</a><a id="16187" href="plfa.Compositional.html#16187" class="Bound">Γ</a><a id="16188" class="Symbol">}</a> <a id="16190" class="Symbol">→</a> <a id="16192" class="Symbol">(</a><a id="16193" href="plfa.Compositional.html#16193" class="Bound">M</a> <a id="16195" class="Symbol">:</a> <a id="16197" href="plfa.Compositional.html#16187" class="Bound">Γ</a> <a id="16199" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="16201" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="16202" class="Symbol">)</a> <a id="16204" class="Symbol">→</a> <a id="16206" href="/PLFA-zh/Denotational/#17214" class="Function">Denotation</a> <a id="16217" href="plfa.Compositional.html#16187" class="Bound">Γ</a>
@@ -538,10 +538,10 @@ and application, respectively.</p>
 <a id="16241" href="/PLFA-zh/Compositional/#16179" class="Function Operator">⟦</a> <a id="16243" href="/PLFA-zh/Untyped/#4340" class="InductiveConstructor Operator">ƛ</a> <a id="16245" href="plfa.Compositional.html#16245" class="Bound">N</a> <a id="16247" href="plfa.Compositional.html#16179" class="Function Operator">⟧</a> <a id="16249" class="Symbol">=</a> <a id="16251" href="plfa.Compositional.html#1852" class="Function">ℱ</a> <a id="16253" href="plfa.Compositional.html#16179" class="Function Operator">⟦</a> <a id="16255" href="plfa.Compositional.html#16245" class="Bound">N</a> <a id="16257" href="plfa.Compositional.html#16179" class="Function Operator">⟧</a>
 <a id="16259" href="/PLFA-zh/Compositional/#16179" class="Function Operator">⟦</a> <a id="16261" href="plfa.Compositional.html#16261" class="Bound">L</a> <a id="16263" href="/PLFA-zh/Untyped/#4400" class="InductiveConstructor Operator">·</a> <a id="16265" href="plfa.Compositional.html#16265" class="Bound">M</a> <a id="16267" href="plfa.Compositional.html#16179" class="Function Operator">⟧</a> <a id="16269" class="Symbol">=</a> <a id="16271" href="plfa.Compositional.html#16179" class="Function Operator">⟦</a> <a id="16273" href="plfa.Compositional.html#16261" class="Bound">L</a> <a id="16275" href="plfa.Compositional.html#16179" class="Function Operator">⟧</a> <a id="16277" href="plfa.Compositional.html#5495" class="Function Operator">●</a> <a id="16279" href="plfa.Compositional.html#16179" class="Function Operator">⟦</a> <a id="16281" href="plfa.Compositional.html#16265" class="Bound">M</a> <a id="16283" href="plfa.Compositional.html#16179" class="Function Operator">⟧</a>
 </pre>
-<p>The proof that <code class="highlighter-rouge">ℰ M</code> is denotationally equal to <code class="highlighter-rouge">⟦ M ⟧</code> is a
+<p>The proof that <code class="language-plaintext highlighter-rouge">ℰ M</code> is denotationally equal to <code class="language-plaintext highlighter-rouge">⟦ M ⟧</code> is a
 straightforward induction, using the three equations
-<code class="highlighter-rouge">var-equiv</code>, <code class="highlighter-rouge">lam-equiv</code>, and <code class="highlighter-rouge">app-equiv</code> together
-with the congruence lemmas for <code class="highlighter-rouge">ℱ</code> and <code class="highlighter-rouge">●</code>.</p>
+<code class="language-plaintext highlighter-rouge">var-equiv</code>, <code class="language-plaintext highlighter-rouge">lam-equiv</code>, and <code class="language-plaintext highlighter-rouge">app-equiv</code> together
+with the congruence lemmas for <code class="language-plaintext highlighter-rouge">ℱ</code> and <code class="language-plaintext highlighter-rouge">●</code>.</p>
 
 <pre class="Agda"><a id="ℰ≃⟦⟧"></a><a id="16504" href="/PLFA-zh/Compositional/#16504" class="Function">ℰ≃⟦⟧</a> <a id="16509" class="Symbol">:</a> <a id="16511" class="Symbol">∀</a> <a id="16513" class="Symbol">{</a><a id="16514" href="plfa.Compositional.html#16514" class="Bound">Γ</a><a id="16515" class="Symbol">}</a> <a id="16517" class="Symbol">{</a><a id="16518" href="plfa.Compositional.html#16518" class="Bound">M</a> <a id="16520" class="Symbol">:</a> <a id="16522" href="plfa.Compositional.html#16514" class="Bound">Γ</a> <a id="16524" href="/PLFA-zh/Untyped/#4252" class="Datatype Operator">⊢</a> <a id="16526" href="plfa.Untyped.html#2876" class="InductiveConstructor">★</a><a id="16527" class="Symbol">}</a>
     <a id="16533" class="Symbol">→</a> <a id="16535" href="/PLFA-zh/Denotational/#17427" class="Function">ℰ</a> <a id="16537" href="/PLFA-zh/Compositional/#16518" class="Bound">M</a> <a id="16539" href="plfa.Denotational.html#17609" class="Function Operator">≃</a> <a id="16541" href="plfa.Compositional.html#16179" class="Function Operator">⟦</a> <a id="16543" href="plfa.Compositional.html#16518" class="Bound">M</a> <a id="16545" href="plfa.Compositional.html#16179" class="Function Operator">⟧</a>
@@ -571,7 +571,7 @@ with the congruence lemmas for <code class="highlighter-rouge">ℱ</code> and <c
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℱ  U+2131  SCRIPT CAPITAL F (\McF)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℱ  U+2131  SCRIPT CAPITAL F (\McF)
 ●  U+2131  BLACK CIRCLE (\cib)
 </code></pre></div></div>
 
@@ -628,6 +628,18 @@ with the congruence lemmas for <code class="highlighter-rouge">ℱ</code> and <c
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

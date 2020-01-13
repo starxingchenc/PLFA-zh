@@ -27,9 +27,9 @@ This stronger property, reformulated a bit, is known as _adequacy_.
 That is, if a term `M` is denotationally equal to a lambda abstraction,
 then `M` reduces to a lambda abstraction.
 
-    ℰ M ≃ ℰ (ƛ N)  implies M —↠ ƛ N' for some N'
-
-Recall that `ℰ M ≃ ℰ (ƛ N)` is equivalent to saying that
+    ℰ M ≃ ℰ (ƛ N)  implies M —↠ <a id="992" class="Bound">ƛ</a> N' <a id="997" class="Bound">f</a>or <a id="1001" class="Bound">s</a>ome <a id="1006" class="Function">N&#39;</a>
+<a id="1009" class="Bound">
+</a>R<a id="1011" class="Function">e</a>c<a id="1013" class="Bound">a</a>l<a id="1015" class="Function">l</a> <a id="1017" class="Bound">t</a>hat `ℰ M ≃ ℰ (ƛ N)` is equivalent to saying that
 `γ ⊢ M ↓ (v ↦ w)` for some `v` and `w`. We will show that
 `γ ⊢ M ↓ (v ↦ w)` implies reduction a lambda abstraction.
 
@@ -44,7 +44,7 @@ environment that maps variables to closures
 So we will show that `γ ⊢ M ↓ (v ↦ w)` implies `γ' ⊢ M ⇓ c`,
 provided `γ` and `γ'` are appropriate related.  The proof will
 be an induction on the derivation of `γ ⊢ M ↓ v`, and to
-strengthen the induction hypothesis, we will relate semantic values to
+strengthen the induction hypothesis, we wil<a id="1869" class="Bound">l</a> re<a id="1873" class="Bound">l</a>ate <a id="1878" class="Function">se</a>m<a id="1881" class="Bound">a</a>n<a id="1883" class="Function">t</a>i<a id="1885" class="Bound">c</a> values to
 closures using a _logical relation_ `𝕍`.
 
 The rest of this chapter is organized as follows.

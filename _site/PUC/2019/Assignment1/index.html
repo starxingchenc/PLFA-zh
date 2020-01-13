@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Assignment1: PUC Assignment 1 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Assignment1: PUC Assignment 1" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/PUC/2019/Assignment1/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/PUC/2019/Assignment1/","headline":"Assignment1: PUC Assignment 1","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Assignment1: PUC Assignment 1","url":"https://agda-zh.github.io/PLFA-zh/PUC/2019/Assignment1/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -89,70 +89,70 @@ some extra practice.</p>
 <a id="697" class="Keyword">open</a> <a id="702" class="Keyword">import</a> <a id="709" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.html" class="Module">Data.Nat</a> <a id="718" class="Keyword">using</a> <a id="724" class="Symbol">(</a><a id="725" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="726" class="Symbol">;</a> <a id="728" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a><a id="732" class="Symbol">;</a> <a id="734" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a><a id="737" class="Symbol">;</a> <a id="739" href="Agda.Builtin.Nat.html#298" class="Primitive Operator">_+_</a><a id="742" class="Symbol">;</a> <a id="744" href="Agda.Builtin.Nat.html#501" class="Primitive Operator">_*_</a><a id="747" class="Symbol">;</a> <a id="749" href="Agda.Builtin.Nat.html#388" class="Primitive Operator">_∸_</a><a id="752" class="Symbol">;</a> <a id="754" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#895" class="Datatype Operator">_≤_</a><a id="757" class="Symbol">;</a> <a id="759" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#918" class="InductiveConstructor">z≤n</a><a id="762" class="Symbol">;</a> <a id="764" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#960" class="InductiveConstructor">s≤s</a><a id="767" class="Symbol">)</a>
 <a id="769" class="Keyword">open</a> <a id="774" class="Keyword">import</a> <a id="781" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html" class="Module">Data.Nat.Properties</a> <a id="801" class="Keyword">using</a> <a id="807" class="Symbol">(</a><a id="808" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#11578" class="Function">+-assoc</a><a id="815" class="Symbol">;</a> <a id="817" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#11734" class="Function">+-identityʳ</a><a id="828" class="Symbol">;</a> <a id="830" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#11370" class="Function">+-suc</a><a id="835" class="Symbol">;</a> <a id="837" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#11911" class="Function">+-comm</a><a id="843" class="Symbol">;</a>
   <a id="847" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3632" class="Function">≤-refl</a><a id="853" class="Symbol">;</a> <a id="855" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3815" class="Function">≤-trans</a><a id="862" class="Symbol">;</a> <a id="864" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3682" class="Function">≤-antisym</a><a id="873" class="Symbol">;</a> <a id="875" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3927" class="Function">≤-total</a><a id="882" class="Symbol">;</a> <a id="884" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15619" class="Function">+-monoʳ-≤</a><a id="893" class="Symbol">;</a> <a id="895" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15529" class="Function">+-monoˡ-≤</a><a id="904" class="Symbol">;</a> <a id="906" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15373" class="Function">+-mono-≤</a><a id="914" class="Symbol">)</a>
-<a id="916" class="Keyword">open</a> <a id="921" class="Keyword">import</a> <a id="928" href="/PLFA-zh/Relations/" class="Module">plfa.Relations</a> <a id="943" class="Keyword">using</a> <a id="949" class="Symbol">(</a><a id="950" href="plfa.Relations.html#26522" class="Datatype Operator">_&lt;_</a><a id="953" class="Symbol">;</a> <a id="955" href="plfa.Relations.html#26549" class="InductiveConstructor">z&lt;s</a><a id="958" class="Symbol">;</a> <a id="960" href="plfa.Relations.html#26606" class="InductiveConstructor">s&lt;s</a><a id="963" class="Symbol">;</a> <a id="965" href="plfa.Relations.html#30834" class="InductiveConstructor">zero</a><a id="969" class="Symbol">;</a> <a id="971" href="plfa.Relations.html#30876" class="InductiveConstructor">suc</a><a id="974" class="Symbol">;</a> <a id="976" href="plfa.Relations.html#30779" class="Datatype">even</a><a id="980" class="Symbol">;</a> <a id="982" href="plfa.Relations.html#30799" class="Datatype">odd</a><a id="985" class="Symbol">)</a>
+<a id="916" class="Keyword">open</a> <a id="921" class="Keyword">import</a> <a id="928" href="/PLFA-zh/Relations/" class="Module">plfa.part1.Relations</a> <a id="949" class="Keyword">using</a> <a id="955" class="Symbol">(</a><a id="956" href="plfa.part1.Relations.html#26539" class="Datatype Operator">_&lt;_</a><a id="959" class="Symbol">;</a> <a id="961" href="plfa.part1.Relations.html#26566" class="InductiveConstructor">z&lt;s</a><a id="964" class="Symbol">;</a> <a id="966" href="plfa.part1.Relations.html#26623" class="InductiveConstructor">s&lt;s</a><a id="969" class="Symbol">;</a> <a id="971" href="plfa.part1.Relations.html#30894" class="InductiveConstructor">zero</a><a id="975" class="Symbol">;</a> <a id="977" href="plfa.part1.Relations.html#30936" class="InductiveConstructor">suc</a><a id="980" class="Symbol">;</a> <a id="982" href="plfa.part1.Relations.html#30839" class="Datatype">even</a><a id="986" class="Symbol">;</a> <a id="988" href="plfa.part1.Relations.html#30859" class="Datatype">odd</a><a id="991" class="Symbol">)</a>
 </pre>
 <h2 id="naturals">Naturals</h2>
 
-<h4 id="seven">Exercise <code class="highlighter-rouge">seven</code></h4>
+<h4 id="seven">Exercise <code class="language-plaintext highlighter-rouge">seven</code></h4>
 
-<p>Write out <code class="highlighter-rouge">7</code> in longhand.</p>
+<p>Write out <code class="language-plaintext highlighter-rouge">7</code> in longhand.</p>
 
-<h4 id="plus-example">Exercise <code class="highlighter-rouge">+-example</code></h4>
+<h4 id="plus-example">Exercise <code class="language-plaintext highlighter-rouge">+-example</code></h4>
 
-<p>Compute <code class="highlighter-rouge">3 + 4</code>, writing out your reasoning as a chain of equations.</p>
+<p>Compute <code class="language-plaintext highlighter-rouge">3 + 4</code>, writing out your reasoning as a chain of equations.</p>
 
-<h4 id="times-example">Exercise <code class="highlighter-rouge">*-example</code></h4>
+<h4 id="times-example">Exercise <code class="language-plaintext highlighter-rouge">*-example</code></h4>
 
-<p>Compute <code class="highlighter-rouge">3 * 4</code>, writing out your reasoning as a chain of equations.</p>
+<p>Compute <code class="language-plaintext highlighter-rouge">3 * 4</code>, writing out your reasoning as a chain of equations.</p>
 
-<h4 id="power">Exercise <code class="highlighter-rouge">_^_</code> (recommended)</h4>
+<h4 id="power">Exercise <code class="language-plaintext highlighter-rouge">_^_</code> (recommended)</h4>
 
 <p>Define exponentiation, which is given by the following equations.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n ^ 0        =  1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n ^ 0        =  1
 n ^ (1 + m)  =  n * (n ^ m)
 </code></pre></div></div>
 
-<p>Check that <code class="highlighter-rouge">3 ^ 4</code> is <code class="highlighter-rouge">81</code>.</p>
+<p>Check that <code class="language-plaintext highlighter-rouge">3 ^ 4</code> is <code class="language-plaintext highlighter-rouge">81</code>.</p>
 
-<h4 id="monus-examples">Exercise <code class="highlighter-rouge">∸-examples</code> (recommended)</h4>
+<h4 id="monus-examples">Exercise <code class="language-plaintext highlighter-rouge">∸-examples</code> (recommended)</h4>
 
-<p>Compute <code class="highlighter-rouge">5 ∸ 3</code> and <code class="highlighter-rouge">3 ∸ 5</code>, writing out your reasoning as a chain of equations.</p>
+<p>Compute <code class="language-plaintext highlighter-rouge">5 ∸ 3</code> and <code class="language-plaintext highlighter-rouge">3 ∸ 5</code>, writing out your reasoning as a chain of equations.</p>
 
-<h4 id="Bin">Exercise <code class="highlighter-rouge">Bin</code> (stretch)</h4>
+<h4 id="Bin">Exercise <code class="language-plaintext highlighter-rouge">Bin</code> (stretch)</h4>
 
 <p>A more efficient representation of natural numbers uses a binary
 rather than a unary system.  We represent a number as a bitstring.</p>
-<pre class="Agda"><a id="1808" class="Keyword">data</a> <a id="Bin"></a><a id="1813" href="/PLFA-zh/PUC/2019/Assignment1/#1813" class="Datatype">Bin</a> <a id="1817" class="Symbol">:</a> <a id="1819" class="PrimitiveType">Set</a> <a id="1823" class="Keyword">where</a>
-  <a id="Bin.nil"></a><a id="1831" href="/PLFA-zh/PUC/2019/Assignment1/#1831" class="InductiveConstructor">nil</a> <a id="1835" class="Symbol">:</a> <a id="1837" href="Assignment1.html#1813" class="Datatype">Bin</a>
-  <a id="Bin.x0_"></a><a id="1843" href="/PLFA-zh/PUC/2019/Assignment1/#1843" class="InductiveConstructor Operator">x0_</a> <a id="1847" class="Symbol">:</a> <a id="1849" href="Assignment1.html#1813" class="Datatype">Bin</a> <a id="1853" class="Symbol">→</a> <a id="1855" href="Assignment1.html#1813" class="Datatype">Bin</a>
-  <a id="Bin.x1_"></a><a id="1861" href="/PLFA-zh/PUC/2019/Assignment1/#1861" class="InductiveConstructor Operator">x1_</a> <a id="1865" class="Symbol">:</a> <a id="1867" href="Assignment1.html#1813" class="Datatype">Bin</a> <a id="1871" class="Symbol">→</a> <a id="1873" href="Assignment1.html#1813" class="Datatype">Bin</a>
+<pre class="Agda"><a id="1814" class="Keyword">data</a> <a id="Bin"></a><a id="1819" href="/PLFA-zh/PUC/2019/Assignment1/#1819" class="Datatype">Bin</a> <a id="1823" class="Symbol">:</a> <a id="1825" class="PrimitiveType">Set</a> <a id="1829" class="Keyword">where</a>
+  <a id="Bin.nil"></a><a id="1837" href="/PLFA-zh/PUC/2019/Assignment1/#1837" class="InductiveConstructor">nil</a> <a id="1841" class="Symbol">:</a> <a id="1843" href="Assignment1.html#1819" class="Datatype">Bin</a>
+  <a id="Bin.x0_"></a><a id="1849" href="/PLFA-zh/PUC/2019/Assignment1/#1849" class="InductiveConstructor Operator">x0_</a> <a id="1853" class="Symbol">:</a> <a id="1855" href="Assignment1.html#1819" class="Datatype">Bin</a> <a id="1859" class="Symbol">→</a> <a id="1861" href="Assignment1.html#1819" class="Datatype">Bin</a>
+  <a id="Bin.x1_"></a><a id="1867" href="/PLFA-zh/PUC/2019/Assignment1/#1867" class="InductiveConstructor Operator">x1_</a> <a id="1871" class="Symbol">:</a> <a id="1873" href="Assignment1.html#1819" class="Datatype">Bin</a> <a id="1877" class="Symbol">→</a> <a id="1879" href="Assignment1.html#1819" class="Datatype">Bin</a>
 </pre>
 <p>For instance, the bitstring</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1011
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1011
 </code></pre></div></div>
 
 <p>standing for the number eleven is encoded, right to left, as</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x1 x1 x0 x1 nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x1 x1 x0 x1 nil
 </code></pre></div></div>
 
 <p>Representations are not unique due to leading zeros.
-Hence, eleven is also represented by <code class="highlighter-rouge">001011</code>, encoded as</p>
+Hence, eleven is also represented by <code class="language-plaintext highlighter-rouge">001011</code>, encoded as</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x1 x1 x0 x1 x0 x0 nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x1 x1 x0 x1 x0 x0 nil
 </code></pre></div></div>
 
 <p>Define a function</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inc : Bin → Bin
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inc : Bin → Bin
 </code></pre></div></div>
 
 <p>that converts a bitstring to the bitstring for the next higher
-number.  For example, since <code class="highlighter-rouge">1100</code> encodes twelve, we should have</p>
+number.  For example, since <code class="language-plaintext highlighter-rouge">1100</code> encodes twelve, we should have</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inc (x1 x1 x0 x1 nil) ≡ x0 x0 x1 x1 nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inc (x1 x1 x0 x1 nil) ≡ x0 x0 x1 x1 nil
 </code></pre></div></div>
 
 <p>Confirm that this gives the correct answer for the bitstrings
@@ -161,17 +161,17 @@ encoding zero through four.</p>
 <p>Using the above, define a pair of functions to convert
 between the two representations.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to   : ℕ → Bin
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to   : ℕ → Bin
 from : Bin → ℕ
 </code></pre></div></div>
 
 <p>For the former, choose the bitstring to have no leading zeros if it
-represents a positive natural, and represent zero by <code class="highlighter-rouge">x0 nil</code>.
+represents a positive natural, and represent zero by <code class="language-plaintext highlighter-rouge">x0 nil</code>.
 Confirm that these both give the correct answer for zero through four.</p>
 
 <h2 id="induction">Induction</h2>
 
-<h4 id="operators">Exercise <code class="highlighter-rouge">operators</code></h4>
+<h4 id="operators">Exercise <code class="language-plaintext highlighter-rouge">operators</code></h4>
 
 <p>Give another example of a pair of operators that have an identity
 and are associative, commutative, and distribute over one another.</p>
@@ -179,89 +179,89 @@ and are associative, commutative, and distribute over one another.</p>
 <p>Give an example of an operator that has an identity and is
 associative but is not commutative.</p>
 
-<h4 id="finite-plus-assoc">Exercise <code class="highlighter-rouge">finite-|-assoc</code> (stretch)</h4>
+<h4 id="finite-plus-assoc">Exercise <code class="language-plaintext highlighter-rouge">finite-|-assoc</code> (stretch)</h4>
 
 <p>Write out what is known about associativity of addition on each of the first four
 days using a finite story of creation, as
 [earlier][plfa.Naturals#finite-creation]</p>
 
-<h4 id="plus-swap">Exercise <code class="highlighter-rouge">+-swap</code> (recommended)</h4>
+<h4 id="plus-swap">Exercise <code class="language-plaintext highlighter-rouge">+-swap</code> (recommended)</h4>
 
 <p>Show</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m + (n + p) ≡ n + (m + p)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m + (n + p) ≡ n + (m + p)
 </code></pre></div></div>
 
-<p>for all naturals <code class="highlighter-rouge">m</code>, <code class="highlighter-rouge">n</code>, and <code class="highlighter-rouge">p</code>. No induction is needed,
+<p>for all naturals <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code>, and <code class="language-plaintext highlighter-rouge">p</code>. No induction is needed,
 just apply the previous results which show addition
 is associative and commutative.  You may need to use
 the following function from the standard library:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sym : ∀ {m n : ℕ} → m ≡ n → n ≡ m
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sym : ∀ {m n : ℕ} → m ≡ n → n ≡ m
 </code></pre></div></div>
 
-<h4 id="times-distrib-plus">Exercise <code class="highlighter-rouge">*-distrib-+</code> (recommended)</h4>
+<h4 id="times-distrib-plus">Exercise <code class="language-plaintext highlighter-rouge">*-distrib-+</code> (recommended)</h4>
 
 <p>Show multiplication distributes over addition, that is,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m + n) * p ≡ m * p + n * p
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m + n) * p ≡ m * p + n * p
 </code></pre></div></div>
 
-<p>for all naturals <code class="highlighter-rouge">m</code>, <code class="highlighter-rouge">n</code>, and <code class="highlighter-rouge">p</code>.</p>
+<p>for all naturals <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code>, and <code class="language-plaintext highlighter-rouge">p</code>.</p>
 
-<h4 id="times-assoc">Exercise <code class="highlighter-rouge">*-assoc</code> (recommended)</h4>
+<h4 id="times-assoc">Exercise <code class="language-plaintext highlighter-rouge">*-assoc</code> (recommended)</h4>
 
 <p>Show multiplication is associative, that is,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m * n) * p ≡ m * (n * p)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m * n) * p ≡ m * (n * p)
 </code></pre></div></div>
 
-<p>for all naturals <code class="highlighter-rouge">m</code>, <code class="highlighter-rouge">n</code>, and <code class="highlighter-rouge">p</code>.</p>
+<p>for all naturals <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code>, and <code class="language-plaintext highlighter-rouge">p</code>.</p>
 
-<h4 id="times-comm">Exercise <code class="highlighter-rouge">*-comm</code></h4>
+<h4 id="times-comm">Exercise <code class="language-plaintext highlighter-rouge">*-comm</code></h4>
 
 <p>Show multiplication is commutative, that is,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m * n ≡ n * m
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m * n ≡ n * m
 </code></pre></div></div>
 
-<p>for all naturals <code class="highlighter-rouge">m</code> and <code class="highlighter-rouge">n</code>.  As with commutativity of addition,
+<p>for all naturals <code class="language-plaintext highlighter-rouge">m</code> and <code class="language-plaintext highlighter-rouge">n</code>.  As with commutativity of addition,
 you will need to formulate and prove suitable lemmas.</p>
 
-<h4 id="zero-monus">Exercise <code class="highlighter-rouge">0∸n≡0</code></h4>
+<h4 id="zero-monus">Exercise <code class="language-plaintext highlighter-rouge">0∸n≡0</code></h4>
 
 <p>Show</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zero ∸ n ≡ zero
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zero ∸ n ≡ zero
 </code></pre></div></div>
 
-<p>for all naturals <code class="highlighter-rouge">n</code>. Did your proof require induction?</p>
+<p>for all naturals <code class="language-plaintext highlighter-rouge">n</code>. Did your proof require induction?</p>
 
-<h4 id="monus-plus-assoc">Exercise <code class="highlighter-rouge">∸-|-assoc</code></h4>
+<h4 id="monus-plus-assoc">Exercise <code class="language-plaintext highlighter-rouge">∸-|-assoc</code></h4>
 
 <p>Show that monus associates with addition, that is,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m ∸ n ∸ p ≡ m ∸ (n + p)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m ∸ n ∸ p ≡ m ∸ (n + p)
 </code></pre></div></div>
 
-<p>for all naturals <code class="highlighter-rouge">m</code>, <code class="highlighter-rouge">n</code>, and <code class="highlighter-rouge">p</code>.</p>
+<p>for all naturals <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code>, and <code class="language-plaintext highlighter-rouge">p</code>.</p>
 
-<h4 id="Bin-laws">Exercise <code class="highlighter-rouge">Bin-laws</code> (stretch)</h4>
+<h4 id="Bin-laws">Exercise <code class="language-plaintext highlighter-rouge">Bin-laws</code> (stretch)</h4>
 
 <p>Recall that
 Exercise [Bin][plfa.Naturals#Bin]
-defines a datatype <code class="highlighter-rouge">Bin</code> of bitstrings representing natural numbers
+defines a datatype <code class="language-plaintext highlighter-rouge">Bin</code> of bitstrings representing natural numbers
 and asks you to define functions</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inc   : Bin → Bin
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inc   : Bin → Bin
 to    : ℕ → Bin
 from  : Bin → ℕ
 </code></pre></div></div>
 
-<p>Consider the following laws, where <code class="highlighter-rouge">n</code> ranges over naturals and <code class="highlighter-rouge">x</code>
+<p>Consider the following laws, where <code class="language-plaintext highlighter-rouge">n</code> ranges over naturals and <code class="language-plaintext highlighter-rouge">x</code>
 over bitstrings.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from (inc x) ≡ suc (from x)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from (inc x) ≡ suc (from x)
 to (from n) ≡ n
 from (to x) ≡ x
 </code></pre></div></div>
@@ -270,74 +270,74 @@ from (to x) ≡ x
 
 <h2 id="relations">Relations</h2>
 
-<h4 id="orderings">Exercise <code class="highlighter-rouge">orderings</code></h4>
+<h4 id="orderings">Exercise <code class="language-plaintext highlighter-rouge">orderings</code></h4>
 
 <p>Give an example of a preorder that is not a partial order.</p>
 
 <p>Give an example of a partial order that is not a preorder.</p>
 
-<h4 id="leq-antisym-cases">Exercise <code class="highlighter-rouge">≤-antisym-cases</code></h4>
+<h4 id="leq-antisym-cases">Exercise <code class="language-plaintext highlighter-rouge">≤-antisym-cases</code></h4>
 
-<p>The above proof omits cases where one argument is <code class="highlighter-rouge">z≤n</code> and one
-argument is <code class="highlighter-rouge">s≤s</code>.  Why is it ok to omit them?</p>
+<p>The above proof omits cases where one argument is <code class="language-plaintext highlighter-rouge">z≤n</code> and one
+argument is <code class="language-plaintext highlighter-rouge">s≤s</code>.  Why is it ok to omit them?</p>
 
-<h4 id="exercise--mono--stretch">Exercise <code class="highlighter-rouge">*-mono-≤</code> (stretch)</h4>
+<h4 id="exercise--mono--stretch">Exercise <code class="language-plaintext highlighter-rouge">*-mono-≤</code> (stretch)</h4>
 
 <p>Show that multiplication is monotonic with regard to inequality.</p>
 
-<h4 id="less-trans">Exercise <code class="highlighter-rouge">&lt;-trans</code> (recommended)</h4>
+<h4 id="less-trans">Exercise <code class="language-plaintext highlighter-rouge">&lt;-trans</code> (recommended)</h4>
 
 <p>Show that strict inequality is transitive.</p>
 
-<h4 id="trichotomy">Exercise <code class="highlighter-rouge">trichotomy</code></h4>
+<h4 id="trichotomy">Exercise <code class="language-plaintext highlighter-rouge">trichotomy</code></h4>
 
 <p>Show that strict inequality satisfies a weak version of trichotomy, in
-the sense that for any <code class="highlighter-rouge">m</code> and <code class="highlighter-rouge">n</code> that one of the following holds:</p>
+the sense that for any <code class="language-plaintext highlighter-rouge">m</code> and <code class="language-plaintext highlighter-rouge">n</code> that one of the following holds:</p>
 <ul>
-  <li><code class="highlighter-rouge">m &lt; n</code>,</li>
-  <li><code class="highlighter-rouge">m ≡ n</code>, or</li>
-  <li><code class="highlighter-rouge">m &gt; n</code>
-Define <code class="highlighter-rouge">m &gt; n</code> to be the same as <code class="highlighter-rouge">n &lt; m</code>.
+  <li><code class="language-plaintext highlighter-rouge">m &lt; n</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">m ≡ n</code>, or</li>
+  <li><code class="language-plaintext highlighter-rouge">m &gt; n</code>
+Define <code class="language-plaintext highlighter-rouge">m &gt; n</code> to be the same as <code class="language-plaintext highlighter-rouge">n &lt; m</code>.
 You will need a suitable data declaration,
 similar to that used for totality.
 (We will show that the three cases are exclusive after we introduce
 [negation][plfa.Negation].)</li>
 </ul>
 
-<h4 id="plus-mono-less">Exercise <code class="highlighter-rouge">+-mono-&lt;</code></h4>
+<h4 id="plus-mono-less">Exercise <code class="language-plaintext highlighter-rouge">+-mono-&lt;</code></h4>
 
 <p>Show that addition is monotonic with respect to strict inequality.
 As with inequality, some additional definitions may be required.</p>
 
-<h4 id="leq-iff-less">Exercise <code class="highlighter-rouge">≤-iff-&lt;</code> (recommended)</h4>
+<h4 id="leq-iff-less">Exercise <code class="language-plaintext highlighter-rouge">≤-iff-&lt;</code> (recommended)</h4>
 
-<p>Show that <code class="highlighter-rouge">suc m ≤ n</code> implies <code class="highlighter-rouge">m &lt; n</code>, and conversely.</p>
+<p>Show that <code class="language-plaintext highlighter-rouge">suc m ≤ n</code> implies <code class="language-plaintext highlighter-rouge">m &lt; n</code>, and conversely.</p>
 
-<h4 id="less-trans-revisited">Exercise <code class="highlighter-rouge">&lt;-trans-revisited</code></h4>
+<h4 id="less-trans-revisited">Exercise <code class="language-plaintext highlighter-rouge">&lt;-trans-revisited</code></h4>
 
 <p>Give an alternative proof that strict inequality is transitive,
 using the relating between strict inequality and inequality and
 the fact that inequality is transitive.</p>
 
-<h4 id="odd-plus-odd">Exercise <code class="highlighter-rouge">o+o≡e</code> (stretch)</h4>
+<h4 id="odd-plus-odd">Exercise <code class="language-plaintext highlighter-rouge">o+o≡e</code> (stretch)</h4>
 
 <p>Show that the sum of two odd numbers is even.</p>
 
-<h4 id="Bin-predicates">Exercise <code class="highlighter-rouge">Bin-predicates</code> (stretch)</h4>
+<h4 id="Bin-predicates">Exercise <code class="language-plaintext highlighter-rouge">Bin-predicates</code> (stretch)</h4>
 
 <p>Recall that
 Exercise [Bin][plfa.Naturals#Bin]
-defines a datatype <code class="highlighter-rouge">Bin</code> of bitstrings representing natural numbers.
+defines a datatype <code class="language-plaintext highlighter-rouge">Bin</code> of bitstrings representing natural numbers.
 Representations are not unique due to leading zeros.
 Hence, eleven may be represented by both of the following</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x1 x1 x0 x1 nil
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x1 x1 x0 x1 nil
 x1 x1 x0 x1 x0 x0 nil
 </code></pre></div></div>
 
 <p>Define a predicate</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Can : Bin → Set
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Can : Bin → Set
 </code></pre></div></div>
 
 <p>over all bitstrings that holds if the bitstring is canonical, meaning
@@ -345,7 +345,7 @@ it has no leading zeros; the first representation of eleven above is
 canonical, and the second is not.  To define it, you will need an
 auxiliary predicate</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>One : Bin → Set
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>One : Bin → Set
 </code></pre></div></div>
 
 <p>that holds only if the bistring has a leading one.  A bitstring is
@@ -354,7 +354,7 @@ if it consists of a single zero (representing zero).</p>
 
 <p>Show that increment preserves canonical bitstrings.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Can x
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Can x
 ------------
 Can (inc x)
 </code></pre></div></div>
@@ -362,20 +362,20 @@ Can (inc x)
 <p>Show that converting a natural to a bitstring always yields a
 canonical bitstring.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------
 Can (to n)
 </code></pre></div></div>
 
 <p>Show that converting a canonical bitstring to a natural
 and back is the identity.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Can x
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Can x
 ---------------
 to (from x) ≡ x
 </code></pre></div></div>
 
 <p>(Hint: For each of these, you may first need to prove related
-properties of <code class="highlighter-rouge">One</code>.)</p>
+properties of <code class="language-plaintext highlighter-rouge">One</code>.)</p>
 
   </div>
 
@@ -422,6 +422,18 @@ properties of <code class="highlighter-rouge">One</code>.)</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

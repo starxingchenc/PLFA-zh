@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DeBruijn: Inherently typed de Bruijn representation | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="DeBruijn: Inherently typed de Bruijn representation" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/DeBruijn/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/DeBruijn/","headline":"DeBruijn: Inherently typed de Bruijn representation","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"DeBruijn: Inherently typed de Bruijn representation","url":"https://agda-zh.github.io/PLFA-zh/DeBruijn/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -107,13 +107,13 @@ term and the structure of the derivation showing that it is
 well typed.  For example, here is the term for the Church
 numeral two:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoᶜ : Term
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoᶜ : Term
 twoᶜ = ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")
 </code></pre></div></div>
 
 <p>And here is its corresponding type derivation:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢twoᶜ : ∀ {A} → ∅ ⊢ twoᶜ ⦂ Ch A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢twoᶜ : ∀ {A} → ∅ ⊢ twoᶜ ⦂ Ch A
 ⊢twoᶜ = ⊢ƛ (⊢ƛ (⊢` ∋s · (⊢` ∋s · ⊢` ∋z)))
   where
   ∋s = S ("s" ≠ "z") Z
@@ -128,18 +128,18 @@ in full
 The two definitions are in close correspondence, where:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">`_</code> corresponds to <code class="highlighter-rouge">⊢`</code></li>
-  <li><code class="highlighter-rouge">ƛ_⇒_</code>   corresponds to <code class="highlighter-rouge">⊢ƛ</code></li>
-  <li><code class="highlighter-rouge">_·_</code>    corresponds to <code class="highlighter-rouge">_·_</code></li>
+  <li><code class="language-plaintext highlighter-rouge">`_</code> corresponds to <code class="language-plaintext highlighter-rouge">⊢`</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ƛ_⇒_</code>   corresponds to <code class="language-plaintext highlighter-rouge">⊢ƛ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_·_</code>    corresponds to <code class="language-plaintext highlighter-rouge">_·_</code></li>
 </ul>
 
-<p>Further, if we think of <code class="highlighter-rouge">Z</code> as zero and <code class="highlighter-rouge">S</code> as successor, then
+<p>Further, if we think of <code class="language-plaintext highlighter-rouge">Z</code> as zero and <code class="language-plaintext highlighter-rouge">S</code> as successor, then
 the lookup derivation for each variable corresponds to a
 number which tells us how many enclosing binding terms to
-count to find the binding of that variable.  Here <code class="highlighter-rouge">"z"</code>
-corresponds to <code class="highlighter-rouge">Z</code> or zero and <code class="highlighter-rouge">"s"</code> corresponds to <code class="highlighter-rouge">S Z</code> or
-one.  And, indeed, <code class="highlighter-rouge">"z"</code> is bound by the inner abstraction
-(count outward past zero abstractions) and <code class="highlighter-rouge">"s"</code> is bound by the
+count to find the binding of that variable.  Here <code class="language-plaintext highlighter-rouge">"z"</code>
+corresponds to <code class="language-plaintext highlighter-rouge">Z</code> or zero and <code class="language-plaintext highlighter-rouge">"s"</code> corresponds to <code class="language-plaintext highlighter-rouge">S Z</code> or
+one.  And, indeed, <code class="language-plaintext highlighter-rouge">"z"</code> is bound by the inner abstraction
+(count outward past zero abstractions) and <code class="language-plaintext highlighter-rouge">"s"</code> is bound by the
 outer abstraction (count outward past one abstraction).</p>
 
 <p>In this chapter, we are going to exploit this correspondence,
@@ -147,15 +147,15 @@ and introduce a new notation for terms that simultaneously
 represents the term and its type derivation.  Now we will
 write the following:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoᶜ  :  ∅ ⊢ Ch `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoᶜ  :  ∅ ⊢ Ch `ℕ
 twoᶜ  =  ƛ ƛ (# 1 · (# 1 · # 0))
 </code></pre></div></div>
 
 <p>A variable is represented by a natural number (written with
-<code class="highlighter-rouge">Z</code> and <code class="highlighter-rouge">S</code>, and abbreviated in the usual way), and tells us
+<code class="language-plaintext highlighter-rouge">Z</code> and <code class="language-plaintext highlighter-rouge">S</code>, and abbreviated in the usual way), and tells us
 how many enclosing binding terms to count to find the binding
-of that variable. Thus, <code class="highlighter-rouge"># 0</code> is bound at the inner <code class="highlighter-rouge">ƛ</code>, and
-<code class="highlighter-rouge"># 1</code> at the outer <code class="highlighter-rouge">ƛ</code>.</p>
+of that variable. Thus, <code class="language-plaintext highlighter-rouge"># 0</code> is bound at the inner <code class="language-plaintext highlighter-rouge">ƛ</code>, and
+<code class="language-plaintext highlighter-rouge"># 1</code> at the outer <code class="language-plaintext highlighter-rouge">ƛ</code>.</p>
 
 <p>Replacing variables by numbers in this way is called <em>de
 Bruijn representation</em>, and the numbers themselves are called
@@ -169,13 +169,13 @@ equivalence class of terms under alpha renaming.</p>
 <p>The other important feature of our chosen representation is
 that it is <em>inherently typed</em>.  In the previous two chapters,
 the definition of terms and the definition of types are
-completely separate.  All terms have type <code class="highlighter-rouge">Term</code>, and nothing
+completely separate.  All terms have type <code class="language-plaintext highlighter-rouge">Term</code>, and nothing
 in Agda prevents one from writing a nonsense term such as
-<code class="highlighter-rouge">`zero · `suc `zero</code> which has no type.  Such terms that
+<code class="language-plaintext highlighter-rouge">`zero · `suc `zero</code> which has no type.  Such terms that
 exist independent of types are sometimes called <em>preterms</em> or
-<em>raw terms</em>.  Here we are going to replace the type <code class="highlighter-rouge">Term</code> of
-raw terms by the more sophisticated type <code class="highlighter-rouge">Γ ⊢ A</code> of inherently
-typed terms, which in context <code class="highlighter-rouge">Γ</code> have type <code class="highlighter-rouge">A</code>.</p>
+<em>raw terms</em>.  Here we are going to replace the type <code class="language-plaintext highlighter-rouge">Term</code> of
+raw terms by the more sophisticated type <code class="language-plaintext highlighter-rouge">Γ ⊢ A</code> of inherently
+typed terms, which in context <code class="language-plaintext highlighter-rouge">Γ</code> have type <code class="language-plaintext highlighter-rouge">A</code>.</p>
 
 <p>While these two choices fit well, they are independent.  One
 can use de Bruijn indices in raw terms, or (with more
@@ -190,21 +190,21 @@ are inherently scoped but not typed.</p>
 proceeding further let’s consider a second example.  Here is
 the term that adds two naturals:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus : Term
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus : Term
 plus = μ "+" ⇒ ƛ "m" ⇒ ƛ "n" ⇒
          case ` "m"
            [zero⇒ ` "n"
            |suc "m" ⇒ `suc (` "+" · ` "m" · ` "n") ]
 </code></pre></div></div>
 
-<p>Note variable <code class="highlighter-rouge">"m"</code> is bound twice, once in a lambda abstraction
+<p>Note variable <code class="language-plaintext highlighter-rouge">"m"</code> is bound twice, once in a lambda abstraction
 and once in the successor branch of the case.  Any appearance
-of <code class="highlighter-rouge">"m"</code> in the successor branch must refer to the latter
+of <code class="language-plaintext highlighter-rouge">"m"</code> in the successor branch must refer to the latter
 binding, due to shadowing.</p>
 
 <p>Here is its corresponding type derivation:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢plus : ∅ ⊢ plus ⦂ `ℕ ⇒ `ℕ ⇒ `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊢plus : ∅ ⊢ plus ⦂ `ℕ ⇒ `ℕ ⇒ `ℕ
 ⊢plus = ⊢μ (⊢ƛ (⊢ƛ (⊢case (⊢` ∋m) (⊢` ∋n)
          (⊢suc (⊢` ∋+ · ⊢` ∋m′ · ⊢` ∋n′)))))
   where
@@ -219,22 +219,22 @@ binding, due to shadowing.</p>
 addition to the previous correspondences we have:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">`zero</code> corresponds to <code class="highlighter-rouge">⊢zero</code></li>
-  <li><code class="highlighter-rouge">`suc_</code> corresponds to <code class="highlighter-rouge">⊢suc</code></li>
-  <li><code class="highlighter-rouge">case_[zero⇒_|suc_⇒_]</code> corresponds to <code class="highlighter-rouge">⊢case</code></li>
-  <li><code class="highlighter-rouge">μ_⇒_</code> corresponds to <code class="highlighter-rouge">⊢μ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">`zero</code> corresponds to <code class="language-plaintext highlighter-rouge">⊢zero</code></li>
+  <li><code class="language-plaintext highlighter-rouge">`suc_</code> corresponds to <code class="language-plaintext highlighter-rouge">⊢suc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">case_[zero⇒_|suc_⇒_]</code> corresponds to <code class="language-plaintext highlighter-rouge">⊢case</code></li>
+  <li><code class="language-plaintext highlighter-rouge">μ_⇒_</code> corresponds to <code class="language-plaintext highlighter-rouge">⊢μ</code></li>
 </ul>
 
-<p>Note the two lookup judgments <code class="highlighter-rouge">∋m</code> and <code class="highlighter-rouge">∋m′</code> refer to two
-different bindings of variables named <code class="highlighter-rouge">"m"</code>.  In contrast, the
-two judgments <code class="highlighter-rouge">∋n</code> and <code class="highlighter-rouge">∋n′</code> both refer to the same binding
-of <code class="highlighter-rouge">"n"</code> but accessed in different contexts, the first where
-<code class="highlighter-rouge">"n"</code> is the last binding in the context, and the second after
-<code class="highlighter-rouge">"m"</code> is bound in the successor branch of the case.</p>
+<p>Note the two lookup judgments <code class="language-plaintext highlighter-rouge">∋m</code> and <code class="language-plaintext highlighter-rouge">∋m′</code> refer to two
+different bindings of variables named <code class="language-plaintext highlighter-rouge">"m"</code>.  In contrast, the
+two judgments <code class="language-plaintext highlighter-rouge">∋n</code> and <code class="language-plaintext highlighter-rouge">∋n′</code> both refer to the same binding
+of <code class="language-plaintext highlighter-rouge">"n"</code> but accessed in different contexts, the first where
+<code class="language-plaintext highlighter-rouge">"n"</code> is the last binding in the context, and the second after
+<code class="language-plaintext highlighter-rouge">"m"</code> is bound in the successor branch of the case.</p>
 
 <p>Here is the term and its type derivation in the notation of this chapter:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus : ∀ {Γ} → Γ ⊢ `ℕ ⇒ `ℕ ⇒ `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus : ∀ {Γ} → Γ ⊢ `ℕ ⇒ `ℕ ⇒ `ℕ
 plus = μ ƛ ƛ case (# 1) (# 0) (`suc (# 3 · # 0 · # 1))
 </code></pre></div></div>
 
@@ -242,24 +242,24 @@ plus = μ ƛ ƛ case (# 1) (# 0) (`suc (# 3 · # 0 · # 1))
 to a lookup derivation:</p>
 
 <ul>
-  <li><code class="highlighter-rouge"># 1</code> corresponds to <code class="highlighter-rouge">∋m</code></li>
-  <li><code class="highlighter-rouge"># 0</code> corresponds to <code class="highlighter-rouge">∋n</code></li>
-  <li><code class="highlighter-rouge"># 3</code> corresponds to <code class="highlighter-rouge">∋+</code></li>
-  <li><code class="highlighter-rouge"># 0</code> corresponds to <code class="highlighter-rouge">∋m′</code></li>
-  <li><code class="highlighter-rouge"># 1</code> corresponds to <code class="highlighter-rouge">∋n′</code></li>
+  <li><code class="language-plaintext highlighter-rouge"># 1</code> corresponds to <code class="language-plaintext highlighter-rouge">∋m</code></li>
+  <li><code class="language-plaintext highlighter-rouge"># 0</code> corresponds to <code class="language-plaintext highlighter-rouge">∋n</code></li>
+  <li><code class="language-plaintext highlighter-rouge"># 3</code> corresponds to <code class="language-plaintext highlighter-rouge">∋+</code></li>
+  <li><code class="language-plaintext highlighter-rouge"># 0</code> corresponds to <code class="language-plaintext highlighter-rouge">∋m′</code></li>
+  <li><code class="language-plaintext highlighter-rouge"># 1</code> corresponds to <code class="language-plaintext highlighter-rouge">∋n′</code></li>
 </ul>
 
-<p>The de Bruijn index counts the number of <code class="highlighter-rouge">S</code> constructs in the
-corresponding lookup derivation.  Variable <code class="highlighter-rouge">"n"</code> bound in the
-inner abstraction is referred to as <code class="highlighter-rouge"># 0</code> in the zero branch
-of the case but as <code class="highlighter-rouge"># 1</code> in the successor branch of the case,
-because of the intervening binding.  Variable <code class="highlighter-rouge">"m"</code> bound in the
-lambda abstraction is referred to by the first <code class="highlighter-rouge"># 1</code> in the
-code, while variable <code class="highlighter-rouge">"m"</code> bound in the successor branch of the
-case is referred to by the second <code class="highlighter-rouge"># 0</code>.  There is no
+<p>The de Bruijn index counts the number of <code class="language-plaintext highlighter-rouge">S</code> constructs in the
+corresponding lookup derivation.  Variable <code class="language-plaintext highlighter-rouge">"n"</code> bound in the
+inner abstraction is referred to as <code class="language-plaintext highlighter-rouge"># 0</code> in the zero branch
+of the case but as <code class="language-plaintext highlighter-rouge"># 1</code> in the successor branch of the case,
+because of the intervening binding.  Variable <code class="language-plaintext highlighter-rouge">"m"</code> bound in the
+lambda abstraction is referred to by the first <code class="language-plaintext highlighter-rouge"># 1</code> in the
+code, while variable <code class="language-plaintext highlighter-rouge">"m"</code> bound in the successor branch of the
+case is referred to by the second <code class="language-plaintext highlighter-rouge"># 0</code>.  There is no
 shadowing: with variable names, there is no way to refer to
 the former binding in the scope of the latter, but with de
-Bruijn indices it could be referred to as <code class="highlighter-rouge"># 2</code>.</p>
+Bruijn indices it could be referred to as <code class="language-plaintext highlighter-rouge"># 2</code>.</p>
 
 <h2 id="order-of-presentation">Order of presentation</h2>
 
@@ -315,16 +315,16 @@ Contexts are formalised as follows:</p>
   <a id="Context._,_"></a><a id="8346" href="/PLFA-zh/DeBruijn/#8346" class="InductiveConstructor Operator">_,_</a> <a id="8350" class="Symbol">:</a> <a id="8352" href="plfa.DeBruijn.html#8308" class="Datatype">Context</a> <a id="8360" class="Symbol">→</a> <a id="8362" href="plfa.DeBruijn.html#8140" class="Datatype">Type</a> <a id="8367" class="Symbol">→</a> <a id="8369" href="plfa.DeBruijn.html#8308" class="Datatype">Context</a>
 </pre>
 <p>A context is just a list of types, with the type of the most
-recently bound variable on the right.  As before, we let <code class="highlighter-rouge">Γ</code>
-and <code class="highlighter-rouge">Δ</code> range over contexts.  We write <code class="highlighter-rouge">∅</code> for the empty
-context, and <code class="highlighter-rouge">Γ , A</code> for the context <code class="highlighter-rouge">Γ</code> extended by type <code class="highlighter-rouge">A</code>.
+recently bound variable on the right.  As before, we let <code class="language-plaintext highlighter-rouge">Γ</code>
+and <code class="language-plaintext highlighter-rouge">Δ</code> range over contexts.  We write <code class="language-plaintext highlighter-rouge">∅</code> for the empty
+context, and <code class="language-plaintext highlighter-rouge">Γ , A</code> for the context <code class="language-plaintext highlighter-rouge">Γ</code> extended by type <code class="language-plaintext highlighter-rouge">A</code>.
 For example</p>
 <pre class="Agda"><a id="8639" href="/PLFA-zh/DeBruijn/#8639" class="Function">_</a> <a id="8641" class="Symbol">:</a> <a id="8643" href="plfa.DeBruijn.html#8308" class="Datatype">Context</a>
 <a id="8651" class="Symbol">_</a> <a id="8653" class="Symbol">=</a> <a id="8655" href="/PLFA-zh/DeBruijn/#8330" class="InductiveConstructor">∅</a> <a id="8657" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="8659" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="8662" href="plfa.DeBruijn.html#8159" class="InductiveConstructor Operator">⇒</a> <a id="8664" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="8667" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="8669" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a>
 </pre>
 <p>is a context with two variables in scope, where the outer
-bound one has type <code class="highlighter-rouge">`ℕ ⇒ `ℕ</code>, and the inner bound one has
-type <code class="highlighter-rouge">`ℕ</code>.</p>
+bound one has type <code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ</code>, and the inner bound one has
+type <code class="language-plaintext highlighter-rouge">`ℕ</code>.</p>
 
 <h3 id="variables-and-the-lookup-judgment">Variables and the lookup judgment</h3>
 
@@ -332,10 +332,10 @@ type <code class="highlighter-rouge">`ℕ</code>.</p>
 They are represented by de Bruijn indices, and hence also
 correspond to natural numbers.  We write</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ∋ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ∋ A
 </code></pre></div></div>
 
-<p>for variables which in context <code class="highlighter-rouge">Γ</code> have type <code class="highlighter-rouge">A</code>.  Their
+<p>for variables which in context <code class="language-plaintext highlighter-rouge">Γ</code> have type <code class="language-plaintext highlighter-rouge">A</code>.  Their
 formalisation looks exactly like the old lookup judgment, but
 with all variable names dropped:</p>
 <pre class="Agda"><a id="9180" class="Keyword">data</a> <a id="_∋_"></a><a id="9185" href="/PLFA-zh/DeBruijn/#9185" class="Datatype Operator">_∋_</a> <a id="9189" class="Symbol">:</a> <a id="9191" href="plfa.DeBruijn.html#8308" class="Datatype">Context</a> <a id="9199" class="Symbol">→</a> <a id="9201" href="plfa.DeBruijn.html#8140" class="Datatype">Type</a> <a id="9206" class="Symbol">→</a> <a id="9208" class="PrimitiveType">Set</a> <a id="9212" class="Keyword">where</a>
@@ -349,19 +349,19 @@ with all variable names dropped:</p>
       <a id="9302" class="Comment">---------</a>
     <a id="9316" class="Symbol">→</a> <a id="9318" href="/PLFA-zh/DeBruijn/#9277" class="Bound">Γ</a> <a id="9320" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="9322" href="plfa.DeBruijn.html#9281" class="Bound">B</a> <a id="9324" href="plfa.DeBruijn.html#9185" class="Datatype Operator">∋</a> <a id="9326" href="plfa.DeBruijn.html#9279" class="Bound">A</a>
 </pre>
-<p>Constructor <code class="highlighter-rouge">S</code> no longer requires an additional parameter,
+<p>Constructor <code class="language-plaintext highlighter-rouge">S</code> no longer requires an additional parameter,
 since without names shadowing is no longer an issue.  Now
-constructors <code class="highlighter-rouge">Z</code> and <code class="highlighter-rouge">S</code> correspond even more closely to the
-constructors <code class="highlighter-rouge">here</code> and <code class="highlighter-rouge">there</code> for the element-of relation
-<code class="highlighter-rouge">_∈_</code> on lists, as well as to constructors <code class="highlighter-rouge">zero</code> and <code class="highlighter-rouge">suc</code>
+constructors <code class="language-plaintext highlighter-rouge">Z</code> and <code class="language-plaintext highlighter-rouge">S</code> correspond even more closely to the
+constructors <code class="language-plaintext highlighter-rouge">here</code> and <code class="language-plaintext highlighter-rouge">there</code> for the element-of relation
+<code class="language-plaintext highlighter-rouge">_∈_</code> on lists, as well as to constructors <code class="language-plaintext highlighter-rouge">zero</code> and <code class="language-plaintext highlighter-rouge">suc</code>
 for natural numbers.</p>
 
 <p>For example, consider the following old-style lookup
 judgments:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "z" ⦂ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "s" ⦂ `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "z" ⦂ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ∋ "s" ⦂ `ℕ ⇒ `ℕ</code></li>
 </ul>
 
 <p>They correspond to the following inherently-typed variables:</p>
@@ -371,9 +371,9 @@ judgments:</p>
 <a id="9918" href="/PLFA-zh/DeBruijn/#9918" class="Function">_</a> <a id="9920" class="Symbol">:</a> <a id="9922" href="plfa.DeBruijn.html#8330" class="InductiveConstructor">∅</a> <a id="9924" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="9926" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="9929" href="plfa.DeBruijn.html#8159" class="InductiveConstructor Operator">⇒</a> <a id="9931" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="9934" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="9936" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="9939" href="plfa.DeBruijn.html#9185" class="Datatype Operator">∋</a> <a id="9941" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="9944" href="plfa.DeBruijn.html#8159" class="InductiveConstructor Operator">⇒</a> <a id="9946" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a>
 <a id="9949" class="Symbol">_</a> <a id="9951" class="Symbol">=</a> <a id="9953" href="/PLFA-zh/DeBruijn/#9269" class="InductiveConstructor Operator">S</a> <a id="9955" href="plfa.DeBruijn.html#9221" class="InductiveConstructor">Z</a>
 </pre>
-<p>In the given context, <code class="highlighter-rouge">"z"</code> is represented by <code class="highlighter-rouge">Z</code>
+<p>In the given context, <code class="language-plaintext highlighter-rouge">"z"</code> is represented by <code class="language-plaintext highlighter-rouge">Z</code>
 (as the most recently bound variable),
-and <code class="highlighter-rouge">"s"</code> by <code class="highlighter-rouge">S Z</code>
+and <code class="language-plaintext highlighter-rouge">"s"</code> by <code class="language-plaintext highlighter-rouge">S Z</code>
 (as the next most recently bound variable).</p>
 
 <h3 id="terms-and-the-typing-judgment">Terms and the typing judgment</h3>
@@ -381,10 +381,10 @@ and <code class="highlighter-rouge">"s"</code> by <code class="highlighter-rouge
 <p>Inherently typed terms correspond to the typing judgment.
 We write</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ A
 </code></pre></div></div>
 
-<p>for terms which in context <code class="highlighter-rouge">Γ</code> has type <code class="highlighter-rouge">A</code>.  Their
+<p>for terms which in context <code class="language-plaintext highlighter-rouge">Γ</code> has type <code class="language-plaintext highlighter-rouge">A</code>.  Their
 formalisation looks exactly like the old typing judgment, but
 with all terms and variable names dropped:</p>
 <pre class="Agda"><a id="10389" class="Keyword">data</a> <a id="_⊢_"></a><a id="10394" href="/PLFA-zh/DeBruijn/#10394" class="Datatype Operator">_⊢_</a> <a id="10398" class="Symbol">:</a> <a id="10400" href="plfa.DeBruijn.html#8308" class="Datatype">Context</a> <a id="10408" class="Symbol">→</a> <a id="10410" href="plfa.DeBruijn.html#8140" class="Datatype">Type</a> <a id="10415" class="Symbol">→</a> <a id="10417" class="PrimitiveType">Set</a> <a id="10421" class="Keyword">where</a>
@@ -435,12 +435,12 @@ term.</p>
 judgments:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "z" ⦂ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" ⦂ `ℕ ⇒ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · ` "z" ⦂  `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · (` "s" · ` "z") ⦂  `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ ⊢ (ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) ⦂  `ℕ ⇒ `ℕ</code></li>
-  <li><code class="highlighter-rouge">∅ ⊢ ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) ⦂  (`ℕ ⇒ `ℕ) ⇒ `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "z" ⦂ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" ⦂ `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · ` "z" ⦂  `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ , "z" ⦂ `ℕ ⊢ ` "s" · (` "s" · ` "z") ⦂  `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ , "s" ⦂ `ℕ ⇒ `ℕ ⊢ (ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) ⦂  `ℕ ⇒ `ℕ</code></li>
+  <li><code class="language-plaintext highlighter-rouge">∅ ⊢ ƛ "s" ⇒ ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) ⦂  (`ℕ ⇒ `ℕ) ⇒ `ℕ ⇒ `ℕ</code></li>
 </ul>
 
 <p>They correspond to the following inherently-typed terms:</p>
@@ -476,7 +476,7 @@ two.</p>
 </pre>
 <p>We intend to apply the function only when the natural is
 shorter than the length of the context, which we indicate by
-postulating an <code class="highlighter-rouge">impossible</code> term, just as we did
+postulating an <code class="language-plaintext highlighter-rouge">impossible</code> term, just as we did
 <a href="/PLFA-zh/Lambda/#impossible">here</a>.</p>
 
 <p>Given the above, we can convert a natural to a corresponding
@@ -517,7 +517,7 @@ for comparison.</p>
 <a id="13434" href="/PLFA-zh/DeBruijn/#13413" class="Function">2+2</a> <a id="13438" class="Symbol">=</a> <a id="13440" href="plfa.DeBruijn.html#13323" class="Function">plus</a> <a id="13445" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="13447" href="plfa.DeBruijn.html#13279" class="Function">two</a> <a id="13451" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="13453" href="plfa.DeBruijn.html#13279" class="Function">two</a>
 </pre>
 <p>We generalise to arbitrary contexts because later we will give examples
-where <code class="highlighter-rouge">two</code> appears nested inside binders.</p>
+where <code class="language-plaintext highlighter-rouge">two</code> appears nested inside binders.</p>
 
 <p>Next, computing two plus two on Church numerals:</p>
 <pre class="Agda"><a id="Ch"></a><a id="13630" href="/PLFA-zh/DeBruijn/#13630" class="Function">Ch</a> <a id="13633" class="Symbol">:</a> <a id="13635" href="plfa.DeBruijn.html#8140" class="Datatype">Type</a> <a id="13640" class="Symbol">→</a> <a id="13642" href="plfa.DeBruijn.html#8140" class="Datatype">Type</a>
@@ -536,10 +536,10 @@ where <code class="highlighter-rouge">two</code> appears nested inside binders.<
 <a id="13891" href="/PLFA-zh/DeBruijn/#13869" class="Function">2+2ᶜ</a> <a id="13896" class="Symbol">=</a> <a id="13898" href="plfa.DeBruijn.html#13731" class="Function">plusᶜ</a> <a id="13904" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="13906" href="plfa.DeBruijn.html#13673" class="Function">twoᶜ</a> <a id="13911" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="13913" href="plfa.DeBruijn.html#13673" class="Function">twoᶜ</a> <a id="13918" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="13920" href="plfa.DeBruijn.html#13821" class="Function">sucᶜ</a> <a id="13925" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="13927" href="plfa.DeBruijn.html#10627" class="InductiveConstructor">`zero</a>
 </pre>
 <p>As before we generalise everything to arbitrary
-contexts.  While we are at it, we also generalise <code class="highlighter-rouge">twoᶜ</code> and
-<code class="highlighter-rouge">plusᶜ</code> to Church numerals over arbitrary types.</p>
+contexts.  While we are at it, we also generalise <code class="language-plaintext highlighter-rouge">twoᶜ</code> and
+<code class="language-plaintext highlighter-rouge">plusᶜ</code> to Church numerals over arbitrary types.</p>
 
-<h4 id="exercise-mul-recommended">Exercise (<code class="highlighter-rouge">mul</code>) (recommended)</h4>
+<h4 id="exercise-mul-recommended">Exercise (<code class="language-plaintext highlighter-rouge">mul</code>) (recommended)</h4>
 
 <p>Write out the definition of a lambda term that multiplies
 two natural numbers, now adapted to the inherently typed
@@ -569,19 +569,19 @@ old extension lemma, but with all names and terms dropped:</p>
 <a id="15102" href="/PLFA-zh/DeBruijn/#14972" class="Function">ext</a> <a id="15106" href="plfa.DeBruijn.html#15106" class="Bound">ρ</a> <a id="15108" href="plfa.DeBruijn.html#9221" class="InductiveConstructor">Z</a>      <a id="15115" class="Symbol">=</a>  <a id="15118" href="plfa.DeBruijn.html#9221" class="InductiveConstructor">Z</a>
 <a id="15120" href="/PLFA-zh/DeBruijn/#14972" class="Function">ext</a> <a id="15124" href="plfa.DeBruijn.html#15124" class="Bound">ρ</a> <a id="15126" class="Symbol">(</a><a id="15127" href="plfa.DeBruijn.html#9269" class="InductiveConstructor Operator">S</a> <a id="15129" href="plfa.DeBruijn.html#15129" class="Bound">x</a><a id="15130" class="Symbol">)</a>  <a id="15133" class="Symbol">=</a>  <a id="15136" href="plfa.DeBruijn.html#9269" class="InductiveConstructor Operator">S</a> <a id="15138" class="Symbol">(</a><a id="15139" href="plfa.DeBruijn.html#15124" class="Bound">ρ</a> <a id="15141" href="plfa.DeBruijn.html#15129" class="Bound">x</a><a id="15142" class="Symbol">)</a>
 </pre>
-<p>Let <code class="highlighter-rouge">ρ</code> be the name of the map that takes variables in <code class="highlighter-rouge">Γ</code>
-to variables in <code class="highlighter-rouge">Δ</code>.  Consider the de Bruijn index of the
-variable in <code class="highlighter-rouge">Γ , B</code>:</p>
+<p>Let <code class="language-plaintext highlighter-rouge">ρ</code> be the name of the map that takes variables in <code class="language-plaintext highlighter-rouge">Γ</code>
+to variables in <code class="language-plaintext highlighter-rouge">Δ</code>.  Consider the de Bruijn index of the
+variable in <code class="language-plaintext highlighter-rouge">Γ , B</code>:</p>
 
 <ul>
   <li>
-    <p>If it is <code class="highlighter-rouge">Z</code>, which has type <code class="highlighter-rouge">B</code> in <code class="highlighter-rouge">Γ , B</code>,
-then we return <code class="highlighter-rouge">Z</code>, which also has type <code class="highlighter-rouge">B</code> in <code class="highlighter-rouge">Δ , B</code>.</p>
+    <p>If it is <code class="language-plaintext highlighter-rouge">Z</code>, which has type <code class="language-plaintext highlighter-rouge">B</code> in <code class="language-plaintext highlighter-rouge">Γ , B</code>,
+then we return <code class="language-plaintext highlighter-rouge">Z</code>, which also has type <code class="language-plaintext highlighter-rouge">B</code> in <code class="language-plaintext highlighter-rouge">Δ , B</code>.</p>
   </li>
   <li>
-    <p>If it is <code class="highlighter-rouge">S x</code>, for some variable <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">Γ</code>, then <code class="highlighter-rouge">ρ x</code>
-is a variable in <code class="highlighter-rouge">Δ</code>, and hence <code class="highlighter-rouge">S (ρ x)</code> is a variable in
-<code class="highlighter-rouge">Δ , B</code>.</p>
+    <p>If it is <code class="language-plaintext highlighter-rouge">S x</code>, for some variable <code class="language-plaintext highlighter-rouge">x</code> in <code class="language-plaintext highlighter-rouge">Γ</code>, then <code class="language-plaintext highlighter-rouge">ρ x</code>
+is a variable in <code class="language-plaintext highlighter-rouge">Δ</code>, and hence <code class="language-plaintext highlighter-rouge">S (ρ x)</code> is a variable in
+<code class="language-plaintext highlighter-rouge">Δ , B</code>.</p>
   </li>
 </ul>
 
@@ -601,16 +601,16 @@ terms in the second:</p>
 <a id="16039" href="/PLFA-zh/DeBruijn/#15721" class="Function">rename</a> <a id="16046" href="plfa.DeBruijn.html#16046" class="Bound">ρ</a> <a id="16048" class="Symbol">(</a><a id="16049" href="plfa.DeBruijn.html#10731" class="InductiveConstructor">case</a> <a id="16054" href="plfa.DeBruijn.html#16054" class="Bound">L</a> <a id="16056" href="plfa.DeBruijn.html#16056" class="Bound">M</a> <a id="16058" href="plfa.DeBruijn.html#16058" class="Bound">N</a><a id="16059" class="Symbol">)</a>   <a id="16063" class="Symbol">=</a>  <a id="16066" href="plfa.DeBruijn.html#10731" class="InductiveConstructor">case</a> <a id="16071" class="Symbol">(</a><a id="16072" href="plfa.DeBruijn.html#15721" class="Function">rename</a> <a id="16079" href="plfa.DeBruijn.html#16046" class="Bound">ρ</a> <a id="16081" href="plfa.DeBruijn.html#16054" class="Bound">L</a><a id="16082" class="Symbol">)</a> <a id="16084" class="Symbol">(</a><a id="16085" href="plfa.DeBruijn.html#15721" class="Function">rename</a> <a id="16092" href="plfa.DeBruijn.html#16046" class="Bound">ρ</a> <a id="16094" href="plfa.DeBruijn.html#16056" class="Bound">M</a><a id="16095" class="Symbol">)</a> <a id="16097" class="Symbol">(</a><a id="16098" href="plfa.DeBruijn.html#15721" class="Function">rename</a> <a id="16105" class="Symbol">(</a><a id="16106" href="plfa.DeBruijn.html#14972" class="Function">ext</a> <a id="16110" href="plfa.DeBruijn.html#16046" class="Bound">ρ</a><a id="16111" class="Symbol">)</a> <a id="16113" href="plfa.DeBruijn.html#16058" class="Bound">N</a><a id="16114" class="Symbol">)</a>
 <a id="16116" href="/PLFA-zh/DeBruijn/#15721" class="Function">rename</a> <a id="16123" href="plfa.DeBruijn.html#16123" class="Bound">ρ</a> <a id="16125" class="Symbol">(</a><a id="16126" href="plfa.DeBruijn.html#10821" class="InductiveConstructor Operator">μ</a> <a id="16128" href="plfa.DeBruijn.html#16128" class="Bound">N</a><a id="16129" class="Symbol">)</a>          <a id="16140" class="Symbol">=</a>  <a id="16143" href="plfa.DeBruijn.html#10821" class="InductiveConstructor Operator">μ</a> <a id="16145" class="Symbol">(</a><a id="16146" href="plfa.DeBruijn.html#15721" class="Function">rename</a> <a id="16153" class="Symbol">(</a><a id="16154" href="plfa.DeBruijn.html#14972" class="Function">ext</a> <a id="16158" href="plfa.DeBruijn.html#16123" class="Bound">ρ</a><a id="16159" class="Symbol">)</a> <a id="16161" href="plfa.DeBruijn.html#16128" class="Bound">N</a><a id="16162" class="Symbol">)</a>
 </pre>
-<p>Let <code class="highlighter-rouge">ρ</code> be the name of the map that takes variables in <code class="highlighter-rouge">Γ</code>
-to variables in <code class="highlighter-rouge">Δ</code>.  Let’s unpack the first three cases:</p>
+<p>Let <code class="language-plaintext highlighter-rouge">ρ</code> be the name of the map that takes variables in <code class="language-plaintext highlighter-rouge">Γ</code>
+to variables in <code class="language-plaintext highlighter-rouge">Δ</code>.  Let’s unpack the first three cases:</p>
 
 <ul>
   <li>
-    <p>If the term is a variable, simply apply <code class="highlighter-rouge">ρ</code>.</p>
+    <p>If the term is a variable, simply apply <code class="language-plaintext highlighter-rouge">ρ</code>.</p>
   </li>
   <li>
     <p>If the term is an abstraction, use the previous result
-to extend the map <code class="highlighter-rouge">ρ</code> suitably and recursively rename
+to extend the map <code class="language-plaintext highlighter-rouge">ρ</code> suitably and recursively rename
 the body of the abstraction.</p>
   </li>
   <li>
@@ -642,14 +642,14 @@ and one bound variable:</p>
 <a id="17276" href="/PLFA-zh/DeBruijn/#17276" class="Function">_</a> <a id="17278" class="Symbol">:</a> <a id="17280" href="plfa.DeBruijn.html#15721" class="Function">rename</a> <a id="17287" href="plfa.DeBruijn.html#9269" class="InductiveConstructor Operator">S_</a> <a id="17290" href="plfa.DeBruijn.html#17161" class="Function">M₀</a> <a id="17293" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="17295" href="plfa.DeBruijn.html#17216" class="Function">M₁</a>
 <a id="17298" class="Symbol">_</a> <a id="17300" class="Symbol">=</a> <a id="17302" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
 </pre>
-<p>In general, <code class="highlighter-rouge">rename S_</code> will increment the de Bruijn index for
+<p>In general, <code class="language-plaintext highlighter-rouge">rename S_</code> will increment the de Bruijn index for
 each free variable by one, while leaving the index for each
 bound variable unchanged.  The code achieves this naturally:
 the map originally increments each variable by one, and is
 extended for each bound variable by a map that leaves it
 unchanged.</p>
 
-<p>We will see below that renaming by <code class="highlighter-rouge">S_</code> plays a key role in
+<p>We will see below that renaming by <code class="language-plaintext highlighter-rouge">S_</code> plays a key role in
 substitution.  For traditional uses of de Bruijn indices
 without inherent typing, this is a little tricky. The code
 keeps count of a number where all greater indexes are free and
@@ -685,26 +685,26 @@ extended to the second context similarly extended:</p>
 <a id="19234" href="/PLFA-zh/DeBruijn/#19104" class="Function">exts</a> <a id="19239" href="plfa.DeBruijn.html#19239" class="Bound">σ</a> <a id="19241" href="plfa.DeBruijn.html#9221" class="InductiveConstructor">Z</a>      <a id="19248" class="Symbol">=</a>  <a id="19251" href="plfa.DeBruijn.html#10430" class="InductiveConstructor Operator">`</a> <a id="19253" href="plfa.DeBruijn.html#9221" class="InductiveConstructor">Z</a>
 <a id="19255" href="/PLFA-zh/DeBruijn/#19104" class="Function">exts</a> <a id="19260" href="plfa.DeBruijn.html#19260" class="Bound">σ</a> <a id="19262" class="Symbol">(</a><a id="19263" href="plfa.DeBruijn.html#9269" class="InductiveConstructor Operator">S</a> <a id="19265" href="plfa.DeBruijn.html#19265" class="Bound">x</a><a id="19266" class="Symbol">)</a>  <a id="19269" class="Symbol">=</a>  <a id="19272" href="plfa.DeBruijn.html#15721" class="Function">rename</a> <a id="19279" href="plfa.DeBruijn.html#9269" class="InductiveConstructor Operator">S_</a> <a id="19282" class="Symbol">(</a><a id="19283" href="plfa.DeBruijn.html#19260" class="Bound">σ</a> <a id="19285" href="plfa.DeBruijn.html#19265" class="Bound">x</a><a id="19286" class="Symbol">)</a>
 </pre>
-<p>Let <code class="highlighter-rouge">σ</code> be the name of the map that takes variables in <code class="highlighter-rouge">Γ</code>
-to terms over <code class="highlighter-rouge">Δ</code>.  Consider the de Bruijn index of the
-variable in <code class="highlighter-rouge">Γ , B</code>:</p>
+<p>Let <code class="language-plaintext highlighter-rouge">σ</code> be the name of the map that takes variables in <code class="language-plaintext highlighter-rouge">Γ</code>
+to terms over <code class="language-plaintext highlighter-rouge">Δ</code>.  Consider the de Bruijn index of the
+variable in <code class="language-plaintext highlighter-rouge">Γ , B</code>:</p>
 
 <ul>
   <li>
-    <p>If it is <code class="highlighter-rouge">Z</code>, which has type <code class="highlighter-rouge">B</code> in <code class="highlighter-rouge">Γ , B</code>,
-then we return the term <code class="highlighter-rouge">` Z</code>, which also has
-type <code class="highlighter-rouge">B</code> in <code class="highlighter-rouge">Δ , B</code>.</p>
+    <p>If it is <code class="language-plaintext highlighter-rouge">Z</code>, which has type <code class="language-plaintext highlighter-rouge">B</code> in <code class="language-plaintext highlighter-rouge">Γ , B</code>,
+then we return the term <code class="language-plaintext highlighter-rouge">` Z</code>, which also has
+type <code class="language-plaintext highlighter-rouge">B</code> in <code class="language-plaintext highlighter-rouge">Δ , B</code>.</p>
   </li>
   <li>
-    <p>If it is <code class="highlighter-rouge">S x</code>, for some variable <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">Γ</code>, then
-<code class="highlighter-rouge">σ x</code> is a term in <code class="highlighter-rouge">Δ</code>, and hence <code class="highlighter-rouge">rename S_ (σ x)</code>
-is a term in <code class="highlighter-rouge">Δ , B</code>.</p>
+    <p>If it is <code class="language-plaintext highlighter-rouge">S x</code>, for some variable <code class="language-plaintext highlighter-rouge">x</code> in <code class="language-plaintext highlighter-rouge">Γ</code>, then
+<code class="language-plaintext highlighter-rouge">σ x</code> is a term in <code class="language-plaintext highlighter-rouge">Δ</code>, and hence <code class="language-plaintext highlighter-rouge">rename S_ (σ x)</code>
+is a term in <code class="language-plaintext highlighter-rouge">Δ , B</code>.</p>
   </li>
 </ul>
 
 <p>This is why we had to define renaming first, since
-we require it to convert a term over context <code class="highlighter-rouge">Δ</code>
-to a term over the extended context <code class="highlighter-rouge">Δ , B</code>.</p>
+we require it to convert a term over context <code class="language-plaintext highlighter-rouge">Δ</code>
+to a term over the extended context <code class="language-plaintext highlighter-rouge">Δ , B</code>.</p>
 
 <p>With extension under our belts, it is straightforward
 to define substitution.  If variable in one context map
@@ -722,16 +722,16 @@ map to terms in the second:</p>
 <a id="20331" href="/PLFA-zh/DeBruijn/#20026" class="Function">subst</a> <a id="20337" href="plfa.DeBruijn.html#20337" class="Bound">σ</a> <a id="20339" class="Symbol">(</a><a id="20340" href="plfa.DeBruijn.html#10731" class="InductiveConstructor">case</a> <a id="20345" href="plfa.DeBruijn.html#20345" class="Bound">L</a> <a id="20347" href="plfa.DeBruijn.html#20347" class="Bound">M</a> <a id="20349" href="plfa.DeBruijn.html#20349" class="Bound">N</a><a id="20350" class="Symbol">)</a>   <a id="20354" class="Symbol">=</a>  <a id="20357" href="plfa.DeBruijn.html#10731" class="InductiveConstructor">case</a> <a id="20362" class="Symbol">(</a><a id="20363" href="plfa.DeBruijn.html#20026" class="Function">subst</a> <a id="20369" href="plfa.DeBruijn.html#20337" class="Bound">σ</a> <a id="20371" href="plfa.DeBruijn.html#20345" class="Bound">L</a><a id="20372" class="Symbol">)</a> <a id="20374" class="Symbol">(</a><a id="20375" href="plfa.DeBruijn.html#20026" class="Function">subst</a> <a id="20381" href="plfa.DeBruijn.html#20337" class="Bound">σ</a> <a id="20383" href="plfa.DeBruijn.html#20347" class="Bound">M</a><a id="20384" class="Symbol">)</a> <a id="20386" class="Symbol">(</a><a id="20387" href="plfa.DeBruijn.html#20026" class="Function">subst</a> <a id="20393" class="Symbol">(</a><a id="20394" href="plfa.DeBruijn.html#19104" class="Function">exts</a> <a id="20399" href="plfa.DeBruijn.html#20337" class="Bound">σ</a><a id="20400" class="Symbol">)</a> <a id="20402" href="plfa.DeBruijn.html#20349" class="Bound">N</a><a id="20403" class="Symbol">)</a>
 <a id="20405" href="/PLFA-zh/DeBruijn/#20026" class="Function">subst</a> <a id="20411" href="plfa.DeBruijn.html#20411" class="Bound">σ</a> <a id="20413" class="Symbol">(</a><a id="20414" href="plfa.DeBruijn.html#10821" class="InductiveConstructor Operator">μ</a> <a id="20416" href="plfa.DeBruijn.html#20416" class="Bound">N</a><a id="20417" class="Symbol">)</a>          <a id="20428" class="Symbol">=</a>  <a id="20431" href="plfa.DeBruijn.html#10821" class="InductiveConstructor Operator">μ</a> <a id="20433" class="Symbol">(</a><a id="20434" href="plfa.DeBruijn.html#20026" class="Function">subst</a> <a id="20440" class="Symbol">(</a><a id="20441" href="plfa.DeBruijn.html#19104" class="Function">exts</a> <a id="20446" href="plfa.DeBruijn.html#20411" class="Bound">σ</a><a id="20447" class="Symbol">)</a> <a id="20449" href="plfa.DeBruijn.html#20416" class="Bound">N</a><a id="20450" class="Symbol">)</a>
 </pre>
-<p>Let <code class="highlighter-rouge">σ</code> be the name of the map that takes variables in <code class="highlighter-rouge">Γ</code>
-to terms over <code class="highlighter-rouge">Δ</code>.  Let’s unpack the first three cases:</p>
+<p>Let <code class="language-plaintext highlighter-rouge">σ</code> be the name of the map that takes variables in <code class="language-plaintext highlighter-rouge">Γ</code>
+to terms over <code class="language-plaintext highlighter-rouge">Δ</code>.  Let’s unpack the first three cases:</p>
 
 <ul>
   <li>
-    <p>If the term is a variable, simply apply <code class="highlighter-rouge">σ</code>.</p>
+    <p>If the term is a variable, simply apply <code class="language-plaintext highlighter-rouge">σ</code>.</p>
   </li>
   <li>
     <p>If the term is an abstraction, use the previous result
-to extend the map <code class="highlighter-rouge">σ</code> suitably and recursively substitute
+to extend the map <code class="language-plaintext highlighter-rouge">σ</code> suitably and recursively substitute
 over the body of the abstraction.</p>
   </li>
   <li>
@@ -760,17 +760,17 @@ substitution for one free variable:</p>
   <a id="21361" href="/PLFA-zh/DeBruijn/#21329" class="Function">σ</a> <a id="21363" href="plfa.DeBruijn.html#9221" class="InductiveConstructor">Z</a>      <a id="21370" class="Symbol">=</a>  <a id="21373" href="plfa.DeBruijn.html#21288" class="Bound">M</a>
   <a id="21377" href="/PLFA-zh/DeBruijn/#21329" class="Function">σ</a> <a id="21379" class="Symbol">(</a><a id="21380" href="plfa.DeBruijn.html#9269" class="InductiveConstructor Operator">S</a> <a id="21382" href="plfa.DeBruijn.html#21382" class="Bound">x</a><a id="21383" class="Symbol">)</a>  <a id="21386" class="Symbol">=</a>  <a id="21389" href="plfa.DeBruijn.html#10430" class="InductiveConstructor Operator">`</a> <a id="21391" href="plfa.DeBruijn.html#21382" class="Bound">x</a>
 </pre>
-<p>In a term of type <code class="highlighter-rouge">A</code> over context <code class="highlighter-rouge">Γ , B</code>, we replace the
-variable of type <code class="highlighter-rouge">B</code> by a term of type <code class="highlighter-rouge">B</code> over context <code class="highlighter-rouge">Γ</code>.
-To do so, we use a map from the context <code class="highlighter-rouge">Γ , B</code> to the context
-<code class="highlighter-rouge">Γ</code>, that maps the last variable in the context to the term of
-type <code class="highlighter-rouge">B</code> and every other free variable to itself.</p>
+<p>In a term of type <code class="language-plaintext highlighter-rouge">A</code> over context <code class="language-plaintext highlighter-rouge">Γ , B</code>, we replace the
+variable of type <code class="language-plaintext highlighter-rouge">B</code> by a term of type <code class="language-plaintext highlighter-rouge">B</code> over context <code class="language-plaintext highlighter-rouge">Γ</code>.
+To do so, we use a map from the context <code class="language-plaintext highlighter-rouge">Γ , B</code> to the context
+<code class="language-plaintext highlighter-rouge">Γ</code>, that maps the last variable in the context to the term of
+type <code class="language-plaintext highlighter-rouge">B</code> and every other free variable to itself.</p>
 
 <p>Consider the previous example:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) [ "s" := sucᶜ ]</code> yields
-<code class="highlighter-rouge">ƛ "z" ⇒ sucᶜ · (sucᶜ · ` "z")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "z" ⇒ ` "s" · (` "s" · ` "z")) [ "s" := sucᶜ ]</code> yields
+<code class="language-plaintext highlighter-rouge">ƛ "z" ⇒ sucᶜ · (sucᶜ · ` "z")</code></li>
 </ul>
 
 <p>Here is the example formalised:</p>
@@ -791,12 +791,12 @@ did not implement, since it needed to rename the bound
 variable to avoid capture:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero ]</code> should yield
-<code class="highlighter-rouge">ƛ "z" ⇒ ` "z" · (` "x" · `zero)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero ]</code> should yield
+<code class="language-plaintext highlighter-rouge">ƛ "z" ⇒ ` "z" · (` "x" · `zero)</code></li>
 </ul>
 
-<p>Say the bound <code class="highlighter-rouge">"x"</code> has type <code class="highlighter-rouge">`ℕ ⇒ `ℕ</code>, the substituted
-<code class="highlighter-rouge">"y"</code> has type <code class="highlighter-rouge">`ℕ</code>, and the free <code class="highlighter-rouge">"x"</code> also has type <code class="highlighter-rouge">
+<p>Say the bound <code class="language-plaintext highlighter-rouge">"x"</code> has type <code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ</code>, the substituted
+<code class="language-plaintext highlighter-rouge">"y"</code> has type <code class="language-plaintext highlighter-rouge">`ℕ</code>, and the free <code class="language-plaintext highlighter-rouge">"x"</code> also has type <code class="language-plaintext highlighter-rouge">
 `ℕ ⇒ `ℕ</code>.  Here is the example formalised:</p>
 <pre class="Agda"><a id="M₅"></a><a id="22471" href="/PLFA-zh/DeBruijn/#22471" class="Function">M₅</a> <a id="22474" class="Symbol">:</a> <a id="22476" href="plfa.DeBruijn.html#8330" class="InductiveConstructor">∅</a> <a id="22478" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="22480" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="22483" href="plfa.DeBruijn.html#8159" class="InductiveConstructor Operator">⇒</a> <a id="22485" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="22488" href="plfa.DeBruijn.html#8346" class="InductiveConstructor Operator">,</a> <a id="22490" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="22493" href="plfa.DeBruijn.html#10394" class="Datatype Operator">⊢</a> <a id="22495" class="Symbol">(</a><a id="22496" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a> <a id="22499" href="plfa.DeBruijn.html#8159" class="InductiveConstructor Operator">⇒</a> <a id="22501" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a><a id="22503" class="Symbol">)</a> <a id="22505" href="plfa.DeBruijn.html#8159" class="InductiveConstructor Operator">⇒</a> <a id="22507" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a>
 <a id="22510" href="/PLFA-zh/DeBruijn/#22471" class="Function">M₅</a> <a id="22513" class="Symbol">=</a> <a id="22515" href="plfa.DeBruijn.html#10483" class="InductiveConstructor Operator">ƛ</a> <a id="22517" href="plfa.DeBruijn.html#12848" class="Function Operator">#</a> <a id="22519" class="Number">0</a> <a id="22521" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="22523" href="plfa.DeBruijn.html#12848" class="Function Operator">#</a> <a id="22525" class="Number">1</a>
@@ -840,8 +840,8 @@ Canonical Forms lemma:</p>
       <a id="23555" class="Comment">--------------</a>
     <a id="23574" class="Symbol">→</a> <a id="23576" href="/PLFA-zh/DeBruijn/#23316" class="Datatype">Value</a> <a id="23582" class="Symbol">(</a><a id="23583" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="23588" href="plfa.DeBruijn.html#23523" class="Bound">V</a><a id="23589" class="Symbol">)</a>
 </pre>
-<p>Here <code class="highlighter-rouge">zero</code> requires an implicit parameter to aid inference,
-much in the same way that <code class="highlighter-rouge">[]</code> did in
+<p>Here <code class="language-plaintext highlighter-rouge">zero</code> requires an implicit parameter to aid inference,
+much in the same way that <code class="language-plaintext highlighter-rouge">[]</code> did in
 <a href="/PLFA-zh/Lists/">Lists</a>.</p>
 
 <h2 id="reduction">Reduction</h2>
@@ -849,8 +849,8 @@ much in the same way that <code class="highlighter-rouge">[]</code> did in
 <p>The reduction rules are the same as those given earlier, save
 that for each term we must specify its types.  As before, we
 have compatibility rules that reduce a part of a term,
-labelled with <code class="highlighter-rouge">ξ</code>, and rules that simplify a constructor
-combined with a destructor, labelled with <code class="highlighter-rouge">β</code>:</p>
+labelled with <code class="language-plaintext highlighter-rouge">ξ</code>, and rules that simplify a constructor
+combined with a destructor, labelled with <code class="language-plaintext highlighter-rouge">β</code>:</p>
 
 <pre class="Agda"><a id="24034" class="Keyword">infix</a> <a id="24040" class="Number">2</a> <a id="24042" href="/PLFA-zh/DeBruijn/#24053" class="Datatype Operator">_—→_</a>
 
@@ -895,12 +895,12 @@ combined with a destructor, labelled with <code class="highlighter-rouge">β</co
       <a id="24972" class="Comment">---------------</a>
     <a id="24992" class="Symbol">→</a> <a id="24994" href="/PLFA-zh/DeBruijn/#10821" class="InductiveConstructor Operator">μ</a> <a id="24996" href="plfa.DeBruijn.html#24951" class="Bound">N</a> <a id="24998" href="plfa.DeBruijn.html#24053" class="Datatype Operator">—→</a> <a id="25001" href="plfa.DeBruijn.html#24951" class="Bound">N</a> <a id="25003" href="plfa.DeBruijn.html#21180" class="Function Operator">[</a> <a id="25005" href="plfa.DeBruijn.html#10821" class="InductiveConstructor Operator">μ</a> <a id="25007" href="plfa.DeBruijn.html#24951" class="Bound">N</a> <a id="25009" href="plfa.DeBruijn.html#21180" class="Function Operator">]</a>
 </pre>
-<p>The definition states that <code class="highlighter-rouge">M —→ N</code> can only hold of terms <code class="highlighter-rouge">M</code>
-and <code class="highlighter-rouge">N</code> which <em>both</em> have type <code class="highlighter-rouge">Γ ⊢ A</code> for some context <code class="highlighter-rouge">Γ</code>
-and type <code class="highlighter-rouge">A</code>.  In other words, it is <em>built-in</em> to our
+<p>The definition states that <code class="language-plaintext highlighter-rouge">M —→ N</code> can only hold of terms <code class="language-plaintext highlighter-rouge">M</code>
+and <code class="language-plaintext highlighter-rouge">N</code> which <em>both</em> have type <code class="language-plaintext highlighter-rouge">Γ ⊢ A</code> for some context <code class="language-plaintext highlighter-rouge">Γ</code>
+and type <code class="language-plaintext highlighter-rouge">A</code>.  In other words, it is <em>built-in</em> to our
 definition that reduction preserves types.  There is no
 separate Preservation theorem to prove.  The Agda type-checker
-validates that each term preserves types.  In the case of <code class="highlighter-rouge">β</code>
+validates that each term preserves types.  In the case of <code class="language-plaintext highlighter-rouge">β</code>
 rules, preservation depends on the fact that substitution
 preserves types, which is built-in to our
 definition of substitution.</p>
@@ -952,7 +952,7 @@ the natural number two:</p>
    <a id="26451" href="/PLFA-zh/DeBruijn/#10674" class="InductiveConstructor Operator">`suc</a> <a id="26456" class="Symbol">(</a><a id="26457" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="26462" href="plfa.DeBruijn.html#10627" class="InductiveConstructor">`zero</a><a id="26467" class="Symbol">)</a>
   <a id="26471" href="/PLFA-zh/DeBruijn/#25768" class="InductiveConstructor Operator">∎</a>
 </pre>
-<p>As before, we need to supply an explicit context to <code class="highlighter-rouge">`zero</code>.</p>
+<p>As before, we need to supply an explicit context to <code class="language-plaintext highlighter-rouge">`zero</code>.</p>
 
 <p>Next, a sample reduction demonstrating that two plus two is four:</p>
 <pre class="Agda"><a id="26613" href="/PLFA-zh/DeBruijn/#26613" class="Function">_</a> <a id="26615" class="Symbol">:</a> <a id="26617" href="plfa.DeBruijn.html#13323" class="Function">plus</a> <a id="26622" class="Symbol">{</a><a id="26623" href="plfa.DeBruijn.html#8330" class="InductiveConstructor">∅</a><a id="26624" class="Symbol">}</a> <a id="26626" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="26628" href="plfa.DeBruijn.html#13279" class="Function">two</a> <a id="26632" href="plfa.DeBruijn.html#10551" class="InductiveConstructor Operator">·</a> <a id="26634" href="plfa.DeBruijn.html#13279" class="Function">two</a> <a id="26638" href="plfa.DeBruijn.html#25718" class="Datatype Operator">—↠</a> <a id="26641" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="26646" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="26651" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="26656" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="26661" href="plfa.DeBruijn.html#10627" class="InductiveConstructor">`zero</a>
@@ -1026,7 +1026,7 @@ Substitution preserves types, and Preservation.
 We now turn to proving the remaining results from the
 previous development.</p>
 
-<h4 id="exercise-v">Exercise <code class="highlighter-rouge">V¬—→</code></h4>
+<h4 id="exercise-v">Exercise <code class="language-plaintext highlighter-rouge">V¬—→</code></h4>
 
 <p>Following the previous development, show values do
 not reduce, and its corollary, terms that reduce are not
@@ -1084,8 +1084,8 @@ refer to preservation, since it is built-in to the definition of reduction.</p>
 <pre class="Agda"><a id="31224" class="Keyword">data</a> <a id="Gas"></a><a id="31229" href="/PLFA-zh/DeBruijn/#31229" class="Datatype">Gas</a> <a id="31233" class="Symbol">:</a> <a id="31235" class="PrimitiveType">Set</a> <a id="31239" class="Keyword">where</a>
   <a id="Gas.gas"></a><a id="31247" href="/PLFA-zh/DeBruijn/#31247" class="InductiveConstructor">gas</a> <a id="31251" class="Symbol">:</a> <a id="31253" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="31255" class="Symbol">→</a> <a id="31257" href="plfa.DeBruijn.html#31229" class="Datatype">Gas</a>
 </pre>
-<p>When our evaluator returns a term <code class="highlighter-rouge">N</code>, it will either give evidence that
-<code class="highlighter-rouge">N</code> is a value or indicate that it ran out of gas:</p>
+<p>When our evaluator returns a term <code class="language-plaintext highlighter-rouge">N</code>, it will either give evidence that
+<code class="language-plaintext highlighter-rouge">N</code> is a value or indicate that it ran out of gas:</p>
 <pre class="Agda"><a id="31393" class="Keyword">data</a> <a id="Finished"></a><a id="31398" href="/PLFA-zh/DeBruijn/#31398" class="Datatype">Finished</a> <a id="31407" class="Symbol">{</a><a id="31408" href="plfa.DeBruijn.html#31408" class="Bound">Γ</a> <a id="31410" href="plfa.DeBruijn.html#31410" class="Bound">A</a><a id="31411" class="Symbol">}</a> <a id="31413" class="Symbol">(</a><a id="31414" href="plfa.DeBruijn.html#31414" class="Bound">N</a> <a id="31416" class="Symbol">:</a> <a id="31418" href="plfa.DeBruijn.html#31408" class="Bound">Γ</a> <a id="31420" href="plfa.DeBruijn.html#10394" class="Datatype Operator">⊢</a> <a id="31422" href="plfa.DeBruijn.html#31410" class="Bound">A</a><a id="31423" class="Symbol">)</a> <a id="31425" class="Symbol">:</a> <a id="31427" class="PrimitiveType">Set</a> <a id="31431" class="Keyword">where</a>
 
    <a id="Finished.done"></a><a id="31441" href="/PLFA-zh/DeBruijn/#31441" class="InductiveConstructor">done</a> <a id="31446" class="Symbol">:</a>
@@ -1097,8 +1097,8 @@ refer to preservation, since it is built-in to the definition of reduction.</p>
        <a id="31523" class="Comment">----------</a>
        <a id="31541" href="/PLFA-zh/DeBruijn/#31398" class="Datatype">Finished</a> <a id="31550" href="plfa.DeBruijn.html#31414" class="Bound">N</a>
 </pre>
-<p>Given a term <code class="highlighter-rouge">L</code> of type <code class="highlighter-rouge">A</code>, the evaluator will, for some <code class="highlighter-rouge">N</code>, return
-a reduction sequence from <code class="highlighter-rouge">L</code> to <code class="highlighter-rouge">N</code> and an indication of whether
+<p>Given a term <code class="language-plaintext highlighter-rouge">L</code> of type <code class="language-plaintext highlighter-rouge">A</code>, the evaluator will, for some <code class="language-plaintext highlighter-rouge">N</code>, return
+a reduction sequence from <code class="language-plaintext highlighter-rouge">L</code> to <code class="language-plaintext highlighter-rouge">N</code> and an indication of whether
 reduction finished:</p>
 <pre class="Agda"><a id="31717" class="Keyword">data</a> <a id="Steps"></a><a id="31722" href="/PLFA-zh/DeBruijn/#31722" class="Datatype">Steps</a> <a id="31728" class="Symbol">:</a> <a id="31730" class="Symbol">∀</a> <a id="31732" class="Symbol">{</a><a id="31733" href="plfa.DeBruijn.html#31733" class="Bound">A</a><a id="31734" class="Symbol">}</a> <a id="31736" class="Symbol">→</a> <a id="31738" href="plfa.DeBruijn.html#8330" class="InductiveConstructor">∅</a> <a id="31740" href="plfa.DeBruijn.html#10394" class="Datatype Operator">⊢</a> <a id="31742" href="plfa.DeBruijn.html#31733" class="Bound">A</a> <a id="31744" class="Symbol">→</a> <a id="31746" class="PrimitiveType">Set</a> <a id="31750" class="Keyword">where</a>
 
@@ -1126,7 +1126,7 @@ to invoke preservation.</p>
 <h2 id="examples-1">Examples</h2>
 
 <p>We reiterate each of our previous examples.  We re-define the term
-<code class="highlighter-rouge">sucμ</code> that loops forever:</p>
+<code class="language-plaintext highlighter-rouge">sucμ</code> that loops forever:</p>
 <pre class="Agda"><a id="sucμ"></a><a id="32490" href="/PLFA-zh/DeBruijn/#32490" class="Function">sucμ</a> <a id="32495" class="Symbol">:</a> <a id="32497" href="plfa.DeBruijn.html#8330" class="InductiveConstructor">∅</a> <a id="32499" href="plfa.DeBruijn.html#10394" class="Datatype Operator">⊢</a> <a id="32501" href="plfa.DeBruijn.html#8186" class="InductiveConstructor">`ℕ</a>
 <a id="32504" href="/PLFA-zh/DeBruijn/#32490" class="Function">sucμ</a> <a id="32509" class="Symbol">=</a> <a id="32511" href="plfa.DeBruijn.html#10821" class="InductiveConstructor Operator">μ</a> <a id="32513" class="Symbol">(</a><a id="32514" href="plfa.DeBruijn.html#10674" class="InductiveConstructor Operator">`suc</a> <a id="32519" class="Symbol">(</a><a id="32520" href="plfa.DeBruijn.html#12848" class="Function Operator">#</a> <a id="32522" class="Number">0</a><a id="32523" class="Symbol">))</a>
 </pre>
@@ -1362,7 +1362,7 @@ we evaluate with three steps worth of gas:</p>
 <p>We omit the proof that reduction is deterministic, since it is
 tedious and almost identical to the previous proof.</p>
 
-<h4 id="exercise-mul-example-recommended">Exercise <code class="highlighter-rouge">mul-example</code> (recommended)</h4>
+<h4 id="exercise-mul-example-recommended">Exercise <code class="language-plaintext highlighter-rouge">mul-example</code> (recommended)</h4>
 
 <p>Using the evaluator, confirm that two times two is four.</p>
 
@@ -1378,7 +1378,7 @@ and all proofs that appear in Properties but not DeBruijn
 (such as the proof that reduction is deterministic), the
 number of lines of code is as follows:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Lambda                      216
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Lambda                      216
 Properties                  235
 DeBruijn                    275
 </code></pre></div></div>
@@ -1392,7 +1392,7 @@ with de Bruijn indices.</p>
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>σ  U+03C3  GREEK SMALL LETTER SIGMA (\Gs or \sigma)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>σ  U+03C3  GREEK SMALL LETTER SIGMA (\Gs or \sigma)
 ₀  U+2080  SUBSCRIPT ZERO (\_0)
 ₃  U+20B3  SUBSCRIPT THREE (\_3)
 ₄  U+2084  SUBSCRIPT FOUR (\_4)
@@ -1455,6 +1455,18 @@ with de Bruijn indices.</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

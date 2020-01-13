@@ -51,8 +51,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ|
 ∧∧∨∨|
 ⊗⊗⊗⊗|
 ⊔⊔⊔⊔|
-ᶜᶜᵇᵇ|
-ˡˡʳʳ|
+cᶜbᵇ|
+lˡrʳ|
 ⁻⁻⁺⁺|
 ℕℕℕℕ|
 ∀∀∃∃|

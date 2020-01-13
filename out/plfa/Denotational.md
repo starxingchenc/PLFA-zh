@@ -22,7 +22,7 @@ a given input and reading off the output.
 We shall create a semantics for the untyped lambda calculus based on
 this idea of functions-as-tables. However, there are two difficulties
 that arise. First, functions often have an infinite domain, so it
-would seem that we would need infinitely long tables to represent
+would seem that we would need in<a id="992" class="Bound">f</a>init<a id="997" class="Bound">e</a>ly <a id="1001" class="Bound">l</a>ong <a id="1006" class="Function">ta</a>b<a id="1009" class="Bound">l</a>e<a id="1011" class="Function">s</a> <a id="1013" class="Bound">t</a>o<a id="1015" class="Function"> </a>r<a id="1017" class="Bound">e</a>present
 functions. Second, in the lambda calculus, functions can be applied to
 functions. They can even be applied to themselves! So it would seem
 that the tables would contain cycles. One might start to worry that
@@ -38,7 +38,7 @@ only continuous functions are needed to model the lambda calculus.
 
 The second problem, that of self-application, is solved by relaxing
 the way in which we lookup an argument in a function's table.
-Naively, one would look in the table for a row in which the input
+<a id="1869" class="Bound">N</a>aiv<a id="1873" class="Bound">e</a>ly, <a id="1878" class="Function">on</a>e<a id="1881" class="Bound"> </a>w<a id="1883" class="Function">o</a>u<a id="1885" class="Bound">l</a>d look in the table for a row in which the input
 entry exactly matches the argument. In the case of self-application,
 this would require the table to contain a copy of itself. Impossible!
 (At least, it is impossible if we want to build tables using inductive

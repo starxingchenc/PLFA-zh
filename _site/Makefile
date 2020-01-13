@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+SHELL := /usr/bin/env bash
 AGDA := $(shell find . -type f -and \( -path '*/src/*' -or -path '*/courses/*' \) -and -name '*.lagda.md')
 AGDAI := $(shell find . -type f -and \( -path '*/src/*' -or -path '*/courses/*' \) -and -name '*.agdai')
 MARKDOWN := $(subst courses/,out/,$(subst src/,out/,$(subst .lagda.md,.md,$(AGDA))))
@@ -49,8 +49,8 @@ ifeq (,$$(findstring courses/,$$(in)))
 else
 # Fix links to the file itself (out/<filename> to out/<filepath>)
 	./highlight.sh $$(subst ./,,$$(in)) --include-path=src/ --include-path=$$(subst ./,,$$(dir $$(in)))
-	ruby scripts/fix-cjk.rb $$(out)
 endif
+	ruby scripts/fix-cjk.rb $$(out)
 endef
 
 $(foreach agda,$(AGDA),$(eval $(call AGDA_template,$(agda))))

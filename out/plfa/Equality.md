@@ -18,9 +18,7 @@ are interchangeable.  So far we have treated equality as a primitive,
 here we show how to define it as an inductive datatype.
 {:/}
 
-我们在论证的过程中经常会使用相等性。给定两个都为 `A` 类型的项 `M` 和 `N`，
-我们用 `M ≡ N` 来表示 `M` 和 `N` 可以相互替换。在此之前，
-我们将相等性作为一个基础运算，而现在我们来说明如果将其定义为一个归纳的数据类型。
+我们在论证的过程中经常会使用相等性。给定两个都为 `A` 类型的项 `M` 和 `N`，我们用 `M ≡ N` 来表示 `M` 和 `N` 可以相互替换。在此之前，我们将相等性作为一个基础运算，而现在我们来说明如果将其定义为一个归纳的数据类型。
 
 
 {::comment}
@@ -35,8 +33,7 @@ every module in the Agda standard library, imports equality.
 Since we define equality here, any import would create a conflict.
 {:/}
 
-本章节没有导入的内容。本书的每一章节，以及 Agda 标准库的每个模块都导入了相等性。
-我们在此定义相等性，导入其他内容将会产生冲突。
+本章节没有导入的内容。本书的每一章节，以及 Agda 标准库的每个模块都导入了相等性。我们在此定义相等性，导入其他内容将会产生冲突。
 
 
 {::comment}
@@ -67,12 +64,8 @@ an index, so it can be required to be equal to the first.
 {:/}
 
 用其他的话来说，对于任意类型 `A` 和任意 `A` 类型的 `x`，构造子 `refl` 提供了
-`x ≡ x` 的证明。所以，每个值等同于它本身，我们并没有其他办法来证明值的相等性。
-这个定义里有不对称的地方，`_≡_` 的第一个参数（Argument）由 `x : A` 给出，
-而第二个参数（Argument）则是由 `A → Set` 的索引给出。
-这和我们尽可能多的使用参数（Parameter）的理念相符。`_≡_` 的第一个参数（Argument）
-可以作为一个参数（Parameter），因为它不会变，而第二个参数（Argument）则必须是一个索引，
-这样它才可以等用于第一个。
+`x ≡ x` 的证明。所以，每个值等同于它本身，我们并没有其他办法来证明值的相等性。这个定义里有不对称的地方，`_≡_` 的第一个参数（Argument）由 `x : A` 给出，而第二个参数（Argument）则是由 `A → Set` 的索引给出。这和我们尽可能多的使用参数（Parameter）的理念相符。`_≡_` 的第一个参数（Argument）
+可以作为一个参数（Parameter），因为它不会变，而第二个参数（Argument）则必须是一个索引，这样它才可以等用于第一个。
 
 {::comment}
 We declare the precedence of equality as follows:
@@ -89,8 +82,7 @@ It associates neither to left nor right; writing `x ≡ y ≡ z`
 is illegal.
 {:/}
 
-我们将 `_≡_` 的优先级设置为 4，与 `_≤_` 相同，所以其它算术运算符的结合都比它紧密。
-由于它既不是左结合，也不是右结合的，因此 `x ≡ y ≡ z` 是不合法的。
+我们将 `_≡_` 的优先级设置为 4，与 `_≤_` 相同，所以其它算术运算符的结合都比它紧密。由于它既不是左结合，也不是右结合的，因此 `x ≡ y ≡ z` 是不合法的。
 
 
 {::comment}
@@ -105,8 +97,7 @@ Reflexivity is built-in to the definition of equality, via the
 constructor `refl`.  It is straightforward to show symmetry:
 {:/}
 
-一个等价关系是自反、对称和传递的。其中自反性可以通过构造子 `refl` 直接从相等性的定义中得来。
-我们可以直接地证明其对称性：
+一个等价关系是自反、对称和传递的。其中自反性可以通过构造子 `refl` 直接从相等性的定义中得来。我们可以直接地证明其对称性：
 
 {% raw %}<pre class="Agda"><a id="sym"></a><a id="2817" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#2817" class="Function">sym</a> <a id="2821" class="Symbol">:</a> <a id="2823" class="Symbol">∀</a> <a id="2825" class="Symbol">{</a><a id="2826" href="plfa.Equality.html#2826" class="Bound">A</a> <a id="2828" class="Symbol">:</a> <a id="2830" class="PrimitiveType">Set</a><a id="2833" class="Symbol">}</a> <a id="2835" class="Symbol">{</a><a id="2836" href="plfa.Equality.html#2836" class="Bound">x</a> <a id="2838" href="plfa.Equality.html#2838" class="Bound">y</a> <a id="2840" class="Symbol">:</a> <a id="2842" href="plfa.Equality.html#2826" class="Bound">A</a><a id="2843" class="Symbol">}</a>
   <a id="2847" class="Symbol">→</a> <a id="2849" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#2836" class="Bound">x</a> <a id="2851" href="plfa.Equality.html#1053" class="Datatype Operator">≡</a> <a id="2853" href="plfa.Equality.html#2838" class="Bound">y</a>
@@ -122,8 +113,7 @@ are the same.  Hence, for the right-hand side of the equation we need
 a term of type `x ≡ x`, and `refl` will do.
 {:/}
 
-这个证明是怎么运作的呢？`sym` 参数的类型是 `x ≡ y`，但是等式的左手边被 `refl` 模式实例化了，
-这要求 `x` 和 `y` 相等。因此，等式的右手边需要一个类型为 `x ≡ x` 的项，用 `refl` 即可。
+这个证明是怎么运作的呢？`sym` 参数的类型是 `x ≡ y`，但是等式的左手边被 `refl` 模式实例化了，这要求 `x` 和 `y` 相等。因此，等式的右手边需要一个类型为 `x ≡ x` 的项，用 `refl` 即可。
 
 {::comment}
 It is instructive to develop `sym` interactively.  To start, we supply
@@ -158,8 +148,7 @@ all possible constructors, with one equation for each. There is only
 one possible constructor:
 {:/}
 
-在这个洞里，我们使用 `C-c C-c e`，Agda 会将 `e` 逐一展开为所有可能的构造子。
-此处只有一个构造子：
+在这个洞里，我们使用 `C-c C-c e`，Agda 会将 `e` 逐一展开为所有可能的构造子。此处只有一个构造子：
 
     sym : ∀ {A : Set} {x y : A}
       → x ≡ y
@@ -238,8 +227,7 @@ Equality satisfies _congruence_.  If two terms are equal,
 they remain so after the same function is applied to both:
 {:/}
 
-相等性满足 *合同性*（Congurence）。如果两个项相等，那么对它们使用相同的函数，
-其结果仍然相等：
+相等性满足 *合同性*（Congurence）。如果两个项相等，那么对它们使用相同的函数，其结果仍然相等：
 
 {% raw %}<pre class="Agda"><a id="cong"></a><a id="5754" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#5754" class="Function">cong</a> <a id="5759" class="Symbol">:</a> <a id="5761" class="Symbol">∀</a> <a id="5763" class="Symbol">{</a><a id="5764" href="plfa.Equality.html#5764" class="Bound">A</a> <a id="5766" href="plfa.Equality.html#5766" class="Bound">B</a> <a id="5768" class="Symbol">:</a> <a id="5770" class="PrimitiveType">Set</a><a id="5773" class="Symbol">}</a> <a id="5775" class="Symbol">(</a><a id="5776" href="plfa.Equality.html#5776" class="Bound">f</a> <a id="5778" class="Symbol">:</a> <a id="5780" href="plfa.Equality.html#5764" class="Bound">A</a> <a id="5782" class="Symbol">→</a> <a id="5784" href="plfa.Equality.html#5766" class="Bound">B</a><a id="5785" class="Symbol">)</a> <a id="5787" class="Symbol">{</a><a id="5788" href="plfa.Equality.html#5788" class="Bound">x</a> <a id="5790" href="plfa.Equality.html#5790" class="Bound">y</a> <a id="5792" class="Symbol">:</a> <a id="5794" href="plfa.Equality.html#5764" class="Bound">A</a><a id="5795" class="Symbol">}</a>
   <a id="5799" class="Symbol">→</a> <a id="5801" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#5788" class="Bound">x</a> <a id="5803" href="plfa.Equality.html#1053" class="Datatype Operator">≡</a> <a id="5805" href="plfa.Equality.html#5790" class="Bound">y</a>
@@ -279,8 +267,7 @@ Equality also satisfies *substitution*.
 If two values are equal and a predicate holds of the first then it also holds of the second:
 {:/}
 
-相等性也满足*替换性*（Substitution）。
-如果两个值相等，其中一个满足某谓词，那么另一个也满足此谓词。
+相等性也满足*替换性*（Substitution）。如果两个值相等，其中一个满足某谓词，那么另一个也满足此谓词。
 
 {% raw %}<pre class="Agda"><a id="subst"></a><a id="6672" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#6672" class="Function">subst</a> <a id="6678" class="Symbol">:</a> <a id="6680" class="Symbol">∀</a> <a id="6682" class="Symbol">{</a><a id="6683" href="plfa.Equality.html#6683" class="Bound">A</a> <a id="6685" class="Symbol">:</a> <a id="6687" class="PrimitiveType">Set</a><a id="6690" class="Symbol">}</a> <a id="6692" class="Symbol">{</a><a id="6693" href="plfa.Equality.html#6693" class="Bound">x</a> <a id="6695" href="plfa.Equality.html#6695" class="Bound">y</a> <a id="6697" class="Symbol">:</a> <a id="6699" href="plfa.Equality.html#6683" class="Bound">A</a><a id="6700" class="Symbol">}</a> <a id="6702" class="Symbol">(</a><a id="6703" href="plfa.Equality.html#6703" class="Bound">P</a> <a id="6705" class="Symbol">:</a> <a id="6707" href="plfa.Equality.html#6683" class="Bound">A</a> <a id="6709" class="Symbol">→</a> <a id="6711" class="PrimitiveType">Set</a><a id="6714" class="Symbol">)</a>
   <a id="6718" class="Symbol">→</a> <a id="6720" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#6693" class="Bound">x</a> <a id="6722" href="plfa.Equality.html#1053" class="Datatype Operator">≡</a> <a id="6724" href="plfa.Equality.html#6695" class="Bound">y</a>
@@ -348,10 +335,7 @@ need not be indented.  Opening the module makes all of the definitions
 available in the current environment.
 {:/}
 
-这是我们第一次使用嵌套的模块。它包括了关键字 `module` 和后续的模块名、隐式或显式参数，
-关键字 `where`，和模块中的内容（在缩进内）。模块里可以包括任何形式的声明，也可以包括其他模块。
-嵌套的模块和本书每章节所定义的顶层模块相似，只是顶层模块不需要缩进。
-打开（Open）一个模块会把模块内的所有定义导入进当前的环境中。
+这是我们第一次使用嵌套的模块。它包括了关键字 `module` 和后续的模块名、隐式或显式参数，关键字 `where`，和模块中的内容（在缩进内）。模块里可以包括任何形式的声明，也可以包括其他模块。嵌套的模块和本书每章节所定义的顶层模块相似，只是顶层模块不需要缩进。打开（Open）一个模块会把模块内的所有定义导入进当前的环境中。
 
 {::comment}
 As an example, let's look at a proof of transitivity
@@ -399,11 +383,9 @@ After simplification, the body is equivalent to the term:
 {:/}
 
 这里 `begin` 的使用纯粹是装饰性的，因为它直接返回了其参数。其参数包括了
-`_≡⟨_⟩_` 作用于 `x`、`x≡y` 和 `y ≡⟨ y≡z ⟩ (z ∎)`。第一个参数是一个项 `x`，
-而第二、第三个参数分别是等式 `x ≡ y`、`y ≡ z` 的证明，它们在 `_≡⟨_⟩_` 的定义中用
+`_≡⟨_⟩_` 作用于 `x`、`x≡y` 和 `y ≡⟨ y≡z ⟩ (z ∎)`。第一个参数是一个项 `x`，而第二、第三个参数分别是等式 `x ≡ y`、`y ≡ z` 的证明，它们在 `_≡⟨_⟩_` 的定义中用
 `trans` 连接起来，形成 `x ≡ z` 的证明。`y ≡ z` 的证明包括了 `_≡⟨_⟩_` 作用于 `y`、
-`y≡z` 和 `z ∎`。第一个参数是一个项 `y`，而第二、第三个参数分别是等式 `y ≡ z`、`z ≡ z` 的证明，
-它们在 `_≡⟨_⟩_` 的定义中用 `trans` 连接起来，形成 `y ≡ z` 的证明。最后，`z ≡ z`
+`y≡z` 和 `z ∎`。第一个参数是一个项 `y`，而第二、第三个参数分别是等式 `y ≡ z`、`z ≡ z` 的证明，它们在 `_≡⟨_⟩_` 的定义中用 `trans` 连接起来，形成 `y ≡ z` 的证明。最后，`z ≡ z`
 的证明包括了 `_∎` 作用于 `z` 之上，使用了 `refl`。经过化简，上述定义等同于：
 
     trans x≡y (trans y≡z refl)
@@ -435,8 +417,7 @@ We cannot import them because (as noted at the beginning of this chapter)
 it would cause a conflict:
 {:/}
 
-我们重新证明加法的交换律来作为等式串的第二个例子。我们首先重复自然数和加法的定义。
-我们不能导入它们（正如本章节开头中所解释的那样），因为那样会产生一个冲突：
+我们重新证明加法的交换律来作为等式串的第二个例子。我们首先重复自然数和加法的定义。我们不能导入它们（正如本章节开头中所解释的那样），因为那样会产生一个冲突：
 
 {% raw %}<pre class="Agda"><a id="11002" class="Keyword">data</a> <a id="ℕ"></a><a id="11007" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#11007" class="Datatype">ℕ</a> <a id="11009" class="Symbol">:</a> <a id="11011" class="PrimitiveType">Set</a> <a id="11015" class="Keyword">where</a>
   <a id="ℕ.zero"></a><a id="11023" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#11023" class="InductiveConstructor">zero</a> <a id="11028" class="Symbol">:</a> <a id="11030" href="plfa.Equality.html#11007" class="Datatype">ℕ</a>
@@ -464,9 +445,7 @@ caution.  If we postulate something false then we could use Agda to
 prove anything whatsoever.
 {:/}
 
-这是我们第一次使用*假设*（Postulate）。假设为一个标识符指定一个签名，但是不提供定义。
-我们在这里假设之前证明过的东西，来节约空间。假设在使用时必须加以注意。如果假设的内容为假，
-那么我们可以证明出任何东西。
+这是我们第一次使用*假设*（Postulate）。假设为一个标识符指定一个签名，但是不提供定义。我们在这里假设之前证明过的东西，来节约空间。假设在使用时必须加以注意。如果假设的内容为假，那么我们可以证明出任何东西。
 
 {::comment}
 We then repeat the proof of commutativity:
@@ -533,8 +512,7 @@ by `≡⟨⟩` have the same simplified form; it's up to us to write them in
 an order that will make sense to the reader.
 {:/}
 
-而 Agda 并不会反对。Agda 只会检查由 `≡⟨⟩` 隔开的项是否化简后相同。
-而书写的顺序合不合理则是由我们自行决定。
+而 Agda 并不会反对。Agda 只会检查由 `≡⟨⟩` 隔开的项是否化简后相同。而书写的顺序合不合理则是由我们自行决定。
 
 
 {::comment}
@@ -552,8 +530,7 @@ it to write out an alternative proof that addition is monotonic with
 regard to inequality.  Rewrite all of `+-monoˡ-≤`, `+-monoʳ-≤`, and `+-mono-≤`.
 {:/}
 
-[Relations]({{ site.baseurl }}/Relations/) 章节中的单调性证明亦可以用相似于 `≡-Reasoning` 的，更易于理解的形式给出。
-相似地来定义 `≤-Reasoning`，并用其重新给出加法对于不等式是单调的证明。重写 `+-monoˡ-≤`、`+-monoʳ-≤`
+[Relations]({{ site.baseurl }}/Relations/) 章节中的单调性证明亦可以用相似于 `≡-Reasoning` 的，更易于理解的形式给出。相似地来定义 `≤-Reasoning`，并用其重新给出加法对于不等式是单调的证明。重写 `+-monoˡ-≤`、`+-monoʳ-≤`
 和 `+-mono-≤`。
 
 {::comment}
@@ -610,8 +587,7 @@ To enable this notation, we use pragmas to tell Agda which type
 corresponds to equality:
 {:/}
 
-Agda 对这种论证有特殊记法的支持——我们之前提到过的 `rewrite` 记法。来启用这种记法，
-我们只用编译程序指令来告诉 Agda 什么类型对应相等性：
+Agda 对这种论证有特殊记法的支持——我们之前提到过的 `rewrite` 记法。来启用这种记法，我们只用编译程序指令来告诉 Agda 什么类型对应相等性：
 
 {% raw %}<pre class="Agda"><a id="14790" class="Symbol">{-#</a> <a id="14794" class="Keyword">BUILTIN</a> <a id="14802" class="Pragma">EQUALITY</a> <a id="14811" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#1053" class="Datatype Operator">_≡_</a> <a id="14815" class="Symbol">#-}</a>
 </pre>{% endraw %}
@@ -696,8 +672,7 @@ automated search, including checking whether a variable in scope has
 the same type as the goal.
 {:/}
 
-目标里的参数被交换了。现在 `ev` 显然满足目标条件，输入 `C-c C-a` 会用 `ev` 来填充这个洞。
-命令 `C-c C-a` 可以进行自动搜索，检查作用域内的变量是否和目标有相同的类型。
+目标里的参数被交换了。现在 `ev` 显然满足目标条件，输入 `C-c C-a` 会用 `ev` 来填充这个洞。命令 `C-c C-a` 可以进行自动搜索，检查作用域内的变量是否和目标有相同的类型。
 
 
 {::comment}
@@ -728,9 +703,7 @@ of equalities are easier to follow, and we will stick with the latter
 when feasible.
 {:/}
 
-这个证明更加的简短。之前的证明用 `cong suc (+-comm m n)` 作为使用归纳假设的说明，
-而这里我们使用 `+-comm m n` 来重写就足够了，因为重写可以将合同性考虑在其中。尽管使用重写的证明更加的简短，
-使用等式串的证明能容易理解，我们将尽可能的使用后者。
+这个证明更加的简短。之前的证明用 `cong suc (+-comm m n)` 作为使用归纳假设的说明，而这里我们使用 `+-comm m n` 来重写就足够了，因为重写可以将合同性考虑在其中。尽管使用重写的证明更加的简短，使用等式串的证明能容易理解，我们将尽可能的使用后者。
 
 
 {::comment}
@@ -772,12 +745,8 @@ reversing the order of the clauses will cause Agda to report an error.
 (Try it and see!)
 {:/}
 
-总的来着，我们可以在 `with` 后面跟上任何数量的表达式，用竖线分隔开，并且在每个等式中使用相同个数的模式。
-我们经常将表达式和模式如上对齐。这个第一列表明了 `m + n` 和 `n + m` 是相同的，第二列使用相应等式来证明的前述的断言。
-注意在这里使用的*点模式*（Dot Pattern），`.(n + m)`。点模式由一个点和一个表达式组成，
-在其他信息迫使这个值和点模式中的值相等时使用。在这里，`m + n` 和 `n + m` 由后续的
-`+-comm m n` 与 `refl` 的匹配来识别。我们可能会认为第一种情况是多余的，因为第二种情况中才蕴涵了需要的信息。
-但实际上 Agda 在这件事上很挑剔——省略第一条或者更换顺序会让 Agda 报告一个错误。（试一试你就知道！）
+总的来着，我们可以在 `with` 后面跟上任何数量的表达式，用竖线分隔开，并且在每个等式中使用相同个数的模式。我们经常将表达式和模式如上对齐。这个第一列表明了 `m + n` 和 `n + m` 是相同的，第二列使用相应等式来证明的前述的断言。注意在这里使用的*点模式*（Dot Pattern），`.(n + m)`。点模式由一个点和一个表达式组成，在其他信息迫使这个值和点模式中的值相等时使用。在这里，`m + n` 和 `n + m` 由后续的
+`+-comm m n` 与 `refl` 的匹配来识别。我们可能会认为第一种情况是多余的，因为第二种情况中才蕴涵了需要的信息。但实际上 Agda 在这件事上很挑剔——省略第一条或者更换顺序会让 Agda 报告一个错误。（试一试你就知道！）
 
 {::comment}
 In this case, we can avoid rewrite by simply applying the substitution
@@ -818,11 +787,7 @@ and show that two terms satisfy Leibniz equality if and only if they
 satisfy Martin Löf equality.
 {:/}
 
-我们使用的相等性断言的形式源于 Martin Löf，于 1975 年发表。一个更早的形式源于莱布尼兹，
-于 1686 年发表。莱布尼兹断言的相等性表示*不可分辨的实体*（Identity of Indiscernibles）：
-两个对象相等当且仅当它们满足完全相同的性质。这条原理有时被称作莱布尼兹定律（Leibniz' Law），
-与史波克定律紧密相关：“一个不造成区别的区别不是区别”。我们在这里定义莱布尼兹相等性，
-并证明两个项满足莱布尼兹相等性当且仅当其满足 Martin Löf 相等性。
+我们使用的相等性断言的形式源于 Martin Löf，于 1975 年发表。一个更早的形式源于莱布尼兹，于 1686 年发表。莱布尼兹断言的相等性表示*不可分辨的实体*（Identity of Indiscernibles）：两个对象相等当且仅当它们满足完全相同的性质。这条原理有时被称作莱布尼兹定律（Leibniz' Law），与史波克定律紧密相关：“一个不造成区别的区别不是区别”。我们在这里定义莱布尼兹相等性，并证明两个项满足莱布尼兹相等性当且仅当其满足 Martin Löf 相等性。
 
 {::comment}
 Leibniz equality is usually formalised to state that `x ≐ y` holds if
@@ -831,16 +796,14 @@ surprisingly, this definition is sufficient to also ensure the
 converse, that every property `P` that holds of `y` also holds of `x`.
 {:/}
 
-莱布尼兹不等式一般如下来定义：`x ≐ y` 当每个对于 `x` 成立的性质 `P` 对于 `y` 也成立时成立。
-可能这有些出乎意料，但是这个定义亦足够保证其相反的命题：每个对于 `y` 成立的性质 `P` 对于 `x` 也成立。
+莱布尼兹不等式一般如下来定义：`x ≐ y` 当每个对于 `x` 成立的性质 `P` 对于 `y` 也成立时成立。可能这有些出乎意料，但是这个定义亦足够保证其相反的命题：每个对于 `y` 成立的性质 `P` 对于 `x` 也成立。
 
 {::comment}
 Let `x` and `y` be objects of type `A`. We say that `x ≐ y` holds if
 for every predicate `P` over type `A` we have that `P x` implies `P y`:
 {:/}
 
-令 `x` 和 `y` 为类型 `A` 的对象。我们定义 `x ≐ y` 成立，当每个对于类型 `A` 成立的谓词 `P`，
-我们有 `P x` 蕴涵了 `P y`：
+令 `x` 和 `y` 为类型 `A` 的对象。我们定义 `x ≐ y` 成立，当每个对于类型 `A` 成立的谓词 `P`，我们有 `P x` 蕴涵了 `P y`：
 
 {% raw %}<pre class="Agda"><a id="_≐_"></a><a id="21791" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#21791" class="Function Operator">_≐_</a> <a id="21795" class="Symbol">:</a> <a id="21797" class="Symbol">∀</a> <a id="21799" class="Symbol">{</a><a id="21800" href="plfa.Equality.html#21800" class="Bound">A</a> <a id="21802" class="Symbol">:</a> <a id="21804" class="PrimitiveType">Set</a><a id="21807" class="Symbol">}</a> <a id="21809" class="Symbol">(</a><a id="21810" href="plfa.Equality.html#21810" class="Bound">x</a> <a id="21812" href="plfa.Equality.html#21812" class="Bound">y</a> <a id="21814" class="Symbol">:</a> <a id="21816" href="plfa.Equality.html#21800" class="Bound">A</a><a id="21817" class="Symbol">)</a> <a id="21819" class="Symbol">→</a> <a id="21821" class="PrimitiveType">Set₁</a>
 <a id="21826" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#21791" class="Function Operator">_≐_</a> <a id="21830" class="Symbol">{</a><a id="21831" href="plfa.Equality.html#21831" class="Bound">A</a><a id="21832" class="Symbol">}</a> <a id="21834" href="plfa.Equality.html#21834" class="Bound">x</a> <a id="21836" href="plfa.Equality.html#21836" class="Bound">y</a> <a id="21838" class="Symbol">=</a> <a id="21840" class="Symbol">∀</a> <a id="21842" class="Symbol">(</a><a id="21843" href="plfa.Equality.html#21843" class="Bound">P</a> <a id="21845" class="Symbol">:</a> <a id="21847" href="plfa.Equality.html#21831" class="Bound">A</a> <a id="21849" class="Symbol">→</a> <a id="21851" class="PrimitiveType">Set</a><a id="21854" class="Symbol">)</a> <a id="21856" class="Symbol">→</a> <a id="21858" href="plfa.Equality.html#21843" class="Bound">P</a> <a id="21860" href="plfa.Equality.html#21834" class="Bound">x</a> <a id="21862" class="Symbol">→</a> <a id="21864" href="plfa.Equality.html#21843" class="Bound">P</a> <a id="21866" href="plfa.Equality.html#21836" class="Bound">y</a>
@@ -864,8 +827,7 @@ mentions `Set` on the right-hand side, the corresponding signature
 must use `Set₁`.  We say a bit more about levels below.
 {:/}
 
-这是我们第一次使用*等级*（Levels）。我们不能将 `Set` 赋予类型 `Set`，因为这会导致自相矛盾，
-比如罗素悖论（Russell's Paradox）或者 Girard 悖论。不同的是，我们有一个阶级的类型：其中
+这是我们第一次使用*等级*（Levels）。我们不能将 `Set` 赋予类型 `Set`，因为这会导致自相矛盾，比如罗素悖论（Russell's Paradox）或者 Girard 悖论。不同的是，我们有一个阶级的类型：其中
 `Set : Set₁`，`Set₁ : Set₂`，以此类推。实际上，`Set` 本身就是 `Set₀` 的缩写。定义
 `_≐_` 的等式在右手边提到了 `Set`，因此签名中必须使用 `Set₁`。我们稍后将进一步介绍等级。
 
@@ -894,8 +856,7 @@ for all predicates `P`, then the implication holds the other way round
 as well:
 {:/}
 
-对称性就没有那么显然了。我们需要证明如果对于所有谓词 `P`，`P x` 蕴涵 `P y`，
-那么反方向的蕴涵也成立。
+对称性就没有那么显然了。我们需要证明如果对于所有谓词 `P`，`P x` 蕴涵 `P y`，那么反方向的蕴涵也成立。
 
 {% raw %}<pre class="Agda"><a id="sym-≐"></a><a id="23504" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#23504" class="Function">sym-≐</a> <a id="23510" class="Symbol">:</a> <a id="23512" class="Symbol">∀</a> <a id="23514" class="Symbol">{</a><a id="23515" href="plfa.Equality.html#23515" class="Bound">A</a> <a id="23517" class="Symbol">:</a> <a id="23519" class="PrimitiveType">Set</a><a id="23522" class="Symbol">}</a> <a id="23524" class="Symbol">{</a><a id="23525" href="plfa.Equality.html#23525" class="Bound">x</a> <a id="23527" href="plfa.Equality.html#23527" class="Bound">y</a> <a id="23529" class="Symbol">:</a> <a id="23531" href="plfa.Equality.html#23515" class="Bound">A</a><a id="23532" class="Symbol">}</a>
   <a id="23536" class="Symbol">→</a> <a id="23538" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#23525" class="Bound">x</a> <a id="23540" href="plfa.Equality.html#21791" class="Function Operator">≐</a> <a id="23542" href="plfa.Equality.html#23527" class="Bound">y</a>
@@ -918,8 +879,7 @@ is trivial by reflexivity, and hence `Q y` follows from `x ≐ y`.  But
 `Q y` is exactly a proof of what we require, that `P y` implies `P x`.
 {:/}
 
-给定 `x ≐ y` 和一个特定的 `P`，我们需要构造一个 `P y` 蕴涵 `P x` 的证明。
-我们首先用一个谓词 `Q` 将相等性实例化，使得 `Q z` 在 `P z` 蕴涵 `P x` 时成立。
+给定 `x ≐ y` 和一个特定的 `P`，我们需要构造一个 `P y` 蕴涵 `P x` 的证明。我们首先用一个谓词 `Q` 将相等性实例化，使得 `Q z` 在 `P z` 蕴涵 `P x` 时成立。
 `Q x` 这个性质是显然的，由自反性可以得出，由此通过 `x ≐ y` 就能推出 `Q y` 成立。而 `Q y`
 正是我们需要的证明，即 `P y` 蕴涵 `P x`。
 
@@ -931,9 +891,7 @@ which is easy since equality of `x` and `y` implies that any proof
 of `P x` is also a proof of `P y`:
 {:/}
 
-我们现在来证明 Martin Löf 相等性蕴涵了莱布尼兹相等性，以及其逆命题。在正方向上，
-如果我们已知 `x ≡ y`，我们需要对于任意的 `P`，将 `P x` 的证明转换为 `P y` 的证明。
-我们很容易就可以做到这一点，因为 `x` 与 `y` 相等意味着任何 `P x` 的证明即是 `P y` 的证明。
+我们现在来证明 Martin Löf 相等性蕴涵了莱布尼兹相等性，以及其逆命题。在正方向上，如果我们已知 `x ≡ y`，我们需要对于任意的 `P`，将 `P x` 的证明转换为 `P y` 的证明。我们很容易就可以做到这一点，因为 `x` 与 `y` 相等意味着任何 `P x` 的证明即是 `P y` 的证明。
 
 {% raw %}<pre class="Agda"><a id="≡-implies-≐"></a><a id="24747" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#24747" class="Function">≡-implies-≐</a> <a id="24759" class="Symbol">:</a> <a id="24761" class="Symbol">∀</a> <a id="24763" class="Symbol">{</a><a id="24764" href="plfa.Equality.html#24764" class="Bound">A</a> <a id="24766" class="Symbol">:</a> <a id="24768" class="PrimitiveType">Set</a><a id="24771" class="Symbol">}</a> <a id="24773" class="Symbol">{</a><a id="24774" href="plfa.Equality.html#24774" class="Bound">x</a> <a id="24776" href="plfa.Equality.html#24776" class="Bound">y</a> <a id="24778" class="Symbol">:</a> <a id="24780" href="plfa.Equality.html#24764" class="Bound">A</a><a id="24781" class="Symbol">}</a>
   <a id="24785" class="Symbol">→</a> <a id="24787" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#24774" class="Bound">x</a> <a id="24789" href="plfa.Equality.html#1053" class="Datatype Operator">≡</a> <a id="24791" href="plfa.Equality.html#24776" class="Bound">y</a>
@@ -952,8 +910,7 @@ In the reverse direction, given that for any `P` we can take a proof of `P x`
 to a proof of `P y` we need to show `x ≡ y`:
 {:/}
 
-在反方向上，我们已知对于任何 `P`，我们可以将 `P x` 的证明转换成 `P y` 的证明，
-我们需要证明 `x ≡ y`：
+在反方向上，我们已知对于任何 `P`，我们可以将 `P x` 的证明转换成 `P y` 的证明，我们需要证明 `x ≡ y`：
 
 {% raw %}<pre class="Agda"><a id="≐-implies-≡"></a><a id="25174" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#25174" class="Function">≐-implies-≡</a> <a id="25186" class="Symbol">:</a> <a id="25188" class="Symbol">∀</a> <a id="25190" class="Symbol">{</a><a id="25191" href="plfa.Equality.html#25191" class="Bound">A</a> <a id="25193" class="Symbol">:</a> <a id="25195" class="PrimitiveType">Set</a><a id="25198" class="Symbol">}</a> <a id="25200" class="Symbol">{</a><a id="25201" href="plfa.Equality.html#25201" class="Bound">x</a> <a id="25203" href="plfa.Equality.html#25203" class="Bound">y</a> <a id="25205" class="Symbol">:</a> <a id="25207" href="plfa.Equality.html#25191" class="Bound">A</a><a id="25208" class="Symbol">}</a>
   <a id="25212" class="Symbol">→</a> <a id="25214" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Equality.md %}{% raw %}#25201" class="Bound">x</a> <a id="25216" href="plfa.Equality.html#21791" class="Function Operator">≐</a> <a id="25218" href="plfa.Equality.html#25203" class="Bound">y</a>
@@ -976,9 +933,7 @@ follows from `x ≐ y`.  But `Q y` is exactly a proof of what we
 require, that `x ≡ y`.
 {:/}
 
-此证明与莱布尼兹相等性的对称性证明相似。我们取谓词 `Q`，使得 `Q z` 在 `x ≡ z` 成立时成立。
-那么 `Q x` 是显然的，由 Martin Löf 相等性的自反性得来。从而 `Q y` 由 `x ≐ y` 可得，
-而 `Q y` 即是我们所需要的 `x ≡ y` 的证明。
+此证明与莱布尼兹相等性的对称性证明相似。我们取谓词 `Q`，使得 `Q z` 在 `x ≡ z` 成立时成立。那么 `Q x` 是显然的，由 Martin Löf 相等性的自反性得来。从而 `Q y` 由 `x ≐ y` 可得，而 `Q y` 即是我们所需要的 `x ≡ y` 的证明。
 
 {::comment}
 (Parts of this section are adapted from *≐≃≡: Leibniz Equality is
@@ -989,9 +944,7 @@ draft, 2017.)
 
 （本部分的内容由此处改编得来：
 *≐≃≡: Leibniz Equality is
-Isomorphic to Martin-Löf Identity, Parametrically*
-作者：Andreas Abel、Jesper Cockx、Dominique Devries、Andreas Nuyts 与 Philip Wadler，
-草稿，2017）
+Isomorphic to Martin-Löf Identity, Parametrically*作者：Andreas Abel、Jesper Cockx、Dominique Devries、Andreas Nuyts 与 Philip Wadler，草稿，2017）
 
 
 {::comment}
@@ -1010,9 +963,7 @@ two values of a type that belongs to `Set ℓ` for some arbitrary level `ℓ`?
 {:/}
 
 正如我们之前看到的那样，不是每个类型都属于 `Set`，但是每个类型都属于类型阶级的某处，
-`Set₀`、`Set₁`、`Set₂`等等。其中 `Set` 是 `Set₀` 的缩写，此外 `Set₀ : Set₁`，`Set₁ : Set₂`，以此类推。
-当我们需要比较两个属于 `Set` 的类型的值时，我们之前给出的定义是足够的，
-但如果我们需要比较对于任何等级 `ℓ`，两个属于 `Set ℓ` 的类型的值该怎么办呢？
+`Set₀`、`Set₁`、`Set₂`等等。其中 `Set` 是 `Set₀` 的缩写，此外 `Set₀ : Set₁`，`Set₁ : Set₂`，以此类推。当我们需要比较两个属于 `Set` 的类型的值时，我们之前给出的定义是足够的，但如果我们需要比较对于任何等级 `ℓ`，两个属于 `Set ℓ` 的类型的值该怎么办呢？
 
 {::comment}
 The answer is _universe polymorphism_, where a definition is made
@@ -1020,8 +971,7 @@ with respect to an arbitrary level `ℓ`. To make use of levels, we
 first import the following:
 {:/}
 
-答案是*全体多态*（Universe Polymorphism），一个定义可以根据任何等级 `ℓ` 来做出。
-为了使用等级，我们首先导入下列内容：
+答案是*全体多态*（Universe Polymorphism），一个定义可以根据任何等级 `ℓ` 来做出。为了使用等级，我们首先导入下列内容：
 
 {% raw %}<pre class="Agda"><a id="27249" class="Keyword">open</a> <a id="27254" class="Keyword">import</a> <a id="27261" href="https://agda.github.io/agda-stdlib/v1.1/Level.html" class="Module">Level</a> <a id="27267" class="Keyword">using</a> <a id="27273" class="Symbol">(</a><a id="27274" href="Agda.Primitive.html#408" class="Postulate">Level</a><a id="27279" class="Symbol">;</a> <a id="27281" href="Agda.Primitive.html#657" class="Primitive Operator">_⊔_</a><a id="27284" class="Symbol">)</a> <a id="27286" class="Keyword">renaming</a> <a id="27295" class="Symbol">(</a><a id="27296" href="Agda.Primitive.html#611" class="Primitive">zero</a> <a id="27301" class="Symbol">to</a> <a id="27304" href="Agda.Primitive.html#611" class="Primitive">lzero</a><a id="27309" class="Symbol">;</a> <a id="27311" href="Agda.Primitive.html#627" class="Primitive">suc</a> <a id="27315" class="Symbol">to</a> <a id="27318" href="Agda.Primitive.html#627" class="Primitive">lsuc</a><a id="27322" class="Symbol">)</a>
 </pre>{% endraw %}
@@ -1092,8 +1042,7 @@ the text, but most definitions in the standard library, including those for
 equality, are generalised to arbitrary levels as above.
 {:/}
 
-为了简介，我们在本书中给出的定义将避免使用全体多态，但是大多数标准库中的定义，
-包括相等性的定义，都推广到了任意等级，如上所示。
+为了简介，我们在本书中给出的定义将避免使用全体多态，但是大多数标准库中的定义，包括相等性的定义，都推广到了任意等级，如上所示。
 
 {::comment}
 Here is the generalised definition of Leibniz equality:

@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Preface: 前言 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Preface: 前言" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Preface/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Preface/","headline":"Preface: 前言","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Preface: 前言","url":"https://agda-zh.github.io/PLFA-zh/Preface/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -157,9 +157,9 @@ hidden. -->
 对于学习编程语言理论基础而言，我们花费了太多课程去专门学习证明推导的策略（Tactic）。
 每个概念都需要学习两遍：例如，在学过一遍积数据类型（Product Data Type）之后，
 我们还要再学一遍与之对应的合取（Conjunction）的引入（Introduction）和消除（Elimination）策略。
-Coq 用来生成归纳假设（Induction Hypothesis）的规则有时看起来很玄学。而 <code class="highlighter-rouge">notation</code>
+Coq 用来生成归纳假设（Induction Hypothesis）的规则有时看起来很玄学。而 <code class="language-plaintext highlighter-rouge">notation</code>
 构造则允许直观但灵活多变的语法，同一个概念总是有两个名字有时会令人迷惑，
-例如，<code class="highlighter-rouge">subst N x M</code> 和 <code class="highlighter-rouge">N [x := M]</code>。策略的名字时短时长；标准库中的命名约定则非常不一致。
+例如，<code class="language-plaintext highlighter-rouge">subst N x M</code> 和 <code class="language-plaintext highlighter-rouge">N [x := M]</code>。策略的名字时短时长；标准库中的命名约定则非常不一致。
 <strong>命题即类型</strong>作为证明的基础虽然存在，但却被雪藏了。</p>
 
 <!-- I found myself keen to recast the course in Agda.  In Agda, there is
@@ -176,7 +176,7 @@ foundation of proof is on proud display. -->
 <p>我发现自己热衷于用 Agda 重构此课程。在 Agda 中，我们不再需要学习策略了：
 这里只有依赖类型编程，简单纯粹。我们总是通过构造子来引入，通过模式匹配来消除。
 归纳不再是谜之独立的概念，它与我们熟悉的递归概念直接对应。混缀语法十分灵活，
-但每个概念只需要一个名字，例如代换就是 <code class="highlighter-rouge">_[_:=_]</code>。标准库虽不完美，但它的一致性却很合理。
+但每个概念只需要一个名字，例如代换就是 <code class="language-plaintext highlighter-rouge">_[_:=_]</code>。标准库虽不完美，但它的一致性却很合理。
 <strong>命题即类型</strong>作为证明的基础则被骄傲地展示了出来。</p>
 
 <!-- Alas, there is no textbook for programming language theory in
@@ -227,9 +227,9 @@ Few students do all of these, but most attempt at least a few. -->
 
 <p>标有<strong>延伸</strong>的习题提供了额外的挑战。很少有学生能全部做完，但至少应该尝试一下。</p>
 
-<!-- Exercises without a label are included for those who want extra practice. -->
+<!-- Exercises labelled "(practice)" are included for those who want extra practice. -->
 
-<p>没有标记的习题供想要更多实践的学生练习。</p>
+<p>标记有<strong>实践</strong>的习题供想要更多实践的学生练习。</p>
 
   </div>
 
@@ -280,6 +280,18 @@ Few students do all of these, but most attempt at least a few. -->
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

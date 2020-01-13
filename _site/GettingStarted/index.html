@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>使用说明 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="使用说明" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/GettingStarted/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/GettingStarted/","headline":"使用说明","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"使用说明","url":"https://agda-zh.github.io/PLFA-zh/GettingStarted/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -105,22 +105,20 @@ cause problems.
 本页顶部的徽章列出了 PLFA 使用的依赖版本。我们已经用上面列出的版本测试过了，
 其它更旧或更新的版本可能会出问题。</p>
 
-<!---
-You can get the appropriate version of Programming Language Foundations in Agda from Github,
+<p>You can get the appropriate version of Programming Language Foundations in Agda from GitHub,
 either by cloning the repository,
-or by downloading [the zip archive](https://github.com/plfa/plfa.github.io/archive/dev.zip):
---->
+or by downloading <a href="https://github.com/plfa/plfa.github.io/archive/dev.zip">the zip archive</a>:
+—&gt;</p>
 
 <p>你可以执行下方的命令克隆仓库或者下载 zip 包（<a href="https://github.com/plfa/plfa.github.io/archive/dev.zip">原书</a> / <a href="https://github.com/Agda-zh/PLFA-zh/archive/dev.zip">中文版</a>）以从 GitHub 获取最新版的 PLFA。</p>
 
 <p>原书：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/plfa/plfa.github.io
-</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/plfa/plfa.github.io
 
-<p>中文版：</p>
+git clone https://github.com/plfa/plfa.github.io
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Agda-zh/PLFA-zh
+git clone https://github.com/Agda-zh/PLFA-zh
 </code></pre></div></div>
 
 <!---
@@ -140,10 +138,41 @@ modules from the book, you need to do this.  To do so, add the path to
 `~/.agda/defaults`, both on lines of their own.
 -->
 
-<p>如果你想完成 <code class="highlighter-rouge">courses</code> 目录中的习题，或者想导入书中的模块，
-那么需要将 PLFA 设置为 Agda 库。完成此设置需要将 <code class="highlighter-rouge">plfa.agda-lib</code>
-所在的路径作为单独的一行添加到 <code class="highlighter-rouge">~/.agda/libraries</code>，并将 <code class="highlighter-rouge">plfa</code>
-作为单独的一行添加到 <code class="highlighter-rouge">~/.agda/defaults</code>。</p>
+<p>如果你想完成 <code class="language-plaintext highlighter-rouge">courses</code> 目录中的习题，或者想导入书中的模块，
+那么需要将 PLFA 设置为 Agda 库。完成此设置需要将 <code class="language-plaintext highlighter-rouge">plfa.agda-lib</code>
+所在的路径作为单独的一行添加到 <code class="language-plaintext highlighter-rouge">~/.agda/libraries</code>，并将 <code class="language-plaintext highlighter-rouge">plfa</code>
+作为单独的一行添加到 <code class="language-plaintext highlighter-rouge">~/.agda/defaults</code>。</p>
+
+<!--
+## Auto-loading `agda-mode` in Emacs
+-->
+
+<h2 id="在-emacs-中自动加载-agda-mode">在 Emacs 中自动加载 <code class="language-plaintext highlighter-rouge">agda-mode</code></h2>
+
+<!--
+In order to have `agda-mode` automatically loaded whenever you open a file ending
+with `.agda` or `.lagda.md`, put the following on your Emacs configuration file:
+-->
+
+<p>为了让 <code class="language-plaintext highlighter-rouge">agda-mode</code> 在你打开 <code class="language-plaintext highlighter-rouge">.agda</code> 或 <code class="language-plaintext highlighter-rouge">.lagda.md</code> 文件时自动加载，
+请将以下内容放到你的 Emacs 配置文件中。</p>
+
+<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">auto-mode-alist</span>
+   <span class="p">(</span><span class="nb">append</span>
+     <span class="o">'</span><span class="p">((</span><span class="s">"\\.agda\\'"</span> <span class="o">.</span> <span class="nv">agda2-mode</span><span class="p">)</span>
+       <span class="p">(</span><span class="s">"\\.lagda.md\\'"</span> <span class="o">.</span> <span class="nv">agda2-mode</span><span class="p">))</span>
+     <span class="nv">auto-mode-alist</span><span class="p">))</span>
+</code></pre></div></div>
+
+<!--
+The configuration file for Emacs is normally located in `~/.emacs` or `~/.emacs.d/init.el`,
+but Aquamacs users might need to move their startup settings to the Preferences.el file in
+`~/Library/Preferences/Aquamacs Emacs/Preferences`.
+-->
+
+<p>Emacs 的配置文件通常位于 <code class="language-plaintext highlighter-rouge">~/.emacs</code> 或 <code class="language-plaintext highlighter-rouge">~/.emacs.d/init.el</code>，不过
+Aquamacs 用户需要将启动设置放到位于 <code class="language-plaintext highlighter-rouge">~/Library/Preferences/Aquamacs Emacs/Preferences</code>
+的 Preferences.el 文件中。</p>
 
 <!---
 Unicode characters
@@ -154,17 +183,55 @@ Unicode characters
 <!---
 If you're having trouble typing the Unicode characters into Emacs, the end of
 each chapter should provide a list of the unicode characters introduced in that
-chapter. For a full list of supported characters, see
-[agda-input.el](https://github.com/agda/agda/blob/master/src/data/emacs-mode/agda-input.el#L194).
+chapter.
 --->
 
-<p>如果你在 Emacs 中输入 Unicode 字符时遇到困难，每一章的结尾都列出了该章引入的 Unicode 字符。所支持字符的完整列表请参阅 <a href="https://github.com/agda/agda/blob/master/src/data/emacs-mode/agda-input.el#L194">agda-input.el</a>。</p>
+<p>如果你在 Emacs 中输入 Unicode 字符时遇到困难，每一章的结尾都列出了该章引入的 Unicode 字符。</p>
+
+<!--
+`agda-mode` and emacs have a number of useful commands.
+Two of them are especially useful when you solve exercises.
+-->
+
+<p><code class="language-plaintext highlighter-rouge">agda-mode</code> 和 Emacs 有很多有用的命令，其中的两个在你做练习时非常有用。</p>
+
+<!--
+For a full list of supported characters, use `agda-input-show-translations` with:
+-->
+
+<p>要查看所支持字符的完整列表，请使用 <code class="language-plaintext highlighter-rouge">agda-input-show-translations</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M-x agda-input-show-translations
+</code></pre></div></div>
+
+<!--
+All the supported characters in `agda-mode` are shown.
+-->
+
+<p>这样会显示出 <code class="language-plaintext highlighter-rouge">agda-mode</code> 中所有支持的字符。</p>
+
+<!--
+If you want to know how you input a specific Unicode character in agda file,
+move the cursor onto the character and type the following command:
+-->
+
+<p>如果你想知道如何在 agda 文件中输入一个特定的 Unicode 字符，请将光标移至该字符上，
+然后输入以下命令：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M-x quail-show-key
+</code></pre></div></div>
+
+<!--
+You'll see the key sequence of the character in mini buffer.
+-->
+
+<p>你会在迷你缓冲区中看到输入该字符所需的按键序列。</p>
 
 <!---
 Using `agda-mode`
 --->
 
-<h2 id="使用-agda-mode">使用 <code class="highlighter-rouge">agda-mode</code></h2>
+<h2 id="使用-agda-mode">使用 <code class="language-plaintext highlighter-rouge">agda-mode</code></h2>
 
 <!---
     ?            hole
@@ -172,7 +239,7 @@ Using `agda-mode`
     C-c C-l      load buffer
 --->
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?            洞
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?            洞
 {!...!}      有内容的洞
 C-c C-l      加载缓冲区
 </code></pre></div></div>
@@ -190,7 +257,7 @@ Command to give when in a hole:
 
 <p>在洞上可用的命令：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C-c C-c x    在变量 x 上分项（自动模式匹配）
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C-c C-c x    在变量 x 上分项（自动模式匹配）
 C-c C-空格   填洞
 C-c C-r      用构造子精化
 C-c C-a      自动填洞
@@ -210,21 +277,21 @@ for more details.
 If you want to see messages beside rather than below your Agda code,
 you can do the following:
 
-Load your Agda file and do `C-c C-l`;
-type `C-x 1` to get only your Agda file showing;
-type `C-x 3` to split the window horizontally;
-move your cursor to the right-hand half of your frame;
-type `C-x b` and switch to the buffer called "Agda information"
+  - Load your Agda file and do `C-c C-l`;
+  - type `C-x 1` to get only your Agda file showing;
+  - type `C-x 3` to split the window horizontally;
+  - move your cursor to the right-hand half of your frame;
+  - type `C-x b` and switch to the buffer called "Agda information"
 --->
 
 <p>如果你希望在 Agda 代码侧边而非底部查看消息，可以参考如下操作：</p>
 
 <ul>
-  <li>载入 Agda 文件并按 <code class="highlighter-rouge">C-c C-l</code>；</li>
-  <li>按 <code class="highlighter-rouge">C-x 1</code> 以仅显示当前 Agda 文件；</li>
-  <li>按 <code class="highlighter-rouge">C-x 3</code> 以垂直分割窗口；</li>
+  <li>载入 Agda 文件并按 <code class="language-plaintext highlighter-rouge">C-c C-l</code>；</li>
+  <li>按 <code class="language-plaintext highlighter-rouge">C-x 1</code> 以仅显示当前 Agda 文件；</li>
+  <li>按 <code class="language-plaintext highlighter-rouge">C-x 3</code> 以垂直分割窗口；</li>
   <li>将光标移动到右侧窗口；</li>
-  <li>按 <code class="highlighter-rouge">C-x b</code> 并输入 “Agda information” 以切换到该缓冲区。</li>
+  <li>按 <code class="language-plaintext highlighter-rouge">C-x b</code> 并输入 “Agda information” 以切换到该缓冲区。</li>
 </ul>
 
 <!---
@@ -240,28 +307,22 @@ Fonts in Emacs
 
 <h2 id="emacs-中的字体">Emacs 中的字体</h2>
 
-<!---
-It is recommended that you add the following to the end of your emacs
-configuration file at `~/.emacs`, if you have the mentioned fonts available:
---->
+<!--
+It is recommended that you install the font [mononoki](https://madmalik.github.io/mononoki/), and add the following to the end of your emacs configuration file at `~/.emacs`:
+-->
 
-<p>如果你有以下代码中提及的字体，推荐将这些代码添加到 Emacs 配置文件 <code class="highlighter-rouge">~/.emacs</code> 的末尾。</p>
+<p>推荐安装 <a href="https://madmalik.github.io/mononoki/">mononoki</a> 字体，并将以下内容添加到位于
+<code class="language-plaintext highlighter-rouge">~/.emacs</code> 的 Emacs 配置文件的末尾：</p>
 
-<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; Setting up Fonts for use with Agda/PLFA</span>
-<span class="c1">;;</span>
-<span class="c1">;; default to DejaVu Sans Mono,</span>
+<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; default to mononoki</span>
 <span class="p">(</span><span class="nv">set-face-attribute</span> <span class="ss">'default</span> <span class="no">nil</span>
-		    <span class="ss">:family</span> <span class="s">"DejaVu Sans Mono"</span>
+		    <span class="ss">:family</span> <span class="s">"mononoki"</span>
 		    <span class="ss">:height</span> <span class="mi">120</span>
 		    <span class="ss">:weight</span> <span class="ss">'normal</span>
 		    <span class="ss">:width</span>  <span class="ss">'normal</span><span class="p">)</span>
-
-<span class="c1">;; fix \:</span>
-<span class="p">(</span><span class="nv">set-fontset-font</span> <span class="s">"fontset-default"</span>
-		  <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nv">decode-char</span> <span class="ss">'ucs</span> <span class="m">#x2982</span><span class="p">)</span>
-			<span class="p">(</span><span class="nv">decode-char</span> <span class="ss">'ucs</span> <span class="m">#x2982</span><span class="p">))</span>
-		  <span class="s">"STIX"</span><span class="p">)</span>
 </code></pre></div></div>
+
+<p>另外带有连体符号的 <a href="https://github.com/tonsky/FiraCode">FiraCode</a> 也是个不错的选择。</p>
 
 <!---
 Building the book
@@ -293,7 +354,7 @@ You install the Ruby dependencies---[Jekyll](https://jekyllrb.com/), [html-proof
 
 <p>你需要用 Bundler 安装 Ruby 依赖：<a href="https://jekyllrb.com/">Jekyll</a>、 <a href="https://github.com/gjtorikian/html-proofer">html-proofer</a> 等。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
 </code></pre></div></div>
 
 <!---
@@ -302,7 +363,7 @@ Once you have installed all of the dependencies, you can build a copy of the boo
 
 <p>安装完所有的工具后，我们就可以从源码构建本书了：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make build
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make build
 </code></pre></div></div>
 
 <!---
@@ -311,7 +372,7 @@ You can host your copy of the book locally by running:
 
 <p>运行如下命令可以在本地部署本书：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
 </code></pre></div></div>
 
 <!---
@@ -331,7 +392,7 @@ The Makefile offers more than just these options:
 
 <p>Makefile 提供了更多可选的命令：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make                      （见 make test）
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make                      （见 make test）
 make build                （将 lagda 构建至 markdown 并构建网站）
 make build-incremental    （将 lagda 构建至 markdown 并增量式构建网站）
 make test                 （检查所有链接的有效性）
@@ -356,7 +417,7 @@ unzip, and from within the directory run
 <p>如果你只想获取本书的副本以供离线阅读，而并不关心如何编辑并构建本书，
 那么你可以下载由 Travis 自动构建的 master 分支（<a href="https://github.com/plfa/plfa.github.io/archive/master.zip">原书</a> / <a href="https://github.com/Agda-zh/PLFA-zh/archive/master.zip">中文版</a>）。若要在本地部署本书，你需要 Ruby 和 Bundler（见上文）。请下载 master 分支的压缩包，并在解压后的目录中运行：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
 bundle exec jekyll serve
 </code></pre></div></div>
 
@@ -424,6 +485,18 @@ You can view the build history of PLFA at [travis-ci.org](https://travis-ci.org/
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

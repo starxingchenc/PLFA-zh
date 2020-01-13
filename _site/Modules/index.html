@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Modules: Modules and List Examples | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Modules: Modules and List Examples" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Modules/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Modules/","headline":"Modules: Modules and List Examples","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Modules: Modules and List Examples","url":"https://agda-zh.github.io/PLFA-zh/Modules/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -97,7 +97,7 @@ elements of a given type at a given universe level with a given
 equivalence relation for equality. One way to do so is to begin every
 signature with a suitable sequence of implicit parameters.  Here are
 some definitions, where we represent collections as lists.  (We would
-call collections <em>sets</em>, save that the name <code class="highlighter-rouge">Set</code> already plays a
+call collections <em>sets</em>, save that the name <code class="language-plaintext highlighter-rouge">Set</code> already plays a
 special role in Agda.)</p>
 
 <pre class="Agda"><a id="Coll′"></a><a id="1466" href="/PLFA-zh/Modules/#1466" class="Function">Coll′</a> <a id="1472" class="Symbol">:</a> <a id="1474" class="Symbol">∀</a> <a id="1476" class="Symbol">{</a><a id="1477" href="plfa.Modules.html#1477" class="Bound">ℓ</a> <a id="1479" class="Symbol">:</a> <a id="1481" href="Agda.Primitive.html#408" class="Postulate">Level</a><a id="1486" class="Symbol">}</a> <a id="1488" class="Symbol">→</a> <a id="1490" class="PrimitiveType">Set</a> <a id="1494" href="plfa.Modules.html#1477" class="Bound">ℓ</a> <a id="1496" class="Symbol">→</a> <a id="1498" class="PrimitiveType">Set</a> <a id="1502" href="plfa.Modules.html#1477" class="Bound">ℓ</a>
@@ -109,7 +109,7 @@ special role in Agda.)</p>
 <a id="_⊆′_"></a><a id="1642" href="/PLFA-zh/Modules/#1642" class="Function Operator">_⊆′_</a> <a id="1647" class="Symbol">:</a> <a id="1649" class="Symbol">∀</a> <a id="1651" class="Symbol">{</a><a id="1652" href="plfa.Modules.html#1652" class="Bound">ℓ</a> <a id="1654" class="Symbol">:</a> <a id="1656" href="Agda.Primitive.html#408" class="Postulate">Level</a><a id="1661" class="Symbol">}</a> <a id="1663" class="Symbol">{</a><a id="1664" href="plfa.Modules.html#1664" class="Bound">A</a> <a id="1666" class="Symbol">:</a> <a id="1668" class="PrimitiveType">Set</a> <a id="1672" href="plfa.Modules.html#1652" class="Bound">ℓ</a><a id="1673" class="Symbol">}</a> <a id="1675" class="Symbol">{</a><a id="1676" href="plfa.Modules.html#1676" class="Bound Operator">_≈_</a> <a id="1680" class="Symbol">:</a> <a id="1682" href="plfa.Modules.html#1664" class="Bound">A</a> <a id="1684" class="Symbol">→</a> <a id="1686" href="plfa.Modules.html#1664" class="Bound">A</a> <a id="1688" class="Symbol">→</a> <a id="1690" class="PrimitiveType">Set</a> <a id="1694" href="plfa.Modules.html#1652" class="Bound">ℓ</a><a id="1695" class="Symbol">}</a> <a id="1697" class="Symbol">→</a> <a id="1699" href="plfa.Modules.html#1466" class="Function">Coll′</a> <a id="1705" href="plfa.Modules.html#1664" class="Bound">A</a> <a id="1707" class="Symbol">→</a> <a id="1709" href="plfa.Modules.html#1466" class="Function">Coll′</a> <a id="1715" href="plfa.Modules.html#1664" class="Bound">A</a> <a id="1717" class="Symbol">→</a> <a id="1719" class="PrimitiveType">Set</a> <a id="1723" href="plfa.Modules.html#1652" class="Bound">ℓ</a>
 <a id="1725" href="/PLFA-zh/Modules/#1642" class="Function Operator">_⊆′_</a> <a id="1730" class="Symbol">{</a><a id="1731" class="Argument">_≈_</a> <a id="1735" class="Symbol">=</a> <a id="1737" href="plfa.Modules.html#1737" class="Bound Operator">_≈_</a><a id="1740" class="Symbol">}</a> <a id="1742" href="plfa.Modules.html#1742" class="Bound">xs</a> <a id="1745" href="plfa.Modules.html#1745" class="Bound">ys</a>  <a id="1749" class="Symbol">=</a>  <a id="1752" class="Symbol">∀</a> <a id="1754" class="Symbol">{</a><a id="1755" href="plfa.Modules.html#1755" class="Bound">w</a><a id="1756" class="Symbol">}</a> <a id="1758" class="Symbol">→</a> <a id="1760" href="plfa.Modules.html#1524" class="Function Operator">_∈′_</a>  <a id="1766" class="Symbol">{</a><a id="1767" class="Argument">_≈_</a> <a id="1771" class="Symbol">=</a> <a id="1773" href="plfa.Modules.html#1737" class="Bound Operator">_≈_</a><a id="1776" class="Symbol">}</a> <a id="1778" href="plfa.Modules.html#1755" class="Bound">w</a> <a id="1780" href="plfa.Modules.html#1742" class="Bound">xs</a> <a id="1783" class="Symbol">→</a> <a id="1785" href="plfa.Modules.html#1524" class="Function Operator">_∈′_</a> <a id="1790" class="Symbol">{</a><a id="1791" class="Argument">_≈_</a> <a id="1795" class="Symbol">=</a> <a id="1797" href="plfa.Modules.html#1737" class="Bound Operator">_≈_</a><a id="1800" class="Symbol">}</a> <a id="1802" href="plfa.Modules.html#1755" class="Bound">w</a> <a id="1804" href="plfa.Modules.html#1745" class="Bound">ys</a>
 </pre>
-<p>This rapidly gets tired.  Passing around the equivalence relation <code class="highlighter-rouge">_≈_</code>
+<p>This rapidly gets tired.  Passing around the equivalence relation <code class="language-plaintext highlighter-rouge">_≈_</code>
 takes a lot of space, hinders the use of infix notation, and obscures the
 essence of the definitions.</p>
 
@@ -171,14 +171,14 @@ the rest of the program.</p>
 <p>Definitions similar to those in this chapter can be found in the standard library.</p>
 <pre class="Agda"><a id="3394" class="Comment">-- EDIT</a>
 </pre>
-<p>The standard library version of <code class="highlighter-rouge">IsMonoid</code> differs from the
+<p>The standard library version of <code class="language-plaintext highlighter-rouge">IsMonoid</code> differs from the
 one given here, in that it is also parameterised on an equivalence relation.</p>
 
 <h2 id="unicode">Unicode</h2>
 
 <p>This chapter uses the following unicode.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EDIT
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EDIT
 ∷  U+2237  PROPORTION  (\::)
 ⊗  U+2297  CIRCLED TIMES  (\otimes)
 ∈  U+2208  ELEMENT OF  (\in)
@@ -230,6 +230,18 @@ one given here, in that it is also parameterised on an equivalence relation.</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

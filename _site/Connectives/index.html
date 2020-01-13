@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Connectives: 合取、析取与蕴涵 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Connectives: 合取、析取与蕴涵" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Connectives/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Connectives/","headline":"Connectives: 合取、析取与蕴涵","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Connectives: 合取、析取与蕴涵","url":"https://agda-zh.github.io/PLFA-zh/Connectives/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -85,8 +85,7 @@
 correspondence between connectives of logic and data types, a
 principle known as _Propositions as Types_: -->
 
-<p>本章节介绍基础的逻辑运算符。我们使用逻辑运算符与数据类型之间的对应关系，
-即<em>命题即类型</em>原理（Propositions as Types）。</p>
+<p>本章节介绍基础的逻辑运算符。我们使用逻辑运算符与数据类型之间的对应关系，即<em>命题即类型</em>原理（Propositions as Types）。</p>
 
 <!--   * _conjunction_ is _product_,
   * _disjunction_ is _sum_,
@@ -123,8 +122,7 @@ principle known as _Propositions as Types_: -->
 if both `A` holds and `B` holds.  We formalise this idea by
 declaring a suitable inductive type: -->
 
-<p>给定两个命题 <code class="highlighter-rouge">A</code> 和 <code class="highlighter-rouge">B</code>，其合取 <code class="highlighter-rouge">A × B</code> 成立当 <code class="highlighter-rouge">A</code> 成立和 <code class="highlighter-rouge">B</code> 成立。
-我们将这样的概念形式化，使用如下的归纳类型：</p>
+<p>给定两个命题 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，其合取 <code class="language-plaintext highlighter-rouge">A × B</code> 成立当 <code class="language-plaintext highlighter-rouge">A</code> 成立和 <code class="language-plaintext highlighter-rouge">B</code> 成立。我们将这样的概念形式化，使用如下的归纳类型：</p>
 
 <pre class="Agda"><a id="1715" class="Keyword">data</a> <a id="_×_"></a><a id="1720" href="/PLFA-zh/Connectives/#1720" class="Datatype Operator">_×_</a> <a id="1724" class="Symbol">(</a><a id="1725" href="plfa.Connectives.html#1725" class="Bound">A</a> <a id="1727" href="plfa.Connectives.html#1727" class="Bound">B</a> <a id="1729" class="Symbol">:</a> <a id="1731" class="PrimitiveType">Set</a><a id="1734" class="Symbol">)</a> <a id="1736" class="Symbol">:</a> <a id="1738" class="PrimitiveType">Set</a> <a id="1742" class="Keyword">where</a>
 
@@ -138,13 +136,13 @@ declaring a suitable inductive type: -->
 provides evidence that `A` holds and `N` provides evidence that `B`
 holds. -->
 
-<p><code class="highlighter-rouge">A × B</code> 成立的证明由 <code class="highlighter-rouge">⟨ M , N ⟩</code> 的形式表现，其中 <code class="highlighter-rouge">M</code> 是 <code class="highlighter-rouge">A</code> 成立的证明，
-<code class="highlighter-rouge">N</code> 是 <code class="highlighter-rouge">B</code> 成立的证明。</p>
+<p><code class="language-plaintext highlighter-rouge">A × B</code> 成立的证明由 <code class="language-plaintext highlighter-rouge">⟨ M , N ⟩</code> 的形式表现，其中 <code class="language-plaintext highlighter-rouge">M</code> 是 <code class="language-plaintext highlighter-rouge">A</code> 成立的证明，
+<code class="language-plaintext highlighter-rouge">N</code> 是 <code class="language-plaintext highlighter-rouge">B</code> 成立的证明。</p>
 
 <!-- Given evidence that `A × B` holds, we can conclude that either
 `A` holds or `B` holds: -->
 
-<p>给定 <code class="highlighter-rouge">A × B</code> 成立的证明，我们可以得出 <code class="highlighter-rouge">A</code> 成立或者 <code class="highlighter-rouge">B</code> 成立。</p>
+<p>给定 <code class="language-plaintext highlighter-rouge">A × B</code> 成立的证明，我们可以得出 <code class="language-plaintext highlighter-rouge">A</code> 成立或者 <code class="language-plaintext highlighter-rouge">B</code> 成立。</p>
 
 <pre class="Agda"><a id="proj₁"></a><a id="2185" href="/PLFA-zh/Connectives/#2185" class="Function">proj₁</a> <a id="2191" class="Symbol">:</a> <a id="2193" class="Symbol">∀</a> <a id="2195" class="Symbol">{</a><a id="2196" href="plfa.Connectives.html#2196" class="Bound">A</a> <a id="2198" href="plfa.Connectives.html#2198" class="Bound">B</a> <a id="2200" class="Symbol">:</a> <a id="2202" class="PrimitiveType">Set</a><a id="2205" class="Symbol">}</a>
   <a id="2209" class="Symbol">→</a> <a id="2211" href="/PLFA-zh/Connectives/#2196" class="Bound">A</a> <a id="2213" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="2215" href="plfa.Connectives.html#2198" class="Bound">B</a>
@@ -161,8 +159,8 @@ holds. -->
 <!-- If `L` provides evidence that `A × B` holds, then `proj₁ L` provides evidence
 that `A` holds, and `proj₂ L` provides evidence that `B` holds. -->
 
-<p>如果 <code class="highlighter-rouge">L</code> 是 <code class="highlighter-rouge">A × B</code> 成立的证据, 那么 <code class="highlighter-rouge">proj₁ L</code> 是 <code class="highlighter-rouge">A</code> 成立的证据，
-<code class="highlighter-rouge">proj₂ L</code> 是 <code class="highlighter-rouge">B</code> 成立的证据。</p>
+<p>如果 <code class="language-plaintext highlighter-rouge">L</code> 是 <code class="language-plaintext highlighter-rouge">A × B</code> 成立的证据, 那么 <code class="language-plaintext highlighter-rouge">proj₁ L</code> 是 <code class="language-plaintext highlighter-rouge">A</code> 成立的证据，
+<code class="language-plaintext highlighter-rouge">proj₂ L</code> 是 <code class="language-plaintext highlighter-rouge">B</code> 成立的证据。</p>
 
 <!-- Equivalently, we could also declare conjunction as a record type: -->
 
@@ -178,7 +176,7 @@ that `A` holds, and `proj₂ L` provides evidence that `B` holds. -->
 
 <p>在这里，记录的构造</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>record
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>record
   { proj₁′ = M
   ; proj₂′ = N
   }
@@ -188,12 +186,12 @@ that `A` holds, and `proj₂ L` provides evidence that `B` holds. -->
 
 <p>对应</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⟨ M , N ⟩
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⟨ M , N ⟩
 </code></pre></div></div>
 
 <!-- where `M` is a term of type `A` and `N` is a term of type `B`. -->
 
-<p>其中 <code class="highlighter-rouge">M</code> 是 <code class="highlighter-rouge">A</code> 类型的项，<code class="highlighter-rouge">N</code> 是 <code class="highlighter-rouge">B</code> 类型的项。</p>
+<p>其中 <code class="language-plaintext highlighter-rouge">M</code> 是 <code class="language-plaintext highlighter-rouge">A</code> 类型的项，<code class="language-plaintext highlighter-rouge">N</code> 是 <code class="language-plaintext highlighter-rouge">B</code> 类型的项。</p>
 
 <!-- When `⟨_,_⟩` appears in a term on the right-hand side of an equation
 we refer to it as a _constructor_, and when it appears in a pattern on
@@ -201,8 +199,7 @@ the left-hand side of an equation we refer to it as a _destructor_.
 We may also refer to `proj₁` and `proj₂` as destructors, since they
 play a similar role. -->
 
-<p>当 <code class="highlighter-rouge">⟨_,_⟩</code> 在等式右手边的项中出现的时候，我们将其称作<em>构造子</em>（Constructor），
-当它出现在等式左边时，我们将其称作<em>析构器</em>（Destructor）。我们亦可将 <code class="highlighter-rouge">proj₁</code> 和 <code class="highlighter-rouge">proj₂</code>
+<p>当 <code class="language-plaintext highlighter-rouge">⟨_,_⟩</code> 在等式右手边的项中出现的时候，我们将其称作<em>构造子</em>（Constructor），当它出现在等式左边时，我们将其称作<em>析构器</em>（Destructor）。我们亦可将 <code class="language-plaintext highlighter-rouge">proj₁</code> 和 <code class="language-plaintext highlighter-rouge">proj₂</code>
 称作析构器，因为它们起到相似的效果。</p>
 
 <!-- Other terminology refers to `⟨_,_⟩` as _introducing_ a conjunction, and
@@ -218,18 +215,12 @@ we say the connective holds---how to _define_ the connective. An
 elimination rule describes what we may conclude when the connective
 holds---how to _use_ the connective. -->
 
-<p>其他的术语将 <code class="highlighter-rouge">⟨_,_⟩</code> 称作<em>引入</em>（Introduce）合取，将 <code class="highlighter-rouge">proj₁</code> 和 <code class="highlighter-rouge">proj₂</code> 称作<em>消去</em>（Eliminate）合取。
-前者亦记作 <code class="highlighter-rouge">×-I</code>，后者 <code class="highlighter-rouge">×-E₁</code> 和 <code class="highlighter-rouge">×-E₂</code>。如果我们从上到下来阅读这些规则，引入和消去
-正如其名字所说的那样：第一条<em>引入</em>一个运算符，所以运算符出现在结论中，而不是假设中；
-第二条<em>消去</em>一个带有运算符的式子，而运算符出现在假设中，而不是结论中。引入规则描述了
-运算符在什么情况下成立——即怎么样<em>定义</em>一个运算符。消去规则描述了运算符成立时，可以得出
-什么样的结论——即怎么样<em>使用</em>一个运算符。</p>
+<p>其他的术语将 <code class="language-plaintext highlighter-rouge">⟨_,_⟩</code> 称作<em>引入</em>（Introduce）合取，将 <code class="language-plaintext highlighter-rouge">proj₁</code> 和 <code class="language-plaintext highlighter-rouge">proj₂</code> 称作<em>消去</em>（Eliminate）合取。前者亦记作 <code class="language-plaintext highlighter-rouge">×-I</code>，后者 <code class="language-plaintext highlighter-rouge">×-E₁</code> 和 <code class="language-plaintext highlighter-rouge">×-E₂</code>。如果我们从上到下来阅读这些规则，引入和消去正如其名字所说的那样：第一条<em>引入</em>一个运算符，所以运算符出现在结论中，而不是假设中；第二条<em>消去</em>一个带有运算符的式子，而运算符出现在假设中，而不是结论中。引入规则描述了运算符在什么情况下成立——即怎么样<em>定义</em>一个运算符。消去规则描述了运算符成立时，可以得出什么样的结论——即怎么样<em>使用</em>一个运算符。</p>
 
 <!-- (The paragraph above was adopted from "Propositions as Types", Philip Wadler,
 _Communications of the ACM_, December 2015.) -->
 
-<p>（上面一段内容由此处改编得来：<em>Propositions as Types</em>，作者：Philip Wadler，
-发表于 《ACM 通讯》，2015 年 9 月）</p>
+<p>（上面一段内容由此处改编得来：<em>Propositions as Types</em>，作者：Philip Wadler，发表于 《ACM 通讯》，2015 年 9 月）</p>
 
 <!-- In this case, applying each destructor and reassembling the results with the
 constructor is the identity over products: -->
@@ -243,7 +234,7 @@ constructor is the identity over products: -->
 replacing `w` by `⟨ x , y ⟩` allows both sides of the
 propositional equality to simplify to the same term. -->
 
-<p>左手边的模式匹配是必要的。用 <code class="highlighter-rouge">⟨ x , y ⟩</code> 来替换 <code class="highlighter-rouge">w</code> 让等式的两边可以化简成相同的项。</p>
+<p>左手边的模式匹配是必要的。用 <code class="language-plaintext highlighter-rouge">⟨ x , y ⟩</code> 来替换 <code class="language-plaintext highlighter-rouge">w</code> 让等式的两边可以化简成相同的项。</p>
 
 <!-- We set the precedence of conjunction so that it binds less
 tightly than anything save disjunction: -->
@@ -254,7 +245,7 @@ tightly than anything save disjunction: -->
 </pre>
 <!-- Thus, `m ≤ n × n ≤ p` parses as `(m ≤ n) × (n ≤ p)`. -->
 
-<p>因此，<code class="highlighter-rouge">m ≤ n × n ≤ p</code> 解析为 <code class="highlighter-rouge">(m ≤ n) × (n ≤ p)</code>。</p>
+<p>因此，<code class="language-plaintext highlighter-rouge">m ≤ n × n ≤ p</code> 解析为 <code class="language-plaintext highlighter-rouge">(m ≤ n) × (n ≤ p)</code>。</p>
 
 <!-- Given two types `A` and `B`, we refer to `A × B` as the
 _product_ of `A` and `B`.  In set theory, it is also sometimes
@@ -266,11 +257,7 @@ then the type `A × B` has `m * n` distinct members.
 For instance, consider a type `Bool` with two members, and
 a type `Tri` with three members: -->
 
-<p>给定两个类型 <code class="highlighter-rouge">A</code> 和 <code class="highlighter-rouge">B</code>，我们将 <code class="highlighter-rouge">A × B</code> 称为 <code class="highlighter-rouge">A</code> 与 <code class="highlighter-rouge">B</code> 的<em>积</em>。
-在集合论中它也被称作<em>笛卡尔积</em>（Cartesian Product），在计算机科学中它对应<em>记录</em>类型。
-如果类型 <code class="highlighter-rouge">A</code> 有 <code class="highlighter-rouge">m</code> 个不同的成员，类型 <code class="highlighter-rouge">B</code> 有 <code class="highlighter-rouge">n</code> 个不同的成员，
-那么类型 <code class="highlighter-rouge">A × B</code> 有 <code class="highlighter-rouge">m * n</code> 个不同的成员。这也是它被称为积的原因之一。
-例如，考虑有两个成员的 <code class="highlighter-rouge">Bool</code> 类型，和有三个成员的 <code class="highlighter-rouge">Tri</code> 类型：</p>
+<p>给定两个类型 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，我们将 <code class="language-plaintext highlighter-rouge">A × B</code> 称为 <code class="language-plaintext highlighter-rouge">A</code> 与 <code class="language-plaintext highlighter-rouge">B</code> 的<em>积</em>。在集合论中它也被称作<em>笛卡尔积</em>（Cartesian Product），在计算机科学中它对应<em>记录</em>类型。如果类型 <code class="language-plaintext highlighter-rouge">A</code> 有 <code class="language-plaintext highlighter-rouge">m</code> 个不同的成员，类型 <code class="language-plaintext highlighter-rouge">B</code> 有 <code class="language-plaintext highlighter-rouge">n</code> 个不同的成员，那么类型 <code class="language-plaintext highlighter-rouge">A × B</code> 有 <code class="language-plaintext highlighter-rouge">m * n</code> 个不同的成员。这也是它被称为积的原因之一。例如，考虑有两个成员的 <code class="language-plaintext highlighter-rouge">Bool</code> 类型，和有三个成员的 <code class="language-plaintext highlighter-rouge">Tri</code> 类型：</p>
 
 <pre class="Agda"><a id="6326" class="Keyword">data</a> <a id="Bool"></a><a id="6331" href="/PLFA-zh/Connectives/#6331" class="Datatype">Bool</a> <a id="6336" class="Symbol">:</a> <a id="6338" class="PrimitiveType">Set</a> <a id="6342" class="Keyword">where</a>
   <a id="Bool.true"></a><a id="6350" href="/PLFA-zh/Connectives/#6350" class="InductiveConstructor">true</a>  <a id="6356" class="Symbol">:</a> <a id="6358" href="plfa.Connectives.html#6331" class="Datatype">Bool</a>
@@ -283,16 +270,16 @@ a type `Tri` with three members: -->
 </pre>
 <!-- Then the type `Bool × Tri` has six members: -->
 
-<p>那么，<code class="highlighter-rouge">Bool × Tri</code> 类型有如下的六个成员：</p>
+<p>那么，<code class="language-plaintext highlighter-rouge">Bool × Tri</code> 类型有如下的六个成员：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⟨ true  , aa ⟩    ⟨ true  , bb ⟩    ⟨ true ,  cc ⟩
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⟨ true  , aa ⟩    ⟨ true  , bb ⟩    ⟨ true ,  cc ⟩
 ⟨ false , aa ⟩    ⟨ false , bb ⟩    ⟨ false , cc ⟩
 </code></pre></div></div>
 
 <!-- For example, the following function enumerates all
 possible arguments of type `Bool × Tri`: -->
 
-<p>下面的函数枚举了所有类型为 <code class="highlighter-rouge">Bool × Tri</code> 的参数：</p>
+<p>下面的函数枚举了所有类型为 <code class="language-plaintext highlighter-rouge">Bool × Tri</code> 的参数：</p>
 
 <pre class="Agda"><a id="×-count"></a><a id="6787" href="/PLFA-zh/Connectives/#6787" class="Function">×-count</a> <a id="6795" class="Symbol">:</a> <a id="6797" href="plfa.Connectives.html#6331" class="Datatype">Bool</a> <a id="6802" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="6804" href="plfa.Connectives.html#6384" class="Datatype">Tri</a> <a id="6808" class="Symbol">→</a> <a id="6810" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
 <a id="6812" href="/PLFA-zh/Connectives/#6787" class="Function">×-count</a> <a id="6820" href="plfa.Connectives.html#1751" class="InductiveConstructor Operator">⟨</a> <a id="6822" href="plfa.Connectives.html#6350" class="InductiveConstructor">true</a>  <a id="6828" href="plfa.Connectives.html#1751" class="InductiveConstructor Operator">,</a> <a id="6830" href="plfa.Connectives.html#6402" class="InductiveConstructor">aa</a> <a id="6833" href="plfa.Connectives.html#1751" class="InductiveConstructor Operator">⟩</a>  <a id="6836" class="Symbol">=</a>  <a id="6839" class="Number">1</a>
@@ -307,8 +294,7 @@ that there is a sense in which it is commutative and associative.  In
 particular, product is commutative and associative _up to
 isomorphism_. -->
 
-<p>类型上的积与数的积有相似的性质——它们满足交换律和结合律。
-更确切地说，积在<em>在同构意义下</em>满足交换律和结合率。</p>
+<p>类型上的积与数的积有相似的性质——它们满足交换律和结合律。更确切地说，积在<em>在同构意义下</em>满足交换律和结合率。</p>
 
 <!-- For commutativity, the `to` function swaps a pair, taking `⟨ x , y ⟩` to
 `⟨ y , x ⟩`, and the `from` function does the same (up to renaming).
@@ -316,10 +302,8 @@ Instantiating the patterns correctly in `from∘to` and `to∘from` is essential
 Replacing the definition of `from∘to` by `λ w → refl` will not work;
 and similarly for `to∘from`: -->
 
-<p>对于交换律，<code class="highlighter-rouge">to</code> 函数将有序对交换，将 <code class="highlighter-rouge">⟨ x , y ⟩</code> 变为 <code class="highlighter-rouge">⟨ y , x ⟩</code>，<code class="highlighter-rouge">from</code>
-函数亦是如此（忽略命名）。
-在 <code class="highlighter-rouge">from∘to</code> 和 <code class="highlighter-rouge">to∘from</code> 中正确地实例化要匹配的模式是很重要的。
-使用 <code class="highlighter-rouge">λ w → refl</code> 作为 <code class="highlighter-rouge">from∘to</code> 的定义是不可行的，<code class="highlighter-rouge">to∘from</code> 同理。</p>
+<p>对于交换律，<code class="language-plaintext highlighter-rouge">to</code> 函数将有序对交换，将 <code class="language-plaintext highlighter-rouge">⟨ x , y ⟩</code> 变为 <code class="language-plaintext highlighter-rouge">⟨ y , x ⟩</code>，<code class="language-plaintext highlighter-rouge">from</code>
+函数亦是如此（忽略命名）。在 <code class="language-plaintext highlighter-rouge">from∘to</code> 和 <code class="language-plaintext highlighter-rouge">to∘from</code> 中正确地实例化要匹配的模式是很重要的。使用 <code class="language-plaintext highlighter-rouge">λ w → refl</code> 作为 <code class="language-plaintext highlighter-rouge">from∘to</code> 的定义是不可行的，<code class="language-plaintext highlighter-rouge">to∘from</code> 同理。</p>
 
 <pre class="Agda"><a id="×-comm"></a><a id="7783" href="/PLFA-zh/Connectives/#7783" class="Function">×-comm</a> <a id="7790" class="Symbol">:</a> <a id="7792" class="Symbol">∀</a> <a id="7794" class="Symbol">{</a><a id="7795" href="plfa.Connectives.html#7795" class="Bound">A</a> <a id="7797" href="plfa.Connectives.html#7797" class="Bound">B</a> <a id="7799" class="Symbol">:</a> <a id="7801" class="PrimitiveType">Set</a><a id="7804" class="Symbol">}</a> <a id="7806" class="Symbol">→</a> <a id="7808" href="plfa.Connectives.html#7795" class="Bound">A</a> <a id="7810" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="7812" href="plfa.Connectives.html#7797" class="Bound">B</a> <a id="7814" href="/PLFA-zh/Isomorphism/#5843" class="Record Operator">≃</a> <a id="7816" href="plfa.Connectives.html#7797" class="Bound">B</a> <a id="7818" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="7820" href="plfa.Connectives.html#7795" class="Bound">A</a>
 <a id="7822" href="/PLFA-zh/Connectives/#7783" class="Function">×-comm</a> <a id="7829" class="Symbol">=</a>
@@ -335,7 +319,7 @@ isomorphism_.  Compare the two statements: -->
 
 <p>满足<em>交换律</em>和<em>在同构意义下满足交换律</em>是不一样的。比较下列两个命题：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m * n ≡ n * m
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m * n ≡ n * m
 A × B ≃ B × A
 </code></pre></div></div>
 
@@ -346,18 +330,16 @@ _not_ the same as `Tri × Bool`.  But there is an isomorphism between
 the two types.  For instance, `⟨ true , aa ⟩`, which is a member of the
 former, corresponds to `⟨ aa , true ⟩`, which is a member of the latter. -->
 
-<p>在第一个情况下，我们可能有 <code class="highlighter-rouge">m</code> 是 <code class="highlighter-rouge">2</code>、<code class="highlighter-rouge">n</code> 是 <code class="highlighter-rouge">3</code>，那么 <code class="highlighter-rouge">m * n</code> 和 <code class="highlighter-rouge">n * m</code> 都是 <code class="highlighter-rouge">6</code>。
-在第二个情况下，我们可能有 <code class="highlighter-rouge">A</code> 是 <code class="highlighter-rouge">Bool</code> 和 <code class="highlighter-rouge">B</code> 是 <code class="highlighter-rouge">Tri</code>，但是 <code class="highlighter-rouge">Bool × Tri</code> 和
-<code class="highlighter-rouge">Tri × Bool</code> <em>不是</em>一样的。但是存在一个两者之间的同构。例如：<code class="highlighter-rouge">⟨ true , aa ⟩</code> 是前者的成员，
-其对应后者的成员 <code class="highlighter-rouge">⟨ aa , true ⟩</code>。</p>
+<p>在第一个情况下，我们可能有 <code class="language-plaintext highlighter-rouge">m</code> 是 <code class="language-plaintext highlighter-rouge">2</code>、<code class="language-plaintext highlighter-rouge">n</code> 是 <code class="language-plaintext highlighter-rouge">3</code>，那么 <code class="language-plaintext highlighter-rouge">m * n</code> 和 <code class="language-plaintext highlighter-rouge">n * m</code> 都是 <code class="language-plaintext highlighter-rouge">6</code>。在第二个情况下，我们可能有 <code class="language-plaintext highlighter-rouge">A</code> 是 <code class="language-plaintext highlighter-rouge">Bool</code> 和 <code class="language-plaintext highlighter-rouge">B</code> 是 <code class="language-plaintext highlighter-rouge">Tri</code>，但是 <code class="language-plaintext highlighter-rouge">Bool × Tri</code> 和
+<code class="language-plaintext highlighter-rouge">Tri × Bool</code> <em>不是</em>一样的。但是存在一个两者之间的同构。例如：<code class="language-plaintext highlighter-rouge">⟨ true , aa ⟩</code> 是前者的成员，其对应后者的成员 <code class="language-plaintext highlighter-rouge">⟨ aa , true ⟩</code>。</p>
 
 <!-- For associativity, the `to` function reassociates two uses of pairing,
 taking `⟨ ⟨ x , y ⟩ , z ⟩` to `⟨ x , ⟨ y , z ⟩ ⟩`, and the `from` function does
 the inverse.  Again, the evidence of left and right inverse requires
 matching against a suitable pattern to enable simplification: -->
 
-<p>对于结合律来说，<code class="highlighter-rouge">to</code> 函数将两个有序对进行重组：将 <code class="highlighter-rouge">⟨ ⟨ x , y ⟩ , z ⟩</code> 转换为 <code class="highlighter-rouge">⟨ x , ⟨ y , z ⟩ ⟩</code>，
-<code class="highlighter-rouge">from</code> 函数则为其逆。同样，左逆和右逆的证明需要在一个合适的模式来匹配，从而可以直接化简：</p>
+<p>对于结合律来说，<code class="language-plaintext highlighter-rouge">to</code> 函数将两个有序对进行重组：将 <code class="language-plaintext highlighter-rouge">⟨ ⟨ x , y ⟩ , z ⟩</code> 转换为 <code class="language-plaintext highlighter-rouge">⟨ x , ⟨ y , z ⟩ ⟩</code>，
+<code class="language-plaintext highlighter-rouge">from</code> 函数则为其逆。同样，左逆和右逆的证明需要在一个合适的模式来匹配，从而可以直接化简：</p>
 
 <pre class="Agda"><a id="×-assoc"></a><a id="9294" href="/PLFA-zh/Connectives/#9294" class="Function">×-assoc</a> <a id="9302" class="Symbol">:</a> <a id="9304" class="Symbol">∀</a> <a id="9306" class="Symbol">{</a><a id="9307" href="plfa.Connectives.html#9307" class="Bound">A</a> <a id="9309" href="plfa.Connectives.html#9309" class="Bound">B</a> <a id="9311" href="plfa.Connectives.html#9311" class="Bound">C</a> <a id="9313" class="Symbol">:</a> <a id="9315" class="PrimitiveType">Set</a><a id="9318" class="Symbol">}</a> <a id="9320" class="Symbol">→</a> <a id="9322" class="Symbol">(</a><a id="9323" href="plfa.Connectives.html#9307" class="Bound">A</a> <a id="9325" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="9327" href="plfa.Connectives.html#9309" class="Bound">B</a><a id="9328" class="Symbol">)</a> <a id="9330" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="9332" href="plfa.Connectives.html#9311" class="Bound">C</a> <a id="9334" href="/PLFA-zh/Isomorphism/#5843" class="Record Operator">≃</a> <a id="9336" href="plfa.Connectives.html#9307" class="Bound">A</a> <a id="9338" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="9340" class="Symbol">(</a><a id="9341" href="plfa.Connectives.html#9309" class="Bound">B</a> <a id="9343" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="9345" href="plfa.Connectives.html#9311" class="Bound">C</a><a id="9346" class="Symbol">)</a>
 <a id="9348" href="/PLFA-zh/Connectives/#9294" class="Function">×-assoc</a> <a id="9356" class="Symbol">=</a>
@@ -373,7 +355,7 @@ up to isomorphism_.  Compare the two statements: -->
 
 <p>满足<em>结合律</em>和<em>在同构意义下满足结合律</em>是不一样的。比较下列两个命题：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m * n) * p ≡ m * (n * p)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m * n) * p ≡ m * (n * p)
 (A × B) × C ≃ A × (B × C)
 </code></pre></div></div>
 
@@ -382,18 +364,16 @@ up to isomorphism_.  Compare the two statements: -->
 instance `⟨ ⟨ 1 , true ⟩ , aa ⟩`, which is a member of the former,
 corresponds to `⟨ 1 , ⟨ true , aa ⟩ ⟩`, which is a member of the latter. -->
 
-<p>举个例子，<code class="highlighter-rouge">(ℕ × Bool) × Tri</code> 与 <code class="highlighter-rouge">ℕ × (Bool × Tri)</code> <em>不同</em>，但是两个类型之间
-存在同构。例如 <code class="highlighter-rouge">⟨ ⟨ 1 , true ⟩ , aa ⟩</code>，一个前者的成员，与 <code class="highlighter-rouge">⟨ 1 , ⟨ true , aa ⟩ ⟩</code>，
-一个后者的成员，相对应。</p>
+<p>举个例子，<code class="language-plaintext highlighter-rouge">(ℕ × Bool) × Tri</code> 与 <code class="language-plaintext highlighter-rouge">ℕ × (Bool × Tri)</code> <em>不同</em>，但是两个类型之间存在同构。例如 <code class="language-plaintext highlighter-rouge">⟨ ⟨ 1 , true ⟩ , aa ⟩</code>，一个前者的成员，与 <code class="language-plaintext highlighter-rouge">⟨ 1 , ⟨ true , aa ⟩ ⟩</code>，一个后者的成员，相对应。</p>
 
 <!-- #### Exercise `⇔≃×` (recommended) -->
 
-<h4 id="练习--推荐">练习 <code class="highlighter-rouge">⇔≃×</code> （推荐）</h4>
+<h4 id="练习--推荐">练习 <code class="language-plaintext highlighter-rouge">⇔≃×</code> （推荐）</h4>
 
 <!-- Show that `A ⇔ B` as defined [earlier](/PLFA-zh/Isomorphism/#iff)
 is isomorphic to `(A → B) × (B → A)`. -->
 
-<p>证明<a href="/PLFA-zh/Isomorphism/#iff">之前</a>定义的 <code class="highlighter-rouge">A ⇔ B</code> 与 <code class="highlighter-rouge">(A → B) × (B → A)</code> 同构。</p>
+<p>证明<a href="/PLFA-zh/Isomorphism/#iff">之前</a>定义的 <code class="language-plaintext highlighter-rouge">A ⇔ B</code> 与 <code class="language-plaintext highlighter-rouge">(A → B) × (B → A)</code> 同构。</p>
 
 <!-- <pre class="Agda"><a id="10549" class="Comment">-- Your code goes here</a>
 </pre>{:/}
@@ -408,7 +388,7 @@ is isomorphic to `(A → B) × (B → A)`. -->
 <!-- Truth `⊤` always holds. We formalise this idea by
 declaring a suitable inductive type: -->
 
-<p>恒真 <code class="highlighter-rouge">⊤</code> 恒成立。我们将这个概念用合适的归纳类型来形式化：</p>
+<p>恒真 <code class="language-plaintext highlighter-rouge">⊤</code> 恒成立。我们将这个概念用合适的归纳类型来形式化：</p>
 
 <pre class="Agda"><a id="10793" class="Keyword">data</a> <a id="⊤"></a><a id="10798" href="/PLFA-zh/Connectives/#10798" class="Datatype">⊤</a> <a id="10800" class="Symbol">:</a> <a id="10802" class="PrimitiveType">Set</a> <a id="10806" class="Keyword">where</a>
 
@@ -418,20 +398,19 @@ declaring a suitable inductive type: -->
 </pre>
 <!-- Evidence that `⊤` holds is of the form `tt`. -->
 
-<p><code class="highlighter-rouge">⊤</code> 成立的证明由 <code class="highlighter-rouge">tt</code> 的形式构成。</p>
+<p><code class="language-plaintext highlighter-rouge">⊤</code> 成立的证明由 <code class="language-plaintext highlighter-rouge">tt</code> 的形式构成。</p>
 
 <!-- There is an introduction rule, but no elimination rule.
 Given evidence that `⊤` holds, there is nothing more of interest we
 can conclude.  Since truth always holds, knowing that it holds tells
 us nothing new. -->
 
-<p>恒真有引入规则，但没有消去规则。给定一个 <code class="highlighter-rouge">⊤</code> 成立的证明，我们不能得出任何有趣的结论。
-因为恒真恒成立，知道恒真成立不会给我们带来新的知识。</p>
+<p>恒真有引入规则，但没有消去规则。给定一个 <code class="language-plaintext highlighter-rouge">⊤</code> 成立的证明，我们不能得出任何有趣的结论。因为恒真恒成立，知道恒真成立不会给我们带来新的知识。</p>
 
 <!-- The nullary case of `η-×` is `η-⊤`, which asserts that any
 value of type `⊤` must be equal to `tt`: -->
 
-<p><code class="highlighter-rouge">η-×</code> 的 零元形式是 <code class="highlighter-rouge">η-⊤</code>，其断言了任何 <code class="highlighter-rouge">⊤</code> 类型的值一定等于 <code class="highlighter-rouge">tt</code>：</p>
+<p><code class="language-plaintext highlighter-rouge">η-×</code> 的 零元形式是 <code class="language-plaintext highlighter-rouge">η-⊤</code>，其断言了任何 <code class="language-plaintext highlighter-rouge">⊤</code> 类型的值一定等于 <code class="language-plaintext highlighter-rouge">tt</code>：</p>
 
 <pre class="Agda"><a id="η-⊤"></a><a id="11395" href="/PLFA-zh/Connectives/#11395" class="Function">η-⊤</a> <a id="11399" class="Symbol">:</a> <a id="11401" class="Symbol">∀</a> <a id="11403" class="Symbol">(</a><a id="11404" href="plfa.Connectives.html#11404" class="Bound">w</a> <a id="11406" class="Symbol">:</a> <a id="11408" href="plfa.Connectives.html#10798" class="Datatype">⊤</a><a id="11409" class="Symbol">)</a> <a id="11411" class="Symbol">→</a> <a id="11413" href="plfa.Connectives.html#10815" class="InductiveConstructor">tt</a> <a id="11416" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="11418" href="plfa.Connectives.html#11404" class="Bound">w</a>
 <a id="11420" href="/PLFA-zh/Connectives/#11395" class="Function">η-⊤</a> <a id="11424" href="plfa.Connectives.html#10815" class="InductiveConstructor">tt</a> <a id="11427" class="Symbol">=</a> <a id="11429" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
@@ -440,14 +419,13 @@ value of type `⊤` must be equal to `tt`: -->
 `w` by `tt` allows both sides of the propositional equality to
 simplify to the same term. -->
 
-<p>左手边的模式匹配是必要的。将 <code class="highlighter-rouge">w</code> 替换为 <code class="highlighter-rouge">tt</code> 让等式两边可以化简为相同的值。</p>
+<p>左手边的模式匹配是必要的。将 <code class="language-plaintext highlighter-rouge">w</code> 替换为 <code class="language-plaintext highlighter-rouge">tt</code> 让等式两边可以化简为相同的值。</p>
 
 <!-- We refer to `⊤` as the _unit_ type. And, indeed,
 type `⊤` has exactly one member, `tt`.  For example, the following
 function enumerates all possible arguments of type `⊤`:
 
-我们将 `⊤` 称为*单元*类型（Unit Type）。实际上，`⊤` 类型只有一个成员 `tt`。
-例如，下面的函数枚举了所有 `⊤` 类型的参数：
+我们将 `⊤` 称为*单元*类型（Unit Type）。实际上，`⊤` 类型只有一个成员 `tt`。例如，下面的函数枚举了所有 `⊤` 类型的参数：
  -->
 <pre class="Agda"><a id="⊤-count"></a><a id="11931" href="/PLFA-zh/Connectives/#11931" class="Function">⊤-count</a> <a id="11939" class="Symbol">:</a> <a id="11941" href="plfa.Connectives.html#10798" class="Datatype">⊤</a> <a id="11943" class="Symbol">→</a> <a id="11945" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
 <a id="11947" href="/PLFA-zh/Connectives/#11931" class="Function">⊤-count</a> <a id="11955" href="plfa.Connectives.html#10815" class="InductiveConstructor">tt</a> <a id="11958" class="Symbol">=</a> <a id="11960" class="Number">1</a>
@@ -459,8 +437,7 @@ function does the inverse.  The evidence of left inverse requires
 matching against a suitable pattern to enable simplification: -->
 
 <p>对于数来说，1 是乘法的幺元。对应地，单元是积的幺元（<em>在同构意义下</em>）。对于左幺元来说，
-<code class="highlighter-rouge">to</code> 函数将 <code class="highlighter-rouge">⟨ tt , x ⟩</code> 转换成 <code class="highlighter-rouge">x</code>， <code class="highlighter-rouge">from</code> 函数则是其反函数。左逆的证明需要
-匹配一个合适的模式来化简：</p>
+<code class="language-plaintext highlighter-rouge">to</code> 函数将 <code class="language-plaintext highlighter-rouge">⟨ tt , x ⟩</code> 转换成 <code class="language-plaintext highlighter-rouge">x</code>， <code class="language-plaintext highlighter-rouge">from</code> 函数则是其反函数。左逆的证明需要匹配一个合适的模式来化简：</p>
 
 <pre class="Agda"><a id="⊤-identityˡ"></a><a id="12435" href="/PLFA-zh/Connectives/#12435" class="Function">⊤-identityˡ</a> <a id="12447" class="Symbol">:</a> <a id="12449" class="Symbol">∀</a> <a id="12451" class="Symbol">{</a><a id="12452" href="plfa.Connectives.html#12452" class="Bound">A</a> <a id="12454" class="Symbol">:</a> <a id="12456" class="PrimitiveType">Set</a><a id="12459" class="Symbol">}</a> <a id="12461" class="Symbol">→</a> <a id="12463" href="plfa.Connectives.html#10798" class="Datatype">⊤</a> <a id="12465" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="12467" href="plfa.Connectives.html#12452" class="Bound">A</a> <a id="12469" href="/PLFA-zh/Isomorphism/#5843" class="Record Operator">≃</a> <a id="12471" href="plfa.Connectives.html#12452" class="Bound">A</a>
 <a id="12473" href="/PLFA-zh/Connectives/#12435" class="Function">⊤-identityˡ</a> <a id="12485" class="Symbol">=</a>
@@ -476,7 +453,7 @@ _up to isomorphism_.  Compare the two statements: -->
 
 <p><em>幺元</em>和<em>在同构意义下的幺元</em>是不一样的。比较下列两个命题：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 * m ≡ m
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 * m ≡ m
 ⊤ × A ≃ A
 </code></pre></div></div>
 
@@ -487,9 +464,7 @@ same as `Bool`.  But there is an isomorphism between the two types.
 For instance, `⟨ tt , true ⟩`, which is a member of the former,
 corresponds to `true`, which is a member of the latter. -->
 
-<p>在第一种情况下，我们可能有 <code class="highlighter-rouge">m</code> 是 <code class="highlighter-rouge">2</code>，那么 <code class="highlighter-rouge">1 * m</code> 和 <code class="highlighter-rouge">m</code> 都为 <code class="highlighter-rouge">2</code>。
-在第二种情况下，我们可能有 <code class="highlighter-rouge">A</code> 是 <code class="highlighter-rouge">Bool</code>，但是 <code class="highlighter-rouge">⊤ × Bool</code> 和 <code class="highlighter-rouge">Bool</code> 是不同的。
-例如：<code class="highlighter-rouge">⟨ tt , true ⟩</code> 是前者的成员，其对应后者的成员 <code class="highlighter-rouge">true</code>。</p>
+<p>在第一种情况下，我们可能有 <code class="language-plaintext highlighter-rouge">m</code> 是 <code class="language-plaintext highlighter-rouge">2</code>，那么 <code class="language-plaintext highlighter-rouge">1 * m</code> 和 <code class="language-plaintext highlighter-rouge">m</code> 都为 <code class="language-plaintext highlighter-rouge">2</code>。在第二种情况下，我们可能有 <code class="language-plaintext highlighter-rouge">A</code> 是 <code class="language-plaintext highlighter-rouge">Bool</code>，但是 <code class="language-plaintext highlighter-rouge">⊤ × Bool</code> 和 <code class="language-plaintext highlighter-rouge">Bool</code> 是不同的。例如：<code class="language-plaintext highlighter-rouge">⟨ tt , true ⟩</code> 是前者的成员，其对应后者的成员 <code class="language-plaintext highlighter-rouge">true</code>。</p>
 
 <!-- Right identity follows from commutativity of product and left identity: -->
 
@@ -518,8 +493,7 @@ equality. -->
 if either `A` holds or `B` holds.  We formalise this idea by
 declaring a suitable inductive type: -->
 
-<p>给定两个命题 <code class="highlighter-rouge">A</code> 和 <code class="highlighter-rouge">B</code>，析取 <code class="highlighter-rouge">A ⊎ B</code> 在 <code class="highlighter-rouge">A</code> 成立或者 <code class="highlighter-rouge">B</code> 成立时成立。
-我们将这个概念用合适的归纳类型来形式化：</p>
+<p>给定两个命题 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，析取 <code class="language-plaintext highlighter-rouge">A ⊎ B</code> 在 <code class="language-plaintext highlighter-rouge">A</code> 成立或者 <code class="language-plaintext highlighter-rouge">B</code> 成立时成立。我们将这个概念用合适的归纳类型来形式化：</p>
 
 <pre class="Agda"><a id="14045" class="Keyword">data</a> <a id="_⊎_"></a><a id="14050" href="/PLFA-zh/Connectives/#14050" class="Datatype Operator">_⊎_</a> <a id="14054" class="Symbol">(</a><a id="14055" href="plfa.Connectives.html#14055" class="Bound">A</a> <a id="14057" href="plfa.Connectives.html#14057" class="Bound">B</a> <a id="14059" class="Symbol">:</a> <a id="14061" class="PrimitiveType">Set</a><a id="14064" class="Symbol">)</a> <a id="14066" class="Symbol">:</a> <a id="14068" class="PrimitiveType">Set</a> <a id="14072" class="Keyword">where</a>
 
@@ -537,13 +511,13 @@ declaring a suitable inductive type: -->
 provides evidence that `A` holds, or `inj₂ N`, where `N` provides
 evidence that `B` holds. -->
 
-<p><code class="highlighter-rouge">A ⊎ B</code> 成立的证明有两个形式： <code class="highlighter-rouge">inj₁ M</code>，其中 <code class="highlighter-rouge">M</code> 是 <code class="highlighter-rouge">A</code> 成立的证明，或者
-<code class="highlighter-rouge">inj₂ N</code>，其中 <code class="highlighter-rouge">N</code> 是 <code class="highlighter-rouge">B</code> 成立的证明。</p>
+<p><code class="language-plaintext highlighter-rouge">A ⊎ B</code> 成立的证明有两个形式： <code class="language-plaintext highlighter-rouge">inj₁ M</code>，其中 <code class="language-plaintext highlighter-rouge">M</code> 是 <code class="language-plaintext highlighter-rouge">A</code> 成立的证明，或者
+<code class="language-plaintext highlighter-rouge">inj₂ N</code>，其中 <code class="language-plaintext highlighter-rouge">N</code> 是 <code class="language-plaintext highlighter-rouge">B</code> 成立的证明。</p>
 
 <!-- Given evidence that `A → C` and `B → C` both hold, then given
 evidence that `A ⊎ B` holds we can conclude that `C` holds: -->
 
-<p>给定 <code class="highlighter-rouge">A → C</code> 和 <code class="highlighter-rouge">B → C</code> 成立的证明，那么给定一个 <code class="highlighter-rouge">A ⊎ B</code> 的证明，我们可以得出 <code class="highlighter-rouge">C</code> 成立：</p>
+<p>给定 <code class="language-plaintext highlighter-rouge">A → C</code> 和 <code class="language-plaintext highlighter-rouge">B → C</code> 成立的证明，那么给定一个 <code class="language-plaintext highlighter-rouge">A ⊎ B</code> 的证明，我们可以得出 <code class="language-plaintext highlighter-rouge">C</code> 成立：</p>
 
 <pre class="Agda"><a id="case-⊎"></a><a id="14633" href="/PLFA-zh/Connectives/#14633" class="Function">case-⊎</a> <a id="14640" class="Symbol">:</a> <a id="14642" class="Symbol">∀</a> <a id="14644" class="Symbol">{</a><a id="14645" href="plfa.Connectives.html#14645" class="Bound">A</a> <a id="14647" href="plfa.Connectives.html#14647" class="Bound">B</a> <a id="14649" href="plfa.Connectives.html#14649" class="Bound">C</a> <a id="14651" class="Symbol">:</a> <a id="14653" class="PrimitiveType">Set</a><a id="14656" class="Symbol">}</a>
   <a id="14660" class="Symbol">→</a> <a id="14662" class="Symbol">(</a><a id="14663" href="/PLFA-zh/Connectives/#14645" class="Bound">A</a> <a id="14665" class="Symbol">→</a> <a id="14667" href="plfa.Connectives.html#14649" class="Bound">C</a><a id="14668" class="Symbol">)</a>
@@ -557,7 +531,7 @@ evidence that `A ⊎ B` holds we can conclude that `C` holds: -->
 <!-- Pattern matching against `inj₁` and `inj₂` is typical of how we exploit
 evidence that a disjunction holds. -->
 
-<p>对 <code class="highlighter-rouge">inj₁</code> 和 <code class="highlighter-rouge">inj₂</code> 进行模式匹配，是我们使用析取成立的证明的常见方法。</p>
+<p>对 <code class="language-plaintext highlighter-rouge">inj₁</code> 和 <code class="language-plaintext highlighter-rouge">inj₂</code> 进行模式匹配，是我们使用析取成立的证明的常见方法。</p>
 
 <!-- When `inj₁` and `inj₂` appear on the right-hand side of an equation we
 refer to them as _constructors_, and when they appear on the
@@ -568,10 +542,8 @@ disjunction, and to `case-⊎` as _eliminating_ a disjunction; indeed
 the former are sometimes given the names `⊎-I₁` and `⊎-I₂` and the
 latter the name `⊎-E`. -->
 
-<p>当 <code class="highlighter-rouge">inj₁</code> 和 <code class="highlighter-rouge">inj₂</code> 在等式右手边出现的时候，我们将其称作<em>构造子</em>，
-当它出现在等式左边时，我们将其称作<em>析构器</em>。我们亦可将 <code class="highlighter-rouge">case-⊎</code>
-称作析构器，因为它们起到相似的效果。其他术语将 <code class="highlighter-rouge">inj₁</code> 和 <code class="highlighter-rouge">inj₂</code> 称为<em>引入</em>析取，
-将 <code class="highlighter-rouge">case-⊎</code> 称为<em>消去</em>析取。前者亦被称为 <code class="highlighter-rouge">⊎-I₁</code> 和 <code class="highlighter-rouge">⊎-I₂</code>，后者 <code class="highlighter-rouge">⊎-E</code>。</p>
+<p>当 <code class="language-plaintext highlighter-rouge">inj₁</code> 和 <code class="language-plaintext highlighter-rouge">inj₂</code> 在等式右手边出现的时候，我们将其称作<em>构造子</em>，当它出现在等式左边时，我们将其称作<em>析构器</em>。我们亦可将 <code class="language-plaintext highlighter-rouge">case-⊎</code>
+称作析构器，因为它们起到相似的效果。其他术语将 <code class="language-plaintext highlighter-rouge">inj₁</code> 和 <code class="language-plaintext highlighter-rouge">inj₂</code> 称为<em>引入</em>析取，将 <code class="language-plaintext highlighter-rouge">case-⊎</code> 称为<em>消去</em>析取。前者亦被称为 <code class="language-plaintext highlighter-rouge">⊎-I₁</code> 和 <code class="language-plaintext highlighter-rouge">⊎-I₂</code>，后者 <code class="language-plaintext highlighter-rouge">⊎-E</code>。</p>
 
 <!-- Applying the destructor to each of the constructors is the identity: -->
 
@@ -594,8 +566,8 @@ latter the name `⊎-E`. -->
 `w` by `inj₁ x` allows both sides of the propositional equality to
 simplify to the same term, and similarly for `inj₂ y`. -->
 
-<p>左手边的模式匹配是必要的。用 <code class="highlighter-rouge">inj₁ x</code> 来替换 <code class="highlighter-rouge">w</code> 让等式的两边可以化简成相同的项，
-<code class="highlighter-rouge">inj₂ y</code> 同理。</p>
+<p>左手边的模式匹配是必要的。用 <code class="language-plaintext highlighter-rouge">inj₁ x</code> 来替换 <code class="language-plaintext highlighter-rouge">w</code> 让等式的两边可以化简成相同的项，
+<code class="language-plaintext highlighter-rouge">inj₂ y</code> 同理。</p>
 
 <!-- We set the precedence of disjunction so that it binds less tightly
 than any other declared operator: -->
@@ -606,7 +578,7 @@ than any other declared operator: -->
 </pre>
 <!-- Thus, `A × C ⊎ B × C` parses as `(A × C) ⊎ (B × C)`. -->
 
-<p>因此 <code class="highlighter-rouge">A × C ⊎ B × C</code> 解析为 <code class="highlighter-rouge">(A × C) ⊎ (B × C)</code>。</p>
+<p>因此 <code class="language-plaintext highlighter-rouge">A × C ⊎ B × C</code> 解析为 <code class="language-plaintext highlighter-rouge">(A × C) ⊎ (B × C)</code>。</p>
 
 <!-- Given two types `A` and `B`, we refer to `A ⊎ B` as the
 _sum_ of `A` and `B`.  In set theory, it is also sometimes
@@ -620,14 +592,9 @@ a type `Tri` with three members, as defined earlier.
 Then the type `Bool ⊎ Tri` has five
 members: -->
 
-<p>给定两个类型 <code class="highlighter-rouge">A</code> 和 <code class="highlighter-rouge">B</code>，我们将 <code class="highlighter-rouge">A ⊎ B</code> 称为 <code class="highlighter-rouge">A</code> 与 <code class="highlighter-rouge">B</code> 的<em>和</em>。
-在集合论中它也被称作<em>不交并</em>（Disjoint Union），在计算机科学中它对应<em>变体记录</em>类型。
-如果类型 <code class="highlighter-rouge">A</code> 有 <code class="highlighter-rouge">m</code> 个不同的成员，类型 <code class="highlighter-rouge">B</code> 有 <code class="highlighter-rouge">n</code> 个不同的成员，
-那么类型 <code class="highlighter-rouge">A ⊎ B</code> 有 <code class="highlighter-rouge">m + n</code> 个不同的成员。这也是它被称为和的原因之一。
-例如，考虑有两个成员的 <code class="highlighter-rouge">Bool</code> 类型，和有三个成员的 <code class="highlighter-rouge">Tri</code> 类型，如之前的定义。
-那么，<code class="highlighter-rouge">Bool ⊎ Tri</code> 类型有如下的五个成员：</p>
+<p>给定两个类型 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，我们将 <code class="language-plaintext highlighter-rouge">A ⊎ B</code> 称为 <code class="language-plaintext highlighter-rouge">A</code> 与 <code class="language-plaintext highlighter-rouge">B</code> 的<em>和</em>。在集合论中它也被称作<em>不交并</em>（Disjoint Union），在计算机科学中它对应<em>变体记录</em>类型。如果类型 <code class="language-plaintext highlighter-rouge">A</code> 有 <code class="language-plaintext highlighter-rouge">m</code> 个不同的成员，类型 <code class="language-plaintext highlighter-rouge">B</code> 有 <code class="language-plaintext highlighter-rouge">n</code> 个不同的成员，那么类型 <code class="language-plaintext highlighter-rouge">A ⊎ B</code> 有 <code class="language-plaintext highlighter-rouge">m + n</code> 个不同的成员。这也是它被称为和的原因之一。例如，考虑有两个成员的 <code class="language-plaintext highlighter-rouge">Bool</code> 类型，和有三个成员的 <code class="language-plaintext highlighter-rouge">Tri</code> 类型，如之前的定义。那么，<code class="language-plaintext highlighter-rouge">Bool ⊎ Tri</code> 类型有如下的五个成员：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inj₁ true     inj₂ aa
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inj₁ true     inj₂ aa
 inj₁ false    inj₂ bb
               inj₂ cc
 </code></pre></div></div>
@@ -635,7 +602,7 @@ inj₁ false    inj₂ bb
 <!-- For example, the following function enumerates all
 possible arguments of type `Bool ⊎ Tri`: -->
 
-<p>下面的函数枚举了所有类型为 <code class="highlighter-rouge">Bool ⊎ Tri</code> 的参数：</p>
+<p>下面的函数枚举了所有类型为 <code class="language-plaintext highlighter-rouge">Bool ⊎ Tri</code> 的参数：</p>
 
 <pre class="Agda"><a id="⊎-count"></a><a id="17730" href="/PLFA-zh/Connectives/#17730" class="Function">⊎-count</a> <a id="17738" class="Symbol">:</a> <a id="17740" href="plfa.Connectives.html#6331" class="Datatype">Bool</a> <a id="17745" href="plfa.Connectives.html#14050" class="Datatype Operator">⊎</a> <a id="17747" href="plfa.Connectives.html#6384" class="Datatype">Tri</a> <a id="17751" class="Symbol">→</a> <a id="17753" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
 <a id="17755" href="/PLFA-zh/Connectives/#17730" class="Function">⊎-count</a> <a id="17763" class="Symbol">(</a><a id="17764" href="plfa.Connectives.html#14081" class="InductiveConstructor">inj₁</a> <a id="17769" href="plfa.Connectives.html#6350" class="InductiveConstructor">true</a><a id="17773" class="Symbol">)</a>   <a id="17777" class="Symbol">=</a>  <a id="17780" class="Number">1</a>
@@ -647,12 +614,11 @@ possible arguments of type `Bool ⊎ Tri`: -->
 <!-- Sum on types also shares a property with sum on numbers in that it is
 commutative and associative _up to isomorphism_. -->
 
-<p>类型上的和与数的和有相似的性质——它们满足交换律和结合律。
-更确切地说，和在<em>在同构意义下</em>是交换和结合的。</p>
+<p>类型上的和与数的和有相似的性质——它们满足交换律和结合律。更确切地说，和在<em>在同构意义下</em>是交换和结合的。</p>
 
 <!-- #### Exercise `⊎-comm` (recommended) -->
 
-<h4 id="练习--comm-推荐">练习 <code class="highlighter-rouge">⊎-comm</code> （推荐）</h4>
+<h4 id="练习--comm-推荐">练习 <code class="language-plaintext highlighter-rouge">⊎-comm</code> （推荐）</h4>
 
 <!-- Show sum is commutative up to isomorphism. -->
 
@@ -666,7 +632,7 @@ commutative and associative _up to isomorphism_. -->
 {::comment}
 #### Exercise `⊎-assoc` -->
 
-<h4 id="练习--assoc">练习 <code class="highlighter-rouge">⊎-assoc</code></h4>
+<h4 id="练习--assoc">练习 <code class="language-plaintext highlighter-rouge">⊎-assoc</code></h4>
 
 <!-- Show sum is associative up to isomorphism. -->
 
@@ -685,7 +651,7 @@ commutative and associative _up to isomorphism_. -->
 <!-- False `⊥` never holds.  We formalise this idea by declaring
 a suitable inductive type: -->
 
-<p>恒假 <code class="highlighter-rouge">⊥</code> 从不成立。我们将这个概念用合适的归纳类型来形式化：</p>
+<p>恒假 <code class="language-plaintext highlighter-rouge">⊥</code> 从不成立。我们将这个概念用合适的归纳类型来形式化：</p>
 
 <!-- FIXME: the code block is removed to make Agda not recognise this as code.
 data ⊥ : Set where
@@ -696,7 +662,7 @@ data ⊥ : Set where
 </pre>
 <!-- There is no possible evidence that `⊥` holds. -->
 
-<p>没有 <code class="highlighter-rouge">⊥</code> 成立的证明。</p>
+<p>没有 <code class="language-plaintext highlighter-rouge">⊥</code> 成立的证明。</p>
 
 <!-- Dual to `⊤`, for `⊥` there is no introduction rule but an elimination rule.
 Since false never holds, knowing that it holds tells us we are in a
@@ -706,9 +672,7 @@ medieval times by the Latin phrase _ex falso_, and known to children
 through phrases such as "if pigs had wings, then I'd be the Queen of
 Sheba".  We formalise it as follows: -->
 
-<p>与 <code class="highlighter-rouge">⊤</code> 相对偶，<code class="highlighter-rouge">⊥</code> 没有引入规则，但是有消去规则。因为恒假从不成立，
-如果它一旦成立，我们就进入了矛盾之中。给定 <code class="highlighter-rouge">⊥</code> 成立的证明，我们可以得出任何结论！
-这是逻辑学的基本原理，又由中世纪的拉丁文词组 <em>ex falso</em> 为名。小孩子也由诸如
+<p>与 <code class="language-plaintext highlighter-rouge">⊤</code> 相对偶，<code class="language-plaintext highlighter-rouge">⊥</code> 没有引入规则，但是有消去规则。因为恒假从不成立，如果它一旦成立，我们就进入了矛盾之中。给定 <code class="language-plaintext highlighter-rouge">⊥</code> 成立的证明，我们可以得出任何结论！这是逻辑学的基本原理，又由中世纪的拉丁文词组 <em>ex falso</em> 为名。小孩子也由诸如
 “如果猪有翅膀，那我就是示巴女王”的词组中知晓。我们如下将它形式化：</p>
 
 <pre class="Agda"><a id="⊥-elim"></a><a id="19595" href="/PLFA-zh/Connectives/#19595" class="Function">⊥-elim</a> <a id="19602" class="Symbol">:</a> <a id="19604" class="Symbol">∀</a> <a id="19606" class="Symbol">{</a><a id="19607" href="plfa.Connectives.html#19607" class="Bound">A</a> <a id="19609" class="Symbol">:</a> <a id="19611" class="PrimitiveType">Set</a><a id="19614" class="Symbol">}</a>
@@ -722,20 +686,19 @@ Here since `⊥` is a type with no members, we indicate that it is
 _never_ possible to match against a value of this type by using
 the pattern `()`. -->
 
-<p>这是我们第一次使用<em>荒谬模式</em>（Absurd Pattern） <code class="highlighter-rouge">()</code>。在这里，因为 <code class="highlighter-rouge">⊥</code>
-是一个没有成员的类型，我们用 <code class="highlighter-rouge">()</code> 模式来指明这里不可能匹配任何这个类型的值。</p>
+<p>这是我们第一次使用<em>荒谬模式</em>（Absurd Pattern） <code class="language-plaintext highlighter-rouge">()</code>。在这里，因为 <code class="language-plaintext highlighter-rouge">⊥</code>
+是一个没有成员的类型，我们用 <code class="language-plaintext highlighter-rouge">()</code> 模式来指明这里不可能匹配任何这个类型的值。</p>
 
 <!-- The nullary case of `case-⊎` is `⊥-elim`.  By analogy,
 we might have called it `case-⊥`, but chose to stick with the name
 in the standard library. -->
 
-<p><code class="highlighter-rouge">case-⊎</code> 的零元形式是 <code class="highlighter-rouge">⊥-elim</code>。类比的来说，它应该叫做 <code class="highlighter-rouge">case-⊥</code>，
-但是我们在此使用标准库中使用的名字。</p>
+<p><code class="language-plaintext highlighter-rouge">case-⊎</code> 的零元形式是 <code class="language-plaintext highlighter-rouge">⊥-elim</code>。类比的来说，它应该叫做 <code class="language-plaintext highlighter-rouge">case-⊥</code>，但是我们在此使用标准库中使用的名字。</p>
 
 <!-- The nullary case of `uniq-⊎` is `uniq-⊥`, which asserts that `⊥-elim`
 is equal to any arbitrary function from `⊥`: -->
 
-<p><code class="highlighter-rouge">uniq-⊎</code> 的零元形式是 <code class="highlighter-rouge">uniq-⊥</code>，其断言了 <code class="highlighter-rouge">⊥-elim</code> 和任何取 <code class="highlighter-rouge">⊥</code> 的函数是等价的。</p>
+<p><code class="language-plaintext highlighter-rouge">uniq-⊎</code> 的零元形式是 <code class="language-plaintext highlighter-rouge">uniq-⊥</code>，其断言了 <code class="language-plaintext highlighter-rouge">⊥-elim</code> 和任何取 <code class="language-plaintext highlighter-rouge">⊥</code> 的函数是等价的。</p>
 
 <pre class="Agda"><a id="uniq-⊥"></a><a id="20385" href="/PLFA-zh/Connectives/#20385" class="Function">uniq-⊥</a> <a id="20392" class="Symbol">:</a> <a id="20394" class="Symbol">∀</a> <a id="20396" class="Symbol">{</a><a id="20397" href="plfa.Connectives.html#20397" class="Bound">C</a> <a id="20399" class="Symbol">:</a> <a id="20401" class="PrimitiveType">Set</a><a id="20404" class="Symbol">}</a> <a id="20406" class="Symbol">(</a><a id="20407" href="plfa.Connectives.html#20407" class="Bound">h</a> <a id="20409" class="Symbol">:</a> <a id="20411" href="plfa.Connectives.html#18852" class="Datatype">⊥</a> <a id="20413" class="Symbol">→</a> <a id="20415" href="plfa.Connectives.html#20397" class="Bound">C</a><a id="20416" class="Symbol">)</a> <a id="20418" class="Symbol">(</a><a id="20419" href="plfa.Connectives.html#20419" class="Bound">w</a> <a id="20421" class="Symbol">:</a> <a id="20423" href="plfa.Connectives.html#18852" class="Datatype">⊥</a><a id="20424" class="Symbol">)</a> <a id="20426" class="Symbol">→</a> <a id="20428" href="plfa.Connectives.html#19595" class="Function">⊥-elim</a> <a id="20435" href="plfa.Connectives.html#20419" class="Bound">w</a> <a id="20437" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="20439" href="plfa.Connectives.html#20407" class="Bound">h</a> <a id="20441" href="plfa.Connectives.html#20419" class="Bound">w</a>
 <a id="20443" href="/PLFA-zh/Connectives/#20385" class="Function">uniq-⊥</a> <a id="20450" href="plfa.Connectives.html#20450" class="Bound">h</a> <a id="20452" class="Symbol">()</a>
@@ -743,14 +706,13 @@ is equal to any arbitrary function from `⊥`: -->
 <!-- Using the absurd pattern asserts there are no possible values for `w`,
 so the equation holds trivially. -->
 
-<p>使用荒谬模式断言了 <code class="highlighter-rouge">w</code> 没有任何可能的值，因此等式显然成立。</p>
+<p>使用荒谬模式断言了 <code class="language-plaintext highlighter-rouge">w</code> 没有任何可能的值，因此等式显然成立。</p>
 
 <!-- We refer to `⊥` as the _empty_ type. And, indeed,
 type `⊥` has no members. For example, the following function
 enumerates all possible arguments of type `⊥`:
 
-我们将 `⊥` 成为*空*类型（Empty Type）。实际上，`⊥` 类型没有成员。
-例如，下面的函数枚举了所有 `⊥` 类型的参数：
+我们将 `⊥` 成为*空*类型（Empty Type）。实际上，`⊥` 类型没有成员。例如，下面的函数枚举了所有 `⊥` 类型的参数：
  -->
 <pre class="Agda"><a id="⊥-count"></a><a id="20866" href="/PLFA-zh/Connectives/#20866" class="Function">⊥-count</a> <a id="20874" class="Symbol">:</a> <a id="20876" href="plfa.Connectives.html#18852" class="Datatype">⊥</a> <a id="20878" class="Symbol">→</a> <a id="20880" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
 <a id="20882" href="/PLFA-zh/Connectives/#20866" class="Function">⊥-count</a> <a id="20890" class="Symbol">()</a>
@@ -758,7 +720,7 @@ enumerates all possible arguments of type `⊥`:
 <!-- Here again the absurd pattern `()` indicates that no value can match
 type `⊥`. -->
 
-<p>同样，荒谬模式告诉我们没有值可以来匹配类型 <code class="highlighter-rouge">⊥</code>。</p>
+<p>同样，荒谬模式告诉我们没有值可以来匹配类型 <code class="language-plaintext highlighter-rouge">⊥</code>。</p>
 
 <!-- For numbers, zero is the identity of addition. Correspondingly, empty
 is the identity of sums _up to isomorphism_. -->
@@ -767,7 +729,7 @@ is the identity of sums _up to isomorphism_. -->
 
 <!-- #### Exercise `⊥-identityˡ` (recommended) -->
 
-<h4 id="练习--identityˡ-推荐">练习 <code class="highlighter-rouge">⊥-identityˡ</code> （推荐）</h4>
+<h4 id="练习--identityˡ-推荐">练习 <code class="language-plaintext highlighter-rouge">⊥-identityˡ</code> （推荐）</h4>
 
 <!-- Show empty is the left identity of sums up to isomorphism. -->
 
@@ -781,7 +743,7 @@ is the identity of sums _up to isomorphism_. -->
 {::comment}
 #### Exercise `⊥-identityʳ` -->
 
-<h4 id="练习--identityʳ">练习 <code class="highlighter-rouge">⊥-identityʳ</code></h4>
+<h4 id="练习--identityʳ">练习 <code class="language-plaintext highlighter-rouge">⊥-identityʳ</code></h4>
 
 <!-- Show empty is the right identity of sums up to isomorphism. -->
 
@@ -801,14 +763,13 @@ is the identity of sums _up to isomorphism_. -->
 whenever `A` holds then `B` must also hold.  We formalise implication using
 the function type, which has appeared throughout this book. -->
 
-<p>给定两个命题 <code class="highlighter-rouge">A</code> 和 <code class="highlighter-rouge">B</code>，其蕴涵 <code class="highlighter-rouge">A → B</code> 在任何 <code class="highlighter-rouge">A</code> 成立的时候，<code class="highlighter-rouge">B</code> 也成立时成立。
-我们用函数类型来形式化蕴涵，如本书中通篇出现的那样。</p>
+<p>给定两个命题 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，其蕴涵 <code class="language-plaintext highlighter-rouge">A → B</code> 在任何 <code class="language-plaintext highlighter-rouge">A</code> 成立的时候，<code class="language-plaintext highlighter-rouge">B</code> 也成立时成立。我们用函数类型来形式化蕴涵，如本书中通篇出现的那样。</p>
 
 <!-- Evidence that `A → B` holds is of the form -->
 
-<p><code class="highlighter-rouge">A → B</code> 成立的证据由下面的形式组成：</p>
+<p><code class="language-plaintext highlighter-rouge">A → B</code> 成立的证据由下面的形式组成：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>λ (x : A) → N
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>λ (x : A) → N
 </code></pre></div></div>
 
 <!-- where `N` is a term of type `B` containing as a free variable `x` of type `A`.
@@ -817,14 +778,12 @@ providing evidence that `A` holds, the term `L M` provides evidence that
 `B` holds.  In other words, evidence that `A → B` holds is a function that
 converts evidence that `A` holds into evidence that `B` holds. -->
 
-<p>其中 <code class="highlighter-rouge">N</code> 是一个类型为 <code class="highlighter-rouge">B</code> 的项，其包括了一个类型为 <code class="highlighter-rouge">A</code> 的自由变量 <code class="highlighter-rouge">x</code>。
-给定一个 <code class="highlighter-rouge">A → B</code> 成立的证明 <code class="highlighter-rouge">L</code>，和一个 <code class="highlighter-rouge">A</code> 成立的证明 <code class="highlighter-rouge">M</code>，那么 <code class="highlighter-rouge">L M</code> 是 <code class="highlighter-rouge">B</code> 成立的证明。
-也就是说，<code class="highlighter-rouge">A → B</code> 成立的证明是一个函数，将 <code class="highlighter-rouge">A</code> 成立的证明转换成 <code class="highlighter-rouge">B</code> 成立的证明。</p>
+<p>其中 <code class="language-plaintext highlighter-rouge">N</code> 是一个类型为 <code class="language-plaintext highlighter-rouge">B</code> 的项，其包括了一个类型为 <code class="language-plaintext highlighter-rouge">A</code> 的自由变量 <code class="language-plaintext highlighter-rouge">x</code>。给定一个 <code class="language-plaintext highlighter-rouge">A → B</code> 成立的证明 <code class="language-plaintext highlighter-rouge">L</code>，和一个 <code class="language-plaintext highlighter-rouge">A</code> 成立的证明 <code class="language-plaintext highlighter-rouge">M</code>，那么 <code class="language-plaintext highlighter-rouge">L M</code> 是 <code class="language-plaintext highlighter-rouge">B</code> 成立的证明。也就是说，<code class="language-plaintext highlighter-rouge">A → B</code> 成立的证明是一个函数，将 <code class="language-plaintext highlighter-rouge">A</code> 成立的证明转换成 <code class="language-plaintext highlighter-rouge">B</code> 成立的证明。</p>
 
 <!-- Put another way, if we know that `A → B` and `A` both hold,
 then we may conclude that `B` holds: -->
 
-<p>换句话说，如果知道 <code class="highlighter-rouge">A → B</code> 和 <code class="highlighter-rouge">A</code> 同时成立，那么我们可以推出 <code class="highlighter-rouge">B</code> 成立：</p>
+<p>换句话说，如果知道 <code class="language-plaintext highlighter-rouge">A → B</code> 和 <code class="language-plaintext highlighter-rouge">A</code> 同时成立，那么我们可以推出 <code class="language-plaintext highlighter-rouge">B</code> 成立：</p>
 
 <pre class="Agda"><a id="→-elim"></a><a id="22886" href="/PLFA-zh/Connectives/#22886" class="Function">→-elim</a> <a id="22893" class="Symbol">:</a> <a id="22895" class="Symbol">∀</a> <a id="22897" class="Symbol">{</a><a id="22898" href="plfa.Connectives.html#22898" class="Bound">A</a> <a id="22900" href="plfa.Connectives.html#22900" class="Bound">B</a> <a id="22902" class="Symbol">:</a> <a id="22904" class="PrimitiveType">Set</a><a id="22907" class="Symbol">}</a>
   <a id="22911" class="Symbol">→</a> <a id="22913" class="Symbol">(</a><a id="22914" href="/PLFA-zh/Connectives/#22898" class="Bound">A</a> <a id="22916" class="Symbol">→</a> <a id="22918" href="plfa.Connectives.html#22900" class="Bound">B</a><a id="22919" class="Symbol">)</a>
@@ -842,8 +801,7 @@ It corresponds to function application. -->
 is referred to as _introducing_ a function,
 while applying a function is referred to as _eliminating_ the function. -->
 
-<p>定义一个函数，不管是带名字的定义或是使用 Lambda 抽象，被称为<em>引入</em>一个函数，
-使用一个函数被称为<em>消去</em>一个函数。</p>
+<p>定义一个函数，不管是带名字的定义或是使用 Lambda 抽象，被称为<em>引入</em>一个函数，使用一个函数被称为<em>消去</em>一个函数。</p>
 
 <!-- Elimination followed by introduction is the identity: -->
 
@@ -855,7 +813,7 @@ while applying a function is referred to as _eliminating_ the function. -->
 <!-- Implication binds less tightly than any other operator. Thus, `A ⊎ B →
 B ⊎ A` parses as `(A ⊎ B) → (B ⊎ A)`. -->
 
-<p>蕴涵比其他的运算符结合得都不紧密。因此 <code class="highlighter-rouge">A ⊎ B → B ⊎ A</code> 被解析为 <code class="highlighter-rouge">(A ⊎ B) → (B ⊎ A)</code>。</p>
+<p>蕴涵比其他的运算符结合得都不紧密。因此 <code class="language-plaintext highlighter-rouge">A ⊎ B → B ⊎ A</code> 被解析为 <code class="language-plaintext highlighter-rouge">(A ⊎ B) → (B ⊎ A)</code>。</p>
 
 <!-- Given two types `A` and `B`, we refer to `A → B` as the _function_
 space from `A` to `B`.  It is also sometimes called the _exponential_,
@@ -867,13 +825,9 @@ type `Bool` with two members and a type `Tri` with three members,
 as defined earlier. Then the type `Bool → Tri` has nine (that is,
 three squared) members: -->
 
-<p>给定两个类型 <code class="highlighter-rouge">A</code> 和 <code class="highlighter-rouge">B</code>，我们将 <code class="highlighter-rouge">A → B</code> 称为从 <code class="highlighter-rouge">A</code> 到 <code class="highlighter-rouge">B</code> 的<em>函数</em>空间。
-它有时也被称作以 <code class="highlighter-rouge">B</code> 为底，<code class="highlighter-rouge">A</code> 为次数的<em>幂</em>。如果类型 <code class="highlighter-rouge">A</code> 有 <code class="highlighter-rouge">m</code> 个不同的成员，
-类型 <code class="highlighter-rouge">B</code> 有 <code class="highlighter-rouge">n</code> 个不同的成员，那么类型 <code class="highlighter-rouge">A → B</code> 有 <code class="highlighter-rouge">nᵐ</code> 个不同的成员。
-这也是它被称为幂的原因之一。例如，考虑有两个成员的 <code class="highlighter-rouge">Bool</code> 类型，和有三个成员的 <code class="highlighter-rouge">Tri</code> 类型，
-如之前的定义。那么，<code class="highlighter-rouge">Bool → Tri</code> 类型有如下的九个成员（三的平方）：</p>
+<p>给定两个类型 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，我们将 <code class="language-plaintext highlighter-rouge">A → B</code> 称为从 <code class="language-plaintext highlighter-rouge">A</code> 到 <code class="language-plaintext highlighter-rouge">B</code> 的<em>函数</em>空间。它有时也被称作以 <code class="language-plaintext highlighter-rouge">B</code> 为底，<code class="language-plaintext highlighter-rouge">A</code> 为次数的<em>幂</em>。如果类型 <code class="language-plaintext highlighter-rouge">A</code> 有 <code class="language-plaintext highlighter-rouge">m</code> 个不同的成员，类型 <code class="language-plaintext highlighter-rouge">B</code> 有 <code class="language-plaintext highlighter-rouge">n</code> 个不同的成员，那么类型 <code class="language-plaintext highlighter-rouge">A → B</code> 有 <code class="language-plaintext highlighter-rouge">nᵐ</code> 个不同的成员。这也是它被称为幂的原因之一。例如，考虑有两个成员的 <code class="language-plaintext highlighter-rouge">Bool</code> 类型，和有三个成员的 <code class="language-plaintext highlighter-rouge">Tri</code> 类型，如之前的定义。那么，<code class="language-plaintext highlighter-rouge">Bool → Tri</code> 类型有如下的九个成员（三的平方）：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>λ{true → aa; false → aa}  λ{true → aa; false → bb}  λ{true → aa; false → cc}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>λ{true → aa; false → aa}  λ{true → aa; false → bb}  λ{true → aa; false → cc}
 λ{true → bb; false → aa}  λ{true → bb; false → bb}  λ{true → bb; false → cc}
 λ{true → cc; false → aa}  λ{true → cc; false → bb}  λ{true → cc; false → cc}
 </code></pre></div></div>
@@ -881,7 +835,7 @@ three squared) members: -->
 <!-- For example, the following function enumerates all possible
 arguments of the type `Bool → Tri`: -->
 
-<p>下面的函数枚举了所有类型为 <code class="highlighter-rouge">Bool → Tri</code> 的参数：</p>
+<p>下面的函数枚举了所有类型为 <code class="language-plaintext highlighter-rouge">Bool → Tri</code> 的参数：</p>
 
 <pre class="Agda"><a id="→-count"></a><a id="24963" href="/PLFA-zh/Connectives/#24963" class="Function">→-count</a> <a id="24971" class="Symbol">:</a> <a id="24973" class="Symbol">(</a><a id="24974" href="plfa.Connectives.html#6331" class="Datatype">Bool</a> <a id="24979" class="Symbol">→</a> <a id="24981" href="plfa.Connectives.html#6384" class="Datatype">Tri</a><a id="24984" class="Symbol">)</a> <a id="24986" class="Symbol">→</a> <a id="24988" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a>
 <a id="24990" href="/PLFA-zh/Connectives/#24963" class="Function">→-count</a> <a id="24998" href="plfa.Connectives.html#24998" class="Bound">f</a> <a id="25000" class="Keyword">with</a> <a id="25005" href="plfa.Connectives.html#24998" class="Bound">f</a> <a id="25007" href="plfa.Connectives.html#6350" class="InductiveConstructor">true</a> <a id="25012" class="Symbol">|</a> <a id="25014" href="plfa.Connectives.html#24998" class="Bound">f</a> <a id="25016" href="plfa.Connectives.html#6365" class="InductiveConstructor">false</a>
@@ -905,14 +859,14 @@ over to the types. -->
 
 <p>对应如下的定律：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(p ^ n) ^ m  ≡  p ^ (n * m)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(p ^ n) ^ m  ≡  p ^ (n * m)
 </code></pre></div></div>
 
 <!-- we have the isomorphism -->
 
 <p>我们有如下的同构：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A → (B → C)  ≃  (A × B) → C
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A → (B → C)  ≃  (A × B) → C
 </code></pre></div></div>
 
 <!-- Both types can be viewed as functions that given evidence that `A` holds
@@ -920,8 +874,7 @@ and evidence that `B` holds can return evidence that `C` holds.
 This isomorphism sometimes goes by the name *currying*.
 The proof of the right inverse requires extensionality: -->
 
-<p>两个类型可以被看作给定 <code class="highlighter-rouge">A</code> 成立的证据和 <code class="highlighter-rouge">B</code> 成立的证据，返回 <code class="highlighter-rouge">C</code> 成立的证据。
-这个同构有时也被称作<em>柯里化</em>（Currying）。右逆的证明需要外延性：</p>
+<p>两个类型可以被看作给定 <code class="language-plaintext highlighter-rouge">A</code> 成立的证据和 <code class="language-plaintext highlighter-rouge">B</code> 成立的证据，返回 <code class="language-plaintext highlighter-rouge">C</code> 成立的证据。这个同构有时也被称作<em>柯里化</em>（Currying）。右逆的证明需要外延性：</p>
 
 <pre class="Agda"><a id="currying"></a><a id="26102" href="/PLFA-zh/Connectives/#26102" class="Function">currying</a> <a id="26111" class="Symbol">:</a> <a id="26113" class="Symbol">∀</a> <a id="26115" class="Symbol">{</a><a id="26116" href="plfa.Connectives.html#26116" class="Bound">A</a> <a id="26118" href="plfa.Connectives.html#26118" class="Bound">B</a> <a id="26120" href="plfa.Connectives.html#26120" class="Bound">C</a> <a id="26122" class="Symbol">:</a> <a id="26124" class="PrimitiveType">Set</a><a id="26127" class="Symbol">}</a> <a id="26129" class="Symbol">→</a> <a id="26131" class="Symbol">(</a><a id="26132" href="plfa.Connectives.html#26116" class="Bound">A</a> <a id="26134" class="Symbol">→</a> <a id="26136" href="plfa.Connectives.html#26118" class="Bound">B</a> <a id="26138" class="Symbol">→</a> <a id="26140" href="plfa.Connectives.html#26120" class="Bound">C</a><a id="26141" class="Symbol">)</a> <a id="26143" href="/PLFA-zh/Isomorphism/#5843" class="Record Operator">≃</a> <a id="26145" class="Symbol">(</a><a id="26146" href="plfa.Connectives.html#26116" class="Bound">A</a> <a id="26148" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="26150" href="plfa.Connectives.html#26118" class="Bound">B</a> <a id="26152" class="Symbol">→</a> <a id="26154" href="plfa.Connectives.html#26120" class="Bound">C</a><a id="26155" class="Symbol">)</a>
 <a id="26157" href="/PLFA-zh/Connectives/#26102" class="Function">currying</a> <a id="26166" class="Symbol">=</a>
@@ -936,47 +889,44 @@ The proof of the right inverse requires extensionality: -->
 we can have a function that takes the first argument and returns a function that
 expects the second argument.  Thus, for instance, our way of writing addition -->
 
-<p>柯里化告诉我们，如果一个函数有取一个数据对作为参数，
-那么我们可以构造一个函数，取第一个参数，返回一个取第二个参数，返回最终结果的函数。
-因此，举例来说，下面表示加法的形式：</p>
+<p>柯里化告诉我们，如果一个函数有取一个数据对作为参数，那么我们可以构造一个函数，取第一个参数，返回一个取第二个参数，返回最终结果的函数。因此，举例来说，下面表示加法的形式：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_+_ : ℕ → ℕ → ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_+_ : ℕ → ℕ → ℕ
 </code></pre></div></div>
 
 <!-- is isomorphic to a function that accepts a pair of arguments: -->
 
 <p>和下面的一个带有一个数据对作为参数的函数是同构的：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_+′_ : (ℕ × ℕ) → ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_+′_ : (ℕ × ℕ) → ℕ
 </code></pre></div></div>
 
 <!-- Agda is optimised for currying, so `2 + 3` abbreviates `_+_ 2 3`.
 In a language optimised for pairing, we would instead take `2 +′ 3` as
 an abbreviation for `_+′_ ⟨ 2 , 3 ⟩`. -->
 
-<p>Agda 对柯里化进行了优化，因此 <code class="highlighter-rouge">2 + 3</code> 是 <code class="highlighter-rouge">_+_ 2 3</code> 的简写。在一个对有序对进行优化的语言里，
-<code class="highlighter-rouge">2 +′ 3</code> 可能是 <code class="highlighter-rouge">_+′_ ⟨ 2 , 3 ⟩</code> 的简写。</p>
+<p>Agda 对柯里化进行了优化，因此 <code class="language-plaintext highlighter-rouge">2 + 3</code> 是 <code class="language-plaintext highlighter-rouge">_+_ 2 3</code> 的简写。在一个对有序对进行优化的语言里，
+<code class="language-plaintext highlighter-rouge">2 +′ 3</code> 可能是 <code class="language-plaintext highlighter-rouge">_+′_ ⟨ 2 , 3 ⟩</code> 的简写。</p>
 
 <!-- Corresponding to the law -->
 
 <p>对应如下的定律：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p ^ (n + m) = (p ^ n) * (p ^ m)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p ^ (n + m) = (p ^ n) * (p ^ m)
 </code></pre></div></div>
 
 <!-- we have the isomorphism: -->
 
 <p>我们有如下的同构：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(A ⊎ B) → C  ≃  (A → C) × (B → C)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(A ⊎ B) → C  ≃  (A → C) × (B → C)
 </code></pre></div></div>
 
 <!-- That is, the assertion that if either `A` holds or `B` holds then `C` holds
 is the same as the assertion that if `A` holds then `C` holds and if
 `B` holds then `C` holds.  The proof of the left inverse requires extensionality: -->
 
-<p>命题如果 <code class="highlighter-rouge">A</code> 成立或者 <code class="highlighter-rouge">B</code> 成立，那么 <code class="highlighter-rouge">C</code> 成立，和命题如果 <code class="highlighter-rouge">A</code> 成立，那么 <code class="highlighter-rouge">C</code> 成立以及
-如果 <code class="highlighter-rouge">B</code> 成立，那么 <code class="highlighter-rouge">C</code> 成立，是一样的。左逆的证明需要外延性：</p>
+<p>命题如果 <code class="language-plaintext highlighter-rouge">A</code> 成立或者 <code class="language-plaintext highlighter-rouge">B</code> 成立，那么 <code class="language-plaintext highlighter-rouge">C</code> 成立，和命题如果 <code class="language-plaintext highlighter-rouge">A</code> 成立，那么 <code class="language-plaintext highlighter-rouge">C</code> 成立以及如果 <code class="language-plaintext highlighter-rouge">B</code> 成立，那么 <code class="language-plaintext highlighter-rouge">C</code> 成立，是一样的。左逆的证明需要外延性：</p>
 
 <pre class="Agda"><a id="→-distrib-⊎"></a><a id="27692" href="/PLFA-zh/Connectives/#27692" class="Function">→-distrib-⊎</a> <a id="27704" class="Symbol">:</a> <a id="27706" class="Symbol">∀</a> <a id="27708" class="Symbol">{</a><a id="27709" href="plfa.Connectives.html#27709" class="Bound">A</a> <a id="27711" href="plfa.Connectives.html#27711" class="Bound">B</a> <a id="27713" href="plfa.Connectives.html#27713" class="Bound">C</a> <a id="27715" class="Symbol">:</a> <a id="27717" class="PrimitiveType">Set</a><a id="27720" class="Symbol">}</a> <a id="27722" class="Symbol">→</a> <a id="27724" class="Symbol">(</a><a id="27725" href="plfa.Connectives.html#27709" class="Bound">A</a> <a id="27727" href="plfa.Connectives.html#14050" class="Datatype Operator">⊎</a> <a id="27729" href="plfa.Connectives.html#27711" class="Bound">B</a> <a id="27731" class="Symbol">→</a> <a id="27733" href="plfa.Connectives.html#27713" class="Bound">C</a><a id="27734" class="Symbol">)</a> <a id="27736" href="/PLFA-zh/Isomorphism/#5843" class="Record Operator">≃</a> <a id="27738" class="Symbol">((</a><a id="27740" href="plfa.Connectives.html#27709" class="Bound">A</a> <a id="27742" class="Symbol">→</a> <a id="27744" href="plfa.Connectives.html#27713" class="Bound">C</a><a id="27745" class="Symbol">)</a> <a id="27747" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="27749" class="Symbol">(</a><a id="27750" href="plfa.Connectives.html#27711" class="Bound">B</a> <a id="27752" class="Symbol">→</a> <a id="27754" href="plfa.Connectives.html#27713" class="Bound">C</a><a id="27755" class="Symbol">))</a>
 <a id="27758" href="/PLFA-zh/Connectives/#27692" class="Function">→-distrib-⊎</a> <a id="27770" class="Symbol">=</a>
@@ -991,14 +941,14 @@ is the same as the assertion that if `A` holds then `C` holds and if
 
 <p>对应如下的定律：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(p * n) ^ m = (p ^ m) * (n ^ m)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(p * n) ^ m = (p ^ m) * (n ^ m)
 </code></pre></div></div>
 
 <!-- we have the isomorphism: -->
 
 <p>我们有如下的同构：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A → B × C  ≃  (A → B) × (A → C)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A → B × C  ≃  (A → B) × (A → C)
 </code></pre></div></div>
 
 <!-- That is, the assertion that if `A` holds then `B` holds and `C` holds
@@ -1006,8 +956,7 @@ is the same as the assertion that if `A` holds then `B` holds and if
 `A` holds then `C` holds.  The proof of left inverse requires both extensionality
 and the rule `η-×` for products: -->
 
-<p>命题如果 <code class="highlighter-rouge">A</code> 成立，那么 <code class="highlighter-rouge">B</code> 成立和 <code class="highlighter-rouge">C</code> 成立，和命题如果 <code class="highlighter-rouge">A</code> 成立，那么 <code class="highlighter-rouge">B</code> 成立以及
-如果 <code class="highlighter-rouge">A</code> 成立，那么 <code class="highlighter-rouge">C</code> 成立，是一样的。左逆的证明需要外延性和积的 <code class="highlighter-rouge">η-×</code> 规则：</p>
+<p>命题如果 <code class="language-plaintext highlighter-rouge">A</code> 成立，那么 <code class="language-plaintext highlighter-rouge">B</code> 成立和 <code class="language-plaintext highlighter-rouge">C</code> 成立，和命题如果 <code class="language-plaintext highlighter-rouge">A</code> 成立，那么 <code class="language-plaintext highlighter-rouge">B</code> 成立以及如果 <code class="language-plaintext highlighter-rouge">A</code> 成立，那么 <code class="language-plaintext highlighter-rouge">C</code> 成立，是一样的。左逆的证明需要外延性和积的 <code class="language-plaintext highlighter-rouge">η-×</code> 规则：</p>
 
 <pre class="Agda"><a id="→-distrib-×"></a><a id="28590" href="/PLFA-zh/Connectives/#28590" class="Function">→-distrib-×</a> <a id="28602" class="Symbol">:</a> <a id="28604" class="Symbol">∀</a> <a id="28606" class="Symbol">{</a><a id="28607" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28609" href="plfa.Connectives.html#28609" class="Bound">B</a> <a id="28611" href="plfa.Connectives.html#28611" class="Bound">C</a> <a id="28613" class="Symbol">:</a> <a id="28615" class="PrimitiveType">Set</a><a id="28618" class="Symbol">}</a> <a id="28620" class="Symbol">→</a> <a id="28622" class="Symbol">(</a><a id="28623" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28625" class="Symbol">→</a> <a id="28627" href="plfa.Connectives.html#28609" class="Bound">B</a> <a id="28629" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="28631" href="plfa.Connectives.html#28611" class="Bound">C</a><a id="28632" class="Symbol">)</a> <a id="28634" href="/PLFA-zh/Isomorphism/#5843" class="Record Operator">≃</a> <a id="28636" class="Symbol">(</a><a id="28637" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28639" class="Symbol">→</a> <a id="28641" href="plfa.Connectives.html#28609" class="Bound">B</a><a id="28642" class="Symbol">)</a> <a id="28644" href="plfa.Connectives.html#1720" class="Datatype Operator">×</a> <a id="28646" class="Symbol">(</a><a id="28647" href="plfa.Connectives.html#28607" class="Bound">A</a> <a id="28649" class="Symbol">→</a> <a id="28651" href="plfa.Connectives.html#28611" class="Bound">C</a><a id="28652" class="Symbol">)</a>
 <a id="28654" href="/PLFA-zh/Connectives/#28590" class="Function">→-distrib-×</a> <a id="28666" class="Symbol">=</a>
@@ -1070,16 +1019,15 @@ easy to write a variant that instead returns `inj₂ z′`.  We have
 an embedding rather than an isomorphism because the
 `from` function must discard either `z` or `z′` in this case. -->
 
-<p>我们在定义 <code class="highlighter-rouge">from</code> 函数的时候可以有选择。给定的定义中，它将 <code class="highlighter-rouge">⟨ inj₂ z , inj₂ z′ ⟩</code>
-转换为 <code class="highlighter-rouge">inj₂ z</code>，但我们也可以返回 <code class="highlighter-rouge">inj₂ z′</code> 作为嵌入证明的变种。我们在这里只能证明嵌入，
-而不能证明同构，因为 <code class="highlighter-rouge">from</code> 函数必须丢弃 <code class="highlighter-rouge">z</code> 或者 <code class="highlighter-rouge">z′</code> 其中的一个。</p>
+<p>我们在定义 <code class="language-plaintext highlighter-rouge">from</code> 函数的时候可以有选择。给定的定义中，它将 <code class="language-plaintext highlighter-rouge">⟨ inj₂ z , inj₂ z′ ⟩</code>
+转换为 <code class="language-plaintext highlighter-rouge">inj₂ z</code>，但我们也可以返回 <code class="language-plaintext highlighter-rouge">inj₂ z′</code> 作为嵌入证明的变种。我们在这里只能证明嵌入，而不能证明同构，因为 <code class="language-plaintext highlighter-rouge">from</code> 函数必须丢弃 <code class="language-plaintext highlighter-rouge">z</code> 或者 <code class="language-plaintext highlighter-rouge">z′</code> 其中的一个。</p>
 
 <!-- In the usual approach to logic, both of the distribution laws
 are given as equivalences, where each side implies the other: -->
 
 <p>在一般的逻辑学方法中，两条分配律都以等价的形式给出，每一边都蕴涵了另一边：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A × (B ⊎ C) ⇔ (A × B) ⊎ (A × C)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A × (B ⊎ C) ⇔ (A × B) ⊎ (A × C)
 A ⊎ (B × C) ⇔ (A ⊎ B) × (A ⊎ C)
 </code></pre></div></div>
 
@@ -1088,12 +1036,11 @@ implications, then the first corresponds to an isomorphism while the
 second only corresponds to an embedding, revealing a sense in which
 one of these laws is "more true" than the other. -->
 
-<p>但当我们考虑提供上述蕴涵证明的函数时，第一条对应同构而第二条只能对应嵌入，
-揭示了有些定理比另一个更加的”正确“。</p>
+<p>但当我们考虑提供上述蕴涵证明的函数时，第一条对应同构而第二条只能对应嵌入，揭示了有些定理比另一个更加的”正确“。</p>
 
 <!-- #### Exercise `⊎-weak-×` (recommended) -->
 
-<h4 id="练习--weak--推荐">练习 <code class="highlighter-rouge">⊎-weak-×</code> （推荐）</h4>
+<h4 id="练习--weak--推荐">练习 <code class="language-plaintext highlighter-rouge">⊎-weak-×</code> （推荐）</h4>
 
 <!-- Show that the following property holds: -->
 
@@ -1117,7 +1064,7 @@ distributive law, and explain how it relates to the weak version. -->
 {::comment}
 #### Exercise `⊎×-implies-×⊎` -->
 
-<h4 id="练习--implies-">练习 <code class="highlighter-rouge">⊎×-implies-×⊎</code></h4>
+<h4 id="练习--implies-">练习 <code class="language-plaintext highlighter-rouge">⊎×-implies-×⊎</code></h4>
 
 <!-- Show that a disjunct of conjuncts implies a conjunct of disjuncts: -->
 
@@ -1161,12 +1108,7 @@ The standard library `_⇔_` is similar to ours, but the one in the
 standard library is less convenient, since it is parameterised with
 respect to an arbitrary notion of equivalence. -->
 
-<p>标准库中使用 <code class="highlighter-rouge">_,_</code> 构造数据对，而我们使用 <code class="highlighter-rouge">⟨_,_⟩</code>。前者在从数据对构造三元对或者更大的
-元组时更加的方便，允许 <code class="highlighter-rouge">a , b , c</code> 作为 <code class="highlighter-rouge">(a, (b , c))</code> 的记法。但它与其他有用的记法相冲突，
-比如说 [Lists][plfa.Lists] 中的 <code class="highlighter-rouge">[_,_]</code> 记法表示两个元素的列表，
-或者 [DeBruijn][plfa.DeBruijn] 章节中的 <code class="highlighter-rouge">Γ , A</code> 来表示环境的扩展。
-标准库中的 <code class="highlighter-rouge">_⇔_</code> 和我们的相似，但使用起来比较不便，
-因为它可以根据任意的相等性定义进行参数化。</p>
+<p>标准库中使用 <code class="language-plaintext highlighter-rouge">_,_</code> 构造数据对，而我们使用 <code class="language-plaintext highlighter-rouge">⟨_,_⟩</code>。前者在从数据对构造三元对或者更大的元组时更加的方便，允许 <code class="language-plaintext highlighter-rouge">a , b , c</code> 作为 <code class="language-plaintext highlighter-rouge">(a, (b , c))</code> 的记法。但它与其他有用的记法相冲突，比如说 [Lists][plfa.Lists] 中的 <code class="language-plaintext highlighter-rouge">[_,_]</code> 记法表示两个元素的列表，或者 [DeBruijn][plfa.DeBruijn] 章节中的 <code class="language-plaintext highlighter-rouge">Γ , A</code> 来表示环境的扩展。标准库中的 <code class="language-plaintext highlighter-rouge">_⇔_</code> 和我们的相似，但使用起来比较不便，因为它可以根据任意的相等性定义进行参数化。</p>
 
 <h2 id="unicode">Unicode</h2>
 
@@ -1183,7 +1125,7 @@ respect to an arbitrary notion of equivalence. -->
 
 <p>本章节使用下列 Unicode：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>×  U+00D7  乘法符号 (\x)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>×  U+00D7  乘法符号 (\x)
 ⊎  U+228E  多重集并集 (\u+)
 ⊤  U+22A4  向下图钉 (\top)
 ⊥  U+22A5  向上图钉 (\bot)
@@ -1246,6 +1188,18 @@ respect to an arbitrary notion of equivalence. -->
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

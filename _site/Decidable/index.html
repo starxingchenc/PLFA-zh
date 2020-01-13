@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Decidable: 布尔值与判定过程 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Decidable: 布尔值与判定过程" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Decidable/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Decidable/","headline":"Decidable: 布尔值与判定过程","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Decidable: 布尔值与判定过程","url":"https://agda-zh.github.io/PLFA-zh/Decidable/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -83,10 +83,7 @@ We first explore the familiar notion of _booleans_,
 but later discover that these are best avoided in favour
 of a new notion of _decidable_. -->
 
-<p>我们有两种不同的方式来表示关系：一是表示为由关系成立的<em>证明</em>（Evidence）所构成的数据类型；
-二是表示为一个<em>计算</em>（Compute）关系是否成立的函数。在本章中，我们将探讨这两种方式之间的关系。
-我们首先研究大家熟悉的<em>布尔值</em>（Boolean）记法，但是之后我们会发现，相较布尔值记法，
-使用一种新的<em>可判定性</em>（Decidable）记法将会是更好的选择。</p>
+<p>我们有两种不同的方式来表示关系：一是表示为由关系成立的<em>证明</em>（Evidence）所构成的数据类型；二是表示为一个<em>计算</em>（Compute）关系是否成立的函数。在本章中，我们将探讨这两种方式之间的关系。我们首先研究大家熟悉的<em>布尔值</em>（Boolean）记法，但是之后我们会发现，相较布尔值记法，使用一种新的<em>可判定性</em>（Decidable）记法将会是更好的选择。</p>
 
 <!-- ## Imports -->
 
@@ -134,7 +131,7 @@ is less than or equal to another: -->
 <!-- For example, we can provide evidence that `2 ≤ 4`,
 and show there is no possible evidence that `4 ≤ 2`: -->
 
-<p>举例来说，我们提供 <code class="highlighter-rouge">2 ≤ 4</code> 成立的证明，也可以证明没有 <code class="highlighter-rouge">4 ≤ 2</code> 成立的证明。</p>
+<p>举例来说，我们提供 <code class="language-plaintext highlighter-rouge">2 ≤ 4</code> 成立的证明，也可以证明没有 <code class="language-plaintext highlighter-rouge">4 ≤ 2</code> 成立的证明。</p>
 
 <pre class="Agda"><a id="2≤4"></a><a id="2068" href="/PLFA-zh/Decidable/#2068" class="Function">2≤4</a> <a id="2072" class="Symbol">:</a> <a id="2074" class="Number">2</a> <a id="2076" href="plfa.Decidable.html#1743" class="Datatype Operator">≤</a> <a id="2078" class="Number">4</a>
 <a id="2080" href="/PLFA-zh/Decidable/#2068" class="Function">2≤4</a> <a id="2084" class="Symbol">=</a> <a id="2086" href="plfa.Decidable.html#1819" class="InductiveConstructor">s≤s</a> <a id="2090" class="Symbol">(</a><a id="2091" href="plfa.Decidable.html#1819" class="InductiveConstructor">s≤s</a> <a id="2095" href="plfa.Decidable.html#1770" class="InductiveConstructor">z≤n</a><a id="2098" class="Symbol">)</a>
@@ -147,8 +144,8 @@ no possible evidence for `2 ≤ 0`, which `z≤n` cannot match
 (because `2` is not `zero`) and `s≤s` cannot match
 (because `0` cannot match `suc n`). -->
 
-<p><code class="highlighter-rouge">()</code> 的出现表明了没有 <code class="highlighter-rouge">2 ≤ 0</code> 成立的证明：<code class="highlighter-rouge">z≤n</code> 不能匹配（因为 <code class="highlighter-rouge">2</code> 不是
-<code class="highlighter-rouge">zero</code>），<code class="highlighter-rouge">s≤s</code> 也不能匹配（因为 <code class="highlighter-rouge">0</code> 不能匹配 <code class="highlighter-rouge">suc n</code>）。</p>
+<p><code class="language-plaintext highlighter-rouge">()</code> 的出现表明了没有 <code class="language-plaintext highlighter-rouge">2 ≤ 0</code> 成立的证明：<code class="language-plaintext highlighter-rouge">z≤n</code> 不能匹配（因为 <code class="language-plaintext highlighter-rouge">2</code> 不是
+<code class="language-plaintext highlighter-rouge">zero</code>），<code class="language-plaintext highlighter-rouge">s≤s</code> 也不能匹配（因为 <code class="language-plaintext highlighter-rouge">0</code> 不能匹配 <code class="language-plaintext highlighter-rouge">suc n</code>）。</p>
 
 <!-- An alternative, which may seem more familiar, is to define a
 type of booleans: -->
@@ -162,8 +159,7 @@ type of booleans: -->
 <!-- Given booleans, we can define a function of two numbers that
 _computes_ to `true` if the comparison holds and to `false` otherwise: -->
 
-<p>给定了布尔类型，我们可以定义一个两个数的函数在比较关系成立时来<em>计算</em>出 <code class="highlighter-rouge">true</code>，
-否则计算出 <code class="highlighter-rouge">false</code>：</p>
+<p>给定了布尔类型，我们可以定义一个两个数的函数在比较关系成立时来<em>计算</em>出 <code class="language-plaintext highlighter-rouge">true</code>，否则计算出 <code class="language-plaintext highlighter-rouge">false</code>：</p>
 
 <pre class="Agda"><a id="2861" class="Keyword">infix</a> <a id="2867" class="Number">4</a> <a id="2869" href="/PLFA-zh/Decidable/#2875" class="Function Operator">_≤ᵇ_</a>
 
@@ -179,9 +175,8 @@ middle clause arises because there is no possible evidence that
 For example, we can compute that `2 ≤ᵇ 4` holds,
 and we can compute that `4 ≤ᵇ 2` does not hold: -->
 
-<p>定义中的第一条与最后一条与归纳数据类型中的两个构造子相对应。因为对于任意的 <code class="highlighter-rouge">m</code>，不可能出现
-<code class="highlighter-rouge">suc m ≤ zero</code> 的证明，我们使用中间一条定义来表示。
-举个例子，我们可以计算 <code class="highlighter-rouge">2 ≤ᵇ 4</code> 成立，也可以计算 <code class="highlighter-rouge">4 ≤ᵇ 2</code> 不成立：</p>
+<p>定义中的第一条与最后一条与归纳数据类型中的两个构造子相对应。因为对于任意的 <code class="language-plaintext highlighter-rouge">m</code>，不可能出现
+<code class="language-plaintext highlighter-rouge">suc m ≤ zero</code> 的证明，我们使用中间一条定义来表示。举个例子，我们可以计算 <code class="language-plaintext highlighter-rouge">2 ≤ᵇ 4</code> 成立，也可以计算 <code class="language-plaintext highlighter-rouge">4 ≤ᵇ 2</code> 不成立：</p>
 
 <pre class="Agda"><a id="3440" href="/PLFA-zh/Decidable/#3440" class="Function">_</a> <a id="3442" class="Symbol">:</a> <a id="3444" class="Symbol">(</a><a id="3445" class="Number">2</a> <a id="3447" href="plfa.Decidable.html#2875" class="Function Operator">≤ᵇ</a> <a id="3450" class="Number">4</a><a id="3451" class="Symbol">)</a> <a id="3453" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="3455" href="plfa.Decidable.html#2613" class="InductiveConstructor">true</a>
 <a id="3460" class="Symbol">_</a> <a id="3462" class="Symbol">=</a>
@@ -214,10 +209,7 @@ In the second case, it takes two steps to reduce the second argument to zero,
 and one more step to compute false, corresponding to the two uses of `s≤s`
 and the one use of `()` when showing there can be no evidence that `4 ≤ 2`. -->
 
-<p>在第一种情况中，我们需要两步来将第一个参数降低到 0，再用一步来计算出真，这对应着我们需要
-使用两次 <code class="highlighter-rouge">s≤s</code> 和一次 <code class="highlighter-rouge">z≤n</code> 来证明 <code class="highlighter-rouge">2 ≤ 4</code>。
-在第二种情况中，我们需要两步来将第二个参数降低到 0，再用一步来计算出假，这对应着我们需要
-使用两次 <code class="highlighter-rouge">s≤s</code> 和一次 <code class="highlighter-rouge">()</code> 来说明没有 <code class="highlighter-rouge">4 ≤ 2</code> 的证明。</p>
+<p>在第一种情况中，我们需要两步来将第一个参数降低到 0，再用一步来计算出真，这对应着我们需要使用两次 <code class="language-plaintext highlighter-rouge">s≤s</code> 和一次 <code class="language-plaintext highlighter-rouge">z≤n</code> 来证明 <code class="language-plaintext highlighter-rouge">2 ≤ 4</code>。在第二种情况中，我们需要两步来将第二个参数降低到 0，再用一步来计算出假，这对应着我们需要使用两次 <code class="language-plaintext highlighter-rouge">s≤s</code> 和一次 <code class="language-plaintext highlighter-rouge">()</code> 来说明没有 <code class="language-plaintext highlighter-rouge">4 ≤ 2</code> 的证明。</p>
 
 <!-- ## Relating evidence and computation -->
 
@@ -227,8 +219,7 @@ and the one use of `()` when showing there can be no evidence that `4 ≤ 2`. --
 indeed we can.  First, we define a function that lets us map from the
 computation world to the evidence world: -->
 
-<p>我们希望能够证明这两种方法是有联系的，而我们的确可以。
-首先，我们定义一个函数来把计算世界映射到证明世界：</p>
+<p>我们希望能够证明这两种方法是有联系的，而我们的确可以。首先，我们定义一个函数来把计算世界映射到证明世界：</p>
 
 <pre class="Agda"><a id="T"></a><a id="4594" href="/PLFA-zh/Decidable/#4594" class="Function">T</a> <a id="4596" class="Symbol">:</a> <a id="4598" href="plfa.Decidable.html#2594" class="Datatype">Bool</a> <a id="4603" class="Symbol">→</a> <a id="4605" class="PrimitiveType">Set</a>
 <a id="4609" href="/PLFA-zh/Decidable/#4594" class="Function">T</a> <a id="4611" href="plfa.Decidable.html#2613" class="InductiveConstructor">true</a>   <a id="4618" class="Symbol">=</a>  <a id="4621" href="Agda.Builtin.Unit.html#137" class="Record">⊤</a>
@@ -240,15 +231,13 @@ and the `⊥` is the empty type which contains no values.  (Also note that
 then `tt` provides evidence that `T b` holds if `b` is true, while there is
 no possible evidence that `T b` holds if `b` is false. -->
 
-<p>回忆到 <code class="highlighter-rouge">⊤</code> 是只有一个元素 <code class="highlighter-rouge">tt</code> 的单元类型，<code class="highlighter-rouge">⊥</code> 是没有值的空类型。（注意 <code class="highlighter-rouge">T</code> 是大写字母 <code class="highlighter-rouge">t</code>，
-与 <code class="highlighter-rouge">⊤</code> 不同。）如果 <code class="highlighter-rouge">b</code> 是 <code class="highlighter-rouge">Bool</code> 类型的，那么如果 <code class="highlighter-rouge">b</code> 为真，<code class="highlighter-rouge">tt</code> 可以提供 <code class="highlighter-rouge">T b</code> 成立的证明；
-如果 <code class="highlighter-rouge">b</code> 为假，则不可能有 <code class="highlighter-rouge">T b</code> 成立的证明。</p>
+<p>回忆到 <code class="language-plaintext highlighter-rouge">⊤</code> 是只有一个元素 <code class="language-plaintext highlighter-rouge">tt</code> 的单元类型，<code class="language-plaintext highlighter-rouge">⊥</code> 是没有值的空类型。（注意 <code class="language-plaintext highlighter-rouge">T</code> 是大写字母 <code class="language-plaintext highlighter-rouge">t</code>，与 <code class="language-plaintext highlighter-rouge">⊤</code> 不同。）如果 <code class="language-plaintext highlighter-rouge">b</code> 是 <code class="language-plaintext highlighter-rouge">Bool</code> 类型的，那么如果 <code class="language-plaintext highlighter-rouge">b</code> 为真，<code class="language-plaintext highlighter-rouge">tt</code> 可以提供 <code class="language-plaintext highlighter-rouge">T b</code> 成立的证明；如果 <code class="language-plaintext highlighter-rouge">b</code> 为假，则不可能有 <code class="language-plaintext highlighter-rouge">T b</code> 成立的证明。</p>
 
 <!-- Another way to put this is that `T b` is inhabited exactly when `b ≡ true`
 is inhabited.
 In the forward direction, we need to do a case analysis on the boolean `b`: -->
 
-<p>换句话说，<code class="highlighter-rouge">T b</code> 当且仅当 <code class="highlighter-rouge">b ≡ true</code> 成立时成立。在向前的方向，我们需要针对 <code class="highlighter-rouge">b</code> 进行情况分析：</p>
+<p>换句话说，<code class="language-plaintext highlighter-rouge">T b</code> 当且仅当 <code class="language-plaintext highlighter-rouge">b ≡ true</code> 成立时成立。在向前的方向，我们需要针对 <code class="language-plaintext highlighter-rouge">b</code> 进行情况分析：</p>
 
 <pre class="Agda"><a id="T→≡"></a><a id="5416" href="/PLFA-zh/Decidable/#5416" class="Function">T→≡</a> <a id="5420" class="Symbol">:</a> <a id="5422" class="Symbol">∀</a> <a id="5424" class="Symbol">(</a><a id="5425" href="plfa.Decidable.html#5425" class="Bound">b</a> <a id="5427" class="Symbol">:</a> <a id="5429" href="plfa.Decidable.html#2594" class="Datatype">Bool</a><a id="5433" class="Symbol">)</a> <a id="5435" class="Symbol">→</a> <a id="5437" href="plfa.Decidable.html#4594" class="Function">T</a> <a id="5439" href="plfa.Decidable.html#5425" class="Bound">b</a> <a id="5441" class="Symbol">→</a> <a id="5443" href="plfa.Decidable.html#5425" class="Bound">b</a> <a id="5445" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="5447" href="plfa.Decidable.html#2613" class="InductiveConstructor">true</a>
 <a id="5452" href="/PLFA-zh/Decidable/#5416" class="Function">T→≡</a> <a id="5456" href="plfa.Decidable.html#2613" class="InductiveConstructor">true</a> <a id="5461" href="Agda.Builtin.Unit.html#174" class="InductiveConstructor">tt</a>   <a id="5466" class="Symbol">=</a>  <a id="5469" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
@@ -257,12 +246,11 @@ In the forward direction, we need to do a case analysis on the boolean `b`: -->
 <!-- If `b` is true then `T b` is inhabited by `tt` and `b ≡ true` is inhabited
 by `refl`, while if `b` is false then `T b` in uninhabited. -->
 
-<p>如果 <code class="highlighter-rouge">b</code> 为真，那么 <code class="highlighter-rouge">T b</code> 由 <code class="highlighter-rouge">tt</code> 证明，<code class="highlighter-rouge">b ≡ true</code> 由 <code class="highlighter-rouge">refl</code> 证明。
-当 <code class="highlighter-rouge">b</code> 为假，那么 <code class="highlighter-rouge">T b</code> 无法证明。</p>
+<p>如果 <code class="language-plaintext highlighter-rouge">b</code> 为真，那么 <code class="language-plaintext highlighter-rouge">T b</code> 由 <code class="language-plaintext highlighter-rouge">tt</code> 证明，<code class="language-plaintext highlighter-rouge">b ≡ true</code> 由 <code class="language-plaintext highlighter-rouge">refl</code> 证明。当 <code class="language-plaintext highlighter-rouge">b</code> 为假，那么 <code class="language-plaintext highlighter-rouge">T b</code> 无法证明。</p>
 
 <!-- In the reverse direction, there is no need for a case analysis on the boolean `b`: -->
 
-<p>在向后的方向，不需要针对布尔值 <code class="highlighter-rouge">b</code> 的情况分析：</p>
+<p>在向后的方向，不需要针对布尔值 <code class="language-plaintext highlighter-rouge">b</code> 的情况分析：</p>
 
 <pre class="Agda"><a id="≡→T"></a><a id="5856" href="/PLFA-zh/Decidable/#5856" class="Function">≡→T</a> <a id="5860" class="Symbol">:</a> <a id="5862" class="Symbol">∀</a> <a id="5864" class="Symbol">{</a><a id="5865" href="plfa.Decidable.html#5865" class="Bound">b</a> <a id="5867" class="Symbol">:</a> <a id="5869" href="plfa.Decidable.html#2594" class="Datatype">Bool</a><a id="5873" class="Symbol">}</a> <a id="5875" class="Symbol">→</a> <a id="5877" href="plfa.Decidable.html#5865" class="Bound">b</a> <a id="5879" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="5881" href="plfa.Decidable.html#2613" class="InductiveConstructor">true</a> <a id="5886" class="Symbol">→</a> <a id="5888" href="plfa.Decidable.html#4594" class="Function">T</a> <a id="5890" href="plfa.Decidable.html#5865" class="Bound">b</a>
 <a id="5892" href="/PLFA-zh/Decidable/#5856" class="Function">≡→T</a> <a id="5896" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>  <a id="5902" class="Symbol">=</a>  <a id="5905" href="Agda.Builtin.Unit.html#174" class="InductiveConstructor">tt</a>
@@ -270,16 +258,16 @@ by `refl`, while if `b` is false then `T b` in uninhabited. -->
 <!-- If `b ≡ true` is inhabited by `refl` we know that `b` is `true` and
 hence `T b` is inhabited by `tt`. -->
 
-<p>如果 <code class="highlighter-rouge">b ≡ true</code> 由 <code class="highlighter-rouge">refl</code> 证明，我们知道 <code class="highlighter-rouge">b</code> 是 <code class="highlighter-rouge">true</code>，因此 <code class="highlighter-rouge">T b</code> 由 <code class="highlighter-rouge">tt</code> 证明。</p>
+<p>如果 <code class="language-plaintext highlighter-rouge">b ≡ true</code> 由 <code class="language-plaintext highlighter-rouge">refl</code> 证明，我们知道 <code class="language-plaintext highlighter-rouge">b</code> 是 <code class="language-plaintext highlighter-rouge">true</code>，因此 <code class="language-plaintext highlighter-rouge">T b</code> 由 <code class="language-plaintext highlighter-rouge">tt</code> 证明。</p>
 
 <!-- Now we can show that `T (m ≤ᵇ n)` is inhabited exactly when `m ≤ n` is inhabited. -->
 
-<p>现在我们可以证明 <code class="highlighter-rouge">T (m ≤ᵇ n)</code> 当且仅当 <code class="highlighter-rouge">m ≤ n</code> 成立时成立。</p>
+<p>现在我们可以证明 <code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 当且仅当 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 成立时成立。</p>
 
 <!-- In the forward direction, we consider the three clauses in the definition
 of `_≤ᵇ_`: -->
 
-<p>在向前的方向，我们考虑 <code class="highlighter-rouge">_≤ᵇ_</code> 定义中的三条语句：</p>
+<p>在向前的方向，我们考虑 <code class="language-plaintext highlighter-rouge">_≤ᵇ_</code> 定义中的三条语句：</p>
 
 <pre class="Agda"><a id="≤ᵇ→≤"></a><a id="6378" href="/PLFA-zh/Decidable/#6378" class="Function">≤ᵇ→≤</a> <a id="6383" class="Symbol">:</a> <a id="6385" class="Symbol">∀</a> <a id="6387" class="Symbol">(</a><a id="6388" href="plfa.Decidable.html#6388" class="Bound">m</a> <a id="6390" href="plfa.Decidable.html#6390" class="Bound">n</a> <a id="6392" class="Symbol">:</a> <a id="6394" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="6395" class="Symbol">)</a> <a id="6397" class="Symbol">→</a> <a id="6399" href="plfa.Decidable.html#4594" class="Function">T</a> <a id="6401" class="Symbol">(</a><a id="6402" href="plfa.Decidable.html#6388" class="Bound">m</a> <a id="6404" href="plfa.Decidable.html#2875" class="Function Operator">≤ᵇ</a> <a id="6407" href="plfa.Decidable.html#6390" class="Bound">n</a><a id="6408" class="Symbol">)</a> <a id="6410" class="Symbol">→</a> <a id="6412" href="plfa.Decidable.html#6388" class="Bound">m</a> <a id="6414" href="plfa.Decidable.html#1743" class="Datatype Operator">≤</a> <a id="6416" href="plfa.Decidable.html#6390" class="Bound">n</a>
 <a id="6418" href="/PLFA-zh/Decidable/#6378" class="Function">≤ᵇ→≤</a> <a id="6423" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a>    <a id="6431" href="plfa.Decidable.html#6431" class="Bound">n</a>       <a id="6439" href="Agda.Builtin.Unit.html#174" class="InductiveConstructor">tt</a>  <a id="6443" class="Symbol">=</a>  <a id="6446" href="plfa.Decidable.html#1770" class="InductiveConstructor">z≤n</a>
@@ -297,17 +285,15 @@ which, by definition of `_≤ᵇ_`, will also be evidence of `T (m ≤ᵇ n)`.
 We recursively invoke the function to get evidence that `m ≤ n`, which
 `s≤s` converts to evidence that `suc m ≤ suc n`. -->
 
-<p>第一条语句中，我们立即可以得出 <code class="highlighter-rouge">zero ≤ᵇ n</code> 为真，所以 <code class="highlighter-rouge">T (m ≤ᵇ n)</code> 由 <code class="highlighter-rouge">tt</code> 而得，
-相对应地 <code class="highlighter-rouge">m ≤ n</code> 由 <code class="highlighter-rouge">z≤n</code> 而证明。在中间的语句中，我们立刻得出 <code class="highlighter-rouge">suc m ≤ᵇ zero</code> 为假，则
-<code class="highlighter-rouge">T (m ≤ᵇ n)</code> 为空，因此我们无需证明 <code class="highlighter-rouge">m ≤ n</code>，同时也不存在这样的证明。在最后的语句中，我们对于
-<code class="highlighter-rouge">suc m ≤ᵇ suc n</code> 递归至 <code class="highlighter-rouge">m ≤ᵇ n</code>。令 <code class="highlighter-rouge">t</code> 为 <code class="highlighter-rouge">T (suc m ≤ᵇ suc n)</code> 的证明，如果其存在。
-根据 <code class="highlighter-rouge">_≤ᵇ_</code> 的定义，这也是 <code class="highlighter-rouge">T (m ≤ᵇ n)</code> 的证明。我们递归地应用函数来获得 <code class="highlighter-rouge">m ≤ n</code> 的证明，再使用
-<code class="highlighter-rouge">s≤s</code> 将其转换成为 <code class="highlighter-rouge">suc m ≤ suc n</code> 的证明。</p>
+<p>第一条语句中，我们立即可以得出 <code class="language-plaintext highlighter-rouge">zero ≤ᵇ n</code> 为真，所以 <code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 由 <code class="language-plaintext highlighter-rouge">tt</code> 而得，相对应地 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 由 <code class="language-plaintext highlighter-rouge">z≤n</code> 而证明。在中间的语句中，我们立刻得出 <code class="language-plaintext highlighter-rouge">suc m ≤ᵇ zero</code> 为假，则
+<code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 为空，因此我们无需证明 <code class="language-plaintext highlighter-rouge">m ≤ n</code>，同时也不存在这样的证明。在最后的语句中，我们对于
+<code class="language-plaintext highlighter-rouge">suc m ≤ᵇ suc n</code> 递归至 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code>。令 <code class="language-plaintext highlighter-rouge">t</code> 为 <code class="language-plaintext highlighter-rouge">T (suc m ≤ᵇ suc n)</code> 的证明，如果其存在。根据 <code class="language-plaintext highlighter-rouge">_≤ᵇ_</code> 的定义，这也是 <code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 的证明。我们递归地应用函数来获得 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 的证明，再使用
+<code class="language-plaintext highlighter-rouge">s≤s</code> 将其转换成为 <code class="language-plaintext highlighter-rouge">suc m ≤ suc n</code> 的证明。</p>
 
 <!-- In the reverse direction, we consider the possible forms of evidence
 that `m ≤ n`: -->
 
-<p>在向后的方向，我们考虑 <code class="highlighter-rouge">m ≤ n</code> 成立证明的可能形式：</p>
+<p>在向后的方向，我们考虑 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 成立证明的可能形式：</p>
 
 <pre class="Agda"><a id="≤→≤ᵇ"></a><a id="7718" href="/PLFA-zh/Decidable/#7718" class="Function">≤→≤ᵇ</a> <a id="7723" class="Symbol">:</a> <a id="7725" class="Symbol">∀</a> <a id="7727" class="Symbol">{</a><a id="7728" href="plfa.Decidable.html#7728" class="Bound">m</a> <a id="7730" href="plfa.Decidable.html#7730" class="Bound">n</a> <a id="7732" class="Symbol">:</a> <a id="7734" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="7735" class="Symbol">}</a> <a id="7737" class="Symbol">→</a> <a id="7739" href="plfa.Decidable.html#7728" class="Bound">m</a> <a id="7741" href="plfa.Decidable.html#1743" class="Datatype Operator">≤</a> <a id="7743" href="plfa.Decidable.html#7730" class="Bound">n</a> <a id="7745" class="Symbol">→</a> <a id="7747" href="plfa.Decidable.html#4594" class="Function">T</a> <a id="7749" class="Symbol">(</a><a id="7750" href="plfa.Decidable.html#7728" class="Bound">m</a> <a id="7752" href="plfa.Decidable.html#2875" class="Function Operator">≤ᵇ</a> <a id="7755" href="plfa.Decidable.html#7730" class="Bound">n</a><a id="7756" class="Symbol">)</a>
 <a id="7758" href="/PLFA-zh/Decidable/#7718" class="Function">≤→≤ᵇ</a> <a id="7763" href="plfa.Decidable.html#1770" class="InductiveConstructor">z≤n</a>        <a id="7774" class="Symbol">=</a>  <a id="7777" href="Agda.Builtin.Unit.html#174" class="InductiveConstructor">tt</a>
@@ -318,9 +304,7 @@ true, so `T (m ≤ᵇ n)` is evidenced by `tt`. If the evidence is `s≤s`
 applied to `m≤n`, then `suc m ≤ᵇ suc n` reduces to `m ≤ᵇ n`, and we
 may recursively invoke the function to produce evidence that `T (m ≤ᵇ n)`. -->
 
-<p>如果证明是 <code class="highlighter-rouge">z≤n</code>，我们立即可以得到 <code class="highlighter-rouge">zero ≤ᵇ n</code> 为真，所以 <code class="highlighter-rouge">T (m ≤ᵇ n)</code> 由 <code class="highlighter-rouge">tt</code> 证明。
-如果证明是 <code class="highlighter-rouge">s≤s</code> 作用于 <code class="highlighter-rouge">m≤n</code>，那么 <code class="highlighter-rouge">suc m ≤ᵇ suc n</code> 规约到 <code class="highlighter-rouge">m ≤ᵇ n</code>，我们可以递归地使用函数
-来获得 <code class="highlighter-rouge">T (m ≤ᵇ n)</code> 的证明。</p>
+<p>如果证明是 <code class="language-plaintext highlighter-rouge">z≤n</code>，我们立即可以得到 <code class="language-plaintext highlighter-rouge">zero ≤ᵇ n</code> 为真，所以 <code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 由 <code class="language-plaintext highlighter-rouge">tt</code> 证明。如果证明是 <code class="language-plaintext highlighter-rouge">s≤s</code> 作用于 <code class="language-plaintext highlighter-rouge">m≤n</code>，那么 <code class="language-plaintext highlighter-rouge">suc m ≤ᵇ suc n</code> 规约到 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code>，我们可以递归地使用函数来获得 <code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 的证明。</p>
 
 <!-- The forward proof has one more clause than the reverse proof,
 precisely because in the forward proof we need clauses corresponding to
@@ -331,9 +315,7 @@ evidence formulation to the computation formulation, because it allows
 us to do less work: we consider only cases where the relation holds,
 and can ignore those where it does not. -->
 
-<p>向前方向的证明比向后方向的证明多一条语句，因为在向前方向的证明中我们需要考虑比较结果为真和假
-的语句，而向后方向的证明只需要考虑比较成立的语句。这也是为什么我们比起计算的形式，更加偏爱证明的形式，
-因为这样让我们做更少的工作：我们只需要考虑关系成立时的情况，而可以忽略不成立的情况。</p>
+<p>向前方向的证明比向后方向的证明多一条语句，因为在向前方向的证明中我们需要考虑比较结果为真和假的语句，而向后方向的证明只需要考虑比较成立的语句。这也是为什么我们比起计算的形式，更加偏爱证明的形式，因为这样让我们做更少的工作：我们只需要考虑关系成立时的情况，而可以忽略不成立的情况。</p>
 
 <!-- On the other hand, sometimes the computation formulation may be just what
 we want.  Given a non-obvious relation over large values, it might be
@@ -341,9 +323,7 @@ handy to have the computer work out the answer for us.  Fortunately,
 rather than choosing between _evidence_ and _computation_,
 there is a way to get the benefits of both. -->
 
-<p>从另一个角度来说，有时计算的性质可能正是我们所需要的。面对一个大数值上的非显然关系，
-使用电脑来计算出答案可能会更加方便。幸运的是，比起在<em>证明</em>或<em>计算</em>之中犹豫，
-我们有一种更好的方法来兼取其优。</p>
+<p>从另一个角度来说，有时计算的性质可能正是我们所需要的。面对一个大数值上的非显然关系，使用电脑来计算出答案可能会更加方便。幸运的是，比起在<em>证明</em>或<em>计算</em>之中犹豫，我们有一种更好的方法来兼取其优。</p>
 
 <!-- ## The best of both worlds -->
 
@@ -355,9 +335,7 @@ us exactly why the relation holds, but we are responsible for generating the
 evidence.  But it is easy to define a type that combines the benefits of
 both approaches.  It is called `Dec A`, where `Dec` is short for _decidable_: -->
 
-<p>一个返回布尔值的函数提供恰好一比特的信息：这个关系成立或是不成立。相反地，证明的形式告诉我们
-为什么这个关系成立，但却需要我们自行完成这个证明。不过，我们其实可以简单地定义一个类型来取二者之精华。
-我们把它叫做：<code class="highlighter-rouge">Dec A</code>，其中 <code class="highlighter-rouge">Dec</code> 是<em>可判定的</em>（Decidable）的意思。</p>
+<p>一个返回布尔值的函数提供恰好一比特的信息：这个关系成立或是不成立。相反地，证明的形式告诉我们为什么这个关系成立，但却需要我们自行完成这个证明。不过，我们其实可以简单地定义一个类型来取二者之精华。我们把它叫做：<code class="language-plaintext highlighter-rouge">Dec A</code>，其中 <code class="language-plaintext highlighter-rouge">Dec</code> 是<em>可判定的</em>（Decidable）的意思。</p>
 
 <pre class="Agda"><a id="10001" class="Keyword">data</a> <a id="Dec"></a><a id="10006" href="/PLFA-zh/Decidable/#10006" class="Datatype">Dec</a> <a id="10010" class="Symbol">(</a><a id="10011" href="plfa.Decidable.html#10011" class="Bound">A</a> <a id="10013" class="Symbol">:</a> <a id="10015" class="PrimitiveType">Set</a><a id="10018" class="Symbol">)</a> <a id="10020" class="Symbol">:</a> <a id="10022" class="PrimitiveType">Set</a> <a id="10026" class="Keyword">where</a>
   <a id="Dec.yes"></a><a id="10034" href="/PLFA-zh/Decidable/#10034" class="InductiveConstructor">yes</a> <a id="10038" class="Symbol">:</a>   <a id="10042" href="plfa.Decidable.html#10011" class="Bound">A</a> <a id="10044" class="Symbol">→</a> <a id="10046" href="plfa.Decidable.html#10006" class="Datatype">Dec</a> <a id="10050" href="plfa.Decidable.html#10011" class="Bound">A</a>
@@ -368,14 +346,14 @@ is either of the form `yes x`, where `x` provides evidence that `A` holds,
 or of the form `no ¬x`, where `¬x` provides evidence that `A` cannot hold
 (that is, `¬x` is a function which given evidence of `A` yields a contradiction). -->
 
-<p>正如布尔值，这个类型有两个构造子。一个 <code class="highlighter-rouge">Dec A</code> 类型的值要么是以 <code class="highlighter-rouge">yes x</code> 的形式，其中 <code class="highlighter-rouge">x</code> 提供 <code class="highlighter-rouge">A</code>
-成立的证明，或者是以 <code class="highlighter-rouge">no ¬x</code> 的形式，其中 <code class="highlighter-rouge">x</code> 提供了 <code class="highlighter-rouge">A</code> 无法成立的证明。（也就是说，<code class="highlighter-rouge">¬x</code> 是一个给定
-<code class="highlighter-rouge">A</code> 成立的证据，返回矛盾的函数）</p>
+<p>正如布尔值，这个类型有两个构造子。一个 <code class="language-plaintext highlighter-rouge">Dec A</code> 类型的值要么是以 <code class="language-plaintext highlighter-rouge">yes x</code> 的形式，其中 <code class="language-plaintext highlighter-rouge">x</code> 提供 <code class="language-plaintext highlighter-rouge">A</code>
+成立的证明，或者是以 <code class="language-plaintext highlighter-rouge">no ¬x</code> 的形式，其中 <code class="language-plaintext highlighter-rouge">x</code> 提供了 <code class="language-plaintext highlighter-rouge">A</code> 无法成立的证明。（也就是说，<code class="language-plaintext highlighter-rouge">¬x</code> 是一个给定
+<code class="language-plaintext highlighter-rouge">A</code> 成立的证据，返回矛盾的函数）</p>
 
 <!-- For example, we define a function `_≤?_` which given two numbers decides whether one
 is less than or equal to the other, and provides evidence to justify its conclusion. -->
 
-<p>比如说，我们定义一个函数 <code class="highlighter-rouge">_≤?_</code>，给定两个数，判定是否一个数小于等于另一个，并提供证明来说明结论。</p>
+<p>比如说，我们定义一个函数 <code class="language-plaintext highlighter-rouge">_≤?_</code>，给定两个数，判定是否一个数小于等于另一个，并提供证明来说明结论。</p>
 
 <!-- First, we introduce two functions useful for constructing evidence that
 an inequality does not hold: -->
@@ -396,11 +374,8 @@ of these takes evidence `¬m≤n` of `¬ (m ≤ n)` and returns a proof of
 form `s≤s m≤n` where `m≤n` is evidence that `m ≤ n`.  Hence, we have
 a contradiction, evidenced by `¬m≤n m≤n`. -->
 
-<p>第一个函数断言了 <code class="highlighter-rouge">¬ (suc m ≤ zero)</code>，由荒谬可得。因为每个不等式的成立证明必须是
-<code class="highlighter-rouge">zero ≤ n</code> 或者 <code class="highlighter-rouge">suc m ≤ suc n</code> 的形式，两者都无法匹配 <code class="highlighter-rouge">suc m ≤ zero</code>。
-第二个函数取 <code class="highlighter-rouge">¬ (m ≤ n)</code> 的证明 <code class="highlighter-rouge">¬m≤n</code>，返回 <code class="highlighter-rouge">¬ (suc m ≤ suc n)</code> 的证明。
-所有形如 <code class="highlighter-rouge">suc m ≤ suc n</code> 的证明必须是以 <code class="highlighter-rouge">s≤s m≤n</code> 的形式给出。因此我们可以构造一个
-矛盾，以 <code class="highlighter-rouge">¬m≤n m≤n</code> 来证明。</p>
+<p>第一个函数断言了 <code class="language-plaintext highlighter-rouge">¬ (suc m ≤ zero)</code>，由荒谬可得。因为每个不等式的成立证明必须是
+<code class="language-plaintext highlighter-rouge">zero ≤ n</code> 或者 <code class="language-plaintext highlighter-rouge">suc m ≤ suc n</code> 的形式，两者都无法匹配 <code class="language-plaintext highlighter-rouge">suc m ≤ zero</code>。第二个函数取 <code class="language-plaintext highlighter-rouge">¬ (m ≤ n)</code> 的证明 <code class="language-plaintext highlighter-rouge">¬m≤n</code>，返回 <code class="language-plaintext highlighter-rouge">¬ (suc m ≤ suc n)</code> 的证明。所有形如 <code class="language-plaintext highlighter-rouge">suc m ≤ suc n</code> 的证明必须是以 <code class="language-plaintext highlighter-rouge">s≤s m≤n</code> 的形式给出。因此我们可以构造一个矛盾，以 <code class="language-plaintext highlighter-rouge">¬m≤n m≤n</code> 来证明。</p>
 
 <!-- Using these, it is straightforward to decide an inequality: -->
 
@@ -424,11 +399,8 @@ provides evidence that `suc m ≤ suc n`.  In the `no` case it returns
 evidence `¬m≤n` that `¬ (m ≤ n)`, and `¬s≤s ¬m≤n` provides evidence
 that `¬ (suc m ≤ suc n)`. -->
 
-<p>与 <code class="highlighter-rouge">_≤ᵇ_</code> 一样，定义有三条语句。第一条语句中，<code class="highlighter-rouge">zero ≤ n</code> 立即成立，由 <code class="highlighter-rouge">z≤n</code> 证明。
-第二条语句中，<code class="highlighter-rouge">suc m ≤ zero</code> 立即不成立，由 <code class="highlighter-rouge">¬s≤z</code> 证明。
-第三条语句中，我们需要递归地应用 <code class="highlighter-rouge">m ≤? n</code>。有两种可能性，在 <code class="highlighter-rouge">yes</code> 的情况中，它会返回
-<code class="highlighter-rouge">m ≤ n</code> 的证明 <code class="highlighter-rouge">m≤n</code>，所以 <code class="highlighter-rouge">s≤s m≤n</code> 即可作为 <code class="highlighter-rouge">suc m ≤ suc n</code> 的证明；在 <code class="highlighter-rouge">no</code> 的情况中，
-它会返回 <code class="highlighter-rouge">¬ (m ≤ n)</code> 的证明 <code class="highlighter-rouge">¬m≤n</code>，所以 <code class="highlighter-rouge">¬s≤s ¬m≤n</code> 即可作为 <code class="highlighter-rouge">¬ (suc m ≤ suc n)</code> 的证明。</p>
+<p>与 <code class="language-plaintext highlighter-rouge">_≤ᵇ_</code> 一样，定义有三条语句。第一条语句中，<code class="language-plaintext highlighter-rouge">zero ≤ n</code> 立即成立，由 <code class="language-plaintext highlighter-rouge">z≤n</code> 证明。第二条语句中，<code class="language-plaintext highlighter-rouge">suc m ≤ zero</code> 立即不成立，由 <code class="language-plaintext highlighter-rouge">¬s≤z</code> 证明。第三条语句中，我们需要递归地应用 <code class="language-plaintext highlighter-rouge">m ≤? n</code>。有两种可能性，在 <code class="language-plaintext highlighter-rouge">yes</code> 的情况中，它会返回
+<code class="language-plaintext highlighter-rouge">m ≤ n</code> 的证明 <code class="language-plaintext highlighter-rouge">m≤n</code>，所以 <code class="language-plaintext highlighter-rouge">s≤s m≤n</code> 即可作为 <code class="language-plaintext highlighter-rouge">suc m ≤ suc n</code> 的证明；在 <code class="language-plaintext highlighter-rouge">no</code> 的情况中，它会返回 <code class="language-plaintext highlighter-rouge">¬ (m ≤ n)</code> 的证明 <code class="language-plaintext highlighter-rouge">¬m≤n</code>，所以 <code class="language-plaintext highlighter-rouge">¬s≤s ¬m≤n</code> 即可作为 <code class="language-plaintext highlighter-rouge">¬ (suc m ≤ suc n)</code> 的证明。</p>
 
 <!-- When we wrote `_≤ᵇ_`, we had to write two other functions, `≤ᵇ→≤` and `≤→≤ᵇ`,
 in order to show that it was correct.  In contrast, the definition of `_≤?_`
@@ -437,10 +409,8 @@ is far more compact than the combined code of `_≤ᵇ_`, `≤ᵇ→≤`, and `�
 As we will later show, if you really want the latter three, it is easy
 to derive them from `_≤?_`. -->
 
-<p>当我们写 <code class="highlighter-rouge">_≤ᵇ_</code> 时，我们必须写两个其他的函数 <code class="highlighter-rouge">≤ᵇ→≤</code> 和 <code class="highlighter-rouge">≤→≤ᵇ</code> 来证明其正确性。
-作为对比，<code class="highlighter-rouge">_≤?_</code> 的定义自身就证明了其正确性，由类型即可得知。<code class="highlighter-rouge">_≤?_</code> 的代码也比
-<code class="highlighter-rouge">_≤ᵇ_</code>、<code class="highlighter-rouge">≤ᵇ→≤</code> 和 <code class="highlighter-rouge">≤→≤ᵇ</code> 加起来要简洁的多。我们稍后将会证明，如果我们需要后三者，
-我们亦可简单地从 <code class="highlighter-rouge">_≤?_</code> 中派生出来。</p>
+<p>当我们写 <code class="language-plaintext highlighter-rouge">_≤ᵇ_</code> 时，我们必须写两个其他的函数 <code class="language-plaintext highlighter-rouge">≤ᵇ→≤</code> 和 <code class="language-plaintext highlighter-rouge">≤→≤ᵇ</code> 来证明其正确性。作为对比，<code class="language-plaintext highlighter-rouge">_≤?_</code> 的定义自身就证明了其正确性，由类型即可得知。<code class="language-plaintext highlighter-rouge">_≤?_</code> 的代码也比
+<code class="language-plaintext highlighter-rouge">_≤ᵇ_</code>、<code class="language-plaintext highlighter-rouge">≤ᵇ→≤</code> 和 <code class="language-plaintext highlighter-rouge">≤→≤ᵇ</code> 加起来要简洁的多。我们稍后将会证明，如果我们需要后三者，我们亦可简单地从 <code class="language-plaintext highlighter-rouge">_≤?_</code> 中派生出来。</p>
 
 <!-- We can use our new function to _compute_ the _evidence_ that earlier we had to
 think up on our own: -->
@@ -457,19 +427,18 @@ think up on our own: -->
 `C-c C-n` and providing `2 ≤? 4` or `4 ≤? 2` as the requested expression
 causes Agda to print the values given above. -->
 
-<p>你可以验证 Agda 的确计算出了这些值。输入 <code class="highlighter-rouge">C-c C-n</code> 并给出 <code class="highlighter-rouge">2 ≤? 4</code> 或者 <code class="highlighter-rouge">4 ≤? 2</code> 作为
-需要的表达式，Agda 会输出如上的值。</p>
+<p>你可以验证 Agda 的确计算出了这些值。输入 <code class="language-plaintext highlighter-rouge">C-c C-n</code> 并给出 <code class="language-plaintext highlighter-rouge">2 ≤? 4</code> 或者 <code class="language-plaintext highlighter-rouge">4 ≤? 2</code> 作为需要的表达式，Agda 会输出如上的值。</p>
 
 <!-- (A subtlety: if we do not define `¬s≤z` and `¬s≤s` as top-level functions,
 but instead use inline anonymous functions then Agda may have
 trouble normalising evidence of negation.) -->
 
-<p>（小细节：如果我们不把 <code class="highlighter-rouge">¬s≤z</code> 和 <code class="highlighter-rouge">¬s≤s</code> 作为顶层函数来定义，而是使用内嵌的匿名函数，
+<p>（小细节：如果我们不把 <code class="language-plaintext highlighter-rouge">¬s≤z</code> 和 <code class="language-plaintext highlighter-rouge">¬s≤s</code> 作为顶层函数来定义，而是使用内嵌的匿名函数，
 Agda 可能会在规范化否定的证明中出现问题。）</p>
 
 <!-- #### Exercise `_<?_` (recommended) -->
 
-<h4 id="练习-__-推荐">练习 <code class="highlighter-rouge">_&lt;?_</code> （推荐）</h4>
+<h4 id="练习-__-推荐">练习 <code class="language-plaintext highlighter-rouge">_&lt;?_</code> （推荐）</h4>
 
 <!-- Analogous to the function above, define a function to decide strict inequality: -->
 
@@ -486,7 +455,7 @@ Agda 可能会在规范化否定的证明中出现问题。）</p>
 {::comment}
 #### Exercise `_≡ℕ?_` -->
 
-<h4 id="练习-_ℕ_">练习 <code class="highlighter-rouge">_≡ℕ?_</code></h4>
+<h4 id="练习-_ℕ_">练习 <code class="language-plaintext highlighter-rouge">_≡ℕ?_</code></h4>
 
 <!-- Define a function to decide whether two naturals are equal: -->
 
@@ -510,8 +479,7 @@ Agda 可能会在规范化否定的证明中出现问题。）</p>
 `m ≤ᵇ n`, together with the proofs that it is equivalent to `m ≤ n`, to show
 decidability.  Indeed, we can do so as follows: -->
 
-<p>好奇的读者可能会思考能不能重用 <code class="highlighter-rouge">m ≤ᵇ n</code> 的定义，加上它与 <code class="highlighter-rouge">m ≤ n</code> 等价的证明，
-来证明可判定性。的确，我们是可以做到的：</p>
+<p>好奇的读者可能会思考能不能重用 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code> 的定义，加上它与 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 等价的证明，来证明可判定性。的确，我们是可以做到的：</p>
 
 <pre class="Agda"><a id="_≤?′_"></a><a id="15436" href="/PLFA-zh/Decidable/#15436" class="Function Operator">_≤?′_</a> <a id="15442" class="Symbol">:</a> <a id="15444" class="Symbol">∀</a> <a id="15446" class="Symbol">(</a><a id="15447" href="plfa.Decidable.html#15447" class="Bound">m</a> <a id="15449" href="plfa.Decidable.html#15449" class="Bound">n</a> <a id="15451" class="Symbol">:</a> <a id="15453" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="15454" class="Symbol">)</a> <a id="15456" class="Symbol">→</a> <a id="15458" href="plfa.Decidable.html#10006" class="Datatype">Dec</a> <a id="15462" class="Symbol">(</a><a id="15463" href="plfa.Decidable.html#15447" class="Bound">m</a> <a id="15465" href="plfa.Decidable.html#1743" class="Datatype Operator">≤</a> <a id="15467" href="plfa.Decidable.html#15449" class="Bound">n</a><a id="15468" class="Symbol">)</a>
 <a id="15470" href="/PLFA-zh/Decidable/#15470" class="Bound">m</a> <a id="15472" href="plfa.Decidable.html#15436" class="Function Operator">≤?′</a> <a id="15476" href="plfa.Decidable.html#15476" class="Bound">n</a> <a id="15478" class="Keyword">with</a> <a id="15483" href="plfa.Decidable.html#15470" class="Bound">m</a> <a id="15485" href="plfa.Decidable.html#2875" class="Function Operator">≤ᵇ</a> <a id="15488" href="plfa.Decidable.html#15476" class="Bound">n</a> <a id="15490" class="Symbol">|</a> <a id="15492" href="plfa.Decidable.html#6378" class="Function">≤ᵇ→≤</a> <a id="15497" href="plfa.Decidable.html#15470" class="Bound">m</a> <a id="15499" href="plfa.Decidable.html#15476" class="Bound">n</a> <a id="15501" class="Symbol">|</a> <a id="15503" href="plfa.Decidable.html#7718" class="Function">≤→≤ᵇ</a> <a id="15508" class="Symbol">{</a><a id="15509" href="plfa.Decidable.html#15470" class="Bound">m</a><a id="15510" class="Symbol">}</a> <a id="15512" class="Symbol">{</a><a id="15513" href="plfa.Decidable.html#15476" class="Bound">n</a><a id="15514" class="Symbol">}</a>
@@ -521,15 +489,14 @@ decidability.  Indeed, we can do so as follows: -->
 <!-- If `m ≤ᵇ n` is true then `≤ᵇ→≤` yields a proof that `m ≤ n` holds,
 while if it is false then `≤→≤ᵇ` takes a proof that `m ≤ n` holds into a contradiction. -->
 
-<p>如果 <code class="highlighter-rouge">m ≤ᵇ n</code> 为真，那么 <code class="highlighter-rouge">≤ᵇ→≤</code> 会返回一个 <code class="highlighter-rouge">m ≤ n</code> 成立的证明。
-如果 <code class="highlighter-rouge">m ≤ᵇ n</code> 为假，那么 <code class="highlighter-rouge">≤→≤ᵇ</code> 会取一个 <code class="highlighter-rouge">m ≤ n</code> 成立的证明，将其转换为一个矛盾。</p>
+<p>如果 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code> 为真，那么 <code class="language-plaintext highlighter-rouge">≤ᵇ→≤</code> 会返回一个 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 成立的证明。如果 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code> 为假，那么 <code class="language-plaintext highlighter-rouge">≤→≤ᵇ</code> 会取一个 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 成立的证明，将其转换为一个矛盾。</p>
 
 <!-- The triple binding of the `with` clause in this proof is essential.
 If instead we wrote: -->
 
-<p>在这个证明中，<code class="highlighter-rouge">with</code> 语句的三重约束是必须的。如果我们取而代之的写：</p>
+<p>在这个证明中，<code class="language-plaintext highlighter-rouge">with</code> 语句的三重约束是必须的。如果我们取而代之的写：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_≤?″_ : ∀ (m n : ℕ) → Dec (m ≤ n)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_≤?″_ : ∀ (m n : ℕ) → Dec (m ≤ n)
 m ≤?″ n with m ≤ᵇ n
 ... | true   =  yes (≤ᵇ→≤ m n tt)
 ... | false  =  no (≤→≤ᵇ {m} {n})
@@ -539,7 +506,7 @@ m ≤?″ n with m ≤ᵇ n
 
 <p>那么 Agda 对于每条语句会有一个抱怨：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊤ !=&lt; (T (m ≤ᵇ n)) of type Set
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⊤ !=&lt; (T (m ≤ᵇ n)) of type Set
 when checking that the expression tt has type T (m ≤ᵇ n)
 
 T (m ≤ᵇ n) !=&lt; ⊥ of type Set
@@ -550,15 +517,14 @@ when checking that the expression ≤→≤ᵇ {m} {n} has type ¬ m ≤ n
 the fact that `T (m ≤ᵇ n)` is `⊤` when `m ≤ᵇ n` is true, and that
 `T (m ≤ᵇ n)` is `⊥` when `m ≤ᵇ n` is false. -->
 
-<p>将表达式放在 <code class="highlighter-rouge">with</code> 语句中能让 Agda 利用下列事实：当 <code class="highlighter-rouge">m ≤ᵇ n</code> 为真时，<code class="highlighter-rouge">T (m ≤ᵇ n)</code> 是
-<code class="highlighter-rouge">⊤</code>；当 <code class="highlighter-rouge">m ≤ᵇ n</code> 为假时，<code class="highlighter-rouge">T (m ≤ᵇ n)</code> 是 <code class="highlighter-rouge">⊥</code>。</p>
+<p>将表达式放在 <code class="language-plaintext highlighter-rouge">with</code> 语句中能让 Agda 利用下列事实：当 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code> 为真时，<code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 是
+<code class="language-plaintext highlighter-rouge">⊤</code>；当 <code class="language-plaintext highlighter-rouge">m ≤ᵇ n</code> 为假时，<code class="language-plaintext highlighter-rouge">T (m ≤ᵇ n)</code> 是 <code class="language-plaintext highlighter-rouge">⊥</code>。</p>
 
 <!-- However, overall it is simpler to just define `_≤?_` directly, as in the previous
 section.  If one really wants `_≤ᵇ_`, then it and its properties are easily derived
 from `_≤?_`, as we will now show. -->
 
-<p>然而，总体来说还是直接定义 <code class="highlighter-rouge">_≤?_</code> 比较方便，正如之前部分中那样。如果有人真的很需要 <code class="highlighter-rouge">_≤ᵇ_</code>，
-那么它和它的性质可以简单地从 <code class="highlighter-rouge">_≤?_</code> 中派生出来，正如我们接下来要展示的一样。</p>
+<p>然而，总体来说还是直接定义 <code class="language-plaintext highlighter-rouge">_≤?_</code> 比较方便，正如之前部分中那样。如果有人真的很需要 <code class="language-plaintext highlighter-rouge">_≤ᵇ_</code>，那么它和它的性质可以简单地从 <code class="language-plaintext highlighter-rouge">_≤?_</code> 中派生出来，正如我们接下来要展示的一样。</p>
 
 <!-- Erasure takes a decidable value to a boolean: -->
 
@@ -570,7 +536,7 @@ from `_≤?_`, as we will now show. -->
 </pre>
 <!-- Using erasure, we can easily derive `_≤ᵇ_` from `_≤?_`: -->
 
-<p>使用擦除，我们可以简单地从 <code class="highlighter-rouge">_≤?_</code> 中派生出 <code class="highlighter-rouge">_≤ᵇ_</code>：</p>
+<p>使用擦除，我们可以简单地从 <code class="language-plaintext highlighter-rouge">_≤?_</code> 中派生出 <code class="language-plaintext highlighter-rouge">_≤ᵇ_</code>：</p>
 
 <pre class="Agda"><a id="_≤ᵇ′_"></a><a id="17397" href="/PLFA-zh/Decidable/#17397" class="Function Operator">_≤ᵇ′_</a> <a id="17403" class="Symbol">:</a> <a id="17405" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="17407" class="Symbol">→</a> <a id="17409" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="17411" class="Symbol">→</a> <a id="17413" href="plfa.Decidable.html#2594" class="Datatype">Bool</a>
 <a id="17418" href="/PLFA-zh/Decidable/#17418" class="Bound">m</a> <a id="17420" href="plfa.Decidable.html#17397" class="Function Operator">≤ᵇ′</a> <a id="17424" href="plfa.Decidable.html#17424" class="Bound">n</a>  <a id="17427" class="Symbol">=</a>  <a id="17430" href="plfa.Decidable.html#17207" class="Function Operator">⌊</a> <a id="17432" href="plfa.Decidable.html#17418" class="Bound">m</a> <a id="17434" href="plfa.Decidable.html#11889" class="Function Operator">≤?</a> <a id="17437" href="plfa.Decidable.html#17424" class="Bound">n</a> <a id="17439" href="plfa.Decidable.html#17207" class="Function Operator">⌋</a>
@@ -578,8 +544,8 @@ from `_≤?_`, as we will now show. -->
 <!-- Further, if `D` is a value of type `Dec A`, then `T ⌊ D ⌋` is
 inhabited exactly when `A` is inhabited: -->
 
-<p>更进一步来说，如果 <code class="highlighter-rouge">D</code> 是一个类型为 <code class="highlighter-rouge">Dec A</code> 的值，那么 <code class="highlighter-rouge">T ⌊ D ⌋</code>
-当且仅当 <code class="highlighter-rouge">A</code> 成立时成立：</p>
+<p>更进一步来说，如果 <code class="language-plaintext highlighter-rouge">D</code> 是一个类型为 <code class="language-plaintext highlighter-rouge">Dec A</code> 的值，那么 <code class="language-plaintext highlighter-rouge">T ⌊ D ⌋</code>
+当且仅当 <code class="language-plaintext highlighter-rouge">A</code> 成立时成立：</p>
 <pre class="Agda"><a id="toWitness"></a><a id="17632" href="/PLFA-zh/Decidable/#17632" class="Function">toWitness</a> <a id="17642" class="Symbol">:</a> <a id="17644" class="Symbol">∀</a> <a id="17646" class="Symbol">{</a><a id="17647" href="plfa.Decidable.html#17647" class="Bound">A</a> <a id="17649" class="Symbol">:</a> <a id="17651" class="PrimitiveType">Set</a><a id="17654" class="Symbol">}</a> <a id="17656" class="Symbol">{</a><a id="17657" href="plfa.Decidable.html#17657" class="Bound">D</a> <a id="17659" class="Symbol">:</a> <a id="17661" href="plfa.Decidable.html#10006" class="Datatype">Dec</a> <a id="17665" href="plfa.Decidable.html#17647" class="Bound">A</a><a id="17666" class="Symbol">}</a> <a id="17668" class="Symbol">→</a> <a id="17670" href="plfa.Decidable.html#4594" class="Function">T</a> <a id="17672" href="plfa.Decidable.html#17207" class="Function Operator">⌊</a> <a id="17674" href="plfa.Decidable.html#17657" class="Bound">D</a> <a id="17676" href="plfa.Decidable.html#17207" class="Function Operator">⌋</a> <a id="17678" class="Symbol">→</a> <a id="17680" href="plfa.Decidable.html#17647" class="Bound">A</a>
 <a id="17682" href="/PLFA-zh/Decidable/#17632" class="Function">toWitness</a> <a id="17692" class="Symbol">{</a><a id="17693" href="plfa.Decidable.html#17693" class="Bound">A</a><a id="17694" class="Symbol">}</a> <a id="17696" class="Symbol">{</a><a id="17697" href="plfa.Decidable.html#10034" class="InductiveConstructor">yes</a> <a id="17701" href="plfa.Decidable.html#17701" class="Bound">x</a><a id="17702" class="Symbol">}</a> <a id="17704" href="Agda.Builtin.Unit.html#174" class="InductiveConstructor">tt</a>  <a id="17708" class="Symbol">=</a>  <a id="17711" href="plfa.Decidable.html#17701" class="Bound">x</a>
 <a id="17713" href="/PLFA-zh/Decidable/#17632" class="Function">toWitness</a> <a id="17723" class="Symbol">{</a><a id="17724" href="plfa.Decidable.html#17724" class="Bound">A</a><a id="17725" class="Symbol">}</a> <a id="17727" class="Symbol">{</a><a id="17728" href="plfa.Decidable.html#10054" class="InductiveConstructor">no</a> <a id="17731" href="plfa.Decidable.html#17731" class="Bound">¬x</a><a id="17733" class="Symbol">}</a> <a id="17735" class="Symbol">()</a>
@@ -591,7 +557,7 @@ inhabited exactly when `A` is inhabited: -->
 <!-- Using these, we can easily derive that `T (m ≤ᵇ′ n)` is inhabited
 exactly when `m ≤ n` is inhabited: -->
 
-<p>使用这些，我们可以简单地派生出 <code class="highlighter-rouge">T (m ≤ᵇ′ n)</code> 当且仅当 <code class="highlighter-rouge">m ≤ n</code> 成立时成立。</p>
+<p>使用这些，我们可以简单地派生出 <code class="language-plaintext highlighter-rouge">T (m ≤ᵇ′ n)</code> 当且仅当 <code class="language-plaintext highlighter-rouge">m ≤ n</code> 成立时成立。</p>
 
 <pre class="Agda"><a id="≤ᵇ′→≤"></a><a id="18038" href="/PLFA-zh/Decidable/#18038" class="Function">≤ᵇ′→≤</a> <a id="18044" class="Symbol">:</a> <a id="18046" class="Symbol">∀</a> <a id="18048" class="Symbol">{</a><a id="18049" href="plfa.Decidable.html#18049" class="Bound">m</a> <a id="18051" href="plfa.Decidable.html#18051" class="Bound">n</a> <a id="18053" class="Symbol">:</a> <a id="18055" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="18056" class="Symbol">}</a> <a id="18058" class="Symbol">→</a> <a id="18060" href="plfa.Decidable.html#4594" class="Function">T</a> <a id="18062" class="Symbol">(</a><a id="18063" href="plfa.Decidable.html#18049" class="Bound">m</a> <a id="18065" href="plfa.Decidable.html#17397" class="Function Operator">≤ᵇ′</a> <a id="18069" href="plfa.Decidable.html#18051" class="Bound">n</a><a id="18070" class="Symbol">)</a> <a id="18072" class="Symbol">→</a> <a id="18074" href="plfa.Decidable.html#18049" class="Bound">m</a> <a id="18076" href="plfa.Decidable.html#1743" class="Datatype Operator">≤</a> <a id="18078" href="plfa.Decidable.html#18051" class="Bound">n</a>
 <a id="18080" href="/PLFA-zh/Decidable/#18038" class="Function">≤ᵇ′→≤</a>  <a id="18087" class="Symbol">=</a>  <a id="18090" href="plfa.Decidable.html#17632" class="Function">toWitness</a>
@@ -603,8 +569,7 @@ exactly when `m ≤ n` is inhabited: -->
 If you need booleans, they and their properties are easily derived from the
 corresponding decidables. -->
 
-<p>总结来说，最好避免直接使用布尔值，而使用可判定的值。如果有需要布尔值的时候，它们和它们的性质
-可以简单地从对应的可判定的值中派生而来。</p>
+<p>总结来说，最好避免直接使用布尔值，而使用可判定的值。如果有需要布尔值的时候，它们和它们的性质可以简单地从对应的可判定的值中派生而来。</p>
 
 <!-- ## Logical connectives -->
 
@@ -630,8 +595,7 @@ indicating that the order of the equations determines which of the
 second or the third can match.  However, regardless of which matches
 the answer is the same. -->
 
-<p>在 Emacs 中，第三个等式的左手边显示为灰色，表示这些等式出现的顺序决定了是第二条还是第三条
-会被匹配到。然而，不管是哪一条被匹配到，结果都是一样的。</p>
+<p>在 Emacs 中，第三个等式的左手边显示为灰色，表示这些等式出现的顺序决定了是第二条还是第三条会被匹配到。然而，不管是哪一条被匹配到，结果都是一样的。</p>
 
 <!-- Correspondingly, given two decidable propositions, we can
 decide their conjunction: -->
@@ -651,8 +615,7 @@ If both hold, then we pair the evidence for each to yield
 evidence of the conjunct.  If the negation of either holds,
 assuming the conjunct will lead to a contradiction. -->
 
-<p>两个命题的合取当两者都成立时成立，其否定则当任意一者否定成立时成立。如果两个都成立，
-我们将每一证明放入数据对中，作为合取的证明。如果任意一者的否定成立，假设整个合取将会引入一个矛盾。</p>
+<p>两个命题的合取当两者都成立时成立，其否定则当任意一者否定成立时成立。如果两个都成立，我们将每一证明放入数据对中，作为合取的证明。如果任意一者的否定成立，假设整个合取将会引入一个矛盾。</p>
 
 <!-- Again in Emacs, the left-hand side of the third equation displays in grey,
 indicating that the order of the equations determines which of the
@@ -660,9 +623,7 @@ second or the third can match.  This time the answer is different depending
 on which matches; if both conjuncts fail to hold we pick the first to
 yield the contradiction, but it would be equally valid to pick the second. -->
 
-<p>同样地，在 Emacs 中，第三条等式在左手边以灰色显示，说明等式的顺序决定了第二条还是第三条会被匹配。
-这一次，我们给出的结果会因为是第二条还是第三条而不一样。如果两个命题都不成立，我们选择第一个来构造矛盾，
-但选择第二个也是同样正确的。</p>
+<p>同样地，在 Emacs 中，第三条等式在左手边以灰色显示，说明等式的顺序决定了第二条还是第三条会被匹配。这一次，我们给出的结果会因为是第二条还是第三条而不一样。如果两个命题都不成立，我们选择第一个来构造矛盾，但选择第二个也是同样正确的。</p>
 
 <!-- The disjunction of two booleans is true if either is true,
 and false if both are false: -->
@@ -681,8 +642,7 @@ indicating that the order of the equations determines which of the
 first or the second can match.  However, regardless of which matches
 the answer is the same. -->
 
-<p>在 Emacs 中，第二个等式的左手边显示为灰色，表示这些等式出现的顺序决定了是第一条还是第二条
-会被匹配到。然而，不管是哪一条被匹配到，结果都是一样的。</p>
+<p>在 Emacs 中，第二个等式的左手边显示为灰色，表示这些等式出现的顺序决定了是第一条还是第二条会被匹配到。然而，不管是哪一条被匹配到，结果都是一样的。</p>
 
 <!-- Correspondingly, given two decidable propositions, we can
 decide their disjunction: -->
@@ -702,8 +662,7 @@ If either holds, we inject the evidence to yield
 evidence of the disjunct.  If the negation of both hold,
 assuming either disjunct will lead to a contradiction. -->
 
-<p>两个命题的析取当任意一者成立时成立，其否定则当两者的否定成立时成立。如果任意一者成立，
-我们使用其证明来作为析取的证明。如果两个的否定都成立，假设任意一者都会引入一个矛盾。</p>
+<p>两个命题的析取当任意一者成立时成立，其否定则当两者的否定成立时成立。如果任意一者成立，我们使用其证明来作为析取的证明。如果两个的否定都成立，假设任意一者都会引入一个矛盾。</p>
 
 <!-- Again in Emacs, the left-hand side of the second equation displays in grey,
 indicating that the order of the equations determines which of the
@@ -711,9 +670,7 @@ first or the second can match.  This time the answer is different depending
 on which matches; if both disjuncts hold we pick the first,
 but it would be equally valid to pick the second. -->
 
-<p>同样地，在 Emacs 中，第二条等式在左手边以灰色显示，说明等式的顺序决定了第一条还是第二条会被匹配。
-这一次，我们给出的结果会因为是第二条还是第三条而不一样。如果两个命题都成立，我们选择第一个来构造析取，
-但选择第二个也是同样正确的。</p>
+<p>同样地，在 Emacs 中，第二条等式在左手边以灰色显示，说明等式的顺序决定了第一条还是第二条会被匹配。这一次，我们给出的结果会因为是第二条还是第三条而不一样。如果两个命题都成立，我们选择第一个来构造析取，但选择第二个也是同样正确的。</p>
 
 <!-- The negation of a boolean is false if its argument is true,
 and vice versa: -->
@@ -738,8 +695,8 @@ the right-hand side asserts that the negation of `¬ A` holds,
 in other words, that `¬ ¬ A` holds, which is an easy consequence
 of the fact that `A` holds. -->
 
-<p>我们直接把 yes 和 no 交换。在第一个等式中，右手边断言了 <code class="highlighter-rouge">¬ A</code> 的否定成立，也就是说
-<code class="highlighter-rouge">¬ ¬ A</code> 成立——这是一个 <code class="highlighter-rouge">A</code> 成立时可以简单得到的推论。</p>
+<p>我们直接把 yes 和 no 交换。在第一个等式中，右手边断言了 <code class="language-plaintext highlighter-rouge">¬ A</code> 的否定成立，也就是说
+<code class="language-plaintext highlighter-rouge">¬ ¬ A</code> 成立——这是一个 <code class="language-plaintext highlighter-rouge">A</code> 成立时可以简单得到的推论。</p>
 
 <!-- There is also a slightly less familiar connective,
 corresponding to implication: -->
@@ -761,10 +718,7 @@ indicating that the order of the equations determines which of the
 first or the second can match.  However, regardless of which matches
 the answer is the same. -->
 
-<p>当任何一个布尔值为真的时候，另一个布尔值恒为真，我们成为第一个布尔值蕴涵第二个布尔值。
-因此，两者的蕴涵在第二个为真或者第一个为假时为真，在第一个为真而第二个为假时为假。
-在 Emacs 中，第二个等式的左手边显示为灰色，表示这些等式出现的顺序决定了是第一条还是第二条
-会被匹配到。然而，不管是哪一条被匹配到，结果都是一样的。</p>
+<p>当任何一个布尔值为真的时候，另一个布尔值恒为真，我们成为第一个布尔值蕴涵第二个布尔值。因此，两者的蕴涵在第二个为真或者第一个为假时为真，在第一个为真而第二个为假时为假。在 Emacs 中，第二个等式的左手边显示为灰色，表示这些等式出现的顺序决定了是第一条还是第二条会被匹配到。然而，不管是哪一条被匹配到，结果都是一样的。</p>
 
 <!-- Correspondingly, given two decidable propositions,
 we can decide if the first implies the second: -->
@@ -790,23 +744,19 @@ we apply the evidence of the implication `f` to the evidence of the
 first `x`, yielding a contradiction with the evidence `¬y` of
 the negation of the second. -->
 
-<p>两者的蕴涵在第二者成立或者第一者的否定成立时成立，其否定在第一者成立而第二者否定成立时成立。
-蕴涵成立的证明是一个从第一者成立的证明到第二者成立的证明的函数。如果第二者成立，那么这个函数
-直接返回第二者的证明。如果第一者的否定成立，那么使用第一者成立的证明，构造一个矛盾。
-如果第一者成立，第二者不成立，给定蕴涵成立的证明，我们必须构造一个矛盾：我们将成立的证明 <code class="highlighter-rouge">f</code>
-应用于第一者成立的证明 <code class="highlighter-rouge">x</code>，再加以第二者否定成立的证明 <code class="highlighter-rouge">¬y</code> 来构造矛盾。</p>
+<p>两者的蕴涵在第二者成立或者第一者的否定成立时成立，其否定在第一者成立而第二者否定成立时成立。蕴涵成立的证明是一个从第一者成立的证明到第二者成立的证明的函数。如果第二者成立，那么这个函数直接返回第二者的证明。如果第一者的否定成立，那么使用第一者成立的证明，构造一个矛盾。如果第一者成立，第二者不成立，给定蕴涵成立的证明，我们必须构造一个矛盾：我们将成立的证明 <code class="language-plaintext highlighter-rouge">f</code>
+应用于第一者成立的证明 <code class="language-plaintext highlighter-rouge">x</code>，再加以第二者否定成立的证明 <code class="language-plaintext highlighter-rouge">¬y</code> 来构造矛盾。</p>
 
 <!-- Again in Emacs, the left-hand side of the second equation displays in grey,
 indicating that the order of the equations determines which of the
 first or the second can match.  This time the answer is different depending
 on which matches; but either is equally valid. -->
 
-<p>同样地，在 Emacs 中，第二条等式在左手边以灰色显示，说明等式的顺序决定了第一条还是第二条会被匹配。
-这一次，我们给出的结果会因为是哪一条被匹配而不一样，但两者都是同样正确的。</p>
+<p>同样地，在 Emacs 中，第二条等式在左手边以灰色显示，说明等式的顺序决定了第一条还是第二条会被匹配。这一次，我们给出的结果会因为是哪一条被匹配而不一样，但两者都是同样正确的。</p>
 
 <!-- #### Exercise `erasure` -->
 
-<h4 id="练习-erasure">练习 <code class="highlighter-rouge">erasure</code></h4>
+<h4 id="练习-erasure">练习 <code class="language-plaintext highlighter-rouge">erasure</code></h4>
 
 <!-- Show that erasure relates corresponding boolean and decidable operations: -->
 
@@ -819,14 +769,13 @@ on which matches; but either is equally valid. -->
 </pre>
 <!-- #### Exercise `iff-erasure` (recommended) -->
 
-<h4 id="练习-iff-erasure-推荐">练习 <code class="highlighter-rouge">iff-erasure</code> （推荐）</h4>
+<h4 id="练习-iff-erasure-推荐">练习 <code class="language-plaintext highlighter-rouge">iff-erasure</code> （推荐）</h4>
 
 <!-- Give analogues of the `_⇔_` operation from
 Chapter [Isomorphism](/PLFA-zh/Isomorphism/#iff),
 operation on booleans and decidables, and also show the corresponding erasure: -->
 
-<p>给出与 [Isomorphism][plfa.Isomorphism#iff] 章节中 <code class="highlighter-rouge">_↔_</code> 相对应的布尔值与可判定的值的操作，
-并证明其对应的擦除：</p>
+<p>给出与 [Isomorphism][plfa.Isomorphism#iff] 章节中 <code class="language-plaintext highlighter-rouge">_↔_</code> 相对应的布尔值与可判定的值的操作，并证明其对应的擦除：</p>
 
 <pre class="Agda"><a id="26263" class="Keyword">postulate</a>
   <a id="_iff_"></a><a id="26275" href="/PLFA-zh/Decidable/#26275" class="Postulate Operator">_iff_</a> <a id="26281" class="Symbol">:</a> <a id="26283" href="plfa.Decidable.html#2594" class="Datatype">Bool</a> <a id="26288" class="Symbol">→</a> <a id="26290" href="plfa.Decidable.html#2594" class="Datatype">Bool</a> <a id="26295" class="Symbol">→</a> <a id="26297" href="plfa.Decidable.html#2594" class="Datatype">Bool</a>
@@ -862,7 +811,7 @@ operation on booleans and decidables, and also show the corresponding erasure: -
     ⌊  U+230A  LEFT FLOOR (\cll)
     ⌋  U+230B  RIGHT FLOOR (\clr) -->
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∧  U+2227  逻辑和 (\and, \wedge)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∧  U+2227  逻辑和 (\and, \wedge)
 ∨  U+2228  逻辑或 (\or, \vee)
 ⊃  U+2283  超集 (\sup)
 ᵇ  U+1D47  修饰符小写 B  (\^b)
@@ -923,6 +872,18 @@ operation on booleans and decidables, and also show the corresponding erasure: -
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Properties: Progress and Preservation | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Properties: Progress and Preservation" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Properties/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Properties/","headline":"Properties: Progress and Preservation","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Properties: Progress and Preservation","url":"https://agda-zh.github.io/PLFA-zh/Properties/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -108,19 +108,19 @@ reducing one term to another, and well-typed terms.</p>
 until we reach a value.  For instance, in the last chapter we showed
 that two plus two is four,</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus · two · two  —↠  `suc `suc `suc `suc `zero
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plus · two · two  —↠  `suc `suc `suc `suc `zero
 </code></pre></div></div>
 
 <p>which was proved by a long chain of reductions, ending in the value
-on the right.  Every term in the chain had the same type, <code class="highlighter-rouge">`ℕ</code>.
+on the right.  Every term in the chain had the same type, <code class="language-plaintext highlighter-rouge">`ℕ</code>.
 We also saw a second, similar example involving Church numerals.</p>
 
 <p>What we might expect is that every term is either a value or can take
 a reduction step.  As we will see, this property does <em>not</em> hold for
 every term, but it does hold for every closed, well-typed term.</p>
 
-<p><em>Progress</em>: If <code class="highlighter-rouge">∅ ⊢ M ⦂ A</code> then either <code class="highlighter-rouge">M</code> is a value or there is an <code class="highlighter-rouge">N</code> such
-that <code class="highlighter-rouge">M —→ N</code>.</p>
+<p><em>Progress</em>: If <code class="language-plaintext highlighter-rouge">∅ ⊢ M ⦂ A</code> then either <code class="language-plaintext highlighter-rouge">M</code> is a value or there is an <code class="language-plaintext highlighter-rouge">N</code> such
+that <code class="language-plaintext highlighter-rouge">M —→ N</code>.</p>
 
 <p>So, either we have a value, and we are done, or we can take a reduction step.
 In the latter case, we would like to apply progress again. But to do so we need
@@ -128,7 +128,7 @@ to know that the term yielded by the reduction is itself closed and well typed.
 It turns out that this property holds whenever we start with a closed,
 well-typed term.</p>
 
-<p><em>Preservation</em>: If <code class="highlighter-rouge">∅ ⊢ M ⦂ A</code> and <code class="highlighter-rouge">M —→ N</code> then <code class="highlighter-rouge">∅ ⊢ N ⦂ A</code>.</p>
+<p><em>Preservation</em>: If <code class="language-plaintext highlighter-rouge">∅ ⊢ M ⦂ A</code> and <code class="language-plaintext highlighter-rouge">M —→ N</code> then <code class="language-plaintext highlighter-rouge">∅ ⊢ N ⦂ A</code>.</p>
 
 <p>This gives us a recipe for automating evaluation. Start with a closed
 and well-typed term.  By progress, it is either a value, in which case
@@ -137,17 +137,17 @@ other term will itself be closed and well typed.  Repeat.  We will
 either loop forever, in which case evaluation does not terminate, or
 we will eventually reach a value, which is guaranteed to be closed and
 of the same type as the original term.  We will turn this recipe into
-Agda code that can compute for us the reduction sequence of <code class="highlighter-rouge">plus ·
+Agda code that can compute for us the reduction sequence of <code class="language-plaintext highlighter-rouge">plus ·
 two · two</code>, and its Church numeral variant.</p>
 
 <p>(The development in this chapter was inspired by the corresponding
 development in <em>Software Foundations</em>, Volume <em>Programming Language
 Foundations</em>, Chapter <em>StlcProp</em>.  It will turn out that one of our technical choices
-— to introduce an explicit judgment <code class="highlighter-rouge">Γ ∋ x ⦂ A</code> in place of
+— to introduce an explicit judgment <code class="language-plaintext highlighter-rouge">Γ ∋ x ⦂ A</code> in place of
 treating a context as a function from identifiers to types —
 permits a simpler development. In particular, we can prove substitution preserves
 types without needing to develop a separate inductive definition of the
-<code class="highlighter-rouge">appears_free_in</code> relation.)</p>
+<code class="language-plaintext highlighter-rouge">appears_free_in</code> relation.)</p>
 
 <h2 id="values-do-not-reduce">Values do not reduce</h2>
 
@@ -170,7 +170,7 @@ types without needing to develop a separate inductive definition of the
     <p>If it is zero then no reduction applies</p>
   </li>
   <li>
-    <p>If it is a successor then rule <code class="highlighter-rouge">ξ-suc</code> may apply,
+    <p>If it is a successor then rule <code class="language-plaintext highlighter-rouge">ξ-suc</code> may apply,
 but in that case the successor is itself of a value
 that reduces, which by induction cannot occur.</p>
   </li>
@@ -185,7 +185,7 @@ that reduces, which by induction cannot occur.</p>
 </pre>
 <p>If we expand out the negations, we have</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>V¬—→ : ∀ {M N} → Value M → M —→ N → ⊥
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>V¬—→ : ∀ {M N} → Value M → M —→ N → ⊥
 —→¬V : ∀ {M N} → M —→ N → Value M → ⊥
 </code></pre></div></div>
 
@@ -194,7 +194,7 @@ that reduces, which by induction cannot occur.</p>
 <h2 id="canonical-forms">Canonical Forms</h2>
 
 <p>Well-typed values must take one of a small number of <em>canonical forms</em>,
-which provide an analogue of the <code class="highlighter-rouge">Value</code> relation that relates values
+which provide an analogue of the <code class="language-plaintext highlighter-rouge">Value</code> relation that relates values
 to their types.  A lambda expression must have a function type,
 and a zero or successor expression must be a natural.
 Further, the body of a function must be well typed in a context
@@ -280,25 +280,25 @@ case of successor.</p>
 <p>We would like to show that every term is either a value or takes a
 reduction step.  However, this is not true in general.  The term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`zero · `suc `zero
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`zero · `suc `zero
 </code></pre></div></div>
 
-<p>is neither a value nor can take a reduction step. And if <code class="highlighter-rouge">s ⦂ `ℕ ⇒ `ℕ</code>
+<p>is neither a value nor can take a reduction step. And if <code class="language-plaintext highlighter-rouge">s ⦂ `ℕ ⇒ `ℕ</code>
 then the term</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> s · `zero
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> s · `zero
 </code></pre></div></div>
 
 <p>cannot reduce because we do not know which function is bound to the
-free variable <code class="highlighter-rouge">s</code>.  The first of those terms is ill typed, and the
+free variable <code class="language-plaintext highlighter-rouge">s</code>.  The first of those terms is ill typed, and the
 second has a free variable.  Every term that is well typed and closed
 has the desired property.</p>
 
-<p><em>Progress</em>: If <code class="highlighter-rouge">∅ ⊢ M ⦂ A</code> then either <code class="highlighter-rouge">M</code> is a value or there is an <code class="highlighter-rouge">N</code> such
-that <code class="highlighter-rouge">M —→ N</code>.</p>
+<p><em>Progress</em>: If <code class="language-plaintext highlighter-rouge">∅ ⊢ M ⦂ A</code> then either <code class="language-plaintext highlighter-rouge">M</code> is a value or there is an <code class="language-plaintext highlighter-rouge">N</code> such
+that <code class="language-plaintext highlighter-rouge">M —→ N</code>.</p>
 
 <p>To formulate this property, we first introduce a relation that
-captures what it means for a term <code class="highlighter-rouge">M</code> to make progress:</p>
+captures what it means for a term <code class="language-plaintext highlighter-rouge">M</code> to make progress:</p>
 <pre class="Agda"><a id="7343" class="Keyword">data</a> <a id="Progress"></a><a id="7348" href="/PLFA-zh/Properties/#7348" class="Datatype">Progress</a> <a id="7357" class="Symbol">(</a><a id="7358" href="plfa.Properties.html#7358" class="Bound">M</a> <a id="7360" class="Symbol">:</a> <a id="7362" href="/PLFA-zh/Lambda/#3748" class="Datatype">Term</a><a id="7366" class="Symbol">)</a> <a id="7368" class="Symbol">:</a> <a id="7370" class="PrimitiveType">Set</a> <a id="7374" class="Keyword">where</a>
 
   <a id="Progress.step"></a><a id="7383" href="/PLFA-zh/Properties/#7383" class="InductiveConstructor">step</a> <a id="7388" class="Symbol">:</a> <a id="7390" class="Symbol">∀</a> <a id="7392" class="Symbol">{</a><a id="7393" href="plfa.Properties.html#7393" class="Bound">N</a><a id="7394" class="Symbol">}</a>
@@ -311,9 +311,9 @@ captures what it means for a term <code class="highlighter-rouge">M</code> to ma
       <a id="7473" class="Comment">----------</a>
     <a id="7488" class="Symbol">→</a> <a id="7490" href="/PLFA-zh/Properties/#7348" class="Datatype">Progress</a> <a id="7499" href="plfa.Properties.html#7358" class="Bound">M</a>
 </pre>
-<p>A term <code class="highlighter-rouge">M</code> makes progress if either it can take a step, meaning there
-exists a term <code class="highlighter-rouge">N</code> such that <code class="highlighter-rouge">M —→ N</code>, or if it is done, meaning that
-<code class="highlighter-rouge">M</code> is a value.</p>
+<p>A term <code class="language-plaintext highlighter-rouge">M</code> makes progress if either it can take a step, meaning there
+exists a term <code class="language-plaintext highlighter-rouge">N</code> such that <code class="language-plaintext highlighter-rouge">M —→ N</code>, or if it is done, meaning that
+<code class="language-plaintext highlighter-rouge">M</code> is a value.</p>
 
 <p>If a term is well typed in the empty context then it satisfies progress:</p>
 <pre class="Agda"><a id="progress"></a><a id="7738" href="/PLFA-zh/Properties/#7738" class="Function">progress</a> <a id="7747" class="Symbol">:</a> <a id="7749" class="Symbol">∀</a> <a id="7751" class="Symbol">{</a><a id="7752" href="plfa.Properties.html#7752" class="Bound">M</a> <a id="7754" href="plfa.Properties.html#7754" class="Bound">A</a><a id="7755" class="Symbol">}</a>
@@ -351,36 +351,36 @@ in the empty context.</p>
     <p>If the term is a lambda abstraction then it is a value.</p>
   </li>
   <li>
-    <p>If the term is an application <code class="highlighter-rouge">L · M</code>, recursively apply
-progress to the derivation that <code class="highlighter-rouge">L</code> is well typed:</p>
+    <p>If the term is an application <code class="language-plaintext highlighter-rouge">L · M</code>, recursively apply
+progress to the derivation that <code class="language-plaintext highlighter-rouge">L</code> is well typed:</p>
 
     <ul>
       <li>
-        <p>If the term steps, we have evidence that <code class="highlighter-rouge">L —→ L′</code>,
-which by <code class="highlighter-rouge">ξ-·₁</code> means that our original term steps
-to <code class="highlighter-rouge">L′ · M</code></p>
+        <p>If the term steps, we have evidence that <code class="language-plaintext highlighter-rouge">L —→ L′</code>,
+which by <code class="language-plaintext highlighter-rouge">ξ-·₁</code> means that our original term steps
+to <code class="language-plaintext highlighter-rouge">L′ · M</code></p>
       </li>
       <li>
-        <p>If the term is done, we have evidence that <code class="highlighter-rouge">L</code> is
+        <p>If the term is done, we have evidence that <code class="language-plaintext highlighter-rouge">L</code> is
 a value. Recursively apply progress to the derivation
-that <code class="highlighter-rouge">M</code> is well typed:</p>
+that <code class="language-plaintext highlighter-rouge">M</code> is well typed:</p>
 
         <ul>
           <li>
-            <p>If the term steps, we have evidence that <code class="highlighter-rouge">M —→ M′</code>,
-which by <code class="highlighter-rouge">ξ-·₂</code> means that our original term steps
-to <code class="highlighter-rouge">L · M′</code>.  Step <code class="highlighter-rouge">ξ-·₂</code> applies only if we have
-evidence that <code class="highlighter-rouge">L</code> is a value, but progress on that
+            <p>If the term steps, we have evidence that <code class="language-plaintext highlighter-rouge">M —→ M′</code>,
+which by <code class="language-plaintext highlighter-rouge">ξ-·₂</code> means that our original term steps
+to <code class="language-plaintext highlighter-rouge">L · M′</code>.  Step <code class="language-plaintext highlighter-rouge">ξ-·₂</code> applies only if we have
+evidence that <code class="language-plaintext highlighter-rouge">L</code> is a value, but progress on that
 subterm has already supplied the required evidence.</p>
           </li>
           <li>
-            <p>If the term is done, we have evidence that <code class="highlighter-rouge">M</code> is
+            <p>If the term is done, we have evidence that <code class="language-plaintext highlighter-rouge">M</code> is
 a value.  We apply the canonical forms lemma to the
-evidence that <code class="highlighter-rouge">L</code> is well typed and a value, which
+evidence that <code class="language-plaintext highlighter-rouge">L</code> is well typed and a value, which
 since we are in an application leads to the
-conclusion that <code class="highlighter-rouge">L</code> must be a lambda
-abstraction.  We also have evidence that <code class="highlighter-rouge">M</code> is
-a value, so our original term steps by <code class="highlighter-rouge">β-ƛ</code>.</p>
+conclusion that <code class="language-plaintext highlighter-rouge">L</code> must be a lambda
+abstraction.  We also have evidence that <code class="language-plaintext highlighter-rouge">M</code> is
+a value, so our original term steps by <code class="language-plaintext highlighter-rouge">β-ƛ</code>.</p>
           </li>
         </ul>
       </li>
@@ -389,47 +389,47 @@ a value, so our original term steps by <code class="highlighter-rouge">β-ƛ</co
 </ul>
 
 <p>The remaining cases are similar.  If by induction we have a
-<code class="highlighter-rouge">step</code> case we apply a <code class="highlighter-rouge">ξ</code> rule, and if we have a <code class="highlighter-rouge">done</code> case
-then either we have a value or apply a <code class="highlighter-rouge">β</code> rule.  For fixpoint,
-no induction is required as the <code class="highlighter-rouge">β</code> rule applies immediately.</p>
+<code class="language-plaintext highlighter-rouge">step</code> case we apply a <code class="language-plaintext highlighter-rouge">ξ</code> rule, and if we have a <code class="language-plaintext highlighter-rouge">done</code> case
+then either we have a value or apply a <code class="language-plaintext highlighter-rouge">β</code> rule.  For fixpoint,
+no induction is required as the <code class="language-plaintext highlighter-rouge">β</code> rule applies immediately.</p>
 
 <p>Our code reads neatly in part because we consider the
-<code class="highlighter-rouge">step</code> option before the <code class="highlighter-rouge">done</code> option. We could, of course,
-do it the other way around, but then the <code class="highlighter-rouge">...</code> abbreviation
+<code class="language-plaintext highlighter-rouge">step</code> option before the <code class="language-plaintext highlighter-rouge">done</code> option. We could, of course,
+do it the other way around, but then the <code class="language-plaintext highlighter-rouge">...</code> abbreviation
 no longer works, and we will need to write out all the arguments
 in full. In general, the rule of thumb is to consider the easy case
-(here <code class="highlighter-rouge">step</code>) before the hard case (here <code class="highlighter-rouge">done</code>).
-If you have two hard cases, you will have to expand out <code class="highlighter-rouge">...</code>
+(here <code class="language-plaintext highlighter-rouge">step</code>) before the hard case (here <code class="language-plaintext highlighter-rouge">done</code>).
+If you have two hard cases, you will have to expand out <code class="language-plaintext highlighter-rouge">...</code>
 or introduce subsidiary functions.</p>
 
-<p>Instead of defining a data type for <code class="highlighter-rouge">Progress M</code>, we could
+<p>Instead of defining a data type for <code class="language-plaintext highlighter-rouge">Progress M</code>, we could
 have formulated progress using disjunction and existentials:</p>
 <pre class="Agda"><a id="10841" class="Keyword">postulate</a>
   <a id="progress′"></a><a id="10853" href="/PLFA-zh/Properties/#10853" class="Postulate">progress′</a> <a id="10863" class="Symbol">:</a> <a id="10865" class="Symbol">∀</a> <a id="10867" href="plfa.Properties.html#10867" class="Bound">M</a> <a id="10869" class="Symbol">{</a><a id="10870" href="plfa.Properties.html#10870" class="Bound">A</a><a id="10871" class="Symbol">}</a> <a id="10873" class="Symbol">→</a> <a id="10875" href="/PLFA-zh/Lambda/#31053" class="InductiveConstructor">∅</a> <a id="10877" href="plfa.Lambda.html#33418" class="Datatype Operator">⊢</a> <a id="10879" href="plfa.Properties.html#10867" class="Bound">M</a> <a id="10881" href="plfa.Lambda.html#33418" class="Datatype Operator">⦂</a> <a id="10883" href="plfa.Properties.html#10870" class="Bound">A</a> <a id="10885" class="Symbol">→</a> <a id="10887" href="plfa.Lambda.html#11536" class="Datatype">Value</a> <a id="10893" href="plfa.Properties.html#10867" class="Bound">M</a> <a id="10895" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="10897" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1783" class="Function">∃[</a> <a id="10900" href="plfa.Properties.html#10900" class="Bound">N</a> <a id="10902" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1783" class="Function">]</a><a id="10903" class="Symbol">(</a><a id="10904" href="plfa.Properties.html#10867" class="Bound">M</a> <a id="10906" href="plfa.Lambda.html#19560" class="Datatype Operator">—→</a> <a id="10909" href="plfa.Properties.html#10900" class="Bound">N</a><a id="10910" class="Symbol">)</a>
 </pre>
-<p>This leads to a less perspicuous proof.  Instead of the mnemonic <code class="highlighter-rouge">done</code>
-and <code class="highlighter-rouge">step</code> we use <code class="highlighter-rouge">inj₁</code> and <code class="highlighter-rouge">inj₂</code>, and the term <code class="highlighter-rouge">N</code> is no longer
-implicit and so must be written out in full.  In the case for <code class="highlighter-rouge">β-ƛ</code>
-this requires that we match against the lambda expression <code class="highlighter-rouge">L</code> to
-determine its bound variable and body, <code class="highlighter-rouge">ƛ x ⇒ N</code>, so we can show that
-<code class="highlighter-rouge">L · M</code> reduces to <code class="highlighter-rouge">N [ x := M ]</code>.</p>
+<p>This leads to a less perspicuous proof.  Instead of the mnemonic <code class="language-plaintext highlighter-rouge">done</code>
+and <code class="language-plaintext highlighter-rouge">step</code> we use <code class="language-plaintext highlighter-rouge">inj₁</code> and <code class="language-plaintext highlighter-rouge">inj₂</code>, and the term <code class="language-plaintext highlighter-rouge">N</code> is no longer
+implicit and so must be written out in full.  In the case for <code class="language-plaintext highlighter-rouge">β-ƛ</code>
+this requires that we match against the lambda expression <code class="language-plaintext highlighter-rouge">L</code> to
+determine its bound variable and body, <code class="language-plaintext highlighter-rouge">ƛ x ⇒ N</code>, so we can show that
+<code class="language-plaintext highlighter-rouge">L · M</code> reduces to <code class="language-plaintext highlighter-rouge">N [ x := M ]</code>.</p>
 
-<h4 id="exercise-progress-">Exercise <code class="highlighter-rouge">Progress-≃</code></h4>
+<h4 id="exercise-progress-">Exercise <code class="language-plaintext highlighter-rouge">Progress-≃</code></h4>
 
-<p>Show that <code class="highlighter-rouge">Progress M</code> is isomorphic to <code class="highlighter-rouge">Value M ⊎ ∃[ N ](M —→ N)</code>.</p>
+<p>Show that <code class="language-plaintext highlighter-rouge">Progress M</code> is isomorphic to <code class="language-plaintext highlighter-rouge">Value M ⊎ ∃[ N ](M —→ N)</code>.</p>
 
 <pre class="Agda"><a id="11395" class="Comment">-- Your code goes here</a>
 </pre>
-<h4 id="exercise-progress">Exercise <code class="highlighter-rouge">progress′</code></h4>
+<h4 id="exercise-progress">Exercise <code class="language-plaintext highlighter-rouge">progress′</code></h4>
 
-<p>Write out the proof of <code class="highlighter-rouge">progress′</code> in full, and compare it to the
-proof of <code class="highlighter-rouge">progress</code> above.</p>
+<p>Write out the proof of <code class="language-plaintext highlighter-rouge">progress′</code> in full, and compare it to the
+proof of <code class="language-plaintext highlighter-rouge">progress</code> above.</p>
 
 <pre class="Agda"><a id="11548" class="Comment">-- Your code goes here</a>
 </pre>
-<h4 id="exercise-value">Exercise <code class="highlighter-rouge">value?</code></h4>
+<h4 id="exercise-value">Exercise <code class="language-plaintext highlighter-rouge">value?</code></h4>
 
-<p>Combine <code class="highlighter-rouge">progress</code> and <code class="highlighter-rouge">—→¬V</code> to write a program that decides
+<p>Combine <code class="language-plaintext highlighter-rouge">progress</code> and <code class="language-plaintext highlighter-rouge">—→¬V</code> to write a program that decides
 whether a well-typed term is a value:</p>
 <pre class="Agda"><a id="11704" class="Keyword">postulate</a>
   <a id="value?"></a><a id="11716" href="/PLFA-zh/Properties/#11716" class="Postulate">value?</a> <a id="11723" class="Symbol">:</a> <a id="11725" class="Symbol">∀</a> <a id="11727" class="Symbol">{</a><a id="11728" href="plfa.Properties.html#11728" class="Bound">A</a> <a id="11730" href="plfa.Properties.html#11730" class="Bound">M</a><a id="11731" class="Symbol">}</a> <a id="11733" class="Symbol">→</a> <a id="11735" href="/PLFA-zh/Lambda/#31053" class="InductiveConstructor">∅</a> <a id="11737" href="plfa.Lambda.html#33418" class="Datatype Operator">⊢</a> <a id="11739" href="plfa.Properties.html#11730" class="Bound">M</a> <a id="11741" href="plfa.Lambda.html#33418" class="Datatype Operator">⦂</a> <a id="11743" href="plfa.Properties.html#11728" class="Bound">A</a> <a id="11745" class="Symbol">→</a> <a id="11747" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#605" class="Datatype">Dec</a> <a id="11751" class="Symbol">(</a><a id="11752" href="plfa.Lambda.html#11536" class="Datatype">Value</a> <a id="11758" href="plfa.Properties.html#11730" class="Bound">M</a><a id="11759" class="Symbol">)</a>
@@ -443,13 +443,13 @@ three key steps.</p>
 <p>The first step is to show that types are preserved by <em>renaming</em>.</p>
 
 <p><em>Renaming</em>:
-Let <code class="highlighter-rouge">Γ</code> and <code class="highlighter-rouge">Δ</code> be two contexts such that every variable that
-appears in <code class="highlighter-rouge">Γ</code> also appears with the same type in <code class="highlighter-rouge">Δ</code>.  Then
-if any term is typeable under <code class="highlighter-rouge">Γ</code>, it has the same type under <code class="highlighter-rouge">Δ</code>.</p>
+Let <code class="language-plaintext highlighter-rouge">Γ</code> and <code class="language-plaintext highlighter-rouge">Δ</code> be two contexts such that every variable that
+appears in <code class="language-plaintext highlighter-rouge">Γ</code> also appears with the same type in <code class="language-plaintext highlighter-rouge">Δ</code>.  Then
+if any term is typeable under <code class="language-plaintext highlighter-rouge">Γ</code>, it has the same type under <code class="language-plaintext highlighter-rouge">Δ</code>.</p>
 
 <p>In symbols:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∀ {x A} → Γ ∋ x ⦂ A  →  Δ ∋ x ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∀ {x A} → Γ ∋ x ⦂ A  →  Δ ∋ x ⦂ A
 ---------------------------------
 ∀ {M A} → Γ ⊢ M ⦂ A  →  Δ ⊢ M ⦂ A
 </code></pre></div></div>
@@ -463,32 +463,32 @@ context remains well typed if we swap two variables.</p>
 
 <p>(Renaming is similar to the <em>context invariance</em> lemma in <em>Software
 Foundations</em>, but it does not require the definition of
-<code class="highlighter-rouge">appears_free_in</code> nor the <code class="highlighter-rouge">free_in_context</code> lemma.)</p>
+<code class="language-plaintext highlighter-rouge">appears_free_in</code> nor the <code class="language-plaintext highlighter-rouge">free_in_context</code> lemma.)</p>
 
 <p>The second step is to show that types are preserved by
 <em>substitution</em>.</p>
 
 <p><em>Substitution</em>:
-Say we have a closed term <code class="highlighter-rouge">V</code> of type <code class="highlighter-rouge">A</code>, and under the
-assumption that <code class="highlighter-rouge">x</code> has type <code class="highlighter-rouge">A</code> the term <code class="highlighter-rouge">N</code> has type <code class="highlighter-rouge">B</code>.
-Then substituting <code class="highlighter-rouge">V</code> for <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">N</code> yields a term that
-also has type <code class="highlighter-rouge">B</code>.</p>
+Say we have a closed term <code class="language-plaintext highlighter-rouge">V</code> of type <code class="language-plaintext highlighter-rouge">A</code>, and under the
+assumption that <code class="language-plaintext highlighter-rouge">x</code> has type <code class="language-plaintext highlighter-rouge">A</code> the term <code class="language-plaintext highlighter-rouge">N</code> has type <code class="language-plaintext highlighter-rouge">B</code>.
+Then substituting <code class="language-plaintext highlighter-rouge">V</code> for <code class="language-plaintext highlighter-rouge">x</code> in <code class="language-plaintext highlighter-rouge">N</code> yields a term that
+also has type <code class="language-plaintext highlighter-rouge">B</code>.</p>
 
 <p>In symbols:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ A
 Γ , x ⦂ A ⊢ N ⦂ B
 --------------------
 Γ ⊢ N [ x := V ] ⦂ B
 </code></pre></div></div>
 
-<p>The result does not depend on <code class="highlighter-rouge">V</code> being a value, but it does
-require that <code class="highlighter-rouge">V</code> be closed; recall that we restricted our attention
+<p>The result does not depend on <code class="language-plaintext highlighter-rouge">V</code> being a value, but it does
+require that <code class="language-plaintext highlighter-rouge">V</code> be closed; recall that we restricted our attention
 to substitution by closed terms in order to avoid the need to
 rename bound variables.  The term into which we are substituting
-is typed in an arbitrary context <code class="highlighter-rouge">Γ</code>, extended by the variable
-<code class="highlighter-rouge">x</code> for which we are substituting; and the result term is typed
-in <code class="highlighter-rouge">Γ</code>.</p>
+is typed in an arbitrary context <code class="language-plaintext highlighter-rouge">Γ</code>, extended by the variable
+<code class="language-plaintext highlighter-rouge">x</code> for which we are substituting; and the result term is typed
+in <code class="language-plaintext highlighter-rouge">Γ</code>.</p>
 
 <p>The lemma establishes that substitution composes well with typing:
 typing the components separately guarantees that the result of
@@ -497,27 +497,27 @@ combining them is also well typed.</p>
 <p>The third step is to show preservation.</p>
 
 <p><em>Preservation</em>:
-If <code class="highlighter-rouge">∅ ⊢ M ⦂ A</code> and <code class="highlighter-rouge">M —→ N</code> then <code class="highlighter-rouge">∅ ⊢ N ⦂ A</code>.</p>
+If <code class="language-plaintext highlighter-rouge">∅ ⊢ M ⦂ A</code> and <code class="language-plaintext highlighter-rouge">M —→ N</code> then <code class="language-plaintext highlighter-rouge">∅ ⊢ N ⦂ A</code>.</p>
 
 <p>The proof is by induction over the possible reductions, and
 the substitution lemma is crucial in showing that each of the
-<code class="highlighter-rouge">β</code> rules that uses substitution preserves types.</p>
+<code class="language-plaintext highlighter-rouge">β</code> rules that uses substitution preserves types.</p>
 
 <p>We now proceed with our three-step programme.</p>
 
 <h2 id="renaming">Renaming</h2>
 
 <p>We often need to “rebase” a type derivation, replacing a derivation
-<code class="highlighter-rouge">Γ ⊢ M ⦂ A</code> by a related derivation <code class="highlighter-rouge">Δ ⊢ M ⦂ A</code>.  We may do so as long
-as every variable that appears in <code class="highlighter-rouge">Γ</code> also appears in <code class="highlighter-rouge">Δ</code>, and with
+<code class="language-plaintext highlighter-rouge">Γ ⊢ M ⦂ A</code> by a related derivation <code class="language-plaintext highlighter-rouge">Δ ⊢ M ⦂ A</code>.  We may do so as long
+as every variable that appears in <code class="language-plaintext highlighter-rouge">Γ</code> also appears in <code class="language-plaintext highlighter-rouge">Δ</code>, and with
 the same type.</p>
 
 <p>Three of the rules for typing (lambda abstraction, case on naturals,
 and fixpoint) have hypotheses that extend the context to include a
-bound variable. In each of these rules, <code class="highlighter-rouge">Γ</code> appears in the conclusion
-and <code class="highlighter-rouge">Γ , x ⦂ A</code> appears in a hypothesis.  Thus:</p>
+bound variable. In each of these rules, <code class="language-plaintext highlighter-rouge">Γ</code> appears in the conclusion
+and <code class="language-plaintext highlighter-rouge">Γ , x ⦂ A</code> appears in a hypothesis.  Thus:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , x ⦂ A ⊢ N ⦂ B
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , x ⦂ A ⊢ N ⦂ B
 ------------------- ⊢ƛ
 Γ ⊢ ƛ x ⇒ N ⦂ A ⇒ B
 </code></pre></div></div>
@@ -533,23 +533,23 @@ both contexts:</p>
 <a id="15214" href="/PLFA-zh/Properties/#15026" class="Function">ext</a> <a id="15218" href="plfa.Properties.html#15218" class="Bound">ρ</a> <a id="15220" href="/PLFA-zh/Lambda/#32297" class="InductiveConstructor">Z</a>           <a id="15232" class="Symbol">=</a>  <a id="15235" href="plfa.Lambda.html#32297" class="InductiveConstructor">Z</a>
 <a id="15237" href="/PLFA-zh/Properties/#15026" class="Function">ext</a> <a id="15241" href="plfa.Properties.html#15241" class="Bound">ρ</a> <a id="15243" class="Symbol">(</a><a id="15244" href="/PLFA-zh/Lambda/#32363" class="InductiveConstructor">S</a> <a id="15246" href="plfa.Properties.html#15246" class="Bound">x≢y</a> <a id="15250" href="plfa.Properties.html#15250" class="Bound">∋x</a><a id="15252" class="Symbol">)</a>  <a id="15255" class="Symbol">=</a>  <a id="15258" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="15260" href="plfa.Properties.html#15246" class="Bound">x≢y</a> <a id="15264" class="Symbol">(</a><a id="15265" href="plfa.Properties.html#15241" class="Bound">ρ</a> <a id="15267" href="plfa.Properties.html#15250" class="Bound">∋x</a><a id="15269" class="Symbol">)</a>
 </pre>
-<p>Let <code class="highlighter-rouge">ρ</code> be the name of the map that takes evidence that
-<code class="highlighter-rouge">x</code> appears in <code class="highlighter-rouge">Γ</code> to evidence that <code class="highlighter-rouge">x</code> appears in <code class="highlighter-rouge">Δ</code>.
-The proof is by case analysis of the evidence that <code class="highlighter-rouge">x</code> appears
-in the extended map <code class="highlighter-rouge">Γ , y ⦂ B</code>:</p>
+<p>Let <code class="language-plaintext highlighter-rouge">ρ</code> be the name of the map that takes evidence that
+<code class="language-plaintext highlighter-rouge">x</code> appears in <code class="language-plaintext highlighter-rouge">Γ</code> to evidence that <code class="language-plaintext highlighter-rouge">x</code> appears in <code class="language-plaintext highlighter-rouge">Δ</code>.
+The proof is by case analysis of the evidence that <code class="language-plaintext highlighter-rouge">x</code> appears
+in the extended map <code class="language-plaintext highlighter-rouge">Γ , y ⦂ B</code>:</p>
 
 <ul>
   <li>
-    <p>If <code class="highlighter-rouge">x</code> is the same as <code class="highlighter-rouge">y</code>, we used <code class="highlighter-rouge">Z</code> to access the last variable
-in the extended <code class="highlighter-rouge">Γ</code>; and can similarly use <code class="highlighter-rouge">Z</code> to access the last
-variable in the extended <code class="highlighter-rouge">Δ</code>.</p>
+    <p>If <code class="language-plaintext highlighter-rouge">x</code> is the same as <code class="language-plaintext highlighter-rouge">y</code>, we used <code class="language-plaintext highlighter-rouge">Z</code> to access the last variable
+in the extended <code class="language-plaintext highlighter-rouge">Γ</code>; and can similarly use <code class="language-plaintext highlighter-rouge">Z</code> to access the last
+variable in the extended <code class="language-plaintext highlighter-rouge">Δ</code>.</p>
   </li>
   <li>
-    <p>If <code class="highlighter-rouge">x</code> differs from <code class="highlighter-rouge">y</code>, then we used <code class="highlighter-rouge">S</code> to skip over the last
-variable in the extended <code class="highlighter-rouge">Γ</code>, where <code class="highlighter-rouge">x≢y</code> is evidence that <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>
-differ, and <code class="highlighter-rouge">∋x</code> is the evidence that <code class="highlighter-rouge">x</code> appears in <code class="highlighter-rouge">Γ</code>; and we can
-similarly use <code class="highlighter-rouge">S</code> to skip over the last variable in the extended <code class="highlighter-rouge">Δ</code>,
-applying <code class="highlighter-rouge">ρ</code> to find the evidence that <code class="highlighter-rouge">x</code> appears in <code class="highlighter-rouge">Δ</code>.</p>
+    <p>If <code class="language-plaintext highlighter-rouge">x</code> differs from <code class="language-plaintext highlighter-rouge">y</code>, then we used <code class="language-plaintext highlighter-rouge">S</code> to skip over the last
+variable in the extended <code class="language-plaintext highlighter-rouge">Γ</code>, where <code class="language-plaintext highlighter-rouge">x≢y</code> is evidence that <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>
+differ, and <code class="language-plaintext highlighter-rouge">∋x</code> is the evidence that <code class="language-plaintext highlighter-rouge">x</code> appears in <code class="language-plaintext highlighter-rouge">Γ</code>; and we can
+similarly use <code class="language-plaintext highlighter-rouge">S</code> to skip over the last variable in the extended <code class="language-plaintext highlighter-rouge">Δ</code>,
+applying <code class="language-plaintext highlighter-rouge">ρ</code> to find the evidence that <code class="language-plaintext highlighter-rouge">x</code> appears in <code class="language-plaintext highlighter-rouge">Δ</code>.</p>
   </li>
 </ul>
 
@@ -567,20 +567,20 @@ prove renaming preserves types:</p>
 <a id="16459" href="/PLFA-zh/Properties/#16089" class="Function">rename</a> <a id="16466" href="plfa.Properties.html#16466" class="Bound">ρ</a> <a id="16468" class="Symbol">(</a><a id="16469" href="/PLFA-zh/Lambda/#33926" class="InductiveConstructor">⊢case</a> <a id="16475" href="plfa.Properties.html#16475" class="Bound">⊢L</a> <a id="16478" href="plfa.Properties.html#16478" class="Bound">⊢M</a> <a id="16481" href="plfa.Properties.html#16481" class="Bound">⊢N</a><a id="16483" class="Symbol">)</a>  <a id="16486" class="Symbol">=</a>  <a id="16489" href="plfa.Lambda.html#33926" class="InductiveConstructor">⊢case</a> <a id="16495" class="Symbol">(</a><a id="16496" href="plfa.Properties.html#16089" class="Function">rename</a> <a id="16503" href="plfa.Properties.html#16466" class="Bound">ρ</a> <a id="16505" href="plfa.Properties.html#16475" class="Bound">⊢L</a><a id="16507" class="Symbol">)</a> <a id="16509" class="Symbol">(</a><a id="16510" href="plfa.Properties.html#16089" class="Function">rename</a> <a id="16517" href="plfa.Properties.html#16466" class="Bound">ρ</a> <a id="16519" href="plfa.Properties.html#16478" class="Bound">⊢M</a><a id="16521" class="Symbol">)</a> <a id="16523" class="Symbol">(</a><a id="16524" href="plfa.Properties.html#16089" class="Function">rename</a> <a id="16531" class="Symbol">(</a><a id="16532" href="plfa.Properties.html#15026" class="Function">ext</a> <a id="16536" href="plfa.Properties.html#16466" class="Bound">ρ</a><a id="16537" class="Symbol">)</a> <a id="16539" href="plfa.Properties.html#16481" class="Bound">⊢N</a><a id="16541" class="Symbol">)</a>
 <a id="16543" href="/PLFA-zh/Properties/#16089" class="Function">rename</a> <a id="16550" href="plfa.Properties.html#16550" class="Bound">ρ</a> <a id="16552" class="Symbol">(</a><a id="16553" href="/PLFA-zh/Lambda/#34098" class="InductiveConstructor">⊢μ</a> <a id="16556" href="plfa.Properties.html#16556" class="Bound">⊢M</a><a id="16558" class="Symbol">)</a>           <a id="16570" class="Symbol">=</a>  <a id="16573" href="plfa.Lambda.html#34098" class="InductiveConstructor">⊢μ</a> <a id="16576" class="Symbol">(</a><a id="16577" href="plfa.Properties.html#16089" class="Function">rename</a> <a id="16584" class="Symbol">(</a><a id="16585" href="plfa.Properties.html#15026" class="Function">ext</a> <a id="16589" href="plfa.Properties.html#16550" class="Bound">ρ</a><a id="16590" class="Symbol">)</a> <a id="16592" href="plfa.Properties.html#16556" class="Bound">⊢M</a><a id="16594" class="Symbol">)</a>
 </pre>
-<p>As before, let <code class="highlighter-rouge">ρ</code> be the name of the map that takes evidence that
-<code class="highlighter-rouge">x</code> appears in <code class="highlighter-rouge">Γ</code> to evidence that <code class="highlighter-rouge">x</code> appears in <code class="highlighter-rouge">Δ</code>.  We induct
-on the evidence that <code class="highlighter-rouge">M</code> is well typed in <code class="highlighter-rouge">Γ</code>.  Let’s unpack the
+<p>As before, let <code class="language-plaintext highlighter-rouge">ρ</code> be the name of the map that takes evidence that
+<code class="language-plaintext highlighter-rouge">x</code> appears in <code class="language-plaintext highlighter-rouge">Γ</code> to evidence that <code class="language-plaintext highlighter-rouge">x</code> appears in <code class="language-plaintext highlighter-rouge">Δ</code>.  We induct
+on the evidence that <code class="language-plaintext highlighter-rouge">M</code> is well typed in <code class="language-plaintext highlighter-rouge">Γ</code>.  Let’s unpack the
 first three cases:</p>
 
 <ul>
   <li>
-    <p>If the term is a variable, then applying <code class="highlighter-rouge">ρ</code> to the evidence
-that the variable appears in <code class="highlighter-rouge">Γ</code> yields the corresponding evidence that
-the variable appears in <code class="highlighter-rouge">Δ</code>.</p>
+    <p>If the term is a variable, then applying <code class="language-plaintext highlighter-rouge">ρ</code> to the evidence
+that the variable appears in <code class="language-plaintext highlighter-rouge">Γ</code> yields the corresponding evidence that
+the variable appears in <code class="language-plaintext highlighter-rouge">Δ</code>.</p>
   </li>
   <li>
     <p>If the term is a lambda abstraction, use the previous lemma to
-extend the map <code class="highlighter-rouge">ρ</code> suitably and use induction to rename the body of the
+extend the map <code class="language-plaintext highlighter-rouge">ρ</code> suitably and use induction to rename the body of the
 abstraction.</p>
   </li>
   <li>
@@ -613,8 +613,8 @@ a suitable map between contexts.</p>
     <a id="17956" class="Symbol">→</a> <a id="17958" href="/PLFA-zh/Properties/#17878" class="Bound">Γ</a> <a id="17960" href="/PLFA-zh/Lambda/#32254" class="Datatype Operator">∋</a> <a id="17962" href="plfa.Properties.html#17915" class="Bound">z</a> <a id="17964" href="plfa.Lambda.html#32254" class="Datatype Operator">⦂</a> <a id="17966" href="plfa.Properties.html#17917" class="Bound">C</a>
   <a id="17970" href="/PLFA-zh/Properties/#17908" class="Function">ρ</a> <a id="17972" class="Symbol">()</a>
 </pre>
-<p>Here the map <code class="highlighter-rouge">ρ</code> is trivial, since there are no possible
-arguments in the empty context <code class="highlighter-rouge">∅</code>.</p>
+<p>Here the map <code class="language-plaintext highlighter-rouge">ρ</code> is trivial, since there are no possible
+arguments in the empty context <code class="language-plaintext highlighter-rouge">∅</code>.</p>
 
 <p>Second, if the last two variables in a context are equal then we can
 drop the shadowed one:</p>
@@ -632,12 +632,12 @@ drop the shadowed one:</p>
   <a id="18460" href="/PLFA-zh/Properties/#18331" class="Function">ρ</a> <a id="18462" class="Symbol">(</a><a id="18463" href="/PLFA-zh/Lambda/#32363" class="InductiveConstructor">S</a> <a id="18465" href="plfa.Properties.html#18465" class="Bound">x≢x</a> <a id="18469" href="plfa.Lambda.html#32297" class="InductiveConstructor">Z</a><a id="18470" class="Symbol">)</a>         <a id="18480" class="Symbol">=</a>  <a id="18483" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="18490" class="Symbol">(</a><a id="18491" href="plfa.Properties.html#18465" class="Bound">x≢x</a> <a id="18495" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="18499" class="Symbol">)</a>
   <a id="18503" href="/PLFA-zh/Properties/#18331" class="Function">ρ</a> <a id="18505" class="Symbol">(</a><a id="18506" href="/PLFA-zh/Lambda/#32363" class="InductiveConstructor">S</a> <a id="18508" href="plfa.Properties.html#18508" class="Bound">z≢x</a> <a id="18512" class="Symbol">(</a><a id="18513" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="18515" class="Symbol">_</a> <a id="18517" href="plfa.Properties.html#18517" class="Bound">∋z</a><a id="18519" class="Symbol">))</a>  <a id="18523" class="Symbol">=</a>  <a id="18526" href="plfa.Lambda.html#32363" class="InductiveConstructor">S</a> <a id="18528" href="plfa.Properties.html#18508" class="Bound">z≢x</a> <a id="18532" href="plfa.Properties.html#18517" class="Bound">∋z</a>
 </pre>
-<p>Here map <code class="highlighter-rouge">ρ</code> can never be invoked on the inner occurrence of <code class="highlighter-rouge">x</code> since
-it is masked by the outer occurrence.  Skipping over the <code class="highlighter-rouge">x</code> in the
+<p>Here map <code class="language-plaintext highlighter-rouge">ρ</code> can never be invoked on the inner occurrence of <code class="language-plaintext highlighter-rouge">x</code> since
+it is masked by the outer occurrence.  Skipping over the <code class="language-plaintext highlighter-rouge">x</code> in the
 first position can only happen if the variable looked for differs from
-<code class="highlighter-rouge">x</code> (the evidence for which is <code class="highlighter-rouge">x≢x</code> or <code class="highlighter-rouge">z≢x</code>) but if the variable is
-found in the second position, which also contains <code class="highlighter-rouge">x</code>, this leads to a
-contradiction (evidenced by <code class="highlighter-rouge">x≢x refl</code>).</p>
+<code class="language-plaintext highlighter-rouge">x</code> (the evidence for which is <code class="language-plaintext highlighter-rouge">x≢x</code> or <code class="language-plaintext highlighter-rouge">z≢x</code>) but if the variable is
+found in the second position, which also contains <code class="language-plaintext highlighter-rouge">x</code>, this leads to a
+contradiction (evidenced by <code class="language-plaintext highlighter-rouge">x≢x refl</code>).</p>
 
 <p>Third, if the last two variables in a context differ then we can swap them:</p>
 <pre class="Agda"><a id="swap"></a><a id="19012" href="/PLFA-zh/Properties/#19012" class="Function">swap</a> <a id="19017" class="Symbol">:</a> <a id="19019" class="Symbol">∀</a> <a id="19021" class="Symbol">{</a><a id="19022" href="plfa.Properties.html#19022" class="Bound">Γ</a> <a id="19024" href="plfa.Properties.html#19024" class="Bound">x</a> <a id="19026" href="plfa.Properties.html#19026" class="Bound">y</a> <a id="19028" href="plfa.Properties.html#19028" class="Bound">M</a> <a id="19030" href="plfa.Properties.html#19030" class="Bound">A</a> <a id="19032" href="plfa.Properties.html#19032" class="Bound">B</a> <a id="19034" href="plfa.Properties.html#19034" class="Bound">C</a><a id="19035" class="Symbol">}</a>
@@ -657,8 +657,8 @@ contradiction (evidenced by <code class="highlighter-rouge">x≢x refl</code>).<
 </pre>
 <p>Here the renaming map takes a variable at the end into a variable one
 from the end, and vice versa.  The first line is responsible for
-moving <code class="highlighter-rouge">x</code> from a position at the end to a position one from the end
-with <code class="highlighter-rouge">y</code> at the end, and requires the provided evidence that <code class="highlighter-rouge">x ≢ y</code>.</p>
+moving <code class="language-plaintext highlighter-rouge">x</code> from a position at the end to a position one from the end
+with <code class="language-plaintext highlighter-rouge">y</code> at the end, and requires the provided evidence that <code class="language-plaintext highlighter-rouge">x ≢ y</code>.</p>
 
 <h2 id="substitution">Substitution</h2>
 
@@ -672,12 +672,12 @@ but it is captured by our lemma to assert that substitution
 preserves typing.</p>
 
 <p>Our concern is with reducing closed terms, which means that when
-we apply <code class="highlighter-rouge">β</code> reduction, the term substituted in contains a single
+we apply <code class="language-plaintext highlighter-rouge">β</code> reduction, the term substituted in contains a single
 free variable (the bound variable of the lambda abstraction, or
 similarly for case or fixpoint). However, substitution
 is defined by recursion, and as we descend into terms with bound
 variables the context grows.  So for the induction to go through,
-we require an arbitrary context <code class="highlighter-rouge">Γ</code>, as in the statement of the lemma.</p>
+we require an arbitrary context <code class="language-plaintext highlighter-rouge">Γ</code>, as in the statement of the lemma.</p>
 
 <p>Here is the formal statement and proof that substitution preserves types:</p>
 <pre class="Agda"><a id="subst"></a><a id="20631" href="/PLFA-zh/Properties/#20631" class="Function">subst</a> <a id="20637" class="Symbol">:</a> <a id="20639" class="Symbol">∀</a> <a id="20641" class="Symbol">{</a><a id="20642" href="plfa.Properties.html#20642" class="Bound">Γ</a> <a id="20644" href="plfa.Properties.html#20644" class="Bound">x</a> <a id="20646" href="plfa.Properties.html#20646" class="Bound">N</a> <a id="20648" href="plfa.Properties.html#20648" class="Bound">V</a> <a id="20650" href="plfa.Properties.html#20650" class="Bound">A</a> <a id="20652" href="plfa.Properties.html#20652" class="Bound">B</a><a id="20653" class="Symbol">}</a>
@@ -704,20 +704,20 @@ we require an arbitrary context <code class="highlighter-rouge">Γ</code>, as in
 <a id="21503" class="Symbol">...</a> <a id="21507" class="Symbol">|</a> <a id="21509" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#641" class="InductiveConstructor">yes</a> <a id="21513" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>        <a id="21525" class="Symbol">=</a>  <a id="21528" href="/PLFA-zh/Lambda/#34098" class="InductiveConstructor">⊢μ</a> <a id="21531" class="Symbol">(</a><a id="21532" href="/PLFA-zh/Properties/#18169" class="Function">drop</a> <a id="21537" class="Bound">⊢M</a><a id="21539" class="Symbol">)</a>
 <a id="21541" class="Symbol">...</a> <a id="21545" class="Symbol">|</a> <a id="21547" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#668" class="InductiveConstructor">no</a>  <a id="21551" href="/PLFA-zh/Properties/#21551" class="Bound">x≢y</a>         <a id="21563" class="Symbol">=</a>  <a id="21566" href="/PLFA-zh/Lambda/#34098" class="InductiveConstructor">⊢μ</a> <a id="21569" class="Symbol">(</a><a id="21570" href="plfa.Properties.html#20631" class="Function">subst</a> <a id="21576" class="Bound">⊢V</a> <a id="21579" class="Symbol">(</a><a id="21580" href="plfa.Properties.html#19012" class="Function">swap</a> <a id="21585" href="plfa.Properties.html#21551" class="Bound">x≢y</a> <a id="21589" class="Bound">⊢M</a><a id="21591" class="Symbol">))</a>
 </pre>
-<p>We induct on the evidence that <code class="highlighter-rouge">N</code> is well typed in the
-context <code class="highlighter-rouge">Γ</code> extended by <code class="highlighter-rouge">x</code>.</p>
+<p>We induct on the evidence that <code class="language-plaintext highlighter-rouge">N</code> is well typed in the
+context <code class="language-plaintext highlighter-rouge">Γ</code> extended by <code class="language-plaintext highlighter-rouge">x</code>.</p>
 
 <p>First, we note a wee issue with naming.  In the lemma
-statement, the variable <code class="highlighter-rouge">x</code> is an implicit parameter for the variable
+statement, the variable <code class="language-plaintext highlighter-rouge">x</code> is an implicit parameter for the variable
 substituted, while in the type rules for variables, abstractions,
-cases, and fixpoints, the variable <code class="highlighter-rouge">x</code> is an implicit parameter for
+cases, and fixpoints, the variable <code class="language-plaintext highlighter-rouge">x</code> is an implicit parameter for
 the relevant variable.  We are going to need to get hold of both
-variables, so we use the syntax <code class="highlighter-rouge">{x = y}</code> to bind <code class="highlighter-rouge">y</code> to the
-substituted variable and the syntax <code class="highlighter-rouge">{x = x}</code> to bind <code class="highlighter-rouge">x</code> to the
-relevant variable in the patterns for <code class="highlighter-rouge">⊢`</code>, <code class="highlighter-rouge">⊢ƛ</code>, <code class="highlighter-rouge">⊢case</code>, and <code class="highlighter-rouge">⊢μ</code>.
-Using the name <code class="highlighter-rouge">y</code> here is consistent with the naming in the original
+variables, so we use the syntax <code class="language-plaintext highlighter-rouge">{x = y}</code> to bind <code class="language-plaintext highlighter-rouge">y</code> to the
+substituted variable and the syntax <code class="language-plaintext highlighter-rouge">{x = x}</code> to bind <code class="language-plaintext highlighter-rouge">x</code> to the
+relevant variable in the patterns for <code class="language-plaintext highlighter-rouge">⊢`</code>, <code class="language-plaintext highlighter-rouge">⊢ƛ</code>, <code class="language-plaintext highlighter-rouge">⊢case</code>, and <code class="language-plaintext highlighter-rouge">⊢μ</code>.
+Using the name <code class="language-plaintext highlighter-rouge">y</code> here is consistent with the naming in the original
 definition of substitution in the previous chapter.  The proof never
-mentions the types of <code class="highlighter-rouge">x</code>, <code class="highlighter-rouge">y</code>, <code class="highlighter-rouge">V</code>, or <code class="highlighter-rouge">N</code>, so in what follows we
+mentions the types of <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">V</code>, or <code class="language-plaintext highlighter-rouge">N</code>, so in what follows we
 choose type names as convenient.</p>
 
 <p>Now that naming is resolved, let’s unpack the first three cases:</p>
@@ -726,7 +726,7 @@ choose type names as convenient.</p>
   <li>
     <p>In the variable case, we must show</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
 Γ , y ⦂ B ⊢ ` x ⦂ A
 ------------------------
 Γ ⊢ ` x [ y := V ] ⦂ A
@@ -734,21 +734,21 @@ choose type names as convenient.</p>
 
     <p>where the second hypothesis follows from:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ B ∋ x ⦂ A
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ B ∋ x ⦂ A
 </code></pre></div>    </div>
 
     <p>There are two subcases, depending on the evidence for this judgment:</p>
 
     <ul>
       <li>
-        <p>The lookup judgment is evidenced by rule <code class="highlighter-rouge">Z</code>:</p>
+        <p>The lookup judgment is evidenced by rule <code class="language-plaintext highlighter-rouge">Z</code>:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------------
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------------
 Γ , x ⦂ A ∋ x ⦂ A
 </code></pre></div>        </div>
 
-        <p>In this case, <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> are necessarily identical, as are <code class="highlighter-rouge">A</code>
-and <code class="highlighter-rouge">B</code>.  Nonetheless, we must evaluate <code class="highlighter-rouge">x ≟ y</code> in order to allow
+        <p>In this case, <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> are necessarily identical, as are <code class="language-plaintext highlighter-rouge">A</code>
+and <code class="language-plaintext highlighter-rouge">B</code>.  Nonetheless, we must evaluate <code class="language-plaintext highlighter-rouge">x ≟ y</code> in order to allow
 the definition of substitution to simplify:</p>
 
         <ul>
@@ -756,7 +756,7 @@ the definition of substitution to simplify:</p>
             <p>If the variables are equal, then after simplification we
 must show</p>
 
-            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ A
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ A
 ---------
 Γ ⊢ V ⦂ A
 </code></pre></div>            </div>
@@ -769,16 +769,16 @@ must show</p>
         </ul>
       </li>
       <li>
-        <p>The lookup judgment is evidenced by rule <code class="highlighter-rouge">S</code>:</p>
+        <p>The lookup judgment is evidenced by rule <code class="language-plaintext highlighter-rouge">S</code>:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x ≢ y
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x ≢ y
 Γ ∋ x ⦂ A
 -----------------
 Γ , y ⦂ B ∋ x ⦂ A
 </code></pre></div>        </div>
 
-        <p>In this case, <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> are necessarily distinct.
-Nonetheless, we must again evaluate <code class="highlighter-rouge">x ≟ y</code> in order to allow
+        <p>In this case, <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> are necessarily distinct.
+Nonetheless, we must again evaluate <code class="language-plaintext highlighter-rouge">x ≟ y</code> in order to allow
 the definition of substitution to simplify:</p>
 
         <ul>
@@ -789,7 +789,7 @@ the definition of substitution to simplify:</p>
             <p>If the variables are unequal, then after simplification we
 must show</p>
 
-            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
 x ≢ y
 Γ ∋ x ⦂ A
 -------------
@@ -805,7 +805,7 @@ x ≢ y
   <li>
     <p>In the abstraction case, we must show</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
 Γ , y ⦂ B ⊢ (ƛ x ⇒ N) ⦂ A ⇒ C
 --------------------------------
 Γ ⊢ (ƛ x ⇒ N) [ y := V ] ⦂ A ⇒ C
@@ -813,24 +813,24 @@ x ≢ y
 
     <p>where the second hypothesis follows from</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ B , x ⦂ A ⊢ N ⦂ C
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ B , x ⦂ A ⊢ N ⦂ C
 </code></pre></div>    </div>
 
-    <p>We evaluate <code class="highlighter-rouge">x ≟ y</code> in order to allow the definition of substitution to simplify:</p>
+    <p>We evaluate <code class="language-plaintext highlighter-rouge">x ≟ y</code> in order to allow the definition of substitution to simplify:</p>
 
     <ul>
       <li>
         <p>If the variables are equal then after simplification we must show:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
 Γ , x ⦂ B , x ⦂ A ⊢ N ⦂ C
 -------------------------
 Γ ⊢ ƛ x ⇒ N ⦂ A ⇒ C
 </code></pre></div>        </div>
 
-        <p>From the drop lemma, <code class="highlighter-rouge">drop</code>, we may conclude:</p>
+        <p>From the drop lemma, <code class="language-plaintext highlighter-rouge">drop</code>, we may conclude:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , x ⦂ B , x ⦂ A ⊢ N ⦂ C
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , x ⦂ B , x ⦂ A ⊢ N ⦂ C
 -------------------------
 Γ , x ⦂ A ⊢ N ⦂ C
 </code></pre></div>        </div>
@@ -840,7 +840,7 @@ x ≢ y
       <li>
         <p>If the variables are distinct then after simplification we must show:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
 Γ , y ⦂ B , x ⦂ A ⊢ N ⦂ C
 --------------------------------
 Γ ⊢ ƛ x ⇒ (N [ y := V ]) ⦂ A ⇒ C
@@ -848,14 +848,14 @@ x ≢ y
 
         <p>From the swap lemma we may conclude:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ B , x ⦂ A ⊢ N ⦂ C
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ B , x ⦂ A ⊢ N ⦂ C
 -------------------------
 Γ , x ⦂ A , y ⦂ B ⊢ N ⦂ C
 </code></pre></div>        </div>
 
         <p>The inductive hypothesis gives us:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ B
 Γ , x ⦂ A , y ⦂ B ⊢ N ⦂ C
 ------------------------------------
 Γ , x ⦂ A , y ⦂ B ⊢ N [ y := V ] ⦂ C
@@ -868,7 +868,7 @@ x ≢ y
   <li>
     <p>In the application case, we must show</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ C
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ C
 Γ , y ⦂ C ⊢ L · M ⦂ B
 --------------------------
 Γ ⊢ (L · M) [ y := V ] ⦂ B
@@ -876,20 +876,20 @@ x ≢ y
 
     <p>where the second hypothesis follows from the two judgments</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ C ⊢ L ⦂ A ⇒ B
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , y ⦂ C ⊢ L ⦂ A ⇒ B
 Γ , y ⦂ C ⊢ M ⦂ A
 </code></pre></div>    </div>
 
     <p>By the definition of substitution, we must show:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ C
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∅ ⊢ V ⦂ C
 Γ , y ⦂ C ⊢ L ⦂ A ⇒ B
 Γ , y ⦂ C ⊢ M ⦂ A
 ---------------------------------------
 Γ ⊢ (L [ y := V ]) · (M [ y := V ]) ⦂ B
 </code></pre></div>    </div>
 
-    <p>Applying the induction hypothesis for <code class="highlighter-rouge">L</code> and <code class="highlighter-rouge">M</code> and the typing
+    <p>Applying the induction hypothesis for <code class="language-plaintext highlighter-rouge">L</code> and <code class="language-plaintext highlighter-rouge">M</code> and the typing
 rule for applications yields the required conclusion.</p>
   </li>
 </ul>
@@ -899,9 +899,9 @@ Where the construct introduces a bound variable we need to compare it
 with the substituted variable, applying the drop lemma if they are
 equal and the swap lemma if they are distinct.</p>
 
-<h4 id="exercise-subst-stretch">Exercise <code class="highlighter-rouge">subst′</code> (stretch)</h4>
+<h4 id="exercise-subst-stretch">Exercise <code class="language-plaintext highlighter-rouge">subst′</code> (stretch)</h4>
 
-<p>Rewrite <code class="highlighter-rouge">subst</code> to work with the modified definition <code class="highlighter-rouge">_[_:=_]′</code>
+<p>Rewrite <code class="language-plaintext highlighter-rouge">subst</code> to work with the modified definition <code class="language-plaintext highlighter-rouge">_[_:=_]′</code>
 from the exercise in the previous chapter.  As before, this
 should factor dealing with bound variables into a single function,
 defined by mutual recursion with the proof that substitution
@@ -932,23 +932,23 @@ that reduction preserves types is straightforward:</p>
 <a id="27215" href="/PLFA-zh/Properties/#26611" class="Function">preserve</a> <a id="27224" class="Symbol">(</a><a id="27225" href="/PLFA-zh/Lambda/#33926" class="InductiveConstructor">⊢case</a> <a id="27231" class="Symbol">(</a><a id="27232" href="plfa.Lambda.html#33838" class="InductiveConstructor">⊢suc</a> <a id="27237" href="plfa.Properties.html#27237" class="Bound">⊢V</a><a id="27239" class="Symbol">)</a> <a id="27241" href="plfa.Properties.html#27241" class="Bound">⊢M</a> <a id="27244" href="plfa.Properties.html#27244" class="Bound">⊢N</a><a id="27246" class="Symbol">)</a> <a id="27248" class="Symbol">(</a><a id="27249" href="plfa.Lambda.html#20253" class="InductiveConstructor">β-suc</a> <a id="27255" href="plfa.Properties.html#27255" class="Bound">VV</a><a id="27257" class="Symbol">)</a>       <a id="27265" class="Symbol">=</a>  <a id="27268" href="plfa.Properties.html#20631" class="Function">subst</a> <a id="27274" href="plfa.Properties.html#27237" class="Bound">⊢V</a> <a id="27277" href="plfa.Properties.html#27244" class="Bound">⊢N</a>
 <a id="27280" href="/PLFA-zh/Properties/#26611" class="Function">preserve</a> <a id="27289" class="Symbol">(</a><a id="27290" href="/PLFA-zh/Lambda/#34098" class="InductiveConstructor">⊢μ</a> <a id="27293" href="plfa.Properties.html#27293" class="Bound">⊢M</a><a id="27295" class="Symbol">)</a>                 <a id="27313" class="Symbol">(</a><a id="27314" href="plfa.Lambda.html#20404" class="InductiveConstructor">β-μ</a><a id="27317" class="Symbol">)</a>            <a id="27330" class="Symbol">=</a>  <a id="27333" href="plfa.Properties.html#20631" class="Function">subst</a> <a id="27339" class="Symbol">(</a><a id="27340" href="plfa.Lambda.html#34098" class="InductiveConstructor">⊢μ</a> <a id="27343" href="plfa.Properties.html#27293" class="Bound">⊢M</a><a id="27345" class="Symbol">)</a> <a id="27347" href="plfa.Properties.html#27293" class="Bound">⊢M</a>
 </pre>
-<p>The proof never mentions the types of <code class="highlighter-rouge">M</code> or <code class="highlighter-rouge">N</code>,
+<p>The proof never mentions the types of <code class="language-plaintext highlighter-rouge">M</code> or <code class="language-plaintext highlighter-rouge">N</code>,
 so in what follows we choose type name as convenient.</p>
 
 <p>Let’s unpack the cases for two of the reduction rules:</p>
 
 <ul>
   <li>
-    <p>Rule <code class="highlighter-rouge">ξ-·₁</code>.  We have</p>
+    <p>Rule <code class="language-plaintext highlighter-rouge">ξ-·₁</code>.  We have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
 ----------------
 L · M —→ L′ · M
 </code></pre></div>    </div>
 
     <p>where the left-hand side is typed by</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ A ⇒ B
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ A ⇒ B
 Γ ⊢ M ⦂ A
 -------------
 Γ ⊢ L · M ⦂ B
@@ -956,7 +956,7 @@ L · M —→ L′ · M
 
     <p>By induction, we have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ A ⇒ B
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ A ⇒ B
 L —→ L′
 --------------
 Γ ⊢ L′ ⦂ A ⇒ B
@@ -965,16 +965,16 @@ L —→ L′
     <p>from which the typing of the right-hand side follows immediately.</p>
   </li>
   <li>
-    <p>Rule <code class="highlighter-rouge">β-ƛ</code>.  We have</p>
+    <p>Rule <code class="language-plaintext highlighter-rouge">β-ƛ</code>.  We have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value V
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value V
 ----------------------------
 (ƛ x ⇒ N) · V ⊢ N [ x := V ]
 </code></pre></div>    </div>
 
     <p>where the left-hand side is typed by</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , x ⦂ A ⊢ N ⦂ B
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ , x ⦂ A ⊢ N ⦂ B
 -------------------
 Γ ⊢ ƛ x ⇒ N ⦂ A ⇒ B    Γ ⊢ V ⦂ A
 --------------------------------
@@ -983,7 +983,7 @@ L —→ L′
 
     <p>By the substitution lemma, we have</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ V ⦂ A
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ V ⦂ A
 Γ , x ⦂ A ⊢ N ⦂ B
 --------------------
 Γ ⊢ N [ x := V ] ⦂ B
@@ -993,8 +993,8 @@ L —→ L′
   </li>
 </ul>
 
-<p>The remaining cases are similar.  Each <code class="highlighter-rouge">ξ</code> rule follows by induction,
-and each <code class="highlighter-rouge">β</code> rule follows by the substitution lemma.</p>
+<p>The remaining cases are similar.  Each <code class="language-plaintext highlighter-rouge">ξ</code> rule follows by induction,
+and each <code class="language-plaintext highlighter-rouge">β</code> rule follows by the substitution lemma.</p>
 
 <h2 id="evaluation">Evaluation</h2>
 
@@ -1038,12 +1038,12 @@ published rate: a given number of Ethers (the currency of Ethereum)
 per unit of gas.</p>
 
 <p>By analogy, we will use the name <em>gas</em> for the parameter which puts a
-bound on the number of reduction steps.  <code class="highlighter-rouge">Gas</code> is specified by a natural number:</p>
+bound on the number of reduction steps.  <code class="language-plaintext highlighter-rouge">Gas</code> is specified by a natural number:</p>
 <pre class="Agda"><a id="30197" class="Keyword">data</a> <a id="Gas"></a><a id="30202" href="/PLFA-zh/Properties/#30202" class="Datatype">Gas</a> <a id="30206" class="Symbol">:</a> <a id="30208" class="PrimitiveType">Set</a> <a id="30212" class="Keyword">where</a>
   <a id="Gas.gas"></a><a id="30220" href="/PLFA-zh/Properties/#30220" class="InductiveConstructor">gas</a> <a id="30224" class="Symbol">:</a> <a id="30226" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="30228" class="Symbol">→</a> <a id="30230" href="plfa.Properties.html#30202" class="Datatype">Gas</a>
 </pre>
-<p>When our evaluator returns a term <code class="highlighter-rouge">N</code>, it will either give evidence that
-<code class="highlighter-rouge">N</code> is a value or indicate that it ran out of gas:</p>
+<p>When our evaluator returns a term <code class="language-plaintext highlighter-rouge">N</code>, it will either give evidence that
+<code class="language-plaintext highlighter-rouge">N</code> is a value or indicate that it ran out of gas:</p>
 <pre class="Agda"><a id="30366" class="Keyword">data</a> <a id="Finished"></a><a id="30371" href="/PLFA-zh/Properties/#30371" class="Datatype">Finished</a> <a id="30380" class="Symbol">(</a><a id="30381" href="plfa.Properties.html#30381" class="Bound">N</a> <a id="30383" class="Symbol">:</a> <a id="30385" href="/PLFA-zh/Lambda/#3748" class="Datatype">Term</a><a id="30389" class="Symbol">)</a> <a id="30391" class="Symbol">:</a> <a id="30393" class="PrimitiveType">Set</a> <a id="30397" class="Keyword">where</a>
 
   <a id="Finished.done"></a><a id="30406" href="/PLFA-zh/Properties/#30406" class="InductiveConstructor">done</a> <a id="30411" class="Symbol">:</a>
@@ -1055,8 +1055,8 @@ bound on the number of reduction steps.  <code class="highlighter-rouge">Gas</co
       <a id="30483" class="Comment">----------</a>
       <a id="30500" href="/PLFA-zh/Properties/#30371" class="Datatype">Finished</a> <a id="30509" href="plfa.Properties.html#30381" class="Bound">N</a>
 </pre>
-<p>Given a term <code class="highlighter-rouge">L</code> of type <code class="highlighter-rouge">A</code>, the evaluator will, for some <code class="highlighter-rouge">N</code>, return
-a reduction sequence from <code class="highlighter-rouge">L</code> to <code class="highlighter-rouge">N</code> and an indication of whether
+<p>Given a term <code class="language-plaintext highlighter-rouge">L</code> of type <code class="language-plaintext highlighter-rouge">A</code>, the evaluator will, for some <code class="language-plaintext highlighter-rouge">N</code>, return
+a reduction sequence from <code class="language-plaintext highlighter-rouge">L</code> to <code class="language-plaintext highlighter-rouge">N</code> and an indication of whether
 reduction finished:</p>
 <pre class="Agda"><a id="30676" class="Keyword">data</a> <a id="Steps"></a><a id="30681" href="/PLFA-zh/Properties/#30681" class="Datatype">Steps</a> <a id="30687" class="Symbol">(</a><a id="30688" href="plfa.Properties.html#30688" class="Bound">L</a> <a id="30690" class="Symbol">:</a> <a id="30692" href="/PLFA-zh/Lambda/#3748" class="Datatype">Term</a><a id="30696" class="Symbol">)</a> <a id="30698" class="Symbol">:</a> <a id="30700" class="PrimitiveType">Set</a> <a id="30704" class="Keyword">where</a>
 
@@ -1079,34 +1079,34 @@ and returns the corresponding steps:</p>
 <a id="31162" class="Symbol">...</a> <a id="31166" class="Symbol">|</a> <a id="31168" href="/PLFA-zh/Properties/#7383" class="InductiveConstructor">step</a> <a id="31173" href="plfa.Properties.html#31173" class="Bound">L—→M</a> <a id="31178" class="Keyword">with</a> <a id="31183" href="plfa.Properties.html#30897" class="Function">eval</a> <a id="31188" class="Symbol">(</a><a id="31189" href="plfa.Properties.html#30220" class="InductiveConstructor">gas</a> <a id="31193" class="Bound">m</a><a id="31194" class="Symbol">)</a> <a id="31196" class="Symbol">(</a><a id="31197" href="plfa.Properties.html#26611" class="Function">preserve</a> <a id="31206" class="Bound">⊢L</a> <a id="31209" href="plfa.Properties.html#31173" class="Bound">L—→M</a><a id="31213" class="Symbol">)</a>
 <a id="31215" class="Symbol">...</a>    <a id="31222" class="Symbol">|</a> <a id="31224" href="/PLFA-zh/Properties/#30713" class="InductiveConstructor">steps</a> <a id="31230" href="plfa.Properties.html#31230" class="Bound">M—↠N</a> <a id="31235" href="plfa.Properties.html#31235" class="Bound">fin</a>                               <a id="31269" class="Symbol">=</a>  <a id="31272" href="plfa.Properties.html#30713" class="InductiveConstructor">steps</a> <a id="31278" class="Symbol">(</a><a id="31279" class="Bound">L</a> <a id="31281" href="/PLFA-zh/Lambda/#22624" class="InductiveConstructor Operator">—→⟨</a> <a id="31285" class="Bound">L—→M</a> <a id="31290" href="plfa.Lambda.html#22624" class="InductiveConstructor Operator">⟩</a> <a id="31292" href="plfa.Properties.html#31230" class="Bound">M—↠N</a><a id="31296" class="Symbol">)</a> <a id="31298" href="plfa.Properties.html#31235" class="Bound">fin</a>
 </pre>
-<p>Let <code class="highlighter-rouge">L</code> be the name of the term we are reducing, and <code class="highlighter-rouge">⊢L</code> be the
-evidence that <code class="highlighter-rouge">L</code> is well typed.  We consider the amount of gas
+<p>Let <code class="language-plaintext highlighter-rouge">L</code> be the name of the term we are reducing, and <code class="language-plaintext highlighter-rouge">⊢L</code> be the
+evidence that <code class="language-plaintext highlighter-rouge">L</code> is well typed.  We consider the amount of gas
 remaining.  There are two possibilities:</p>
 
 <ul>
   <li>
     <p>It is zero, so we stop early.  We return the trivial reduction
-sequence <code class="highlighter-rouge">L —↠ L</code>, evidence that <code class="highlighter-rouge">L</code> is well typed, and an
+sequence <code class="language-plaintext highlighter-rouge">L —↠ L</code>, evidence that <code class="language-plaintext highlighter-rouge">L</code> is well typed, and an
 indication that we are out of gas.</p>
   </li>
   <li>
-    <p>It is non-zero and after the next step we have <code class="highlighter-rouge">m</code> gas remaining.
-Apply progress to the evidence that term <code class="highlighter-rouge">L</code> is well typed.  There
+    <p>It is non-zero and after the next step we have <code class="language-plaintext highlighter-rouge">m</code> gas remaining.
+Apply progress to the evidence that term <code class="language-plaintext highlighter-rouge">L</code> is well typed.  There
 are two possibilities:</p>
 
     <ul>
       <li>
-        <p>Term <code class="highlighter-rouge">L</code> is a value, so we are done. We return the
-trivial reduction sequence <code class="highlighter-rouge">L —↠ L</code>, evidence that <code class="highlighter-rouge">L</code> is
-well-typed, and the evidence that <code class="highlighter-rouge">L</code> is a value.</p>
+        <p>Term <code class="language-plaintext highlighter-rouge">L</code> is a value, so we are done. We return the
+trivial reduction sequence <code class="language-plaintext highlighter-rouge">L —↠ L</code>, evidence that <code class="language-plaintext highlighter-rouge">L</code> is
+well-typed, and the evidence that <code class="language-plaintext highlighter-rouge">L</code> is a value.</p>
       </li>
       <li>
-        <p>Term <code class="highlighter-rouge">L</code> steps to another term <code class="highlighter-rouge">M</code>.  Preservation provides
-evidence that <code class="highlighter-rouge">M</code> is also well typed, and we recursively invoke
-<code class="highlighter-rouge">eval</code> on the remaining gas.  The result is evidence that
-<code class="highlighter-rouge">M —↠ N</code>, together with evidence that <code class="highlighter-rouge">N</code> is well typed and an
+        <p>Term <code class="language-plaintext highlighter-rouge">L</code> steps to another term <code class="language-plaintext highlighter-rouge">M</code>.  Preservation provides
+evidence that <code class="language-plaintext highlighter-rouge">M</code> is also well typed, and we recursively invoke
+<code class="language-plaintext highlighter-rouge">eval</code> on the remaining gas.  The result is evidence that
+<code class="language-plaintext highlighter-rouge">M —↠ N</code>, together with evidence that <code class="language-plaintext highlighter-rouge">N</code> is well typed and an
 indication of whether reduction finished.  We combine the evidence
-that <code class="highlighter-rouge">L —→ M</code> and <code class="highlighter-rouge">M —↠ N</code> to return evidence that <code class="highlighter-rouge">L —↠ N</code>,
+that <code class="language-plaintext highlighter-rouge">L —→ M</code> and <code class="language-plaintext highlighter-rouge">M —↠ N</code> to return evidence that <code class="language-plaintext highlighter-rouge">L —↠ N</code>,
 together with the other relevant evidence.</p>
       </li>
     </ul>
@@ -1116,7 +1116,7 @@ together with the other relevant evidence.</p>
 <h3 id="examples">Examples</h3>
 
 <p>We can now use Agda to compute the non-terminating reduction
-sequence given earlier.  First, we show that the term <code class="highlighter-rouge">sucμ</code>
+sequence given earlier.  First, we show that the term <code class="language-plaintext highlighter-rouge">sucμ</code>
 is well typed:</p>
 <pre class="Agda"><a id="⊢sucμ"></a><a id="32576" href="/PLFA-zh/Properties/#32576" class="Function">⊢sucμ</a> <a id="32582" class="Symbol">:</a> <a id="32584" href="/PLFA-zh/Lambda/#31053" class="InductiveConstructor">∅</a> <a id="32586" href="plfa.Lambda.html#33418" class="Datatype Operator">⊢</a> <a id="32588" href="plfa.Lambda.html#4035" class="InductiveConstructor Operator">μ</a> <a id="32590" class="String">&quot;x&quot;</a> <a id="32594" href="plfa.Lambda.html#4035" class="InductiveConstructor Operator">⇒</a> <a id="32596" href="plfa.Lambda.html#3934" class="InductiveConstructor Operator">`suc</a> <a id="32601" href="plfa.Lambda.html#3767" class="InductiveConstructor Operator">`</a> <a id="32603" class="String">&quot;x&quot;</a> <a id="32607" href="plfa.Lambda.html#33418" class="Datatype Operator">⦂</a> <a id="32609" href="plfa.Lambda.html#29419" class="InductiveConstructor">`ℕ</a>
 <a id="32612" href="/PLFA-zh/Properties/#32576" class="Function">⊢sucμ</a> <a id="32618" class="Symbol">=</a> <a id="32620" href="/PLFA-zh/Lambda/#34098" class="InductiveConstructor">⊢μ</a> <a id="32623" class="Symbol">(</a><a id="32624" href="plfa.Lambda.html#33838" class="InductiveConstructor">⊢suc</a> <a id="32629" class="Symbol">(</a><a id="32630" href="plfa.Lambda.html#33474" class="InductiveConstructor">⊢`</a> <a id="32633" href="plfa.Properties.html#32648" class="Function">∋x</a><a id="32635" class="Symbol">))</a>
@@ -1158,11 +1158,11 @@ applied to successor and zero.  Supplying 100 steps of gas is more than enough:<
    <a id="33694" class="Symbol">(</a><a id="33695" href="/PLFA-zh/Properties/#30406" class="InductiveConstructor">done</a> <a id="33700" class="Symbol">(</a><a id="33701" href="/PLFA-zh/Lambda/#11673" class="InductiveConstructor">V-suc</a> <a id="33707" class="Symbol">(</a><a id="33708" href="plfa.Lambda.html#11673" class="InductiveConstructor">V-suc</a> <a id="33714" href="plfa.Lambda.html#11625" class="InductiveConstructor">V-zero</a><a id="33720" class="Symbol">)))</a>
 <a id="33724" class="Symbol">_</a> <a id="33726" class="Symbol">=</a> <a id="33728" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
 </pre>
-<p>The example above was generated by using <code class="highlighter-rouge">C-c C-n</code> to normalise the
+<p>The example above was generated by using <code class="language-plaintext highlighter-rouge">C-c C-n</code> to normalise the
 left-hand side of the equation and pasting in the result as the
 right-hand side of the equation.  The example reduction of the
 previous chapter was derived from this result, reformatting and
-writing <code class="highlighter-rouge">twoᶜ</code> and <code class="highlighter-rouge">sucᶜ</code> in place of their expansions.</p>
+writing <code class="language-plaintext highlighter-rouge">twoᶜ</code> and <code class="language-plaintext highlighter-rouge">sucᶜ</code> in place of their expansions.</p>
 
 <p>Next, we show two plus two is four:</p>
 <pre class="Agda"><a id="34093" href="/PLFA-zh/Properties/#34093" class="Function">_</a> <a id="34095" class="Symbol">:</a> <a id="34097" href="plfa.Properties.html#30897" class="Function">eval</a> <a id="34102" class="Symbol">(</a><a id="34103" href="plfa.Properties.html#30220" class="InductiveConstructor">gas</a> <a id="34107" class="Number">100</a><a id="34110" class="Symbol">)</a> <a id="34112" href="/PLFA-zh/Lambda/#38150" class="Function">⊢2+2</a> <a id="34117" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a>
@@ -1396,14 +1396,14 @@ editing the above.</p>
 <p>And again, the example in the previous section was derived by editing the
 above.</p>
 
-<h4 id="exercise-mul-eval-recommended">Exercise <code class="highlighter-rouge">mul-eval</code> (recommended)</h4>
+<h4 id="exercise-mul-eval-recommended">Exercise <code class="language-plaintext highlighter-rouge">mul-eval</code> (recommended)</h4>
 
 <p>Using the evaluator, confirm that two times two is four.</p>
 
 <pre class="Agda"><a id="40498" class="Comment">-- Your code goes here</a>
 </pre>
 
-<h4 id="exercise-progress-preservation">Exercise: <code class="highlighter-rouge">progress-preservation</code></h4>
+<h4 id="exercise-progress-preservation">Exercise: <code class="language-plaintext highlighter-rouge">progress-preservation</code></h4>
 
 <p>Without peeking at their statements above, write down the progress
 and preservation theorems for the simply typed lambda-calculus.</p>
@@ -1411,14 +1411,14 @@ and preservation theorems for the simply typed lambda-calculus.</p>
 <pre class="Agda"><a id="40703" class="Comment">-- Your code goes here</a>
 </pre>
 
-<h4 id="exercise-subject_expansion">Exercise <code class="highlighter-rouge">subject_expansion</code></h4>
+<h4 id="exercise-subject_expansion">Exercise <code class="language-plaintext highlighter-rouge">subject_expansion</code></h4>
 
-<p>We say that <code class="highlighter-rouge">M</code> <em>reduces</em> to <code class="highlighter-rouge">N</code> if <code class="highlighter-rouge">M —→ N</code>,
+<p>We say that <code class="language-plaintext highlighter-rouge">M</code> <em>reduces</em> to <code class="language-plaintext highlighter-rouge">N</code> if <code class="language-plaintext highlighter-rouge">M —→ N</code>,
 but we can also describe the same situation by saying
-that <code class="highlighter-rouge">N</code> <em>expands</em> to <code class="highlighter-rouge">M</code>.
+that <code class="language-plaintext highlighter-rouge">N</code> <em>expands</em> to <code class="language-plaintext highlighter-rouge">M</code>.
 The preservation property is sometimes called <em>subject reduction</em>.
 Its opposite is <em>subject expansion</em>, which holds if
-<code class="highlighter-rouge">M —→ N</code> and <code class="highlighter-rouge">∅ ⊢ N ⦂ A</code> imply <code class="highlighter-rouge">∅ ⊢ M ⦂ A</code>.
+<code class="language-plaintext highlighter-rouge">M —→ N</code> and <code class="language-plaintext highlighter-rouge">∅ ⊢ N ⦂ A</code> imply <code class="language-plaintext highlighter-rouge">∅ ⊢ M ⦂ A</code>.
 Find two counter-examples to subject expansion, one
 with case expressions and one not involving case expressions.</p>
 
@@ -1464,18 +1464,18 @@ any number of reduction steps leads to a term that is not stuck:</p>
 preservation, summarised this result with the slogan <em>well-typed terms
 don’t get stuck</em>.  (They were referring to earlier work by Robin
 Milner, who used denotational rather than operational semantics. He
-introduced <code class="highlighter-rouge">wrong</code> as the denotation of a term with a type error, and
+introduced <code class="language-plaintext highlighter-rouge">wrong</code> as the denotation of a term with a type error, and
 showed <em>well-typed terms don’t go wrong</em>.)</p>
 
-<h4 id="exercise-stuck">Exercise <code class="highlighter-rouge">stuck</code></h4>
+<h4 id="exercise-stuck">Exercise <code class="language-plaintext highlighter-rouge">stuck</code></h4>
 
 <p>Give an example of an ill-typed term that does get stuck.</p>
 
 <pre class="Agda"><a id="42530" class="Comment">-- Your code goes here</a>
 </pre>
-<h4 id="exercise-unstuck-recommended">Exercise <code class="highlighter-rouge">unstuck</code> (recommended)</h4>
+<h4 id="exercise-unstuck-recommended">Exercise <code class="language-plaintext highlighter-rouge">unstuck</code> (recommended)</h4>
 
-<p>Provide proofs of the three postulates, <code class="highlighter-rouge">unstuck</code>, <code class="highlighter-rouge">preserves</code>, and <code class="highlighter-rouge">wttdgs</code> above.</p>
+<p>Provide proofs of the three postulates, <code class="language-plaintext highlighter-rouge">unstuck</code>, <code class="language-plaintext highlighter-rouge">preserves</code>, and <code class="language-plaintext highlighter-rouge">wttdgs</code> above.</p>
 
 <pre class="Agda"><a id="42686" class="Comment">-- Your code goes here</a>
 </pre>
@@ -1487,7 +1487,7 @@ For completeness, we present a formal proof here.</p>
 <p>A case term takes four arguments (three subterms and a bound
 variable), and our proof will need a variant
 of congruence to deal with functions of four arguments.  It
-is exactly analogous to <code class="highlighter-rouge">cong</code> and <code class="highlighter-rouge">cong₂</code> as defined previously:</p>
+is exactly analogous to <code class="language-plaintext highlighter-rouge">cong</code> and <code class="language-plaintext highlighter-rouge">cong₂</code> as defined previously:</p>
 <pre class="Agda"><a id="cong₄"></a><a id="43095" href="/PLFA-zh/Properties/#43095" class="Function">cong₄</a> <a id="43101" class="Symbol">:</a> <a id="43103" class="Symbol">∀</a> <a id="43105" class="Symbol">{</a><a id="43106" href="plfa.Properties.html#43106" class="Bound">A</a> <a id="43108" href="plfa.Properties.html#43108" class="Bound">B</a> <a id="43110" href="plfa.Properties.html#43110" class="Bound">C</a> <a id="43112" href="plfa.Properties.html#43112" class="Bound">D</a> <a id="43114" href="plfa.Properties.html#43114" class="Bound">E</a> <a id="43116" class="Symbol">:</a> <a id="43118" class="PrimitiveType">Set</a><a id="43121" class="Symbol">}</a> <a id="43123" class="Symbol">(</a><a id="43124" href="plfa.Properties.html#43124" class="Bound">f</a> <a id="43126" class="Symbol">:</a> <a id="43128" href="plfa.Properties.html#43106" class="Bound">A</a> <a id="43130" class="Symbol">→</a> <a id="43132" href="plfa.Properties.html#43108" class="Bound">B</a> <a id="43134" class="Symbol">→</a> <a id="43136" href="plfa.Properties.html#43110" class="Bound">C</a> <a id="43138" class="Symbol">→</a> <a id="43140" href="plfa.Properties.html#43112" class="Bound">D</a> <a id="43142" class="Symbol">→</a> <a id="43144" href="plfa.Properties.html#43114" class="Bound">E</a><a id="43145" class="Symbol">)</a>
   <a id="43149" class="Symbol">{</a><a id="43150" href="/PLFA-zh/Properties/#43150" class="Bound">s</a> <a id="43152" href="plfa.Properties.html#43152" class="Bound">w</a> <a id="43154" class="Symbol">:</a> <a id="43156" href="plfa.Properties.html#43106" class="Bound">A</a><a id="43157" class="Symbol">}</a> <a id="43159" class="Symbol">{</a><a id="43160" href="plfa.Properties.html#43160" class="Bound">t</a> <a id="43162" href="plfa.Properties.html#43162" class="Bound">x</a> <a id="43164" class="Symbol">:</a> <a id="43166" href="plfa.Properties.html#43108" class="Bound">B</a><a id="43167" class="Symbol">}</a> <a id="43169" class="Symbol">{</a><a id="43170" href="plfa.Properties.html#43170" class="Bound">u</a> <a id="43172" href="plfa.Properties.html#43172" class="Bound">y</a> <a id="43174" class="Symbol">:</a> <a id="43176" href="plfa.Properties.html#43110" class="Bound">C</a><a id="43177" class="Symbol">}</a> <a id="43179" class="Symbol">{</a><a id="43180" href="plfa.Properties.html#43180" class="Bound">v</a> <a id="43182" href="plfa.Properties.html#43182" class="Bound">z</a> <a id="43184" class="Symbol">:</a> <a id="43186" href="plfa.Properties.html#43112" class="Bound">D</a><a id="43187" class="Symbol">}</a>
   <a id="43191" class="Symbol">→</a> <a id="43193" href="/PLFA-zh/Properties/#43150" class="Bound">s</a> <a id="43195" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="43197" href="plfa.Properties.html#43152" class="Bound">w</a> <a id="43199" class="Symbol">→</a> <a id="43201" href="plfa.Properties.html#43160" class="Bound">t</a> <a id="43203" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="43205" href="plfa.Properties.html#43162" class="Bound">x</a> <a id="43207" class="Symbol">→</a> <a id="43209" href="plfa.Properties.html#43170" class="Bound">u</a> <a id="43211" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="43213" href="plfa.Properties.html#43172" class="Bound">y</a> <a id="43215" class="Symbol">→</a> <a id="43217" href="plfa.Properties.html#43180" class="Bound">v</a> <a id="43219" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="43221" href="plfa.Properties.html#43182" class="Bound">z</a> <a id="43223" class="Symbol">→</a> <a id="43225" href="plfa.Properties.html#43124" class="Bound">f</a> <a id="43227" href="plfa.Properties.html#43150" class="Bound">s</a> <a id="43229" href="plfa.Properties.html#43160" class="Bound">t</a> <a id="43231" href="plfa.Properties.html#43170" class="Bound">u</a> <a id="43233" href="plfa.Properties.html#43180" class="Bound">v</a> <a id="43235" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="43237" href="plfa.Properties.html#43124" class="Bound">f</a> <a id="43239" href="plfa.Properties.html#43152" class="Bound">w</a> <a id="43241" href="plfa.Properties.html#43162" class="Bound">x</a> <a id="43243" href="plfa.Properties.html#43172" class="Bound">y</a> <a id="43245" href="plfa.Properties.html#43182" class="Bound">z</a>
@@ -1524,50 +1524,50 @@ three typical cases:</p>
 
 <ul>
   <li>
-    <p>Two instances of <code class="highlighter-rouge">ξ-·₁</code>:</p>
+    <p>Two instances of <code class="language-plaintext highlighter-rouge">ξ-·₁</code>:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′                 L —→ L″
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′                 L —→ L″
 --------------- ξ-·₁    --------------- ξ-·₁
 L · M —→ L′ · M         L · M —→ L″ · M
 </code></pre></div>    </div>
 
-    <p>By induction we have <code class="highlighter-rouge">L′ ≡ L″</code>, and hence by congruence
-<code class="highlighter-rouge">L′ · M ≡ L″ · M</code>.</p>
+    <p>By induction we have <code class="language-plaintext highlighter-rouge">L′ ≡ L″</code>, and hence by congruence
+<code class="language-plaintext highlighter-rouge">L′ · M ≡ L″ · M</code>.</p>
   </li>
   <li>
-    <p>An instance of <code class="highlighter-rouge">ξ-·₁</code> and an instance of <code class="highlighter-rouge">ξ-·₂</code>:</p>
+    <p>An instance of <code class="language-plaintext highlighter-rouge">ξ-·₁</code> and an instance of <code class="language-plaintext highlighter-rouge">ξ-·₂</code>:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                        Value L
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                        Value L
 L —→ L′                 M —→ M″
 --------------- ξ-·₁    --------------- ξ-·₂
 L · M —→ L′ · M         L · M —→ L · M″
 </code></pre></div>    </div>
 
-    <p>The rule on the left requires <code class="highlighter-rouge">L</code> to reduce, but the rule on the right
-requires <code class="highlighter-rouge">L</code> to be a value.  This is a contradiction since values do
-not reduce.  If the value constraint was removed from <code class="highlighter-rouge">ξ-·₂</code>, or from
+    <p>The rule on the left requires <code class="language-plaintext highlighter-rouge">L</code> to reduce, but the rule on the right
+requires <code class="language-plaintext highlighter-rouge">L</code> to be a value.  This is a contradiction since values do
+not reduce.  If the value constraint was removed from <code class="language-plaintext highlighter-rouge">ξ-·₂</code>, or from
 one of the other reduction rules, then determinism would no longer hold.</p>
   </li>
   <li>
-    <p>Two instances of <code class="highlighter-rouge">β-ƛ</code>:</p>
+    <p>Two instances of <code class="language-plaintext highlighter-rouge">β-ƛ</code>:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value V                              Value V
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value V                              Value V
 ----------------------------- β-ƛ    ----------------------------- β-ƛ
 (ƛ x ⇒ N) · V —→ N [ x := V ]        (ƛ x ⇒ N) · V —→ N [ x := V ]
 </code></pre></div>    </div>
 
     <p>Since the left-hand sides are identical, the right-hand sides are
-also identical. The formal proof simply invokes <code class="highlighter-rouge">refl</code>.</p>
+also identical. The formal proof simply invokes <code class="language-plaintext highlighter-rouge">refl</code>.</p>
   </li>
 </ul>
 
 <p>Five of the 18 lines in the above proof are redundant, e.g., the case
-when one rule is <code class="highlighter-rouge">ξ-·₁</code> and the other is <code class="highlighter-rouge">ξ-·₂</code> is considered twice,
-once with <code class="highlighter-rouge">ξ-·₁</code> first and <code class="highlighter-rouge">ξ-·₂</code> second, and the other time with the
+when one rule is <code class="language-plaintext highlighter-rouge">ξ-·₁</code> and the other is <code class="language-plaintext highlighter-rouge">ξ-·₂</code> is considered twice,
+once with <code class="language-plaintext highlighter-rouge">ξ-·₁</code> first and <code class="language-plaintext highlighter-rouge">ξ-·₂</code> second, and the other time with the
 two swapped.  What we might like to do is delete the redundant lines
 and add</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>det M—→M′ M—→M″ = sym (det M—→M″ M—→M′)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>det M—→M′ M—→M″ = sym (det M—→M″ M—→M′)
 </code></pre></div></div>
 
 <p>to the bottom of the proof. But this does not work: the termination
@@ -1576,15 +1576,15 @@ and neither is smaller.</p>
 
 <h4 id="quiz">Quiz</h4>
 
-<p>Suppose we add a new term <code class="highlighter-rouge">zap</code> with the following reduction rule</p>
+<p>Suppose we add a new term <code class="language-plaintext highlighter-rouge">zap</code> with the following reduction rule</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-------- β-zap
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-------- β-zap
 M —→ zap
 </code></pre></div></div>
 
 <p>and the following typing rule:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------- ⊢zap
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------- ⊢zap
 Γ ⊢ zap ⦂ A
 </code></pre></div></div>
 
@@ -1595,7 +1595,7 @@ false, give a counterexample:</p>
 
 <ul>
   <li>
-    <p>Determinism of <code class="highlighter-rouge">step</code></p>
+    <p>Determinism of <code class="language-plaintext highlighter-rouge">step</code></p>
   </li>
   <li>
     <p>Progress</p>
@@ -1607,10 +1607,10 @@ false, give a counterexample:</p>
 
 <h4 id="quiz-1">Quiz</h4>
 
-<p>Suppose instead that we add a new term <code class="highlighter-rouge">foo</code> with the following
+<p>Suppose instead that we add a new term <code class="language-plaintext highlighter-rouge">foo</code> with the following
 reduction rules:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------------------ β-foo₁
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------------------ β-foo₁
 (λ x ⇒ ` x) —→ foo
 
 ----------- β-foo₂
@@ -1624,7 +1624,7 @@ false, give a counterexample:</p>
 
 <ul>
   <li>
-    <p>Determinism of <code class="highlighter-rouge">step</code></p>
+    <p>Determinism of <code class="language-plaintext highlighter-rouge">step</code></p>
   </li>
   <li>
     <p>Progress</p>
@@ -1636,7 +1636,7 @@ false, give a counterexample:</p>
 
 <h4 id="quiz-2">Quiz</h4>
 
-<p>Suppose instead that we remove the rule <code class="highlighter-rouge">ξ·₁</code> from the step
+<p>Suppose instead that we remove the rule <code class="language-plaintext highlighter-rouge">ξ·₁</code> from the step
 relation. Which of the following properties remain
 true in the absence of this rule?  For each one, write either
 “remains true” or else “becomes false.” If a property becomes
@@ -1644,7 +1644,7 @@ false, give a counterexample:</p>
 
 <ul>
   <li>
-    <p>Determinism of <code class="highlighter-rouge">step</code></p>
+    <p>Determinism of <code class="language-plaintext highlighter-rouge">step</code></p>
   </li>
   <li>
     <p>Progress</p>
@@ -1657,13 +1657,13 @@ false, give a counterexample:</p>
 <h4 id="quiz-3">Quiz</h4>
 
 <p>We can enumerate all the computable function from naturals to
-naturals, by writing out all programs of type <code class="highlighter-rouge">`ℕ ⇒ `ℕ</code> in
-lexical order.  Write <code class="highlighter-rouge">fᵢ</code> for the <code class="highlighter-rouge">i</code>‘th function in this list.</p>
+naturals, by writing out all programs of type <code class="language-plaintext highlighter-rouge">`ℕ ⇒ `ℕ</code> in
+lexical order.  Write <code class="language-plaintext highlighter-rouge">fᵢ</code> for the <code class="language-plaintext highlighter-rouge">i</code>‘th function in this list.</p>
 
 <p>Say we add a typing rule that applies the above enumeration
 to interpret a natural as a function from naturals to naturals:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ `ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ `ℕ
 Γ ⊢ M ⦂ `ℕ
 -------------- _·ℕ_
 Γ ⊢ L · M ⦂ `ℕ
@@ -1671,7 +1671,7 @@ to interpret a natural as a function from naturals to naturals:</p>
 
 <p>And that we add the corresponding reduction rule:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fᵢ(m) —→ n
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fᵢ(m) —→ n
 ---------- δ
 i · m —→ n
 </code></pre></div></div>
@@ -1683,7 +1683,7 @@ false, give a counterexample:</p>
 
 <ul>
   <li>
-    <p>Determinism of <code class="highlighter-rouge">step</code></p>
+    <p>Determinism of <code class="language-plaintext highlighter-rouge">step</code></p>
   </li>
   <li>
     <p>Progress</p>
@@ -1700,7 +1700,7 @@ other alterations we would wish to make to the system?</p>
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ƛ  U+019B  LATIN SMALL LETTER LAMBDA WITH STROKE (\Gl-)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ƛ  U+019B  LATIN SMALL LETTER LAMBDA WITH STROKE (\Gl-)
 Δ  U+0394  GREEK CAPITAL LETTER DELTA (\GD or \Delta)
 β  U+03B2  GREEK SMALL LETTER BETA (\Gb or \beta)
 δ  U+03B4  GREEK SMALL LETTER DELTA (\Gd or \delta)
@@ -1773,6 +1773,18 @@ other alterations we would wish to make to the system?</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

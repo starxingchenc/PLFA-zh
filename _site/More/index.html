@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>More: Additional constructs of simply-typed lambda calculus | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+</title><!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="More: Additional constructs of simply-typed lambda calculus" />
 <meta property="og:locale" content="en_US" />
@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/More/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/More/","headline":"More: Additional constructs of simply-typed lambda calculus","@context":"http://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"More: Additional constructs of simply-typed lambda calculus","url":"https://agda-zh.github.io/PLFA-zh/More/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -112,12 +112,12 @@ correctness of translations will be the subject of the next chapter.</p>
 
 <h2 id="primitive-numbers">Primitive numbers</h2>
 
-<p>We define a <code class="highlighter-rouge">Nat</code> type equivalent to the built-in natural number type
+<p>We define a <code class="language-plaintext highlighter-rouge">Nat</code> type equivalent to the built-in natural number type
 with multiplication as a primitive operation on numbers:</p>
 
 <h3 id="syntax">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   Nat                                 primitive natural numbers
 
 L, M, N ::= ...                     Terms
@@ -130,11 +130,11 @@ V, W ::= ...                        Values
 
 <h3 id="typing">Typing</h3>
 
-<p>The hypothesis of the <code class="highlighter-rouge">con</code> rule is unusual, in that
+<p>The hypothesis of the <code class="language-plaintext highlighter-rouge">con</code> rule is unusual, in that
 it refers to a typing judgment of Agda rather than a
 typing judgment of the defined calculus:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c : ℕ
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c : ℕ
 --------------- con
 Γ ⊢ con c : Nat
 
@@ -151,7 +151,7 @@ is called a δ rule.  Here the δ rule defines multiplication of
 primitive numbers in terms of multiplication of naturals as given
 by the Agda standard prelude:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
 ----------------- ξ-*₁
 L `* M —→ L′ `* M
 
@@ -167,7 +167,7 @@ con c `* con d —→ con (c * d)
 
 <p>Here is a function to cube a primitive number:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cube : ∅ ⊢ Nat ⇒ Nat
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cube : ∅ ⊢ Nat ⇒ Nat
 cube = ƛ x ⇒ x `* x `* x
 </code></pre></div></div>
 
@@ -178,13 +178,13 @@ types or values:</p>
 
 <h3 id="syntax-1">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L, M, N ::= ...                     Terms
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L, M, N ::= ...                     Terms
   `let x `= M `in N                   let
 </code></pre></div></div>
 
 <h3 id="typing-1">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
 Γ , x ⦂ A ⊢ N ⦂ B
 ------------------------- `let
 Γ ⊢ `let x `= M `in N ⦂ B
@@ -192,7 +192,7 @@ types or values:</p>
 
 <h3 id="reduction-1">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
 --------------------------------------- ξ-let
 `let x `= M `in N —→ `let x `= M′ `in N
 
@@ -204,7 +204,7 @@ types or values:</p>
 
 <p>Here is a function to raise a primitive number to the tenth power:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exp10 : ∅ ⊢ Nat ⇒ Nat
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exp10 : ∅ ⊢ Nat ⇒ Nat
 exp10 = ƛ x ⇒ `let x2  `= x  `* x  `in
               `let x4  `= x2 `* x2 `in
               `let x5  `= x4 `* x  `in
@@ -215,17 +215,17 @@ exp10 = ƛ x ⇒ `let x2  `= x  `* x  `in
 
 <p>We can translate each <em>let</em> term into an application of an abstraction:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(`let x `= M `in N) †  =  (ƛ x ⇒ (N †)) · (M †)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(`let x `= M `in N) †  =  (ƛ x ⇒ (N †)) · (M †)
 </code></pre></div></div>
 
-<p>Here <code class="highlighter-rouge">M †</code> is the translation of term <code class="highlighter-rouge">M</code> from a calculus with the
+<p>Here <code class="language-plaintext highlighter-rouge">M †</code> is the translation of term <code class="language-plaintext highlighter-rouge">M</code> from a calculus with the
 construct to a calculus without the construct.</p>
 
 <h2 id="products">Products</h2>
 
 <h3 id="syntax-2">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   A `× B                              product type
 
 L, M, N ::= ...                     Terms
@@ -239,7 +239,7 @@ V, W ::= ...                        Values
 
 <h3 id="typing-2">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
 Γ ⊢ N ⦂ B
 ----------------------- `⟨_,_⟩ or `×-I
 Γ ⊢ `⟨ M , N ⟩ ⦂ A `× B
@@ -255,7 +255,7 @@ V, W ::= ...                        Values
 
 <h3 id="reduction-2">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
 ------------------------- ξ-⟨,⟩₁
 `⟨ M , N ⟩ —→ `⟨ M′ , N ⟩
 
@@ -282,7 +282,7 @@ L —→ L′
 
 <p>Here is a function to swap the components of a pair:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swap× : ∅ ⊢ A `× B ⇒ B `× A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swap× : ∅ ⊢ A `× B ⇒ B `× A
 swap× = ƛ z ⇒ `⟨ proj₂ z , proj₁ z ⟩
 </code></pre></div></div>
 
@@ -295,7 +295,7 @@ and reduction rules:</p>
 
 <h3 id="syntax-3">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   A `× B                              product type
 
 L, M, N ::= ...                     Terms
@@ -308,7 +308,7 @@ V, W ::=                            Values
 
 <h3 id="typing-3">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ A `× B
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ A `× B
 Γ , x ⦂ A , y ⦂ B ⊢ N ⦂ C
 ------------------------------- case× or ×-E
 Γ ⊢ case× L [⟨ x , y ⟩⇒ N ] ⦂ C
@@ -316,7 +316,7 @@ V, W ::=                            Values
 
 <h3 id="reduction-3">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
 --------------------------------------------------- ξ-case×
 case× L [⟨ x , y ⟩⇒ N ] —→ case× L′ [⟨ x , y ⟩⇒ N ]
 
@@ -328,7 +328,7 @@ case× `⟨ V , W ⟩ [⟨ x , y ⟩⇒ N ] —→ N [ x := V ][ y := W ]
 
 <p>Here is a function to swap the components of a pair rewritten in the new notation:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swap×-case : ∅ ⊢ A `× B ⇒ B `× A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swap×-case : ∅ ⊢ A `× B ⇒ B `× A
 swap×-case = ƛ z ⇒ case× z
                      [⟨ x , y ⟩⇒ `⟨ y , x ⟩ ]
 </code></pre></div></div>
@@ -337,7 +337,7 @@ swap×-case = ƛ z ⇒ case× z
 
 <p>We can translate the alternative formulation into the one with projections:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (case× L [⟨ x , y ⟩⇒ N ]) †
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  (case× L [⟨ x , y ⟩⇒ N ]) †
 =
   `let z `= (L †) `in
   `let x `= `proj₁ z `in
@@ -345,27 +345,27 @@ swap×-case = ƛ z ⇒ case× z
   (N †)
 </code></pre></div></div>
 
-<p>Here <code class="highlighter-rouge">z</code> is a variable that does not appear free in <code class="highlighter-rouge">N</code>.  We refer
+<p>Here <code class="language-plaintext highlighter-rouge">z</code> is a variable that does not appear free in <code class="language-plaintext highlighter-rouge">N</code>.  We refer
 to such a variable as <em>fresh</em>.</p>
 
 <p>One might think that we could instead use a more compact translation:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- WRONG
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- WRONG
   (case× L [⟨ x , y ⟩⇒ N ]) †
 =
   (N †) [ x := proj₁ (L †) ][ y := proj₂ (L †) ]
 </code></pre></div></div>
 
-<p>But this behaves differently.  The first term always reduces <code class="highlighter-rouge">L</code>
-before <code class="highlighter-rouge">N</code>, and it computes <code class="highlighter-rouge">proj₁</code> and <code class="highlighter-rouge">proj₂</code> exactly once.  The
-second term does not reduce <code class="highlighter-rouge">L</code> to a value before reducing <code class="highlighter-rouge">N</code>, and
-depending on how many times and where <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> appear in <code class="highlighter-rouge">N</code>, it
-may reduce <code class="highlighter-rouge">L</code> many times or not at all, and it may compute <code class="highlighter-rouge">proj₁</code>
-and <code class="highlighter-rouge">proj₂</code> many times or not at all.</p>
+<p>But this behaves differently.  The first term always reduces <code class="language-plaintext highlighter-rouge">L</code>
+before <code class="language-plaintext highlighter-rouge">N</code>, and it computes <code class="language-plaintext highlighter-rouge">proj₁</code> and <code class="language-plaintext highlighter-rouge">proj₂</code> exactly once.  The
+second term does not reduce <code class="language-plaintext highlighter-rouge">L</code> to a value before reducing <code class="language-plaintext highlighter-rouge">N</code>, and
+depending on how many times and where <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> appear in <code class="language-plaintext highlighter-rouge">N</code>, it
+may reduce <code class="language-plaintext highlighter-rouge">L</code> many times or not at all, and it may compute <code class="language-plaintext highlighter-rouge">proj₁</code>
+and <code class="language-plaintext highlighter-rouge">proj₂</code> many times or not at all.</p>
 
 <p>We can also translate back the other way:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(`proj₁ L) ‡  =  case× (L ‡) [⟨ x , y ⟩⇒ x ]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(`proj₁ L) ‡  =  case× (L ‡) [⟨ x , y ⟩⇒ x ]
 (`proj₂ L) ‡  =  case× (L ‡) [⟨ x , y ⟩⇒ y ]
 </code></pre></div></div>
 
@@ -373,7 +373,7 @@ and <code class="highlighter-rouge">proj₂</code> many times or not at all.</p>
 
 <h3 id="syntax-4">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   A `⊎ B                              sum type
 
 L, M, N ::= ...                     Terms
@@ -388,7 +388,7 @@ V, W ::= ...                        Values
 
 <h3 id="typing-4">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ M ⦂ A
 -------------------- `inj₁ or ⊎-I₁
 Γ ⊢ `inj₁ M ⦂ A `⊎ B
 
@@ -405,7 +405,7 @@ V, W ::= ...                        Values
 
 <h3 id="reduction-4">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
 ------------------- ξ-inj₁
 `inj₁ M —→ `inj₁ M′
 
@@ -428,7 +428,7 @@ case⊎ (`inj₂ W) [inj₁ x ⇒ M |inj₂ y ⇒ N ] —→ N [ y := W ]
 
 <p>Here is a function to swap the components of a sum:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swap⊎ : ∅ ⊢ A `⊎ B ⇒ B `⊎ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swap⊎ : ∅ ⊢ A `⊎ B ⇒ B `⊎ A
 swap⊎ = ƛ z ⇒ case⊎ z
                 [inj₁ x ⇒ `inj₂ x
                 |inj₂ y ⇒ `inj₁ y ]
@@ -442,7 +442,7 @@ There are no reduction rules.</p>
 
 <h3 id="syntax-5">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   `⊤                                  unit type
 
 L, M, N ::= ...                     Terms
@@ -454,7 +454,7 @@ V, W ::= ...                        Values
 
 <h3 id="typing-5">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------------ `tt or ⊤-I
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------------ `tt or ⊤-I
 Γ ⊢ `tt ⦂ `⊤
 </code></pre></div></div>
 
@@ -464,9 +464,9 @@ V, W ::= ...                        Values
 
 <h3 id="example-5">Example</h3>
 
-<p>Here is the isomorphism between <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">A `× `⊤</code>:</p>
+<p>Here is the isomorphism between <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">A `× `⊤</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to×⊤ : ∅ ⊢ A ⇒ A `× `⊤
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to×⊤ : ∅ ⊢ A ⇒ A `× `⊤
 to×⊤ = ƛ x ⇒ `⟨ x , `tt ⟩
 
 from×⊤ : ∅ ⊢ A `× `⊤ ⇒ A
@@ -481,7 +481,7 @@ We repeat the syntax in full, but only give the new type and reduction rules:</p
 
 <h3 id="syntax-6">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   `⊤                                  unit type
 
 L, M, N ::= ...                     Terms
@@ -494,7 +494,7 @@ V, W ::= ...                        Values
 
 <h3 id="typing-6">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ `⊤
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ `⊤
 Γ ⊢ M ⦂ A
 ------------------------ case⊤ or ⊤-E
 Γ ⊢ case⊤ L [tt⇒ M ] ⦂ A
@@ -502,7 +502,7 @@ V, W ::= ...                        Values
 
 <h3 id="reduction-6">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
 ------------------------------------- ξ-case⊤
 case⊤ L [tt⇒ M ] —→ case⊤ L′ [tt⇒ M ]
 
@@ -512,9 +512,9 @@ case⊤ `tt [tt⇒ M ] —→ M
 
 <h3 id="example-6">Example</h3>
 
-<p>Here is half the isomorphism between <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">A `× `⊤</code> rewritten in the new notation:</p>
+<p>Here is half the isomorphism between <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">A `× `⊤</code> rewritten in the new notation:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from×⊤-case : ∅ ⊢ A `× `⊤ ⇒ A
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from×⊤-case : ∅ ⊢ A `× `⊤ ⇒ A
 from×⊤-case = ƛ z ⇒ case× z
                       [⟨ x , y ⟩⇒ case⊤ y
                                     [tt⇒ x ] ]
@@ -524,21 +524,21 @@ from×⊤-case = ƛ z ⇒ case× z
 
 <p>We can translate the alternative formulation into one without case:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(case⊤ L [tt⇒ M ]) †  =  `let z `= (L †) `in (M †)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(case⊤ L [tt⇒ M ]) †  =  `let z `= (L †) `in (M †)
 </code></pre></div></div>
 
-<p>Here <code class="highlighter-rouge">z</code> is a variable that does not appear free in <code class="highlighter-rouge">M</code>.</p>
+<p>Here <code class="language-plaintext highlighter-rouge">z</code> is a variable that does not appear free in <code class="language-plaintext highlighter-rouge">M</code>.</p>
 
 <h2 id="empty-type">Empty type</h2>
 
 <p>For the empty type, there is a way to eliminate values of
 the type but no way to introduce values of the type.  There are no
-values of the type and no β rule, but there is a ξ rule.  The <code class="highlighter-rouge">case⊥</code>
-construct plays a role similar to <code class="highlighter-rouge">⊥-elim</code> in Agda:</p>
+values of the type and no β rule, but there is a ξ rule.  The <code class="language-plaintext highlighter-rouge">case⊥</code>
+construct plays a role similar to <code class="language-plaintext highlighter-rouge">⊥-elim</code> in Agda:</p>
 
 <h3 id="syntax-7">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   `⊥                                  empty type
 
 L, M, N ::= ...                     Terms
@@ -547,23 +547,23 @@ L, M, N ::= ...                     Terms
 
 <h3 id="typing-7">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ `⊥
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Γ ⊢ L ⦂ `⊥
 ------------------ case⊥ or ⊥-E
 Γ ⊢ case⊥ L [] ⦂ A
 </code></pre></div></div>
 
 <h3 id="reduction-7">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L —→ L′
 ------------------------- ξ-case⊥
 case⊥ L [] —→ case⊥ L′ []
 </code></pre></div></div>
 
 <h3 id="example-7">Example</h3>
 
-<p>Here is the isomorphism between <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">A `⊎ `⊥</code>:</p>
+<p>Here is the isomorphism between <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">A `⊎ `⊥</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to⊎⊥ : ∅ ⊢ A ⇒ A `⊎ `⊥
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>to⊎⊥ : ∅ ⊢ A ⇒ A `⊎ `⊥
 to⊎⊥ = ƛ x ⇒ `inj₁ x
 
 from⊎⊥ : ∅ ⊢ A `⊎ `⊥ ⇒ A
@@ -577,7 +577,7 @@ from⊎⊥ = ƛ z ⇒ case⊎ z
 
 <h3 id="syntax-8">Syntax</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A, B, C ::= ...                     Types
   `List A                             list type
 
 L, M, N ::= ...                     Terms
@@ -592,7 +592,7 @@ V, W ::= ...                        Values
 
 <h3 id="typing-8">Typing</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------------- `[] or List-I₁
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>----------------- `[] or List-I₁
 Γ ⊢ `[] ⦂ `List A
 
 Γ ⊢ M ⦂ A
@@ -609,7 +609,7 @@ V, W ::= ...                        Values
 
 <h3 id="reduction-8">Reduction</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M —→ M′
 ----------------- ξ-∷₁
 M `∷ N —→ M′ `∷ N
 
@@ -632,7 +632,7 @@ caseL (V `∷ W) [[]⇒ M | x ∷ xs ⇒ N ] —→ N [ x := V ][ xs := W ]
 
 <p>Here is the map function for lists:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapL : ∅ ⊢ (A ⇒ B) ⇒ `List A ⇒ `List B
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mapL : ∅ ⊢ (A ⇒ B) ⇒ `List A ⇒ `List B
 mapL = μ mL ⇒ ƛ f ⇒ ƛ xs ⇒
          caseL xs
            [[]⇒ `[]
@@ -1265,7 +1265,7 @@ not fixed by the given arguments.</p>
      <a id="27798" href="/PLFA-zh/More/#15732" class="InductiveConstructor Operator">`⟨</a> <a id="27801" href="plfa.More.html#15224" class="InductiveConstructor">`zero</a> <a id="27807" href="plfa.More.html#15732" class="InductiveConstructor Operator">,</a> <a id="27809" href="plfa.More.html#15507" class="InductiveConstructor">con</a> <a id="27813" class="Number">42</a> <a id="27816" href="plfa.More.html#15732" class="InductiveConstructor Operator">⟩</a>
    <a id="27821" href="/PLFA-zh/More/#22442" class="InductiveConstructor Operator">∎</a>
 </pre>
-<h4 id="exercise-more">Exercise <code class="highlighter-rouge">More</code></h4>
+<h4 id="exercise-more">Exercise <code class="language-plaintext highlighter-rouge">More</code></h4>
 
 <p>Formalise the remaining constructs defined in this chapter.
 Make your changes in this file.
@@ -1280,7 +1280,7 @@ to confirm it returns the expected answer:</p>
   <li>lists</li>
 </ul>
 
-<h4 id="exercise-double-subst-stretch">Exercise <code class="highlighter-rouge">double-subst</code> (stretch)</h4>
+<h4 id="exercise-double-subst-stretch">Exercise <code class="language-plaintext highlighter-rouge">double-subst</code> (stretch)</h4>
 
 <p>Show that a double substitution is equivalent to two single
 substitutions.</p>
@@ -1289,7 +1289,7 @@ substitutions.</p>
     <a id="28308" class="Symbol">∀</a> <a id="28310" class="Symbol">{</a><a id="28311" href="/PLFA-zh/More/#28311" class="Bound">Γ</a> <a id="28313" href="plfa.More.html#28313" class="Bound">A</a> <a id="28315" href="plfa.More.html#28315" class="Bound">B</a> <a id="28317" href="plfa.More.html#28317" class="Bound">C</a><a id="28318" class="Symbol">}</a> <a id="28320" class="Symbol">{</a><a id="28321" href="plfa.More.html#28321" class="Bound">V</a> <a id="28323" class="Symbol">:</a> <a id="28325" href="plfa.More.html#28311" class="Bound">Γ</a> <a id="28327" href="plfa.More.html#14946" class="Datatype Operator">⊢</a> <a id="28329" href="plfa.More.html#28313" class="Bound">A</a><a id="28330" class="Symbol">}</a> <a id="28332" class="Symbol">{</a><a id="28333" href="plfa.More.html#28333" class="Bound">W</a> <a id="28335" class="Symbol">:</a> <a id="28337" href="plfa.More.html#28311" class="Bound">Γ</a> <a id="28339" href="plfa.More.html#14946" class="Datatype Operator">⊢</a> <a id="28341" href="plfa.More.html#28315" class="Bound">B</a><a id="28342" class="Symbol">}</a> <a id="28344" class="Symbol">{</a><a id="28345" href="plfa.More.html#28345" class="Bound">N</a> <a id="28347" class="Symbol">:</a> <a id="28349" href="plfa.More.html#28311" class="Bound">Γ</a> <a id="28351" href="plfa.More.html#14671" class="InductiveConstructor Operator">,</a> <a id="28353" href="plfa.More.html#28313" class="Bound">A</a> <a id="28355" href="plfa.More.html#14671" class="InductiveConstructor Operator">,</a> <a id="28357" href="plfa.More.html#28315" class="Bound">B</a> <a id="28359" href="plfa.More.html#14946" class="Datatype Operator">⊢</a> <a id="28361" href="plfa.More.html#28317" class="Bound">C</a><a id="28362" class="Symbol">}</a> <a id="28364" class="Symbol">→</a>
       <a id="28372" href="/PLFA-zh/More/#28345" class="Bound">N</a> <a id="28374" href="plfa.More.html#18612" class="Function Operator">[</a> <a id="28376" href="plfa.More.html#28321" class="Bound">V</a> <a id="28378" href="plfa.More.html#18612" class="Function Operator">][</a> <a id="28381" href="plfa.More.html#28333" class="Bound">W</a> <a id="28383" href="plfa.More.html#18612" class="Function Operator">]</a> <a id="28385" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="28387" class="Symbol">(</a><a id="28388" href="plfa.More.html#28345" class="Bound">N</a> <a id="28390" href="plfa.More.html#18429" class="Function Operator">[</a> <a id="28392" href="plfa.More.html#16685" class="Function">rename</a> <a id="28399" href="plfa.More.html#14838" class="InductiveConstructor Operator">S_</a> <a id="28402" href="plfa.More.html#28333" class="Bound">W</a> <a id="28404" href="plfa.More.html#18429" class="Function Operator">]</a><a id="28405" class="Symbol">)</a> <a id="28407" href="plfa.More.html#18429" class="Function Operator">[</a> <a id="28409" href="plfa.More.html#28321" class="Bound">V</a> <a id="28411" href="plfa.More.html#18429" class="Function Operator">]</a>
 </pre>
-<p>Note the arguments need to be swapped and <code class="highlighter-rouge">W</code> needs to have
+<p>Note the arguments need to be swapped and <code class="language-plaintext highlighter-rouge">W</code> needs to have
 its context adjusted via renaming in order for the right-hand
 side to be well typed.</p>
 
@@ -1297,7 +1297,7 @@ side to be well typed.</p>
 
 <p>This chapter uses the following unicode:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>σ  U+03C3  GREEK SMALL LETTER SIGMA (\Gs or \sigma)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>σ  U+03C3  GREEK SMALL LETTER SIGMA (\Gs or \sigma)
 †  U+2020  DAGGER (\dag)
 ‡  U+2021  DOUBLE DAGGER (\ddag)
 </code></pre></div></div>
@@ -1355,6 +1355,18 @@ side to be well typed.</p>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3"></div>
+    </div><div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Jeremy Siek</li>
+          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3"></div>

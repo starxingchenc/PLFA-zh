@@ -96,9 +96,7 @@ corresponding inference rules, a trick we will use often from now on.
 在这里，`z≤n` 和 `s≤s`（无空格）是构造子的名称，`zero ≤ n`、`m ≤ n` 和
 `suc m ≤ suc n` （带空格）是类型。在这里我们第一次用到了
 **索引数据类型（Indexed datatype）**。我们使用 `m` 和 `n` 这两个自然数来索引
-`m ≤ n` 这个类型。在 Agda 里，由两个及以上短横线开始的行是注释行，
-我们巧妙利用这一语法特性，用上述形式来表示相应的推理规则。
-在后文中，我们还会继续使用这一形式。
+`m ≤ n` 这个类型。在 Agda 里，由两个及以上短横线开始的行是注释行，我们巧妙利用这一语法特性，用上述形式来表示相应的推理规则。在后文中，我们还会继续使用这一形式。
 
 {::comment}
 Both definitions above tell us the same two things:
@@ -165,8 +163,7 @@ inequality, the two lines defining the constructors use `∀`, very
 similar to our use of `∀` in propositions such as:
 {:/}
 
-这是我们第一次使用隐式参数。定义不等式时，构造子的定义中使用了 `∀`，
-就像我们在下面的命题中使用 `∀` 一样：
+这是我们第一次使用隐式参数。定义不等式时，构造子的定义中使用了 `∀`，就像我们在下面的命题中使用 `∀` 一样：
 
     +-comm : ∀ (m n : ℕ) → m + n ≡ n + m
 
@@ -181,11 +178,7 @@ we write `s≤s m≤n` for evidence that `suc m ≤ suc n`, leaving both `m`
 and `n` implicit.
 {:/}
 
-但是我们这里的定义使用了花括号 `{ }`，而不是小括号 `( )`。
-这意味着参数是**隐式的（Implicit）**，不需要额外声明。实际上，Agda 的类型检查器
-会**推导（Infer）**出它们。因此，我们在 `m + n ≡ n + m` 的证明中需要写出 `+-comm m n`，
-在 `zero ≤ n` 的证明中可以省略 `n`。同理，如果 `m≤n` 是 `m ≤ n`的证明，
-那么我们写出 `s≤s m≤n` 作为 `suc m ≤ suc n` 的证明，无需声明 `m` 和 `n`。
+但是我们这里的定义使用了花括号 `{ }`，而不是小括号 `( )`。这意味着参数是**隐式的（Implicit）**，不需要额外声明。实际上，Agda 的类型检查器会**推导（Infer）**出它们。因此，我们在 `m + n ≡ n + m` 的证明中需要写出 `+-comm m n`，在 `zero ≤ n` 的证明中可以省略 `n`。同理，如果 `m≤n` 是 `m ≤ n`的证明，那么我们写出 `s≤s m≤n` 作为 `suc m ≤ suc n` 的证明，无需声明 `m` 和 `n`。
 
 {::comment}
 If we wish, it is possible to provide implicit arguments explicitly by
@@ -248,8 +241,7 @@ either `(1 ≤ 2) ≤ 3` or `1 ≤ (2 ≤ 3)`.
 {:/}
 
 我们将 `_≤_` 的优先级设置为 4，所以它比优先级为 6 的 `_+_` 结合的更紧，此外，
-`1 + 2 ≤ 3` 将被解析为 `(1 + 2) ≤ 3`。我们用 `infix` 来表示运算符既不是左结合的，
-也不是右结合的。因为 `1 ≤ 2 ≤ 3` 解析为 `(1 ≤ 2) ≤ 3` 或者 `1 ≤ (2 ≤ 3)` 都没有意义。
+`1 + 2 ≤ 3` 将被解析为 `(1 + 2) ≤ 3`。我们用 `infix` 来表示运算符既不是左结合的，也不是右结合的。因为 `1 ≤ 2 ≤ 3` 解析为 `(1 ≤ 2) ≤ 3` 或者 `1 ≤ (2 ≤ 3)` 都没有意义。
 
 
 {::comment}
@@ -265,8 +257,7 @@ doing so here, but will return to this point in
 Chapter [Decidable]({{ site.baseurl }}/Decidable/).
 {:/}
 
-给定两个数，我们可以很直接地决定第一个数是不是小于等于第二个数。我们在此处不给出说明的代码，
-但我们会在 [Decidable]({{ site.baseurl }}/Decidable/) 章节重新讨论这个问题。
+给定两个数，我们可以很直接地决定第一个数是不是小于等于第二个数。我们在此处不给出说明的代码，但我们会在 [Decidable]({{ site.baseurl }}/Decidable/) 章节重新讨论这个问题。
 
 
 {::comment}
@@ -285,16 +276,14 @@ want to go from bigger things to smaller things.
 
 在我们的定义中，我们从更小的东西得到更大的东西。例如，我们可以从
 `m ≤ n` 得出 `suc m ≤ suc n` 的结论，这里的 `suc m` 比 `m` 更大
-（也就是说，前者包含后者），`suc n` 也比 `n` 更大。但有时我们也
-需要从更大的东西得到更小的东西。
+（也就是说，前者包含后者），`suc n` 也比 `n` 更大。但有时我们也需要从更大的东西得到更小的东西。
 
 {::comment}
 There is only one way to prove that `suc m ≤ suc n`, for any `m`
 and `n`.  This lets us invert our previous rule.
 {:/}
 
-只有一种方式能够证明对于任意 `m` 和 `n` 有 `suc m ≤ suc n`。
-这让我们能够反演（invert）之前的规则。
+只有一种方式能够证明对于任意 `m` 和 `n` 有 `suc m ≤ suc n`。这让我们能够反演（invert）之前的规则。
 
 {% raw %}<pre class="Agda"><a id="inv-s≤s"></a><a id="7257" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#7257" class="Function">inv-s≤s</a> <a id="7265" class="Symbol">:</a> <a id="7267" class="Symbol">∀</a> <a id="7269" class="Symbol">{</a><a id="7270" href="plfa.Relations.html#7270" class="Bound">m</a> <a id="7272" href="plfa.Relations.html#7272" class="Bound">n</a> <a id="7274" class="Symbol">:</a> <a id="7276" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="7277" class="Symbol">}</a>
   <a id="7281" class="Symbol">→</a> <a id="7283" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a> <a id="7287" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#7270" class="Bound">m</a> <a id="7289" href="plfa.Relations.html#1461" class="Datatype Operator">≤</a> <a id="7291" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a> <a id="7295" href="plfa.Relations.html#7272" class="Bound">n</a>
@@ -310,8 +299,7 @@ in Agda to choose derive a variable name by removing
 spaces from its type.
 {:/}
 
-这里的 `m≤n`（不带空格）是一个变量名，而 `m ≤ n`（带空格）是一个类型，
-且后者是前者的类型。在 Agda 中，将类型中的空格去掉来作为变量名是一种常见的约定。
+这里的 `m≤n`（不带空格）是一个变量名，而 `m ≤ n`（带空格）是一个类型，且后者是前者的类型。在 Agda 中，将类型中的空格去掉来作为变量名是一种常见的约定。
 
 {::comment}
 Not every rule is invertible; indeed, the rule for `z≤n` has
@@ -319,8 +307,7 @@ no non-implicit hypotheses, so there is nothing to invert.
 But often inversions of this kind hold.
 {:/}
 
-并不是所有规则都可以反演。实际上，`z≤n` 的规则没有非隐式的假设，
-因此它没有可以被反演的规则。但这种反演通常是成立的。
+并不是所有规则都可以反演。实际上，`z≤n` 的规则没有非隐式的假设，因此它没有可以被反演的规则。但这种反演通常是成立的。
 
 {::comment}
 Another example of inversion is showing that there is
@@ -390,8 +377,7 @@ anti-symmetric, and total. Or instead you might ask whether it is a
 preorder, partial order, or total order.
 {:/}
 
-如果你进入了关于关系的聚会，你现在知道怎么样和人讨论了，可以讨论关于自反、传递、反对称和完全，
-或者问一问这是不是预序、偏序或者全序。
+如果你进入了关于关系的聚会，你现在知道怎么样和人讨论了，可以讨论关于自反、传递、反对称和完全，或者问一问这是不是预序、偏序或者全序。
 
 {::comment}
 Less frivolously, if you ever bump into a relation while reading a
@@ -402,8 +388,7 @@ lack---for instance by saying that a newly introduced relation is a
 partial order but not a total order.
 {:/}
 
-更认真的来说，如果你在阅读论文时碰到了一个关系，本文的介绍让你可以对关系有基本的了解和判断，
-来判断这个关系是不是预序、偏序或者全序。一个认真的作者一般会在文章指出这个关系具有（或者缺少）
+更认真的来说，如果你在阅读论文时碰到了一个关系，本文的介绍让你可以对关系有基本的了解和判断，来判断这个关系是不是预序、偏序或者全序。一个认真的作者一般会在文章指出这个关系具有（或者缺少）
 上述性质，比如说指出新定义的关系是一个偏序而不是全序。
 
 {::comment}
@@ -450,8 +435,7 @@ convention in the standard library and make the argument implicit,
 as that will make it easier to invoke reflexivity:
 {:/}
 
-我们第一个来证明的性质是自反性：对于任意自然数 `n`，关系 `n ≤ n` 成立。我们使用标准库
-的惯例来隐式申明参数，在使用自反性的证明时这样可以更加方便。
+我们第一个来证明的性质是自反性：对于任意自然数 `n`，关系 `n ≤ n` 成立。我们使用标准库的惯例来隐式申明参数，在使用自反性的证明时这样可以更加方便。
 
 {% raw %}<pre class="Agda"><a id="≤-refl"></a><a id="11115" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#11115" class="Function">≤-refl</a> <a id="11122" class="Symbol">:</a> <a id="11124" class="Symbol">∀</a> <a id="11126" class="Symbol">{</a><a id="11127" href="plfa.Relations.html#11127" class="Bound">n</a> <a id="11129" class="Symbol">:</a> <a id="11131" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="11132" class="Symbol">}</a>
     <a id="11138" class="Comment">-----</a>
@@ -466,8 +450,7 @@ case, the inductive hypothesis `≤-refl {n}` gives us a proof of `n ≤
 n`, and applying `s≤s` to that yields a proof of `suc n ≤ suc n`.
 {:/}
 
-这个证明直接在 `n` 上进行归纳。在起始步骤中，`zero ≤ zero` 由 `z≤n` 证明；在归纳步骤中，
-归纳假设 `≤-refl {n}` 给我们带来了 `n ≤ n` 的证明，我们只需要使用 `s≤s`，就可以获得
+这个证明直接在 `n` 上进行归纳。在起始步骤中，`zero ≤ zero` 由 `z≤n` 证明；在归纳步骤中，归纳假设 `≤-refl {n}` 给我们带来了 `n ≤ n` 的证明，我们只需要使用 `s≤s`，就可以获得
 `suc n ≤ suc n` 的证明。
 
 {::comment}
@@ -510,9 +493,7 @@ p`, which follows immediately by `z≤n`.  In this case, the fact that
 that the corresponding evidence is unused.
 {:/}
 
-这里我们在 `m ≤ n` 的**证据（Evidence）**上进行归纳。在起始步骤里，第一个不等式因为 `z≤n` 而成立，
-那么结论亦可由 `z≤n` 而得出。在这里，`n ≤ p` 的证明是不需要的，我们用 `_` 来表示这个
-证明没有被使用。
+这里我们在 `m ≤ n` 的**证据（Evidence）**上进行归纳。在起始步骤里，第一个不等式因为 `z≤n` 而成立，那么结论亦可由 `z≤n` 而得出。在这里，`n ≤ p` 的证明是不需要的，我们用 `_` 来表示这个证明没有被使用。
 
 {::comment}
 In the inductive case, the first inequality holds by `s≤s m≤n`
@@ -522,9 +503,7 @@ The inductive hypothesis `≤-trans m≤n n≤p` establishes
 that `m ≤ p`, and our goal follows by applying `s≤s`.
 {:/}
 
-在归纳步骤中，第一个不等式因为 `s≤s m≤n` 而成立，第二个不等式因为 `s≤s n≤p` 而成立，
-所以我们已知 `suc m ≤ suc n` 和 `suc n ≤ suc p`，求证 `suc m ≤ suc p`。
-通过归纳假设 `≤-trans m≤n n≤p`，我们得知 `m ≤ p`，在此之上使用 `s≤s` 即可证。
+在归纳步骤中，第一个不等式因为 `s≤s m≤n` 而成立，第二个不等式因为 `s≤s n≤p` 而成立，所以我们已知 `suc m ≤ suc n` 和 `suc n ≤ suc p`，求证 `suc m ≤ suc p`。通过归纳假设 `≤-trans m≤n n≤p`，我们得知 `m ≤ p`，在此之上使用 `s≤s` 即可证。
 
 {::comment}
 The case `≤-trans (s≤s m≤n) z≤n` cannot arise, since the first
@@ -533,8 +512,7 @@ inequality implies that it is `zero`.  Agda can determine that such a
 case cannot arise, and does not require (or permit) it to be listed.
 {:/}
 
-`≤-trans (s≤s m≤n) z≤n` 不可能发生，因为第一个不等式告诉我们中间的数是一个 `suc n`，
-而第二个不等式告诉我们中间的书是 `zero`。Agda 可以推断这样的情况不可能发现，所以我们不需要
+`≤-trans (s≤s m≤n) z≤n` 不可能发生，因为第一个不等式告诉我们中间的数是一个 `suc n`，而第二个不等式告诉我们中间的书是 `zero`。Agda 可以推断这样的情况不可能发现，所以我们不需要
 （也不可以）列出这种情况。
 
 {::comment}
@@ -557,8 +535,7 @@ length obscures the essence of the proof.  We will usually opt for
 shorter proofs.
 {:/}
 
-有人说这样的证明更加的清晰，也有人说这个更长的证明让人难以抓住证明的重点。
-我们一般选择使用简短的证明。
+有人说这样的证明更加的清晰，也有人说这个更长的证明让人难以抓住证明的重点。我们一般选择使用简短的证明。
 
 {::comment}
 The technique of induction on evidence that a property holds (e.g.,
@@ -616,8 +593,7 @@ follows by reflexivity.  (Reflexivity of equality, that is, not
 reflexivity of inequality.)
 {:/}
 
-在起始步骤中，两个不等式都因为 `z≤n` 而成立。因此我们已知 `zero ≤ zero` 和 `zero ≤ zero`，
-求证 `zero ≡ zero`，由自反性可证。（注：由等式的自反性可证，而不是不等式的自反性）
+在起始步骤中，两个不等式都因为 `z≤n` 而成立。因此我们已知 `zero ≤ zero` 和 `zero ≤ zero`，求证 `zero ≡ zero`，由自反性可证。（注：由等式的自反性可证，而不是不等式的自反性）
 
 {::comment}
 In the inductive case, the first inequality holds by `s≤s m≤n` and the
@@ -665,8 +641,7 @@ for any naturals `m` and `n` either `m ≤ n` or `n ≤ m`, or both if
 `m` and `n` are equal.
 {:/}
 
-我们证明的第四个性质是完全性：对于任何自然数 `m` 和 `n`，`m ≤ n` 或者 `n ≤ m` 成立。
-在 `m` 和 `n` 相等时，两者同时成立。
+我们证明的第四个性质是完全性：对于任何自然数 `m` 和 `n`，`m ≤ n` 或者 `n ≤ m` 成立。在 `m` 和 `n` 相等时，两者同时成立。
 
 {::comment}
 We specify what it means for inequality to be total:
@@ -701,8 +676,7 @@ could also be written as a disjunction. Disjunctions will
 be introduced in Chapter [Connectives]({{ site.baseurl }}/Connectives/).)
 {:/}
 
-（如果你对于逻辑学有所了解，上面的定义可以由析取（Disjunction）表示。
-我们会在 [Connectives]({{ site.baseurl }}/Connectives/) 章节介绍析取。）
+（如果你对于逻辑学有所了解，上面的定义可以由析取（Disjunction）表示。我们会在 [Connectives]({{ site.baseurl }}/Connectives/) 章节介绍析取。）
 
 {::comment}
 This is our first use of a datatype with _parameters_,
@@ -735,9 +709,7 @@ preference to indexed types when possible.
 {:/}
 
 类型里的每个参数都转换成构造子的一个隐式参数。索引数据类型中的索引可以变化，正如在
-`zero ≤ n` 和 `suc m ≤ suc n` 中那样，而参数化数据类型不一样，其参数必须保持相同，
-正如在 `Total m n` 中那样。参数化的声明更短，更易于阅读，而且有时可以帮助到 Agda 的
-终结检查器，所以我们尽可能地使用它们，而不是索引数据类型。
+`zero ≤ n` 和 `suc m ≤ suc n` 中那样，而参数化数据类型不一样，其参数必须保持相同，正如在 `Total m n` 中那样。参数化的声明更短，更易于阅读，而且有时可以帮助到 Agda 的终结检查器，所以我们尽可能地使用它们，而不是索引数据类型。
 
 {::comment}
 With that preliminary out of the way, we specify and prove totality:
@@ -802,8 +774,7 @@ followed by a pattern to be matched against the expression
 and the right-hand side of the equation.
 {:/}
 
-这是我们第一次在 Agda 中使用 `with` 语句。`with` 关键字后面有一个表达式和一或多行。
-每行以省略号（`...`）和一个竖线（`|`）开头，后面跟着用来匹配表达式的模式，和等式的右手边。
+这是我们第一次在 Agda 中使用 `with` 语句。`with` 关键字后面有一个表达式和一或多行。每行以省略号（`...`）和一个竖线（`|`）开头，后面跟着用来匹配表达式的模式，和等式的右手边。
 
 {::comment}
 Every use of `with` is equivalent to defining a helper function.  For
@@ -830,9 +801,7 @@ nested definition (in this case, `helper`) are in scope in the right-hand side
 of the preceding equation.
 {:/}
 
-这也是我们第一次在 Agda 中使用 `where` 语句。`where` 关键字后面有一或多条定义，其必须被缩进。
-之前等式左手边的约束变量（此例中的 `m` 和 `n`）在嵌套的定义中仍然在作用域内。
-在嵌套定义中的约束标识符（此例中的 `helper` ）在等式的右手边的作用域内。
+这也是我们第一次在 Agda 中使用 `where` 语句。`where` 关键字后面有一或多条定义，其必须被缩进。之前等式左手边的约束变量（此例中的 `m` 和 `n`）在嵌套的定义中仍然在作用域内。在嵌套定义中的约束标识符（此例中的 `helper` ）在等式的右手边的作用域内。
 
 {::comment}
 If both arguments are equal, then both cases hold and we could return evidence
@@ -840,8 +809,7 @@ of either.  In the code above we return the forward case, but there is a
 variant that returns the flipped case:
 {:/}
 
-如果两个参数相同，那么两个情况同时成立，我们可以返回任一证明。上面的代码中我们返回 forward 条件，
-但是我们也可以返回 flipped 条件，如下：
+如果两个参数相同，那么两个情况同时成立，我们可以返回任一证明。上面的代码中我们返回 forward 条件，但是我们也可以返回 flipped 条件，如下：
 
 {% raw %}<pre class="Agda"><a id="≤-total″"></a><a id="22703" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#22703" class="Function">≤-total″</a> <a id="22712" class="Symbol">:</a> <a id="22714" class="Symbol">∀</a> <a id="22716" class="Symbol">(</a><a id="22717" href="plfa.Relations.html#22717" class="Bound">m</a> <a id="22719" href="plfa.Relations.html#22719" class="Bound">n</a> <a id="22721" class="Symbol">:</a> <a id="22723" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="22724" class="Symbol">)</a> <a id="22726" class="Symbol">→</a> <a id="22728" href="plfa.Relations.html#17129" class="Datatype">Total</a> <a id="22734" href="plfa.Relations.html#22717" class="Bound">m</a> <a id="22736" href="plfa.Relations.html#22719" class="Bound">n</a>
 <a id="22738" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#22703" class="Function">≤-total″</a> <a id="22747" href="plfa.Relations.html#22747" class="Bound">m</a>       <a id="22755" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a>                      <a id="22781" class="Symbol">=</a>  <a id="22784" href="plfa.Relations.html#17217" class="InductiveConstructor">flipped</a> <a id="22792" href="plfa.Relations.html#1488" class="InductiveConstructor">z≤n</a>
@@ -881,8 +849,7 @@ broken into three parts. First, we deal with the special case of showing
 addition is monotonic on the right:
 {:/}
 
-这个证明可以用我们学会的方法，很直接的来完成。我们最好把它分成三个部分，首先我们证明加法对于
-小于等于在右手边是单调的：
+这个证明可以用我们学会的方法，很直接的来完成。我们最好把它分成三个部分，首先我们证明加法对于小于等于在右手边是单调的：
 
 {% raw %}<pre class="Agda"><a id="+-monoʳ-≤"></a><a id="23881" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#23881" class="Function">+-monoʳ-≤</a> <a id="23891" class="Symbol">:</a> <a id="23893" class="Symbol">∀</a> <a id="23895" class="Symbol">(</a><a id="23896" href="plfa.Relations.html#23896" class="Bound">n</a> <a id="23898" href="plfa.Relations.html#23898" class="Bound">p</a> <a id="23900" href="plfa.Relations.html#23900" class="Bound">q</a> <a id="23902" class="Symbol">:</a> <a id="23904" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="23905" class="Symbol">)</a>
   <a id="23909" class="Symbol">→</a> <a id="23911" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#23898" class="Bound">p</a> <a id="23913" href="plfa.Relations.html#1461" class="Datatype Operator">≤</a> <a id="23915" href="plfa.Relations.html#23900" class="Bound">q</a>
@@ -932,8 +899,7 @@ Rewriting by `+-comm m p` and `+-comm n p` converts `m + p ≤ n + p` into
 `p + m ≤ p + n`, which is proved by invoking `+-monoʳ-≤ p m n m≤n`.
 {:/}
 
-用 `+-comm m p` 和 `+-comm n p` 来重写，可以让 `m + p ≤ n + p` 转换成 `p + n ≤ p + m`，
-而我们可以用 `+-moroʳ-≤ p m n m≤n` 来证明。
+用 `+-comm m p` 和 `+-comm n p` 来重写，可以让 `m + p ≤ n + p` 转换成 `p + n ≤ p + m`，而我们可以用 `+-moroʳ-≤ p m n m≤n` 来证明。
 
 {::comment}
 Third, we combine the two previous results:
@@ -954,9 +920,7 @@ Invoking `+-monoˡ-≤ m n p m≤n` proves `m + p ≤ n + p` and invoking
 transitivity proves `m + p ≤ n + q`, as was to be shown.
 {:/}
 
-使用 `+-monoˡ-≤ m n p m≤n` 可以证明 `m + p ≤ n + p`，
-使用 `+-monoʳ-≤ n p q p≤q` 可以证明 `n + p ≤ n + q`，用传递性把两者连接起来，
-我们可以获得 `m + p ≤ n + q` 的证明，如上所示。
+使用 `+-monoˡ-≤ m n p m≤n` 可以证明 `m + p ≤ n + p`，使用 `+-monoʳ-≤ n p q p≤q` 可以证明 `n + p ≤ n + q`，用传递性把两者连接起来，我们可以获得 `m + p ≤ n + q` 的证明，如上所示。
 
 {::comment}
 #### Exercise `*-mono-≤` (stretch)
@@ -1019,9 +983,7 @@ holds (where we define `m > n` to hold exactly when `n < m`).
 It is also monotonic with regards to addition and multiplication.
 {:/}
 
-显然，严格不等关系不是自反的，而是**非自反的（Irreflexive）**，表示 `n < n` 对于
-任何值 `n` 都不成立。和不等关系一样，严格不等关系是传递的。严格不等关系不是完全的，但是满足
-一个相似的性质：*三分律*（Trichotomy）：对于任意的 `m` 和 `n`，`m < n`、`m ≡ n` 或者
+显然，严格不等关系不是自反的，而是**非自反的（Irreflexive）**，表示 `n < n` 对于任何值 `n` 都不成立。和不等关系一样，严格不等关系是传递的。严格不等关系不是完全的，但是满足一个相似的性质：*三分律*（Trichotomy）：对于任意的 `m` 和 `n`，`m < n`、`m ≡ n` 或者
 `m > n` 三者有且仅有一者成立。（我们定义 `m > n` 当且仅当 `n < m` 成立时成立）
 严格不等关系对于加法和乘法也是单调的。
 
@@ -1032,8 +994,7 @@ trichotomy are mutually exclusive, so those points are deferred to
 Chapter [Negation]({{ site.baseurl }}/Negation/).
 {:/}
 
-我们把一部分上述性质作为习题。非自反性需要逻辑非，三分律需要证明三者是互斥的，因此这两个性质
-暂不做为习题。我们会在 [Negation]({{ site.baseurl }}/Negation/) 章节来重新讨论。
+我们把一部分上述性质作为习题。非自反性需要逻辑非，三分律需要证明三者是互斥的，因此这两个性质暂不做为习题。我们会在 [Negation]({{ site.baseurl }}/Negation/) 章节来重新讨论。
 
 {::comment}
 It is straightforward to show that `suc m ≤ n` implies `m < n`,
@@ -1042,8 +1003,7 @@ properties of strict inequality, such as transitivity, by
 exploiting the corresponding properties of inequality.
 {:/}
 
-我们可以直接地来证明 `suc m ≤ n` 蕴涵了 `m < n`，及其逆命题。
-因此我们亦可从不等关系的性质中，使用此性质来证明严格不等关系的性质。
+我们可以直接地来证明 `suc m ≤ n` 蕴涵了 `m < n`，及其逆命题。因此我们亦可从不等关系的性质中，使用此性质来证明严格不等关系的性质。
 
 
 {::comment}
@@ -1154,8 +1114,7 @@ using the relation between strict inequality and inequality and
 the fact that inequality is transitive.
 {:/}
 
-用另外一种方法证明严格不等是传递的，使用之前证明的不等关系和严格不等关系的联系，
-以及不等关系的传递性。
+用另外一种方法证明严格不等是传递的，使用之前证明的不等关系和严格不等关系的联系，以及不等关系的传递性。
 
 {::comment}
 {% raw %}<pre class="Agda"><a id="30382" class="Comment">-- Your code goes here</a>
@@ -1176,8 +1135,7 @@ and strict inequality are _binary relations_, while even and odd are
 _unary relations_, sometimes called _predicates_:
 {:/}
 
-作为一个额外的例子，我们来定义奇数和偶数。不等关系和严格不等关系是**二元关系**，而奇偶性
-是**一元关系**，有时也被叫做**谓词（Predicate）**：
+作为一个额外的例子，我们来定义奇数和偶数。不等关系和严格不等关系是**二元关系**，而奇偶性是**一元关系**，有时也被叫做**谓词（Predicate）**：
 
 {% raw %}<pre class="Agda"><a id="30774" class="Keyword">data</a> <a id="even"></a><a id="30779" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#30779" class="Datatype">even</a> <a id="30784" class="Symbol">:</a> <a id="30786" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="30788" class="Symbol">→</a> <a id="30790" class="PrimitiveType">Set</a>
 <a id="30794" class="Keyword">data</a> <a id="odd"></a><a id="30799" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/Relations.md %}{% raw %}#30799" class="Datatype">odd</a>  <a id="30804" class="Symbol">:</a> <a id="30806" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a> <a id="30808" class="Symbol">→</a> <a id="30810" class="PrimitiveType">Set</a>
@@ -1216,9 +1174,7 @@ declare the constructors (omitting the signatures `ℕ → Set`
 which were given earlier).
 {:/}
 
-这是我们第一次定义一个相互递归的数据类型。因为每个标识符必须在使用前声明，所以
-我们首先声明索引数据类型 `even` 和 `odd` （省略 `where` 关键字和其构造子的定义），
-然后声明其构造子（省略其签名 `ℕ → Set`，因为在之前已经给出）。
+这是我们第一次定义一个相互递归的数据类型。因为每个标识符必须在使用前声明，所以我们首先声明索引数据类型 `even` 和 `odd` （省略 `where` 关键字和其构造子的定义），然后声明其构造子（省略其签名 `ℕ → Set`，因为在之前已经给出）。
 
 {::comment}
 This is also our first use of _overloaded_ constructors,
@@ -1226,8 +1182,7 @@ that is, using the same name for constructors of different types.
 Here `suc` means one of three constructors:
 {:/}
 
-这也是我们第一次使用 **重载（Overloaded）**的构造子。这意味着不同类型的构造子
-拥有相同的名字。在这里 `suc` 表示下面三种构造子其中之一：
+这也是我们第一次使用 **重载（Overloaded）**的构造子。这意味着不同类型的构造子拥有相同的名字。在这里 `suc` 表示下面三种构造子其中之一：
 
     suc : ℕ → ℕ
 
@@ -1249,8 +1204,7 @@ one restrict overloading to related meanings, as we have done here,
 but it is not required.
 {:/}
 
-同理，`zero` 表示两种构造子的一种。因为类型推导的限制，Agda 不允许重载已定义的名字，
-但是允许重载构造子。我们推荐将重载限制在有关联的定义中，如我们所做的这样，但这不是必须的。
+同理，`zero` 表示两种构造子的一种。因为类型推导的限制，Agda 不允许重载已定义的名字，但是允许重载构造子。我们推荐将重载限制在有关联的定义中，如我们所做的这样，但这不是必须的。
 
 {::comment}
 We show that the sum of two even numbers is even:
@@ -1281,8 +1235,7 @@ functions, one to show that the sum of two even numbers is even, and the other
 to show that the sum of an odd and an even number is odd.
 {:/}
 
-与相互递归的定义对应，我们用两个相互递归的函数，一个证明两个偶数之和是偶数，另一个证明
-一个奇数与一个偶数之和是奇数。
+与相互递归的定义对应，我们用两个相互递归的函数，一个证明两个偶数之和是偶数，另一个证明一个奇数与一个偶数之和是奇数。
 
 {::comment}
 This is our first use of mutually recursive functions.  Since each identifier
@@ -1290,8 +1243,7 @@ must be defined before it is used, we first give the signatures for both
 functions and then the equations that define them.
 {:/}
 
-这是我们第一次使用相互递归的函数。因为每个标识符必须在使用前声明，我们先给出两个函数的签名，
-然后再给出其定义。
+这是我们第一次使用相互递归的函数。因为每个标识符必须在使用前声明，我们先给出两个函数的签名，然后再给出其定义。
 
 {::comment}
 To show that the sum of two even numbers is even, consider the
@@ -1302,9 +1254,7 @@ because it is the successor of the sum of an odd and an even number,
 which is odd.
 {:/}
 
-要证明两个偶数之和为偶，我们考虑第一个数为偶数的证明。如果是因为第一个数为 0，
-那么第二个数为偶数的证明即为和为偶数的证明。如果是因为第一个数为奇数的后继，
-那么和为偶数是因为他是一个奇数和一个偶数的和的后续，而这个和是一个奇数。
+要证明两个偶数之和为偶，我们考虑第一个数为偶数的证明。如果是因为第一个数为 0，那么第二个数为偶数的证明即为和为偶数的证明。如果是因为第一个数为奇数的后继，那么和为偶数是因为他是一个奇数和一个偶数的和的后续，而这个和是一个奇数。
 
 
 {::comment}
@@ -1314,9 +1264,7 @@ successor of an even number, then the result is odd because it is the
 successor of the sum of two even numbers, which is even.
 {:/}
 
-要证明一个奇数和一个偶数的和是奇数，我们考虑第一个数是奇数的证明。
-如果是因为它是一个偶数的后继，那么和为奇数，因为它是两个偶数之和的后继，
-而这个和是一个偶数。
+要证明一个奇数和一个偶数的和是奇数，我们考虑第一个数是奇数的证明。如果是因为它是一个偶数的后继，那么和为奇数，因为它是两个偶数之和的后继，而这个和是一个偶数。
 
 
 {::comment}
@@ -1352,8 +1300,7 @@ Representations are not unique due to leading zeros.
 Hence, eleven may be represented by both of the following:
 {:/}
 
-回忆我们在练习 [Bin][plfa.Naturals#Bin] 中定义了一个数据类型 `Bin` 来用二进制字符串表示自然数。
-这个表达方法不是唯一的，因为我们在开头加任意个 0。因此，11 可以由以下方法表示：
+回忆我们在练习 [Bin][plfa.Naturals#Bin] 中定义了一个数据类型 `Bin` 来用二进制字符串表示自然数。这个表达方法不是唯一的，因为我们在开头加任意个 0。因此，11 可以由以下方法表示：
 
     x1 x1 x0 x1 nil
     x1 x1 x0 x1 x0 x0 nil
@@ -1373,8 +1320,7 @@ canonical, and the second is not.  To define it, you will need an
 auxiliary predicate
 {:/}
 
-其在一个二进制字符串的表示是标准的（Canonical）时成立，表示它没有开头的 0。在两个 11 的表达方式中，
-第一个是标准的，而第二个不是。在定义这个谓词时，你需要一个辅助谓词：
+其在一个二进制字符串的表示是标准的（Canonical）时成立，表示它没有开头的 0。在两个 11 的表达方式中，第一个是标准的，而第二个不是。在定义这个谓词时，你需要一个辅助谓词：
 
     One : Bin → Set
 
@@ -1384,8 +1330,7 @@ canonical if it has a leading one (representing a positive number) or
 if it consists of a single zero (representing zero).
 {:/}
 
-其仅在一个二进制字符串开头为 1 时成立。一个二进制字符串是标准的，如果它开头是 1 （表示一个正数），
-或者它仅是一个 0 （表示 0）。
+其仅在一个二进制字符串开头为 1 时成立。一个二进制字符串是标准的，如果它开头是 1 （表示一个正数），或者它仅是一个 0 （表示 0）。
 
 {::comment}
 Show that increment preserves canonical bitstrings:
@@ -1457,8 +1402,7 @@ and more arguments are implicit.
 {:/}
 
 在标准库中，`≤-total` 是使用析取定义的（我们将在 [Connectives][plfa.Connectives] 章节定义）。
-`+-monoʳ-≤`、`+-monoˡ-≤` 和 `+-mono-≤` 的证明方法和本书不同。
-更多的参数是隐式申明的。
+`+-monoʳ-≤`、`+-monoˡ-≤` 和 `+-mono-≤` 的证明方法和本书不同。更多的参数是隐式申明的。
 
 
 ## Unicode
