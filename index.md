@@ -186,3 +186,4 @@ Pull requests are encouraged.
 [PLFA-zh]: https://agda-zh.github.io/PLFA-zh/
 [Issue]: https://github.com/Agda-zh/plfa-zh/issues
 [TransSpec]: https://github.com/Agda-zh/PLFA-zh/issues/1
+[Github-zh]: https://github.com/Agda-zh/PLFA-zh
