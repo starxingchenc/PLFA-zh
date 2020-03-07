@@ -605,7 +605,7 @@ table td { border: 1px solid #e8e8e8; }
 /* Code. */
 pre.highlight { padding: .4em .4em; background: #e8f2fb; border: 1px solid #c9e1f6; border-radius: 3px; border-style: dashed !important; }
 
-code { font-family: 'mononoki', 'DejaVu Sans Mono', 'Source Code Pro', 'Bitstream Vera Sans Mono', 'FreeMono', 'Courier New', 'Monaco', 'Menlo', monospace, serif; font-size: .85em; }
+code { font-family: 'mononoki', 'DejaVu Sans Mono', 'Source Code Pro', 'Bitstream Vera Sans Mono', 'FreeMono', 'Courier New', 'Monaco', 'Menlo', monospace, serif; font-size: .85em; white-space: pre; }
 
 /* Agda. */
 pre.Agda { font-family: 'mononoki', 'DejaVu Sans Mono', 'Source Code Pro', 'Bitstream Vera Sans Mono', 'FreeMono', 'Courier New', 'Monaco', 'Menlo', monospace, serif; font-size: .85em; padding: .4em .4em; background: #e8f2fb; border: 1px solid #c9e1f6; border-radius: 3px; }

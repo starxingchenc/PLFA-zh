@@ -93,6 +93,8 @@ contributors:
   name: Juhana Laurinharju
 - github_username: momirza
   name: Mo Mirza
+- github_username: qaisjp
+  name: Qais Patankar
 - github_username: kenichi-asai
   name: Kenichi Asai
 - github_username: omelkonian
@@ -105,8 +107,6 @@ contributors:
   name: Alexandru Brisan
 - github_username: pedrominicz
   name: Pedro Minicz
-- github_username: qaisjp
-  name: Qais Patankar
 - github_username: michel-steuwer
   name: Michel Steuwer
 - github_username: caryoscelus
@@ -119,14 +119,20 @@ contributors:
   name: bc²
 - github_username: murilogiacometti
   name: Murilo Giacometti Rocha
+- github_username: zachrbrown
+  name: Zach Brown
 - github_username: gallais
   name: G. Allais
 - github_username: spwhitt
   name: Spencer Whitt
 - github_username: LightAndLight
   name: Isaac Elliott
+- github_username: moleike
+  name: Alexandre Moreno
 - github_username: iblech
   name: Ingo Blechschmidt
+- github_username: MatthiasGabriel
+  name: Matthias Gabriel
 - github_username: AD1024
   name: Mike He
 - github_username: kaaass
@@ -155,8 +161,6 @@ contributors:
   name: Kenneth MacKenzie
 - github_username: chikeabuah
   name: Chike Abuah
-- github_username: moleike
-  name: Alexandre Moreno
 - github_username: mgttlinger
   name: Merlin Göttlinger
 - github_username: laMudri

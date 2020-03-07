@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Notes/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Notes","url":"https://agda-zh.github.io/PLFA-zh/Notes/","@context":"https://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Notes/","headline":"Notes","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -457,6 +457,80 @@ Calculus Using PHOAS, APLAS 2018
   <li>∙ .</li>
 </ul>
 
+<h2 id="adrians-comments-from-meetup">Adrian’s comments from MeetUp</h2>
+
+<p>Adrian King
+I think we’ve finally gone through the whole book now up through chapter Properties, and we’ve come up with just three places where we thought the book could have done a better job of preparing us for the exercises.</p>
+
+<p>Starting from the end of the book:</p>
+
+<ul>
+  <li>Chapter Quantifiers, exercise Bin-isomorphism:</li>
+</ul>
+
+<p>In the to∘from case, we want to show that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⟨ to (from x) , toCan {from x} ⟩ ≡ ⟨ x , canX ⟩
+</code></pre></div></div>
+
+<p>I found myself wanting to use a general lemma like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exEq :
+∀ {A : Set} {x y : A} {p : A → Set} {px : p x} {py : p y} →
+x ≡ y →
+px ≡ py →
+⟨ x , px ⟩ ≡ ⟨ y , py ⟩
+exEq refl refl = refl
+</code></pre></div></div>
+
+<p>which is in some sense true, but in Agda it doesn’t typecheck, because Agda can’t see that px’s type and py’s type are the same. My solution made explicit use of heterogeneous equality.</p>
+
+<p>I realize there are ways to solve this that don’t explicitly use heterogeneous equality, but the surprise factor of the exercise might have been lower if heterogeneous equality had been mentioned by that point, perhaps in the Equality chapter.</p>
+
+<ul>
+  <li>Chapter Quantifiers, exercise ∀-×:</li>
+</ul>
+
+<p>I assume the intended solution looks something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∀-× : ∀ {B : Tri → Set} → ((x : Tri) → B x) ≃ (B aa × B bb × B cc)
+∀-× = record {
+to = λ f → ⟨ f aa , ⟨ f bb , f cc ⟩ ⟩ ;
+from = λ{ ⟨ baa , ⟨ bbb , bcc ⟩ ⟩ → λ{ aa → baa ; bb → bbb ; cc → bcc } } ;
+from∘to = λ f → extensionality λ{ aa → refl ; bb → refl ; cc → refl } ;
+to∘from = λ{ y → refl } }
+</code></pre></div></div>
+
+<p>but it doesn’t typecheck; in the extensionality presented earlier (in chapter Isomorphism), type B is not dependent on type A, but it needs to be here. Agda’s error message is sufficiently baffling here that you might want to warn people that they need a dependent version of extensionality, something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extensionality : (a b : Level) → Set _
+Extensionality a b =
+{A : Set a} {B : A → Set b} {f g : (x : A) → B x} →
+(∀ x → f x ≡ g x) → f ≡ g
+
+postulate
+exten : ∀ {a b} → Extensionality a b
+</code></pre></div></div>
+
+<ul>
+  <li>Chapter Relations, exercise Bin-predicates:</li>
+</ul>
+
+<p>I made use here of the inspect idiom, in Aaron Stump’s variant, which is syntactically more convenient:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keep : ∀ {ℓa} → {a : Set ℓa} → (x : a) → Σ a (λ y → y ≡ x)
+keep x = x , refl
+</code></pre></div></div>
+
+<p>Pattern matching on keep m, where m is some complicated term, lets you keep around an equality between the original term and the pattern matched, which is often convenient, as in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>roundTripTwice {x} onex with keep (from x)
+roundTripTwice {x} onex | zero , eq with oneIsMoreThanZero onex
+roundTripTwice {x} onex | zero , eq | 0&lt;fromx rewrite sym eq =
+⊥-elim (not0&lt;0 0&lt;fromx)
+roundTripTwice {x} onex | suc n , eq rewrite sym eq | toTwiceSuc {n} |
+cong x0_ (sym (roundTrip (one onex))) | sym eq = refl
+</code></pre></div></div>
 
   </div>
 
@@ -522,26 +596,11 @@ Calculus Using PHOAS, APLAS 2018
 <!-- Import jQuery -->
 <script type="text/javascript" src="/PLFA-zh/assets/jquery.js"></script>
 
-<!-- Script which draws background for progress tags -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js" integrity="sha256-E4RlfxwyJVmkkk0szw7LYJxuPlp6evtPSBDlWHsYYL8=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-$('span.progress').each(function(){
-    const progress = parseInt($(this).text());
-    $(this).css({
-        'border-style': 'solid',
-        'border-radius': '5px',
-        'border-width': 'thin',
-        'border-color': progress === 100 ? 'limegreen' : 'dimgray',
-        'font-size': '70%',
-        'padding': '0% 0.5% 0% 0.5%',
-        'margin': '0em 0em 0em 0.5em',
-        'box-sizing': 'border-box',
-        'vertical-align': '10%'
-    });
-    $(this).text(progress.toString() + " %");
-})
+  anchors.add();
 </script>
 
-<!-- Script which allows for foldable code blocks -->
 <script type="text/javascript">
 
  // Makes sandwhich menu works

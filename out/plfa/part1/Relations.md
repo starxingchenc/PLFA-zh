@@ -1361,16 +1361,19 @@ and back is the identity:
 
 {::comment}
 (Hint: For each of these, you may first need to prove related
+properties of `One`. Also, you may need to prove that `1` is
+less or equal to the result of `from b`.)
 properties of `One`.)
 {:/}
 
-（提示：对于每一条习题，先从 `One` 的性质开始）
+（提示：对于每一条习题，先从 `One` 的性质开始。此外，你或许还需要证明
+`1` 小于或等于 `from b` 的结果。）
 
 {::comment}
-{% raw %}<pre class="Agda"><a id="36500" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="36639" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}{:/}
 
-{% raw %}<pre class="Agda"><a id="36537" class="Comment">-- 请将代码写在此处。</a>
+{% raw %}<pre class="Agda"><a id="36676" class="Comment">-- 请将代码写在此处。</a>
 </pre>{% endraw %}
 
 {::comment}
@@ -1385,9 +1388,9 @@ Definitions similar to those in this chapter can be found in the standard librar
 
 标准库中有类似于本章介绍的定义：
 
-{% raw %}<pre class="Agda"><a id="36725" class="Keyword">import</a> <a id="36732" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.html" class="Module">Data.Nat</a> <a id="36741" class="Keyword">using</a> <a id="36747" class="Symbol">(</a><a id="36748" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#895" class="Datatype Operator">_≤_</a><a id="36751" class="Symbol">;</a> <a id="36753" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#918" class="InductiveConstructor">z≤n</a><a id="36756" class="Symbol">;</a> <a id="36758" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#960" class="InductiveConstructor">s≤s</a><a id="36761" class="Symbol">)</a>
-<a id="36763" class="Keyword">import</a> <a id="36770" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html" class="Module">Data.Nat.Properties</a> <a id="36790" class="Keyword">using</a> <a id="36796" class="Symbol">(</a><a id="36797" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3632" class="Function">≤-refl</a><a id="36803" class="Symbol">;</a> <a id="36805" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3815" class="Function">≤-trans</a><a id="36812" class="Symbol">;</a> <a id="36814" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3682" class="Function">≤-antisym</a><a id="36823" class="Symbol">;</a> <a id="36825" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3927" class="Function">≤-total</a><a id="36832" class="Symbol">;</a>
-                                  <a id="36868" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15619" class="Function">+-monoʳ-≤</a><a id="36877" class="Symbol">;</a> <a id="36879" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15529" class="Function">+-monoˡ-≤</a><a id="36888" class="Symbol">;</a> <a id="36890" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15373" class="Function">+-mono-≤</a><a id="36898" class="Symbol">)</a>
+{% raw %}<pre class="Agda"><a id="36864" class="Keyword">import</a> <a id="36871" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.html" class="Module">Data.Nat</a> <a id="36880" class="Keyword">using</a> <a id="36886" class="Symbol">(</a><a id="36887" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#895" class="Datatype Operator">_≤_</a><a id="36890" class="Symbol">;</a> <a id="36892" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#918" class="InductiveConstructor">z≤n</a><a id="36895" class="Symbol">;</a> <a id="36897" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Base.html#960" class="InductiveConstructor">s≤s</a><a id="36900" class="Symbol">)</a>
+<a id="36902" class="Keyword">import</a> <a id="36909" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html" class="Module">Data.Nat.Properties</a> <a id="36929" class="Keyword">using</a> <a id="36935" class="Symbol">(</a><a id="36936" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3632" class="Function">≤-refl</a><a id="36942" class="Symbol">;</a> <a id="36944" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3815" class="Function">≤-trans</a><a id="36951" class="Symbol">;</a> <a id="36953" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3682" class="Function">≤-antisym</a><a id="36962" class="Symbol">;</a> <a id="36964" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#3927" class="Function">≤-total</a><a id="36971" class="Symbol">;</a>
+                                  <a id="37007" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15619" class="Function">+-monoʳ-≤</a><a id="37016" class="Symbol">;</a> <a id="37018" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15529" class="Function">+-monoˡ-≤</a><a id="37027" class="Symbol">;</a> <a id="37029" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.Properties.html#15373" class="Function">+-mono-≤</a><a id="37037" class="Symbol">)</a>
 </pre>{% endraw %}
 {::comment}
 In the standard library, `≤-total` is formalised in terms of

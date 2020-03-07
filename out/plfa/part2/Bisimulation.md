@@ -426,7 +426,7 @@ In its structure, it looks a little bit like a proof of progress:
               ~                         ~
               |                         |
               |                         |
-        (ƛ x ⇒ N†) · V† --- —→ --- N† [ x := V ]
+        (ƛ x ⇒ N†) · V† --- —→ --- N† [ x := V† ]
 
     Since simulation commutes with values and `V` is a value, `V†` is also a value.
     Since simulation commutes with substitution and `N ~ N†` and `V ~ V†`,
@@ -438,7 +438,7 @@ In its structure, it looks a little bit like a proof of progress:
 Show that we also have a simulation in the other direction, and hence that we have
 a bisimulation.
 
-{% raw %}<pre class="Agda"><a id="14090" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="14091" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}
 #### Exercise `products` (practice)
 
@@ -448,7 +448,7 @@ are in bisimulation.  The only constructs you need to include are
 variables, and those connected to functions and products.
 In this case, the simulation is _not_ lock-step.
 
-{% raw %}<pre class="Agda"><a id="14420" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="14421" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}
 ## Unicode
 

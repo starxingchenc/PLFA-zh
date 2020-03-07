@@ -437,14 +437,13 @@ Including the line
 {::comment}
 tells Agda that `ℕ` corresponds to the natural numbers, and hence one
 is permitted to type `0` as shorthand for `zero`, `1` as shorthand for
-`suc zero`, `2` as shorthand for `suc (suc zero)`, and so on.  The
-declaration is not permitted unless the type given has exactly two
-constructors, one with no arguments (corresponding to zero) and
-one with a single argument of the same type given in the pragma
-(corresponding to successor).
+`suc zero`, `2` as shorthand for `suc (suc zero)`, and so on. The pragma
+must be given a previously declared type (in this case `ℕ`) with
+precisely two constructors, one with no arguments (in this case `zero`),
+and one with a single argument of the given type (in this case `suc`).
 {:/}
 
-这一行告诉 Agda 数据类型 `ℕ` 对应了自然数，然后编写者就可以将 `zero` 简写为 `0`，将 `suc zero` 简写为 `1`，将 `suc (suc zero)` 简写为 `2` 了，以此类推。只有在给出的数据类型有且只有两个构造子，其中一个没有参数（对应零），另一个仅取一个和被定义的数据类型一样的参数（对应后继数）的时候，这条声明才是合乎规定的。
+这一行告诉 Agda 数据类型 `ℕ` 对应了自然数，然后编写者就可以将 `zero` 简写为 `0`，将 `suc zero` 简写为 `1`，将 `suc (suc zero)` 简写为 `2` 了，以此类推。必须要向编译指令给出之前声明的类型（本例中为 `ℕ`），该类型有且只有两个构造子，其中一个没有参数（本例中为 `zero`），另一个只接受一个所给定类型的参数（本例中为 `suc`）。
 
 {::comment}
 As well as enabling the above shorthand, the pragma also enables a
@@ -472,9 +471,9 @@ about it from the Agda standard library:
 
 我们很快就能写一些包含自然数的等式了。在此之前，我们需要从 Agda 标准库中导入**相等性（Equality）**的定义和用于等式推理的记法：
 
-{% raw %}<pre class="Agda"><a id="13999" class="Keyword">import</a> <a id="14006" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="14044" class="Symbol">as</a> <a id="14047" class="Module">Eq</a>
-<a id="14050" class="Keyword">open</a> <a id="14055" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Eq</a> <a id="14058" class="Keyword">using</a> <a id="14064" class="Symbol">(</a><a id="14065" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">_≡_</a><a id="14068" class="Symbol">;</a> <a id="14070" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="14074" class="Symbol">)</a>
-<a id="14076" class="Keyword">open</a> <a id="14081" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2499" class="Module">Eq.≡-Reasoning</a> <a id="14096" class="Keyword">using</a> <a id="14102" class="Symbol">(</a><a id="14103" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin_</a><a id="14109" class="Symbol">;</a> <a id="14111" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">_≡⟨⟩_</a><a id="14116" class="Symbol">;</a> <a id="14118" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">_∎</a><a id="14120" class="Symbol">)</a>
+{% raw %}<pre class="Agda"><a id="14002" class="Keyword">import</a> <a id="14009" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="14047" class="Symbol">as</a> <a id="14050" class="Module">Eq</a>
+<a id="14053" class="Keyword">open</a> <a id="14058" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Eq</a> <a id="14061" class="Keyword">using</a> <a id="14067" class="Symbol">(</a><a id="14068" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">_≡_</a><a id="14071" class="Symbol">;</a> <a id="14073" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="14077" class="Symbol">)</a>
+<a id="14079" class="Keyword">open</a> <a id="14084" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2499" class="Module">Eq.≡-Reasoning</a> <a id="14099" class="Keyword">using</a> <a id="14105" class="Symbol">(</a><a id="14106" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin_</a><a id="14112" class="Symbol">;</a> <a id="14114" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">_≡⟨⟩_</a><a id="14119" class="Symbol">;</a> <a id="14121" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">_∎</a><a id="14123" class="Symbol">)</a>
 </pre>{% endraw %}
 {::comment}
 The first line brings the standard library module that defines
@@ -546,9 +545,9 @@ Here is the definition of addition in Agda:
 
 这是用 Agda 编写的加法定义：
 
-{% raw %}<pre class="Agda"><a id="_+_"></a><a id="16726" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Function Operator">_+_</a> <a id="16730" class="Symbol">:</a> <a id="16732" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="16734" class="Symbol">→</a> <a id="16736" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="16738" class="Symbol">→</a> <a id="16740" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a>
-<a id="16742" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1637" class="InductiveConstructor">zero</a> <a id="16747" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="16749" href="plfa.part1.Naturals.html#16749" class="Bound">n</a> <a id="16751" class="Symbol">=</a> <a id="16753" href="plfa.part1.Naturals.html#16749" class="Bound">n</a>
-<a id="16755" class="Symbol">(</a><a id="16756" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="16760" href="plfa.part1.Naturals.html#16760" class="Bound">m</a><a id="16761" class="Symbol">)</a> <a id="16763" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="16765" href="plfa.part1.Naturals.html#16765" class="Bound">n</a> <a id="16767" class="Symbol">=</a> <a id="16769" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="16773" class="Symbol">(</a><a id="16774" href="plfa.part1.Naturals.html#16760" class="Bound">m</a> <a id="16776" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="16778" href="plfa.part1.Naturals.html#16765" class="Bound">n</a><a id="16779" class="Symbol">)</a>
+{% raw %}<pre class="Agda"><a id="_+_"></a><a id="16729" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Function Operator">_+_</a> <a id="16733" class="Symbol">:</a> <a id="16735" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="16737" class="Symbol">→</a> <a id="16739" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="16741" class="Symbol">→</a> <a id="16743" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a>
+<a id="16745" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1637" class="InductiveConstructor">zero</a> <a id="16750" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="16752" href="plfa.part1.Naturals.html#16752" class="Bound">n</a> <a id="16754" class="Symbol">=</a> <a id="16756" href="plfa.part1.Naturals.html#16752" class="Bound">n</a>
+<a id="16758" class="Symbol">(</a><a id="16759" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="16763" href="plfa.part1.Naturals.html#16763" class="Bound">m</a><a id="16764" class="Symbol">)</a> <a id="16766" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="16768" href="plfa.part1.Naturals.html#16768" class="Bound">n</a> <a id="16770" class="Symbol">=</a> <a id="16772" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="16776" class="Symbol">(</a><a id="16777" href="plfa.part1.Naturals.html#16763" class="Bound">m</a> <a id="16779" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="16781" href="plfa.part1.Naturals.html#16768" class="Bound">n</a><a id="16782" class="Symbol">)</a>
 </pre>{% endraw %}
 {::comment}
 Let's unpack this definition.  Addition is an infix operator.  It is
@@ -619,21 +618,21 @@ For example, let's add two and three:
 
 例如，我们来计算二加三：
 
-{% raw %}<pre class="Agda"><a id="19455" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#19455" class="Function">_</a> <a id="19457" class="Symbol">:</a> <a id="19459" class="Number">2</a> <a id="19461" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19463" class="Number">3</a> <a id="19465" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="19467" class="Number">5</a>
-<a id="19469" class="Symbol">_</a> <a id="19471" class="Symbol">=</a>
-  <a id="19475" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
-    <a id="19485" class="Number">2</a> <a id="19487" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Function Operator">+</a> <a id="19489" class="Number">3</a>
-  <a id="19493" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19500" class="Comment">-- 展开为</a>
-    <a id="19511" class="Symbol">(</a><a id="19512" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19516" class="Symbol">(</a><a id="19517" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19521" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19525" class="Symbol">))</a> <a id="19528" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19530" class="Symbol">(</a><a id="19531" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19535" class="Symbol">(</a><a id="19536" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19540" class="Symbol">(</a><a id="19541" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19545" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19549" class="Symbol">)))</a>
-  <a id="19555" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19562" class="Comment">-- 归纳步骤</a>
-    <a id="19574" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19578" class="Symbol">((</a><a id="19580" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19584" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19588" class="Symbol">)</a> <a id="19590" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19592" class="Symbol">(</a><a id="19593" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19597" class="Symbol">(</a><a id="19598" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19602" class="Symbol">(</a><a id="19603" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19607" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19611" class="Symbol">))))</a>
-  <a id="19618" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19625" class="Comment">-- 归纳步骤</a>
-    <a id="19637" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19641" class="Symbol">(</a><a id="19642" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19646" class="Symbol">(</a><a id="19647" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a> <a id="19652" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19654" class="Symbol">(</a><a id="19655" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19659" class="Symbol">(</a><a id="19660" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19664" class="Symbol">(</a><a id="19665" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19669" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19673" class="Symbol">)))))</a>
-  <a id="19681" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19688" class="Comment">-- 起始步骤</a>
-    <a id="19700" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19704" class="Symbol">(</a><a id="19705" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19709" class="Symbol">(</a><a id="19710" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19714" class="Symbol">(</a><a id="19715" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19719" class="Symbol">(</a><a id="19720" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19724" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19728" class="Symbol">))))</a>
-  <a id="19735" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19742" class="Comment">-- 简写为</a>
-    <a id="19753" class="Number">5</a>
-  <a id="19757" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
+{% raw %}<pre class="Agda"><a id="19458" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#19458" class="Function">_</a> <a id="19460" class="Symbol">:</a> <a id="19462" class="Number">2</a> <a id="19464" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19466" class="Number">3</a> <a id="19468" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="19470" class="Number">5</a>
+<a id="19472" class="Symbol">_</a> <a id="19474" class="Symbol">=</a>
+  <a id="19478" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
+    <a id="19488" class="Number">2</a> <a id="19490" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Function Operator">+</a> <a id="19492" class="Number">3</a>
+  <a id="19496" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19503" class="Comment">-- 展开为</a>
+    <a id="19514" class="Symbol">(</a><a id="19515" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19519" class="Symbol">(</a><a id="19520" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19524" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19528" class="Symbol">))</a> <a id="19531" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19533" class="Symbol">(</a><a id="19534" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19538" class="Symbol">(</a><a id="19539" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19543" class="Symbol">(</a><a id="19544" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19548" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19552" class="Symbol">)))</a>
+  <a id="19558" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19565" class="Comment">-- 归纳步骤</a>
+    <a id="19577" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19581" class="Symbol">((</a><a id="19583" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19587" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19591" class="Symbol">)</a> <a id="19593" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19595" class="Symbol">(</a><a id="19596" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19600" class="Symbol">(</a><a id="19601" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19605" class="Symbol">(</a><a id="19606" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19610" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19614" class="Symbol">))))</a>
+  <a id="19621" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19628" class="Comment">-- 归纳步骤</a>
+    <a id="19640" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19644" class="Symbol">(</a><a id="19645" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19649" class="Symbol">(</a><a id="19650" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a> <a id="19655" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19657" class="Symbol">(</a><a id="19658" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19662" class="Symbol">(</a><a id="19663" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19667" class="Symbol">(</a><a id="19668" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19672" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19676" class="Symbol">)))))</a>
+  <a id="19684" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19691" class="Comment">-- 起始步骤</a>
+    <a id="19703" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19707" class="Symbol">(</a><a id="19708" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19712" class="Symbol">(</a><a id="19713" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19717" class="Symbol">(</a><a id="19718" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19722" class="Symbol">(</a><a id="19723" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19727" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a><a id="19731" class="Symbol">))))</a>
+  <a id="19738" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="19745" class="Comment">-- 简写为</a>
+    <a id="19756" class="Number">5</a>
+  <a id="19760" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
 </pre>{% endraw %}
 {::comment}
 We can write the same derivation more compactly by only
@@ -642,19 +641,19 @@ expanding shorthand as needed:
 
 我们可以按需展开简写，把同样的推导过程写得更加紧凑。
 
-{% raw %}<pre class="Agda"><a id="19901" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#19901" class="Function">_</a> <a id="19903" class="Symbol">:</a> <a id="19905" class="Number">2</a> <a id="19907" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19909" class="Number">3</a> <a id="19911" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="19913" class="Number">5</a>
-<a id="19915" class="Symbol">_</a> <a id="19917" class="Symbol">=</a>
-  <a id="19921" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
-    <a id="19931" class="Number">2</a> <a id="19933" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Function Operator">+</a> <a id="19935" class="Number">3</a>
-  <a id="19939" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="19947" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19951" class="Symbol">(</a><a id="19952" class="Number">1</a> <a id="19954" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19956" class="Number">3</a><a id="19957" class="Symbol">)</a>
-  <a id="19961" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="19969" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19973" class="Symbol">(</a><a id="19974" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19978" class="Symbol">(</a><a id="19979" class="Number">0</a> <a id="19981" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="19983" class="Number">3</a><a id="19984" class="Symbol">))</a>
-  <a id="19989" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="19997" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="20001" class="Symbol">(</a><a id="20002" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="20006" class="Number">3</a><a id="20007" class="Symbol">)</a>
-  <a id="20011" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="20019" class="Number">5</a>
-  <a id="20023" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
+{% raw %}<pre class="Agda"><a id="19904" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#19904" class="Function">_</a> <a id="19906" class="Symbol">:</a> <a id="19908" class="Number">2</a> <a id="19910" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19912" class="Number">3</a> <a id="19914" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="19916" class="Number">5</a>
+<a id="19918" class="Symbol">_</a> <a id="19920" class="Symbol">=</a>
+  <a id="19924" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
+    <a id="19934" class="Number">2</a> <a id="19936" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Function Operator">+</a> <a id="19938" class="Number">3</a>
+  <a id="19942" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="19950" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19954" class="Symbol">(</a><a id="19955" class="Number">1</a> <a id="19957" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19959" class="Number">3</a><a id="19960" class="Symbol">)</a>
+  <a id="19964" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="19972" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="19976" class="Symbol">(</a><a id="19977" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="19981" class="Symbol">(</a><a id="19982" class="Number">0</a> <a id="19984" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="19986" class="Number">3</a><a id="19987" class="Symbol">))</a>
+  <a id="19992" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="20000" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="20004" class="Symbol">(</a><a id="20005" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="20009" class="Number">3</a><a id="20010" class="Symbol">)</a>
+  <a id="20014" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="20022" class="Number">5</a>
+  <a id="20026" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
 </pre>{% endraw %}
 {::comment}
 The first line matches the inductive case by taking `m = 1` and `n = 3`,
@@ -693,8 +692,8 @@ with the following:
 
 其实，以上两种证明都比实际所需的要长，下面的证明就足以让 Agda 满意了。
 
-{% raw %}<pre class="Agda"><a id="21475" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#21475" class="Function">_</a> <a id="21477" class="Symbol">:</a> <a id="21479" class="Number">2</a> <a id="21481" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="21483" class="Number">3</a> <a id="21485" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="21487" class="Number">5</a>
-<a id="21489" class="Symbol">_</a> <a id="21491" class="Symbol">=</a> <a id="21493" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
+{% raw %}<pre class="Agda"><a id="21478" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#21478" class="Function">_</a> <a id="21480" class="Symbol">:</a> <a id="21482" class="Number">2</a> <a id="21484" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="21486" class="Number">3</a> <a id="21488" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="21490" class="Number">5</a>
+<a id="21492" class="Symbol">_</a> <a id="21494" class="Symbol">=</a> <a id="21496" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a>
 </pre>{% endraw %}
 {::comment}
 Agda knows how to compute the value of `2 + 3`, and so can immediately
@@ -742,16 +741,16 @@ other word for evidence, which we will use interchangeably, is _proof_.
 #### 练习 `+-example`（实践） {#plus-example}
 
 {::comment}
-Compute `3 + 4`, writing out your reasoning as a chain of equations.
+Compute `3 + 4`, writing out your reasoning as a chain of equations, using the equations for `+`.
 {:/}
 
-计算 `3 + 4`，将你的推导过程写成等式链。
+计算 `3 + 4`，将你的推导过程写成等式链，为 `+` 使用等式。
 
 {::comment}
-{% raw %}<pre class="Agda"><a id="23455" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="23498" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}{:/}
 
-{% raw %}<pre class="Agda"><a id="23492" class="Comment">-- 请将代码写在此处。</a>
+{% raw %}<pre class="Agda"><a id="23535" class="Comment">-- 请将代码写在此处。</a>
 </pre>{% endraw %}
 {::comment}
 Multiplication
@@ -766,9 +765,9 @@ as repeated addition:
 
 一旦我们定义了加法，我们就可以将乘法定义为重复的加法。
 
-{% raw %}<pre class="Agda"><a id="_*_"></a><a id="23683" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23683" class="Function Operator">_*_</a> <a id="23687" class="Symbol">:</a> <a id="23689" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="23691" class="Symbol">→</a> <a id="23693" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="23695" class="Symbol">→</a> <a id="23697" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a>
-<a id="23699" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1637" class="InductiveConstructor">zero</a>    <a id="23707" href="plfa.part1.Naturals.html#23683" class="Function Operator">*</a> <a id="23709" href="plfa.part1.Naturals.html#23709" class="Bound">n</a>  <a id="23712" class="Symbol">=</a>  <a id="23715" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a>
-<a id="23720" class="Symbol">(</a><a id="23721" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="23725" href="plfa.part1.Naturals.html#23725" class="Bound">m</a><a id="23726" class="Symbol">)</a> <a id="23728" href="plfa.part1.Naturals.html#23683" class="Function Operator">*</a> <a id="23730" href="plfa.part1.Naturals.html#23730" class="Bound">n</a>  <a id="23733" class="Symbol">=</a>  <a id="23736" href="plfa.part1.Naturals.html#23730" class="Bound">n</a> <a id="23738" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="23740" class="Symbol">(</a><a id="23741" href="plfa.part1.Naturals.html#23725" class="Bound">m</a> <a id="23743" href="plfa.part1.Naturals.html#23683" class="Function Operator">*</a> <a id="23745" href="plfa.part1.Naturals.html#23730" class="Bound">n</a><a id="23746" class="Symbol">)</a>
+{% raw %}<pre class="Agda"><a id="_*_"></a><a id="23726" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23726" class="Function Operator">_*_</a> <a id="23730" class="Symbol">:</a> <a id="23732" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="23734" class="Symbol">→</a> <a id="23736" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="23738" class="Symbol">→</a> <a id="23740" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a>
+<a id="23742" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1637" class="InductiveConstructor">zero</a>    <a id="23750" href="plfa.part1.Naturals.html#23726" class="Function Operator">*</a> <a id="23752" href="plfa.part1.Naturals.html#23752" class="Bound">n</a>  <a id="23755" class="Symbol">=</a>  <a id="23758" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a>
+<a id="23763" class="Symbol">(</a><a id="23764" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="23768" href="plfa.part1.Naturals.html#23768" class="Bound">m</a><a id="23769" class="Symbol">)</a> <a id="23771" href="plfa.part1.Naturals.html#23726" class="Function Operator">*</a> <a id="23773" href="plfa.part1.Naturals.html#23773" class="Bound">n</a>  <a id="23776" class="Symbol">=</a>  <a id="23779" href="plfa.part1.Naturals.html#23773" class="Bound">n</a> <a id="23781" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="23783" class="Symbol">(</a><a id="23784" href="plfa.part1.Naturals.html#23768" class="Bound">m</a> <a id="23786" href="plfa.part1.Naturals.html#23726" class="Function Operator">*</a> <a id="23788" href="plfa.part1.Naturals.html#23773" class="Bound">n</a><a id="23789" class="Symbol">)</a>
 </pre>{% endraw %}
 {::comment}
 Computing `m * n` returns the sum of `m` copies of `n`.
@@ -817,18 +816,18 @@ For example, let's multiply two and three:
 
 例如，我们来计算二乘三：
 
-{% raw %}<pre class="Agda"><a id="24906" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#24906" class="Function">_</a> <a id="24908" class="Symbol">=</a>
-  <a id="24912" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
-    <a id="24922" class="Number">2</a> <a id="24924" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23683" class="Function Operator">*</a> <a id="24926" class="Number">3</a>
-  <a id="24930" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="24937" class="Comment">-- 归纳步骤</a>
-    <a id="24949" class="Number">3</a> <a id="24951" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Function Operator">+</a> <a id="24953" class="Symbol">(</a><a id="24954" class="Number">1</a> <a id="24956" href="plfa.part1.Naturals.html#23683" class="Function Operator">*</a> <a id="24958" class="Number">3</a><a id="24959" class="Symbol">)</a>
-  <a id="24963" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="24970" class="Comment">-- 归纳步骤</a>
-    <a id="24982" class="Number">3</a> <a id="24984" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Function Operator">+</a> <a id="24986" class="Symbol">(</a><a id="24987" class="Number">3</a> <a id="24989" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="24991" class="Symbol">(</a><a id="24992" class="Number">0</a> <a id="24994" href="plfa.part1.Naturals.html#23683" class="Function Operator">*</a> <a id="24996" class="Number">3</a><a id="24997" class="Symbol">))</a>
-  <a id="25002" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="25009" class="Comment">-- 起始步骤</a>
-    <a id="25021" class="Number">3</a> <a id="25023" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Function Operator">+</a> <a id="25025" class="Symbol">(</a><a id="25026" class="Number">3</a> <a id="25028" href="plfa.part1.Naturals.html#16726" class="Function Operator">+</a> <a id="25030" class="Number">0</a><a id="25031" class="Symbol">)</a>
-  <a id="25035" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="25042" class="Comment">-- 化简</a>
-    <a id="25052" class="Number">6</a>
-  <a id="25056" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
+{% raw %}<pre class="Agda"><a id="24949" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#24949" class="Function">_</a> <a id="24951" class="Symbol">=</a>
+  <a id="24955" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
+    <a id="24965" class="Number">2</a> <a id="24967" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23726" class="Function Operator">*</a> <a id="24969" class="Number">3</a>
+  <a id="24973" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="24980" class="Comment">-- 归纳步骤</a>
+    <a id="24992" class="Number">3</a> <a id="24994" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Function Operator">+</a> <a id="24996" class="Symbol">(</a><a id="24997" class="Number">1</a> <a id="24999" href="plfa.part1.Naturals.html#23726" class="Function Operator">*</a> <a id="25001" class="Number">3</a><a id="25002" class="Symbol">)</a>
+  <a id="25006" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="25013" class="Comment">-- 归纳步骤</a>
+    <a id="25025" class="Number">3</a> <a id="25027" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Function Operator">+</a> <a id="25029" class="Symbol">(</a><a id="25030" class="Number">3</a> <a id="25032" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="25034" class="Symbol">(</a><a id="25035" class="Number">0</a> <a id="25037" href="plfa.part1.Naturals.html#23726" class="Function Operator">*</a> <a id="25039" class="Number">3</a><a id="25040" class="Symbol">))</a>
+  <a id="25045" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="25052" class="Comment">-- 起始步骤</a>
+    <a id="25064" class="Number">3</a> <a id="25066" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Function Operator">+</a> <a id="25068" class="Symbol">(</a><a id="25069" class="Number">3</a> <a id="25071" href="plfa.part1.Naturals.html#16729" class="Function Operator">+</a> <a id="25073" class="Number">0</a><a id="25074" class="Symbol">)</a>
+  <a id="25078" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>    <a id="25085" class="Comment">-- 化简</a>
+    <a id="25095" class="Number">6</a>
+  <a id="25099" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
 </pre>{% endraw %}
 {::comment}
 The first line matches the inductive case by taking `m = 1` and `n = 3`,
@@ -849,16 +848,18 @@ it can easily be inferred from the corresponding term.
 #### 练习 `*-example`（实践） {#times-example}
 
 {::comment}
-Compute `3 * 4`, writing out your reasoning as a chain of equations.
+Compute `3 * 4`, writing out your reasoning as a chain of equations, using the equations for `*`.
+(You do not need to step through the evaluation of `+`.)
 {:/}
 
-计算 `3 * 4`，将你的推导过程写成等式链。
+计算 `3 * 4`，将你的推导过程写成等式链，为 `*` 使用等式。
+（不必写出 `+` 求值的每一步。）
 
 {::comment}
-{% raw %}<pre class="Agda"><a id="25786" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="25945" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}{:/}
 
-{% raw %}<pre class="Agda"><a id="25823" class="Comment">-- 请将代码写在此处。</a>
+{% raw %}<pre class="Agda"><a id="25982" class="Comment">-- 请将代码写在此处。</a>
 </pre>{% endraw %}
 {::comment}
 Exercise `_^_` (recommended)
@@ -882,10 +883,10 @@ Check that `3 ^ 4` is `81`.
 检查 `3 ^ 4` 是否等于 `81`。
 
 {::comment}
-{% raw %}<pre class="Agda"><a id="26156" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="26315" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}{:/}
 
-{% raw %}<pre class="Agda"><a id="26193" class="Comment">-- 请将代码写在此处。</a>
+{% raw %}<pre class="Agda"><a id="26352" class="Comment">-- 请将代码写在此处。</a>
 </pre>{% endraw %}
 {::comment}
 Monus
@@ -909,10 +910,10 @@ matching against both arguments:
 
 饱和减法是我们首次在定义中对两个参数都使用模式匹配：
 
-{% raw %}<pre class="Agda"><a id="_∸_"></a><a id="26736" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">_∸_</a> <a id="26740" class="Symbol">:</a> <a id="26742" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="26744" class="Symbol">→</a> <a id="26746" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="26748" class="Symbol">→</a> <a id="26750" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a>
-<a id="26752" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26752" class="Bound">m</a>     <a id="26758" href="plfa.part1.Naturals.html#26736" class="Function Operator">∸</a> <a id="26760" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a>   <a id="26767" class="Symbol">=</a>  <a id="26770" href="plfa.part1.Naturals.html#26752" class="Bound">m</a>
-<a id="26772" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1637" class="InductiveConstructor">zero</a>  <a id="26778" href="plfa.part1.Naturals.html#26736" class="Function Operator">∸</a> <a id="26780" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="26784" href="plfa.part1.Naturals.html#26784" class="Bound">n</a>  <a id="26787" class="Symbol">=</a>  <a id="26790" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a>
-<a id="26795" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="26799" href="plfa.part1.Naturals.html#26799" class="Bound">m</a> <a id="26801" href="plfa.part1.Naturals.html#26736" class="Function Operator">∸</a> <a id="26803" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="26807" href="plfa.part1.Naturals.html#26807" class="Bound">n</a>  <a id="26810" class="Symbol">=</a>  <a id="26813" href="plfa.part1.Naturals.html#26799" class="Bound">m</a> <a id="26815" href="plfa.part1.Naturals.html#26736" class="Function Operator">∸</a> <a id="26817" href="plfa.part1.Naturals.html#26807" class="Bound">n</a>
+{% raw %}<pre class="Agda"><a id="_∸_"></a><a id="26895" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">_∸_</a> <a id="26899" class="Symbol">:</a> <a id="26901" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="26903" class="Symbol">→</a> <a id="26905" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a> <a id="26907" class="Symbol">→</a> <a id="26909" href="plfa.part1.Naturals.html#1621" class="Datatype">ℕ</a>
+<a id="26911" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26911" class="Bound">m</a>     <a id="26917" href="plfa.part1.Naturals.html#26895" class="Function Operator">∸</a> <a id="26919" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a>   <a id="26926" class="Symbol">=</a>  <a id="26929" href="plfa.part1.Naturals.html#26911" class="Bound">m</a>
+<a id="26931" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1637" class="InductiveConstructor">zero</a>  <a id="26937" href="plfa.part1.Naturals.html#26895" class="Function Operator">∸</a> <a id="26939" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="26943" href="plfa.part1.Naturals.html#26943" class="Bound">n</a>  <a id="26946" class="Symbol">=</a>  <a id="26949" href="plfa.part1.Naturals.html#1637" class="InductiveConstructor">zero</a>
+<a id="26954" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#1648" class="InductiveConstructor">suc</a> <a id="26958" href="plfa.part1.Naturals.html#26958" class="Bound">m</a> <a id="26960" href="plfa.part1.Naturals.html#26895" class="Function Operator">∸</a> <a id="26962" href="plfa.part1.Naturals.html#1648" class="InductiveConstructor">suc</a> <a id="26966" href="plfa.part1.Naturals.html#26966" class="Bound">n</a>  <a id="26969" class="Symbol">=</a>  <a id="26972" href="plfa.part1.Naturals.html#26958" class="Bound">m</a> <a id="26974" href="plfa.part1.Naturals.html#26895" class="Function Operator">∸</a> <a id="26976" href="plfa.part1.Naturals.html#26966" class="Bound">n</a>
 </pre>{% endraw %}
 {::comment}
 We can do a simple analysis to show that all the cases are covered.
@@ -948,16 +949,16 @@ For example, let's subtract two from three:
 
 例如，我们来计算三减二：
 
-{% raw %}<pre class="Agda"><a id="27606" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#27606" class="Function">_</a> <a id="27608" class="Symbol">=</a>
-  <a id="27612" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
-    <a id="27622" class="Number">3</a> <a id="27624" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">∸</a> <a id="27626" class="Number">2</a>
-  <a id="27630" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="27638" class="Number">2</a> <a id="27640" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">∸</a> <a id="27642" class="Number">1</a>
-  <a id="27646" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="27654" class="Number">1</a> <a id="27656" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">∸</a> <a id="27658" class="Number">0</a>
-  <a id="27662" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="27670" class="Number">1</a>
-  <a id="27674" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
+{% raw %}<pre class="Agda"><a id="27765" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#27765" class="Function">_</a> <a id="27767" class="Symbol">=</a>
+  <a id="27771" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
+    <a id="27781" class="Number">3</a> <a id="27783" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">∸</a> <a id="27785" class="Number">2</a>
+  <a id="27789" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="27797" class="Number">2</a> <a id="27799" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">∸</a> <a id="27801" class="Number">1</a>
+  <a id="27805" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="27813" class="Number">1</a> <a id="27815" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">∸</a> <a id="27817" class="Number">0</a>
+  <a id="27821" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="27829" class="Number">1</a>
+  <a id="27833" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
 </pre>{% endraw %}
 {::comment}
 We did not use the second equation at all, but it will be required
@@ -966,22 +967,22 @@ if we try to subtract a larger number from a smaller one:
 
 我们没有使用第二个等式，但是如果被减数比减数小，我们还是会用到它。
 
-{% raw %}<pre class="Agda"><a id="27863" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#27863" class="Function">_</a> <a id="27865" class="Symbol">=</a>
-  <a id="27869" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
-    <a id="27879" class="Number">2</a> <a id="27881" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">∸</a> <a id="27883" class="Number">3</a>
-  <a id="27887" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="27895" class="Number">1</a> <a id="27897" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">∸</a> <a id="27899" class="Number">2</a>
-  <a id="27903" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="27911" class="Number">0</a> <a id="27913" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Function Operator">∸</a> <a id="27915" class="Number">1</a>
-  <a id="27919" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
-    <a id="27927" class="Number">0</a>
-  <a id="27931" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
+{% raw %}<pre class="Agda"><a id="28022" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#28022" class="Function">_</a> <a id="28024" class="Symbol">=</a>
+  <a id="28028" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2597" class="Function Operator">begin</a>
+    <a id="28038" class="Number">2</a> <a id="28040" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">∸</a> <a id="28042" class="Number">3</a>
+  <a id="28046" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="28054" class="Number">1</a> <a id="28056" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">∸</a> <a id="28058" class="Number">2</a>
+  <a id="28062" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="28070" class="Number">0</a> <a id="28072" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Function Operator">∸</a> <a id="28074" class="Number">1</a>
+  <a id="28078" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2655" class="Function Operator">≡⟨⟩</a>
+    <a id="28086" class="Number">0</a>
+  <a id="28090" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.Core.html#2892" class="Function Operator">∎</a>
 </pre>{% endraw %}
 {::comment}
-Exercise `∸-examples` (recommended)
+#### Exercise `∸-example₁` and `∸-example₂` (recommended) {#monus-examples}
 {:/}
 
-练习 `∸-examples`（推荐） {#monus-examples}
+练习 `∸-example₁` 和 `∸-example₂`（推荐） {#monus-examples}
 
 {::comment}
 Compute `5 ∸ 3` and `3 ∸ 5`, writing out your reasoning as a chain of equations.
@@ -990,10 +991,10 @@ Compute `5 ∸ 3` and `3 ∸ 5`, writing out your reasoning as a chain of equati
 计算 `5 ∸ 3` 和 `3 ∸ 5`，将你的推导过程写成等式链。
 
 {::comment}
-{% raw %}<pre class="Agda"><a id="28182" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="28396" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}{:/}
 
-{% raw %}<pre class="Agda"><a id="28219" class="Comment">-- 请将代码写在此处。</a>
+{% raw %}<pre class="Agda"><a id="28433" class="Comment">-- 请将代码写在此处。</a>
 </pre>{% endraw %}
 {::comment}
 Precedence
@@ -1020,8 +1021,8 @@ needs to be declared:
 
 在 Agda 中，中缀运算符的优先级和结合性需要被声明：
 
-{% raw %}<pre class="Agda"><a id="29095" class="Keyword">infixl</a> <a id="29102" class="Number">6</a>  <a id="29105" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Primitive Operator">_+_</a>  <a id="29110" href="plfa.part1.Naturals.html#26736" class="Primitive Operator">_∸_</a>
-<a id="29114" class="Keyword">infixl</a> <a id="29121" class="Number">7</a>  <a id="29124" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23683" class="Primitive Operator">_*_</a>
+{% raw %}<pre class="Agda"><a id="29309" class="Keyword">infixl</a> <a id="29316" class="Number">6</a>  <a id="29319" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Primitive Operator">_+_</a>  <a id="29324" href="plfa.part1.Naturals.html#26895" class="Primitive Operator">_∸_</a>
+<a id="29328" class="Keyword">infixl</a> <a id="29335" class="Number">7</a>  <a id="29338" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23726" class="Primitive Operator">_*_</a>
 </pre>{% endraw %}
 {::comment}
 This states operators `_+_` and `_∸_` have precedence level 6,
@@ -1090,7 +1091,7 @@ since the same idea was previously proposed by Moses Schönfinkel in
 the 1920's.  I was told a joke: "It should be called schönfinkeling,
 but currying is tastier". Only later did I learn that the explanation
 of the misattribution was itself a misattribution.  The idea actually
-appears in the _Begriffschrift_ of Gottlob Frege, published in 1879.
+appears in the _Begriffsschrift_ of Gottlob Frege, published in 1879.
 {:/}
 
 柯里化是以哈斯凯尔·柯里（Haskell Curry）的名字命名的，编程语言 Haskell 也是。柯里的工作可以追溯到 19 世纪 30 年代。当我第一次了解到柯里化时，有人告诉我柯里化的命名是个归因错误，因为在 20 年代同样的想法就已经被
@@ -1538,9 +1539,9 @@ More pragmas
 Including the lines
 {:/}
 
-{% raw %}<pre class="Agda"><a id="43057" class="Symbol">{-#</a> <a id="43061" class="Keyword">BUILTIN</a> <a id="43069" class="Pragma">NATPLUS</a> <a id="43077" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16726" class="Primitive Operator">_+_</a> <a id="43081" class="Symbol">#-}</a>
-<a id="43085" class="Symbol">{-#</a> <a id="43089" class="Keyword">BUILTIN</a> <a id="43097" class="Pragma">NATTIMES</a> <a id="43106" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23683" class="Primitive Operator">_*_</a> <a id="43110" class="Symbol">#-}</a>
-<a id="43114" class="Symbol">{-#</a> <a id="43118" class="Keyword">BUILTIN</a> <a id="43126" class="Pragma">NATMINUS</a> <a id="43135" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26736" class="Primitive Operator">_∸_</a> <a id="43139" class="Symbol">#-}</a>
+{% raw %}<pre class="Agda"><a id="43272" class="Symbol">{-#</a> <a id="43276" class="Keyword">BUILTIN</a> <a id="43284" class="Pragma">NATPLUS</a> <a id="43292" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#16729" class="Primitive Operator">_+_</a> <a id="43296" class="Symbol">#-}</a>
+<a id="43300" class="Symbol">{-#</a> <a id="43304" class="Keyword">BUILTIN</a> <a id="43312" class="Pragma">NATTIMES</a> <a id="43321" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#23726" class="Primitive Operator">_*_</a> <a id="43325" class="Symbol">#-}</a>
+<a id="43329" class="Symbol">{-#</a> <a id="43333" class="Keyword">BUILTIN</a> <a id="43341" class="Pragma">NATMINUS</a> <a id="43350" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#26895" class="Primitive Operator">_∸_</a> <a id="43354" class="Symbol">#-}</a>
 </pre>{% endraw %}
 {::comment}
 tells Agda that these three operators correspond to the usual ones,
@@ -1571,10 +1572,10 @@ rather than a unary system.  We represent a number as a bitstring:
 
 使用二进制系统能提供比一进制系统更高效的自然数表示。我们可以用一个比特串来表示一个数：
 
-{% raw %}<pre class="Agda"><a id="44403" class="Keyword">data</a> <a id="Bin"></a><a id="44408" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44408" class="Datatype">Bin</a> <a id="44412" class="Symbol">:</a> <a id="44414" class="PrimitiveType">Set</a> <a id="44418" class="Keyword">where</a>
-  <a id="Bin.⟨⟩"></a><a id="44426" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44426" class="InductiveConstructor">⟨⟩</a> <a id="44429" class="Symbol">:</a> <a id="44431" href="plfa.part1.Naturals.html#44408" class="Datatype">Bin</a>
-  <a id="Bin._O"></a><a id="44437" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44437" class="InductiveConstructor Operator">_O</a> <a id="44440" class="Symbol">:</a> <a id="44442" href="plfa.part1.Naturals.html#44408" class="Datatype">Bin</a> <a id="44446" class="Symbol">→</a> <a id="44448" href="plfa.part1.Naturals.html#44408" class="Datatype">Bin</a>
-  <a id="Bin._I"></a><a id="44454" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44454" class="InductiveConstructor Operator">_I</a> <a id="44457" class="Symbol">:</a> <a id="44459" href="plfa.part1.Naturals.html#44408" class="Datatype">Bin</a> <a id="44463" class="Symbol">→</a> <a id="44465" href="plfa.part1.Naturals.html#44408" class="Datatype">Bin</a>
+{% raw %}<pre class="Agda"><a id="44618" class="Keyword">data</a> <a id="Bin"></a><a id="44623" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44623" class="Datatype">Bin</a> <a id="44627" class="Symbol">:</a> <a id="44629" class="PrimitiveType">Set</a> <a id="44633" class="Keyword">where</a>
+  <a id="Bin.⟨⟩"></a><a id="44641" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44641" class="InductiveConstructor">⟨⟩</a> <a id="44644" class="Symbol">:</a> <a id="44646" href="plfa.part1.Naturals.html#44623" class="Datatype">Bin</a>
+  <a id="Bin._O"></a><a id="44652" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44652" class="InductiveConstructor Operator">_O</a> <a id="44655" class="Symbol">:</a> <a id="44657" href="plfa.part1.Naturals.html#44623" class="Datatype">Bin</a> <a id="44661" class="Symbol">→</a> <a id="44663" href="plfa.part1.Naturals.html#44623" class="Datatype">Bin</a>
+  <a id="Bin._I"></a><a id="44669" href="{% endraw %}{{ site.baseurl }}{% link out/plfa/part1/Naturals.md %}{% raw %}#44669" class="InductiveConstructor Operator">_I</a> <a id="44672" class="Symbol">:</a> <a id="44674" href="plfa.part1.Naturals.html#44623" class="Datatype">Bin</a> <a id="44678" class="Symbol">→</a> <a id="44680" href="plfa.part1.Naturals.html#44623" class="Datatype">Bin</a>
 </pre>{% endraw %}
 {::comment}
 For instance, the bitstring
@@ -1644,10 +1645,10 @@ Confirm that these both give the correct answer for zero through four.
 对于前者，用没有前导零的比特串来表示正数，并用 `x0 nil` 表示零。验证这两个函数都能对零到四给出正确结果。
 
 {::comment}
-{% raw %}<pre class="Agda"><a id="45728" class="Comment">-- Your code goes here</a>
+{% raw %}<pre class="Agda"><a id="45943" class="Comment">-- Your code goes here</a>
 </pre>{% endraw %}{:/}
 
-{% raw %}<pre class="Agda"><a id="45765" class="Comment">-- 请将代码写在此处。</a>
+{% raw %}<pre class="Agda"><a id="45980" class="Comment">-- 请将代码写在此处。</a>
 </pre>{% endraw %}
 {::comment}
 Standard library
@@ -1664,7 +1665,7 @@ library module `Data.Nat`:
 
 在每一章的结尾，我们将展示如何在标准库中找到相关的定义。自然数，它们的构造子，以及用于自然数的基本运算符，都在标准库模块 `Data.Nat` 中定义：
 
-{% raw %}<pre class="Agda"><a id="46152" class="Comment">-- import Data.Nat using (ℕ; zero; suc; _+_; _*_; _^_; _∸_)</a>
+{% raw %}<pre class="Agda"><a id="46367" class="Comment">-- import Data.Nat using (ℕ; zero; suc; _+_; _*_; _^_; _∸_)</a>
 </pre>{% endraw %}
 {::comment}
 Normally, we will show an import as running code, so Agda will

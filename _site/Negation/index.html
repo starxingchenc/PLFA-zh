@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Negation/" />
 <meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
 <script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","headline":"Negation: 直觉逻辑与命题逻辑中的否定","url":"https://agda-zh.github.io/PLFA-zh/Negation/","@context":"https://schema.org"}</script>
+{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Negation/","headline":"Negation: 直觉逻辑与命题逻辑中的否定","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
 <body><header class="site-header" role="banner">
@@ -61,7 +61,7 @@
     &bullet;
     
     
-    <a alt="Source code" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/Negation.lagda.md">源代码</a>
+    <a alt="Source code" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/part1/Negation.lagda.md">源代码</a>
     
     
     &bullet;
@@ -73,7 +73,7 @@
 
 
   <div class="post-content">
-    <pre class="Agda"><a id="188" class="Keyword">module</a> <a id="195" href="/PLFA-zh/Negation/" class="Module">plfa.Negation</a> <a id="209" class="Keyword">where</a>
+    <pre class="Agda"><a id="188" class="Keyword">module</a> <a id="195" href="/PLFA-zh/Negation/" class="Module">plfa.part1.Negation</a> <a id="215" class="Keyword">where</a>
 </pre>
 <!-- This chapter introduces negation, and discusses intuitionistic
 and classical logic. -->
@@ -82,12 +82,12 @@ and classical logic. -->
 
 <h2 id="imports">Imports</h2>
 
-<pre class="Agda"><a id="364" class="Keyword">open</a> <a id="369" class="Keyword">import</a> <a id="376" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="414" class="Keyword">using</a> <a id="420" class="Symbol">(</a><a id="421" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">_≡_</a><a id="424" class="Symbol">;</a> <a id="426" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="430" class="Symbol">)</a>
-<a id="432" class="Keyword">open</a> <a id="437" class="Keyword">import</a> <a id="444" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.html" class="Module">Data.Nat</a> <a id="453" class="Keyword">using</a> <a id="459" class="Symbol">(</a><a id="460" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="461" class="Symbol">;</a> <a id="463" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a><a id="467" class="Symbol">;</a> <a id="469" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a><a id="472" class="Symbol">)</a>
-<a id="474" class="Keyword">open</a> <a id="479" class="Keyword">import</a> <a id="486" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html" class="Module">Data.Empty</a> <a id="497" class="Keyword">using</a> <a id="503" class="Symbol">(</a><a id="504" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a><a id="505" class="Symbol">;</a> <a id="507" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a><a id="513" class="Symbol">)</a>
-<a id="515" class="Keyword">open</a> <a id="520" class="Keyword">import</a> <a id="527" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.html" class="Module">Data.Sum</a> <a id="536" class="Keyword">using</a> <a id="542" class="Symbol">(</a><a id="543" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">_⊎_</a><a id="546" class="Symbol">;</a> <a id="548" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a><a id="552" class="Symbol">;</a> <a id="554" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a><a id="558" class="Symbol">)</a>
-<a id="560" class="Keyword">open</a> <a id="565" class="Keyword">import</a> <a id="572" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html" class="Module">Data.Product</a> <a id="585" class="Keyword">using</a> <a id="591" class="Symbol">(</a><a id="592" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1162" class="Function Operator">_×_</a><a id="595" class="Symbol">)</a>
-<a id="597" class="Keyword">open</a> <a id="602" class="Keyword">import</a> <a id="609" href="/PLFA-zh/Isomorphism/" class="Module">plfa.Isomorphism</a> <a id="626" class="Keyword">using</a> <a id="632" class="Symbol">(</a><a id="633" href="plfa.Isomorphism.html#5843" class="Record Operator">_≃_</a><a id="636" class="Symbol">;</a> <a id="638" href="plfa.Isomorphism.html#3758" class="Postulate">extensionality</a><a id="652" class="Symbol">)</a>
+<pre class="Agda"><a id="370" class="Keyword">open</a> <a id="375" class="Keyword">import</a> <a id="382" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="420" class="Keyword">using</a> <a id="426" class="Symbol">(</a><a id="427" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">_≡_</a><a id="430" class="Symbol">;</a> <a id="432" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="436" class="Symbol">)</a>
+<a id="438" class="Keyword">open</a> <a id="443" class="Keyword">import</a> <a id="450" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.html" class="Module">Data.Nat</a> <a id="459" class="Keyword">using</a> <a id="465" class="Symbol">(</a><a id="466" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="467" class="Symbol">;</a> <a id="469" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a><a id="473" class="Symbol">;</a> <a id="475" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a><a id="478" class="Symbol">)</a>
+<a id="480" class="Keyword">open</a> <a id="485" class="Keyword">import</a> <a id="492" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html" class="Module">Data.Empty</a> <a id="503" class="Keyword">using</a> <a id="509" class="Symbol">(</a><a id="510" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a><a id="511" class="Symbol">;</a> <a id="513" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a><a id="519" class="Symbol">)</a>
+<a id="521" class="Keyword">open</a> <a id="526" class="Keyword">import</a> <a id="533" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.html" class="Module">Data.Sum</a> <a id="542" class="Keyword">using</a> <a id="548" class="Symbol">(</a><a id="549" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">_⊎_</a><a id="552" class="Symbol">;</a> <a id="554" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a><a id="558" class="Symbol">;</a> <a id="560" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a><a id="564" class="Symbol">)</a>
+<a id="566" class="Keyword">open</a> <a id="571" class="Keyword">import</a> <a id="578" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html" class="Module">Data.Product</a> <a id="591" class="Keyword">using</a> <a id="597" class="Symbol">(</a><a id="598" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1162" class="Function Operator">_×_</a><a id="601" class="Symbol">)</a>
+<a id="603" class="Keyword">open</a> <a id="608" class="Keyword">import</a> <a id="615" href="/PLFA-zh/Isomorphism/" class="Module">plfa.part1.Isomorphism</a> <a id="638" class="Keyword">using</a> <a id="644" class="Symbol">(</a><a id="645" href="plfa.part1.Isomorphism.html#5849" class="Record Operator">_≃_</a><a id="648" class="Symbol">;</a> <a id="650" href="plfa.part1.Isomorphism.html#3764" class="Postulate">extensionality</a><a id="664" class="Symbol">)</a>
 </pre>
 
 <!-- ## Negation -->
@@ -100,8 +100,8 @@ as implication of false: -->
 
 <p>给定命题 <code class="language-plaintext highlighter-rouge">A</code>，当 <code class="language-plaintext highlighter-rouge">A</code> 不成立时，它的否定形式 <code class="language-plaintext highlighter-rouge">¬ A</code> 成立。我们将否定阐述为「蕴涵假」来形式化此概念。</p>
 
-<pre class="Agda"><a id="¬_"></a><a id="934" href="/PLFA-zh/Negation/#934" class="Function Operator">¬_</a> <a id="937" class="Symbol">:</a> <a id="939" class="PrimitiveType">Set</a> <a id="943" class="Symbol">→</a> <a id="945" class="PrimitiveType">Set</a>
-<a id="949" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="951" href="plfa.Negation.html#951" class="Bound">A</a> <a id="953" class="Symbol">=</a> <a id="955" href="plfa.Negation.html#951" class="Bound">A</a> <a id="957" class="Symbol">→</a> <a id="959" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
+<pre class="Agda"><a id="¬_"></a><a id="946" href="/PLFA-zh/Negation/#946" class="Function Operator">¬_</a> <a id="949" class="Symbol">:</a> <a id="951" class="PrimitiveType">Set</a> <a id="955" class="Symbol">→</a> <a id="957" class="PrimitiveType">Set</a>
+<a id="961" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="963" href="plfa.part1.Negation.html#963" class="Bound">A</a> <a id="965" class="Symbol">=</a> <a id="967" href="plfa.part1.Negation.html#963" class="Bound">A</a> <a id="969" class="Symbol">→</a> <a id="971" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
 </pre>
 <!-- This is a form of _proof by contradiction_: if assuming `A` leads
 to the conclusion `⊥` (a contradiction), then we must have `¬ A`. -->
@@ -126,12 +126,12 @@ In other words, if both `¬ A` and `A` hold, then we have a contradiction: -->
 
 <p>给定 <code class="language-plaintext highlighter-rouge">¬ A</code> 和 <code class="language-plaintext highlighter-rouge">A</code> 均成立的证据，我们可以得出 <code class="language-plaintext highlighter-rouge">⊥</code> 成立。换言之，若 <code class="language-plaintext highlighter-rouge">¬ A</code> 和 <code class="language-plaintext highlighter-rouge">A</code> 均成立，那么我们就得到了矛盾：</p>
 
-<pre class="Agda"><a id="¬-elim"></a><a id="1844" href="/PLFA-zh/Negation/#1844" class="Function">¬-elim</a> <a id="1851" class="Symbol">:</a> <a id="1853" class="Symbol">∀</a> <a id="1855" class="Symbol">{</a><a id="1856" href="plfa.Negation.html#1856" class="Bound">A</a> <a id="1858" class="Symbol">:</a> <a id="1860" class="PrimitiveType">Set</a><a id="1863" class="Symbol">}</a>
-  <a id="1867" class="Symbol">→</a> <a id="1869" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="1871" href="plfa.Negation.html#1856" class="Bound">A</a>
-  <a id="1875" class="Symbol">→</a> <a id="1877" href="/PLFA-zh/Negation/#1856" class="Bound">A</a>
-    <a id="1883" class="Comment">---</a>
-  <a id="1889" class="Symbol">→</a> <a id="1891" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
-<a id="1893" href="/PLFA-zh/Negation/#1844" class="Function">¬-elim</a> <a id="1900" href="plfa.Negation.html#1900" class="Bound">¬x</a> <a id="1903" href="plfa.Negation.html#1903" class="Bound">x</a> <a id="1905" class="Symbol">=</a> <a id="1907" href="plfa.Negation.html#1900" class="Bound">¬x</a> <a id="1910" href="plfa.Negation.html#1903" class="Bound">x</a>
+<pre class="Agda"><a id="¬-elim"></a><a id="1856" href="/PLFA-zh/Negation/#1856" class="Function">¬-elim</a> <a id="1863" class="Symbol">:</a> <a id="1865" class="Symbol">∀</a> <a id="1867" class="Symbol">{</a><a id="1868" href="plfa.part1.Negation.html#1868" class="Bound">A</a> <a id="1870" class="Symbol">:</a> <a id="1872" class="PrimitiveType">Set</a><a id="1875" class="Symbol">}</a>
+  <a id="1879" class="Symbol">→</a> <a id="1881" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="1883" href="plfa.part1.Negation.html#1868" class="Bound">A</a>
+  <a id="1887" class="Symbol">→</a> <a id="1889" href="/PLFA-zh/Negation/#1868" class="Bound">A</a>
+    <a id="1895" class="Comment">---</a>
+  <a id="1901" class="Symbol">→</a> <a id="1903" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
+<a id="1905" href="/PLFA-zh/Negation/#1856" class="Function">¬-elim</a> <a id="1912" href="plfa.part1.Negation.html#1912" class="Bound">¬x</a> <a id="1915" href="plfa.part1.Negation.html#1915" class="Bound">x</a> <a id="1917" class="Symbol">=</a> <a id="1919" href="plfa.part1.Negation.html#1912" class="Bound">¬x</a> <a id="1922" href="plfa.part1.Negation.html#1915" class="Bound">x</a>
 </pre>
 <!-- Here we write `¬x` for evidence of `¬ A` and `x` for evidence of `A`.  This
 means that `¬x` must be a function of type `A → ⊥`, and hence the application
@@ -145,7 +145,7 @@ than disjunction and conjunction, but less tightly than anything else: -->
 
 <p>我们将否定的优先级设定为高于析取和合取，但低于其它运算：</p>
 
-<pre class="Agda"><a id="2479" class="Keyword">infix</a> <a id="2485" class="Number">3</a> <a id="2487" href="/PLFA-zh/Negation/#934" class="Function Operator">¬_</a>
+<pre class="Agda"><a id="2491" class="Keyword">infix</a> <a id="2497" class="Number">3</a> <a id="2499" href="/PLFA-zh/Negation/#946" class="Function Operator">¬_</a>
 </pre>
 <!-- Thus, `¬ A × ¬ B` parses as `(¬ A) × (¬ B)` and `¬ m ≡ n` as `¬ (m ≡ n)`. -->
 
@@ -157,11 +157,11 @@ we have only half of this equivalence, namely that `A` implies `¬ ¬ A`: -->
 
 <p>在<strong>经典逻辑</strong>中，<code class="language-plaintext highlighter-rouge">A</code> 等价于 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>。而如前文所述，Agda 中使用了<strong>直觉逻辑</strong>，因此我们只有该等价关系的一半，即 <code class="language-plaintext highlighter-rouge">A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>：</p>
 
-<pre class="Agda"><a id="¬¬-intro"></a><a id="2966" href="/PLFA-zh/Negation/#2966" class="Function">¬¬-intro</a> <a id="2975" class="Symbol">:</a> <a id="2977" class="Symbol">∀</a> <a id="2979" class="Symbol">{</a><a id="2980" href="plfa.Negation.html#2980" class="Bound">A</a> <a id="2982" class="Symbol">:</a> <a id="2984" class="PrimitiveType">Set</a><a id="2987" class="Symbol">}</a>
-  <a id="2991" class="Symbol">→</a> <a id="2993" href="/PLFA-zh/Negation/#2980" class="Bound">A</a>
-    <a id="2999" class="Comment">-----</a>
-  <a id="3007" class="Symbol">→</a> <a id="3009" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="3011" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="3013" href="plfa.Negation.html#2980" class="Bound">A</a>
-<a id="3015" href="/PLFA-zh/Negation/#2966" class="Function">¬¬-intro</a> <a id="3024" href="plfa.Negation.html#3024" class="Bound">x</a>  <a id="3027" class="Symbol">=</a>  <a id="3030" class="Symbol">λ{</a><a id="3032" href="plfa.Negation.html#3032" class="Bound">¬x</a> <a id="3035" class="Symbol">→</a> <a id="3037" href="plfa.Negation.html#3032" class="Bound">¬x</a> <a id="3040" href="plfa.Negation.html#3024" class="Bound">x</a><a id="3041" class="Symbol">}</a>
+<pre class="Agda"><a id="¬¬-intro"></a><a id="2978" href="/PLFA-zh/Negation/#2978" class="Function">¬¬-intro</a> <a id="2987" class="Symbol">:</a> <a id="2989" class="Symbol">∀</a> <a id="2991" class="Symbol">{</a><a id="2992" href="plfa.part1.Negation.html#2992" class="Bound">A</a> <a id="2994" class="Symbol">:</a> <a id="2996" class="PrimitiveType">Set</a><a id="2999" class="Symbol">}</a>
+  <a id="3003" class="Symbol">→</a> <a id="3005" href="/PLFA-zh/Negation/#2992" class="Bound">A</a>
+    <a id="3011" class="Comment">-----</a>
+  <a id="3019" class="Symbol">→</a> <a id="3021" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="3023" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="3025" href="plfa.part1.Negation.html#2992" class="Bound">A</a>
+<a id="3027" href="/PLFA-zh/Negation/#2978" class="Function">¬¬-intro</a> <a id="3036" href="plfa.part1.Negation.html#3036" class="Bound">x</a>  <a id="3039" class="Symbol">=</a>  <a id="3042" class="Symbol">λ{</a><a id="3044" href="plfa.part1.Negation.html#3044" class="Bound">¬x</a> <a id="3047" class="Symbol">→</a> <a id="3049" href="plfa.part1.Negation.html#3044" class="Bound">¬x</a> <a id="3052" href="plfa.part1.Negation.html#3036" class="Bound">x</a><a id="3053" class="Symbol">}</a>
 </pre>
 <!-- Let `x` be evidence of `A`. We show that assuming
 `¬ A` leads to a contradiction, and hence `¬ ¬ A` must hold.
@@ -176,11 +176,11 @@ shown `¬ ¬ A`. -->
 
 <p>以上描述的等价写法如下：</p>
 
-<pre class="Agda"><a id="¬¬-intro′"></a><a id="3530" href="/PLFA-zh/Negation/#3530" class="Function">¬¬-intro′</a> <a id="3540" class="Symbol">:</a> <a id="3542" class="Symbol">∀</a> <a id="3544" class="Symbol">{</a><a id="3545" href="plfa.Negation.html#3545" class="Bound">A</a> <a id="3547" class="Symbol">:</a> <a id="3549" class="PrimitiveType">Set</a><a id="3552" class="Symbol">}</a>
-  <a id="3556" class="Symbol">→</a> <a id="3558" href="/PLFA-zh/Negation/#3545" class="Bound">A</a>
-    <a id="3564" class="Comment">-----</a>
-  <a id="3572" class="Symbol">→</a> <a id="3574" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="3576" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="3578" href="plfa.Negation.html#3545" class="Bound">A</a>
-<a id="3580" href="/PLFA-zh/Negation/#3530" class="Function">¬¬-intro′</a> <a id="3590" href="plfa.Negation.html#3590" class="Bound">x</a> <a id="3592" href="plfa.Negation.html#3592" class="Bound">¬x</a> <a id="3595" class="Symbol">=</a> <a id="3597" href="plfa.Negation.html#3592" class="Bound">¬x</a> <a id="3600" href="plfa.Negation.html#3590" class="Bound">x</a>
+<pre class="Agda"><a id="¬¬-intro′"></a><a id="3542" href="/PLFA-zh/Negation/#3542" class="Function">¬¬-intro′</a> <a id="3552" class="Symbol">:</a> <a id="3554" class="Symbol">∀</a> <a id="3556" class="Symbol">{</a><a id="3557" href="plfa.part1.Negation.html#3557" class="Bound">A</a> <a id="3559" class="Symbol">:</a> <a id="3561" class="PrimitiveType">Set</a><a id="3564" class="Symbol">}</a>
+  <a id="3568" class="Symbol">→</a> <a id="3570" href="/PLFA-zh/Negation/#3557" class="Bound">A</a>
+    <a id="3576" class="Comment">-----</a>
+  <a id="3584" class="Symbol">→</a> <a id="3586" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="3588" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="3590" href="plfa.part1.Negation.html#3557" class="Bound">A</a>
+<a id="3592" href="/PLFA-zh/Negation/#3542" class="Function">¬¬-intro′</a> <a id="3602" href="plfa.part1.Negation.html#3602" class="Bound">x</a> <a id="3604" href="plfa.part1.Negation.html#3604" class="Bound">¬x</a> <a id="3607" class="Symbol">=</a> <a id="3609" href="plfa.part1.Negation.html#3604" class="Bound">¬x</a> <a id="3612" href="plfa.part1.Negation.html#3602" class="Bound">x</a>
 </pre>
 <!-- Here we have simply converted the argument of the lambda term
 to an additional argument of the function.  We will usually
@@ -193,11 +193,11 @@ use this latter style, as it is more compact. -->
 
 <p>我们无法证明 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">A</code>，但可以证明 <code class="language-plaintext highlighter-rouge">¬ ¬ ¬ A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">¬ A</code>：</p>
 
-<pre class="Agda"><a id="¬¬¬-elim"></a><a id="4005" href="/PLFA-zh/Negation/#4005" class="Function">¬¬¬-elim</a> <a id="4014" class="Symbol">:</a> <a id="4016" class="Symbol">∀</a> <a id="4018" class="Symbol">{</a><a id="4019" href="plfa.Negation.html#4019" class="Bound">A</a> <a id="4021" class="Symbol">:</a> <a id="4023" class="PrimitiveType">Set</a><a id="4026" class="Symbol">}</a>
-  <a id="4030" class="Symbol">→</a> <a id="4032" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="4034" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="4036" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="4038" href="plfa.Negation.html#4019" class="Bound">A</a>
-    <a id="4044" class="Comment">-------</a>
-  <a id="4054" class="Symbol">→</a> <a id="4056" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="4058" href="plfa.Negation.html#4019" class="Bound">A</a>
-<a id="4060" href="/PLFA-zh/Negation/#4005" class="Function">¬¬¬-elim</a> <a id="4069" href="plfa.Negation.html#4069" class="Bound">¬¬¬x</a>  <a id="4075" class="Symbol">=</a>  <a id="4078" class="Symbol">λ</a> <a id="4080" href="plfa.Negation.html#4080" class="Bound">x</a> <a id="4082" class="Symbol">→</a> <a id="4084" href="plfa.Negation.html#4069" class="Bound">¬¬¬x</a> <a id="4089" class="Symbol">(</a><a id="4090" href="plfa.Negation.html#2966" class="Function">¬¬-intro</a> <a id="4099" href="plfa.Negation.html#4080" class="Bound">x</a><a id="4100" class="Symbol">)</a>
+<pre class="Agda"><a id="¬¬¬-elim"></a><a id="4017" href="/PLFA-zh/Negation/#4017" class="Function">¬¬¬-elim</a> <a id="4026" class="Symbol">:</a> <a id="4028" class="Symbol">∀</a> <a id="4030" class="Symbol">{</a><a id="4031" href="plfa.part1.Negation.html#4031" class="Bound">A</a> <a id="4033" class="Symbol">:</a> <a id="4035" class="PrimitiveType">Set</a><a id="4038" class="Symbol">}</a>
+  <a id="4042" class="Symbol">→</a> <a id="4044" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="4046" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="4048" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="4050" href="plfa.part1.Negation.html#4031" class="Bound">A</a>
+    <a id="4056" class="Comment">-------</a>
+  <a id="4066" class="Symbol">→</a> <a id="4068" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="4070" href="plfa.part1.Negation.html#4031" class="Bound">A</a>
+<a id="4072" href="/PLFA-zh/Negation/#4017" class="Function">¬¬¬-elim</a> <a id="4081" href="plfa.part1.Negation.html#4081" class="Bound">¬¬¬x</a>  <a id="4087" class="Symbol">=</a>  <a id="4090" class="Symbol">λ</a> <a id="4092" href="plfa.part1.Negation.html#4092" class="Bound">x</a> <a id="4094" class="Symbol">→</a> <a id="4096" href="plfa.part1.Negation.html#4081" class="Bound">¬¬¬x</a> <a id="4101" class="Symbol">(</a><a id="4102" href="plfa.part1.Negation.html#2978" class="Function">¬¬-intro</a> <a id="4111" href="plfa.part1.Negation.html#4092" class="Bound">x</a><a id="4112" class="Symbol">)</a>
 </pre>
 <!-- Let `¬¬¬x` be evidence of `¬ ¬ ¬ A`. We will show that assuming
 `A` leads to a contradiction, and hence `¬ A` must hold.
@@ -215,11 +215,11 @@ stating that if `A` implies `B`, then `¬ B` implies `¬ A`: -->
 
 <p>另一个逻辑规则是<strong>换质换位律（contraposition）</strong>，它陈述了若 <code class="language-plaintext highlighter-rouge">A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">B</code>，则 <code class="language-plaintext highlighter-rouge">¬ B</code> 蕴涵 <code class="language-plaintext highlighter-rouge">¬ A</code>：</p>
 
-<pre class="Agda"><a id="contraposition"></a><a id="4857" href="/PLFA-zh/Negation/#4857" class="Function">contraposition</a> <a id="4872" class="Symbol">:</a> <a id="4874" class="Symbol">∀</a> <a id="4876" class="Symbol">{</a><a id="4877" href="plfa.Negation.html#4877" class="Bound">A</a> <a id="4879" href="plfa.Negation.html#4879" class="Bound">B</a> <a id="4881" class="Symbol">:</a> <a id="4883" class="PrimitiveType">Set</a><a id="4886" class="Symbol">}</a>
-  <a id="4890" class="Symbol">→</a> <a id="4892" class="Symbol">(</a><a id="4893" href="/PLFA-zh/Negation/#4877" class="Bound">A</a> <a id="4895" class="Symbol">→</a> <a id="4897" href="plfa.Negation.html#4879" class="Bound">B</a><a id="4898" class="Symbol">)</a>
-    <a id="4904" class="Comment">-----------</a>
-  <a id="4918" class="Symbol">→</a> <a id="4920" class="Symbol">(</a><a id="4921" href="/PLFA-zh/Negation/#934" class="Function Operator">¬</a> <a id="4923" href="plfa.Negation.html#4879" class="Bound">B</a> <a id="4925" class="Symbol">→</a> <a id="4927" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="4929" href="plfa.Negation.html#4877" class="Bound">A</a><a id="4930" class="Symbol">)</a>
-<a id="4932" href="/PLFA-zh/Negation/#4857" class="Function">contraposition</a> <a id="4947" href="plfa.Negation.html#4947" class="Bound">f</a> <a id="4949" href="plfa.Negation.html#4949" class="Bound">¬y</a> <a id="4952" href="plfa.Negation.html#4952" class="Bound">x</a> <a id="4954" class="Symbol">=</a> <a id="4956" href="plfa.Negation.html#4949" class="Bound">¬y</a> <a id="4959" class="Symbol">(</a><a id="4960" href="plfa.Negation.html#4947" class="Bound">f</a> <a id="4962" href="plfa.Negation.html#4952" class="Bound">x</a><a id="4963" class="Symbol">)</a>
+<pre class="Agda"><a id="contraposition"></a><a id="4869" href="/PLFA-zh/Negation/#4869" class="Function">contraposition</a> <a id="4884" class="Symbol">:</a> <a id="4886" class="Symbol">∀</a> <a id="4888" class="Symbol">{</a><a id="4889" href="plfa.part1.Negation.html#4889" class="Bound">A</a> <a id="4891" href="plfa.part1.Negation.html#4891" class="Bound">B</a> <a id="4893" class="Symbol">:</a> <a id="4895" class="PrimitiveType">Set</a><a id="4898" class="Symbol">}</a>
+  <a id="4902" class="Symbol">→</a> <a id="4904" class="Symbol">(</a><a id="4905" href="/PLFA-zh/Negation/#4889" class="Bound">A</a> <a id="4907" class="Symbol">→</a> <a id="4909" href="plfa.part1.Negation.html#4891" class="Bound">B</a><a id="4910" class="Symbol">)</a>
+    <a id="4916" class="Comment">-----------</a>
+  <a id="4930" class="Symbol">→</a> <a id="4932" class="Symbol">(</a><a id="4933" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="4935" href="plfa.part1.Negation.html#4891" class="Bound">B</a> <a id="4937" class="Symbol">→</a> <a id="4939" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="4941" href="plfa.part1.Negation.html#4889" class="Bound">A</a><a id="4942" class="Symbol">)</a>
+<a id="4944" href="/PLFA-zh/Negation/#4869" class="Function">contraposition</a> <a id="4959" href="plfa.part1.Negation.html#4959" class="Bound">f</a> <a id="4961" href="plfa.part1.Negation.html#4961" class="Bound">¬y</a> <a id="4964" href="plfa.part1.Negation.html#4964" class="Bound">x</a> <a id="4966" class="Symbol">=</a> <a id="4968" href="plfa.part1.Negation.html#4961" class="Bound">¬y</a> <a id="4971" class="Symbol">(</a><a id="4972" href="plfa.part1.Negation.html#4959" class="Bound">f</a> <a id="4974" href="plfa.part1.Negation.html#4964" class="Bound">x</a><a id="4975" class="Symbol">)</a>
 </pre>
 <!-- Let `f` be evidence of `A → B` and let `¬y` be evidence of `¬ B`.  We
 will show that assuming `A` leads to a contradiction, and hence `¬ A`
@@ -235,15 +235,15 @@ conclude `⊥`, evidenced by `¬y (f x)`.  Hence, we have shown `¬ A`. -->
 
 <p>利用否定可直接定义不等性：</p>
 
-<pre class="Agda"><a id="_≢_"></a><a id="5619" href="/PLFA-zh/Negation/#5619" class="Function Operator">_≢_</a> <a id="5623" class="Symbol">:</a> <a id="5625" class="Symbol">∀</a> <a id="5627" class="Symbol">{</a><a id="5628" href="plfa.Negation.html#5628" class="Bound">A</a> <a id="5630" class="Symbol">:</a> <a id="5632" class="PrimitiveType">Set</a><a id="5635" class="Symbol">}</a> <a id="5637" class="Symbol">→</a> <a id="5639" href="plfa.Negation.html#5628" class="Bound">A</a> <a id="5641" class="Symbol">→</a> <a id="5643" href="plfa.Negation.html#5628" class="Bound">A</a> <a id="5645" class="Symbol">→</a> <a id="5647" class="PrimitiveType">Set</a>
-<a id="5651" href="/PLFA-zh/Negation/#5651" class="Bound">x</a> <a id="5653" href="plfa.Negation.html#5619" class="Function Operator">≢</a> <a id="5655" href="plfa.Negation.html#5655" class="Bound">y</a>  <a id="5658" class="Symbol">=</a>  <a id="5661" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="5663" class="Symbol">(</a><a id="5664" href="plfa.Negation.html#5651" class="Bound">x</a> <a id="5666" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="5668" href="plfa.Negation.html#5655" class="Bound">y</a><a id="5669" class="Symbol">)</a>
+<pre class="Agda"><a id="_≢_"></a><a id="5631" href="/PLFA-zh/Negation/#5631" class="Function Operator">_≢_</a> <a id="5635" class="Symbol">:</a> <a id="5637" class="Symbol">∀</a> <a id="5639" class="Symbol">{</a><a id="5640" href="plfa.part1.Negation.html#5640" class="Bound">A</a> <a id="5642" class="Symbol">:</a> <a id="5644" class="PrimitiveType">Set</a><a id="5647" class="Symbol">}</a> <a id="5649" class="Symbol">→</a> <a id="5651" href="plfa.part1.Negation.html#5640" class="Bound">A</a> <a id="5653" class="Symbol">→</a> <a id="5655" href="plfa.part1.Negation.html#5640" class="Bound">A</a> <a id="5657" class="Symbol">→</a> <a id="5659" class="PrimitiveType">Set</a>
+<a id="5663" href="/PLFA-zh/Negation/#5663" class="Bound">x</a> <a id="5665" href="plfa.part1.Negation.html#5631" class="Function Operator">≢</a> <a id="5667" href="plfa.part1.Negation.html#5667" class="Bound">y</a>  <a id="5670" class="Symbol">=</a>  <a id="5673" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="5675" class="Symbol">(</a><a id="5676" href="plfa.part1.Negation.html#5663" class="Bound">x</a> <a id="5678" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="5680" href="plfa.part1.Negation.html#5667" class="Bound">y</a><a id="5681" class="Symbol">)</a>
 </pre>
 <!-- It is trivial to show distinct numbers are not equal: -->
 
 <p>要证明不同的数不相等很简单：</p>
 
-<pre class="Agda"><a id="5768" href="/PLFA-zh/Negation/#5768" class="Function">_</a> <a id="5770" class="Symbol">:</a> <a id="5772" class="Number">1</a> <a id="5774" href="plfa.Negation.html#5619" class="Function Operator">≢</a> <a id="5776" class="Number">2</a>
-<a id="5778" class="Symbol">_</a> <a id="5780" class="Symbol">=</a> <a id="5782" class="Symbol">λ()</a>
+<pre class="Agda"><a id="5780" href="/PLFA-zh/Negation/#5780" class="Function">_</a> <a id="5782" class="Symbol">:</a> <a id="5784" class="Number">1</a> <a id="5786" href="plfa.part1.Negation.html#5631" class="Function Operator">≢</a> <a id="5788" class="Number">2</a>
+<a id="5790" class="Symbol">_</a> <a id="5792" class="Symbol">=</a> <a id="5794" class="Symbol">λ()</a>
 </pre>
 <!-- This is our first use of an absurd pattern in a lambda expression.
 The type `M ≡ N` is occupied exactly when `M` and `N` simplify to
@@ -256,8 +256,8 @@ Peano's postulate that zero is not the successor of any number: -->
 只有在 <code class="language-plaintext highlighter-rouge">M</code> 和 <code class="language-plaintext highlighter-rouge">N</code> 可被化简为相同的项时才能居留。由于 <code class="language-plaintext highlighter-rouge">1</code> 和 <code class="language-plaintext highlighter-rouge">2</code>
 会化简为不同的正规形式，因此 Agda 判定没有证据可证明 <code class="language-plaintext highlighter-rouge">1 ≡ 2</code>。第二个例子是，很容易验证皮亚诺公理中「零不是任何数的后继数」的假设：</p>
 
-<pre class="Agda"><a id="peano"></a><a id="6359" href="/PLFA-zh/Negation/#6359" class="Function">peano</a> <a id="6365" class="Symbol">:</a> <a id="6367" class="Symbol">∀</a> <a id="6369" class="Symbol">{</a><a id="6370" href="plfa.Negation.html#6370" class="Bound">m</a> <a id="6372" class="Symbol">:</a> <a id="6374" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="6375" class="Symbol">}</a> <a id="6377" class="Symbol">→</a> <a id="6379" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a> <a id="6384" href="plfa.Negation.html#5619" class="Function Operator">≢</a> <a id="6386" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a> <a id="6390" href="plfa.Negation.html#6370" class="Bound">m</a>
-<a id="6392" href="/PLFA-zh/Negation/#6359" class="Function">peano</a> <a id="6398" class="Symbol">=</a> <a id="6400" class="Symbol">λ()</a>
+<pre class="Agda"><a id="peano"></a><a id="6371" href="/PLFA-zh/Negation/#6371" class="Function">peano</a> <a id="6377" class="Symbol">:</a> <a id="6379" class="Symbol">∀</a> <a id="6381" class="Symbol">{</a><a id="6382" href="plfa.part1.Negation.html#6382" class="Bound">m</a> <a id="6384" class="Symbol">:</a> <a id="6386" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="6387" class="Symbol">}</a> <a id="6389" class="Symbol">→</a> <a id="6391" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a> <a id="6396" href="plfa.part1.Negation.html#5631" class="Function Operator">≢</a> <a id="6398" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a> <a id="6402" href="plfa.part1.Negation.html#6382" class="Bound">m</a>
+<a id="6404" href="/PLFA-zh/Negation/#6371" class="Function">peano</a> <a id="6410" class="Symbol">=</a> <a id="6412" class="Symbol">λ()</a>
 </pre>
 <!-- The evidence is essentially the same, as the absurd pattern matches
 all possible evidence of type `zero ≡ suc m`. -->
@@ -280,18 +280,18 @@ this proof two different ways: -->
 
 <p>确实，只有一个 <code class="language-plaintext highlighter-rouge">⊥ → ⊥</code> 的证明。我们可以用两种方式写出此证明：</p>
 
-<pre class="Agda"><a id="id"></a><a id="7086" href="/PLFA-zh/Negation/#7086" class="Function">id</a> <a id="7089" class="Symbol">:</a> <a id="7091" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a> <a id="7093" class="Symbol">→</a> <a id="7095" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
-<a id="7097" href="/PLFA-zh/Negation/#7086" class="Function">id</a> <a id="7100" href="plfa.Negation.html#7100" class="Bound">x</a> <a id="7102" class="Symbol">=</a> <a id="7104" href="plfa.Negation.html#7100" class="Bound">x</a>
+<pre class="Agda"><a id="id"></a><a id="7098" href="/PLFA-zh/Negation/#7098" class="Function">id</a> <a id="7101" class="Symbol">:</a> <a id="7103" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a> <a id="7105" class="Symbol">→</a> <a id="7107" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
+<a id="7109" href="/PLFA-zh/Negation/#7098" class="Function">id</a> <a id="7112" href="plfa.part1.Negation.html#7112" class="Bound">x</a> <a id="7114" class="Symbol">=</a> <a id="7116" href="plfa.part1.Negation.html#7112" class="Bound">x</a>
 
-<a id="id′"></a><a id="7107" href="/PLFA-zh/Negation/#7107" class="Function">id′</a> <a id="7111" class="Symbol">:</a> <a id="7113" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a> <a id="7115" class="Symbol">→</a> <a id="7117" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
-<a id="7119" href="/PLFA-zh/Negation/#7107" class="Function">id′</a> <a id="7123" class="Symbol">()</a>
+<a id="id′"></a><a id="7119" href="/PLFA-zh/Negation/#7119" class="Function">id′</a> <a id="7123" class="Symbol">:</a> <a id="7125" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a> <a id="7127" class="Symbol">→</a> <a id="7129" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
+<a id="7131" href="/PLFA-zh/Negation/#7119" class="Function">id′</a> <a id="7135" class="Symbol">()</a>
 </pre>
 <!-- But, using extensionality, we can prove these equal: -->
 
 <p>不过使用外延性，我们可以证明二者相等：</p>
 
-<pre class="Agda"><a id="id≡id′"></a><a id="7227" href="/PLFA-zh/Negation/#7227" class="Function">id≡id′</a> <a id="7234" class="Symbol">:</a> <a id="7236" href="plfa.Negation.html#7086" class="Function">id</a> <a id="7239" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7241" href="plfa.Negation.html#7107" class="Function">id′</a>
-<a id="7245" href="/PLFA-zh/Negation/#7227" class="Function">id≡id′</a> <a id="7252" class="Symbol">=</a> <a id="7254" href="/PLFA-zh/Isomorphism/#3758" class="Postulate">extensionality</a> <a id="7269" class="Symbol">(λ())</a>
+<pre class="Agda"><a id="id≡id′"></a><a id="7239" href="/PLFA-zh/Negation/#7239" class="Function">id≡id′</a> <a id="7246" class="Symbol">:</a> <a id="7248" href="plfa.part1.Negation.html#7098" class="Function">id</a> <a id="7251" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7253" href="plfa.part1.Negation.html#7119" class="Function">id′</a>
+<a id="7257" href="/PLFA-zh/Negation/#7239" class="Function">id≡id′</a> <a id="7264" class="Symbol">=</a> <a id="7266" href="/PLFA-zh/Isomorphism/#3764" class="Postulate">extensionality</a> <a id="7281" class="Symbol">(λ())</a>
 </pre>
 <!-- By extensionality, `id ≡ id′` holds if for every
 `x` in their domain we have `id x ≡ id′ x`. But there
@@ -303,8 +303,8 @@ is no `x` in their domain, so the equality holds trivially. -->
 
 <p>实际上，我们可以证明任意两个否定的证明都是相等的：</p>
 
-<pre class="Agda"><a id="assimilation"></a><a id="7659" href="/PLFA-zh/Negation/#7659" class="Function">assimilation</a> <a id="7672" class="Symbol">:</a> <a id="7674" class="Symbol">∀</a> <a id="7676" class="Symbol">{</a><a id="7677" href="plfa.Negation.html#7677" class="Bound">A</a> <a id="7679" class="Symbol">:</a> <a id="7681" class="PrimitiveType">Set</a><a id="7684" class="Symbol">}</a> <a id="7686" class="Symbol">(</a><a id="7687" href="plfa.Negation.html#7687" class="Bound">¬x</a> <a id="7690" href="plfa.Negation.html#7690" class="Bound">¬x′</a> <a id="7694" class="Symbol">:</a> <a id="7696" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="7698" href="plfa.Negation.html#7677" class="Bound">A</a><a id="7699" class="Symbol">)</a> <a id="7701" class="Symbol">→</a> <a id="7703" href="plfa.Negation.html#7687" class="Bound">¬x</a> <a id="7706" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7708" href="plfa.Negation.html#7690" class="Bound">¬x′</a>
-<a id="7712" href="/PLFA-zh/Negation/#7659" class="Function">assimilation</a> <a id="7725" href="plfa.Negation.html#7725" class="Bound">¬x</a> <a id="7728" href="plfa.Negation.html#7728" class="Bound">¬x′</a> <a id="7732" class="Symbol">=</a> <a id="7734" href="/PLFA-zh/Isomorphism/#3758" class="Postulate">extensionality</a> <a id="7749" class="Symbol">(λ</a> <a id="7752" href="plfa.Negation.html#7752" class="Bound">x</a> <a id="7754" class="Symbol">→</a> <a id="7756" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="7763" class="Symbol">(</a><a id="7764" href="plfa.Negation.html#7725" class="Bound">¬x</a> <a id="7767" href="plfa.Negation.html#7752" class="Bound">x</a><a id="7768" class="Symbol">))</a>
+<pre class="Agda"><a id="assimilation"></a><a id="7671" href="/PLFA-zh/Negation/#7671" class="Function">assimilation</a> <a id="7684" class="Symbol">:</a> <a id="7686" class="Symbol">∀</a> <a id="7688" class="Symbol">{</a><a id="7689" href="plfa.part1.Negation.html#7689" class="Bound">A</a> <a id="7691" class="Symbol">:</a> <a id="7693" class="PrimitiveType">Set</a><a id="7696" class="Symbol">}</a> <a id="7698" class="Symbol">(</a><a id="7699" href="plfa.part1.Negation.html#7699" class="Bound">¬x</a> <a id="7702" href="plfa.part1.Negation.html#7702" class="Bound">¬x′</a> <a id="7706" class="Symbol">:</a> <a id="7708" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="7710" href="plfa.part1.Negation.html#7689" class="Bound">A</a><a id="7711" class="Symbol">)</a> <a id="7713" class="Symbol">→</a> <a id="7715" href="plfa.part1.Negation.html#7699" class="Bound">¬x</a> <a id="7718" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7720" href="plfa.part1.Negation.html#7702" class="Bound">¬x′</a>
+<a id="7724" href="/PLFA-zh/Negation/#7671" class="Function">assimilation</a> <a id="7737" href="plfa.part1.Negation.html#7737" class="Bound">¬x</a> <a id="7740" href="plfa.part1.Negation.html#7740" class="Bound">¬x′</a> <a id="7744" class="Symbol">=</a> <a id="7746" href="/PLFA-zh/Isomorphism/#3764" class="Postulate">extensionality</a> <a id="7761" class="Symbol">(λ</a> <a id="7764" href="plfa.part1.Negation.html#7764" class="Bound">x</a> <a id="7766" class="Symbol">→</a> <a id="7768" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="7775" class="Symbol">(</a><a id="7776" href="plfa.part1.Negation.html#7737" class="Bound">¬x</a> <a id="7779" href="plfa.part1.Negation.html#7764" class="Bound">x</a><a id="7780" class="Symbol">))</a>
 </pre>
 <!-- Evidence for `¬ A` implies that any evidence of `A`
 immediately leads to a contradiction.  But extensionality
@@ -325,15 +325,15 @@ is irreflexive, that is, `n < n` holds for no `n`. -->
 
 <p>利用否定证明<a href="/PLFA-zh/Relations/#strict-inequality">严格不等性</a>满足非自反性，即 <code class="language-plaintext highlighter-rouge">n &lt; n</code> 对于任何 <code class="language-plaintext highlighter-rouge">n</code> 都不成立。</p>
 
-<!-- <pre class="Agda"><a id="8509" class="Comment">-- Your code goes here</a>
+<!-- <pre class="Agda"><a id="8521" class="Comment">-- Your code goes here</a>
 </pre>{:/}
 
-<pre class="Agda"><a id="8546" class="Comment">-- 请将代码写在此处</a>
+<pre class="Agda"><a id="8558" class="Comment">-- 请将代码写在此处</a>
 </pre>
 {::comment}
-#### Exercise `trichotomy` -->
+#### Exercise `trichotomy` (practice) -->
 
-<h4 id="练习-trichotomy">练习 <code class="language-plaintext highlighter-rouge">trichotomy</code></h4>
+<h4 id="练习-trichotomy实践">练习 <code class="language-plaintext highlighter-rouge">trichotomy</code>（实践）</h4>
 
 <!-- Show that strict inequality satisfies
 [trichotomy](/PLFA-zh/Relations/#trichotomy),
@@ -352,10 +352,10 @@ but that when one holds the negation of the other two must also hold. -->
 
 <p>「刚好只有一条」的意思是，三者中不仅有一条成立，而且当其中一条成立时，其它二者的否定也必定成立。</p>
 
-<!-- <pre class="Agda"><a id="9162" class="Comment">-- Your code goes here</a>
+<!-- <pre class="Agda"><a id="9189" class="Comment">-- Your code goes here</a>
 </pre>{:/}
 
-<pre class="Agda"><a id="9199" class="Comment">-- 请将代码写在此处</a>
+<pre class="Agda"><a id="9226" class="Comment">-- 请将代码写在此处</a>
 </pre>
 {::comment}
 #### Exercise `⊎-dual-×` (recommended) -->
@@ -374,10 +374,10 @@ version of De Morgan's Law. -->
 
 <p>此结果是我们之前证明的定理的简单推论。</p>
 
-<!-- <pre class="Agda"><a id="9617" class="Comment">-- Your code goes here</a>
+<!-- <pre class="Agda"><a id="9644" class="Comment">-- Your code goes here</a>
 </pre>{:/}
 
-<pre class="Agda"><a id="9654" class="Comment">-- 请将代码写在此处</a>
+<pre class="Agda"><a id="9681" class="Comment">-- 请将代码写在此处</a>
 </pre>
 {::comment}
 Do we also have the following? -->
@@ -459,8 +459,8 @@ _Communications of the ACM_, December 2015.) -->
 
 <p>排中律可形式化如下：</p>
 
-<pre class="Agda"><a id="13428" class="Keyword">postulate</a>
-  <a id="em"></a><a id="13440" href="/PLFA-zh/Negation/#13440" class="Postulate">em</a> <a id="13443" class="Symbol">:</a> <a id="13445" class="Symbol">∀</a> <a id="13447" class="Symbol">{</a><a id="13448" href="plfa.Negation.html#13448" class="Bound">A</a> <a id="13450" class="Symbol">:</a> <a id="13452" class="PrimitiveType">Set</a><a id="13455" class="Symbol">}</a> <a id="13457" class="Symbol">→</a> <a id="13459" href="plfa.Negation.html#13448" class="Bound">A</a> <a id="13461" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="13463" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="13465" href="plfa.Negation.html#13448" class="Bound">A</a>
+<pre class="Agda"><a id="13455" class="Keyword">postulate</a>
+  <a id="em"></a><a id="13467" href="/PLFA-zh/Negation/#13467" class="Postulate">em</a> <a id="13470" class="Symbol">:</a> <a id="13472" class="Symbol">∀</a> <a id="13474" class="Symbol">{</a><a id="13475" href="plfa.part1.Negation.html#13475" class="Bound">A</a> <a id="13477" class="Symbol">:</a> <a id="13479" class="PrimitiveType">Set</a><a id="13482" class="Symbol">}</a> <a id="13484" class="Symbol">→</a> <a id="13486" href="plfa.part1.Negation.html#13475" class="Bound">A</a> <a id="13488" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="13490" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13492" href="plfa.part1.Negation.html#13475" class="Bound">A</a>
 </pre>
 <!-- As we noted, the law of the excluded middle does not hold in
 intuitionistic logic.  However, we can show that it is _irrefutable_,
@@ -470,8 +470,8 @@ its negation is never provable): -->
 <p>如之前所言，排中律在直觉逻辑中并不成立。然而，我们可以证明它是
 <strong>不可辩驳（Irrefutable）</strong>的，即其否定的否定是可证明的（因而其否定式不可证明）：</p>
 
-<pre class="Agda"><a id="em-irrefutable"></a><a id="13810" href="/PLFA-zh/Negation/#13810" class="Function">em-irrefutable</a> <a id="13825" class="Symbol">:</a> <a id="13827" class="Symbol">∀</a> <a id="13829" class="Symbol">{</a><a id="13830" href="plfa.Negation.html#13830" class="Bound">A</a> <a id="13832" class="Symbol">:</a> <a id="13834" class="PrimitiveType">Set</a><a id="13837" class="Symbol">}</a> <a id="13839" class="Symbol">→</a> <a id="13841" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="13843" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="13845" class="Symbol">(</a><a id="13846" href="plfa.Negation.html#13830" class="Bound">A</a> <a id="13848" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="13850" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="13852" href="plfa.Negation.html#13830" class="Bound">A</a><a id="13853" class="Symbol">)</a>
-<a id="13855" href="/PLFA-zh/Negation/#13810" class="Function">em-irrefutable</a> <a id="13870" class="Symbol">=</a> <a id="13872" class="Symbol">λ</a> <a id="13874" href="plfa.Negation.html#13874" class="Bound">k</a> <a id="13876" class="Symbol">→</a> <a id="13878" href="plfa.Negation.html#13874" class="Bound">k</a> <a id="13880" class="Symbol">(</a><a id="13881" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="13886" class="Symbol">(λ</a> <a id="13889" href="plfa.Negation.html#13889" class="Bound">x</a> <a id="13891" class="Symbol">→</a> <a id="13893" href="plfa.Negation.html#13874" class="Bound">k</a> <a id="13895" class="Symbol">(</a><a id="13896" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a> <a id="13901" href="plfa.Negation.html#13889" class="Bound">x</a><a id="13902" class="Symbol">)))</a>
+<pre class="Agda"><a id="em-irrefutable"></a><a id="13837" href="/PLFA-zh/Negation/#13837" class="Function">em-irrefutable</a> <a id="13852" class="Symbol">:</a> <a id="13854" class="Symbol">∀</a> <a id="13856" class="Symbol">{</a><a id="13857" href="plfa.part1.Negation.html#13857" class="Bound">A</a> <a id="13859" class="Symbol">:</a> <a id="13861" class="PrimitiveType">Set</a><a id="13864" class="Symbol">}</a> <a id="13866" class="Symbol">→</a> <a id="13868" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13870" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13872" class="Symbol">(</a><a id="13873" href="plfa.part1.Negation.html#13857" class="Bound">A</a> <a id="13875" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="13877" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13879" href="plfa.part1.Negation.html#13857" class="Bound">A</a><a id="13880" class="Symbol">)</a>
+<a id="13882" href="/PLFA-zh/Negation/#13837" class="Function">em-irrefutable</a> <a id="13897" class="Symbol">=</a> <a id="13899" class="Symbol">λ</a> <a id="13901" href="plfa.part1.Negation.html#13901" class="Bound">k</a> <a id="13903" class="Symbol">→</a> <a id="13905" href="plfa.part1.Negation.html#13901" class="Bound">k</a> <a id="13907" class="Symbol">(</a><a id="13908" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="13913" class="Symbol">(λ</a> <a id="13916" href="plfa.part1.Negation.html#13916" class="Bound">x</a> <a id="13918" class="Symbol">→</a> <a id="13920" href="plfa.part1.Negation.html#13901" class="Bound">k</a> <a id="13922" class="Symbol">(</a><a id="13923" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a> <a id="13928" href="plfa.part1.Negation.html#13916" class="Bound">x</a><a id="13929" class="Symbol">)))</a>
 </pre>
 <!-- The best way to explain this code is to develop it interactively: -->
 
@@ -614,10 +614,10 @@ Philip Wadler, <em>International Conference on Functional Programming</em>, 2003
 
 <p>请证明其中任意一条定律都蕴涵其它所有定律。</p>
 
-<!-- <pre class="Agda"><a id="18970" class="Comment">-- Your code goes here</a>
+<!-- <pre class="Agda"><a id="18997" class="Comment">-- Your code goes here</a>
 </pre>{:/}
 
-<pre class="Agda"><a id="19007" class="Comment">-- 请将代码写在此处</a>
+<pre class="Agda"><a id="19034" class="Comment">-- 请将代码写在此处</a>
 </pre>
 
 {::comment}
@@ -629,18 +629,18 @@ Philip Wadler, <em>International Conference on Functional Programming</em>, 2003
 
 <p>若双重否定消去对某个式子成立，我们就说它是<strong>稳定（Stable）</strong>的：</p>
 
-<pre class="Agda"><a id="Stable"></a><a id="19235" href="/PLFA-zh/Negation/#19235" class="Function">Stable</a> <a id="19242" class="Symbol">:</a> <a id="19244" class="PrimitiveType">Set</a> <a id="19248" class="Symbol">→</a> <a id="19250" class="PrimitiveType">Set</a>
-<a id="19254" href="/PLFA-zh/Negation/#19235" class="Function">Stable</a> <a id="19261" href="plfa.Negation.html#19261" class="Bound">A</a> <a id="19263" class="Symbol">=</a> <a id="19265" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="19267" href="plfa.Negation.html#934" class="Function Operator">¬</a> <a id="19269" href="plfa.Negation.html#19261" class="Bound">A</a> <a id="19271" class="Symbol">→</a> <a id="19273" href="plfa.Negation.html#19261" class="Bound">A</a>
+<pre class="Agda"><a id="Stable"></a><a id="19262" href="/PLFA-zh/Negation/#19262" class="Function">Stable</a> <a id="19269" class="Symbol">:</a> <a id="19271" class="PrimitiveType">Set</a> <a id="19275" class="Symbol">→</a> <a id="19277" class="PrimitiveType">Set</a>
+<a id="19281" href="/PLFA-zh/Negation/#19262" class="Function">Stable</a> <a id="19288" href="plfa.part1.Negation.html#19288" class="Bound">A</a> <a id="19290" class="Symbol">=</a> <a id="19292" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="19294" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="19296" href="plfa.part1.Negation.html#19288" class="Bound">A</a> <a id="19298" class="Symbol">→</a> <a id="19300" href="plfa.part1.Negation.html#19288" class="Bound">A</a>
 </pre>
 <!-- Show that any negated formula is stable, and that the conjunction
 of two stable formulas is stable. -->
 
 <p>请证明任何否定式都是稳定的，并且两个稳定式的合取也是稳定的。</p>
 
-<!-- <pre class="Agda"><a id="19446" class="Comment">-- Your code goes here</a>
+<!-- <pre class="Agda"><a id="19473" class="Comment">-- Your code goes here</a>
 </pre>{:/}
 
-<pre class="Agda"><a id="19483" class="Comment">-- 请将代码写在此处</a>
+<pre class="Agda"><a id="19510" class="Comment">-- 请将代码写在此处</a>
 </pre>
 {::comment}
 ## Standard Prelude -->
@@ -651,8 +651,8 @@ of two stable formulas is stable. -->
 
 <p>本章中的类似定义可在标准库中找到：</p>
 
-<pre class="Agda"><a id="19670" class="Keyword">import</a> <a id="19677" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html" class="Module">Relation.Nullary</a> <a id="19694" class="Keyword">using</a> <a id="19700" class="Symbol">(</a><a id="19701" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬_</a><a id="19703" class="Symbol">)</a>
-<a id="19705" class="Keyword">import</a> <a id="19712" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.Negation.html" class="Module">Relation.Nullary.Negation</a> <a id="19738" class="Keyword">using</a> <a id="19744" class="Symbol">(</a><a id="19745" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.Negation.html#880" class="Function">contraposition</a><a id="19759" class="Symbol">)</a>
+<pre class="Agda"><a id="19697" class="Keyword">import</a> <a id="19704" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html" class="Module">Relation.Nullary</a> <a id="19721" class="Keyword">using</a> <a id="19727" class="Symbol">(</a><a id="19728" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬_</a><a id="19730" class="Symbol">)</a>
+<a id="19732" class="Keyword">import</a> <a id="19739" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.Negation.html" class="Module">Relation.Nullary.Negation</a> <a id="19765" class="Keyword">using</a> <a id="19771" class="Symbol">(</a><a id="19772" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.Negation.html#880" class="Function">contraposition</a><a id="19786" class="Symbol">)</a>
 </pre>
 <h2 id="unicode">Unicode</h2>
 
@@ -677,7 +677,7 @@ of two stable formulas is stable. -->
     &bullet;
     
     
-    <a alt="Source code" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/Negation.lagda.md">源代码</a>
+    <a alt="Source code" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/part1/Negation.lagda.md">源代码</a>
     
     
     &bullet;
@@ -743,26 +743,11 @@ of two stable formulas is stable. -->
 <!-- Import jQuery -->
 <script type="text/javascript" src="/PLFA-zh/assets/jquery.js"></script>
 
-<!-- Script which draws background for progress tags -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js" integrity="sha256-E4RlfxwyJVmkkk0szw7LYJxuPlp6evtPSBDlWHsYYL8=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-$('span.progress').each(function(){
-    const progress = parseInt($(this).text());
-    $(this).css({
-        'border-style': 'solid',
-        'border-radius': '5px',
-        'border-width': 'thin',
-        'border-color': progress === 100 ? 'limegreen' : 'dimgray',
-        'font-size': '70%',
-        'padding': '0% 0.5% 0% 0.5%',
-        'margin': '0em 0em 0em 0.5em',
-        'box-sizing': 'border-box',
-        'vertical-align': '10%'
-    });
-    $(this).text(progress.toString() + " %");
-})
+  anchors.add();
 </script>
 
-<!-- Script which allows for foldable code blocks -->
 <script type="text/javascript">
 
  // Makes sandwhich menu works
