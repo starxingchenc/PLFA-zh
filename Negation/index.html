@@ -1,414 +1,377 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Negation: 直觉逻辑与命题逻辑中的否定 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Negation: 直觉逻辑与命题逻辑中的否定" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="编程语言基础：Agda 语言描述" />
-<meta property="og:description" content="编程语言基础：Agda 语言描述" />
-<link rel="canonical" href="https://agda-zh.github.io/PLFA-zh/Negation/" />
-<meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/Negation/" />
-<meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
-<script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/Negation/","headline":"Negation: 直觉逻辑与命题逻辑中的否定","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
-<body><header class="site-header" role="banner">
+  <link rel="stylesheet" href="../public/css/style.css">
+  
+  <title>编程语言基础：Agda 语言描述 – Negation</title>
+  
+  
+  
+</head>
 
+    <body>
+        <header class="site-header">
     <div class="wrapper">
-
-        <a class="site-title" href="/PLFA-zh/">编程语言基础：Agda 语言描述
-</a>
-
+        <a class="site-title" href="../">编程语言基础：Agda 语言描述</a>
         <nav class="site-nav">
             <span class="menu-icon">
                 <svg viewBox="0 0 18 15" width="18px" height="15px">
-                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
                 </svg>
             </span>
 
             <div class="trigger">
-                <a class="page-link" href="/PLFA-zh/">主页</a>
-                <a class="page-link" href="/PLFA-zh/Announcements/">公告</a>
-                <a class="page-link" href="/PLFA-zh/GettingStarted/">使用说明</a>
-                <a class="page-link" href="/PLFA-zh/Citing/">引用</a>
+                <a class="page-link" href="../">主页</a>
+                <a class="page-link" href="../Announcements/">公告</a>
+                <a class="page-link" href="../GettingStarted/">使用说明</a>
+                <a class="page-link" href="../Citing/">引用</a>
                 <a class="page-link" href="https://plfa.github.io/">English</a>
             </div>
         </nav>
-
     </div>
-
 </header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post">
 
-  <header class="post-header">
-      <h1 class="post-title">Negation: 直觉逻辑与命题逻辑中的否定</h1>
-  </header>
+        <main class="page-content" aria-label="Content">
+            <div class="wrapper">
+                <article class="post">
+    <nav class="pager">
+    <ul class="pagination">
+        
+        <li><a class="pagelink" href="../Connectives/">上一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/part1/Negation.lagda.md">源文件</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="../Quantifiers/">下一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+    </ul>
+</nav>
 
-  <p style="text-align:center;">
-    
-    <a alt="Previous chapter" href="/PLFA-zh/Connectives/">上一章</a>
-    
-    
-    &bullet;
-    
-    
-    <a alt="Source code" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/part1/Negation.lagda.md">源代码</a>
-    
-    
-    &bullet;
-    
-    
-    <a alt="Next chapter" href="/PLFA-zh/Quantifiers/">下一章</a>
-    
-</p>
-
-
-  <div class="post-content">
-    <pre class="Agda"><a id="188" class="Keyword">module</a> <a id="195" href="/PLFA-zh/Negation/" class="Module">plfa.part1.Negation</a> <a id="215" class="Keyword">where</a>
+    <header class="post-header">
+        <h1 class="post-title" id="negation">Negation: 直觉逻辑与命题逻辑中的否定</h1>
+    </header>
+    <div class="post-content">
+        <pre class="Agda"><a id="188" class="Keyword">module</a> <a id="195" href="../Negation/" class="Module">plfa.part1.Negation</a> <a id="215" class="Keyword">where</a>
 </pre>
-<!-- This chapter introduces negation, and discusses intuitionistic
-and classical logic. -->
-
+<!--
+This chapter introduces negation, and discusses intuitionistic
+and classical logic.
+-->
 <p>本章介绍了否定的性质，讨论了直觉逻辑和经典逻辑。</p>
-
 <h2 id="imports">Imports</h2>
-
-<pre class="Agda"><a id="370" class="Keyword">open</a> <a id="375" class="Keyword">import</a> <a id="382" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="420" class="Keyword">using</a> <a id="426" class="Symbol">(</a><a id="427" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">_≡_</a><a id="430" class="Symbol">;</a> <a id="432" href="Agda.Builtin.Equality.html#182" class="InductiveConstructor">refl</a><a id="436" class="Symbol">)</a>
-<a id="438" class="Keyword">open</a> <a id="443" class="Keyword">import</a> <a id="450" href="https://agda.github.io/agda-stdlib/v1.1/Data.Nat.html" class="Module">Data.Nat</a> <a id="459" class="Keyword">using</a> <a id="465" class="Symbol">(</a><a id="466" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="467" class="Symbol">;</a> <a id="469" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a><a id="473" class="Symbol">;</a> <a id="475" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a><a id="478" class="Symbol">)</a>
-<a id="480" class="Keyword">open</a> <a id="485" class="Keyword">import</a> <a id="492" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html" class="Module">Data.Empty</a> <a id="503" class="Keyword">using</a> <a id="509" class="Symbol">(</a><a id="510" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a><a id="511" class="Symbol">;</a> <a id="513" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a><a id="519" class="Symbol">)</a>
-<a id="521" class="Keyword">open</a> <a id="526" class="Keyword">import</a> <a id="533" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.html" class="Module">Data.Sum</a> <a id="542" class="Keyword">using</a> <a id="548" class="Symbol">(</a><a id="549" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">_⊎_</a><a id="552" class="Symbol">;</a> <a id="554" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a><a id="558" class="Symbol">;</a> <a id="560" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a><a id="564" class="Symbol">)</a>
-<a id="566" class="Keyword">open</a> <a id="571" class="Keyword">import</a> <a id="578" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html" class="Module">Data.Product</a> <a id="591" class="Keyword">using</a> <a id="597" class="Symbol">(</a><a id="598" href="https://agda.github.io/agda-stdlib/v1.1/Data.Product.html#1162" class="Function Operator">_×_</a><a id="601" class="Symbol">)</a>
-<a id="603" class="Keyword">open</a> <a id="608" class="Keyword">import</a> <a id="615" href="/PLFA-zh/Isomorphism/" class="Module">plfa.part1.Isomorphism</a> <a id="638" class="Keyword">using</a> <a id="644" class="Symbol">(</a><a id="645" href="plfa.part1.Isomorphism.html#5849" class="Record Operator">_≃_</a><a id="648" class="Symbol">;</a> <a id="650" href="plfa.part1.Isomorphism.html#3764" class="Postulate">extensionality</a><a id="664" class="Symbol">)</a>
+<pre class="Agda"><a id="362" class="Keyword">open</a> <a id="367" class="Keyword">import</a> <a id="374" href="https://agda.github.io/agda-stdlib/v1.3/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="412" class="Keyword">using</a> <a id="418" class="Symbol">(</a><a id="419" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Equality.html#151" class="Datatype Operator">_≡_</a><a id="422" class="Symbol">;</a> <a id="424" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Equality.html#208" class="InductiveConstructor">refl</a><a id="428" class="Symbol">)</a>
+<a id="430" class="Keyword">open</a> <a id="435" class="Keyword">import</a> <a id="442" href="https://agda.github.io/agda-stdlib/v1.3/Data.Nat.html" class="Module">Data.Nat</a> <a id="451" class="Keyword">using</a> <a id="457" class="Symbol">(</a><a id="458" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Nat.html#192" class="Datatype">ℕ</a><a id="459" class="Symbol">;</a> <a id="461" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Nat.html#210" class="InductiveConstructor">zero</a><a id="465" class="Symbol">;</a> <a id="467" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Nat.html#223" class="InductiveConstructor">suc</a><a id="470" class="Symbol">)</a>
+<a id="472" class="Keyword">open</a> <a id="477" class="Keyword">import</a> <a id="484" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html" class="Module">Data.Empty</a> <a id="495" class="Keyword">using</a> <a id="501" class="Symbol">(</a><a id="502" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a><a id="503" class="Symbol">;</a> <a id="505" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#628" class="Function">⊥-elim</a><a id="511" class="Symbol">)</a>
+<a id="513" class="Keyword">open</a> <a id="518" class="Keyword">import</a> <a id="525" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.html" class="Module">Data.Sum</a> <a id="534" class="Keyword">using</a> <a id="540" class="Symbol">(</a><a id="541" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#728" class="Datatype Operator">_⊎_</a><a id="544" class="Symbol">;</a> <a id="546" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#778" class="InductiveConstructor">inj₁</a><a id="550" class="Symbol">;</a> <a id="552" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#803" class="InductiveConstructor">inj₂</a><a id="556" class="Symbol">)</a>
+<a id="558" class="Keyword">open</a> <a id="563" class="Keyword">import</a> <a id="570" href="https://agda.github.io/agda-stdlib/v1.3/Data.Product.html" class="Module">Data.Product</a> <a id="583" class="Keyword">using</a> <a id="589" class="Symbol">(</a><a id="590" href="https://agda.github.io/agda-stdlib/v1.3/Data.Product.html#1167" class="Function Operator">_×_</a><a id="593" class="Symbol">)</a>
+<a id="595" class="Keyword">open</a> <a id="600" class="Keyword">import</a> <a id="607" href="../Isomorphism/" class="Module">plfa.part1.Isomorphism</a> <a id="630" class="Keyword">using</a> <a id="636" class="Symbol">(</a><a id="637" href="../Isomorphism/#5608" class="Record Operator">_≃_</a><a id="640" class="Symbol">;</a> <a id="642" href="../Isomorphism/#3600" class="Postulate">extensionality</a><a id="656" class="Symbol">)</a>
 </pre>
-
-<!-- ## Negation -->
-
+<!--
+## Negation
+-->
 <h2 id="否定">否定</h2>
-
-<!-- Given a proposition `A`, the negation `¬ A` holds if `A` cannot hold.
+<!--
+Given a proposition `A`, the negation `¬ A` holds if `A` cannot hold.
 We formalise this idea by declaring negation to be the same
-as implication of false: -->
-
-<p>给定命题 <code class="language-plaintext highlighter-rouge">A</code>，当 <code class="language-plaintext highlighter-rouge">A</code> 不成立时，它的否定形式 <code class="language-plaintext highlighter-rouge">¬ A</code> 成立。我们将否定阐述为「蕴涵假」来形式化此概念。</p>
-
-<pre class="Agda"><a id="¬_"></a><a id="946" href="/PLFA-zh/Negation/#946" class="Function Operator">¬_</a> <a id="949" class="Symbol">:</a> <a id="951" class="PrimitiveType">Set</a> <a id="955" class="Symbol">→</a> <a id="957" class="PrimitiveType">Set</a>
-<a id="961" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="963" href="plfa.part1.Negation.html#963" class="Bound">A</a> <a id="965" class="Symbol">=</a> <a id="967" href="plfa.part1.Negation.html#963" class="Bound">A</a> <a id="969" class="Symbol">→</a> <a id="971" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
+as implication of false:
+-->
+<p>给定命题 <code>A</code>，当 <code>A</code> 不成立时，它的否定形式 <code>¬ A</code> 成立。 我们将否定阐述为「蕴涵假」来形式化此概念。</p>
+<pre class="Agda"><a id="¬_"></a><a id="922" href="../Negation/#922" class="Function Operator">¬_</a> <a id="925" class="Symbol">:</a> <a id="927" class="PrimitiveType">Set</a> <a id="931" class="Symbol">→</a> <a id="933" class="PrimitiveType">Set</a>
+<a id="937" href="../Negation/#922" class="Function Operator">¬</a> <a id="939" href="../Negation/#939" class="Bound">A</a> <a id="941" class="Symbol">=</a> <a id="943" href="../Negation/#939" class="Bound">A</a> <a id="945" class="Symbol">→</a> <a id="947" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a>
 </pre>
-<!-- This is a form of _proof by contradiction_: if assuming `A` leads
-to the conclusion `⊥` (a contradiction), then we must have `¬ A`. -->
-
-<p>这是一种<strong>反证法（Proof by Contradiction）</strong>的形式：若从 <code class="language-plaintext highlighter-rouge">A</code> 可得出结论 <code class="language-plaintext highlighter-rouge">⊥</code>（即矛盾），则 <code class="language-plaintext highlighter-rouge">¬ A</code> 必定成立。</p>
-
-<!-- Evidence that `¬ A` holds is of the form -->
-
-<p><code class="language-plaintext highlighter-rouge">¬ A</code> 成立的证据的形式为：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>λ{ x → N }
-</code></pre></div></div>
-
-<!-- where `N` is a term of type `⊥` containing as a free variable `x` of type `A`.
+<!--
+This is a form of _reductio ad absurdum_: if assuming `A` leads
+to the conclusion `⊥` (an absurdity), then we must have `¬ A`.
+-->
+<p>这是<strong>归谬法（Reductio ad Absurdum）</strong>的一种形式：若从 <code>A</code> 可得出结论 <code>⊥</code>（即喵呜）， 则 <code>¬ A</code> 必定成立。</p>
+<!--
+Evidence that `¬ A` holds is of the form
+-->
+<p><code>¬ A</code> 成立的证据的形式为：</p>
+<pre><code>λ{ x → N }</code></pre>
+<!--
+where `N` is a term of type `⊥` containing as a free variable `x` of type `A`.
 In other words, evidence that `¬ A` holds is a function that converts evidence
-that `A` holds into evidence that `⊥` holds. -->
-
-<p>其中 <code class="language-plaintext highlighter-rouge">N</code> 是类型为 <code class="language-plaintext highlighter-rouge">⊥</code> 的项，它包含类型为 <code class="language-plaintext highlighter-rouge">A</code> 的自由变量 <code class="language-plaintext highlighter-rouge">x</code>。换言之，<code class="language-plaintext highlighter-rouge">¬ A</code> 成立的证据是一个函数，该函数将 <code class="language-plaintext highlighter-rouge">A</code> 成立的证据转换为 <code class="language-plaintext highlighter-rouge">⊥</code> 成立的证据。</p>
-
-<!-- Given evidence that both `¬ A` and `A` hold, we can conclude that `⊥` holds.
-In other words, if both `¬ A` and `A` hold, then we have a contradiction: -->
-
-<p>给定 <code class="language-plaintext highlighter-rouge">¬ A</code> 和 <code class="language-plaintext highlighter-rouge">A</code> 均成立的证据，我们可以得出 <code class="language-plaintext highlighter-rouge">⊥</code> 成立。换言之，若 <code class="language-plaintext highlighter-rouge">¬ A</code> 和 <code class="language-plaintext highlighter-rouge">A</code> 均成立，那么我们就得到了矛盾：</p>
-
-<pre class="Agda"><a id="¬-elim"></a><a id="1856" href="/PLFA-zh/Negation/#1856" class="Function">¬-elim</a> <a id="1863" class="Symbol">:</a> <a id="1865" class="Symbol">∀</a> <a id="1867" class="Symbol">{</a><a id="1868" href="plfa.part1.Negation.html#1868" class="Bound">A</a> <a id="1870" class="Symbol">:</a> <a id="1872" class="PrimitiveType">Set</a><a id="1875" class="Symbol">}</a>
-  <a id="1879" class="Symbol">→</a> <a id="1881" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="1883" href="plfa.part1.Negation.html#1868" class="Bound">A</a>
-  <a id="1887" class="Symbol">→</a> <a id="1889" href="/PLFA-zh/Negation/#1868" class="Bound">A</a>
-    <a id="1895" class="Comment">---</a>
-  <a id="1901" class="Symbol">→</a> <a id="1903" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
-<a id="1905" href="/PLFA-zh/Negation/#1856" class="Function">¬-elim</a> <a id="1912" href="plfa.part1.Negation.html#1912" class="Bound">¬x</a> <a id="1915" href="plfa.part1.Negation.html#1915" class="Bound">x</a> <a id="1917" class="Symbol">=</a> <a id="1919" href="plfa.part1.Negation.html#1912" class="Bound">¬x</a> <a id="1922" href="plfa.part1.Negation.html#1915" class="Bound">x</a>
+that `A` holds into evidence that `⊥` holds.
+-->
+<p>其中 <code>N</code> 是类型为 <code>⊥</code> 的项，它包含类型为 <code>A</code> 的自由变量 <code>x</code>。换言之，<code>¬ A</code> 成立 的证据是一个函数，该函数将 <code>A</code> 成立的证据转换为 <code>⊥</code> 成立的证据。</p>
+<!--
+Given evidence that both `¬ A` and `A` hold, we can conclude that `⊥` holds.
+In other words, if both `¬ A` and `A` hold, then we have a contradiction:
+-->
+<p>给定 <code>¬ A</code> 和 <code>A</code> 均成立的证据，我们可以得出 <code>⊥</code> 成立。换言之，若 <code>¬ A</code> 和 <code>A</code> 均成立， 那么我们就得到了矛盾：</p>
+<pre class="Agda"><a id="¬-elim"></a><a id="1793" href="../Negation/#1793" class="Function">¬-elim</a> <a id="1800" class="Symbol">:</a> <a id="1802" class="Symbol">∀</a> <a id="1804" class="Symbol">{</a><a id="1805" href="../Negation/#1805" class="Bound">A</a> <a id="1807" class="Symbol">:</a> <a id="1809" class="PrimitiveType">Set</a><a id="1812" class="Symbol">}</a>
+  <a id="1816" class="Symbol">→</a> <a id="1818" href="../Negation/#922" class="Function Operator">¬</a> <a id="1820" href="../Negation/#1805" class="Bound">A</a>
+  <a id="1824" class="Symbol">→</a> <a id="1826" href="../Negation/#1805" class="Bound">A</a>
+    <a id="1832" class="Comment">---</a>
+  <a id="1838" class="Symbol">→</a> <a id="1840" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a>
+<a id="1842" href="../Negation/#1793" class="Function">¬-elim</a> <a id="1849" href="../Negation/#1849" class="Bound">¬x</a> <a id="1852" href="../Negation/#1852" class="Bound">x</a> <a id="1854" class="Symbol">=</a> <a id="1856" href="../Negation/#1849" class="Bound">¬x</a> <a id="1859" href="../Negation/#1852" class="Bound">x</a>
 </pre>
-<!-- Here we write `¬x` for evidence of `¬ A` and `x` for evidence of `A`.  This
+<!--
+Here we write `¬x` for evidence of `¬ A` and `x` for evidence of `A`.  This
 means that `¬x` must be a function of type `A → ⊥`, and hence the application
-`¬x x` must be of type `⊥`.  Note that this rule is just a special case of `→-elim`. -->
-
-<p>在这里，我们将 <code class="language-plaintext highlighter-rouge">¬ A</code> 的证据写作 <code class="language-plaintext highlighter-rouge">¬x</code>，将 <code class="language-plaintext highlighter-rouge">A</code> 的证据写作 <code class="language-plaintext highlighter-rouge">x</code>。这表示 <code class="language-plaintext highlighter-rouge">¬x</code> 必须是类型为 <code class="language-plaintext highlighter-rouge">A → ⊥</code>
-的函数，因此应用 <code class="language-plaintext highlighter-rouge">¬x x</code> 得到的类型必为 <code class="language-plaintext highlighter-rouge">⊥</code>。注意此规则只是 <code class="language-plaintext highlighter-rouge">→-elim</code> 的一个特例。</p>
-
-<!-- We set the precedence of negation so that it binds more tightly
-than disjunction and conjunction, but less tightly than anything else: -->
-
+`¬x x` must be of type `⊥`.  Note that this rule is just a special case of `→-elim`.
+-->
+<p>在这里，我们将 <code>¬ A</code> 的证据写作 <code>¬x</code>，将 <code>A</code> 的证据写作 <code>x</code>。这表示 <code>¬x</code> 必须是类型为 <code>A → ⊥</code> 的函数，因此应用 <code>¬x x</code> 得到的类型必为 <code>⊥</code>。注意此规则只是 <code>→-elim</code> 的一个特例。</p>
+<!--
+We set the precedence of negation so that it binds more tightly
+than disjunction and conjunction, but less tightly than anything else:
+-->
 <p>我们将否定的优先级设定为高于析取和合取，但低于其它运算：</p>
-
-<pre class="Agda"><a id="2491" class="Keyword">infix</a> <a id="2497" class="Number">3</a> <a id="2499" href="/PLFA-zh/Negation/#946" class="Function Operator">¬_</a>
+<pre class="Agda"><a id="2412" class="Keyword">infix</a> <a id="2418" class="Number">3</a> <a id="2420" href="../Negation/#922" class="Function Operator">¬_</a>
 </pre>
-<!-- Thus, `¬ A × ¬ B` parses as `(¬ A) × (¬ B)` and `¬ m ≡ n` as `¬ (m ≡ n)`. -->
-
-<p>因此，<code class="language-plaintext highlighter-rouge">¬ A × ¬ B</code> 会解析为 <code class="language-plaintext highlighter-rouge">(¬ A) × (¬ B)</code>，而 <code class="language-plaintext highlighter-rouge">¬ m ≡ n</code> 会解析为 <code class="language-plaintext highlighter-rouge">¬ (m ≡ n)</code>。</p>
-
-<!-- In _classical_ logic, we have that `A` is equivalent to `¬ ¬ A`.
+<!--
+Thus, `¬ A × ¬ B` parses as `(¬ A) × (¬ B)` and `¬ m ≡ n` as `¬ (m ≡ n)`.
+-->
+<p>因此，<code>¬ A × ¬ B</code> 会解析为 <code>(¬ A) × (¬ B)</code>，而 <code>¬ m ≡ n</code> 会解析为 <code>¬ (m ≡ n)</code>。</p>
+<!--
+In _classical_ logic, we have that `A` is equivalent to `¬ ¬ A`.
 As we discuss below, in Agda we use _intuitionistic_ logic, where
-we have only half of this equivalence, namely that `A` implies `¬ ¬ A`: -->
-
-<p>在<strong>经典逻辑</strong>中，<code class="language-plaintext highlighter-rouge">A</code> 等价于 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>。而如前文所述，Agda 中使用了<strong>直觉逻辑</strong>，因此我们只有该等价关系的一半，即 <code class="language-plaintext highlighter-rouge">A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>：</p>
-
-<pre class="Agda"><a id="¬¬-intro"></a><a id="2978" href="/PLFA-zh/Negation/#2978" class="Function">¬¬-intro</a> <a id="2987" class="Symbol">:</a> <a id="2989" class="Symbol">∀</a> <a id="2991" class="Symbol">{</a><a id="2992" href="plfa.part1.Negation.html#2992" class="Bound">A</a> <a id="2994" class="Symbol">:</a> <a id="2996" class="PrimitiveType">Set</a><a id="2999" class="Symbol">}</a>
-  <a id="3003" class="Symbol">→</a> <a id="3005" href="/PLFA-zh/Negation/#2992" class="Bound">A</a>
-    <a id="3011" class="Comment">-----</a>
-  <a id="3019" class="Symbol">→</a> <a id="3021" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="3023" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="3025" href="plfa.part1.Negation.html#2992" class="Bound">A</a>
-<a id="3027" href="/PLFA-zh/Negation/#2978" class="Function">¬¬-intro</a> <a id="3036" href="plfa.part1.Negation.html#3036" class="Bound">x</a>  <a id="3039" class="Symbol">=</a>  <a id="3042" class="Symbol">λ{</a><a id="3044" href="plfa.part1.Negation.html#3044" class="Bound">¬x</a> <a id="3047" class="Symbol">→</a> <a id="3049" href="plfa.part1.Negation.html#3044" class="Bound">¬x</a> <a id="3052" href="plfa.part1.Negation.html#3036" class="Bound">x</a><a id="3053" class="Symbol">}</a>
+we have only half of this equivalence, namely that `A` implies `¬ ¬ A`:
+-->
+<p>在<strong>经典逻辑</strong>中，<code>A</code> 等价于 <code>¬ ¬ A</code>。而如前文所述，Agda 中使用了<strong>直觉逻辑</strong>， 因此我们只有该等价关系的一半，即 <code>A</code> 蕴涵 <code>¬ ¬ A</code>：</p>
+<pre class="Agda"><a id="¬¬-intro"></a><a id="2883" href="../Negation/#2883" class="Function">¬¬-intro</a> <a id="2892" class="Symbol">:</a> <a id="2894" class="Symbol">∀</a> <a id="2896" class="Symbol">{</a><a id="2897" href="../Negation/#2897" class="Bound">A</a> <a id="2899" class="Symbol">:</a> <a id="2901" class="PrimitiveType">Set</a><a id="2904" class="Symbol">}</a>
+  <a id="2908" class="Symbol">→</a> <a id="2910" href="../Negation/#2897" class="Bound">A</a>
+    <a id="2916" class="Comment">-----</a>
+  <a id="2924" class="Symbol">→</a> <a id="2926" href="../Negation/#922" class="Function Operator">¬</a> <a id="2928" href="../Negation/#922" class="Function Operator">¬</a> <a id="2930" href="../Negation/#2897" class="Bound">A</a>
+<a id="2932" href="../Negation/#2883" class="Function">¬¬-intro</a> <a id="2941" href="../Negation/#2941" class="Bound">x</a>  <a id="2944" class="Symbol">=</a>  <a id="2947" class="Symbol">λ{</a><a id="2949" href="../Negation/#2949" class="Bound">¬x</a> <a id="2952" class="Symbol">→</a> <a id="2954" href="../Negation/#2949" class="Bound">¬x</a> <a id="2957" href="../Negation/#2941" class="Bound">x</a><a id="2958" class="Symbol">}</a>
 </pre>
-<!-- Let `x` be evidence of `A`. We show that assuming
+<!--
+Let `x` be evidence of `A`. We show that assuming
 `¬ A` leads to a contradiction, and hence `¬ ¬ A` must hold.
 Let `¬x` be evidence of `¬ A`.  Then from `A` and `¬ A`
 we have a contradiction, evidenced by `¬x x`.  Hence, we have
-shown `¬ ¬ A`. -->
-
-<p>令 <code class="language-plaintext highlighter-rouge">x</code> 为 <code class="language-plaintext highlighter-rouge">A</code> 的证据。我们要证明若假定 <code class="language-plaintext highlighter-rouge">¬ A</code> 成立，则会导出矛盾，因此 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>
-必定成立。令 <code class="language-plaintext highlighter-rouge">¬x</code> 为 <code class="language-plaintext highlighter-rouge">¬ A</code> 的证据。那么以 <code class="language-plaintext highlighter-rouge">¬x x</code> 为证据，从 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">¬ A</code> 可以导出矛盾。这样我们就证明了 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>。</p>
-
-<!-- An equivalent way to write the above is as follows: -->
-
+shown `¬ ¬ A`.
+-->
+<p>令 <code>x</code> 为 <code>A</code> 的证据。我们要证明若假定 <code>¬ A</code> 成立，则会导出矛盾，因此 <code>¬ ¬ A</code> 必定成立。令 <code>¬x</code> 为 <code>¬ A</code> 的证据。那么以 <code>¬x x</code> 为证据，从 <code>A</code> 和 <code>¬ A</code> 可以导出矛盾。 这样我们就证明了 <code>¬ ¬ A</code>。</p>
+<!--
+An equivalent way to write the above is as follows:
+-->
 <p>以上描述的等价写法如下：</p>
-
-<pre class="Agda"><a id="¬¬-intro′"></a><a id="3542" href="/PLFA-zh/Negation/#3542" class="Function">¬¬-intro′</a> <a id="3552" class="Symbol">:</a> <a id="3554" class="Symbol">∀</a> <a id="3556" class="Symbol">{</a><a id="3557" href="plfa.part1.Negation.html#3557" class="Bound">A</a> <a id="3559" class="Symbol">:</a> <a id="3561" class="PrimitiveType">Set</a><a id="3564" class="Symbol">}</a>
-  <a id="3568" class="Symbol">→</a> <a id="3570" href="/PLFA-zh/Negation/#3557" class="Bound">A</a>
-    <a id="3576" class="Comment">-----</a>
-  <a id="3584" class="Symbol">→</a> <a id="3586" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="3588" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="3590" href="plfa.part1.Negation.html#3557" class="Bound">A</a>
-<a id="3592" href="/PLFA-zh/Negation/#3542" class="Function">¬¬-intro′</a> <a id="3602" href="plfa.part1.Negation.html#3602" class="Bound">x</a> <a id="3604" href="plfa.part1.Negation.html#3604" class="Bound">¬x</a> <a id="3607" class="Symbol">=</a> <a id="3609" href="plfa.part1.Negation.html#3604" class="Bound">¬x</a> <a id="3612" href="plfa.part1.Negation.html#3602" class="Bound">x</a>
+<pre class="Agda"><a id="¬¬-intro′"></a><a id="3431" href="../Negation/#3431" class="Function">¬¬-intro′</a> <a id="3441" class="Symbol">:</a> <a id="3443" class="Symbol">∀</a> <a id="3445" class="Symbol">{</a><a id="3446" href="../Negation/#3446" class="Bound">A</a> <a id="3448" class="Symbol">:</a> <a id="3450" class="PrimitiveType">Set</a><a id="3453" class="Symbol">}</a>
+  <a id="3457" class="Symbol">→</a> <a id="3459" href="../Negation/#3446" class="Bound">A</a>
+    <a id="3465" class="Comment">-----</a>
+  <a id="3473" class="Symbol">→</a> <a id="3475" href="../Negation/#922" class="Function Operator">¬</a> <a id="3477" href="../Negation/#922" class="Function Operator">¬</a> <a id="3479" href="../Negation/#3446" class="Bound">A</a>
+<a id="3481" href="../Negation/#3431" class="Function">¬¬-intro′</a> <a id="3491" href="../Negation/#3491" class="Bound">x</a> <a id="3493" href="../Negation/#3493" class="Bound">¬x</a> <a id="3496" class="Symbol">=</a> <a id="3498" href="../Negation/#3493" class="Bound">¬x</a> <a id="3501" href="../Negation/#3491" class="Bound">x</a>
 </pre>
-<!-- Here we have simply converted the argument of the lambda term
+<!--
+Here we have simply converted the argument of the lambda term
 to an additional argument of the function.  We will usually
-use this latter style, as it is more compact. -->
-
-<p>在这里我们简单地将 λ-项的参数转换成了该函数的额外参数。我们通常会使用后面这种形式，因为它更加紧凑。</p>
-
-<!-- We cannot show that `¬ ¬ A` implies `A`, but we can show that
-`¬ ¬ ¬ A` implies `¬ A`: -->
-
-<p>我们无法证明 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">A</code>，但可以证明 <code class="language-plaintext highlighter-rouge">¬ ¬ ¬ A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">¬ A</code>：</p>
-
-<pre class="Agda"><a id="¬¬¬-elim"></a><a id="4017" href="/PLFA-zh/Negation/#4017" class="Function">¬¬¬-elim</a> <a id="4026" class="Symbol">:</a> <a id="4028" class="Symbol">∀</a> <a id="4030" class="Symbol">{</a><a id="4031" href="plfa.part1.Negation.html#4031" class="Bound">A</a> <a id="4033" class="Symbol">:</a> <a id="4035" class="PrimitiveType">Set</a><a id="4038" class="Symbol">}</a>
-  <a id="4042" class="Symbol">→</a> <a id="4044" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="4046" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="4048" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="4050" href="plfa.part1.Negation.html#4031" class="Bound">A</a>
-    <a id="4056" class="Comment">-------</a>
-  <a id="4066" class="Symbol">→</a> <a id="4068" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="4070" href="plfa.part1.Negation.html#4031" class="Bound">A</a>
-<a id="4072" href="/PLFA-zh/Negation/#4017" class="Function">¬¬¬-elim</a> <a id="4081" href="plfa.part1.Negation.html#4081" class="Bound">¬¬¬x</a>  <a id="4087" class="Symbol">=</a>  <a id="4090" class="Symbol">λ</a> <a id="4092" href="plfa.part1.Negation.html#4092" class="Bound">x</a> <a id="4094" class="Symbol">→</a> <a id="4096" href="plfa.part1.Negation.html#4081" class="Bound">¬¬¬x</a> <a id="4101" class="Symbol">(</a><a id="4102" href="plfa.part1.Negation.html#2978" class="Function">¬¬-intro</a> <a id="4111" href="plfa.part1.Negation.html#4092" class="Bound">x</a><a id="4112" class="Symbol">)</a>
+use this latter style, as it is more compact.
+-->
+<p>在这里我们简单地将 λ-项的参数转换成了该函数的额外参数。 我们通常会使用后面这种形式，因为它更加紧凑。</p>
+<!--
+We cannot show that `¬ ¬ A` implies `A`, but we can show that
+`¬ ¬ ¬ A` implies `¬ A`:
+-->
+<p>我们无法证明 <code>¬ ¬ A</code> 蕴涵 <code>A</code>，但可以证明 <code>¬ ¬ ¬ A</code> 蕴涵 <code>¬ A</code>：</p>
+<pre class="Agda"><a id="¬¬¬-elim"></a><a id="3890" href="../Negation/#3890" class="Function">¬¬¬-elim</a> <a id="3899" class="Symbol">:</a> <a id="3901" class="Symbol">∀</a> <a id="3903" class="Symbol">{</a><a id="3904" href="../Negation/#3904" class="Bound">A</a> <a id="3906" class="Symbol">:</a> <a id="3908" class="PrimitiveType">Set</a><a id="3911" class="Symbol">}</a>
+  <a id="3915" class="Symbol">→</a> <a id="3917" href="../Negation/#922" class="Function Operator">¬</a> <a id="3919" href="../Negation/#922" class="Function Operator">¬</a> <a id="3921" href="../Negation/#922" class="Function Operator">¬</a> <a id="3923" href="../Negation/#3904" class="Bound">A</a>
+    <a id="3929" class="Comment">-------</a>
+  <a id="3939" class="Symbol">→</a> <a id="3941" href="../Negation/#922" class="Function Operator">¬</a> <a id="3943" href="../Negation/#3904" class="Bound">A</a>
+<a id="3945" href="../Negation/#3890" class="Function">¬¬¬-elim</a> <a id="3954" href="../Negation/#3954" class="Bound">¬¬¬x</a>  <a id="3960" class="Symbol">=</a>  <a id="3963" class="Symbol">λ</a> <a id="3965" href="../Negation/#3965" class="Bound">x</a> <a id="3967" class="Symbol">→</a> <a id="3969" href="../Negation/#3954" class="Bound">¬¬¬x</a> <a id="3974" class="Symbol">(</a><a id="3975" href="../Negation/#2883" class="Function">¬¬-intro</a> <a id="3984" href="../Negation/#3965" class="Bound">x</a><a id="3985" class="Symbol">)</a>
 </pre>
-<!-- Let `¬¬¬x` be evidence of `¬ ¬ ¬ A`. We will show that assuming
+<!--
+Let `¬¬¬x` be evidence of `¬ ¬ ¬ A`. We will show that assuming
 `A` leads to a contradiction, and hence `¬ A` must hold.
 Let `x` be evidence of `A`. Then by the previous result, we
 can conclude `¬ ¬ A`, evidenced by `¬¬-intro x`.  Then from
 `¬ ¬ ¬ A` and `¬ ¬ A` we have a contradiction, evidenced by
-`¬¬¬x (¬¬-intro x)`.  Hence we have shown `¬ A`. -->
-
-<p>令 <code class="language-plaintext highlighter-rouge">¬¬¬x</code> 为 <code class="language-plaintext highlighter-rouge">¬ ¬ ¬ A</code> 的证据。我们要证明若假定 <code class="language-plaintext highlighter-rouge">A</code> 成立就会导出矛盾，因此 <code class="language-plaintext highlighter-rouge">¬ A</code> 必定成立。令 <code class="language-plaintext highlighter-rouge">x</code> 为 <code class="language-plaintext highlighter-rouge">A</code> 的证据。根据前面的结果，以 <code class="language-plaintext highlighter-rouge">¬¬-intro x</code>
-为证据可得出结论 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code>。根据 <code class="language-plaintext highlighter-rouge">¬¬¬x (¬¬-intro x)</code>，我们可从
-<code class="language-plaintext highlighter-rouge">¬ ¬ ¬ A</code> 和 <code class="language-plaintext highlighter-rouge">¬ ¬ A</code> 导出矛盾。这样我们就证明了 <code class="language-plaintext highlighter-rouge">¬ A</code>。</p>
-
-<!-- Another law of logic is _contraposition_,
-stating that if `A` implies `B`, then `¬ B` implies `¬ A`: -->
-
-<p>另一个逻辑规则是<strong>换质换位律（contraposition）</strong>，它陈述了若 <code class="language-plaintext highlighter-rouge">A</code> 蕴涵 <code class="language-plaintext highlighter-rouge">B</code>，则 <code class="language-plaintext highlighter-rouge">¬ B</code> 蕴涵 <code class="language-plaintext highlighter-rouge">¬ A</code>：</p>
-
-<pre class="Agda"><a id="contraposition"></a><a id="4869" href="/PLFA-zh/Negation/#4869" class="Function">contraposition</a> <a id="4884" class="Symbol">:</a> <a id="4886" class="Symbol">∀</a> <a id="4888" class="Symbol">{</a><a id="4889" href="plfa.part1.Negation.html#4889" class="Bound">A</a> <a id="4891" href="plfa.part1.Negation.html#4891" class="Bound">B</a> <a id="4893" class="Symbol">:</a> <a id="4895" class="PrimitiveType">Set</a><a id="4898" class="Symbol">}</a>
-  <a id="4902" class="Symbol">→</a> <a id="4904" class="Symbol">(</a><a id="4905" href="/PLFA-zh/Negation/#4889" class="Bound">A</a> <a id="4907" class="Symbol">→</a> <a id="4909" href="plfa.part1.Negation.html#4891" class="Bound">B</a><a id="4910" class="Symbol">)</a>
-    <a id="4916" class="Comment">-----------</a>
-  <a id="4930" class="Symbol">→</a> <a id="4932" class="Symbol">(</a><a id="4933" href="/PLFA-zh/Negation/#946" class="Function Operator">¬</a> <a id="4935" href="plfa.part1.Negation.html#4891" class="Bound">B</a> <a id="4937" class="Symbol">→</a> <a id="4939" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="4941" href="plfa.part1.Negation.html#4889" class="Bound">A</a><a id="4942" class="Symbol">)</a>
-<a id="4944" href="/PLFA-zh/Negation/#4869" class="Function">contraposition</a> <a id="4959" href="plfa.part1.Negation.html#4959" class="Bound">f</a> <a id="4961" href="plfa.part1.Negation.html#4961" class="Bound">¬y</a> <a id="4964" href="plfa.part1.Negation.html#4964" class="Bound">x</a> <a id="4966" class="Symbol">=</a> <a id="4968" href="plfa.part1.Negation.html#4961" class="Bound">¬y</a> <a id="4971" class="Symbol">(</a><a id="4972" href="plfa.part1.Negation.html#4959" class="Bound">f</a> <a id="4974" href="plfa.part1.Negation.html#4964" class="Bound">x</a><a id="4975" class="Symbol">)</a>
+`¬¬¬x (¬¬-intro x)`.  Hence we have shown `¬ A`.
+-->
+<p>令 <code>¬¬¬x</code> 为 <code>¬ ¬ ¬ A</code> 的证据。我们要证明若假定 <code>A</code> 成立就会导出矛盾， 因此 <code>¬ A</code> 必定成立。令 <code>x</code> 为 <code>A</code> 的证据。根据前面的结果，以 <code>¬¬-intro x</code> 为证据可得出结论 <code>¬ ¬ A</code>。根据 <code>¬¬¬x (¬¬-intro x)</code>，我们可从 <code>¬ ¬ ¬ A</code> 和 <code>¬ ¬ A</code> 导出矛盾。这样我们就证明了 <code>¬ A</code>。</p>
+<!--
+Another law of logic is _contraposition_,
+stating that if `A` implies `B`, then `¬ B` implies `¬ A`:
+-->
+<p>另一个逻辑规则是<strong>换质换位律（contraposition）</strong>，它陈述了若 <code>A</code> 蕴涵 <code>B</code>， 则 <code>¬ B</code> 蕴涵 <code>¬ A</code>：</p>
+<pre class="Agda"><a id="contraposition"></a><a id="4726" href="../Negation/#4726" class="Function">contraposition</a> <a id="4741" class="Symbol">:</a> <a id="4743" class="Symbol">∀</a> <a id="4745" class="Symbol">{</a><a id="4746" href="../Negation/#4746" class="Bound">A</a> <a id="4748" href="../Negation/#4748" class="Bound">B</a> <a id="4750" class="Symbol">:</a> <a id="4752" class="PrimitiveType">Set</a><a id="4755" class="Symbol">}</a>
+  <a id="4759" class="Symbol">→</a> <a id="4761" class="Symbol">(</a><a id="4762" href="../Negation/#4746" class="Bound">A</a> <a id="4764" class="Symbol">→</a> <a id="4766" href="../Negation/#4748" class="Bound">B</a><a id="4767" class="Symbol">)</a>
+    <a id="4773" class="Comment">-----------</a>
+  <a id="4787" class="Symbol">→</a> <a id="4789" class="Symbol">(</a><a id="4790" href="../Negation/#922" class="Function Operator">¬</a> <a id="4792" href="../Negation/#4748" class="Bound">B</a> <a id="4794" class="Symbol">→</a> <a id="4796" href="../Negation/#922" class="Function Operator">¬</a> <a id="4798" href="../Negation/#4746" class="Bound">A</a><a id="4799" class="Symbol">)</a>
+<a id="4801" href="../Negation/#4726" class="Function">contraposition</a> <a id="4816" href="../Negation/#4816" class="Bound">f</a> <a id="4818" href="../Negation/#4818" class="Bound">¬y</a> <a id="4821" href="../Negation/#4821" class="Bound">x</a> <a id="4823" class="Symbol">=</a> <a id="4825" href="../Negation/#4818" class="Bound">¬y</a> <a id="4828" class="Symbol">(</a><a id="4829" href="../Negation/#4816" class="Bound">f</a> <a id="4831" href="../Negation/#4821" class="Bound">x</a><a id="4832" class="Symbol">)</a>
 </pre>
-<!-- Let `f` be evidence of `A → B` and let `¬y` be evidence of `¬ B`.  We
+<!--
+Let `f` be evidence of `A → B` and let `¬y` be evidence of `¬ B`.  We
 will show that assuming `A` leads to a contradiction, and hence `¬ A`
 must hold. Let `x` be evidence of `A`.  Then from `A → B` and `A` we
 may conclude `B`, evidenced by `f x`, and from `B` and `¬ B` we may
-conclude `⊥`, evidenced by `¬y (f x)`.  Hence, we have shown `¬ A`. -->
-
-<p>令 <code class="language-plaintext highlighter-rouge">f</code> 为 <code class="language-plaintext highlighter-rouge">A → B</code> 的证据，<code class="language-plaintext highlighter-rouge">¬y</code> 为 <code class="language-plaintext highlighter-rouge">¬ B</code> 的证据。我们要证明，若假定 <code class="language-plaintext highlighter-rouge">A</code>
-成立就会导出矛盾，因此 <code class="language-plaintext highlighter-rouge">¬ A</code> 必定成立。令 <code class="language-plaintext highlighter-rouge">x</code> 为 <code class="language-plaintext highlighter-rouge">A</code> 的证据。根据 <code class="language-plaintext highlighter-rouge">f x</code>，我们可从 <code class="language-plaintext highlighter-rouge">A → B</code> 和 <code class="language-plaintext highlighter-rouge">A</code> 我们可得出结论 <code class="language-plaintext highlighter-rouge">B</code>。而根据 <code class="language-plaintext highlighter-rouge">¬y (f x)</code>，可从
-<code class="language-plaintext highlighter-rouge">B</code> 和 <code class="language-plaintext highlighter-rouge">¬ B</code> 得出结论 <code class="language-plaintext highlighter-rouge">⊥</code>。这样，我们就证明了 <code class="language-plaintext highlighter-rouge">¬ A</code>。</p>
-
-<!-- Using negation, it is straightforward to define inequality: -->
-
+conclude `⊥`, evidenced by `¬y (f x)`.  Hence, we have shown `¬ A`.
+-->
+<p>令 <code>f</code> 为 <code>A → B</code> 的证据，<code>¬y</code> 为 <code>¬ B</code> 的证据。我们要证明，若假定 <code>A</code> 成立就会导出矛盾，因此 <code>¬ A</code> 必定成立。令 <code>x</code> 为 <code>A</code> 的证据。根据 <code>f x</code>， 我们可从 <code>A → B</code> 和 <code>A</code> 我们可得出结论 <code>B</code>。而根据 <code>¬y (f x)</code>，可从 <code>B</code> 和 <code>¬ B</code> 得出结论 <code>⊥</code>。这样，我们就证明了 <code>¬ A</code>。</p>
+<!--
+Using negation, it is straightforward to define inequality:
+-->
 <p>利用否定可直接定义不等性：</p>
-
-<pre class="Agda"><a id="_≢_"></a><a id="5631" href="/PLFA-zh/Negation/#5631" class="Function Operator">_≢_</a> <a id="5635" class="Symbol">:</a> <a id="5637" class="Symbol">∀</a> <a id="5639" class="Symbol">{</a><a id="5640" href="plfa.part1.Negation.html#5640" class="Bound">A</a> <a id="5642" class="Symbol">:</a> <a id="5644" class="PrimitiveType">Set</a><a id="5647" class="Symbol">}</a> <a id="5649" class="Symbol">→</a> <a id="5651" href="plfa.part1.Negation.html#5640" class="Bound">A</a> <a id="5653" class="Symbol">→</a> <a id="5655" href="plfa.part1.Negation.html#5640" class="Bound">A</a> <a id="5657" class="Symbol">→</a> <a id="5659" class="PrimitiveType">Set</a>
-<a id="5663" href="/PLFA-zh/Negation/#5663" class="Bound">x</a> <a id="5665" href="plfa.part1.Negation.html#5631" class="Function Operator">≢</a> <a id="5667" href="plfa.part1.Negation.html#5667" class="Bound">y</a>  <a id="5670" class="Symbol">=</a>  <a id="5673" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="5675" class="Symbol">(</a><a id="5676" href="plfa.part1.Negation.html#5663" class="Bound">x</a> <a id="5678" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="5680" href="plfa.part1.Negation.html#5667" class="Bound">y</a><a id="5681" class="Symbol">)</a>
+<pre class="Agda"><a id="_≢_"></a><a id="5472" href="../Negation/#5472" class="Function Operator">_≢_</a> <a id="5476" class="Symbol">:</a> <a id="5478" class="Symbol">∀</a> <a id="5480" class="Symbol">{</a><a id="5481" href="../Negation/#5481" class="Bound">A</a> <a id="5483" class="Symbol">:</a> <a id="5485" class="PrimitiveType">Set</a><a id="5488" class="Symbol">}</a> <a id="5490" class="Symbol">→</a> <a id="5492" href="../Negation/#5481" class="Bound">A</a> <a id="5494" class="Symbol">→</a> <a id="5496" href="../Negation/#5481" class="Bound">A</a> <a id="5498" class="Symbol">→</a> <a id="5500" class="PrimitiveType">Set</a>
+<a id="5504" href="../Negation/#5504" class="Bound">x</a> <a id="5506" href="../Negation/#5472" class="Function Operator">≢</a> <a id="5508" href="../Negation/#5508" class="Bound">y</a>  <a id="5511" class="Symbol">=</a>  <a id="5514" href="../Negation/#922" class="Function Operator">¬</a> <a id="5516" class="Symbol">(</a><a id="5517" href="../Negation/#5504" class="Bound">x</a> <a id="5519" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Equality.html#151" class="Datatype Operator">≡</a> <a id="5521" href="../Negation/#5508" class="Bound">y</a><a id="5522" class="Symbol">)</a>
 </pre>
-<!-- It is trivial to show distinct numbers are not equal: -->
-
+<!--
+It is trivial to show distinct numbers are not equal:
+-->
 <p>要证明不同的数不相等很简单：</p>
-
-<pre class="Agda"><a id="5780" href="/PLFA-zh/Negation/#5780" class="Function">_</a> <a id="5782" class="Symbol">:</a> <a id="5784" class="Number">1</a> <a id="5786" href="plfa.part1.Negation.html#5631" class="Function Operator">≢</a> <a id="5788" class="Number">2</a>
-<a id="5790" class="Symbol">_</a> <a id="5792" class="Symbol">=</a> <a id="5794" class="Symbol">λ()</a>
+<pre class="Agda"><a id="5613" href="../Negation/#5613" class="Function">_</a> <a id="5615" class="Symbol">:</a> <a id="5617" class="Number">1</a> <a id="5619" href="../Negation/#5472" class="Function Operator">≢</a> <a id="5621" class="Number">2</a>
+<a id="5623" class="Symbol">_</a> <a id="5625" class="Symbol">=</a> <a id="5627" class="Symbol">λ()</a>
 </pre>
-<!-- This is our first use of an absurd pattern in a lambda expression.
+<!--
+This is our first use of an absurd pattern in a lambda expression.
 The type `M ≡ N` is occupied exactly when `M` and `N` simplify to
 identical terms. Since `1` and `2` simplify to distinct normal forms,
 Agda determines that there is no possible evidence that `1 ≡ 2`.
 As a second example, it is also easy to validate
-Peano's postulate that zero is not the successor of any number: -->
-
-<p>这是我们第一次在 λ-表达式中使用谬模式（Absurd Pattern）。类型 <code class="language-plaintext highlighter-rouge">M ≡ N</code>
-只有在 <code class="language-plaintext highlighter-rouge">M</code> 和 <code class="language-plaintext highlighter-rouge">N</code> 可被化简为相同的项时才能居留。由于 <code class="language-plaintext highlighter-rouge">1</code> 和 <code class="language-plaintext highlighter-rouge">2</code>
-会化简为不同的正规形式，因此 Agda 判定没有证据可证明 <code class="language-plaintext highlighter-rouge">1 ≡ 2</code>。第二个例子是，很容易验证皮亚诺公理中「零不是任何数的后继数」的假设：</p>
-
-<pre class="Agda"><a id="peano"></a><a id="6371" href="/PLFA-zh/Negation/#6371" class="Function">peano</a> <a id="6377" class="Symbol">:</a> <a id="6379" class="Symbol">∀</a> <a id="6381" class="Symbol">{</a><a id="6382" href="plfa.part1.Negation.html#6382" class="Bound">m</a> <a id="6384" class="Symbol">:</a> <a id="6386" href="Agda.Builtin.Nat.html#165" class="Datatype">ℕ</a><a id="6387" class="Symbol">}</a> <a id="6389" class="Symbol">→</a> <a id="6391" href="Agda.Builtin.Nat.html#183" class="InductiveConstructor">zero</a> <a id="6396" href="plfa.part1.Negation.html#5631" class="Function Operator">≢</a> <a id="6398" href="Agda.Builtin.Nat.html#196" class="InductiveConstructor">suc</a> <a id="6402" href="plfa.part1.Negation.html#6382" class="Bound">m</a>
-<a id="6404" href="/PLFA-zh/Negation/#6371" class="Function">peano</a> <a id="6410" class="Symbol">=</a> <a id="6412" class="Symbol">λ()</a>
+Peano's postulate that zero is not the successor of any number:
+-->
+<p>这是我们第一次在 λ-表达式中使用谬模式（Absurd Pattern）。类型 <code>M ≡ N</code> 只有在 <code>M</code> 和 <code>N</code> 可被化简为相同的项时才能居留。由于 <code>1</code> 和 <code>2</code> 会化简为不同的正规形式，因此 Agda 判定没有证据可证明 <code>1 ≡ 2</code>。 第二个例子是，很容易验证皮亚诺公理中「零不是任何数的后继数」的假设：</p>
+<pre class="Agda"><a id="peano"></a><a id="6196" href="../Negation/#6196" class="Function">peano</a> <a id="6202" class="Symbol">:</a> <a id="6204" class="Symbol">∀</a> <a id="6206" class="Symbol">{</a><a id="6207" href="../Negation/#6207" class="Bound">m</a> <a id="6209" class="Symbol">:</a> <a id="6211" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Nat.html#192" class="Datatype">ℕ</a><a id="6212" class="Symbol">}</a> <a id="6214" class="Symbol">→</a> <a id="6216" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Nat.html#210" class="InductiveConstructor">zero</a> <a id="6221" href="../Negation/#5472" class="Function Operator">≢</a> <a id="6223" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Nat.html#223" class="InductiveConstructor">suc</a> <a id="6227" href="../Negation/#6207" class="Bound">m</a>
+<a id="6229" href="../Negation/#6196" class="Function">peano</a> <a id="6235" class="Symbol">=</a> <a id="6237" class="Symbol">λ()</a>
 </pre>
-<!-- The evidence is essentially the same, as the absurd pattern matches
-all possible evidence of type `zero ≡ suc m`. -->
-
-<p>它们的证明基本上相同，因为谬模式会匹配所有类型为 <code class="language-plaintext highlighter-rouge">zero ≡ suc m</code> 的可能的证据。</p>
-
-<!-- Given the correspondence of implication to exponentiation and
+<!--
+The evidence is essentially the same, as the absurd pattern matches
+all possible evidence of type `zero ≡ suc m`.
+-->
+<p>它们的证明基本上相同，因为谬模式会匹配所有类型为 <code>zero ≡ suc m</code> 的可能的证据。</p>
+<!--
+Given the correspondence of implication to exponentiation and
 false to the type with no members, we can view negation as
 raising to the zero power.  This indeed corresponds to what
-we know for arithmetic, where -->
+we know for arithmetic, where
+-->
+<p>鉴于蕴涵和幂运算之间的对应关系，以及没有成员的类型为假， 我们可以将否定看作零的幂。它确实对应于我们所知的算术运算，即</p>
+<pre><code>0 ^ n  ≡  1,  if n ≡ 0
+       ≡  0,  if n ≢ 0</code></pre>
+<!--
+Indeed, there is exactly one proof of `⊥ → ⊥`.  We can write
+this proof two different ways:
+-->
+<p>确实，只有一个 <code>⊥ → ⊥</code> 的证明。我们可以用两种方式写出此证明：</p>
+<pre class="Agda"><a id="id"></a><a id="6899" href="../Negation/#6899" class="Function">id</a> <a id="6902" class="Symbol">:</a> <a id="6904" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a> <a id="6906" class="Symbol">→</a> <a id="6908" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a>
+<a id="6910" href="../Negation/#6899" class="Function">id</a> <a id="6913" href="../Negation/#6913" class="Bound">x</a> <a id="6915" class="Symbol">=</a> <a id="6917" href="../Negation/#6913" class="Bound">x</a>
 
-<p>鉴于蕴涵和幂运算之间的对应关系，以及没有成员的类型为假，我们可以将否定看作零的幂。它确实对应于我们所知的算术运算，即</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 ^ n  ≡  1,  if n ≡ 0
-       ≡  0,  if n ≢ 0
-</code></pre></div></div>
-
-<!-- Indeed, there is exactly one proof of `⊥ → ⊥`.  We can write
-this proof two different ways: -->
-
-<p>确实，只有一个 <code class="language-plaintext highlighter-rouge">⊥ → ⊥</code> 的证明。我们可以用两种方式写出此证明：</p>
-
-<pre class="Agda"><a id="id"></a><a id="7098" href="/PLFA-zh/Negation/#7098" class="Function">id</a> <a id="7101" class="Symbol">:</a> <a id="7103" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a> <a id="7105" class="Symbol">→</a> <a id="7107" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
-<a id="7109" href="/PLFA-zh/Negation/#7098" class="Function">id</a> <a id="7112" href="plfa.part1.Negation.html#7112" class="Bound">x</a> <a id="7114" class="Symbol">=</a> <a id="7116" href="plfa.part1.Negation.html#7112" class="Bound">x</a>
-
-<a id="id′"></a><a id="7119" href="/PLFA-zh/Negation/#7119" class="Function">id′</a> <a id="7123" class="Symbol">:</a> <a id="7125" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a> <a id="7127" class="Symbol">→</a> <a id="7129" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#279" class="Datatype">⊥</a>
-<a id="7131" href="/PLFA-zh/Negation/#7119" class="Function">id′</a> <a id="7135" class="Symbol">()</a>
+<a id="id′"></a><a id="6920" href="../Negation/#6920" class="Function">id′</a> <a id="6924" class="Symbol">:</a> <a id="6926" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a> <a id="6928" class="Symbol">→</a> <a id="6930" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#526" class="Datatype">⊥</a>
+<a id="6932" href="../Negation/#6920" class="Function">id′</a> <a id="6936" class="Symbol">()</a>
 </pre>
-<!-- But, using extensionality, we can prove these equal: -->
-
+<!--
+But, using extensionality, we can prove these equal:
+-->
 <p>不过使用外延性，我们可以证明二者相等：</p>
-
-<pre class="Agda"><a id="id≡id′"></a><a id="7239" href="/PLFA-zh/Negation/#7239" class="Function">id≡id′</a> <a id="7246" class="Symbol">:</a> <a id="7248" href="plfa.part1.Negation.html#7098" class="Function">id</a> <a id="7251" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7253" href="plfa.part1.Negation.html#7119" class="Function">id′</a>
-<a id="7257" href="/PLFA-zh/Negation/#7239" class="Function">id≡id′</a> <a id="7264" class="Symbol">=</a> <a id="7266" href="/PLFA-zh/Isomorphism/#3764" class="Postulate">extensionality</a> <a id="7281" class="Symbol">(λ())</a>
+<pre class="Agda"><a id="id≡id′"></a><a id="7032" href="../Negation/#7032" class="Function">id≡id′</a> <a id="7039" class="Symbol">:</a> <a id="7041" href="../Negation/#6899" class="Function">id</a> <a id="7044" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Equality.html#151" class="Datatype Operator">≡</a> <a id="7046" href="../Negation/#6920" class="Function">id′</a>
+<a id="7050" href="../Negation/#7032" class="Function">id≡id′</a> <a id="7057" class="Symbol">=</a> <a id="7059" href="../Isomorphism/#3600" class="Postulate">extensionality</a> <a id="7074" class="Symbol">(λ())</a>
 </pre>
-<!-- By extensionality, `id ≡ id′` holds if for every
+<!--
+By extensionality, `id ≡ id′` holds if for every
 `x` in their domain we have `id x ≡ id′ x`. But there
-is no `x` in their domain, so the equality holds trivially. -->
-
-<p>根据外延性，对于任何在二者定义域中的 <code class="language-plaintext highlighter-rouge">x</code>，都有 <code class="language-plaintext highlighter-rouge">id x ≡ id′ x</code>，则 <code class="language-plaintext highlighter-rouge">id ≡ id′</code> 成立。不过没有 <code class="language-plaintext highlighter-rouge">x</code> 在它们的定义域中，因此其相等性平凡成立。</p>
-
-<!-- Indeed, we can show any two proofs of a negation are equal: -->
-
+is no `x` in their domain, so the equality holds trivially.
+-->
+<p>根据外延性，对于任何在二者定义域中的 <code>x</code>，都有 <code>id x ≡ id′ x</code>， 则 <code>id ≡ id′</code> 成立。不过没有 <code>x</code> 在它们的定义域中，因此其相等性平凡成立。</p>
+<!--
+Indeed, we can show any two proofs of a negation are equal:
+-->
 <p>实际上，我们可以证明任意两个否定的证明都是相等的：</p>
-
-<pre class="Agda"><a id="assimilation"></a><a id="7671" href="/PLFA-zh/Negation/#7671" class="Function">assimilation</a> <a id="7684" class="Symbol">:</a> <a id="7686" class="Symbol">∀</a> <a id="7688" class="Symbol">{</a><a id="7689" href="plfa.part1.Negation.html#7689" class="Bound">A</a> <a id="7691" class="Symbol">:</a> <a id="7693" class="PrimitiveType">Set</a><a id="7696" class="Symbol">}</a> <a id="7698" class="Symbol">(</a><a id="7699" href="plfa.part1.Negation.html#7699" class="Bound">¬x</a> <a id="7702" href="plfa.part1.Negation.html#7702" class="Bound">¬x′</a> <a id="7706" class="Symbol">:</a> <a id="7708" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="7710" href="plfa.part1.Negation.html#7689" class="Bound">A</a><a id="7711" class="Symbol">)</a> <a id="7713" class="Symbol">→</a> <a id="7715" href="plfa.part1.Negation.html#7699" class="Bound">¬x</a> <a id="7718" href="Agda.Builtin.Equality.html#125" class="Datatype Operator">≡</a> <a id="7720" href="plfa.part1.Negation.html#7702" class="Bound">¬x′</a>
-<a id="7724" href="/PLFA-zh/Negation/#7671" class="Function">assimilation</a> <a id="7737" href="plfa.part1.Negation.html#7737" class="Bound">¬x</a> <a id="7740" href="plfa.part1.Negation.html#7740" class="Bound">¬x′</a> <a id="7744" class="Symbol">=</a> <a id="7746" href="/PLFA-zh/Isomorphism/#3764" class="Postulate">extensionality</a> <a id="7761" class="Symbol">(λ</a> <a id="7764" href="plfa.part1.Negation.html#7764" class="Bound">x</a> <a id="7766" class="Symbol">→</a> <a id="7768" href="https://agda.github.io/agda-stdlib/v1.1/Data.Empty.html#294" class="Function">⊥-elim</a> <a id="7775" class="Symbol">(</a><a id="7776" href="plfa.part1.Negation.html#7737" class="Bound">¬x</a> <a id="7779" href="plfa.part1.Negation.html#7764" class="Bound">x</a><a id="7780" class="Symbol">))</a>
+<pre class="Agda"><a id="assimilation"></a><a id="7448" href="../Negation/#7448" class="Function">assimilation</a> <a id="7461" class="Symbol">:</a> <a id="7463" class="Symbol">∀</a> <a id="7465" class="Symbol">{</a><a id="7466" href="../Negation/#7466" class="Bound">A</a> <a id="7468" class="Symbol">:</a> <a id="7470" class="PrimitiveType">Set</a><a id="7473" class="Symbol">}</a> <a id="7475" class="Symbol">(</a><a id="7476" href="../Negation/#7476" class="Bound">¬x</a> <a id="7479" href="../Negation/#7479" class="Bound">¬x′</a> <a id="7483" class="Symbol">:</a> <a id="7485" href="../Negation/#922" class="Function Operator">¬</a> <a id="7487" href="../Negation/#7466" class="Bound">A</a><a id="7488" class="Symbol">)</a> <a id="7490" class="Symbol">→</a> <a id="7492" href="../Negation/#7476" class="Bound">¬x</a> <a id="7495" href="https://agda.github.io/agda-stdlib/v1.3/Agda.Builtin.Equality.html#151" class="Datatype Operator">≡</a> <a id="7497" href="../Negation/#7479" class="Bound">¬x′</a>
+<a id="7501" href="../Negation/#7448" class="Function">assimilation</a> <a id="7514" href="../Negation/#7514" class="Bound">¬x</a> <a id="7517" href="../Negation/#7517" class="Bound">¬x′</a> <a id="7521" class="Symbol">=</a> <a id="7523" href="../Isomorphism/#3600" class="Postulate">extensionality</a> <a id="7538" class="Symbol">(λ</a> <a id="7541" href="../Negation/#7541" class="Bound">x</a> <a id="7543" class="Symbol">→</a> <a id="7545" href="https://agda.github.io/agda-stdlib/v1.3/Data.Empty.html#628" class="Function">⊥-elim</a> <a id="7552" class="Symbol">(</a><a id="7553" href="../Negation/#7514" class="Bound">¬x</a> <a id="7556" href="../Negation/#7541" class="Bound">x</a><a id="7557" class="Symbol">))</a>
 </pre>
-<!-- Evidence for `¬ A` implies that any evidence of `A`
+<!--
+Evidence for `¬ A` implies that any evidence of `A`
 immediately leads to a contradiction.  But extensionality
 quantifies over all `x` such that `A` holds, hence any
 such `x` immediately leads to a contradiction,
-again causing the equality to hold trivially. -->
-
-<p><code class="language-plaintext highlighter-rouge">¬ A</code> 的证据蕴涵任何 <code class="language-plaintext highlighter-rouge">A</code> 的证据都可直接得出矛盾。但由于外延性全称量化了使
-<code class="language-plaintext highlighter-rouge">A</code> 成立的 <code class="language-plaintext highlighter-rouge">x</code>，因此任何这样的 <code class="language-plaintext highlighter-rouge">x</code> 都会直接导出矛盾，同样其相等性平凡成立。</p>
-
-<!-- #### Exercise `<-irreflexive` (recommended) -->
-
-<h4 id="练习--irreflexive推荐">练习 <code class="language-plaintext highlighter-rouge">&lt;-irreflexive</code>（推荐）</h4>
-
-<!-- Using negation, show that
-[strict inequality](/PLFA-zh/Relations/#strict-inequality)
-is irreflexive, that is, `n < n` holds for no `n`. -->
-
-<p>利用否定证明<a href="/PLFA-zh/Relations/#strict-inequality">严格不等性</a>满足非自反性，即 <code class="language-plaintext highlighter-rouge">n &lt; n</code> 对于任何 <code class="language-plaintext highlighter-rouge">n</code> 都不成立。</p>
-
-<!-- <pre class="Agda"><a id="8521" class="Comment">-- Your code goes here</a>
-</pre>{:/}
-
-<pre class="Agda"><a id="8558" class="Comment">-- 请将代码写在此处</a>
+again causing the equality to hold trivially.
+-->
+<p><code>¬ A</code> 的证据蕴涵任何 <code>A</code> 的证据都可直接得出矛盾。但由于外延性全称量化了使 <code>A</code> 成立的 <code>x</code>，因此任何这样的 <code>x</code> 都会直接导出矛盾，同样其相等性平凡成立。</p>
+<!--
+#### Exercise `<-irreflexive` (recommended)
+-->
+<h4 id="练习--irreflexive推荐">练习 <code>&lt;-irreflexive</code>（推荐）</h4>
+<!--
+Using negation, show that
+[strict inequality](/Relations/#strict-inequality)
+is irreflexive, that is, `n < n` holds for no `n`.
+-->
+<p>利用否定证明<a href="../Relations/#strict-inequality">严格不等性</a>满足非自反性， 即 <code>n &lt; n</code> 对于任何 <code>n</code> 都不成立。</p>
+<!--
+<pre class="Agda"><a id="8231" class="Comment">-- Your code goes here</a>
+</pre>-->
+<pre class="Agda"><a id="8267" class="Comment">-- 请将代码写在此处</a>
 </pre>
-{::comment}
-#### Exercise `trichotomy` (practice) -->
-
-<h4 id="练习-trichotomy实践">练习 <code class="language-plaintext highlighter-rouge">trichotomy</code>（实践）</h4>
-
-<!-- Show that strict inequality satisfies
-[trichotomy](/PLFA-zh/Relations/#trichotomy),
-that is, for any naturals `m` and `n` exactly one of the following holds: -->
-
-<p>请证明严格不等性满足<a href="/PLFA-zh/Relations/#trichotomy">三分律</a>，即对于任何自然数 <code class="language-plaintext highlighter-rouge">m</code> 和 <code class="language-plaintext highlighter-rouge">n</code>，以下三条刚好只有一条成立：</p>
-
+<!--
+#### Exercise `trichotomy` (practice)
+-->
+<h4 id="练习-trichotomy实践">练习 <code>trichotomy</code>（实践）</h4>
+<!--
+Show that strict inequality satisfies
+[trichotomy](/Relations/#trichotomy),
+that is, for any naturals `m` and `n` exactly one of the following holds:
+-->
+<p>请证明严格不等性满足<a href="../Relations/#trichotomy">三分律</a>， 即对于任何自然数 <code>m</code> 和 <code>n</code>，以下三条刚好只有一条成立：</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">m &lt; n</code></li>
-  <li><code class="language-plaintext highlighter-rouge">m ≡ n</code></li>
-  <li><code class="language-plaintext highlighter-rouge">m &gt; n</code></li>
+<li><code>m &lt; n</code></li>
+<li><code>m ≡ n</code></li>
+<li><code>m &gt; n</code></li>
 </ul>
-
-<!-- Here "exactly one" means that not only one of the three must hold,
-but that when one holds the negation of the other two must also hold. -->
-
-<p>「刚好只有一条」的意思是，三者中不仅有一条成立，而且当其中一条成立时，其它二者的否定也必定成立。</p>
-
-<!-- <pre class="Agda"><a id="9189" class="Comment">-- Your code goes here</a>
-</pre>{:/}
-
-<pre class="Agda"><a id="9226" class="Comment">-- 请将代码写在此处</a>
+<!--
+Here "exactly one" means that not only one of the three must hold,
+but that when one holds the negation of the other two must also hold.
+-->
+<p>「刚好只有一条」的意思是，三者中不仅有一条成立，而且当其中一条成立时， 其它二者的否定也必定成立。</p>
+<!--
+<pre class="Agda"><a id="8831" class="Comment">-- Your code goes here</a>
+</pre>-->
+<pre class="Agda"><a id="8867" class="Comment">-- 请将代码写在此处</a>
 </pre>
-{::comment}
-#### Exercise `⊎-dual-×` (recommended) -->
-
-<h4 id="练习--dual-推荐">练习 <code class="language-plaintext highlighter-rouge">⊎-dual-×</code>（推荐）</h4>
-
-<!-- Show that conjunction, disjunction, and negation are related by a
-version of De Morgan's Law. -->
-
+<!--
+#### Exercise `⊎-dual-×` (recommended)
+-->
+<h4 id="练习--dual-推荐">练习 <code>⊎-dual-×</code>（推荐）</h4>
+<!--
+Show that conjunction, disjunction, and negation are related by a
+version of De Morgan's Law.
+-->
 <p>请证明合取、析取和否定可通过以下版本的德摩根定律（De Morgan’s Law）关联在一起。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>¬ (A ⊎ B) ≃ (¬ A) × (¬ B)
-</code></pre></div></div>
-
-<!-- This result is an easy consequence of something we've proved previously. -->
-
+<pre><code>¬ (A ⊎ B) ≃ (¬ A) × (¬ B)</code></pre>
+<!--
+This result is an easy consequence of something we've proved previously.
+-->
 <p>此结果是我们之前证明的定理的简单推论。</p>
-
-<!-- <pre class="Agda"><a id="9644" class="Comment">-- Your code goes here</a>
-</pre>{:/}
-
-<pre class="Agda"><a id="9681" class="Comment">-- 请将代码写在此处</a>
+<!--
+<pre class="Agda"><a id="9254" class="Comment">-- Your code goes here</a>
+</pre>-->
+<pre class="Agda"><a id="9290" class="Comment">-- 请将代码写在此处</a>
 </pre>
-{::comment}
-Do we also have the following? -->
-
+<!--
+Do we also have the following?
+-->
 <p>以下命题也成立吗？</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>¬ (A × B) ≃ (¬ A) ⊎ (¬ B)
-</code></pre></div></div>
-
-<!-- If so, prove; if not, can you give a relation weaker than
-isomorphism that relates the two sides? -->
-
+<pre><code>¬ (A × B) ≃ (¬ A) ⊎ (¬ B)</code></pre>
+<!--
+If so, prove; if not, can you give a relation weaker than
+isomorphism that relates the two sides?
+-->
 <p>若成立，请证明；若不成立，你能给出一个比同构更弱的关系将两边关联起来吗？</p>
-
-<!-- ## Intuitive and Classical logic -->
-
+<!--
+## Intuitive and Classical logic
+-->
 <h2 id="直觉逻辑与经典逻辑">直觉逻辑与经典逻辑</h2>
-
-<!-- In Gilbert and Sullivan's _The Gondoliers_, Casilda is told that
+<!--
+In Gilbert and Sullivan's _The Gondoliers_, Casilda is told that
 as an infant she was married to the heir of the King of Batavia, but
 that due to a mix-up no one knows which of two individuals, Marco or
 Giuseppe, is the heir.  Alarmed, she wails "Then do you mean to say
 that I am married to one of two gondoliers, but it is impossible to
 say which?"  To which the response is "Without any doubt of any kind
-whatever." -->
-
-<p>在 Gilbert 和 Sullivan 的电影《船夫》（<em>The Gondoliers</em>）中，
-Casilda 被告知她还是个婴儿时，就被许配给了巴塔维亚国王的继承人。但由于一场动乱，没人知道她被许配给了两位继承人 Marco 和 Giuseppe
-中的哪一位。她惊慌地哀嚎道：「那么你的意思是说我嫁给了两位船夫中的一位，但却无法确定是谁？」对此的回答是：「虽然不知道是谁，但这件事却是毫无疑问的。」</p>
-
-<!-- Logic comes in many varieties, and one distinction is between
+whatever."
+-->
+<p>在 Gilbert 和 Sullivan 的电影《船夫》（<em>The Gondoliers</em>）中， Casilda 被告知她还是个婴儿时，就被许配给了巴塔维亚国王的继承人。 但由于一场动乱，没人知道她被许配给了两位继承人 Marco 和 Giuseppe 中的哪一位。她惊慌地哀嚎道：「那么你的意思是说我嫁给了两位船夫中的一位， 但却无法确定是谁？」对此的回答是：「虽然不知道是谁，但这件事却是毫无疑问的。」</p>
+<!--
+Logic comes in many varieties, and one distinction is between
 _classical_ and _intuitionistic_. Intuitionists, concerned
 by assumptions made by some logicians about the nature of
 infinity, insist upon a constructionist notion of truth.  In
@@ -418,11 +381,11 @@ claim that Casilda is married to Marco or Giuseppe until one of the
 two was identified as her husband.  Perhaps Gilbert and Sullivan
 anticipated intuitionism, for their story's outcome is that the heir
 turns out to be a third individual, Luiz, with whom Casilda is,
-conveniently, already in love. -->
-
-<p>逻辑学有很多变种，而<strong>经典逻辑</strong>和<strong>直觉逻辑</strong>之间有一个区别。直觉主义者关注于某些逻辑学家对无限性本质的假设，坚持真理的构造主义的概念。具体来说，它们坚持认为 <code class="language-plaintext highlighter-rouge">A ⊎ B</code> 的证明必须确定 <code class="language-plaintext highlighter-rouge">A</code> 或 <code class="language-plaintext highlighter-rouge">B</code> 中的<strong>哪一个</strong>成立，因此它们会解决宣称 Casilda 嫁给了 Marco 或者 Giuseppe，直到其中一个被确定为她的丈夫为止。或许 Gilbert 和 Sullivan 期待直觉主义，因为在故事的结局中，继承人是第三个人 Luiz，他和 Casilda 已经顺利地相爱了。</p>
-
-<!-- Intuitionists also reject the law of the excluded middle, which
+conveniently, already in love.
+-->
+<p>逻辑学有很多变种，而<strong>经典逻辑</strong>和<strong>直觉逻辑</strong>之间有一个区别。 直觉主义者关注于某些逻辑学家对无限性本质的假设，坚持真理的构造主义的概念。 具体来说，它们坚持认为 <code>A ⊎ B</code> 的证明必须确定 <code>A</code> 或 <code>B</code> 中的<strong>哪一个</strong>成立， 因此它们会解决宣称 Casilda 嫁给了 Marco 或者 Giuseppe，直到其中一个被确定为 她的丈夫为止。或许 Gilbert 和 Sullivan 期待直觉主义，因为在故事的结局中， 继承人是第三个人 Luiz，他和 Casilda 已经顺利地相爱了。</p>
+<!--
+Intuitionists also reject the law of the excluded middle, which
 asserts `A ⊎ ¬ A` for every `A`, since the law gives no clue as to
 _which_ of `A` or `¬ A` holds. Heyting formalised a variant of
 Hilbert's classical logic that captures the intuitionistic notion of
@@ -432,395 +395,328 @@ excluded middle is added as an axiom to Heyting's logic, then it
 becomes equivalent to Hilbert's.  Kolmogorov showed the two logics
 were closely related: he gave a double-negation translation, such that
 a formula is provable in classical logic if and only if its
-translation is provable in intuitionistic logic. -->
-
-<p>直觉主义者也拒绝排中律（Law of the Excluded Middle）————该定律断言，对于所有的
-<code class="language-plaintext highlighter-rouge">A</code>，<code class="language-plaintext highlighter-rouge">A ⊎ ¬ A</code> 必定成立————因为该定律没有给出 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">¬ A</code> 中的哪一个成立。海廷（Heyting）形式化了希尔伯特（Hilbert）经典逻辑的一个变种，抓住了直觉主义中可证明性的概念。具体来说，排中律在希尔伯特逻辑中是可证明的，但在海廷逻辑中却不可证明。进一步来说，如果排中律作为一条公理添加到海廷逻辑中，那么它会等价于希尔伯特逻辑。柯尔莫哥洛夫（Kolmogorov）证明了两种逻辑紧密相关：他给出了双重否定翻译，即一个式子在经典逻辑中可证，当且仅当它的双重否定式在直觉逻辑中可证。</p>
-
-<!-- Propositions as Types was first formulated for intuitionistic logic.
+translation is provable in intuitionistic logic.
+-->
+<p>直觉主义者也拒绝排中律（Law of the Excluded Middle）————该定律断言，对于所有的 <code>A</code>，<code>A ⊎ ¬ A</code> 必定成立————因为该定律没有给出 <code>A</code> 和 <code>¬ A</code> 中的哪一个成立。 海廷（Heyting）形式化了希尔伯特（Hilbert）经典逻辑的一个变种，抓住了直觉主义中可证明性的概念。 具体来说，排中律在希尔伯特逻辑中是可证明的，但在海廷逻辑中却不可证明。 进一步来说，如果排中律作为一条公理添加到海廷逻辑中，那么它会等价于希尔伯特逻辑。 柯尔莫哥洛夫（Kolmogorov）证明了两种逻辑紧密相关：他给出了双重否定翻译，即一个式子在经典逻辑中 可证，当且仅当它的双重否定式在直觉逻辑中可证。</p>
+<!--
+Propositions as Types was first formulated for intuitionistic logic.
 It is a perfect fit, because in the intuitionist interpretation the
 formula `A ⊎ B` is provable exactly when one exhibits either a proof
 of `A` or a proof of `B`, so the type corresponding to disjunction is
-a disjoint sum. -->
-
-<p>「命题即类型」最初是为直觉逻辑而制定的。这是一种完美的契合，因为在直觉主义的解释中，式子 <code class="language-plaintext highlighter-rouge">A ⊎ B</code> 刚好可以在给出 <code class="language-plaintext highlighter-rouge">A</code> 或 <code class="language-plaintext highlighter-rouge">B</code> 之一的证明时得证，因此对应于析取的类型是一个不交和（Disjoint Sum）。</p>
-
-<!-- (Parts of the above are adopted from "Propositions as Types", Philip Wadler,
-_Communications of the ACM_, December 2015.) -->
-
-<p>（以上内容部分取自 “Propositions as Types”, Philip Wadler,
-<em>Communications of the ACM</em>，2015 年 12 月。）</p>
-
-<!-- ## Excluded middle is irrefutable -->
-
+a disjoint sum.
+-->
+<p>「命题即类型」最初是为直觉逻辑而制定的。这是一种完美的契合，因为在直觉主义的 解释中，式子 <code>A ⊎ B</code> 刚好可以在给出 <code>A</code> 或 <code>B</code> 之一的证明时得证，因此对应于析取 的类型是一个不交和（Disjoint Sum）。</p>
+<!--
+(Parts of the above are adopted from "Propositions as Types", Philip Wadler,
+_Communications of the ACM_, December 2015.)
+-->
+<p>（以上内容部分取自 “Propositions as Types”, Philip Wadler, <em>Communications of the ACM</em>，2015 年 12 月。）</p>
+<!--
+## Excluded middle is irrefutable
+-->
 <h2 id="排中律是不可辩驳的">排中律是不可辩驳的</h2>
-
-<!-- The law of the excluded middle can be formulated as follows: -->
-
+<!--
+The law of the excluded middle can be formulated as follows:
+-->
 <p>排中律可形式化如下：</p>
-
-<pre class="Agda"><a id="13455" class="Keyword">postulate</a>
-  <a id="em"></a><a id="13467" href="/PLFA-zh/Negation/#13467" class="Postulate">em</a> <a id="13470" class="Symbol">:</a> <a id="13472" class="Symbol">∀</a> <a id="13474" class="Symbol">{</a><a id="13475" href="plfa.part1.Negation.html#13475" class="Bound">A</a> <a id="13477" class="Symbol">:</a> <a id="13479" class="PrimitiveType">Set</a><a id="13482" class="Symbol">}</a> <a id="13484" class="Symbol">→</a> <a id="13486" href="plfa.part1.Negation.html#13475" class="Bound">A</a> <a id="13488" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="13490" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13492" href="plfa.part1.Negation.html#13475" class="Bound">A</a>
+<pre class="Agda"><a id="12984" class="Keyword">postulate</a>
+  <a id="em"></a><a id="12996" href="../Negation/#12996" class="Postulate">em</a> <a id="12999" class="Symbol">:</a> <a id="13001" class="Symbol">∀</a> <a id="13003" class="Symbol">{</a><a id="13004" href="../Negation/#13004" class="Bound">A</a> <a id="13006" class="Symbol">:</a> <a id="13008" class="PrimitiveType">Set</a><a id="13011" class="Symbol">}</a> <a id="13013" class="Symbol">→</a> <a id="13015" href="../Negation/#13004" class="Bound">A</a> <a id="13017" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#728" class="Datatype Operator">⊎</a> <a id="13019" href="../Negation/#922" class="Function Operator">¬</a> <a id="13021" href="../Negation/#13004" class="Bound">A</a>
 </pre>
-<!-- As we noted, the law of the excluded middle does not hold in
+<!--
+As we noted, the law of the excluded middle does not hold in
 intuitionistic logic.  However, we can show that it is _irrefutable_,
 meaning that the negation of its negation is provable (and hence that
-its negation is never provable): -->
-
-<p>如之前所言，排中律在直觉逻辑中并不成立。然而，我们可以证明它是
-<strong>不可辩驳（Irrefutable）</strong>的，即其否定的否定是可证明的（因而其否定式不可证明）：</p>
-
-<pre class="Agda"><a id="em-irrefutable"></a><a id="13837" href="/PLFA-zh/Negation/#13837" class="Function">em-irrefutable</a> <a id="13852" class="Symbol">:</a> <a id="13854" class="Symbol">∀</a> <a id="13856" class="Symbol">{</a><a id="13857" href="plfa.part1.Negation.html#13857" class="Bound">A</a> <a id="13859" class="Symbol">:</a> <a id="13861" class="PrimitiveType">Set</a><a id="13864" class="Symbol">}</a> <a id="13866" class="Symbol">→</a> <a id="13868" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13870" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13872" class="Symbol">(</a><a id="13873" href="plfa.part1.Negation.html#13857" class="Bound">A</a> <a id="13875" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#612" class="Datatype Operator">⊎</a> <a id="13877" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="13879" href="plfa.part1.Negation.html#13857" class="Bound">A</a><a id="13880" class="Symbol">)</a>
-<a id="13882" href="/PLFA-zh/Negation/#13837" class="Function">em-irrefutable</a> <a id="13897" class="Symbol">=</a> <a id="13899" class="Symbol">λ</a> <a id="13901" href="plfa.part1.Negation.html#13901" class="Bound">k</a> <a id="13903" class="Symbol">→</a> <a id="13905" href="plfa.part1.Negation.html#13901" class="Bound">k</a> <a id="13907" class="Symbol">(</a><a id="13908" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#687" class="InductiveConstructor">inj₂</a> <a id="13913" class="Symbol">(λ</a> <a id="13916" href="plfa.part1.Negation.html#13916" class="Bound">x</a> <a id="13918" class="Symbol">→</a> <a id="13920" href="plfa.part1.Negation.html#13901" class="Bound">k</a> <a id="13922" class="Symbol">(</a><a id="13923" href="https://agda.github.io/agda-stdlib/v1.1/Data.Sum.Base.html#662" class="InductiveConstructor">inj₁</a> <a id="13928" href="plfa.part1.Negation.html#13916" class="Bound">x</a><a id="13929" class="Symbol">)))</a>
+its negation is never provable):
+-->
+<p>如之前所言，排中律在直觉逻辑中并不成立。然而，我们可以证明它是 <strong>不可辩驳（Irrefutable）</strong>的，即其否定的否定是可证明的（因而其否定式不可证明）：</p>
+<pre class="Agda"><a id="em-irrefutable"></a><a id="13358" href="../Negation/#13358" class="Function">em-irrefutable</a> <a id="13373" class="Symbol">:</a> <a id="13375" class="Symbol">∀</a> <a id="13377" class="Symbol">{</a><a id="13378" href="../Negation/#13378" class="Bound">A</a> <a id="13380" class="Symbol">:</a> <a id="13382" class="PrimitiveType">Set</a><a id="13385" class="Symbol">}</a> <a id="13387" class="Symbol">→</a> <a id="13389" href="../Negation/#922" class="Function Operator">¬</a> <a id="13391" href="../Negation/#922" class="Function Operator">¬</a> <a id="13393" class="Symbol">(</a><a id="13394" href="../Negation/#13378" class="Bound">A</a> <a id="13396" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#728" class="Datatype Operator">⊎</a> <a id="13398" href="../Negation/#922" class="Function Operator">¬</a> <a id="13400" href="../Negation/#13378" class="Bound">A</a><a id="13401" class="Symbol">)</a>
+<a id="13403" href="../Negation/#13358" class="Function">em-irrefutable</a> <a id="13418" class="Symbol">=</a> <a id="13420" class="Symbol">λ</a> <a id="13422" href="../Negation/#13422" class="Bound">k</a> <a id="13424" class="Symbol">→</a> <a id="13426" href="../Negation/#13422" class="Bound">k</a> <a id="13428" class="Symbol">(</a><a id="13429" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#803" class="InductiveConstructor">inj₂</a> <a id="13434" class="Symbol">(λ</a> <a id="13437" href="../Negation/#13437" class="Bound">x</a> <a id="13439" class="Symbol">→</a> <a id="13441" href="../Negation/#13422" class="Bound">k</a> <a id="13443" class="Symbol">(</a><a id="13444" href="https://agda.github.io/agda-stdlib/v1.3/Data.Sum.Base.html#778" class="InductiveConstructor">inj₁</a> <a id="13449" href="../Negation/#13437" class="Bound">x</a><a id="13450" class="Symbol">)))</a>
 </pre>
-<!-- The best way to explain this code is to develop it interactively: -->
-
+<!--
+The best way to explain this code is to develop it interactively:
+-->
 <p>解释此代码的最佳方式是交互式地推导它：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>em-irrefutable k = ?
-</code></pre></div></div>
-
-<!-- Given evidence `k` that `¬ (A ⊎ ¬ A)`, that is, a function that given a
+<pre><code>em-irrefutable k = ?</code></pre>
+<!--
+Given evidence `k` that `¬ (A ⊎ ¬ A)`, that is, a function that given a
 value of type `A ⊎ ¬ A` returns a value of the empty type, we must fill
 in `?` with a term that returns a value of the empty type.  The only way
 we can get a value of the empty type is by applying `k` itself, so let's
-expand the hole accordingly: -->
-
-<p>给定 <code class="language-plaintext highlighter-rouge">¬ (A ⊎ ¬ A)</code> 的证据 <code class="language-plaintext highlighter-rouge">k</code>，即一个函数，它接受一个类型为 <code class="language-plaintext highlighter-rouge">A ⊎ ¬ A</code> 的值，返回一个空类型的值，我们必须在 <code class="language-plaintext highlighter-rouge">?</code> 处填上一个返回空类型的项。得到空类型值的唯一方式就是应用 <code class="language-plaintext highlighter-rouge">k</code> 本身，于是我们据此展开此洞：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>em-irrefutable k = k ?
-</code></pre></div></div>
-
-<!-- We need to fill the new hole with a value of type `A ⊎ ¬ A`. We don't have
-a value of type `A` to hand, so let's pick the second disjunct: -->
-
-<p>我们需要用类型为 <code class="language-plaintext highlighter-rouge">A ⊎ ¬ A</code> 的值填上这个新的洞。由于目前我们并没有类型为 <code class="language-plaintext highlighter-rouge">A</code> 的值，因此先处理第二个析取：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>em-irrefutable k = k (inj₂ λ{ x → ? })
-</code></pre></div></div>
-
-<!-- The second disjunct accepts evidence of `¬ A`, that is, a function
+expand the hole accordingly:
+-->
+<p>给定 <code>¬ (A ⊎ ¬ A)</code> 的证据 <code>k</code>，即一个函数，它接受一个类型为 <code>A ⊎ ¬ A</code> 的值， 返回一个空类型的值，我们必须在 <code>?</code> 处填上一个返回空类型的项。得到空类型值 的唯一方式就是应用 <code>k</code> 本身，于是我们据此展开此洞：</p>
+<pre><code>em-irrefutable k = k ?</code></pre>
+<!--
+We need to fill the new hole with a value of type `A ⊎ ¬ A`. We don't have
+a value of type `A` to hand, so let's pick the second disjunct:
+-->
+<p>我们需要用类型为 <code>A ⊎ ¬ A</code> 的值填上这个新的洞。由于目前我们并没有类型为 <code>A</code> 的值， 因此先处理第二个析取：</p>
+<pre><code>em-irrefutable k = k (inj₂ λ{ x → ? })</code></pre>
+<!--
+The second disjunct accepts evidence of `¬ A`, that is, a function
 that given a value of type `A` returns a value of the empty type.  We
 bind `x` to the value of type `A`, and now we need to fill in the hole
 with a value of the empty type.  Once again, the only way we can get a
 value of the empty type is by applying `k` itself, so let's expand the
-hole accordingly: -->
-
-<p>第二个析取接受 <code class="language-plaintext highlighter-rouge">¬ A</code> 的证据，即一个函数，它接受类型为 <code class="language-plaintext highlighter-rouge">A</code> 的值，返回空类型的值。我们将 <code class="language-plaintext highlighter-rouge">x</code> 绑定到类型为 <code class="language-plaintext highlighter-rouge">A</code> 的值，现在我们需要在洞中填入空类型的值。同样，得到空类型的值的唯一方法就是将 <code class="language-plaintext highlighter-rouge">k</code> 应用到其自身，于是我们展开此洞：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>em-irrefutable k = k (inj₂ λ{ x → k ? })
-</code></pre></div></div>
-
-<!-- This time we do have a value of type `A` to hand, namely `x`, so we can
-pick the first disjunct: -->
-
-<p>这次我们就有一个类型为 <code class="language-plaintext highlighter-rouge">A</code> 的值了，其名为 <code class="language-plaintext highlighter-rouge">x</code>，于是我们可以处理第一个析取：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>em-irrefutable k = k (inj₂ λ{ x → k (inj₁ x) })
-</code></pre></div></div>
-
-<!-- There are no holes left! This completes the proof. -->
-
+hole accordingly:
+-->
+<p>第二个析取接受 <code>¬ A</code> 的证据，即一个函数，它接受类型为 <code>A</code> 的值，返回空类型的值。 我们将 <code>x</code> 绑定到类型为 <code>A</code> 的值，现在我们需要在洞中填入空类型的值。同样， 得到空类型的值的唯一方法就是将 <code>k</code> 应用到其自身，于是我们展开此洞：</p>
+<pre><code>em-irrefutable k = k (inj₂ λ{ x → k ? })</code></pre>
+<!--
+This time we do have a value of type `A` to hand, namely `x`, so we can
+pick the first disjunct:
+-->
+<p>这次我们就有一个类型为 <code>A</code> 的值了，其名为 <code>x</code>，于是我们可以处理第一个析取：</p>
+<pre><code>em-irrefutable k = k (inj₂ λ{ x → k (inj₁ x) })</code></pre>
+<!--
+There are no holes left! This completes the proof.
+-->
 <p>现在没有洞了！这样就完成了证明。</p>
-
-<!-- The following story illustrates the behaviour of the term we have created.
+<!--
+The following story illustrates the behaviour of the term we have created.
 (With apologies to Peter Selinger, who tells a similar story
-about a king, a wizard, and the Philosopher's stone.) -->
-
-<p>下面的故事说明了我们创建的项的行为。
-（向 Peter Selinger 道歉，他讲的是个关于国王，巫师和贤者之石的类似的故事。）</p>
-
-<!-- Once upon a time, the devil approached a man and made an offer:
+about a king, a wizard, and the Philosopher's stone.)
+-->
+<p>下面的故事说明了我们创建的项的行为。 （向 Peter Selinger 道歉，他讲的是个关于国王，巫师和贤者之石的类似的故事。）</p>
+<!--
+Once upon a time, the devil approached a man and made an offer:
 "Either (a) I will give you one billion dollars, or (b) I will grant
 you any wish if you pay me one billion dollars.
-Of course, I get to choose whether I offer (a) or (b)." -->
-
-<p>曾经有一个恶魔向一个男人提议：「要么 (a) 我给你 10 亿美元，要么 (b) 如果你付给我
-10 亿美元，我可以实现你的任何一个愿望。当然，得是我决定提供 (a) 还是 (b)。」</p>
-
-<!-- The man was wary.  Did he need to sign over his soul?
-No, said the devil, all the man need do is accept the offer. -->
-
-<p>男人很谨慎。他需要付出他的灵魂吗？恶魔说不用，他只要接受这个提议就行。</p>
-
-<!-- The man pondered.  If he was offered (b) it was unlikely that he would
+Of course, I get to choose whether I offer (a) or (b)."
+-->
+<p>曾经有一个恶魔向一个男人提议：「要么 (a) 我给你 10 亿美元，要么 (b) 如果你付给我 10 亿美元，我可以实现你的任何一个愿望。当然，得是我决定提供 (a) 还是 (b)。」</p>
+<!--
+The man was wary.  Did he need to sign over his soul?
+No, said the devil, all the man need do is accept the offer.
+-->
+<p>男人很谨慎。他需要付出他的灵魂吗？ 恶魔说不用，他只要接受这个提议就行。</p>
+<!--
+The man pondered.  If he was offered (b) it was unlikely that he would
 ever be able to buy the wish, but what was the harm in having the
-opportunity available? -->
+opportunity available?
+-->
+<p>于是男人思索着，如果恶魔向他提供 (b)，那么他不太可能付得起这个愿望。 不过倘若真是如此的话，能有什么坏处吗？</p>
+<!--
+"I accept," said the man at last.  "Do I get (a) or (b)?"
 
-<p>于是男人思索着，如果恶魔向他提供 (b)，那么他不太可能付得起这个愿望。不过倘若真是如此的话，能有什么坏处吗？</p>
-
-<!-- "I accept," said the man at last.  "Do I get (a) or (b)?"
-
-The devil paused.  "I choose (b)." -->
-
+The devil paused.  "I choose (b)."
+-->
 <p>「我接受」，男人回答道，「我能得到 (a) 还是 (b)？」</p>
-
 <p>恶魔顿了顿。「我提供 (b)。」</p>
-
-<!-- The man was disappointed but not surprised.  That was that, he thought.
+<!--
+The man was disappointed but not surprised.  That was that, he thought.
 But the offer gnawed at him.  Imagine what he could do with his wish!
 Many years passed, and the man began to accumulate money.  To get the
 money he sometimes did bad things, and dimly he realised that
 this must be what the devil had in mind.
-Eventually he had his billion dollars, and the devil appeared again. -->
-
-<p>男人很失望，但并不惊讶。「果然是这样」，他想。但是这个提议折磨着他。想想他都能用这个愿望做些什么！多年以后，男人开始积累钱财。为了得到这笔钱，他有时会做坏事，而且他隐约意识到这一定是魔鬼所想到的。最后他攒够了 10 亿美元，恶魔再次出现了。</p>
-
-<!-- "Here is a billion dollars," said the man, handing over a valise
-containing the money.  "Grant me my wish!" -->
-
+Eventually he had his billion dollars, and the devil appeared again.
+-->
+<p>男人很失望，但并不惊讶。「果然是这样」，他想。 但是这个提议折磨着他。想想他都能用这个愿望做些什么！ 多年以后，男人开始积累钱财。为了得到这笔钱，他有时会做坏事， 而且他隐约意识到这一定是魔鬼所想到的。最后他攒够了 10 亿美元，恶魔再次出现了。</p>
+<!--
+"Here is a billion dollars," said the man, handing over a valise
+containing the money.  "Grant me my wish!"
+-->
 <p>「这是 10 亿美元」，男人说着，交出一个手提箱。「实现我的愿望吧！」</p>
-
-<!-- The devil took possession of the valise.  Then he said, "Oh, did I say
+<!--
+The devil took possession of the valise.  Then he said, "Oh, did I say
 (b) before?  I'm so sorry.  I meant (a).  It is my great pleasure to
-give you one billion dollars." -->
-
-<p>恶魔接过了手提箱。然后他说道，「哦？我之前说的是 (b) 吗？抱歉，我说的是 (a)。很高兴能给你 10 亿美元。」</p>
-
-<!-- And the devil handed back to the man the same valise that the man had
-just handed to him. -->
-
+give you one billion dollars."
+-->
+<p>恶魔接过了手提箱。然后他说道，「哦？我之前说的是 (b) 吗？抱歉，我说的是 (a)。 很高兴能给你 10 亿美元。」</p>
+<!--
+And the devil handed back to the man the same valise that the man had
+just handed to him.
+-->
 <p>于是恶魔将那个手提箱又还给了他。</p>
-
-<!-- (Parts of the above are adopted from "Call-by-Value is Dual to Call-by-Name",
-Philip Wadler, _International Conference on Functional Programming_, 2003.) -->
-
-<p>（以上内容部分取自 “Call-by-Value is Dual to Call-by-Name”,
-Philip Wadler, <em>International Conference on Functional Programming</em>, 2003 年。）</p>
-
-<!-- #### Exercise `Classical` (stretch) -->
-
-<h4 id="练习-classical延伸">练习 <code class="language-plaintext highlighter-rouge">Classical</code>（延伸）</h4>
-
-<!-- Consider the following principles:
+<!--
+(Parts of the above are adopted from "Call-by-Value is Dual to Call-by-Name",
+Philip Wadler, _International Conference on Functional Programming_, 2003.)
+-->
+<p>（以上内容部分取自 “Call-by-Value is Dual to Call-by-Name”, Philip Wadler, <em>International Conference on Functional Programming</em>, 2003 年。）</p>
+<!--
+#### Exercise `Classical` (stretch)
+-->
+<h4 id="练习-classical延伸">练习 <code>Classical</code>（延伸）</h4>
+<!--
+Consider the following principles:
 
   * Excluded Middle: `A ⊎ ¬ A`, for all `A`
   * Double Negation Elimination: `¬ ¬ A → A`, for all `A`
   * Peirce's Law: `((A → B) → A) → A`, for all `A` and `B`.
   * Implication as disjunction: `(A → B) → ¬ A ⊎ B`, for all `A` and `B`.
-  * De Morgan: `¬ (¬ A × ¬ B) → A ⊎ B`, for all `A` and `B`. -->
-
+  * De Morgan: `¬ (¬ A × ¬ B) → A ⊎ B`, for all `A` and `B`.
+-->
 <p>考虑以下定律：</p>
-
 <ul>
-  <li>排中律：对于所有 <code class="language-plaintext highlighter-rouge">A</code>，<code class="language-plaintext highlighter-rouge">A ⊎ ¬ A</code>。</li>
-  <li>双重否定消去：对于所有的 <code class="language-plaintext highlighter-rouge">A</code>，<code class="language-plaintext highlighter-rouge">¬ ¬ A → A</code>。</li>
-  <li>皮尔士定律：对于所有的 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，<code class="language-plaintext highlighter-rouge">((A → B) → A) → A</code>。</li>
-  <li>蕴涵表示为析取：对于所有的 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，<code class="language-plaintext highlighter-rouge">(A → B) → ¬ A ⊎ B</code>。</li>
-  <li>德摩根定律：对于所有的 <code class="language-plaintext highlighter-rouge">A</code> 和 <code class="language-plaintext highlighter-rouge">B</code>，<code class="language-plaintext highlighter-rouge">¬ (¬ A × ¬ B) → A ⊎ B</code>。</li>
+<li>排中律：对于所有 <code>A</code>，<code>A ⊎ ¬ A</code>。</li>
+<li>双重否定消去：对于所有的 <code>A</code>，<code>¬ ¬ A → A</code>。</li>
+<li>皮尔士定律：对于所有的 <code>A</code> 和 <code>B</code>，<code>((A → B) → A) → A</code>。</li>
+<li>蕴涵表示为析取：对于所有的 <code>A</code> 和 <code>B</code>，<code>(A → B) → ¬ A ⊎ B</code>。</li>
+<li>德摩根定律：对于所有的 <code>A</code> 和 <code>B</code>，<code>¬ (¬ A × ¬ B) → A ⊎ B</code>。</li>
 </ul>
-
-<!-- Show that each of these implies all the others. -->
-
+<!--
+Show that each of these implies all the others.
+-->
 <p>请证明其中任意一条定律都蕴涵其它所有定律。</p>
-
-<!-- <pre class="Agda"><a id="18997" class="Comment">-- Your code goes here</a>
-</pre>{:/}
-
-<pre class="Agda"><a id="19034" class="Comment">-- 请将代码写在此处</a>
+<!--
+<pre class="Agda"><a id="18359" class="Comment">-- Your code goes here</a>
+</pre>-->
+<pre class="Agda"><a id="18395" class="Comment">-- 请将代码写在此处</a>
 </pre>
-
-{::comment}
-#### Exercise `Stable` (stretch) -->
-
-<h4 id="联系-stable延伸">联系 <code class="language-plaintext highlighter-rouge">Stable</code>（延伸）</h4>
-
-<!-- Say that a formula is _stable_ if double negation elimination holds for it: -->
-
+<!--
+#### Exercise `Stable` (stretch)
+-->
+<h4 id="联系-stable延伸">联系 <code>Stable</code>（延伸）</h4>
+<!--
+Say that a formula is _stable_ if double negation elimination holds for it:
+-->
 <p>若双重否定消去对某个式子成立，我们就说它是<strong>稳定（Stable）</strong>的：</p>
-
-<pre class="Agda"><a id="Stable"></a><a id="19262" href="/PLFA-zh/Negation/#19262" class="Function">Stable</a> <a id="19269" class="Symbol">:</a> <a id="19271" class="PrimitiveType">Set</a> <a id="19275" class="Symbol">→</a> <a id="19277" class="PrimitiveType">Set</a>
-<a id="19281" href="/PLFA-zh/Negation/#19262" class="Function">Stable</a> <a id="19288" href="plfa.part1.Negation.html#19288" class="Bound">A</a> <a id="19290" class="Symbol">=</a> <a id="19292" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="19294" href="plfa.part1.Negation.html#946" class="Function Operator">¬</a> <a id="19296" href="plfa.part1.Negation.html#19288" class="Bound">A</a> <a id="19298" class="Symbol">→</a> <a id="19300" href="plfa.part1.Negation.html#19288" class="Bound">A</a>
+<pre class="Agda"><a id="Stable"></a><a id="18607" href="../Negation/#18607" class="Function">Stable</a> <a id="18614" class="Symbol">:</a> <a id="18616" class="PrimitiveType">Set</a> <a id="18620" class="Symbol">→</a> <a id="18622" class="PrimitiveType">Set</a>
+<a id="18626" href="../Negation/#18607" class="Function">Stable</a> <a id="18633" href="../Negation/#18633" class="Bound">A</a> <a id="18635" class="Symbol">=</a> <a id="18637" href="../Negation/#922" class="Function Operator">¬</a> <a id="18639" href="../Negation/#922" class="Function Operator">¬</a> <a id="18641" href="../Negation/#18633" class="Bound">A</a> <a id="18643" class="Symbol">→</a> <a id="18645" href="../Negation/#18633" class="Bound">A</a>
 </pre>
-<!-- Show that any negated formula is stable, and that the conjunction
-of two stable formulas is stable. -->
-
+<!--
+Show that any negated formula is stable, and that the conjunction
+of two stable formulas is stable.
+-->
 <p>请证明任何否定式都是稳定的，并且两个稳定式的合取也是稳定的。</p>
-
-<!-- <pre class="Agda"><a id="19473" class="Comment">-- Your code goes here</a>
-</pre>{:/}
-
-<pre class="Agda"><a id="19510" class="Comment">-- 请将代码写在此处</a>
+<!--
+<pre class="Agda"><a id="18803" class="Comment">-- Your code goes here</a>
+</pre>-->
+<pre class="Agda"><a id="18839" class="Comment">-- 请将代码写在此处</a>
 </pre>
-{::comment}
-## Standard Prelude -->
-
+<!--
+## Standard Prelude
+-->
 <h2 id="标准库">标准库</h2>
-
-<!-- Definitions similar to those in this chapter can be found in the standard library: -->
-
+<!--
+Definitions similar to those in this chapter can be found in the standard library:
+-->
 <p>本章中的类似定义可在标准库中找到：</p>
-
-<pre class="Agda"><a id="19697" class="Keyword">import</a> <a id="19704" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html" class="Module">Relation.Nullary</a> <a id="19721" class="Keyword">using</a> <a id="19727" class="Symbol">(</a><a id="19728" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.html#535" class="Function Operator">¬_</a><a id="19730" class="Symbol">)</a>
-<a id="19732" class="Keyword">import</a> <a id="19739" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.Negation.html" class="Module">Relation.Nullary.Negation</a> <a id="19765" class="Keyword">using</a> <a id="19771" class="Symbol">(</a><a id="19772" href="https://agda.github.io/agda-stdlib/v1.1/Relation.Nullary.Negation.html#880" class="Function">contraposition</a><a id="19786" class="Symbol">)</a>
+<pre class="Agda"><a id="19010" class="Keyword">import</a> <a id="19017" href="https://agda.github.io/agda-stdlib/v1.3/Relation.Nullary.html" class="Module">Relation.Nullary</a> <a id="19034" class="Keyword">using</a> <a id="19040" class="Symbol">(</a><a id="19041" href="https://agda.github.io/agda-stdlib/v1.3/Relation.Nullary.html#653" class="Function Operator">¬_</a><a id="19043" class="Symbol">)</a>
+<a id="19045" class="Keyword">import</a> <a id="19052" href="https://agda.github.io/agda-stdlib/v1.3/Relation.Nullary.Negation.html" class="Module">Relation.Nullary.Negation</a> <a id="19078" class="Keyword">using</a> <a id="19084" class="Symbol">(</a><a id="19085" href="https://agda.github.io/agda-stdlib/v1.3/Relation.Nullary.Negation.html#929" class="Function">contraposition</a><a id="19099" class="Symbol">)</a>
 </pre>
 <h2 id="unicode">Unicode</h2>
-
-<!-- This chapter uses the following unicode: -->
-
+<!--
+This chapter uses the following unicode:
+-->
 <p>本章使用了以下 Unicode：</p>
-
-<!--     ¬  U+00AC  NOT SIGN (\neg)
-    ≢  U+2262  NOT IDENTICAL TO (\==n) -->
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>¬  U+00AC  否定符号 (\neg)
-≢  U+2262  不等价于 (\==n)
-</code></pre></div></div>
-
-  </div>
-
-  <p style="text-align:center;">
-    
-    <a alt="Previous chapter" href="/PLFA-zh/Connectives/">上一章</a>
-    
-    
-    &bullet;
-    
-    
-    <a alt="Source code" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/part1/Negation.lagda.md">源代码</a>
-    
-    
-    &bullet;
-    
-    
-    <a alt="Next chapter" href="/PLFA-zh/Quantifiers/">下一章</a>
-    
-</p>
-
+<!--
+    ¬  U+00AC  NOT SIGN (\neg)
+    ≢  U+2262  NOT IDENTICAL TO (\==n)
+-->
+<pre><code>¬  U+00AC  否定符号 (\neg)
+≢  U+2262  不等价于 (\==n)</code></pre>
+    </div>
+    <nav class="pager">
+    <ul class="pagination">
+        
+        <li><a class="pagelink" href="../Connectives/">上一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/src/plfa/part1/Negation.lagda.md">源文件</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="../Quantifiers/">下一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+    </ul>
+</nav>
 
 </article>
 
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/PLFA-zh/"></data>
+            </div>
+        </main>
+        <footer class="site-footer h-card">
+    <data class="u-url" href="../"></data>
+    <div class="wrapper">
+        <h2 class="footer-heading">编程语言基础：Agda 语言描述</h2>
+        
+        
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">Philip Wadler</li>
+                    <li>
+                        
+                        <a class="u-email" href="mailto:wadler@inf.ed.ac.uk">wadler@inf.ed.ac.uk</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+    
+    <li><a rel="me" href="https://github.com/wadler" title="wadler"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#github"></use></svg>&nbsp;wadler</a></li>
+    
+    
+</ul>
 
-  <div class="wrapper">
+            </div>
+            <div class="footer-col footer-col-3">
+                
+            </div>
+        </div>
+        
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">Wen Kokke</li>
+                    <li>
+                        
+                        <a class="u-email" href="mailto:wen.kokke@ed.ac.uk">wen.kokke@ed.ac.uk</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+    
+    <li><a rel="me" href="https://github.com/wenkokke" title="wenkokke"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#github"></use></svg>&nbsp;wenkokke</a></li>
+    
+    
+    <li><a rel="me" href="https://twitter.com/wenkokke" title="wenkokke"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#twitter"></use></svg>&nbsp;wenkokke</a></li>
+    
+</ul>
 
-    <h2 class="footer-heading">编程语言基础：Agda 语言描述
-</h2>
+            </div>
+            <div class="footer-col footer-col-3">
+                
+            </div>
+        </div>
+        
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">Jeremy G. Siek</li>
+                    <li>
+                        
+                        <a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+    
+    <li><a rel="me" href="https://github.com/jsiek" title="jsiek"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#github"></use></svg>&nbsp;jsiek</a></li>
+    
+    
+    <li><a rel="me" href="https://twitter.com/jeremysiek" title="jeremysiek"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#twitter"></use></svg>&nbsp;jeremysiek</a></li>
+    
+</ul>
 
-    <h3 class="footer-heading">原作者：</h3><div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Philip Wadler</li>
-          <li><a class="u-email" href="mailto:wadler@inf.ed.ac.uk">wadler@inf.ed.ac.uk</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wadler"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wadler</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3"></div>
-    </div><div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Wen Kokke</li>
-          <li><a class="u-email" href="mailto:wen.kokke@ed.ac.uk">wen.kokke@ed.ac.uk</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3"></div>
-    </div><div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Jeremy Siek</li>
-          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3"></div>
-    </div><h3 class="footer-heading">本章翻译进度：100%</h3>
-        <h3 class="footer-heading">本章译者：</h3>
-        <p>Oling Cat</p>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">创作共用-署名 4.0 国际（CC BY 4.0）许可协议</a>授权。<br />
-  </div>
+            </div>
+            <div class="footer-col footer-col-3">
+                
+            </div>
+        </div>
+        
+        
+        This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+    </div>
 </footer>
-<!-- Import jQuery -->
-<script type="text/javascript" src="/PLFA-zh/assets/jquery.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js" integrity="sha256-E4RlfxwyJVmkkk0szw7LYJxuPlp6evtPSBDlWHsYYL8=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  anchors.add();
-</script>
-
-<script type="text/javascript">
-
- // Makes sandwhich menu works
- $('.menu-icon').click(function(){
-   $('.trigger').toggle();
- });
-
- // Script which allows for foldable code blocks
- $('div.foldable pre').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-
-     $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             $(this).height(2.0 * lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
-</script>
-
-<!-- Import KaTeX -->
-<script type="text/javascript" src="/PLFA-zh/assets/katex.js"></script>
-
-<!-- Script which renders TeX using KaTeX -->
-<script type="text/javascript">
- $("script[type='math/tex']").replaceWith(
-     function(){
-         var tex = $(this).text();
-         return "<span class=\"inline-equation\">" +
-                katex.renderToString(tex) +
-                "</span>";
-     });
- $("script[type='math/tex; mode=display']").replaceWith(
-     function(){
-         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<div class=\"equation\">" +
-                katex.renderToString("\\displaystyle "+tex) +
-                "</div>";
-     });
-</script>
-</body>
-
+    </body>
 </html>

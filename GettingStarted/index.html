@@ -1,592 +1,680 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+    <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>使用说明 | 编程语言基础：Agda 语言描述
-</title><!-- Begin Jekyll SEO tag v2.6.1 -->
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="使用说明" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="编程语言基础：Agda 语言描述" />
-<meta property="og:description" content="编程语言基础：Agda 语言描述" />
-<link rel="canonical" href="https://agda-zh.github.io/PLFA-zh/GettingStarted/" />
-<meta property="og:url" content="https://agda-zh.github.io/PLFA-zh/GettingStarted/" />
-<meta property="og:site_name" content="编程语言基础：Agda 语言描述" />
-<script type="application/ld+json">
-{"description":"编程语言基础：Agda 语言描述","@type":"WebPage","url":"https://agda-zh.github.io/PLFA-zh/GettingStarted/","headline":"使用说明","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/PLFA-zh/assets/main.css"></head>
-<body><header class="site-header" role="banner">
+  <link rel="stylesheet" href="../public/css/style.css">
+  
+  <title>编程语言基础：Agda 语言描述 – 使用说明</title>
+  
+  
+  
+</head>
 
+    <body>
+        <header class="site-header">
     <div class="wrapper">
-
-        <a class="site-title" href="/PLFA-zh/">编程语言基础：Agda 语言描述
-</a>
-
+        <a class="site-title" href="../">编程语言基础：Agda 语言描述</a>
         <nav class="site-nav">
             <span class="menu-icon">
                 <svg viewBox="0 0 18 15" width="18px" height="15px">
-                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
                 </svg>
             </span>
 
             <div class="trigger">
-                <a class="page-link" href="/PLFA-zh/">主页</a>
-                <a class="page-link" href="/PLFA-zh/Announcements/">公告</a>
-                <a class="page-link" href="/PLFA-zh/GettingStarted/">使用说明</a>
-                <a class="page-link" href="/PLFA-zh/Citing/">引用</a>
+                <a class="page-link" href="../">主页</a>
+                <a class="page-link" href="../Announcements/">公告</a>
+                <a class="page-link" href="../GettingStarted/">使用说明</a>
+                <a class="page-link" href="../Citing/">引用</a>
                 <a class="page-link" href="https://plfa.github.io/">English</a>
             </div>
         </nav>
-
     </div>
-
 </header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post">
 
-  <header class="post-header">
-      <h1 class="post-title">使用说明</h1>
-  </header>
+        <main class="page-content" aria-label="Content">
+            <div class="wrapper">
+                <article class="post">
+    <nav class="pager">
+    <ul class="pagination">
+        
+        <li><a class="pagelink" href="../Preface/">上一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/README.md">源文件</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="../Naturals/">下一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+    </ul>
+</nav>
 
-  <p style="text-align:center;">
-    
-    
-    
-    
-    
-</p>
-
-
-  <div class="post-content">
-    <p><a href="https://travis-ci.org/Agda-zh/PLFA-zh"><img src="https://travis-ci.org/Agda-zh/PLFA-zh.svg?branch=dev" alt="Build Status" /></a>
-<a href="https://github.com/agda/agda/releases/tag/v2.6.0.1"><img src="https://img.shields.io/badge/agda-2.6.0.1-blue.svg" alt="Agda" /></a>
-<a href="https://github.com/agda/agda-stdlib/releases/tag/v1.1"><img src="https://img.shields.io/badge/agda--stdlib-1.1-blue.svg" alt="agda-stdlib" /></a></p>
-
-<p>《编程语言基础：Agda 语言描述》的使用方法和《Programming Language Foundations in Agda》一致。</p>
-
+    <header class="post-header">
+        <h1 class="post-title" id="gettingstarted">使用说明</h1>
+    </header>
+    <div class="post-content">
+        <!-- Status & Version Badges -->
+<p><a href="https://github.com/plfa/plfa.github.io/releases/latest"><img src="https://img.shields.io/badge/calver-20.07-22bfda" alt="Calendar Version" /></a> <a href="https://github.com/agda/agda/releases/tag/v2.6.1.3"><img src="https://img.shields.io/badge/agda-v2.6.1.3-blue.svg" alt="Agda" /></a> <a href="https://github.com/agda/agda-stdlib/releases/tag/v1.3"><img src="https://img.shields.io/badge/agda--stdlib-v1.3-blue.svg" alt="agda-stdlib" /></a></p>
+<p>《编程语言基础：Agda 语言描述》的使用方法与《Programming Language Foundations in Agda》一致。</p>
 <p><strong>本书可访问 <a href="https://agda-zh.github.io/PLFA-zh/">PLFA-zh</a> 在线阅读。</strong></p>
-
-<p><strong>要参与翻译，请先阅读<a href="https://github.com/Agda-zh/PLFA-zh/issues/1">翻译规范</a></strong></p>
-
-<!---
-Getting Started with PLFA
---->
-
-<h1 id="开始使用-plfa">开始使用 PLFA</h1>
-
-<!---
-There are several tools you need to work with PLFA:
-
-  - [Agda](https://agda.readthedocs.io/en/v2.6.0.1/getting-started/installation.html)
-  - [Agda standard library](https://github.com/agda/agda-stdlib/releases/tag/v1.1)
---->
-
-<p>为使用 PLFA，你需要以下工具：</p>
-
+<p><strong>要参与翻译，请先阅读<a href="https://github.com/Agda-zh/PLFA-zh/issues/1">翻译规范</a>。</strong></p>
+<!--
+## Dependencies for users
+-->
+<h2 id="用户依赖">用户依赖</h2>
+<!--
+You can read PLFA [online][plfa] without installing anything.
+However, if you wish to interact with the code or complete the exercises, you need several things:
+-->
+<p>你可以<a href="https://agda-zh.github.io/PLFA-zh/">在线阅读</a> PLFA，无需安装任何东西。 然而，如果你想要交互式编写代码或完成习题，那么就需要几样东西：</p>
+<!--
+  - [Stack](#install-the-haskell-tool-stack)
+  - [Git](#install-git)
+  - [Agda](#install-agda-using-stack)
+  - [Agda standard library](#install-plfa-and-the-agda-standard-library)
+  - [PLFA](#install-plfa-and-the-agda-standard-library)
+-->
 <ul>
-  <li><a href="https://agda-zh.rtfd.io/zh_CN/latest/getting-started/installation.html">Agda</a></li>
-  <li><a href="https://github.com/agda/agda-stdlib/releases/tag/v1.1">Agda 标准库</a></li>
+<li><a href="#install-the-haskell-tool-stack">Stack</a></li>
+<li><a href="#install-git">Git</a></li>
+<li><a href="#install-agda-using-stack">Agda</a></li>
+<li><a href="#install-plfa-and-the-agda-standard-library">Agda 标准库</a></li>
+<li><a href="#install-plfa-and-the-agda-standard-library">PLFA</a></li>
 </ul>
-
-<!---
-For most of the tools, you can simply follow their respective build instructions.
-We list the versions of our dependencies on the badges above.  We have
-tested with the versions listed; either earlier or later versions may
-cause problems.
---->
-
-<p>大部分工具的安装方式遵循其对应网页提供的说明即可。
-<strong><a href="https://ice1000.org/2018/06/13/AgdaEnvConfig/">这里</a>有篇安装配置的教程可供参考。</strong>
-本页顶部的徽章列出了 PLFA 使用的依赖版本。我们已经用上面列出的版本测试过了，
-其它更旧或更新的版本可能会出问题。</p>
-
-<!---
-You can get the appropriate version of Programming Language Foundations in Agda from GitHub,
-either by cloning the repository,
-or by downloading [the zip archive](https://github.com/plfa/plfa.github.io/archive/dev.zip):
---->
-
-<p>你可以执行下方的命令克隆仓库或者下载 zip 包（<a href="https://github.com/plfa/plfa.github.io/archive/dev.zip">原书</a> / <a href="https://github.com/Agda-zh/PLFA-zh/archive/dev.zip">中文版</a>）以从 GitHub 获取最新版的 PLFA。</p>
-
-<p>原书：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/plfa/plfa.github.io
-</code></pre></div></div>
-
-<p>中文版：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/Agda-zh/PLFA-zh
-</code></pre></div></div>
-
-<!---
-Finally, we need to let Agda know where to find the standard library.
-For this, you can follow the instructions
-[here](https://agda.readthedocs.io/en/v2.6.0.1/tools/package-system.html#example-using-the-standard-library).
--->
-
-<p>最后，我们需要让 Agda 知道标准库位于何处。
-<a href="https://agda-zh.rtfd.io/zh_CN/latest/tools/package-system.html#example-using-the-standard-library">此处</a>的说明可供参考。</p>
-
 <!--
-It is possible to set up PLFA as an Agda library as well.  If you want
-to complete the exercises found in the `courses` folder, or to import
-modules from the book, you need to do this.  To do so, add the path to
-`plfa.agda-lib` to `~/.agda/libraries` and add `plfa` to
-`~/.agda/defaults`, both on lines of their own.
+PLFA is tested against specific versions of Agda and the standard library, which are shown in the badges above. Agda and the standard library change rapidly, and these changes often break PLFA, so using older or newer versions usually causes problems.
 -->
-
-<p>如果你想完成 <code class="language-plaintext highlighter-rouge">courses</code> 目录中的习题，或者想导入书中的模块，
-那么需要将 PLFA 设置为 Agda 库。完成此设置需要将 <code class="language-plaintext highlighter-rouge">plfa.agda-lib</code>
-所在的路径作为单独的一行添加到 <code class="language-plaintext highlighter-rouge">~/.agda/libraries</code>，并将 <code class="language-plaintext highlighter-rouge">plfa</code>
-作为单独的一行添加到 <code class="language-plaintext highlighter-rouge">~/.agda/defaults</code>。</p>
-
+<p>PLFA 只针对特定的 Agda 和 标准库版本进行了测试，相应版本已在前面的徽章中指明。 Agda 和标准库变化得十分迅速，而这些改变经常搞坏 PLFA，因此使用旧版或新版通常会出现问题。</p>
 <!--
-## Auto-loading `agda-mode` in Emacs
+There are several versions of Agda and its standard library online. If you are using a package manager, like Homebrew or Debian apt, the version of Agda available there may be out-of date. Furthermore, Agda is under active development, so if you install the development version from the GitHub, you might find the developers have introduced changes which break the code here. Therefore, it’s important to have the specific versions of Agda and the standard library shown above.
 -->
-
-<h2 id="在-emacs-中自动加载-agda-mode">在 Emacs 中自动加载 <code class="language-plaintext highlighter-rouge">agda-mode</code></h2>
-
+<p>Agda 和 Agda 标准库有多个版本。如果你使用了包管理器（如 Homebrew 或者 Debian apt），Agda 的版本可能不是最新的。除此之外，Agda 仍然在活跃的开发之中，如果你从 GitHub 上安装了开发版本，开发者的新变更也可能让这里的代码出现问题。 因此，使用上述版本的 Agda 和 Agda 标准库很重要。</p>
 <!--
-In order to have `agda-mode` automatically loaded whenever you open a file ending
-with `.agda` or `.lagda.md`, put the following on your Emacs configuration file:
+### On macOS: Install the XCode Command Line Tools
 -->
-
-<p>为了让 <code class="language-plaintext highlighter-rouge">agda-mode</code> 在你打开 <code class="language-plaintext highlighter-rouge">.agda</code> 或 <code class="language-plaintext highlighter-rouge">.lagda.md</code> 文件时自动加载，
-请将以下内容放到你的 Emacs 配置文件中。</p>
-
-<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">auto-mode-alist</span>
-   <span class="p">(</span><span class="nb">append</span>
-     <span class="o">'</span><span class="p">((</span><span class="s">"\\.agda\\'"</span> <span class="o">.</span> <span class="nv">agda2-mode</span><span class="p">)</span>
-       <span class="p">(</span><span class="s">"\\.lagda.md\\'"</span> <span class="o">.</span> <span class="nv">agda2-mode</span><span class="p">))</span>
-     <span class="nv">auto-mode-alist</span><span class="p">))</span>
-</code></pre></div></div>
-
+<h3 id="macos-平台安装-xcode-命令行工具">macOS 平台：安装 XCode 命令行工具</h3>
 <!--
-The configuration file for Emacs is normally located in `~/.emacs` or `~/.emacs.d/init.el`,
-but Aquamacs users might need to move their startup settings to the Preferences.el file in
-`~/Library/Preferences/Aquamacs Emacs/Preferences`.
+On macOS, you’ll need to install the [XCode Command Line Tools][xcode]. For most versions of macOS, you can install these by running the following command:
 -->
-
-<p>Emacs 的配置文件通常位于 <code class="language-plaintext highlighter-rouge">~/.emacs</code> 或 <code class="language-plaintext highlighter-rouge">~/.emacs.d/init.el</code>，不过
-Aquamacs 用户需要将启动设置放到位于 <code class="language-plaintext highlighter-rouge">~/Library/Preferences/Aquamacs Emacs/Preferences</code>
-的 Preferences.el 文件中。</p>
-
-<!---
-Unicode characters
---->
-
-<h2 id="unicode-字符">Unicode 字符</h2>
-
-<!---
-If you're having trouble typing the Unicode characters into Emacs, the end of
-each chapter should provide a list of the unicode characters introduced in that
-chapter.
---->
-
-<p>如果你在 Emacs 中输入 Unicode 字符时遇到困难，每一章的结尾都列出了该章引入的 Unicode 字符。</p>
-
+<p>在 macOS 平台，你需要安装 <a href="https://developer.apple.com/xcode/">XCode 命令行工具</a>。 在大多数 macOS 系统版本上，你可以用下面的命令安装它们：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre></div>
 <!--
-`agda-mode` and emacs have a number of useful commands.
-Two of them are especially useful when you solve exercises.
+### Install the Haskell Tool Stack
 -->
-
-<p><code class="language-plaintext highlighter-rouge">agda-mode</code> 和 Emacs 有很多有用的命令，其中的两个在你做练习时非常有用。</p>
-
+<h3 name="install-the-haskell-tool-stack" id="安装-haskell-工具-stack">安装 Haskell 工具 Stack</h3>
 <!--
-For a full list of supported characters, use `agda-input-show-translations` with:
+Agda is written in Haskell, so to install it we’ll need the *Haskell Tool Stack*, or *Stack* for short. Stack is a program for managing different Haskell compilers and packages:
 -->
-
-<p>要查看所支持字符的完整列表，请使用 <code class="language-plaintext highlighter-rouge">agda-input-show-translations</code>：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M-x agda-input-show-translations
-</code></pre></div></div>
-
+<p>Agda 使用 Haskell 写的，因此我们需要 Haskell 工具 Stack （简称 Stack）来安装 Agda。 Stack 是管理不同版本的 Haskell 编译器和包的管理程序。</p>
 <!--
-All the supported characters in `agda-mode` are shown.
+- *On UNIX and macOS.* If your package manager has a package for Stack, that’s probably your easiest option. For instance, Homebrew on macOS  and APT on Debian offer the “haskell-stack” package. Otherwise, you can follow the instructions on [the Stack website][haskell-stack]. Usually, Stack installs binaries at `HOME/.local/bin`. Please ensure this is on your PATH, by including the following in your shell configuration, e.g., in `HOME/.bash_profile`:
+  ```bash
+  export PATH="${HOME}/.local/bin:${PATH}"
+  ```
+  Finally, ensure that you’ve got the latest version of Stack, by running:
+  ```bash
+  stack upgrade
+  ```
+- *On Windows.* There is a Windows installer on [the Stack website][haskell-stack].
 -->
-
-<p>这样会显示出 <code class="language-plaintext highlighter-rouge">agda-mode</code> 中所有支持的字符。</p>
-
+<ul>
+<li><p><strong>UNIX 和 macOS</strong> 平台：如果你的包管理程序有 Stack 的包，这是大概是最简单的方法。 比如说 macOS 的 Homebrew 或者 Debian 的 APT 提供了「haskell-stack」包。 不然，你可以按照 <a href="https://docs.haskellstack.org/en/stable/README/">Stack 网站上</a> 的指示进行安装。 在一般情况下，Stack 将二进制文件安装至 <code>HOME/.local/bin</code>。 请务必保证这个目录在你的 PATH 之内，你可以将下面的内容加入你的 shell 配置中，例如 <code>HOME/.bash_profile</code> 中：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH=</span><span class="st">&quot;</span><span class="va">${HOME}</span><span class="st">/.local/bin:</span><span class="va">${PATH}</span><span class="st">&quot;</span></span></code></pre></div>
+<p>最后，请保证你有最新版的 Stack，运行：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> upgrade</span></code></pre></div></li>
+<li><p><strong>Windows</strong> 平台：<a href="https://docs.haskellstack.org/en/stable/README/">Stack 网站上</a>提供 Windows 安装包。</p></li>
+</ul>
 <!--
-If you want to know how you input a specific Unicode character in agda file,
-move the cursor onto the character and type the following command:
+### Install Git
 -->
-
-<p>如果你想知道如何在 agda 文件中输入一个特定的 Unicode 字符，请将光标移至该字符上，
-然后输入以下命令：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M-x quail-show-key
-</code></pre></div></div>
-
+<h3 name="install-git" id="安装-git">安装 Git</h3>
 <!--
-You'll see the key sequence of the character in mini buffer.
+If you do not already have Git installed, see [the Git downloads page][git].
 -->
-
-<p>你会在迷你缓冲区中看到输入该字符所需的按键序列。</p>
-
-<!---
-Using `agda-mode`
---->
-
-<h2 id="使用-agda-mode">使用 <code class="language-plaintext highlighter-rouge">agda-mode</code></h2>
-
-<!---
-    ?            hole
-    {!...!}      hole with contents
-    C-c C-l      load buffer
---->
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?            洞
-{!...!}      有内容的洞
-C-c C-l      加载缓冲区
-</code></pre></div></div>
-
-<!---
-Command to give when in a hole:
-
-    C-c C-c x    split on variable x
-    C-c C-space  fill in hole
-    C-c C-r      refine with constructor
-    C-c C-a      automatically fill in hole
-    C-c C-,      Goal type and context
-    C-c C-.      Goal type, context, and inferred type
---->
-
-<p>在洞上可用的命令：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C-c C-c x    在变量 x 上分项（自动模式匹配）
-C-c C-空格   填洞
-C-c C-r      用构造子精化
-C-c C-a      自动填洞
-C-c C-,      目标类型和上下文
-C-c C-.      目标类型，上下文，以及推断的类型
-</code></pre></div></div>
-
-<!---
-See
-[the emacs-mode docs](https://agda.readthedocs.io/en/latest/tools/emacs-mode.html)
-for more details.
---->
-
-<p>更多细节请见 <a href="https://agda.readthedocs.io/en/latest/tools/emacs-mode.html">emacs-mode 文档</a></p>
-
-<!---
-If you want to see messages beside rather than below your Agda code,
-you can do the following:
-
-  - Load your Agda file and do `C-c C-l`;
+<p>如果你没有已经安装 Git，请参阅 <a href="https://git-scm.com/downloads">Git 下载页面</a>。</p>
+<!--
+### Install Agda using Stack
+-->
+<h3 name="install-agda-using-stack" id="用-stack-安装-agda">用 Stack 安装 Agda</h3>
+<!--
+The easiest way to install a *specific version* of Agda is using [Stack][haskell-stack]. You can get the required version of Agda from GitHub, either by cloning the repository and switching to the correct branch, or by downloading [the zip archive][agda]:
+-->
+<p>安装 <strong>特定</strong> Agda 版本的最简方式是使用 <a href="https://docs.haskellstack.org/en/stable/README/">Stack</a>。你可以从 GitHub 上获取需要的版本， 可以通过克隆源码库并切换到合适的分支，也可以直接下载 <a href="https://github.com/agda/agda/releases/tag/v2.6.1.3">Zip 包</a>：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/agda/agda.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> agda</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout v2.6.1.3</span></code></pre></div>
+<!--
+To install Agda, run Stack from the Agda source directory:
+-->
+<p>要安装 Agda，请在其源码目录中运行 Stack：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> install <span class="at">--stack-yaml</span> stack-8.8.3.yaml</span></code></pre></div>
+<!--
+*This step will take a long time and a lot of memory to complete.*
+-->
+<p><strong>这一步会消耗很长时间和很多内存来完成。</strong></p>
+<!--
+#### Using an existing installation of GHC
+-->
+<h4 id="使用已安装的-ghc">使用已安装的 GHC</h4>
+<!--
+Stack is perfectly capable of installing and managing versions of the [Glasgow Haskell Compiler][haskell-ghc] for you. However, if you already have a copy of GHC installed, and you want Stack to use your system installation, you can pass the `--system-ghc` flag and select the appropriate `stack-*.yaml` file. For instance, if you have GHC 8.2.2 installed, run:
+-->
+<p>Stack 可以为你安装和管理 <a href="https://www.haskell.org/ghc/">Glasgow Haskell 编译器（GHC）</a>。 然而，如果你已经安装了 GHC 并且想让 Stack 使用你系统上安装的 GHC 版本，可以传递 <code>--system-ghc</code> 选项并选择对应的 <code>stack-*.yaml</code> 文件。例如，若你安装了 GHC 8.2.2，请运行：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> install <span class="at">--system-ghc</span> <span class="at">--stack-yaml</span> stack-8.2.2.yaml</span></code></pre></div>
+<!--
+#### Check if Agda was installed correctly
+-->
+<h4 id="检查-agda-是否被正确地安装">检查 Agda 是否被正确地安装</h4>
+<!--
+If you’d like, you can test to see if you’ve installed Agda correctly. Create a file called `hello.agda` with these lines:
+-->
+<p>如果你愿意，你可以检查 Agda 是否已正确安装。 创建一个名为 <code>hello.agda</code> 的文件，并输入下面的内容：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> Greeting <span class="ot">:</span> <span class="dt">Set</span> <span class="kw">where</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  hello <span class="ot">:</span> Greeting</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>greet <span class="ot">:</span> Greeting</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>greet <span class="ot">=</span> hello</span></code></pre></div>
+<!--
+From a command line, change to the same directory where your `hello.agda` file is located. Then run:
+-->
+<p>从命令行中，切换到 <code>hello.agda</code> 所在的文件夹内，然后运行：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">agda</span> <span class="at">-v</span> 2 hello.agda</span></code></pre></div>
+<!--
+You should see a short message like the following, but no errors:
+-->
+<p>你会看到如下的消息，而不是错误：</p>
+<pre><code>Checking hello (/path/to/hello.agda).
+Finished hello.</code></pre>
+<!--
+### Install PLFA and the Agda standard library
+-->
+<h3 name="install-plfa-and-the-agda-standard-library" id="安装-plfa-和-agda-标准库">安装 PLFA 和 Agda 标准库</h3>
+<!--
+You can get the latest version of Programming Language Foundations in Agda from GitHub, either by cloning the repository, or by downloading [the zip archive][plfa-dev]:
+-->
+<p>你也可以从 GitHub 克隆源码库，或者下载 <a href="https://github.com/plfa/plfa.github.io/archive/dev.zip">Zip 包</a>来获取最新版的《编程语言基础：Agda 语言描述》：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--depth</span> 1 <span class="at">--recurse-submodules</span> <span class="at">--shallow-submodules</span> https://github.com/plfa/plfa.github.io plfa</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove `--depth 1` and `--shallow-submodules` if you want the complete git history of PLFA and the standard library.</span></span></code></pre></div>
+<!--
+PLFA ships with the required version of the Agda standard library, so if you cloned with the `--recurse-submodules` flag, you’ve already got, in the `standard-library` directory!
+-->
+<p>PLFA 包括了所需要的 Agda 标准库版本，如果你在克隆时使用了 <code>--recurse-submodule</code> 选项，你在 <code>standard-library</code> 文件夹中已经有了 Agda 标准库！</p>
+<!--
+If you forgot to add the `--recurse-submodules` flag, no worries, we can fix that!
+-->
+<p>如果你忘记使用了 <code>--recurse-submodules</code> 选项，也没有关系，我们可以修复它！</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> plfa/</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span> <span class="at">--depth</span> 1</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove `--depth 1` if you want the complete git history of the standard library.</span></span></code></pre></div>
+<!--
+If you obtained PLFA by downloading the zip archive, you can get the required version of the Agda standard library from GitHub. You can either clone the repository and switch to the correct branch, or you can download the [the zip archive][agda-stdlib]:
+-->
+<p>如果你用 Zip 包下载了 PLFA，你可以从 GitHub 上下载所需要的 Agda 标准库版本。 你可以从正确的分支克隆代码仓库，或者下载 <a href="https://github.com/agda/agda-stdlib/releases/tag/v1.3">Zip 包</a>。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/agda/agda-stdlib.git <span class="at">--branch</span> v1.6 <span class="at">--depth</span> 1 agda-stdlib</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove `--depth 1` if you want the complete git history of the standard library.</span></span></code></pre></div>
+<!--
+Finally, we need to let Agda know where to find the Agda standard library.
+You'll need the path where you installed the standard library. Check to see that the file “standard-library.agda-lib” exists, and make a note of the path to this file.
+You will need to create two configuration files in `AGDA_DIR`. On UNIX and macOS, `AGDA_DIR` defaults to `~/.agda`. On Windows, `AGDA_DIR` usually defaults to `%AppData%\agda`, where `%AppData%` usually defaults to `C:\Users\USERNAME\AppData\Roaming`.
+-->
+<p>最后，我们需要让 Agda 知道如何找到标准库。 你需要知道标准库安装的目录。 检查 <code>standard-library.agda-lib</code> 文件是否存在，并记录这个文件的路径。 你需要在 <code>AGDA_DIR</code> 创建两个配置文件。在 UNIX 和 macOS 平台，<code>AGDA_DIR</code> 默认为 <code>~/.agda</code>。在 Windows 平台，<code>AGDA_DIR</code> 一般默认为 <code>%AppData%\agda</code>，而 <code>%AppData%</code> 默认为 <code>C:\Users\USERNAME\AppData\Roaming</code>。</p>
+<!--
+- If the `AGDA_DIR` directory does not already exist, create it.
+- In `AGDA_DIR`, create a plain-text file called `libraries` containing the `/path/to/standard-library.agda-lib`. This lets Agda know that an Agda library called `standard-library` is available.
+- In `AGDA_DIR`, create a plain-text file called `defaults` containing *just* the line `standard-library`.
+-->
+<ul>
+<li>如果 <code>AGDA_DIR</code> 文件夹不存在，创建它。</li>
+<li>在 <code>AGDA_DIR</code> 中，创建一个纯文本文件 <code>libraries</code>，内容为 <code>/path/to/standard-library.agda-lib</code> （即上文中记录的路径）。 这个文件让 Agda 知道有一个名为 <code>standard-library</code> 的库可用。</li>
+<li>在 <code>AGDA_DIR</code> 中，创建一个纯文本文件 <code>defaults</code>，内容<strong>仅</strong>为 <code>standard-library</code> 这一行。</li>
+</ul>
+<!--
+More information about placing the standard libraries is available from [the Library Management page][agda-docs-package-system] of the Agda documentation.
+-->
+<p>关于放置标准库的更多信息可以参阅 Agda 文档中的<a href="https://agda.readthedocs.io/en/v2.6.1.3/tools/package-system.html#example-using-the-standard-library">库管理</a>。</p>
+<!--
+It is possible to set up PLFA as an Agda library as well.  If you want to complete the exercises found in the `courses` folder, or to import modules from the book, you need to do this.  To do so, add the path to `plfa.agda-lib` to `AGDA_DIR/libraries` and add `plfa` to `AGDA_DIR/defaults`, each on a line of their own.
+-->
+<p>PLFA 也可以设置为一个 Agda 库。 如果你想完成 <code>courses</code> 目录中的习题，或者想导入书中的模块， 那么需要将 PLFA 设置为 Agda 库。完成此设置需要将 <code>plfa.agda-lib</code> 所在的路径作为单独的一行添加到 <code>AGDA_DIR/libraries</code>，并将 <code>plfa</code> 作为单独的一行添加到 <code>AGDA_DIR/defaults</code>。</p>
+<!--
+#### Check if the Agda standard library was installed correctly
+-->
+<h4 id="检查-agda-标准库是否正确安装">检查 Agda 标准库是否正确安装</h4>
+<!--
+If you’d like, you can test to see if you’ve installed the Agda standard library correctly. Create a file called `nats.agda` with these lines:
+-->
+<p>如果你愿意，你可以测试 Agda 标准库是否已正确。创建一个名为 <code>nats.agda</code> 的文件，包括以下内容：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode agda"><code class="sourceCode agda"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">open</span> <span class="kw">import</span> Data<span class="ot">.</span>Nat</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ten <span class="ot">:</span> ℕ</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ten <span class="ot">=</span> <span class="dv">10</span></span></code></pre></div>
+<!--
+(Note that the ℕ is a Unicode character, not a plain capital N. You should be able to just copy-and-paste it from this page into your file.)
+-->
+<p>（注意 ℕ 是一个 Unicode 字符，而不是普通的大写字母 N。你可以直接从本页复制粘贴它到文件中。）</p>
+<!--
+From a command line, change to the same directory where your `nats.agda` file is located. Then run:
+-->
+<p>从命令行中，切换到 <code>nats.agda</code> 所在的文件夹内，然后运行：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">agda</span> <span class="at">-v</span> 2 nats.agda</span></code></pre></div>
+<!--
+You should see a several lines describing the files which Agda loads while checking your file, but no errors:
+-->
+<p>你会看见数行来描述 Agda 在检查你的文件时载入的文件，但是没有错误：</p>
+<pre><code>Checking nats (/path/to/nats.agda).
+Loading  Agda.Builtin.Equality (…).
+…
+Loading  Data.Nat (…).
+Finished nats.</code></pre>
+<!--
+## Setting up an editor for Agda
+-->
+<h2 id="设置-agda-的编辑器">设置 Agda 的编辑器</h2>
+<h3 id="emacs">Emacs</h3>
+<!--
+The recommended editor for Agda is Emacs. To install Emacs:
+-->
+<p>推荐的 Agda 编辑器是 Emacs。安装 Emacs 可以用下面的方法：</p>
+<!--
+ - *On UNIX*, the version of Emacs in your repository is probably fine as long as it is fairly recent. There are also links to the most recent release on the [GNU Emacs downloads page][emacs].
+ - *On MacOS*, [Aquamacs][aquamacs] is probably the preferred version of Emacs, but GNU Emacs can also be installed via Homebrew or MacPorts. See the [GNU Emacs downloads page][emacs] for instructions.
+ - *On Windows*. See the [GNU Emacs downloads page][emacs] for instructions.
+-->
+<ul>
+<li><strong>UNIX 平台</strong>：包管理器中的 Emacs 应该可以使用（只要它的版本比较新），<a href="https://www.gnu.org/software/emacs/download.html">GNU Emacs 下载页面</a>也有最近发布版本的链接。</li>
+<li><strong>macOS 平台</strong>：推荐的 Emacs 是 <a href="http://aquamacs.org/">Aquamacs</a>，但是 GNU Emacs 也可以通过 Homebrew 或者 MacPorts 安装。参阅 <a href="https://www.gnu.org/software/emacs/download.html">GNU Emacs 下载页面</a>中的指示。</li>
+<li><strong>Windows 平台</strong>：参阅 <a href="https://www.gnu.org/software/emacs/download.html">GNU Emacs 下载页面</a>中的指示。</li>
+</ul>
+<!--
+Make sure that you are able to open, edit, and save text files with your installation.  The [tour of Emacs][emacs-tour] page on the GNU Emacs site describes how to access the tutorial within your Emacs installation.
+-->
+<p>确保你可以用你安装的版本打开、编辑、保存文件。GNU Emacs 网站上的 <a href="https://www.gnu.org/software/emacs/tour/">Emacs 向导</a>描述了如果打开 Emacs 安装中的教程。</p>
+<!--
+Agda ships with the editor support for Emacs built-in, so if you’ve installed Agda, all you have to do to configure Emacs is run:
+-->
+<p>Agda 自带了 Emacs 编辑器支持，如果你安装了 Agda，运行下面的命令来配置 Emacs：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">agda-mode</span> setup</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">agda-mode</span> compile</span></code></pre></div>
+<!--
+If you are already an Emacs user and have customized your setup, you may want to note the configuration which the `setup` appends to your `.emacs` file, and integrate it with your own preferred setup.
+-->
+<p>如果你已经是 Emacs 用户，并有自己的设置，你会注意到 <code>setup</code> 命令向你的 <code>.emacs</code> 文件中追加了配置，来配合你已有的设置。</p>
+<!--
+The recommended editor for Agda is Emacs with `agda-mode`. Agda ships with `agda-mode`, so if you’ve installed Agda, all you have to do to configure `agda-mode` is run:
+-->
+<p>加上 <code>agda-mode</code>。Agda 自带了 <code>agda-mode</code>， 因此如果你已经安装了 Agda，那么之需要运行以下命令就能配置好 <code>agda-mode</code> 了：</p>
+<!--
+#### Check if `agda-mode` was installed correctly
+-->
+<h4 id="检查-agda-mode-是否正确安装">检查 <code>agda-mode</code> 是否正确安装</h4>
+<!--
+Open the `nats.agda` file you created earlier, and load and type-check the file by typing [`C-c C-l`][agda-docs-emacs-notation].
+-->
+<p>打开之前创建的 <code>nats.agda</code> 文件，使用 <a href="https://agda.readthedocs.io/en/v2.6.1.3/tools/emacs-mode.html#notation-for-key-combinations"><code>C-c C-l</code></a> 来载入和类型检查这个文件。</p>
+<!--
+### Auto-loading `agda-mode` in Emacs
+-->
+<h3 id="在-emacs-中自动加载-agda-mode">在 Emacs 中自动加载 <code>agda-mode</code></h3>
+<!--
+Since version 2.6.0, Agda has support for literate editing with Markdown, using the `.lagda.md` extension. One side-effect of this extension is that most editors default to Markdown editing mode, whereas
+In order to have `agda-mode` automatically loaded whenever you open a file ending with `.agda` or `.lagda.md`, put the following on your Emacs configuration file:
+-->
+<p>从版本 2.6.0 开始，Agda 支持 Markdown 风格的文学编程，文件使用 <code>.lagda.md</code> 扩展名。 该扩展名的一个副作用就是大部分编辑器默认会进入 Markdown 编辑模式。 而为了让 <code>agda-mode</code> 在你打开 <code>.agda</code> 或 <code>.lagda.md</code> 文件时自动加载， 请将以下内容放到你的 Emacs 配置文件中：</p>
+<pre class="elisp"><code>;; auto-load agda-mode for .agda and .lagda.md
+(setq auto-mode-alist
+   (append
+     '((&quot;\\.agda\\'&quot; . agda2-mode)
+       (&quot;\\.lagda.md\\'&quot; . agda2-mode))
+     auto-mode-alist))</code></pre>
+<!--
+If you already have settings which change your `auto-mode-alist` in your configuration, put these *after* the ones you already have or combine them if you are comfortable with Emacs Lisp. The configuration file for Emacs is normally located in `HOME/.emacs` or `HOME/.emacs.d/init.el`, but Aquamacs users might need to move their startup settings to the “Preferences.el” file in `HOME/Library/Preferences/Aquamacs Emacs/Preferences`. For Windows, see [the GNU Emacs documentation][emacs-home] for a description of where the Emacs configuration is located.
+-->
+<p>如果你配置中已有了改变 <code>auto-mode-alist</code> 的设置，将上述内容放置在已有的设置<strong>之后</strong>，或者将其与已有设置合并（如果你对 Emacs Lisp 足够了解）。 Emacs 的配置文件通常位于 <code>~/.emacs</code> 或 <code>~/.emacs.d/init.el</code>，然而 Aquamacs 用户需要将启动设置放到位于 <code>~/Library/Preferences/Aquamacs Emacs/Preferences</code> 的 <code>Preferences.el</code> 文件中。 对于 Windows 平台，请参阅 <a href="https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Location-of-init-file.html">GNU Emacs 文档</a> 来寻找配置文件的位置。</p>
+<!--
+#### Optional: using the mononoki font with Emacs
+-->
+<h4 id="可选在-emacs-中使用-mononoki-字体">可选：在 Emacs 中使用 Mononoki 字体</h4>
+<!--
+Agda uses Unicode characters for many key symbols, and it is important that the font which you use to view and edit Agda programs shows these symbols correctly. The most important part is that the font you use has good Unicode support, so while we recommend [mononoki][font-mononoki], fonts such as [Source Code Pro][font-sourcecodepro], [DejaVu Sans Mono][font-dejavusansmono], and [FreeMono][font-freemono] are all good alternatives.
+-->
+<p>Agda 中的很多重要符号是用 Unicode 来表示的，因此用来显示和编辑 Agda 的字体需要正确地显示这些符号。最重要的是你使用的字体需要有好的 Unicode 字符支持。我们推荐 <a href="https://madmalik.github.io/mononoki/">Mononoki</a>， 其他的备选字体有 <a href="https://github.com/adobe-fonts/source-code-pro">Source Code Pro</a>、 <a href="https://dejavu-fonts.github.io/">DejaVu Sans Mono</a> 和 <a href="https://www.gnu.org/software/freefont/">FreeMono</a>。</p>
+<!--
+You can download and install mononoki directly from [GitHub][mononoki]. For most systems, installing a font is merely a matter of clicking the downloaded `.otf` or `.ttf` file. If your package manager offers a package for mononoki, that might be easier. For instance, Homebrew on macOS offers the `font-mononoki` package in the [`cask-fonts` cask][cask-fonts], and APT on Debian offers the [`fonts-mononoki` package][font-mononoki-debian]. To configure Emacs to use mononoki as its default font, add the following to the end of your Emacs configuration file:
+-->
+<p>你可以直接从 <a href="https://github.com/madmalik/mononoki">GitHub</a> 下载并安装 Mononoki。对于大多数系统来说，安装字体只是简单的下载 <code>.otf</code> 或者 <code>.ttf</code> 文件。 如果你的包管理器提供了 Mononoki 的包，那样可能更加简单。 例如，macOS 的 Homebrew 在 <a href="https://github.com/Homebrew/homebrew-cask-fonts"><code>cask-fonts</code> cask</a> 中提供了 <code>font-mononiki</code> 包；Debian 的 APT 提供了 <a href="https://packages.debian.org/sid/fonts/fonts-mononoki"><code>fonts-mononoki</code> 包</a>。 将下面的内容加入 Emacs 配置文件，可以把 Mononoki 设置为 Emacs 的默认字体：</p>
+<pre class="elisp"><code>;; default to mononoki
+(set-face-attribute 'default nil
+                    :family &quot;mononoki&quot;
+                    :height 120
+                    :weight 'normal
+                    :width  'normal)</code></pre>
+<!--
+#### Using `agda-mode` in Emacs
+-->
+<h4 id="在-emacs-中使用-agda-mode">在 Emacs 中使用 <code>agda-mode</code></h4>
+<!--
+To load and type-check the file, use [`C-c C-l`][agda-docs-emacs-notation].
+-->
+<p>要加载文件并对其执行类型检查，请使用 <a href="https://agda.readthedocs.io/en/v2.6.1.3/tools/emacs-mode.html#notation-for-key-combinations"><code>C-c C-l</code></a>。</p>
+<!--
+Agda is edited interactively, using [“holes”][agda-docs-holes], which are bits of the program that are not yet filled in. If you use a question mark as an expression, and load the buffer using `C-c C-l`, Agda replaces the question mark with a hole. There are several things you can to while the cursor is in a hole:
+-->
+<p>Agda 的编辑是通过使用「<a href="https://agda.readthedocs.io/en/v2.6.1.3/getting-started/quick-guide.html">洞</a>」来交互的，它表示程序中尚未填充的片段。 如果用问号作为表达式，并用 <code>C-c C-l</code> 加载缓冲区，Agda 会将问号替换为一个「洞」。 当光标在洞中时，你可以做以下这些事情：</p>
+<!--
+  - `C-c C-c`: **c**ase split (asks for variable name)
+  - `C-c C-space`: fill in hole
+  - `C-c C-r`: **r**efine with constructor
+  - `C-c C-a`: **a**utomatically fill in hole
+  - `C-c C-,`: goal type and context
+  - `C-c C-.`: goal type, context, and inferred type
+-->
+<ul>
+<li><code>C-c C-c</code>: 分项（询问变量名，<strong>c</strong>ase）</li>
+<li><code>C-c C-空格</code>：填洞</li>
+<li><code>C-c C-r</code>：用构造子精化（<strong>r</strong>efine）</li>
+<li><code>C-c C-a</code>：自动填洞（<strong>a</strong>utomatic）</li>
+<li><code>C-c C-,</code>：目标类型和上下文</li>
+<li><code>C-c C-.</code>：目标类型，上下文，以及推断的类型</li>
+</ul>
+<!--
+See [the emacs-mode docs][agda-docs-emacs-mode] for more details.
+-->
+<p>更多细节请见 <a href="https://agda.readthedocs.io/en/v2.6.1.3/tools/emacs-mode.html">emacs-mode 文档</a>。</p>
+<!--
+If you want to see messages beside rather than below your Agda code, you can do the following:
+-->
+<p>如果你想在 Agda 代码的侧边而非底栏查看信息，那么可以这样做：</p>
+<!--
+  - Open your Agda file, and load it using `C-c C-l`;
   - type `C-x 1` to get only your Agda file showing;
   - type `C-x 3` to split the window horizontally;
   - move your cursor to the right-hand half of your frame;
-  - type `C-x b` and switch to the buffer called "Agda information"
---->
-
-<p>如果你希望在 Agda 代码侧边而非底部查看消息，可以参考如下操作：</p>
-
-<ul>
-  <li>载入 Agda 文件并按 <code class="language-plaintext highlighter-rouge">C-c C-l</code>；</li>
-  <li>按 <code class="language-plaintext highlighter-rouge">C-x 1</code> 以仅显示当前 Agda 文件；</li>
-  <li>按 <code class="language-plaintext highlighter-rouge">C-x 3</code> 以垂直分割窗口；</li>
-  <li>将光标移动到右侧窗口；</li>
-  <li>按 <code class="language-plaintext highlighter-rouge">C-x b</code> 并输入 “Agda information” 以切换到该缓冲区。</li>
-</ul>
-
-<!---
-Now, error messages from Agda will appear next to your file, rather than
-squished beneath it.
---->
-
-<p>现在，来自 Agda 的错误消息将会在代码右侧显示，而非被压缩在底部的狭小空间里。</p>
-
-<!---
-Fonts in Emacs
---->
-
-<h2 id="emacs-中的字体">Emacs 中的字体</h2>
-
-<!--
-It is recommended that you install the font [mononoki](https://madmalik.github.io/mononoki/), and add the following to the end of your emacs configuration file at `~/.emacs`:
+  - type `C-x b` and switch to the buffer called “Agda information”.
 -->
-
-<p>推荐安装 <a href="https://madmalik.github.io/mononoki/">mononoki</a> 字体，并将以下内容添加到位于
-<code class="language-plaintext highlighter-rouge">~/.emacs</code> 的 Emacs 配置文件的末尾：</p>
-
-<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; default to mononoki</span>
-<span class="p">(</span><span class="nv">set-face-attribute</span> <span class="ss">'default</span> <span class="no">nil</span>
-		    <span class="ss">:family</span> <span class="s">"mononoki"</span>
-		    <span class="ss">:height</span> <span class="mi">120</span>
-		    <span class="ss">:weight</span> <span class="ss">'normal</span>
-		    <span class="ss">:width</span>  <span class="ss">'normal</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>另外带有连体符号的 <a href="https://github.com/tonsky/FiraCode">FiraCode</a> 也是个不错的选择。</p>
-
-<!---
-Building the book
---->
-
-<h1 id="构建本书">构建本书</h1>
-
-<!---
-To build and host a local copy of the book, there are several tools you need *in addition to those listed above*:
---->
-
-<p>要在本地构建并部署本书，<strong>在前文所列工具的基础之上</strong>，你还需要：</p>
-
 <ul>
-  <li><a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a></li>
-  <li><a href="https://bundler.io/#getting-started">Bundler</a></li>
+<li>打开 Agda 文件并按 <code>C-c C-l</code>；</li>
+<li>按 <code>C-x 1</code> 来仅显示当前 Agda 文件；</li>
+<li>按 <code>C-x 3</code> 来垂直分割窗口；</li>
+<li>将光标移动到右侧窗口；</li>
+<li>按 <code>C-x b</code> 并输入「Agda information」切换到该缓冲区。</li>
 </ul>
-
-<!---
-For most of the tools, you can simply follow their respective build instructions.
-Most recent versions of Ruby should work.
+<!--
+Now, error messages from Agda will appear next to your file, rather than squished beneath it.
+-->
+<p>现在，Agda 的错误消息将会在代码右侧显示，而非被挤压在底部的狭小空间里。</p>
+<!--
+#### Entering Unicode characters in Emacs with `agda-mode`
+-->
+<h4 id="在-emacs-中使用-agda-mode-输入-unicode-字符">在 Emacs 中使用 <code>agda-mode</code> 输入 Unicode 字符</h4>
+<!--
+When you write Agda code, you will need to insert characters which are not found on standard keyboards. Emacs “agda-mode” makes it easier to do this by defining character translations: when you enter certain sequences of ordinary characters (the kind you find on any keyboard), Emacs will replace them in your Agda file with the corresponding special character.
+-->
+<p>当你书写 Agda 代码时，你需要输入标准键盘上没有的字符。Emacs 的「Agda-mode」定义了字符翻译来让这件事更容易：当你输入特定普通字符的序列时，Emacs 会在 Agda 文件中使用对应的特殊字符来替换。</p>
+<!--
+For example, we can add a comment line to one of the `.agda` test files.
+Let's say we want to add a comment line that reads:
+-->
+<p>例如，我们可以在之前的 <code>.agda</code> 测试文件中加入一条注释。 比如说，我们想要加入下面的注释：</p>
+<pre><code>{- I am excited to type ∀ and → and ≤ and ≡ !! -}</code></pre>
+<!--
+The first few characters are ordinary, so we would just type them as usual…
+-->
+<p>前几个字符都是普通字符，我们可以如往常的方式输入它们……</p>
+<pre><code>{- I am excited to type</code></pre>
+<!--
+But after that last space, we do not find ∀ on the keyboard. The code for this character is the four characters `\all`, so we type those four characters, and when we finish, Emacs will replace them with what we want…
+-->
+<p>在最后一个空格之后，我们无法在键盘上找到 ∀ 这个键。这个字符的输入序列是四个字符 <code>\all</code>，所以我们输入这四个字符，当我们完成时，Emacs 会把它们替换成我们想要的……</p>
+<pre><code>{- I am excited to type ∀</code></pre>
+<!--
+We can continue with the codes for the other characters. Sometimes the characters will change as we type them, because a prefix of our character's code is the code of another character. This happens with the arrow, whose code is `\->`.  After typing `\-` we see…
+-->
+<p>我们继续输入其他字符。有时字符会在输入时发生变化，因为一个字符的输入序列是另一个字符输入序列的前缀。 在我们输入箭头时会出现这样的情况，它的输入序列是 <code>\-&gt;</code>。在输入 <code>\-</code> 之后我们会看到……</p>
+<pre><code>{- I am excited to type ∀ and</code></pre>
+<!--
+…because the code `\-` corresponds to a hyphen of a certain width. When we add the `>`, the `­` becomes `→`! The code for `≤` is `\<=`, and the code for `≡` is `\==`.
 --->
+<p>……因为输入序列 <code>\-</code> 对应了一定长度的短横。当我们输入 <code>&gt;</code> 时，<code>­</code> 变成了 <code>→</code>！ <code>≤</code> 的输入序列是 <code>\&lt;=</code>，<code>≡</code> 的是 <code>\==</code>。</p>
+<pre><code>{- I am excited to type ∀ and → and ≤ and ≡</code></pre>
+<!--
+Finally the last few characters are ordinary again…
+-->
+<p>最后几个字符又回归了普通字符……</p>
+<pre><code>{- I am excited to type ∀ and → and ≤ and ≡ !! -}</code></pre>
+<!--
+If you're having trouble typing the Unicode characters into Emacs, the end of each chapter should provide a list of the Unicode characters introduced in that chapter.
+-->
+<p>如果你在 Emacs 中输入 Unicode 时遇到了问题，可以在每章的最后找到当前章节中用到的 Unicode 字符。</p>
+<!--
+Emacs with `agda-mode` offers a number of useful commands, and two of them are especially useful when it comes to working with Unicode characters. For a full list of supported characters, use `agda-input-show-translations` with:
+-->
+<p>带有 <code>agda-mode</code> 的 Emacs 提供了很多有用的命令，其中有两个对处理 Unicode 字符时特别有用。 支持的字符的完整列表可使用 <code>agda-input-show-translations</code> 命令查看：</p>
+<pre><code>M-x agda-input-show-translations</code></pre>
+<!--
+All the supported characters in `agda-mode` are shown.
+-->
+<p><code>agda-mode</code> 支持的所有字符都会列出来。</p>
+<!--
+If you want to know how you input a specific Unicode character in agda file, move the cursor onto the character and type the following command:
+-->
+<p>如果你想知道如何在 agda 文件输入一个特定的 Unicode 字符，请将光标移动到该字符上并输入以下命令：</p>
+<pre><code>M-x quail-show-key</code></pre>
+<!--
+You'll see the key sequence of the character in mini buffer.
+-->
+<p>你会在迷你缓冲区中看到该字符对应的按键序列。</p>
+<h3 id="spacemacs">Spacemacs</h3>
+<!--
+[Spacemacs][spacemacs] is a “community-driven Emacs distribution” with native support for both Emacs and Vim editing styles. It comes with [integration for `agda-mode`][spacemacs-agda] out of the box. All that is required is that you turn it on.
+-->
+<p><a href="https://www.spacemacs.org/">Spacemacs</a> 是一个「社区引领的 Emacs 版本」，对 Emacs 和 Vim 的编辑方式都有很好的支持。它自带<a href="https://develop.spacemacs.org/layers/+lang/agda/README.html">集成了 <code>agda-mode</code></a>，所需的只是将它打开。</p>
+<h3 id="visual-studio-code">Visual Studio Code</h3>
+<!--
+[Visual Studio Code][vscode] is a free source code editor developed by Microsoft. There is [a plugin for Agda support][vscode-agda] available on the Visual Studio Marketplace.
+-->
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> 是一个微软开发的开源代码编辑器。 Visual Studio 市场中有 <a href="https://marketplace.visualstudio.com/items?itemName=banacorn.agda-mode">Agda 插件</a>。</p>
+<h3 id="atom">Atom</h3>
+<!--
+[Atom][atom] is a free source code editor developed by GitHub. There is [a plugin for Agda support][atom-agda] available on the Atom package manager.
+-->
+<p><a href="https://atom.io/">Atom</a> 是一个 GitHub 开发的开源代码编辑器。 Atom 包管理器中有 <a href="https://atom.io/packages/agda-mode">Agda 插件</a>。</p>
+<!--
+## Dependencies for developers
+-->
+<h2 id="开发者依赖">开发者依赖</h2>
+<!--
+PLFA is written in literate Agda with [Pandoc Markdown][pandoc-markdown].
+PLFA is available as both a website and an EPUB e-book, both of which can be built on UNIX and macOS.
+Finally, to help developers avoid common mistakes, we provide a set of Git hooks.
+-->
+<p>PLFA 是以 <a href="https://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc Markdown</a> 格式的文学化 Agda 编写的。 PLFA 可同时在网站上和作为 EPUB 电子书来阅读，二者均可在 UNIX 和 macOS 上构建。 最后，为了帮助开发者避免常见错误，我们提供一系列 Git 钩子脚本。</p>
+<!--
+### Building the website and e-book
+-->
+<h3 id="构建网站和电子书">构建网站和电子书</h3>
+<!--
+If you’d like to build the web version of PLFA locally, [Stack](#install-the-haskell-tool-stack) is all you need! PLFA is built using [Hakyll][hakyll], a Haskell library for building static websites. We’ve setup a Makefile to help you run common tasks. For instance, to build PLFA, run:
+-->
+<p>如果你想在本地构建 PLFA 的网站版，你只需要 <a href="#install-the-haskell-tool-stack">Stack</a>！ PLFA 用 <a href="https://jaspervdj.be/hakyll/">Hakyll</a> （一个构造静态网页的 Haskell 库）来构建。 我们配置了一个用于执行常见任务的 Makefile。例如，要构建 PLFA，运行：</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> build</span></code></pre></div>
+<!--
+If you’d like to serve PLFA locally, rebuilding the website when any of the source files are changed, run:
+-->
+<p>如果你想在本地架起 PLFA，并且在源文件修改时重新构造，润性：</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> watch</span></code></pre></div>
+<!--
+The Makefile offers more than just building and watching, it also offers the following useful options:
+-->
+<p>Makefile 除了构造和监视之外，还提供了下列有用的其他功能：</p>
+<pre class="make"><code>build                      # 构造 PLFA
+watch                      # 构造并架起 PLFA，监视文件变更并重新构造
+test                       # 测试网页版是否有坏链、不合法的 HTML 等
+test-epub                  # 测试 EPUB 电子书版是否符合 EPUB3 标准
+clean                      # 清理 PLFA 构造
+init                       # 设置 Git 钩子脚本（见下文）
+update-contributors        # 从 GitHub 中拉取新贡献者信息至 contributors/
+list                       # 列出所有构造功能</code></pre>
+<!--
+For completeness, the Makefile also offers the following options, but you’re unlikely to need these:
+-->
+<p>完整来说，Makefile 还提供了下列选项，但你可能不会需要用到：</p>
+<pre class="make"><code>legacy-versions            # 构造老版本的 PLFA
+setup-install-bundler      # 安装 Ruby Bundler （‘legacy-versions’ 所需要）
+setup-install-htmlproofer  # 安装 HTMLProofer （‘test’ 和 Git 钩子脚本所需要）
+setup-check-fix-whitespace # 检查 fix-whitespace 是否已安装 （Git 钩子脚本所需要）
+setup-check-epubcheck      # 检查 epubcheck 是否已安装 （EPUB 测试所需要）
+setup-check-gem            # 检查 RubyGems 是否已安装
+setup-check-npm            # 检查 Node 包管理器是否已安装
+setup-check-stack          # 检查 Haskell 工具 Stack 是否已安装</code></pre>
+<!--
+The [EPUB version][epub] of the book is built as part of the website, since it’s hosted on the website.
+-->
+<p>本书的 <a href="https://plfa.github.io/plfa.epub">EPUB 电子书版本</a>会随着网站一起构造，因为网站上包括了电子书版本。</p>
+<!--
+### Git hooks
+-->
+<h3 id="git-钩子脚本">Git 钩子脚本</h3>
+<!--
+The repository comes with several Git hooks:
 
-<p>大部分工具的安装遵循其对应的网页提供的说明即可。Ruby 的较新版本应该都可以使用。</p>
+ 1. The [fix-whitespace][fix-whitespace] program is run to check for whitespace violations.
 
-<!---
-You install the Ruby dependencies---[Jekyll](https://jekyllrb.com/), [html-proofer](https://github.com/gjtorikian/html-proofer), *etc.*---using Bundler:
---->
-
-<p>你需要用 Bundler 安装 Ruby 依赖：<a href="https://jekyllrb.com/">Jekyll</a>、 <a href="https://github.com/gjtorikian/html-proofer">html-proofer</a> 等。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
-</code></pre></div></div>
-
-<!---
-Once you have installed all of the dependencies, you can build a copy of the book by running:
---->
-
-<p>安装完所有的工具后，我们就可以从源码构建本书了：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make build
-</code></pre></div></div>
-
-<!---
-You can host your copy of the book locally by running:
---->
-
-<p>运行如下命令可以在本地部署本书：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make serve
-</code></pre></div></div>
-
-<!---
-The Makefile offers more than just these options:
-
-    make                      (see make test)
-    make build                (builds lagda->markdown and the website)
-    make build-incremental    (builds lagda->markdown and the website incrementally)
-    make test                 (checks all links are valid)
-    make test-offline         (checks all links are valid offline)
-    make serve                (starts the server)
-    make server-start         (starts the server in detached mode)
-    make server-stop          (stops the server, uses pkill)
-    make clean                (removes all ~unnecessary~ generated files)
-    make clobber              (removes all generated files)
---->
-
-<p>Makefile 提供了更多可选的命令：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make                      （见 make test）
-make build                （将 lagda 构建至 markdown 并构建网站）
-make build-incremental    （将 lagda 构建至 markdown 并增量式构建网站）
-make test                 （检查所有链接的有效性）
-make test-offline         （离线检查所有链接的有效性）
-make serve                （启动服务）
-make server-start         （以分离模式启动服务）
-make server-stop          （使用 pkill 停止服务）
-make clean                （移除所有~不必要的~生成的文件）
-make clobber              （移除所有生成的文件）
-</code></pre></div></div>
-
-<!---
-If you simply wish to have a local copy of the book, e.g. for offline reading,
-but don't care about editing and rebuilding the book, you can grab a copy of the
-[master branch](https://github.com/plfa/plfa.github.io/archive/master.zip),
-which is automatically built using Travis. You will still need Ruby and Bundler
-to host the book (see above). To host the book this way, download a copy of the
-[master branch](https://github.com/plfa/plfa.github.io/archive/master.zip),
-unzip, and from within the directory run
---->
-
-<p>如果你只想获取本书的副本以供离线阅读，而并不关心如何编辑并构建本书，
-那么你可以下载由 Travis 自动构建的 master 分支（<a href="https://github.com/plfa/plfa.github.io/archive/master.zip">原书</a> / <a href="https://github.com/Agda-zh/PLFA-zh/archive/master.zip">中文版</a>）。若要在本地部署本书，你需要 Ruby 和 Bundler（见上文）。请下载 master 分支的压缩包，并在解压后的目录中运行：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
-bundle exec jekyll serve
-</code></pre></div></div>
-
-<h2 id="markdown">Markdown</h2>
-
-<!---
-The book is written in
-[Kramdown Markdown](https://kramdown.gettalong.org/syntax.html).
---->
-
-<p>本书使用 <a href="https://kramdown.gettalong.org/syntax.html">Kramdown Markdown</a> 编写。</p>
-
-<!---
-Travis Continuous Integration
---->
-
-<h2 id="travis-持续集成">Travis 持续集成</h2>
-
-<!---
-You can view the build history of PLFA at [travis-ci.org](https://travis-ci.org/plfa/plfa.github.io).
---->
-
-<p>你可以在 <a href="https://travis-ci.org/">https://travis-ci.org/</a> 查看 PLFA 的构建历史（<a href="https://travis-ci.org/plfa/plfa.github.io">原书</a> / <a href="https://travis-ci.org/Agda-zh/PLFA-zh">中文版</a>）。</p>
-
-  </div>
-
-  <p style="text-align:center;">
-    
-    
-    
-    
-    
-</p>
-
+ 2. The test suite is run to check if everything type checks.
+-->
+<p>本源码库包含了几个 Git 钩子：</p>
+<ol>
+<li><p><a href="https://github.com/agda/fix-whitespace">fix-whitespace</a> 程序用来检查错误的空格。</p></li>
+<li><p>可运行的测试套件用来保证一切都能通过类型检查。</p></li>
+</ol>
+<!--
+You can install these Git hooks by calling `make init`.
+You can install [fix-whitespace][fix-whitespace] by running:
+-->
+<p>你可以运行 <code>make init</code> 来安装这些 Git 钩子。 你可以运行以下命令来安装 <a href="https://github.com/agda/fix-whitespace">fix-whitespace</a>：</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">stack</span> install fix-whitespace</span></code></pre></div>
+<!--
+If you want Stack to use your system installation of GHC, you can pass the `--system-ghc` flag and select the appropriate `stack-*.yaml` file, like when installing [Agda](#installing-agda-using-stack).
+-->
+<p>如果你想让 Stack 使用你系统中安装的 GHC，那么可以传入 <code>--system-ghc</code> 参数并选择对应的 <code>stack-*.yaml</code> 文件，就像在安装 <a href="#install-agda-using-stack">Agda</a> 时那样。</p>
+<!-- Links -->
+    </div>
+    <nav class="pager">
+    <ul class="pagination">
+        
+        <li><a class="pagelink" href="../Preface/">上一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="https://github.com/Agda-zh/PLFA-zh/blob/dev/README.md">源文件</a></li>
+        <li class="separator">&bullet;</li>
+        
+        
+        <li><a class="pagelink" href="../Naturals/">下一章</a></li>
+        <li class="separator">&bullet;</li>
+        
+    </ul>
+</nav>
 
 </article>
 
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/PLFA-zh/"></data>
+            </div>
+        </main>
+        <footer class="site-footer h-card">
+    <data class="u-url" href="../"></data>
+    <div class="wrapper">
+        <h2 class="footer-heading">编程语言基础：Agda 语言描述</h2>
+        
+        
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">Philip Wadler</li>
+                    <li>
+                        
+                        <a class="u-email" href="mailto:wadler@inf.ed.ac.uk">wadler@inf.ed.ac.uk</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+    
+    <li><a rel="me" href="https://github.com/wadler" title="wadler"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#github"></use></svg>&nbsp;wadler</a></li>
+    
+    
+</ul>
 
-  <div class="wrapper">
+            </div>
+            <div class="footer-col footer-col-3">
+                
+            </div>
+        </div>
+        
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">Wen Kokke</li>
+                    <li>
+                        
+                        <a class="u-email" href="mailto:wen.kokke@ed.ac.uk">wen.kokke@ed.ac.uk</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+    
+    <li><a rel="me" href="https://github.com/wenkokke" title="wenkokke"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#github"></use></svg>&nbsp;wenkokke</a></li>
+    
+    
+    <li><a rel="me" href="https://twitter.com/wenkokke" title="wenkokke"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#twitter"></use></svg>&nbsp;wenkokke</a></li>
+    
+</ul>
 
-    <h2 class="footer-heading">编程语言基础：Agda 语言描述
-</h2>
+            </div>
+            <div class="footer-col footer-col-3">
+                
+            </div>
+        </div>
+        
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li class="p-name">Jeremy G. Siek</li>
+                    <li>
+                        
+                        <a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+    
+    <li><a rel="me" href="https://github.com/jsiek" title="jsiek"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#github"></use></svg>&nbsp;jsiek</a></li>
+    
+    
+    <li><a rel="me" href="https://twitter.com/jeremysiek" title="jeremysiek"><svg class="svg-icon grey"><use xlink:href="/public/minima-social-icons.svg#twitter"></use></svg>&nbsp;jeremysiek</a></li>
+    
+</ul>
 
-    <h3 class="footer-heading">原作者：</h3><div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Philip Wadler</li>
-          <li><a class="u-email" href="mailto:wadler@inf.ed.ac.uk">wadler@inf.ed.ac.uk</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wadler"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wadler</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3"></div>
-    </div><div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Wen Kokke</li>
-          <li><a class="u-email" href="mailto:wen.kokke@ed.ac.uk">wen.kokke@ed.ac.uk</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">wenkokke</span></a></li><li><a href="https://www.twitter.com/wenkokke"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">wenkokke</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3"></div>
-    </div><div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Jeremy Siek</li>
-          <li><a class="u-email" href="mailto:jsiek@indiana.edu">jsiek@indiana.edu</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jsiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jsiek</span></a></li><li><a href="https://www.twitter.com/jeremysiek"><svg class="svg-icon"><use xlink:href="/PLFA-zh/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jeremysiek</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3"></div>
-    </div><h3 class="footer-heading">译者：</h3>
-      <p>Fangyi Zhou, Oling Cat, Rongxiao Fu</p>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">创作共用-署名 4.0 国际（CC BY 4.0）许可协议</a>授权。<br />
-  </div>
+            </div>
+            <div class="footer-col footer-col-3">
+                
+            </div>
+        </div>
+        
+        
+        This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+    </div>
 </footer>
-<!-- Import jQuery -->
-<script type="text/javascript" src="/PLFA-zh/assets/jquery.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js" integrity="sha256-E4RlfxwyJVmkkk0szw7LYJxuPlp6evtPSBDlWHsYYL8=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  anchors.add();
-</script>
-
-<script type="text/javascript">
-
- // Makes sandwhich menu works
- $('.menu-icon').click(function(){
-   $('.trigger').toggle();
- });
-
- // Script which allows for foldable code blocks
- $('div.foldable pre').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-
-     $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             $(this).height(2.0 * lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
-</script>
-
-<!-- Import KaTeX -->
-<script type="text/javascript" src="/PLFA-zh/assets/katex.js"></script>
-
-<!-- Script which renders TeX using KaTeX -->
-<script type="text/javascript">
- $("script[type='math/tex']").replaceWith(
-     function(){
-         var tex = $(this).text();
-         return "<span class=\"inline-equation\">" +
-                katex.renderToString(tex) +
-                "</span>";
-     });
- $("script[type='math/tex; mode=display']").replaceWith(
-     function(){
-         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<div class=\"equation\">" +
-                katex.renderToString("\\displaystyle "+tex) +
-                "</div>";
-     });
-</script>
-</body>
-
+    </body>
 </html>
