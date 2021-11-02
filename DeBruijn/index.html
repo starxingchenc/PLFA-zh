@@ -96,7 +96,7 @@ we use is due to Conor McBride.
 Related work has been carried out by
 James Chapman, James McKinna, and many others.
 -->
-<p>我们在这里使用的这种表示法最先由 Thorsten Altenkirch 和 Bernhard Reus 提出。 使用的将重命名和代换形式化的方法由 Conor McBride 提出。 James Chapman、James McKinna 和许多其他人也进行了相关的研究。</p>
+<p>我们在这里使用的这种表示法最先由 Thorsten Altenkirch 和 Bernhard Reus 提出。 使用的将重命名和替换形式化的方法由 Conor McBride 提出。 James Chapman、James McKinna 和许多其他人也进行了相关的研究。</p>
 <!--
 ## Imports
 -->
@@ -320,7 +320,7 @@ necessitates that we cannot introduce operations such as
 substitution or reduction without also showing that they
 preserve types.  Hence, the order of presentation must change.
 -->
-<p>在本章中，使用内在类型的项要求我们在引入诸如重命名或者代换等操作的同时，证明它们保留了类型。 因此，我们必须改变展示的顺序。</p>
+<p>在本章中，使用内在类型的项要求我们在引入诸如重命名或者替换等操作的同时，证明它们保留了类型。 因此，我们必须改变展示的顺序。</p>
 <!--
 The syntax of terms now incorporates their typing rules, and the
 definition of values now incorporates the Canonical Forms lemma.  The
@@ -329,7 +329,7 @@ the trickiest part of the previous proof, the lemma establishing that
 substitution preserves types.  The definition of reduction
 incorporates preservation, which no longer requires a separate proof.
 -->
-<p>项的语法现在包含了它们的赋型规则，值的语法现在包含了它们的标准式引理。 代换的定义现在更加深入，但包括了之前证明中最棘手的部分，即代换保留了类型。 规约的定义现在包括了保型性，不需要额外的证明。</p>
+<p>项的语法现在包含了它们的赋型规则，值的语法现在包含了它们的标准式引理。 替换的定义现在更加深入，但包括了之前证明中最棘手的部分，即替换保留了类型。 规约的定义现在包括了保型性，不需要额外的证明。</p>
 <!--
 ## Syntax
 -->
@@ -713,7 +713,7 @@ corresponds directly to the renaming result from the previous
 chapter, but here the theorem that ensures renaming preserves
 typing also acts as code that performs renaming.
 -->
-<p>重命名是代换之前重要的一步，让我们可以将一个项从一个上下文中“转移”至另一个上下文。 它直接对应了上一章中的关于重命名的结论，但此处重命名保留类型的定理同时是进行重命名的代码。</p>
+<p>重命名是替换之前重要的一步，让我们可以将一个项从一个上下文中“转移”至另一个上下文。 它直接对应了上一章中的关于重命名的结论，但此处重命名保留类型的定理同时是进行重命名的代码。</p>
 <!--
 As before, we first need an extension lemma that allows us to
 extend the context when we encounter a binder. Given a map
@@ -837,11 +837,11 @@ it's hard to imagine an off-by-one error that preserves
 typing, and hence the Agda code for intrinsically-typed de Bruijn
 terms is intrinsically reliable.
 -->
-<p>我们稍后可以看到，使用 <code>S_</code> 进行重命名在代换中起到了重要作用。 对于没有使用内在类型的 de Bruijn 因子表示法来说，这会有一点棘手。 这种方法需要记忆一个因子数，更大的因子为自由变量，更小的因子为约束变量。 这样很容易出现差一错误，而出现差一错误以后很难保证类型的保存性。 因此这里内在类型的 de Bruijn 项的 Agda 代码是本质上更加可靠。</p>
+<p>我们稍后可以看到，使用 <code>S_</code> 进行重命名在替换中起到了重要作用。 对于没有使用内在类型的 de Bruijn 因子表示法来说，这会有一点棘手。 这种方法需要记忆一个因子数，更大的因子为自由变量，更小的因子为约束变量。 这样很容易出现差一错误，而出现差一错误以后很难保证类型的保存性。 因此这里内在类型的 de Bruijn 项的 Agda 代码是本质上更加可靠。</p>
 <!--
 ## Simultaneous Substitution
 -->
-<h2 id="同时代换">同时代换</h2>
+<h2 id="同时替换">同时替换</h2>
 <!--
 Because de Bruijn indices free us of concerns with renaming,
 it becomes easy to provide a definition of substitution that
@@ -851,7 +851,7 @@ provides a map that takes each free variable of the original
 term to another term. Further, the substituted terms are over
 an arbitrary context, and need not be closed.
 -->
-<p>由于 de Bruijn 因子让我们免去了重命名的顾虑，给出一个更广义的代换的定义更加方便。 与其用一个闭项来代换一个单一的变量，广义的代换提供一个将原来项中各个自由变量至另一个项的映射。 除此之外，被代换的项可以在任意上下文之中，不需要为闭项。</p>
+<p>由于 de Bruijn 因子让我们免去了重命名的顾虑，给出一个更广义的替换的定义更加方便。 与其用一个闭项来替换一个单一的变量，广义的替换提供一个将原来项中各个自由变量至另一个项的映射。 除此之外，被替换的项可以在任意上下文之中，不需要为闭项。</p>
 <!--
 The structure of the definition and the proof is remarkably
 close to that for renaming.  Again, we first need an extension
@@ -863,7 +863,7 @@ Given a map from variables in one context to terms over
 another, extension yields a map from the first context
 extended to the second context similarly extended:
 -->
-<p>定义和证明的结构与重命名项类似。 同样，我们首先需要一个扩充引理，让我们能够在遇到约束时扩充上下文。 对比在重命名中我们使用从一个上下文中的变量至另一上下文中变量的映射， 代换使用的是将一个上下文中的变量至另一上下文中<strong>项</strong>的映射。 给定一个将一个上下文中的变量映射至另一个上下文中项的映射，扩充会生成一个 从扩充后的第一个上下文至以相同方法扩充的第二个上下文的映射。</p>
+<p>定义和证明的结构与重命名项类似。 同样，我们首先需要一个扩充引理，让我们能够在遇到约束时扩充上下文。 对比在重命名中我们使用从一个上下文中的变量至另一上下文中变量的映射， 替换使用的是将一个上下文中的变量至另一上下文中<strong>项</strong>的映射。 给定一个将一个上下文中的变量映射至另一个上下文中项的映射，扩充会生成一个 从扩充后的第一个上下文至以相同方法扩充的第二个上下文的映射。</p>
 <pre class="Agda"><a id="exts"></a><a id="27253" href="../DeBruijn/#27253" class="Function">exts</a> <a id="27258" class="Symbol">:</a> <a id="27260" class="Symbol">∀</a> <a id="27262" class="Symbol">{</a><a id="27263" href="../DeBruijn/#27263" class="Bound">Γ</a> <a id="27265" href="../DeBruijn/#27265" class="Bound">Δ</a><a id="27266" class="Symbol">}</a>
   <a id="27270" class="Symbol">→</a> <a id="27272" class="Symbol">(∀</a> <a id="27275" class="Symbol">{</a><a id="27276" href="../DeBruijn/#27276" class="Bound">A</a><a id="27277" class="Symbol">}</a> <a id="27279" class="Symbol">→</a>       <a id="27287" href="../DeBruijn/#27263" class="Bound">Γ</a> <a id="27289" href="../DeBruijn/#13426" class="Datatype Operator">∋</a> <a id="27291" href="../DeBruijn/#27276" class="Bound">A</a> <a id="27293" class="Symbol">→</a>     <a id="27299" href="../DeBruijn/#27265" class="Bound">Δ</a> <a id="27301" href="../DeBruijn/#15094" class="Datatype Operator">⊢</a> <a id="27303" href="../DeBruijn/#27276" class="Bound">A</a><a id="27304" class="Symbol">)</a>
     <a id="27310" class="Comment">---------------------------------</a>
@@ -902,7 +902,7 @@ to define substitution.  If variables in one context map
 to terms over another, then terms in the first context
 map to terms in the second:
 -->
-<p>定义了扩充过后，代换的定义就变得很直接了。 如果一个上下文中的变量映射至另一个上下文中的项，那么第一个上下文 中的项映射至第二个上下文中：</p>
+<p>定义了扩充过后，替换的定义就变得很直接了。 如果一个上下文中的变量映射至另一个上下文中的项，那么第一个上下文 中的项映射至第二个上下文中：</p>
 <pre class="Agda"><a id="subst"></a><a id="28572" href="../DeBruijn/#28572" class="Function">subst</a> <a id="28578" class="Symbol">:</a> <a id="28580" class="Symbol">∀</a> <a id="28582" class="Symbol">{</a><a id="28583" href="../DeBruijn/#28583" class="Bound">Γ</a> <a id="28585" href="../DeBruijn/#28585" class="Bound">Δ</a><a id="28586" class="Symbol">}</a>
   <a id="28590" class="Symbol">→</a> <a id="28592" class="Symbol">(∀</a> <a id="28595" class="Symbol">{</a><a id="28596" href="../DeBruijn/#28596" class="Bound">A</a><a id="28597" class="Symbol">}</a> <a id="28599" class="Symbol">→</a> <a id="28601" href="../DeBruijn/#28583" class="Bound">Γ</a> <a id="28603" href="../DeBruijn/#13426" class="Datatype Operator">∋</a> <a id="28605" href="../DeBruijn/#28596" class="Bound">A</a> <a id="28607" class="Symbol">→</a> <a id="28609" href="../DeBruijn/#28585" class="Bound">Δ</a> <a id="28611" href="../DeBruijn/#15094" class="Datatype Operator">⊢</a> <a id="28613" href="../DeBruijn/#28596" class="Bound">A</a><a id="28614" class="Symbol">)</a>
     <a id="28620" class="Comment">-----------------------</a>
@@ -932,8 +932,8 @@ to terms over `Δ`.  Let's unpack the first three cases:
 -->
 <ul>
 <li><p>如果项是一个变量，直接应用 <code>σ</code>。</p></li>
-<li><p>如果项是一个抽象，使用之前的扩充结论来扩充映射 <code>σ</code>， 然后在递归地对于抽象本体进行进行代换。</p></li>
-<li><p>如果项是一个应用，递归地代换函数及其参数。</p></li>
+<li><p>如果项是一个抽象，使用之前的扩充结论来扩充映射 <code>σ</code>， 然后在递归地对于抽象本体进行进行替换。</p></li>
+<li><p>如果项是一个应用，递归地替换函数及其参数。</p></li>
 </ul>
 <!--
 The remaining cases are similar, recursing on each subterm,
@@ -950,7 +950,7 @@ From the general case of substitution for multiple free
 variables it is easy to define the special case of
 substitution for one free variable:
 -->
-<p>从广义的代换多个自由变量，我们可以定义只代换单个变量的特殊情况：</p>
+<p>从广义的替换多个自由变量，我们可以定义只替换单个变量的特殊情况：</p>
 <pre class="Agda"><a id="_[_]"></a><a id="29999" href="../DeBruijn/#29999" class="Function Operator">_[_]</a> <a id="30004" class="Symbol">:</a> <a id="30006" class="Symbol">∀</a> <a id="30008" class="Symbol">{</a><a id="30009" href="../DeBruijn/#30009" class="Bound">Γ</a> <a id="30011" href="../DeBruijn/#30011" class="Bound">A</a> <a id="30013" href="../DeBruijn/#30013" class="Bound">B</a><a id="30014" class="Symbol">}</a>
   <a id="30018" class="Symbol">→</a> <a id="30020" href="../DeBruijn/#30009" class="Bound">Γ</a> <a id="30022" href="../DeBruijn/#12165" class="InductiveConstructor Operator">,</a> <a id="30024" href="../DeBruijn/#30013" class="Bound">B</a> <a id="30026" href="../DeBruijn/#15094" class="Datatype Operator">⊢</a> <a id="30028" href="../DeBruijn/#30011" class="Bound">A</a>
   <a id="30032" class="Symbol">→</a> <a id="30034" href="../DeBruijn/#30009" class="Bound">Γ</a> <a id="30036" href="../DeBruijn/#15094" class="Datatype Operator">⊢</a> <a id="30038" href="../DeBruijn/#30013" class="Bound">B</a>
@@ -969,7 +969,7 @@ To do so, we use a map from the context `Γ , B` to the context
 `Γ`, that maps the last variable in the context to the term of
 type `B` and every other free variable to itself.
 -->
-<p>在一个上下文 <code>Γ , B</code> 中类型为 <code>A</code> 的项，我们将类型为 <code>B</code> 的变量 代换为上下文 <code>Γ</code> 中一个类型为 <code>B</code> 的项。 为了这么做，我们用一个从 <code>Γ , B</code> 上下文至 <code>Γ</code> 上下文的映射， 令上下文中最后一个变量映射至类型为 <code>B</code> 的代换项，令任何其他自由变量映射至其本身。</p>
+<p>在一个上下文 <code>Γ , B</code> 中类型为 <code>A</code> 的项，我们将类型为 <code>B</code> 的变量 替换为上下文 <code>Γ</code> 中一个类型为 <code>B</code> 的项。 为了这么做，我们用一个从 <code>Γ , B</code> 上下文至 <code>Γ</code> 上下文的映射， 令上下文中最后一个变量映射至类型为 <code>B</code> 的替换项，令任何其他自由变量映射至其本身。</p>
 <!--
 Consider the previous example:
 -->
@@ -1002,7 +1002,7 @@ Previously, we presented an example of substitution that we
 did not implement, since it needed to rename the bound
 variable to avoid capture:
 -->
-<p>之前，我们展示了一个我们没有实现的代换的例子，因为它需要将约束变量重命名来防止捕捉：</p>
+<p>之前，我们展示了一个我们没有实现的替换的例子，因为它需要将约束变量重命名来防止捕捉：</p>
 <!--
 * `` (ƛ "x" ⇒ ` "x" · ` "y") [ "y" := ` "x" · `zero ] `` should yield
   `` ƛ "z" ⇒ ` "z" · (` "x" · `zero) ``
@@ -1015,7 +1015,7 @@ Say the bound `"x"` has type `` `ℕ ⇒ `ℕ ``, the substituted
 `"y"` has type `` `ℕ ``, and the free `"x"` also has type `` `ℕ ⇒ `ℕ ``.
 Here is the example formalised:
 -->
-<p>假设约束的 <code>"x"</code> 的类型是 <code>`ℕ ⇒ `ℕ</code>，被代换的 <code>"y"</code> 的类型是 <code>`ℕ</code>， 自由的 <code>"x"</code> 的类型也是 <code>`ℕ ⇒ `ℕ</code>。 下面是形式化后的例子：</p>
+<p>假设约束的 <code>"x"</code> 的类型是 <code>`ℕ ⇒ `ℕ</code>，被替换的 <code>"y"</code> 的类型是 <code>`ℕ</code>， 自由的 <code>"x"</code> 的类型也是 <code>`ℕ ⇒ `ℕ</code>。 下面是形式化后的例子：</p>
 <pre class="Agda"><a id="M₅"></a><a id="31851" href="../DeBruijn/#31851" class="Function">M₅</a> <a id="31854" class="Symbol">:</a> <a id="31856" href="../DeBruijn/#12149" class="InductiveConstructor">∅</a> <a id="31858" href="../DeBruijn/#12165" class="InductiveConstructor Operator">,</a> <a id="31860" href="../DeBruijn/#11954" class="InductiveConstructor">`ℕ</a> <a id="31863" href="../DeBruijn/#11927" class="InductiveConstructor Operator">⇒</a> <a id="31865" href="../DeBruijn/#11954" class="InductiveConstructor">`ℕ</a> <a id="31868" href="../DeBruijn/#12165" class="InductiveConstructor Operator">,</a> <a id="31870" href="../DeBruijn/#11954" class="InductiveConstructor">`ℕ</a> <a id="31873" href="../DeBruijn/#15094" class="Datatype Operator">⊢</a> <a id="31875" class="Symbol">(</a><a id="31876" href="../DeBruijn/#11954" class="InductiveConstructor">`ℕ</a> <a id="31879" href="../DeBruijn/#11927" class="InductiveConstructor Operator">⇒</a> <a id="31881" href="../DeBruijn/#11954" class="InductiveConstructor">`ℕ</a><a id="31883" class="Symbol">)</a> <a id="31885" href="../DeBruijn/#11927" class="InductiveConstructor Operator">⇒</a> <a id="31887" href="../DeBruijn/#11954" class="InductiveConstructor">`ℕ</a>
 <a id="31890" href="../DeBruijn/#31851" class="Function">M₅</a> <a id="31893" class="Symbol">=</a> <a id="31895" href="../DeBruijn/#15182" class="InductiveConstructor Operator">ƛ</a> <a id="31897" href="../DeBruijn/#17974" class="Function Operator">#</a> <a id="31899" class="Number">0</a> <a id="31901" href="../DeBruijn/#15249" class="InductiveConstructor Operator">·</a> <a id="31903" href="../DeBruijn/#17974" class="Function Operator">#</a> <a id="31905" class="Number">1</a>
 
@@ -1039,7 +1039,7 @@ means that once it is done the hardest work is out of the way.
 And combining definition with proof makes it harder for errors
 to sneak in.
 -->
-<p>逻辑学家 Haskell Curry 注意到，正确地定义代换可能很棘手。 使用 de Bruijn 因子来定义代换可能更加棘手，且不易理解。 在现在的方法中，任何代换的定义必须保存类型。 虽然这样让定义更加深入，但这也意味着一旦定义完成以后最难的部分就完成了。 将定义和证明结合在一起可以让错误更不易出现。</p>
+<p>逻辑学家 Haskell Curry 注意到，正确地定义替换可能很棘手。 使用 de Bruijn 因子来定义替换可能更加棘手，且不易理解。 在现在的方法中，任何替换的定义必须保存类型。 虽然这样让定义更加深入，但这也意味着一旦定义完成以后最难的部分就完成了。 将定义和证明结合在一起可以让错误更不易出现。</p>
 <!--
 ## Values
 -->
@@ -1137,7 +1137,7 @@ rules, preservation depends on the fact that substitution
 preserves types, which is built-in to our
 definition of substitution.
 -->
-<p>定义中指出，<code>M —→ N</code> 只能由类型<strong>都</strong>是 <code>Γ ⊢ A</code> 的两个项 <code>M</code> 和 <code>N</code> 组成， 其中 <code>Γ</code> 是一个上下文，<code>A</code> 是一个类型。 换句话说，我们的定义中<strong>内置</strong>了规约保存类型的证明。 我们不需要额外证明保型性。 Agda 的类型检查器检验了每个项保存了类型。 在 <code>β</code> 规则的情况中，保型性依赖于代换保存类型的性质，而它内置于代换的定义之中。</p>
+<p>定义中指出，<code>M —→ N</code> 只能由类型<strong>都</strong>是 <code>Γ ⊢ A</code> 的两个项 <code>M</code> 和 <code>N</code> 组成， 其中 <code>Γ</code> 是一个上下文，<code>A</code> 是一个类型。 换句话说，我们的定义中<strong>内置</strong>了规约保存类型的证明。 我们不需要额外证明保型性。 Agda 的类型检查器检验了每个项保存了类型。 在 <code>β</code> 规则的情况中，保型性依赖于替换保存类型的性质，而它内置于替换的定义之中。</p>
 <!--
 ## Reflexive and transitive closure
 -->
@@ -1279,7 +1279,7 @@ Substitution preserves types, and Preservation.
 We now turn to proving the remaining results from the
 previous development.
 -->
-<p>我们现在完成了所有的定义，包含了之前证明的一些推论：标准式、代换保存类型和保型性。 我们接下来证明剩下的结论。</p>
+<p>我们现在完成了所有的定义，包含了之前证明的一些推论：标准式、替换保存类型和保型性。 我们接下来证明剩下的结论。</p>
 <!--
 #### Exercise `V¬—→` (practice)
 -->
