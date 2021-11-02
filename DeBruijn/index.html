@@ -86,7 +86,7 @@ of a term without a type.
 The two approaches are sometimes called _Curry style_ and _Church style_.
 Following Reynolds, we will refer to them as _extrinsic_ and _intrinsic_.
 -->
-<p>表示带类型的 λ-演算有两种基本的方法。 其一是我们在前两章中使用的方法，先定义项，再定义类型。 项独立于类型存在，其类型由另外的赋型规则指派。 其二是我们在本章中使用的方法，先定义类型，再定义项。 项和类型的规则相互环绕，并且讨论不带类型的项将没有意义。 这两种方法有的时候被称为<strong>柯里法</strong>（Curry Style）和<strong>邱奇法</strong>（Church Style）。 沿用 Reynolds 的叫法，我们把两种方法称为<strong>外在法</strong>（Extrinsic）和<strong>内在法</strong>（Intrinsic）。</p>
+<p>表示带类型的 λ-演算有两种基本的方法。 其一是我们在前两章中使用的方法，先定义项，再定义类型。 项独立于类型存在，其类型由另外的赋型规则指派。 其二是我们在本章中使用的方法，先定义类型，再定义项。 项和类型的规则相互环绕，并且讨论不带类型的项将没有意义。 这两种方法有的时候被称为<strong>柯里法（Curry Style）</strong>和<strong>邱奇法（Church Style）</strong>。 沿用 Reynolds 的叫法，我们把两种方法称为<strong>外在法（Extrinsic）</strong>和<strong>内在法（Intrinsic）</strong>。</p>
 <!--
 The particular representation described here
 was first proposed by
@@ -187,7 +187,7 @@ variables with de Bruijn indices is that each term now has a
 unique representation, rather than being represented by the
 equivalence class of terms under alpha renaming.
 -->
-<p>用数字代替变量的这种表示方法叫做 <strong>de Bruijn 表示法</strong>，这些数字本身被称为 <strong>de Bruijn 因子</strong>（de Bruijn Indices），得名于荷兰数学家 Nicolaas Govert (Dick) de Bruijn （1918 - 2012），一位创造证明助理的先锋。 使用 de Bruijn 因子表示变量的一个好处是：每个项有一个唯一的表示方法，而不是 在 α-重命名下的一个相等类。</p>
+<p>用数字代替变量的这种表示方法叫做 <strong>de Bruijn 表示法</strong>，这些数字本身被称为 <strong>de Bruijn 因子（de Bruijn Indices）</strong>，得名于荷兰数学家 Nicolaas Govert (Dick) de Bruijn （1918 - 2012），一位创造证明助理的先锋。 使用 de Bruijn 因子表示变量的一个好处是：每个项有一个唯一的表示方法，而不是 在 α-重命名下的一个相等类。</p>
 <!--
 The other important feature of our chosen representation is
 that it is _intrinsically typed_.  In the previous two chapters,
@@ -200,7 +200,7 @@ _raw terms_.  Here we are going to replace the type `Term` of
 raw terms by the type `Γ ⊢ A` of intrinsically-typed terms
 which in context `Γ` have type `A`.
 -->
-<p>我们选择的表示方式的另一个重要特性是：他是<strong>内在类型</strong>的（Intrinsically Typed）。 在前两章中，项和类型的定义是完全分离的。所有的项拥有 <code>Term</code> 类型，Agda 并不会 阻止我们写出例如 <code>`zero · `suc `zero</code> 的没有类型的无意义的项。 这样独立于类型存在的项有时被称为<strong>原项</strong>（Preterms）或者<strong>源项</strong>（Raw Terms）。 我们将用 <code>Γ ⊢ A</code> 类型的内在类型的项，表示它在 <code>Γ</code> 上下文中拥有类型 <code>A</code>， 来取代 <code>Term</code> 类型的源项。</p>
+<p>我们选择的表示方式的另一个重要特性是：他是<strong>内在类型（Intrinsically Typed）</strong>的。 在前两章中，项和类型的定义是完全分离的。所有的项拥有 <code>Term</code> 类型，Agda 并不会 阻止我们写出例如 <code>`zero · `suc `zero</code> 的没有类型的无意义的项。 这样独立于类型存在的项有时被称为<strong>原项（Preterms）</strong>或者<strong>源项（Raw Terms）</strong>。 我们将用 <code>Γ ⊢ A</code> 类型的内在类型的项，表示它在 <code>Γ</code> 上下文中拥有类型 <code>A</code>， 来取代 <code>Term</code> 类型的源项。</p>
 <!--
 While these two choices fit well, they are independent.  One
 can use de Bruijn indices in raw terms, or
