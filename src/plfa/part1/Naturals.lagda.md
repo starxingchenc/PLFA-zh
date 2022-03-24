@@ -232,6 +232,7 @@ _type_ refers to typing with fingers as opposed to data types!
 读者可能注意到 `ℕ` 和 `→` 在键盘上没有对应的按键。它们是
 **Unicode（统一码）**中的符号。每一章的结尾都会有本章节引入的 Unicode
 符号列表，以及在 Emacs 编辑器中输入它们的方法。
+这里的**输入（Type）**指的是用手指打字而不是数据类型（Data types）！
 
 <!--
 The story of creation
@@ -447,7 +448,7 @@ presented by a new method), published the following year.
 
 尽管从人类开始计数起，自然数就被人所认知，然而其归纳定义却是近代的事情。
 这可以追溯到理查德·戴德金（Richard Dedekind）于 1888 年发表的论文
-*Was sind und was sollen die Zahlen?*"（《数是什么，应该是什么？》），
+"*Was sind und was sollen die Zahlen?*"（《数是什么，应该是什么？》），
 以及朱塞佩·皮亚诺（Giuseppe Peano）于次年发表的著作
 "*Arithmetices principia, nova methodo exposita*"（《算术原理：用一种新方法呈现》）。
 
@@ -1641,7 +1642,7 @@ you might use, if there is a choice.  In this case, it displays the following:
 
     Don't know which constructor to introduce of zero or suc
 
-即“不知道在 `zero` 和 `suc` 中该引入哪一个构造子”。
+即「不知道在 `zero` 和 `suc` 中该引入哪一个构造子」。
 
 <!--
 Filling the hole with `suc ?` and typing `C-c C-space` results in the following:
